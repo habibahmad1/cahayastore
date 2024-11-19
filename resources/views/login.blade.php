@@ -11,16 +11,37 @@
             <form action="">
                 <div class="email-form">
                     <label for="email">Email</label>
-                    <input type="email" id="email">
+                    <input type="email" id="email" required>
                 </div>
-                <div class="password-form">
+                <div class="password-form"  style="position: relative">
                     <label for="password">Password</label>
-                    <input type="password" id="password">
+                    <input type="password" id="password" required>
+                    <i class="fas fa-eye toggle-password" id="togglePassword" style="position: absolute; top:45px; right:20px;"></i>
+                </div>
+                <div class="forgetpw" style="text-align:right">
+                    <a href="#" class="text-decoration-none">Lupa Password</a>
                 </div>
                 <div class="submit-form">
                     <button type="submit">Login</button>
                 </div>
+                <p class="mt-4">Belum punya akun? <a href="#" class="text-decoration-none">Daftar Sekarang!</a></p>
             </form>
         </div>
     </div>
+
+    <script>
+        // JavaScript untuk toggle password visibility
+        const togglePassword = document.querySelector('#togglePassword');
+        const passwordField = document.querySelector('#password');
+
+        togglePassword.addEventListener('click', function () {
+            // Toggle tipe input password
+            const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordField.setAttribute('type', type);
+
+            // Toggle icon
+            this.classList.toggle('fa-eye');
+            this.classList.toggle('fa-eye-slash');
+        });
+    </script>
 @endsection
