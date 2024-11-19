@@ -958,8 +958,10 @@ body {
     }
 
     .hero {
-        position: static;
+        position: relative;
+        height: 100vh;
         padding-bottom: 0;
+        overflow: hidden;
     }
 
     .hero .text-hero {
