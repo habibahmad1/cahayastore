@@ -1,0 +1,1147 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+*::selection {
+    background-color: #ff8d58;
+    color: #000;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Poppins", serif;
+    overflow-x: hidden;
+}
+
+.container {
+    background-color: #fff;
+}
+/* animasi fadein */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.text-hero p {
+    animation: fadeIn 1s ease forwards;
+}
+
+/* Definisi animasi untuk muncul dari bawah */
+@keyframes munculDariBawah {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Definisi animasi untuk muncul dengan skala */
+@keyframes skala {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Contoh penerapan animasi */
+.hero,
+.navbar,
+.card,
+.card-orange,
+.keunggulan,
+.produk,
+.slogan-besar,
+.footer {
+    animation: munculDariBawah 1s ease-in-out;
+}
+
+.card-keunggulan .list-keunggulan,
+.card-produk .card,
+.card-testi {
+    animation: skala 0.8s ease-in-out;
+}
+
+/* Hover Effect untuk kartu produk */
+.card-produk .card:hover {
+    animation: skala 0.5s ease-in-out forwards;
+    transform: scale(1.1);
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgba(
+        255,
+        255,
+        255,
+        0.7
+    ); /* Semi-transparent background */
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+    z-index: 1000; /* Ensures the navbar stays on top */
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.navbar.scrolled {
+    background-color: #fff; /* Solid background on scroll */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow for effect */
+}
+
+.navbar .logo {
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.navbar a {
+    position: relative;
+    margin: 0 20px;
+    text-decoration: none;
+    font-size: 22px;
+    color: black;
+    transition: color 0.3s ease;
+    padding: 5px 10px;
+    overflow: hidden;
+}
+
+.navbar a::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 0;
+    height: 3px;
+    background-color: #ff8d58;
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
+.navbar a:hover::before {
+    width: 100%;
+    left: 0;
+}
+
+.navbar a:hover {
+    color: #ff8d58;
+    transform: scale(1.1); /* Slightly enlarges the link */
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Navbar HP */
+
+/* .navbar-hp {
+  display: none;
+  height: 60px;
+  background-color: #ff8d58;
+  align-items: center;
+  justify-content: space-around;
+  gap: 250px;
+  color: white;
+}
+
+.navbar-hp a {
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 30px;
+  color: white;
+}
+
+.navbar-side {
+  background-color: #fce4db;
+  width: 50vw;
+  height: 100vh;
+  position: absolute;
+  right: -300px;
+  transition: all 0.5s;
+  z-index: 999;
+}
+
+.navbar-side.active {
+  right: 0;
+}
+
+.navbar-side nav {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+}
+
+.navbar-side nav a {
+  text-decoration: none;
+  font-size: 20px;
+  margin: 20px 0;
+  color: #000;
+}
+
+.navbar-side nav a:hover {
+  color: #ff8d58;
+  cursor: pointer;
+  color: #fff;
+}
+
+.hidden {
+  top: -100px; 
+}
+.navbar-hp .button {
+  font-size: 30px;
+}
+.navbar-hp .button:hover {
+  cursor: pointer;
+  color: #000;
+} */
+
+/* Content Hero */
+
+.hero {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 200px 0;
+    padding-bottom: 200px;
+    position: relative;
+    flex-wrap: wrap;
+}
+
+.hero .text-hero {
+    width: 600px;
+    margin-left: -300px;
+    text-transform: capitalize;
+}
+
+.hero .text-hero p:first-of-type {
+    font-size: 40px;
+    font-weight: bold;
+    margin: 40px 0;
+    color: #ff8d58;
+}
+
+.hero .text-hero p:nth-of-type(2) {
+    text-align: justify;
+}
+
+.hero .img-hero img {
+    width: 1000px;
+    position: absolute;
+    right: 200px;
+    top: 0;
+}
+
+.img-hero-hp img {
+    display: none;
+}
+
+.img-hero img {
+    transition: transform 0.5s ease;
+}
+
+.img-hero img:hover {
+    transform: scale(1.1); /* Zoom-in saat dihover */
+}
+
+.button-hero {
+    display: flex;
+    margin: 20px 0;
+}
+
+.button-hero .buynow {
+    display: block;
+    padding: 20px 60px;
+    border-radius: 8px;
+    background-color: #ff8d58;
+    color: #fff;
+}
+
+/* Efek hover pada tombol */
+.button-hero .buynow:hover,
+.button-hero .readmore:hover {
+    animation: skala 0.3s ease;
+    transform: scale(1.05);
+}
+
+.button-hero .readmore {
+    display: block;
+    padding: 20px 60px;
+    border-radius: 8px;
+    background-color: #fff;
+    margin-left: 20px;
+    border: 1px solid black;
+}
+
+.button {
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.button:hover {
+    transform: scale(1.1); /* Membesar sedikit saat dihover */
+}
+
+/* Content Keunggulan */
+.keunggulan {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    color: #fff;
+    padding: 80px;
+    flex-wrap: wrap;
+}
+
+.keunggulan .slogan {
+    font-size: 40px;
+    margin-bottom: 80px;
+    text-align: center;
+    margin-top: 100px;
+}
+
+.keunggulan .card-keunggulan {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.keunggulan .card-keunggulan .list-keunggulan {
+    margin: 20px;
+    padding: 40px;
+    width: 400px;
+    height: 300px;
+    text-align: center;
+}
+
+.keunggulan .card-keunggulan .list-keunggulan .icon {
+    font-size: 40px;
+    margin: 40px 0;
+    color: #ff8d58;
+}
+
+.keunggulan .card-keunggulan .list-keunggulan h3 {
+    margin: 20px 0;
+}
+
+/* Card Orange */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: scale(1.05); /* Membesar saat dihover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Memberikan bayangan */
+}
+
+.card-orange {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    top: 1070px;
+    left: 300px;
+    position: absolute;
+}
+
+.card-orange .card {
+    display: flex;
+    flex-direction: column;
+    padding: 80px 40px;
+    margin: 0 20px;
+    width: 400px;
+    height: 140px;
+    background-color: #ff8d58;
+    border-radius: 8px;
+    font-size: 30px;
+    justify-content: center;
+}
+
+.card-orange .card i {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.card-orange .card p {
+    text-align: center;
+}
+
+.card img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: 200px;
+    border-radius: 8px;
+}
+
+/*grafik about */
+.chart-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px 0;
+    padding: 20px;
+    background-color: #f7f9fc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#myChart {
+    width: 100%;
+    max-width: 1500px;
+    height: auto;
+}
+
+/* FAQ */
+
+.faq {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    padding: 60px;
+    background-color: #666;
+    user-select: none;
+}
+
+.faq-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+}
+
+.faq-title h1 {
+    color: #fff;
+    font-size: 36px;
+    margin: 20px 0;
+}
+
+.card-faq {
+    width: 600px;
+    background: #fff;
+    border-radius: 5px;
+    margin: 10px 0;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease; /* Animasi untuk efek zoom saat hover */
+}
+
+.card-faq:hover {
+    transform: scale(1.03); /* Efek perbesaran saat hover */
+}
+
+.card-faq h2 {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.card-faq p {
+    display: none;
+    color: #666;
+    margin-top: 10px;
+    max-height: 0;
+    overflow: hidden;
+}
+
+.card-faq.active p {
+    display: block;
+    max-height: 400px; /* Mengatur tinggi maksimal untuk transisi animasi */
+    padding: 10px 0; /* Menambahkan padding saat teks muncul */
+}
+
+/* About Section */
+.about {
+    padding: 80px 20px;
+    text-align: center;
+    background-color: #f7f9fc;
+    color: #333;
+}
+
+.about-title h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+    color: #ff8d58;
+}
+
+.about-title p {
+    font-size: 18px;
+    color: #555;
+}
+
+.gallery-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.gallery-container:hover {
+    cursor: pointer;
+}
+
+.gallery-item {
+    width: 250px;
+    height: 180px;
+    overflow: hidden;
+    border-radius: 8px;
+    position: relative;
+    transform: scale(0.9);
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.gallery-item .overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 115, 0, 0.7); /* Semi-transparent background */
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    font-size: 18px;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: all 0.5s ease;
+}
+
+.gallery-item:hover .overlay {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.gallery-item:hover {
+    transform: scale(1);
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+/* Zoom Animation on Text */
+@keyframes zoomIn {
+    0% {
+        transform: scale(0.9);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.gallery-item:hover .overlay {
+    animation: zoomIn 0.4s ease forwards;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.about-title,
+.gallery-container .gallery-item {
+    animation: fadeInUp 0.8s ease both;
+}
+
+.gallery-container .gallery-item {
+    animation-delay: 0.2s;
+}
+
+.map-teks {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    margin: 80px 0;
+    flex-wrap: wrap;
+    text-align: justify;
+    justify-content: space-evenly;
+}
+
+.map iframe {
+    width: 600px;
+    height: 450px;
+    border-radius: 20px;
+}
+
+.teks-about {
+    width: 600px;
+}
+
+/* Content Why */
+.why {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 80px;
+    padding: 40px 0;
+    flex-wrap: wrap;
+}
+
+.why .why-img img {
+    width: 600px;
+}
+
+.text-why {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.text-why .title {
+    font-size: 25px;
+}
+
+.text-why .why-benefit {
+    display: flex;
+    flex-direction: column;
+}
+
+.text-why .button {
+    margin-top: 20px;
+    display: flex;
+}
+
+.text-why .button .message {
+    background-color: #ff8d58;
+    padding: 15px 20px;
+    border-radius: 8px;
+    color: #fff;
+}
+
+/* Content-Testimoni */
+.testimoni {
+    background-color: #f7f9fc;
+    padding: 40px 20px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+.text-testimoni h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    margin-top: 60px;
+    font-size: 30px;
+}
+
+.next-text {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.next-text .button {
+    background-color: #ff8d58;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.testi-slider {
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.card-testi {
+    display: none; /* Hide all cards initially */
+    width: 100%;
+    max-width: 800px; /* Optional: limit the width of the testimonial */
+    height: 400px;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 24px;
+    opacity: 0;
+    animation: fadeIn 2s ease forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.card-testi:hover {
+    box-shadow: 5px 5px 5px #ff8d58;
+}
+
+.card-testi p {
+    margin: 20px 0 40px 0;
+    padding: 0 60px;
+}
+
+/* Style untuk bintang */
+.star-testi i {
+    color: #ffc107;
+    font-size: 20px;
+    opacity: 0; /* Bintang tidak terlihat di awal */
+    transform: scale(0); /* Ukuran bintang diatur jadi 0 */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Animasi opacity dan transform */
+    font-size: 40px;
+    margin-top: 80px;
+}
+
+/* Aktifkan animasi saat bintang terlihat */
+.star-testi.animate i {
+    opacity: 1;
+    transform: scale(1); /* Membuat bintang muncul dengan ukuran normal */
+}
+
+.star-testi.animate i:nth-child(1) {
+    transition-delay: 0.1s;
+}
+.star-testi.animate i:nth-child(2) {
+    transition-delay: 0.2s;
+}
+.star-testi.animate i:nth-child(3) {
+    transition-delay: 0.3s;
+}
+.star-testi.animate i:nth-child(4) {
+    transition-delay: 0.4s;
+}
+.star-testi.animate i:nth-child(5) {
+    transition-delay: 0.5s;
+}
+
+.card-testi.active {
+    display: block; /* Only show the active card */
+    margin: 40px 0;
+    padding: 0 0px;
+}
+
+.profil-testi {
+    display: flex;
+    align-items: center;
+    text-align: left;
+    margin-top: 15px;
+    justify-content: center;
+}
+
+.profil-testi img {
+    border-radius: 50%;
+}
+
+.profil {
+    margin-left: 10px;
+}
+
+.profil h3 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.profil small {
+    color: #777;
+}
+
+/* Content Slogan */
+.slogan-besar {
+    padding: 80px 0;
+    background-color: #ff8d58;
+    color: #f7f9fc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.slogan-besar .content-slogan {
+    width: 900px;
+    margin: 40px;
+    text-align: center;
+}
+
+.slogan-besar .content-slogan h1 {
+    font-size: 35px;
+}
+
+.slogan-besar .content-slogan p {
+    margin: 40px 0;
+}
+
+.slogan-besar .content-slogan .button-slogan {
+    background-color: #fff;
+    display: inline-block;
+    padding: 10px 15px;
+    color: #ff8d58;
+    border-radius: 5px;
+}
+
+.slogan-besar .content-slogan .button-slogan:hover {
+    cursor: pointer;
+    box-shadow: 5px 5px 5px #000;
+    transition: all 0.3s;
+}
+
+/* Content Footer */
+.footer {
+    background-color: #000;
+    color: #fff;
+    padding: 150px;
+    display: flex;
+    gap: 80px;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.footer .footer-1 {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.footer .footer-1 .sosmed {
+    display: flex;
+    gap: 20px;
+}
+
+.footer .footer-1 .sosmed .link-sosmed {
+    display: flex;
+    gap: 20px;
+}
+
+.footer .footer-1 .sosmed .link-sosmed a {
+    color: #fff;
+}
+
+.footer .footer-1 .sosmed .link-sosmed a:hover {
+    color: #ff8d58;
+}
+
+.footer .footer-2,
+.footer .footer-3,
+.footer .footer-4 {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.footer .footer-2 a,
+.footer .footer-3 a,
+.footer .footer-4 a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.footer .footer-2 a:hover,
+.footer .footer-3 a:hover,
+.footer .footer-4 a:hover {
+    color: #ff8d58;
+    text-decoration: underline;
+}
+
+.footer h3 {
+    color: #ff8d58;
+}
+
+/* Content Product */
+.produk {
+    padding: 80px;
+}
+
+.produk h1 {
+    margin-bottom: 80px;
+}
+
+.card-produk {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.card-produk .card {
+    width: 300px;
+    margin-left: 20px;
+}
+.card-produk .card img {
+    width: 300px;
+    height: 300px;
+    margin: 10px 0;
+    transition: all 1s;
+}
+
+.card-produk .card-img {
+    background-color: #dfdfdf;
+    filter: brightness(110%);
+}
+
+.card-produk .card img:hover {
+    border-radius: 10px;
+    cursor: pointer;
+    transform: scale(1.3);
+}
+
+.card-produk .card p {
+    text-align: justify;
+    margin: 15px 0;
+}
+
+.card-produk .card .button {
+    display: block;
+    background-color: #ff8d58;
+    padding: 10px 15px;
+    border-radius: 5px;
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+    transition: all 1s;
+}
+
+.card-produk .card .button:hover {
+    background-color: #f35a14;
+    cursor: pointer;
+}
+
+/* Responsif HP */
+@media (max-width: 600px) {
+    html,
+    body {
+    }
+
+    .card-orange {
+        position: static;
+        margin: 40px 0;
+    }
+
+    .card-orange .card {
+        padding: 10px 15px;
+    }
+
+    .hero {
+        position: static;
+        padding-bottom: 0;
+    }
+
+    .hero .text-hero {
+        width: 350px;
+        margin-left: 0;
+        order: 1;
+    }
+
+    .hero .text-hero p:first-of-type {
+        font-size: 30px;
+    }
+
+    .hero .img-hero {
+        display: flex;
+    }
+
+    .hero .img-hero {
+        order: 0;
+        display: flex;
+    }
+
+    .button-hero .buynow,
+    .button-hero .readmore {
+        display: block;
+        padding: 15px 15px;
+        border-radius: 8px;
+        background-color: #ff8d58;
+        color: #fff;
+        border: none;
+        font-size: 12px;
+        text-align: center;
+    }
+
+    .slogan-besar .content-slogan {
+        width: 300px;
+        font-size: 20px;
+        margin: 20px;
+    }
+
+    .slogan-besar .content-slogan h1 {
+        font-size: 25px;
+    }
+
+    .slogan-besar .content-slogan p {
+        font-size: 15px;
+    }
+
+    .slogan-besar .content-slogan .button-slogan {
+        background-color: #fff;
+        display: inline-block;
+        padding: 10px 15px;
+        color: #ff8d58;
+        border-radius: 5px;
+        font-size: 18px;
+    }
+
+    .card-testi {
+        display: none; /* Hide all cards initially */
+        width: 100%;
+        max-width: 350px; /* Optional: limit the width of the testimonial */
+        height: 500px;
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        font-size: 16px;
+    }
+
+    .why .why-img img {
+        width: 100%;
+        max-width: 300px; /* Sesuaikan dengan kebutuhan */
+        height: auto;
+    }
+
+    .keunggulan {
+        padding: 20px 20px 180px 20px;
+    }
+
+    .navbar {
+        display: flex;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background-color: rgba(
+            255,
+            255,
+            255,
+            0.7
+        ); /* Semi-transparent background */
+        transition: background-color 0.3s ease; /* Smooth transition for background color */
+        z-index: 1000; /* Ensures the navbar stays on top */
+        padding: 5px 5px;
+        align-items: center;
+        justify-content: center;
+        transition: color 0.3s ease, transform 0.3s ease;
+        flex-wrap: wrap;
+    }
+
+    .navbar a {
+        font-size: 10px;
+    }
+    .navbar .logo {
+        font-size: 15px;
+        margin: 0 10px;
+    }
+
+    .login {
+        display: flex;
+    }
+
+    .navbar nav a {
+        margin: 5px;
+    }
+
+    .navbar nav {
+        display: flex;
+    }
+
+    .navbar-hp {
+        display: flex;
+    }
+    .sosmed {
+        display: flex;
+        justify-content: center;
+    }
+
+    .why .button {
+        justify-content: center;
+    }
+
+    .text-why {
+        text-align: center;
+    }
+
+    .card-orange .card {
+        font-size: 16px;
+        text-align: center;
+    }
+
+    .card-orange .card img {
+        height: 50px;
+    }
+
+    .keunggulan .slogan {
+        font-size: 25px;
+    }
+
+    .keunggulan .card-keunggulan .list-keunggulan {
+        width: 300px;
+    }
+
+    .produk {
+        padding: 80px 20px;
+    }
+
+    .produk h1 {
+        text-align: center;
+    }
+
+    .footer {
+        padding: 150px 20px;
+    }
+
+    .card-faq {
+        width: 300px;
+    }
+
+    .map iframe {
+        width: 100%;
+        max-width: 300px;
+        height: 400px;
+    }
+
+    .hero .img-hero img {
+        display: none;
+    }
+
+    .img-hero-hp img {
+        display: flex;
+        width: 300px;
+    }
+}
