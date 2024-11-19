@@ -1,13 +1,21 @@
-let slideIndex = 0;
-showSlides();
+let currentSlide = 0;
 
-function showSlides() {
-    const slides = document.querySelectorAll('.slide');
-    slides.forEach((slide, index) => {
-        slide.style.display = "none";
-    });
-    slideIndex++;
-    if (slideIndex > slides.length) { slideIndex = 1; }
-    slides[slideIndex - 1].style.display = "block";
-    setTimeout(showSlides, 5000); // Ganti slide setiap 5 detik
+function changeSlide(index) {
+    const slides = document.querySelector('.slides');
+    const dots = document.querySelectorAll('.nav-dot');
+
+    slides.style.transform = `translateX(-${index * 100}%)`;
+    dots.forEach(dot => dot.classList.remove('active'));
+    dots[index].classList.add('active');
+
+    currentSlide = index;
 }
+
+// Set default active dot
+document.querySelectorAll('.nav-dot')[0].classList.add('active');
+
+// Auto-slide functionality
+setInterval(() => {
+    currentSlide = (currentSlide + 1) % 3;
+    changeSlide(currentSlide);
+}, 5000);
