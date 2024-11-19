@@ -6,6 +6,7 @@
     <title>PT CAHAYA SETIA INDONESIA</title>
     {{-- My CSS --}}
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}" />
     {{-- Font Awesome --}}
     <link
       rel="stylesheet"

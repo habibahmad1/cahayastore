@@ -1,0 +1,42 @@
+.container-login {
+    display: flex;
+    justify-content: space-evenly; /* Untuk memposisikan secara horizontal */
+    align-items: center; /* Untuk memposisikan secara vertikal */
+    height: 100vh; /* Membuat container memenuhi tinggi layar */
+    gap: 20px; /* Memberi jarak antara elemen login-img dan login-form */
+    flex-wrap: wrap;
+}
+
+.login-img {
+    text-align: center; /* Jika ada konten tambahan di login-img */
+}
+
+.login-form {
+    width: 300px; /* Atur lebar form login */
+    text-align: center; /* Pusatkan teks di dalam form */
+}
+
+.login-form h1 {
+    margin-bottom: 20px;
+}
+
+.email-form,
+.password-form {
+    margin-bottom: 15px;
+    text-align: left; /* Label dan input berjejer di kiri */
+}
+
+.email-form label,
+.password-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.email-form input,
+.password-form input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}

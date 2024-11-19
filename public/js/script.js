@@ -48,66 +48,11 @@ let lastScrollTop = 0;
 const button = document.querySelector(".button");
 const navbarhp = document.querySelector(".navbar-side");
 
-button.addEventListener("click", () => {
-    navbarhp.classList.toggle("active"); // Toggle kelas "active"
-});
-
-// grafik about
-document.addEventListener("DOMContentLoaded", () => {
-    const ctx = document.getElementById("myChart").getContext("2d");
-    const myChart = new Chart(ctx, {
-        type: "bar",
-        data: {
-            labels: [
-                "Januari",
-                "Februari",
-                "Maret",
-                "April",
-                "Mei",
-                "Juni",
-                "Juli",
-                "Agustus",
-                "September",
-                "Oktober",
-                "November",
-                "Desember",
-            ],
-            datasets: [
-                {
-                    label: "LED PANJANG",
-                    data: [30, 45, 40, 60, 50, 70, 80, 76, 80, 88, 93, 85], // Data penjualan sandal
-                    backgroundColor: "rgba(54, 162, 235, 0.5)",
-                    borderColor: "rgba(54, 162, 235, 1)",
-                    borderWidth: 1,
-                },
-                {
-                    label: "LED BULAT",
-                    data: [20, 35, 25, 45, 30, 55, 78, 96, 86, 75, 88, 64], // Data penjualan kopi
-                    backgroundColor: "#ff8d58",
-                    borderColor: "rgba(255, 99, 132, 1)",
-                    borderWidth: 1,
-                },
-            ],
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    position: "top",
-                },
-            },
-            scales: {
-                y: {
-                    beginAtZero: true,
-                },
-            },
-            animation: {
-                duration: 1000,
-                easing: "easeInOutBounce",
-            },
-        },
+if (navbarhp) {
+    button.addEventListener("click", () => {
+        navbarhp.classList.toggle("active"); // Toggle kelas "active"
     });
-});
+}
 
 // FAQ
 // JavaScript untuk menambahkan interaksi klik pada setiap card FAQ
