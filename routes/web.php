@@ -26,3 +26,7 @@ Route::get('/tentang', function () {
     return view('about');
 });
 
+Route::get('/login', function () {
+    return view('login');
+});
+
