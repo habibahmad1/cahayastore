@@ -12,7 +12,7 @@
 }
 
 .login-form {
-    width: 300px; /* Atur lebar form login */
+    width: 400px; /* Atur lebar form login */
     text-align: center; /* Pusatkan teks di dalam form */
 }
 
@@ -39,4 +39,24 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box;
+}
+
+.submit-form {
+    margin-top: 20px;
+}
+
+.submit-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff; /* Warna latar belakang tombol */
+    color: white; /* Warna teks tombol */
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-form button:hover {
+    background-color: #0056b3; /* Warna latar belakang tombol saat hover */
 }
