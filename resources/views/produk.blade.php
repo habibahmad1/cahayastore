@@ -32,51 +32,51 @@
               <p>Harga mulai: Rp 275,000</p>
               <button class="details-button">Selengkapnya →</button>
           </div>
-          <div class="product-card" data-name="LED Fishing Light 2">
-            <img src="img/3.png" alt="LED Fishing Light 2">
+          <div class="product-card" data-name="LED Fishing Light 3">
+            <img src="img/3.png" alt="LED Fishing Light 3">
             <h2>LED Fishing Light 3</h2>
             <p>Harga mulai: Rp 275,000</p>
             <button class="details-button">Selengkapnya →</button>
         </div>
-        <div class="product-card" data-name="LED Fishing Light 2">
-            <img src="img/4.png" alt="LED Fishing Light 2">
+        <div class="product-card" data-name="LED Fishing Light 4">
+            <img src="img/4.png" alt="LED Fishing Light 4">
             <h2>LED Fishing Light 4</h2>
             <p>Harga mulai: Rp 275,000</p>
             <button class="details-button">Selengkapnya →</button>
         </div>
-        <div class="product-card" data-name="LED Fishing Light 2">
-            <img src="img/1.png" alt="LED Fishing Light 2">
+        <div class="product-card" data-name="LED Fishing Light 5">
+            <img src="img/1.png" alt="LED Fishing Light 5">
             <h2>LED Fishing Light 5</h2>
             <p>Harga mulai: Rp 275,000</p>
             <button class="details-button">Selengkapnya →</button>
         </div>
-        <div class="product-card" data-name="LED Fishing Light 1">
-            <img src="img/1.png" alt="LED Fishing Light 1">
-            <h2>LED Fishing Light 1</h2>
+        <div class="product-card" data-name="LED Fishing Light 6">
+            <img src="img/1.png" alt="LED Fishing Light 6">
+            <h2>LED Fishing Light 6</h2>
             <p>Harga mulai: Rp 250,000</p>
             <button class="details-button">Selengkapnya →</button>
         </div>
-        <div class="product-card" data-name="LED Fishing Light 2">
-            <img src="img/2.png" alt="LED Fishing Light 2">
-            <h2>LED Fishing Light 2</h2>
+        <div class="product-card" data-name="LED Fishing Light 7">
+            <img src="img/2.png" alt="LED Fishing Light 7">
+            <h2>LED Fishing Light 7</h2>
             <p>Harga mulai: Rp 275,000</p>
             <button class="details-button">Selengkapnya →</button>
         </div>
-        <div class="product-card" data-name="LED Fishing Light 2">
-          <img src="img/3.png" alt="LED Fishing Light 2">
-          <h2>LED Fishing Light 3</h2>
+        <div class="product-card" data-name="LED Fishing Light 8">
+          <img src="img/3.png" alt="LED Fishing Light 8">
+          <h2>LED Fishing Light 8</h2>
           <p>Harga mulai: Rp 275,000</p>
           <button class="details-button">Selengkapnya →</button>
       </div>
-      <div class="product-card" data-name="LED Fishing Light 2">
-          <img src="img/4.png" alt="LED Fishing Light 2">
-          <h2>LED Fishing Light 4</h2>
+      <div class="product-card" data-name="LED Fishing Light 9">
+          <img src="img/4.png" alt="LED Fishing Light 9">
+          <h2>LED Fishing Light 9</h2>
           <p>Harga mulai: Rp 275,000</p>
           <button class="details-button">Selengkapnya →</button>
       </div>
-      <div class="product-card" data-name="LED Fishing Light 2">
-          <img src="img/1.png" alt="LED Fishing Light 2">
-          <h2>LED Fishing Light 5</h2>
+      <div class="product-card" data-name="LED Fishing Light 10">
+          <img src="img/1.png" alt="LED Fishing Light 10">
+          <h2>LED Fishing Light 10</h2>
           <p>Harga mulai: Rp 275,000</p>
           <button class="details-button">Selengkapnya →</button>
       </div>

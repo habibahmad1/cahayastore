@@ -9,14 +9,24 @@ document.addEventListener("DOMContentLoaded", () => {
             // Remove active class from all buttons
             buttons.forEach(btn => btn.classList.remove("active"));
 
-            // Hide all product lists and search sections
+            // Hide all product lists and search sections with animation
             productLists.forEach(list => list.classList.add("hidden"));
-            searchSections.forEach(section => section.classList.add("hidden"));
+            searchSections.forEach(section => {
+                section.classList.remove("zoom-in", "fade-bounce");
+                section.classList.add("zoom-out");
+                setTimeout(() => {
+                    section.classList.add("hidden");
+                }, 500); // Match with animation duration
+            });
 
-            // Show selected product list and search section
+            // Show selected product list and search section with animation
             const category = button.getAttribute("data-category");
-            document.getElementById(category).classList.remove("hidden");
-            document.getElementById(`${category}-search`).classList.remove("hidden");
+            const productList = document.getElementById(category);
+            const searchSection = document.getElementById(`${category}-search`);
+
+            productList.classList.remove("hidden");
+            searchSection.classList.remove("hidden", "zoom-out");
+            searchSection.classList.add("zoom-in", "fade-bounce");
 
             // Add active class to clicked button
             button.classList.add("active");
