@@ -1,10 +1,6 @@
 @extends('layouts.main')
 
 @section('container')
-        <br>
-        <br>
-        <br>
-        <br>
          <!-- Menu Kategori -->
     <nav class="category-menu">
       <button class="category-btn active" data-category="led">LED Fishing Light</button>

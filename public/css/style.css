@@ -947,9 +947,6 @@ body {
 
 /* Responsif HP */
 @media (max-width: 600px) {
-    html,
-    body {
-    }
 
     .card-orange {
         position: static;
