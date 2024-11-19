@@ -14,9 +14,8 @@ Route::get('/testimoni', function () {
     return view('testimoni');
 });
 
-Route::get('/produk', function () {
-    return view('produk');
-});
+Route::get('/produk', [ProdukController::class,'index']);
+Route::get('/produk/{produk}', [ProdukController::class,'show']);
 
 Route::get('/faq', function () {
     return view('faq');
