@@ -13,6 +13,7 @@
   </nav>
 
   <!-- Kontainer Produk -->
+  <br>
   <section id="product-container">
       <!-- Search Bar untuk LED Fishing Light -->
       <div class="search-section" id="led-search">
@@ -122,6 +123,7 @@
           </div>
       </div>
     </section>
+    <br>
 
     <script src="{{ asset('js/produk.js') }}"></script>
 @endsection
