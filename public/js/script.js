@@ -18,7 +18,7 @@ function showTestimonial(index) {
 
 //navbar scroll
 window.addEventListener("scroll", function () {
-    const navbar = document.querySelector(".navbar");
+    const navbar = document.querySelector(".mynavbar");
     if (window.scrollY > 50) {
         // Adjust scroll threshold as needed
         navbar.classList.add("scrolled");

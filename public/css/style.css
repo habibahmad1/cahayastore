@@ -20,7 +20,7 @@ body {
     overflow-x: hidden;
 }
 
-.container {
+.container-all {
     background-color: #fff;
 }
 /* animasi fadein */
@@ -65,13 +65,13 @@ body {
 
 /* Contoh penerapan animasi */
 .hero,
-.navbar,
+.mynavbar,
 .card,
 .card-orange,
 .keunggulan,
 .produk,
 .slogan-besar,
-.footer {
+.myfooter {
     animation: munculDariBawah 1s ease-in-out;
 }
 
@@ -87,7 +87,7 @@ body {
     transform: scale(1.1);
 }
 
-.navbar {
+.mynavbar {
     position: fixed;
     top: 0;
     width: 100%;
@@ -106,17 +106,17 @@ body {
     transition: color 0.3s ease, transform 0.3s ease;
 }
 
-.navbar.scrolled {
+.mynavbar.scrolled {
     background-color: #fff; /* Solid background on scroll */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow for effect */
 }
 
-.navbar .logo {
+.mynavbar .logo {
     font-weight: bold;
     font-size: 30px;
 }
 
-.navbar a {
+.mynavbar a {
     position: relative;
     margin: 0 20px;
     text-decoration: none;
@@ -127,7 +127,7 @@ body {
     overflow: hidden;
 }
 
-.navbar a::before {
+.mynavbar a::before {
     content: "";
     position: absolute;
     left: 50%;
@@ -138,12 +138,12 @@ body {
     transition: width 0.3s ease, left 0.3s ease;
 }
 
-.navbar a:hover::before {
+.mynavbar a:hover::before {
     width: 100%;
     left: 0;
 }
 
-.navbar a:hover {
+.mynavbar a:hover {
     color: #ff8d58;
     transform: scale(1.1); /* Slightly enlarges the link */
     transition: color 0.3s ease, transform 0.3s ease;
@@ -824,7 +824,7 @@ body {
 }
 
 /* Content Footer */
-.footer {
+.myfooter {
     background-color: #000;
     color: #fff;
     padding: 150px;
@@ -835,53 +835,53 @@ body {
     text-align: center;
 }
 
-.footer .footer-1 {
+.myfooter .footer-1 {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-.footer .footer-1 .sosmed {
+.myfooter .footer-1 .sosmed {
     display: flex;
     gap: 20px;
 }
 
-.footer .footer-1 .sosmed .link-sosmed {
+.myfooter .footer-1 .sosmed .link-sosmed {
     display: flex;
     gap: 20px;
 }
 
-.footer .footer-1 .sosmed .link-sosmed a {
+.myfooter .footer-1 .sosmed .link-sosmed a {
     color: #fff;
 }
 
-.footer .footer-1 .sosmed .link-sosmed a:hover {
+.myfooter .footer-1 .sosmed .link-sosmed a:hover {
     color: #ff8d58;
 }
 
-.footer .footer-2,
-.footer .footer-3,
-.footer .footer-4 {
+.myfooter .footer-2,
+.myfooter .footer-3,
+.myfooter .footer-4 {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-.footer .footer-2 a,
-.footer .footer-3 a,
-.footer .footer-4 a {
+.myfooter .footer-2 a,
+.myfooter .footer-3 a,
+.myfooter .footer-4 a {
     text-decoration: none;
     color: #fff;
 }
 
-.footer .footer-2 a:hover,
-.footer .footer-3 a:hover,
-.footer .footer-4 a:hover {
+.myfooter .footer-2 a:hover,
+.myfooter .footer-3 a:hover,
+.myfooter .footer-4 a:hover {
     color: #ff8d58;
     text-decoration: underline;
 }
 
-.footer h3 {
+.myfooter h3 {
     color: #ff8d58;
 }
 
@@ -1041,7 +1041,7 @@ body {
         padding: 20px 20px 180px 20px;
     }
 
-    .navbar {
+    .mynavbar {
         display: flex;
         position: fixed;
         top: 0;
@@ -1061,10 +1061,10 @@ body {
         flex-wrap: wrap;
     }
 
-    .navbar a {
+    .mynavbar a {
         font-size: 10px;
     }
-    .navbar .logo {
+    .mynavbar .logo {
         font-size: 15px;
         margin: 0 10px;
     }
@@ -1073,15 +1073,15 @@ body {
         display: flex;
     }
 
-    .navbar nav a {
+    .mynavbar nav a {
         margin: 5px;
     }
 
-    .navbar nav {
+    .mynavbar nav {
         display: flex;
     }
 
-    .navbar-hp {
+    .mynavbar-hp {
         display: flex;
     }
     .sosmed {
@@ -1122,7 +1122,7 @@ body {
         text-align: center;
     }
 
-    .footer {
+    .myfooter {
         padding: 150px 20px;
     }
 
