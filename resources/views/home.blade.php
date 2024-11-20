@@ -32,6 +32,4 @@
     </div>
 </div>
 <script src="js/home.js"></script>
-@endsection</div>
-<script src="js/home.js"></script>
 @endsection
