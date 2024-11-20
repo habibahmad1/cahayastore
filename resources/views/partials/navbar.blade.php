@@ -1,7 +1,7 @@
 <section class="mynavbar">
     <a href="#" class="logo">CSI</a>
     <nav>
-      <a href="/">Beranda</a>
+      <a href="/" class="{{ ($title === "Home") ? 'active' : '' }}">Beranda</a>
       <a href="/features">Keunggulan</a>
       <a href="/produk">Produk</a>
       <a href="/testimoni">Testimoni</a>
