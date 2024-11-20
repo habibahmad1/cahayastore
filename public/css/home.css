@@ -22,17 +22,6 @@ html {
     background-size: cover;
     background-position: center;
     position: relative;
-    filter: brightness(50%); /* Menurunkan kecerahan gambar */
-}
-
-.overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Warna hitam dengan 50% transparansi */
-    z-index: 1; /* Pastikan overlay berada di atas gambar tapi di bawah konten */
 }
 
 .slide::before {
@@ -45,7 +34,6 @@ html {
     background: rgba(0, 0, 0, 0.7); /* Overlay dengan opacity */
     z-index: 1;
 }
-/* ok */
 
 .content {
     position: absolute;
@@ -53,7 +41,9 @@ html {
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    color: white;}
+    color: white;
+    z-index: 2; /* Pastikan teks berada di atas overlay */
+}
 
 .content h1 {
     font-size: 3em;
@@ -101,4 +91,3 @@ html {
 .nav-dot.active {
     background-color: white;
 }
-
