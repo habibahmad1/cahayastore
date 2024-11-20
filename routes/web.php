@@ -1,31 +1,43 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProdukController;
 
 Route::get('/', function () {
-    return view('home');
+    return view('home',[
+        "title" => "Home"
+    ]);
 });
 
 Route::get('/features', function () {
-    return view('keunggulan');
+    return view('keunggulan',[
+        "title" => "Keunggulan"
+    ]);
 });
 
 Route::get('/testimoni', function () {
-    return view('testimoni');
+    return view('testimoni',[
+        "title" => "Testimoni"
+    ]);
 });
 
-Route::get('/produk', function () {
-    return view('produk');
-});
+Route::get('/produk', [ProdukController::class,'index']);
+Route::get('/produk/{produk}', [ProdukController::class,'show']);
 
 Route::get('/faq', function () {
-    return view('faq');
+    return view('faq',[
+        "title" => "FAQ"
+    ]);
 });
 
 Route::get('/tentang', function () {
-    return view('about');
+    return view('about',[
+        "title" => "About"
+    ]);
 });
 
 Route::get('/login', function () {
-    return view('login');
+    return view('login',[
+        "title" => "Login"
+    ]);
 });
