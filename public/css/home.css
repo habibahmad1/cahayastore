@@ -22,6 +22,7 @@ html {
     background-size: cover;
     background-position: center;
     position: relative;
+    top: 90px;
 }
 
 .slide::before {
