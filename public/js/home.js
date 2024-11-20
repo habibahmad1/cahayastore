@@ -19,3 +19,5 @@ setInterval(() => {
     currentSlide = (currentSlide + 1) % 3;
     changeSlide(currentSlide);
 }, 5000);
+
+

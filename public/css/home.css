@@ -4,6 +4,18 @@ html {
     padding: 0;
 }
 
+.navbar {
+    position: fixed;
+    width: 100%;
+    transition: background-color 0.3s;
+}
+
+.navbar.scrolled {
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Tambahkan bayangan opsional */
+}
+
+
 .slider {
     position: relative;
     height: 100vh;
@@ -22,7 +34,6 @@ html {
     background-size: cover;
     background-position: center;
     position: relative;
-    top: 90px;
 }
 
 .slide::before {
