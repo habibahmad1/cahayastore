@@ -53,7 +53,7 @@ html {
     color: white;
     text-transform: uppercase;
     letter-spacing: 5px;
-    background: linear-gradient(45deg, #ff6f61, #f8ff61, #61ffa6, #61aaff);
+    background: linear-gradient(45deg, #ff6f61, #f8ff61);
     background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -173,7 +173,7 @@ html {
   }
 
   .btn:hover:hover{
-    background: linear-gradient(45deg, #ff6f61, #f8ff61, #61ffa6, #61aaff);
+    background: linear-gradient(45deg, #ff6f61, #f8ff61);
     color:#000000;
   }
 
