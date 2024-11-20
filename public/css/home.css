@@ -1,4 +1,5 @@
-body, html {
+body,
+html {
     margin: 0;
     padding: 0;
 }
@@ -23,6 +24,17 @@ body, html {
     position: relative;
 }
 
+.slide::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Overlay dengan opacity */
+    z-index: 1;
+}
+
 .content {
     position: absolute;
     top: 50%;
@@ -30,6 +42,7 @@ body, html {
     transform: translate(-50%, -50%);
     text-align: center;
     color: white;
+    z-index: 2; /* Pastikan teks berada di atas overlay */
 }
 
 .content h1 {
