@@ -13,7 +13,9 @@ return new class extends Migration
     {
         Schema::create('produks', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('kategori_id');
             $table->string('nama_produk');
+            $table->string('slug')->unique();
             $table->string('kode_produk')->nullable();
             $table->text('deskripsi');
             $table->decimal('harga', 10, 2);

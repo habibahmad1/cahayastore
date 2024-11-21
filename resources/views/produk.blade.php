@@ -15,7 +15,7 @@
   <!-- Kontainer Produk -->
   <br>
   <section id="product-container">
-      <!-- Search Bar untuk LED Fishing Light -->
+      {{-- <!-- Search Bar untuk LED Fishing Light -->
       <div class="search-section" id="led-search">
           <input type="text" class="search-input" placeholder="Cari produk di LED Fishing Light...">
       </div>
@@ -121,7 +121,16 @@
               <p>Harga mulai: Rp 80,000</p>
               <button class="details-button">Selengkapnya →</button>
           </div>
-      </div>
+      </div> --}}
+
+      @foreach ($posts as $produk)
+        <h2><a href="/produk/{{ $produk->slug }}">{{ $produk->nama_produk }}</a></h2>
+        <h5>{{ $produk->deskripsi }}</h5>
+        <p>{{ $produk->stok }}</p>
+        <p>{{ $produk->berat }}</p>
+        <p>{{ $produk->diskon }}</p>
+        <h3>{{ $produk->harga }}</h3>
+      @endforeach
     </section>
     <br>
 

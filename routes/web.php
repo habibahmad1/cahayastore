@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProdukController;
+use App\Models\Produk;
 
 Route::get('/', function () {
     return view('home',[
@@ -22,7 +23,8 @@ Route::get('/testimoni', function () {
 });
 
 Route::get('/produk', [ProdukController::class,'index']);
-Route::get('/produk/{produk}', [ProdukController::class,'show']);
+
+Route::get('/produk/{produkid:slug}', [ProdukController::class,'show']);
 
 Route::get('/faq', function () {
     return view('faq',[
