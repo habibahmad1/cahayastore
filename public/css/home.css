@@ -203,7 +203,7 @@ html {
 
 /*halaman tentang kami------------*/
 .about-company {
-    background: linear-gradient(to right, #ff8d58, #ffe261);
+    background: linear-gradient(to right, #000000,#ffa600, #000000);
     padding: 60px 20px;
     display: flex;
     justify-content: center;
@@ -274,20 +274,6 @@ html {
     }
 }
 
-
-.services-title {
-    font-size: 2.5rem;
-    margin-bottom: 30px;
-    animation: fadeInDown 1s ease-in-out;
-}
-
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    margin-top: 100px;
-}
-
 .services-row {
     display: flex;
     flex-wrap: wrap;
@@ -309,7 +295,7 @@ html {
 }
 
 .services-section {
-    background: linear-gradient(135deg, #08273b, #000000); /* Latar gelap */
+    background: linear-gradient(to right, #000000,#08273b, #000000); /* Latar gelap */
     color: white;
     padding: 50px 20px;
     text-align: center;
@@ -331,7 +317,7 @@ html {
 .service-card i {
     font-size: 3rem;
     margin-bottom: 15px;
-    color: #ffd700;
+    color:#ffa600;
     animation: iconPulse 1.5s infinite ease-in-out;
 }
 
