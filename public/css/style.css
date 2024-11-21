@@ -820,7 +820,7 @@ body {
 
 /* Content Footer */
 .myfooter {
-    background-color: #000;
+    background: linear-gradient(to right, #000000,#08273b, #000000); /* Latar gelap */
     color: #fff;
     padding: 150px;
     display: flex;
