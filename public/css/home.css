@@ -199,3 +199,183 @@ html {
 .nav-dot.active {
     background-color: white;
 }
+
+
+/*halaman tentang kami------------*/
+.about-company {
+    background: linear-gradient(to right, #ff8d58, #ffe261);
+    padding: 60px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+}
+
+.about-content{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.about-wrapper {
+    max-width: 800px;
+    text-align: center;
+    animation: fadeInUp 2s ease-in-out;
+}
+
+.about-icon i {
+    font-size: 5rem;
+    color: white;
+    animation: pulse 2s infinite;
+}
+
+.about-title {
+    font-size: 2.5rem;
+    margin-top: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    animation: textGlow 3s infinite;
+}
+
+.about-description {
+    font-size: 1.2rem;
+    margin: 20px 0;
+    line-height: 1.6;
+}
+
+@keyframes textGlow {
+    0%, 100% {
+        text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+    }
+    50% {
+        text-shadow: 0 0 40px rgba(255, 255, 255, 1);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+.services-title {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    animation: fadeInDown 1s ease-in-out;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 100px;
+}
+
+.services-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px; /* Jarak antar kartu */
+    padding: 10px 0;
+}
+
+.service-card {
+    flex: 1 1 calc(16.5% - 20px); /* Mengatur setiap kartu agar menempati 1/6 dari baris */
+    max-width: calc(16.5% - 20px); /* Batas lebar agar tetap proporsional */
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    animation: zoomIn 0.8s ease-in-out;
+    backdrop-filter: blur(5px);
+}
+
+.services-section {
+    background: linear-gradient(135deg, #08273b, #000000); /* Latar gelap */
+    color: white;
+    padding: 50px 20px;
+    text-align: center;
+    overflow: hidden;
+    width: 1850px;
+}
+
+.services-title {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    animation: fadeInDown 1s ease-in-out;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+.service-card i {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    color: #ffd700;
+    animation: iconPulse 1.5s infinite ease-in-out;
+}
+
+.service-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: white;
+    text-transform: uppercase;
+}
+
+.service-card p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Animasi */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes iconPulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
