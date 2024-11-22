@@ -9,7 +9,7 @@
             @foreach($kategori as $kategoriproduk)
                 <li>
                     <h2>
-                        <a href="/allkategori/{{ $kategoriproduk->slug }}">
+                        <a href="/kategori/{{ $kategoriproduk->slug }}">
                             {{ $kategoriproduk->nama }}
                         </a>
                     </h2>
