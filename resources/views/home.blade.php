@@ -136,15 +136,15 @@
         </div>
         <div class="fact-item">
             <h3 class="fact-number" data-target="800">0</h3>
-            <p>Kualitas bersaing</p>
+            <p>Produk Terlengkap</p>
         </div>
         <div class="fact-item">
             <h3 class="fact-number" data-target="500">0</h3>
-            <p>Produk paling lengkap</p>
+            <p>Kualitas Terjamin</p>
         </div>
         <div class="fact-item">
-            <h3 class="fact-number" data-target="35">0</h3>
-            <p>Menangkan penghargaan</p>
+            <h3 class="fact-number" data-target="100">0</h3>
+            <p>Kerjasama Perusahaan</p>
         </div>
     </div>
 </section>
