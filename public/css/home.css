@@ -528,3 +528,90 @@ html {
         width: 100%;
     }
 }
+
+/*bagian fakta tentang kami*/
+.facts-and-achievements {
+    background: url('https://cdn.pixabay.com/photo/2019/10/06/10/03/team-4529717_1280.jpg') no-repeat center center/cover;
+    color: white;
+    padding: 80px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.facts-and-achievements::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Overlay */
+    z-index: 1;
+}
+
+.facts-header {
+    position: relative;
+    z-index: 2;
+    margin-bottom: 50px;
+    animation: fadeInDown 2s ease-in-out;
+}
+
+.facts-title {
+    font-size: 2.5rem;
+    color: #ffa600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.facts-subtitle {
+    font-size: 1.2rem;
+    color: #fff;
+}
+
+.facts-items {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    position: relative;
+    z-index: 2;
+}
+
+.fact-item {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    width: 250px;
+    text-align: center;
+    animation: zoomIn 1s ease-in-out;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s;
+}
+
+.fact-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+}
+
+.fact-number {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    background: linear-gradient(45deg, #ffa600, #ff6f61);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientMove 3s linear infinite;
+}
+
+.fact-number::after {
+    content: "+";
+    font-size: 1.5rem;
+    vertical-align: super;
+}
+
+.fact-item p {
+    color: white;
+    font-size: 1.1rem;
+}
+

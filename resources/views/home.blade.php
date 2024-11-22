@@ -119,5 +119,30 @@
     </div>
 </div>
 
+<section class="facts-and-achievements">
+    <div class="facts-header">
+        <h1 class="facts-title">Beberapa Fakta Menarik Tentang Kami</h1>
+        <h2 class="facts-subtitle">Menjadi yang terbaik bukanlah kebetulan</h2>
+    </div>
+    <div class="facts-items">
+        <div class="fact-item">
+            <h3 class="fact-number" data-target="1200">0</h3>
+            <p>Pelanggan yang puas</p>
+        </div>
+        <div class="fact-item">
+            <h3 class="fact-number" data-target="800">0</h3>
+            <p>Kualitas bersaing</p>
+        </div>
+        <div class="fact-item">
+            <h3 class="fact-number" data-target="500">0</h3>
+            <p>Produk paling lengkap</p>
+        </div>
+        <div class="fact-item">
+            <h3 class="fact-number" data-target="35">0</h3>
+            <p>Menangkan penghargaan</p>
+        </div>
+    </div>
+</section>
+
 <script src="js/home.js"></script>
 @endsection
