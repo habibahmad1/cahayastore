@@ -21,3 +21,24 @@ setInterval(() => {
 }, 5000);
 
 
+// persentase pengalaman kami
+    document.addEventListener("DOMContentLoaded", function () {
+        const progressBars = document.querySelectorAll(".progress");
+
+        progressBars.forEach(progress => {
+            const target = parseInt(progress.getAttribute("data-target"), 10);
+            const percentDisplay = progress.nextElementSibling;
+            let current = 0;
+
+            const updateProgress = setInterval(() => {
+                if (current <= target) {
+                    progress.style.width = `${current}%`;
+                    percentDisplay.textContent = `${current}%`;
+                    current++;
+                } else {
+                    clearInterval(updateProgress);
+                }
+            }, 15); // Kecepatan animasi (15ms per step)
+        });
+    });
+

@@ -80,7 +80,41 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
 
+<div class="story-and-experience">
+    <div class="left-content">
+        <h2 class="story-title"><i class="fa-solid fa-book-open"></i> Cerita Kami</h2>
+        <p class="story-subtitle">Perjalanan kami dari awal hingga sekarang.</p>
+        <button class="story-btn">Baca Selengkapnya</button>
+    </div>
+    <div class="right-content">
+        <h2 class="experience-title"><i class="fa-solid fa-star"></i> Pengalaman Kami</h2>
+        <div class="experience-item" data-target="90%">
+            <span class="experience-subtitle">Merek</span>
+            <div class="progress-bar">
+                <div class="progress" style="width: 90%;">
+                    <span class="data-target-text">90%</span>
+                </div>
+            </div>
+        </div>
+        <div class="experience-item" data-target="85%">
+            <span class="experience-subtitle">Pengalaman Pengguna</span>
+            <div class="progress-bar">
+                <div class="progress" style="width: 85%;">
+                    <span class="data-target-text">85%</span>
+                </div>
+            </div>
+        </div>
+        <div class="experience-item" data-target="95%">
+            <span class="experience-subtitle">Desain Produk</span>
+            <div class="progress-bar">
+                <div class="progress" style="width: 95%;">
+                    <span class="data-target-text">95%</span>
+                </div>
+            </div>
         </div>
     </div>
 </div>

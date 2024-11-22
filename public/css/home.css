@@ -309,7 +309,7 @@ html {
     padding: 50px 20px;
     text-align: center;
     overflow: hidden;
-    width: 100vw;
+    width: 95vw;
 }
 
 .services-title {
@@ -377,4 +377,154 @@ html {
 }
 
 @media (max-width: 600px) {
+}
+
+
+/* css halaman story*/
+.story-and-experience {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    padding: 60px 20px;
+    background: linear-gradient(to right, #2c3e50, #4ca1af);
+    color: white;
+    animation: fadeIn 2s ease-in-out;
+}
+
+.left-content,
+.right-content {
+    flex: 1;
+    padding: 20px;
+    border-radius: 15px;
+    background: rgba(0, 0, 0, 0.5);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    animation: zoomIn 1s ease-in-out;
+}
+
+.left-content {
+    text-align: center;
+}
+
+.left-content .story-title {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #ffa600;
+}
+
+.left-content .story-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.left-content .story-btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background: linear-gradient(45deg, #ffa600, #ff6f61);
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.left-content .story-btn:hover {
+    background: linear-gradient(45deg, #ff6f61, #ffa600);
+    transform: translateY(-5px);
+}
+
+.right-content .experience-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #ffa600;
+}
+
+.experience-item {
+    margin-bottom: 20px;
+}
+
+.experience-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.progress-bar {
+    position: relative;
+    height: 10px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    background: linear-gradient(45deg, #ffa600, #ff6f61);
+    position: relative;
+    border-radius: 5px;
+    animation: progressAnim 2s ease-out;
+}
+
+.data-target-text {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.9rem;
+    color: white;
+    font-weight: bold;
+    animation: fadeIn 2s ease-in-out, moveIn 2s ease-out;
+    opacity: 0;
+}
+
+.progress:hover .data-target-text {
+    opacity: 1;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.progress-percent {
+    position: absolute;
+    right: 10px;
+    top: -25px;
+    font-size: 0.9rem;
+    color: white;
+    font-weight: bold;
+    animation: fadeIn 2s ease-in-out;
+}
+
+
+
+@media (max-width: 768px) {
+    .story-and-experience {
+        flex-direction: column;
+    }
+}
+
+/* Animasi untuk teks */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes moveIn {
+    from {
+        transform: translateY(-50%) translateX(20px);
+    }
+    to {
+        transform: translateY(-50%) translateX(0);
+    }
+}
+
+/* Animasi progres bar */
+@keyframes progressAnim {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
 }
