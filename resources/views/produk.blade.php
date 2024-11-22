@@ -1,24 +1,17 @@
 @extends('layouts.main')
 
 @section('container')
-         <!-- Menu Kategori -->
-    <br>
-    <br>
-    <br>
-    <br>
-    <nav class="category-menu">
-      <button class="category-btn active" data-category="led">LED Fishing Light</button>
-      <button class="category-btn" data-category="kopi">Kopi Luwak</button>
-      <button class="category-btn" data-category="sandal">Sandal</button>
-  </nav>
+
+  <div class="kategori-list">
+    <a href="/kategori/sandal">Sandal</a>
+    <a href="/kategori/kopi">Kopi</a>
+    <a href="/kategori/lampu">Lampu</a>
+  </div>
 
   <!-- Kontainer Produk -->
   <br>
   <section id="product-container">
-      <!-- Search Bar untuk LED Fishing Light -->
-      <div class="search-section" id="led-search">
-          <input type="text" class="search-input" placeholder="Cari produk di LED Fishing Light...">
-      </div>
+
       <!-- Produk LED Fishing Light -->
       <div class="product-list" id="produk-card">
         @foreach ($posts as $produk)
