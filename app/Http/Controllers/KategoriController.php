@@ -10,10 +10,9 @@ class KategoriController extends Controller
     public function index(Kategori $kategori)
     {
         return view('kategori',[
-            "title" => $kategori->nama,
+            "title" => 'Kategori: ' .ucwords($kategori->nama),
             "produk" => $kategori->produk,
             "kategori" => $kategori->nama
-
         ]);
     }
 }
