@@ -530,7 +530,7 @@ html {
 }
 
 /*bagian fakta tentang kami*/
-.image-slider {
+.image-slider-facts {
     position: absolute;
     top: 0;
     left: 0;
@@ -540,7 +540,7 @@ html {
     overflow: hidden;
 }
 
-.slide {
+.slide-facts {
     position: absolute;
     top: 0;
     left: 0;
@@ -549,22 +549,22 @@ html {
     background-size: cover;
     background-position: center;
     opacity: 0;
-    animation: slideAnimation 15s infinite;
+    animation: slideAnimationfacts 15s infinite;
 }
 
-.slide:nth-child(1) {
+.slide-facts:nth-child(1) {
     animation-delay: 0s;
 }
 
-.slide:nth-child(2) {
+.slide-facts:nth-child(2) {
     animation-delay: 5s;
 }
 
-.slide:nth-child(3) {
+.slide-facts:nth-child(3) {
     animation-delay: 10s;
 }
 
-@keyframes slideAnimation {
+@keyframes slideAnimationfacts {
     0% {
         opacity: 0;
     }
@@ -600,7 +600,7 @@ html {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.534); /* Overlay */
+    background: rgba(0, 0, 0, 0.897); /* Overlay */
     z-index: 1;
 }
 

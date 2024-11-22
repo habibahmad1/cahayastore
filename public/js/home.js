@@ -42,6 +42,30 @@ setInterval(() => {
         });
     });
 
+    document.addEventListener("DOMContentLoaded", () => {
+        const progressBars = document.querySelectorAll(".progress");
+
+        const animateProgress = () => {
+            progressBars.forEach((bar) => {
+                const rect = bar.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
+
+                // Periksa apakah elemen terlihat di viewport
+                if (rect.top >= 0 && rect.top <= windowHeight) {
+                    const targetProgress = bar.getAttribute("data-progress");
+                    bar.style.width = `${targetProgress}%`;
+                }
+            });
+        };
+
+        // Tambahkan event listener untuk scroll
+        window.addEventListener("scroll", animateProgress);
+
+        // Jalankan fungsi saat halaman dimuat
+        animateProgress();
+    });
+
+
 // bagian fakta tentang kami
 const factsSection = document.querySelector('.facts-and-achievements');
 const factNumbers = document.querySelectorAll('.fact-number');
