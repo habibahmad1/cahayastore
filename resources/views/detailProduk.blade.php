@@ -6,5 +6,5 @@
         <p>{{ $post->berat }}</p>
         <p>{{ $post->diskon }}</p>
         <h3>{{ $post->harga }}</h3>
-    <a href="/produk">Kembali</a>
+    <a href="/produk">Back</a>
 @endsection
