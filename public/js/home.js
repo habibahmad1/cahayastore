@@ -42,3 +42,22 @@ setInterval(() => {
         });
     });
 
+// bagian fakta tentang kami
+document.querySelectorAll('.fact-number').forEach((num) => {
+    const updateCount = () => {
+        const target = +num.getAttribute('data-target');
+        const count = +num.innerText;
+
+        const increment = target / 100; // Kecepatan animasi
+
+        if (count < target) {
+            num.innerText = Math.ceil(count + increment);
+            setTimeout(updateCount, 10); // Interval update
+        } else {
+            num.innerText = target;
+        }
+    };
+
+    updateCount();
+});
+
