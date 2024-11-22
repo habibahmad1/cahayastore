@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\KategoriController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProdukController;
+use App\Models\Kategori;
 use App\Models\Produk;
 
 Route::get('/', function () {
@@ -41,5 +43,15 @@ Route::get('/tentang', function () {
 Route::get('/login', function () {
     return view('login',[
         "title" => "Login"
+    ]);
+});
+
+
+Route::get('/kategori/{kategori:slug}',[KategoriController::class,'index']);
+
+Route::get('/allkategori', function () {
+    return view('allkategori',[
+        "title" => "Produk Kategori",
+        "kategori" => Kategori::all()
     ]);
 });

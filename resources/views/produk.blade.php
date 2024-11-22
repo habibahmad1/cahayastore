@@ -125,6 +125,7 @@
 
       @foreach ($posts as $produk)
         <h2><a href="/produk/{{ $produk->slug }}">{{ $produk->nama_produk }}</a></h2>
+        <p>Kategori : <a href="/kategori/{{ $produk->kategori->slug }}">{{ $produk->kategori->nama }}</a></p>
         <h5>{{ $produk->deskripsi }}</h5>
         <p>{{ $produk->stok }}</p>
         <p>{{ $produk->berat }}</p>
