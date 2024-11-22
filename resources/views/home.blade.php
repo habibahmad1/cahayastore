@@ -120,6 +120,11 @@
 </div>
 
 <section class="facts-and-achievements">
+    <div class="image-slider">
+        <div class="slide" style="background-image: url('https://cdn.pixabay.com/photo/2019/10/06/10/03/team-4529717_1280.jpg');"></div>
+        <div class="slide" style="background-image: url('https://cdn.pixabay.com/photo/2017/06/02/17/47/friendship-2366955_1280.jpg');"></div>
+        <div class="slide" style="background-image: url('https://cdn.pixabay.com/photo/2019/09/25/09/36/team-4503157_1280.jpg');"></div>
+    </div>
     <div class="facts-header">
         <h1 class="facts-title">Beberapa Fakta Menarik Tentang Kami</h1>
         <h2 class="facts-subtitle">Menjadi yang terbaik bukanlah kebetulan</h2>

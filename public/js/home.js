@@ -80,4 +80,3 @@ const observer = new IntersectionObserver(animateNumbers, {
 
 // Observasi elemen
 observer.observe(factsSection);
-
