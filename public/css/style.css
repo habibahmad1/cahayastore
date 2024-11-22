@@ -820,7 +820,12 @@ body {
 
 /* Content Footer */
 .myfooter {
-    background: linear-gradient(to right, #000000,#08273b, #000000); /* Latar gelap */
+    background: linear-gradient(
+        to right,
+        #000000,
+        #08273b,
+        #000000
+    ); /* Latar gelap */
     color: #fff;
     padding: 150px;
     display: flex;
@@ -1209,65 +1214,4 @@ body {
     padding: 10px;
     border-radius: 20px;
     border: 1px solid #ddd;
-}
-
-/* Kontainer Produk */
-.product-list {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.hidden {
-    display: none;
-}
-
-.product-card {
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 250px;
-    text-align: center;
-    overflow: hidden;
-    padding: 15px;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.product-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-}
-
-.product-card img {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-    border-bottom: 1px solid #ddd;
-    margin-bottom: 10px;
-}
-
-.product-card h2 {
-    font-size: 1.2em;
-    color: #333;
-    margin: 10px 0;
-}
-
-.product-card p {
-    color: #666;
-    margin: 10px 0;
-}
-
-.details-button {
-    background-color: #ff8d58;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.details-button:hover {
-    background-color: #ff5405;
 }

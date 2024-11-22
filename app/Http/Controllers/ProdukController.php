@@ -11,7 +11,7 @@ class ProdukController extends Controller
 
         return view('produk',[
             "title" => "Produk",
-            "posts" => Produk::all()
+            "posts" => Produk::latest()->get()
         ]);
     }
 
