@@ -13,7 +13,6 @@ class KategoriController extends Controller
             "title" => $kategori->nama,
             "produk" => $kategori->produk,
             "kategori" => $kategori->nama
-
         ]);
     }
 }
