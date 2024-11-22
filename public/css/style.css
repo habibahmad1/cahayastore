@@ -87,62 +87,165 @@ body {
     transform: scale(1.1);
 }
 
+/* Navbar Styling */
 .mynavbar {
     position: fixed;
-    top: 0;
     width: 100%;
-    background-color: rgba(255, 255, 255, 1); /* Semi-transparent background */
-    transition: background-color 0.3s ease; /* Smooth transition for background color */
-    z-index: 1000; /* Ensures the navbar stays on top */
-    padding: 20px 40px;
+    top: 20px; /* Awalnya lebih bawah */
+    z-index: 1000;
+    transition: all 0.3s ease-in-out;
+    background: transparent;
+    box-shadow: none;
+  }
+
+    .mynavbar-menu{
+        margin-top: 15px;
+
+    }
+
+  .mynavbar.scrolled {
+    top: 0; /* Naik ke atas saat scroll */
+    background: rgba(0, 0, 0, 0.9);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .mynavbar-container {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    transition: color 0.3s ease, transform 0.3s ease;
-}
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px 20px;
+  }
 
-.mynavbar.scrolled {
-    background-color: #fff; /* Solid background on scroll */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow for effect */
-}
-
-.mynavbar .logo {
+  .mynavbar-logo a {
+    color: #fff;
+    font-size: 1.5rem;
     font-weight: bold;
-    font-size: 30px;
-}
-
-.mynavbar a {
-    position: relative;
-    margin: 0 20px;
     text-decoration: none;
-    font-size: 22px;
-    color: black;
-    transition: color 0.3s ease;
+    transition: transform 0.3s ease;
+  }
+
+  .mynavbar-logo a:hover {
+    transform: scale(1.1);
+  }
+
+  .mynavbar-menu ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+  }
+
+  .mynavbar-menu ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
     padding: 5px 10px;
-    overflow: hidden;
-}
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+  }
 
-.mynavbar a::before {
-    content: "";
-    position: absolute;
-    left: 50%;
-    bottom: 0;
-    width: 0;
-    height: 3px;
-    background-color: #ff8d58;
-    transition: width 0.3s ease, left 0.3s ease;
-}
+  .mynavbar-menu ul li a:hover {
+    color: #ffd700;
+    border-bottom: 2px solid #ffd700;
+  }
 
-.mynavbar a:hover::before {
-    width: 100%;
-    left: 0;
-}
+  .mynavbar-login .login-btn {
+    color: #fff;
+    background-color: #ff5722;
+    padding: 8px 15px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+  }
 
-.mynavbar a:hover {
-    color: #ff8d58;
-    transform: scale(1.1); /* Slightly enlarges the link */
-    transition: color 0.3s ease, transform 0.3s ease;
-}
+  .mynavbar-login .login-btn:hover {
+    background-color: #ffd700;
+    color: #6a11cb;
+  }
+
+  /* Responsive Styling for Small Screens */
+  .menu-toggle {
+    display: none;
+    background: none;
+    color: #fff;
+    font-size: 1.5rem;
+    border: none;
+    cursor: pointer;
+  }
+
+  @media screen and (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+        position: absolute;
+        right: 20px; /* Geser ke kanan */
+        top: 5px; /* Tinggi posisi */
+    }
+
+    .mynavbar-menu ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.95);
+        padding: 20px 0;
+        animation: slideDown 0.5s ease;
+    }
+
+    .mynavbar-menu ul.active {
+        display: flex;
+    }
+
+    .mynavbar-menu ul li {
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    .mobile-login {
+        margin-top: 20px;
+    }
+
+    .mobile-login .login-btn {
+        width: 80%;
+        text-align: center;
+        font-size: 1.2rem;
+        background-color: #ff5722;
+        border-radius: 25px;
+        animation: fadeIn 0.5s ease;
+    }
+
+    .mobile-login .login-btn:hover {
+        background-color: #ffd700;
+        color: #6a11cb;
+    }
+
+    .mynavbar-login {
+        display: none; /* Hide desktop login button for small screens */
+    }
+  }
+
+  /* Animations */
+  @keyframes slideDown {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+  }
 
 /* Navbar HP */
 
@@ -1034,49 +1137,7 @@ body {
         padding: 20px 20px 180px 20px;
     }
 
-    .mynavbar {
-        display: flex;
-        position: fixed;
-        top: 0;
-        width: 100%;
-        background-color: rgba(
-            255,
-            255,
-            255,
-            0.7
-        ); /* Semi-transparent background */
-        transition: background-color 0.3s ease; /* Smooth transition for background color */
-        z-index: 1000; /* Ensures the navbar stays on top */
-        padding: 5px 5px;
-        align-items: center;
-        justify-content: center;
-        transition: color 0.3s ease, transform 0.3s ease;
-        flex-wrap: wrap;
-    }
 
-    .mynavbar a {
-        font-size: 10px;
-    }
-    .mynavbar .logo {
-        font-size: 15px;
-        margin: 0 10px;
-    }
-
-    .login {
-        display: flex;
-    }
-
-    .mynavbar nav a {
-        margin: 5px;
-    }
-
-    .mynavbar nav {
-        display: flex;
-    }
-
-    .mynavbar-hp {
-        display: flex;
-    }
     .sosmed {
         display: flex;
         justify-content: center;

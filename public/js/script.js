@@ -17,15 +17,23 @@ function showTestimonial(index) {
 }
 
 //navbar scroll
-window.addEventListener("scroll", function () {
-    const navbar = document.querySelector(".mynavbar");
+// Add background and adjust navbar position when scrolling
+window.addEventListener('scroll', () => {
+    const navbar = document.querySelector('.mynavbar');
     if (window.scrollY > 50) {
-        // Adjust scroll threshold as needed
-        navbar.classList.add("scrolled");
+        navbar.classList.add('scrolled');
     } else {
-        navbar.classList.remove("scrolled");
+        navbar.classList.remove('scrolled');
     }
-});
+  });
+
+  // Toggle menu visibility on small screens
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navbarMenu = document.querySelector('.mynavbar-menu ul');
+
+  menuToggle.addEventListener('click', () => {
+    navbarMenu.classList.toggle('active');
+  });
 
 // Show next testimonial
 function showNext() {
@@ -44,15 +52,6 @@ function showPrev() {
 showTestimonial(currentIndex);
 
 let lastScrollTop = 0;
-
-const button = document.querySelector(".button");
-const navbarhp = document.querySelector(".navbar-side");
-
-if (navbarhp) {
-    button.addEventListener("click", () => {
-        navbarhp.classList.toggle("active"); // Toggle kelas "active"
-    });
-}
 
 // FAQ
 // JavaScript untuk menambahkan interaksi klik pada setiap card FAQ
