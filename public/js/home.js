@@ -43,21 +43,41 @@ setInterval(() => {
     });
 
 // bagian fakta tentang kami
-document.querySelectorAll('.fact-number').forEach((num) => {
-    const updateCount = () => {
-        const target = +num.getAttribute('data-target');
-        const count = +num.innerText;
+const factsSection = document.querySelector('.facts-and-achievements');
+const factNumbers = document.querySelectorAll('.fact-number');
 
-        const increment = target / 100; // Kecepatan animasi
+// Function to animate numbers
+const animateNumbers = (entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            // Jalankan animasi hanya sekali
+            factNumbers.forEach(num => {
+                const updateCount = () => {
+                    const target = +num.getAttribute('data-target');
+                    const count = +num.innerText;
 
-        if (count < target) {
-            num.innerText = Math.ceil(count + increment);
-            setTimeout(updateCount, 10); // Interval update
-        } else {
-            num.innerText = target;
+                    const increment = target / 100; // Kecepatan animasi
+                    if (count < target) {
+                        num.innerText = Math.ceil(count + increment);
+                        setTimeout(updateCount, 30); // Interval update
+                    } else {
+                        num.innerText = target;
+                    }
+                };
+                updateCount();
+            });
+
+            // Hentikan observer agar tidak berjalan berulang kali
+            observer.unobserve(factsSection);
         }
-    };
+    });
+};
 
-    updateCount();
+// Buat Intersection Observer
+const observer = new IntersectionObserver(animateNumbers, {
+    threshold: 0.5, // Jalankan animasi ketika 50% elemen terlihat
 });
+
+// Observasi elemen
+observer.observe(factsSection);
 
