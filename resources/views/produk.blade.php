@@ -20,19 +20,18 @@
           <input type="text" class="search-input" placeholder="Cari produk di LED Fishing Light...">
       </div>
       <!-- Produk LED Fishing Light -->
-      <div class="product-list" id="led">
+      <div class="product-list" id="produk-card">
         @foreach ($posts as $produk)
 
           <div class="product-card" data-name="LED Fishing Light 1">
               <img src="img/1.png" alt="LED Fishing Light 1">
               <h2><a href="/produk/{{ $produk->slug }}">{{ $produk->nama_produk }}</a></h2>
-              <p>{{ $produk->deskripsi }}</p>
-              <p>Kategori : <a href="/kategori/{{ $produk->kategori->slug }}">{{ $produk->kategori->nama }}</a></p>
-              <p>Stok : {{ $produk->stok }}</p>
-              <p>Berat : {{ $produk->berat }}</p>
-              <p>Diskon : {{ $produk->diskon }}%</p>
-              <h3>Harga : {{ $produk->harga }}</h3>
-              <button class="details-button">Selengkapnya →</button>
+              <p><b>Kategori</b> : <a href="/kategori/{{ $produk->kategori->slug }}" class="text-decoration-none">{{ $produk->kategori->nama }}</a></p>
+              <p><b>Stok</b> : {{ $produk->stok }}</p>
+              <p><b>Berat</b> : {{ $produk->berat }}Kg</p>
+              <p><b>Diskon</b> : {{ $produk->diskon }}%</p>
+              <h3><b>Harga</b> : {{ $produk->harga }}</h3>
+              <button class="details-button">Selengkapnya</button>
           </div>
 
           @endforeach
