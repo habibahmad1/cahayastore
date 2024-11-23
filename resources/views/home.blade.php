@@ -158,14 +158,14 @@
         <div class="team-container">
             <div class="team-card">
                 <div class="image-container">
-                    <img src="img/profil3.jpg" alt="Nama Kru 1">
+                    <img src="img/profil4.jpg" alt="Nama Kru 1">
                     <div class="social-icons">
                         <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
                         <a href="mailto:email@example.com" target="_blank"><i class="fas fa-envelope"></i></a>
                         <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
                     </div>
                 </div>
-                <h3>Nama Kru 1</h3>
+                <h3>Ahmad Hamdi</h3>
                 <p>Jabatan</p>
                 <div class="description">
                     Deskripsi singkat tentang kru dan peran mereka dalam tim.
@@ -173,14 +173,14 @@
             </div>
             <div class="team-card">
                 <div class="image-container">
-                    <img src="img/profil4.jpg" alt="Nama Kru 2">
+                    <img src="img/profil.jpg" alt="Nama Kru 2">
                     <div class="social-icons">
                         <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
                         <a href="mailto:email@example.com" target="_blank"><i class="fas fa-envelope"></i></a>
                         <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
                     </div>
                 </div>
-                <h3>Nama Kru 1</h3>
+                <h3>Indrianti Pertiwi</h3>
                 <p>Jabatan</p>
                 <div class="description">
                     Deskripsi singkat tentang kru dan peran mereka dalam tim.
@@ -195,7 +195,7 @@
                         <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
                     </div>
                 </div>
-                <h3>Nama Kru 1</h3>
+                <h3>Ilham Pratama</h3>
                 <p>Jabatan</p>
                 <div class="description">
                     Deskripsi singkat tentang kru dan peran mereka dalam tim.
@@ -203,14 +203,14 @@
             </div>
             <div class="team-card">
                 <div class="image-container">
-                    <img src="img/profil3.jpg" alt="Nama Kru 2">
+                    <img src="img/4.jpg" alt="Nama Kru 2">
                     <div class="social-icons">
                         <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
                         <a href="mailto:email@example.com" target="_blank"><i class="fas fa-envelope"></i></a>
                         <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
                     </div>
                 </div>
-                <h3>Nama Kru 1</h3>
+                <h3>Maxie Fajar Rahman</h3>
                 <p>Jabatan</p>
                 <div class="description">
                     Deskripsi singkat tentang kru dan peran mereka dalam tim.
