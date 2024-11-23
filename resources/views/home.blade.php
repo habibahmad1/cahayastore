@@ -162,13 +162,13 @@
                     <div class="social-icons">
                         <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
                         <a href="mailto:email@example.com" target="_blank"><i class="fas fa-envelope"></i></a>
-                        <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.linkedin.com/in/ahmad-hamdi-3382a3339/" target="_blank"><i class="fab fa-linkedin"></i></a>
                     </div>
                 </div>
                 <h3>Ahmad Hamdi</h3>
-                <p>Jabatan</p>
+                <p>Creative Director</p>
                 <div class="description">
-                    Deskripsi singkat tentang kru dan peran mereka dalam tim.
+                    Bekerjasama untuk menghasilkan produk visual yang mendukung tujuan perusahaan, memimpin dan mengarahkan seluruh proses kreatif.
                 </div>
             </div>
             <div class="team-card">
@@ -181,9 +181,9 @@
                     </div>
                 </div>
                 <h3>Indrianti Pertiwi</h3>
-                <p>Jabatan</p>
+                <p>Managing Director</p>
                 <div class="description">
-                    Deskripsi singkat tentang kru dan peran mereka dalam tim.
+                    Memimpin dan mengelola perusahaan, serta memutuskan dan menentukan peraturan dalam perusahaan.
                 </div>
             </div>
             <div class="team-card">
@@ -192,13 +192,13 @@
                     <div class="social-icons">
                         <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
                         <a href="mailto:email@example.com" target="_blank"><i class="fas fa-envelope"></i></a>
-                        <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.linkedin.com/in/ilham-pratama-4272a5339/" target="_blank"><i class="fab fa-linkedin"></i></a>
                     </div>
                 </div>
                 <h3>Ilham Pratama</h3>
-                <p>Jabatan</p>
+                <p>Team Manager</p>
                 <div class="description">
-                    Deskripsi singkat tentang kru dan peran mereka dalam tim.
+                    Mengarahkan dan mendukung setiap anggota tim agar mereka dapat berkontribusi dengan maksimal.
                 </div>
             </div>
             <div class="team-card">
@@ -207,13 +207,13 @@
                     <div class="social-icons">
                         <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
                         <a href="mailto:email@example.com" target="_blank"><i class="fas fa-envelope"></i></a>
-                        <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.linkedin.com/in/maxie-fajar-rahman-6942a4339/" target="_blank"><i class="fab fa-linkedin"></i></a>
                     </div>
                 </div>
                 <h3>Maxie Fajar Rahman</h3>
-                <p>Jabatan</p>
+                <p>Marketing Director</p>
                 <div class="description">
-                    Deskripsi singkat tentang kru dan peran mereka dalam tim.
+                    Memastikan bahwa seluruh aktivitas pemasaran mendukung pencapaian tujuan bisnis perusahaan.
                 </div>
             </div>
         </div>
