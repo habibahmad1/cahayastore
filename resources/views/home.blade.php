@@ -158,7 +158,7 @@
         <div class="team-container">
             <div class="team-card">
                 <div class="image-container">
-                    <img src="img/profil4.jpg" alt="Nama Kru 1">
+                    <img src="img/profil3.jpg" alt="Nama Kru 1">
                     <div class="social-icons">
                         <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
                         <a href="mailto:email@example.com" target="_blank"><i class="fas fa-envelope"></i></a>
@@ -188,7 +188,7 @@
             </div>
             <div class="team-card">
                 <div class="image-container">
-                    <img src="img/profil4.jpg" alt="Nama Kru 2">
+                    <img src="img/profil2.jpg" alt="Nama Kru 2">
                     <div class="social-icons">
                         <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
                         <a href="mailto:email@example.com" target="_blank"><i class="fas fa-envelope"></i></a>
@@ -203,7 +203,7 @@
             </div>
             <div class="team-card">
                 <div class="image-container">
-                    <img src="img/profil4.jpg" alt="Nama Kru 2">
+                    <img src="img/profil3.jpg" alt="Nama Kru 2">
                     <div class="social-icons">
                         <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
                         <a href="mailto:email@example.com" target="_blank"><i class="fas fa-envelope"></i></a>

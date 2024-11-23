@@ -206,7 +206,7 @@ html {
 
 /*halaman tentang kami------------*/
 .about-company {
-    background: linear-gradient(to right, #000000, #ffa600, #000000);
+    background: rgba(0, 0, 0, 0.938);
     padding: 60px 20px;
     display: flex;
     justify-content: center;
@@ -289,7 +289,7 @@ html {
 
 .service-card {
     width: 280px;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.767);
     padding: 20px;
     border-radius: 10px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -301,9 +301,9 @@ html {
 .services-section {
     background: linear-gradient(
         to right,
-        #000000,
-        #08273b,
-        #000000
+        #2c3e50,
+        #ffaf01da,
+        #2c3e50
     ); /* Latar gelap */
     color: white;
     padding: 50px 20px;
@@ -724,7 +724,7 @@ html {
 }
 
 .meet-the-team-section {
-    background: linear-gradient(to right, #000000, #4ca1af, #000000);
+    background: linear-gradient(to right, #2c3e50, #4ca1af, #2c3e50);
     color: white;
     text-align: center;
     padding: 50px 20px;
