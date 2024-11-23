@@ -142,17 +142,37 @@ body {
   }
 
   .mynavbar-menu ul li a {
-    color: #fff;
+    position: relative;
+    margin: 0 5px;
     text-decoration: none;
     font-size: 1rem;
-    padding: 5px 10px;
+    color: rgb(255, 255, 255);
     transition: color 0.3s ease, border-bottom 0.3s ease;
-  }
+    padding: 5px 10px;
+    overflow: hidden;
+}
 
-  .mynavbar-menu ul li a:hover {
-    color: #ffd700;
-    border-bottom: 2px solid #ffd700;
-  }
+.mynavbar-menu ul li a::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 0;
+    height: 3px;
+    background-color: #ff8d58;
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
+  .mynavbar-menu ul li a:hover::before {
+    width: 100%;
+    left: 0;
+}
+
+    .mynavbar-menu ul li a:hover {
+    color: #ff8d58;
+    transform: scale(1.1); /* Slightly enlarges the link */
+    transition: color 0.3s ease, transform 0.3s ease;
+}
 
   .mynavbar-login .login-btn {
     color: #fff;
@@ -257,56 +277,6 @@ body {
     }
   }
 
-  .menu-extra {
-    margin-top: 20px;
-    text-align: center;
-}
-
-.menu-extra .logo-container {
-    margin-bottom: 10px;
-}
-
-.menu-extra .logo-icon {
-    width: 50px;
-    height: auto;
-    margin-bottom: 10px;
-}
-
-.menu-extra .language-options {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 15px;
-}
-
-.menu-extra .language-options .lang-option i {
-    font-size: 1.5rem;
-    color: #fff;
-    transition: transform 0.3s ease, color 0.3s ease;
-}
-
-.menu-extra .language-options .lang-option:hover i {
-    transform: scale(1.2);
-    color: #ffd700;
-}
-
-.menu-extra .mobile-login .login-btn {
-    display: inline-block;
-    width: 80%;
-    padding: 10px 20px;
-    border-radius: 25px;
-    background-color: #ff5722;
-    color: #fff;
-    font-size: 1.1rem;
-    font-weight: bold;
-    text-align: center;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.menu-extra .mobile-login .login-btn:hover {
-    background-color: #ffd700;
-    transform: scale(1.1);
-}
 
 /* Navbar HP */
 
