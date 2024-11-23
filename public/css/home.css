@@ -206,7 +206,11 @@ html {
 
 /*halaman tentang kami------------*/
 .about-company {
-    background: rgba(0, 0, 0, 0.938);
+    background: linear-gradient(
+        to top,
+        #064953,
+        #000b14
+    );
     padding: 60px 20px;
     display: flex;
     justify-content: center;
@@ -300,10 +304,9 @@ html {
 
 .services-section {
     background: linear-gradient(
-        to right,
-        #2c3e50,
-        #ffaf01da,
-        #2c3e50
+        to top,
+        #064953,
+        #ffaf01da
     ); /* Latar gelap */
     color: white;
     padding: 50px 20px;
