@@ -105,8 +105,13 @@ body {
 
   .mynavbar.scrolled {
     top: 0; /* Naik ke atas saat scroll */
-    background: rgba(0, 0, 0, 0.9);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(
+        to right,
+        #000000,
+        #08273bee,
+        #000000
+    );
   }
 
   .mynavbar-container {
@@ -186,12 +191,17 @@ body {
         display: none;
         flex-direction: column;
         position: absolute;
-        top: 60px;
+        top: 55px;
         left: 0;
         width: 100%;
-        background: rgba(0, 0, 0, 0.95);
         padding: 20px 0;
         animation: slideDown 0.5s ease;
+        background: linear-gradient(
+        to right,
+        #000000,
+        #08273bee,
+        #000000
+    );
     }
 
     .mynavbar-menu ul.active {
@@ -246,6 +256,57 @@ body {
         opacity: 1;
     }
   }
+
+  .menu-extra {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.menu-extra .logo-container {
+    margin-bottom: 10px;
+}
+
+.menu-extra .logo-icon {
+    width: 50px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.menu-extra .language-options {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.menu-extra .language-options .lang-option i {
+    font-size: 1.5rem;
+    color: #fff;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.menu-extra .language-options .lang-option:hover i {
+    transform: scale(1.2);
+    color: #ffd700;
+}
+
+.menu-extra .mobile-login .login-btn {
+    display: inline-block;
+    width: 80%;
+    padding: 10px 20px;
+    border-radius: 25px;
+    background-color: #ff5722;
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.menu-extra .mobile-login .login-btn:hover {
+    background-color: #ffd700;
+    transform: scale(1.1);
+}
 
 /* Navbar HP */
 
