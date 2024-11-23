@@ -306,7 +306,7 @@ html {
     background: linear-gradient(
         to top,
         #064953,
-        #ffaf01da
+        #4ca1af
     ); /* Latar gelap */
     color: white;
     padding: 50px 20px;
@@ -616,10 +616,10 @@ html {
 }
 
 .facts-title {
-    font-size: 2.5rem;
+    font-size: 2.1rem;
     color: #ffa600;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 1.5px;
 }
 
 .facts-subtitle {
