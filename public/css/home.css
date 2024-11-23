@@ -386,7 +386,7 @@ html {
     justify-content: space-between;
     gap: 30px;
     padding: 60px 20px;
-    background: linear-gradient(to right, #2c3e50, #4ca1af);
+    background: linear-gradient(to right, #2c3e50, #4ca1af, #2c3e50);
     color: white;
     animation: fadeIn 2s ease-in-out;
 }
@@ -463,6 +463,7 @@ html {
     position: relative;
     border-radius: 5px;
     animation: progressAnim 2s ease-out;
+    transition: width 0.5s ease-in-out;
 }
 
 .data-target-text {
@@ -600,7 +601,7 @@ html {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.897); /* Overlay */
+    background: rgba(0, 0, 0, 0.781); /* Overlay */
     z-index: 1;
 }
 
@@ -645,7 +646,7 @@ html {
 
 .fact-item:hover {
     transform: translateY(-10px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.555);
 }
 
 .fact-number {
@@ -668,4 +669,139 @@ html {
     color: white;
     font-size: 1.1rem;
 }
+
+/* halaman kruuuuuuu */
+.image-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.image-container:hover img {
+    transform: scale(1.2);
+    filter: brightness(0.7);
+}
+
+.image-container .social-icons {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    gap: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.image-container:hover .social-icons {
+    opacity: 1;
+}
+
+.image-container .social-icons a {
+    background: rgba(255, 255, 255, 0.8);
+    color: #000;
+    border-radius: 50%;
+    padding: 10px;
+    font-size: 1.2rem;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.image-container .social-icons a:hover {
+    background: #ffa600;
+    color: #fff;
+    transform: scale(1.1);
+}
+
+.meet-the-team-section {
+    background: linear-gradient(to right, #000000, #4ca1af, #000000);
+    color: white;
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.meet-the-team-section .title h1 {
+    font-size: 2.5rem;
+    color: #ffa600;
+    margin-bottom: 10px;
+    animation: fadeInDown 1.5s ease;
+}
+
+.meet-the-team-section .title p {
+    font-size: 1.2rem;
+    color: white;
+    margin-bottom: 40px;
+}
+
+.team-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.team-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    width: 250px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: center;
+    backdrop-filter: blur(5px);
+    animation: zoomIn 0.8s ease-in-out;
+}
+
+.team-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+.team-card img {
+    width: 100%;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+.team-card h3 {
+    font-size: 1.3rem;
+    color: #ffa600;
+    margin-bottom: 5px;
+    transition: color 0.3s;
+}
+
+.team-card p {
+    font-size: 1rem;
+    color: white;
+    margin-bottom: 10px;
+    transition: opacity 0.3s ease;
+}
+
+.team-card:hover h3 {
+    color: white;
+}
+
+.team-card:hover p {
+    opacity: 0.8;
+}
+
+.team-card .description {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    display: none;
+}
+
+.team-card:hover .description {
+    display: block;
+}
+
 

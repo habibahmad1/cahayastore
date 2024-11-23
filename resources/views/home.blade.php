@@ -95,7 +95,7 @@
         <div class="experience-item" data-target="90%">
             <span class="experience-subtitle">Merek</span>
             <div class="progress-bar">
-                <div class="progress" style="width: 90%;">
+                <div class="progress" data-progress="90" style="width: 90%;">
                     <span class="data-target-text">90%</span>
                 </div>
             </div>
@@ -103,7 +103,7 @@
         <div class="experience-item" data-target="85%">
             <span class="experience-subtitle">Pengalaman Pengguna</span>
             <div class="progress-bar">
-                <div class="progress" style="width: 85%;">
+                <div class="progress" data-progress="85" style="width: 85%;">
                     <span class="data-target-text">85%</span>
                 </div>
             </div>
@@ -111,7 +111,7 @@
         <div class="experience-item" data-target="95%">
             <span class="experience-subtitle">Desain Produk</span>
             <div class="progress-bar">
-                <div class="progress" style="width: 95%;">
+                <div class="progress" data-progress="95" style="width: 95%;">
                     <span class="data-target-text">95%</span>
                 </div>
             </div>
@@ -148,6 +148,78 @@
         </div>
     </div>
 </section>
+
+<section id="meet-the-team" class="meet-the-team-section">
+    <div class="container">
+        <div class="title">
+            <h1>Temui Kru</h1>
+            <p>Bertemu dengan tim hebat yang mendukung kesuksesan kami</p>
+        </div>
+        <div class="team-container">
+            <div class="team-card">
+                <div class="image-container">
+                    <img src="img/profil4.jpg" alt="Nama Kru 1">
+                    <div class="social-icons">
+                        <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="mailto:email@example.com" target="_blank"><i class="fas fa-envelope"></i></a>
+                        <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <h3>Nama Kru 1</h3>
+                <p>Jabatan</p>
+                <div class="description">
+                    Deskripsi singkat tentang kru dan peran mereka dalam tim.
+                </div>
+            </div>
+            <div class="team-card">
+                <div class="image-container">
+                    <img src="img/profil4.jpg" alt="Nama Kru 2">
+                    <div class="social-icons">
+                        <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="mailto:email@example.com" target="_blank"><i class="fas fa-envelope"></i></a>
+                        <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <h3>Nama Kru 1</h3>
+                <p>Jabatan</p>
+                <div class="description">
+                    Deskripsi singkat tentang kru dan peran mereka dalam tim.
+                </div>
+            </div>
+            <div class="team-card">
+                <div class="image-container">
+                    <img src="img/profil4.jpg" alt="Nama Kru 2">
+                    <div class="social-icons">
+                        <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="mailto:email@example.com" target="_blank"><i class="fas fa-envelope"></i></a>
+                        <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <h3>Nama Kru 1</h3>
+                <p>Jabatan</p>
+                <div class="description">
+                    Deskripsi singkat tentang kru dan peran mereka dalam tim.
+                </div>
+            </div>
+            <div class="team-card">
+                <div class="image-container">
+                    <img src="img/profil4.jpg" alt="Nama Kru 2">
+                    <div class="social-icons">
+                        <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="mailto:email@example.com" target="_blank"><i class="fas fa-envelope"></i></a>
+                        <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <h3>Nama Kru 1</h3>
+                <p>Jabatan</p>
+                <div class="description">
+                    Deskripsi singkat tentang kru dan peran mereka dalam tim.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 
 <script src="js/home.js"></script>
 @endsection

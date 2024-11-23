@@ -104,3 +104,14 @@ const observer = new IntersectionObserver(animateNumbers, {
 
 // Observasi elemen
 observer.observe(factsSection);
+
+
+//halaman kruuuuuuuuuuu
+document.querySelectorAll('.team-card').forEach(card => {
+    card.addEventListener('mouseover', () => {
+        card.querySelector('h3').style.transform = 'scale(1.1)';
+    });
+    card.addEventListener('mouseout', () => {
+        card.querySelector('h3').style.transform = 'scale(1)';
+    });
+});
