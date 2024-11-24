@@ -727,7 +727,7 @@ html {
 }
 
 .meet-the-team-section {
-    background: linear-gradient(to right, #2c3e50, #4ca1af, #2c3e50);
+    background: linear-gradient(to right, #000000e8, #2c3e50,  #000000);
     color: white;
     text-align: center;
     padding: 50px 20px;
