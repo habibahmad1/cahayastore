@@ -220,6 +220,17 @@
     </div>
 </section>
 
+<div class="scroll-animated-section">
+    <video autoplay loop muted class="background-video">
+        <source src="https://cdn.pixabay.com/video/2024/10/18/236893_large.mp4" type="video/mp4" />
+    </video>
+    <div class="content-overlay">
+        <h1 id="scroll-animated-title" class="scroll-title">"PERBEDAAN ANTARA BIASA DAN LUAR BIASA HANYALAH SEDIKIT TAMBAHAN"</h1>
+        <p id="scroll-animated-subtitle" class="scroll-subtitle">CAHAYA SETIA TEAM</p>
+    </div>
+</div>
+
+
 
 <script src="js/home.js"></script>
 @endsection

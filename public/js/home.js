@@ -115,3 +115,36 @@ document.querySelectorAll('.team-card').forEach(card => {
         card.querySelector('h3').style.transform = 'scale(1)';
     });
 });
+
+
+//bagian kata kata bijak
+document.addEventListener("scroll", () => {
+    const title = document.getElementById("scroll-animated-title");
+    const subtitle = document.getElementById("scroll-animated-subtitle");
+
+    // Hitung jarak scroll dan elemen dari viewport
+    const titlePosition = title.getBoundingClientRect().top;
+    const subtitlePosition = subtitle.getBoundingClientRect().top;
+    const viewportHeight = window.innerHeight;
+
+    // Aktifkan animasi jika elemen muncul di viewport
+    if (titlePosition < viewportHeight && titlePosition > 0) {
+        title.style.animationPlayState = "running";
+    }
+
+    if (subtitlePosition < viewportHeight && subtitlePosition > 0) {
+        subtitle.style.animationPlayState = "running";
+    }
+
+    // Hentikan animasi jika posisi sudah di akhir
+    if (titlePosition <= 0) {
+        title.style.animation = "none"; // Hapus animasi
+        title.style.transform = "translateY(0)"; // Pastikan tetap di posisi
+    }
+
+    if (subtitlePosition <= 0) {
+        subtitle.style.animation = "none";
+        subtitle.style.transform = "translateY(0)";
+    }
+});
+
