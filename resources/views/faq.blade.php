@@ -3,11 +3,11 @@
 @section('container')
 <!-- FAQ -->
 <section class="faq" id="faq">
-    <div class="faq-title">
-      <h1>
-        FAQ <br />
-        LED Fishing Light
+    <h1>
+        FAQ LED Fishing Light
       </h1>
+    <div class="faq-title">
+
       <div class="card-faq">
         <h2>Apa itu Lampu LED Fishing Light?</h2>
         <p>

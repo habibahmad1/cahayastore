@@ -1,0 +1,63 @@
+
+.faq {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    width: 100%;
+    background: linear-gradient(to right, #000000e8, #2c3e50, #000000);
+    user-select: none;
+}
+
+.faq-title {
+    margin: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+}
+
+.faq h1 {
+    display: inline;
+    color: #fff;
+    font-size: 36px;
+    background-color: #ff8d58;
+    padding: 30px;
+}
+
+.card-faq {
+    width: 600px;
+    background: #fff;
+    border-radius: 5px;
+    margin: 10px 0;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease; /* Animasi untuk efek zoom saat hover */
+}
+
+.card-faq:hover {
+    transform: scale(1.03); /* Efek perbesaran saat hover */
+}
+
+.card-faq h2 {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.card-faq p {
+    display: none;
+    color: #666;
+    margin-top: 10px;
+    max-height: 0;
+    overflow: hidden;
+}
+
+.card-faq.active p {
+    display: block;
+    max-height: 400px; /* Mengatur tinggi maksimal untuk transisi animasi */
+    padding: 10px 0; /* Menambahkan padding saat teks muncul */
+}
