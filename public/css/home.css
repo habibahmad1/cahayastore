@@ -872,9 +872,11 @@ html {
 
 .team-container {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
+    align-items: center;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 20px; /* Tambahkan jarak antar kartu */
+    padding: 20px;
 }
 
 .team-card {
@@ -882,7 +884,7 @@ html {
     padding: 20px;
     border-radius: 10px;
     width: 250px;
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: transform 0.5s ease, box-shadow 0.5s ease, background-color 0.5s ease;
     text-align: center;
     backdrop-filter: blur(5px);
     animation: zoomIn 0.8s ease-in-out;
@@ -891,6 +893,7 @@ html {
 .team-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    background-color: rgba(255, 255, 255, 0.15); /* Warna sedikit berbeda untuk efek hover */
 }
 
 .team-card img {
@@ -903,14 +906,14 @@ html {
     font-size: 1.3rem;
     color: #ffa600;
     margin-bottom: 5px;
-    transition: color 0.3s;
+    transition: transform 0.5s ease, color 0.5s ease;
 }
 
 .team-card p {
     font-size: 1rem;
     color: white;
     margin-bottom: 10px;
-    transition: opacity 0.3s ease;
+    transition: transform 0.5s ease, color 0.5s ease;
 }
 
 .team-card:hover h3 {
@@ -918,7 +921,7 @@ html {
 }
 
 .team-card:hover p {
-    opacity: 0.8;
+    opacity: 0.9;
 }
 
 .team-card .description {
@@ -939,6 +942,23 @@ html {
 
     .container .title p {
         font-size: 1rem;
+    }
+
+     .team-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .team-card {
+        width: 90%; /* Lebar kartu disesuaikan */
+    }
+
+    .team-card h3 {
+        font-size: 1.2rem; /* Ukuran teks lebih kecil */
+    }
+
+    .team-card p {
+        font-size: 0.9rem;
     }
 }
 
