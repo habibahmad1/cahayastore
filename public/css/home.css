@@ -448,9 +448,26 @@ html {
     }
     .about-icon i {
         font-size: 3rem;
-
     }
+
+    .services-title {
+        font-size: 2rem;
+    }
+
+    .service-card i {
+        font-size: 2rem;
+    }
+
+    .service-card h3 {
+        font-size: 1rem;
+    }
+
+    .service-card p {
+        font-size: 0.7rem;
+    }
+
 }
+
 
 /* css halaman story*/
 .story-and-experience {
