@@ -1,0 +1,133 @@
+
+.about {
+    padding: 100px 20px;
+    text-align: center;
+    background: linear-gradient(to right, #000000e8, #2c3e50, #000000);
+    color: #ffffff;
+}
+
+.about-title h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+    color: #ffffff;
+    background-color: #ff8d58;
+    padding: 30px;
+}
+
+.about-title p {
+    font-size: 18px;
+    color: #ffffff;
+
+}
+
+.gallery-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.gallery-container:hover {
+    cursor: pointer;
+}
+
+.gallery-item {
+    width: 250px;
+    height: 180px;
+    overflow: hidden;
+    border-radius: 8px;
+    position: relative;
+    transform: scale(0.9);
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.gallery-item .overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 115, 0, 0.7); /* Semi-transparent background */
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    font-size: 18px;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: all 0.5s ease;
+}
+
+.gallery-item:hover .overlay {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.gallery-item:hover {
+    transform: scale(1);
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+/* Zoom Animation on Text */
+@keyframes zoomIn {
+    0% {
+        transform: scale(0.9);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.gallery-item:hover .overlay {
+    animation: zoomIn 0.4s ease forwards;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.about-title,
+.gallery-container .gallery-item {
+    animation: fadeInUp 0.8s ease both;
+}
+
+.gallery-container .gallery-item {
+    animation-delay: 0.2s;
+}
+
+.map-teks {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    margin: 80px 0;
+    flex-wrap: wrap;
+    text-align: justify;
+    justify-content: space-evenly;
+}
+
+.map iframe {
+    width: 600px;
+    height: 450px;
+    border-radius: 20px;
+}
+
+.teks-about {
+    width: 600px;
+}
