@@ -14,6 +14,22 @@ class Produk extends Model
 
     use HasFactory;
 
+    public function scopeFilter($query, array $filters)
+    {
+
+        $query->when($filters['search'] ?? false, function($query,$search){
+            return $query->where('nama_produk', 'like', '%' . $search . '%')
+            ->orWhere('deskripsi', 'like', '%' . $search . '%');
+        });
+
+        $query->when($filters['kategori'] ?? false, function($query,$kategori){
+            return $query->whereHas('kategori', function($query) use ($kategori){
+                $query->where('slug',$kategori);
+            });
+        });
+    }
+
+
     public function kategori()
     {
         return $this->belongsTo(Kategori::class);

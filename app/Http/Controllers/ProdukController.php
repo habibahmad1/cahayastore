@@ -12,7 +12,7 @@ class ProdukController extends Controller
 
         return view('produk',[
             "title" => "Produk",
-            "posts" => Produk::latest()->get(),
+            "posts" => Produk::latest()->filter(request(['search','kategori']))->paginate(10)->withQueryString(),
             "kategori" => Kategori::all()
         ]);
     }
