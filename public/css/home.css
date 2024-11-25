@@ -782,10 +782,6 @@ html {
     font-size: 1.1rem;
 }
 
-@media (max-width: 768px) {
-
-}
-
 @media (max-width: 480px) {
     /* Gaya lebih spesifik untuk layar yang sangat kecil */
     .facts-header .facts-title {
@@ -934,6 +930,18 @@ html {
 .team-card:hover .description {
     display: block;
 }
+
+@media (max-width: 480px) {
+    /* Gaya lebih spesifik untuk layar yang sangat kecil */
+    .container .title h1 {
+        font-size: 2rem;
+    }
+
+    .container .title p {
+        font-size: 1rem;
+    }
+}
+
 
 /*kata kata biajk*/
 .scroll-animated-section {
