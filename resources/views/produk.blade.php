@@ -26,7 +26,9 @@
               <p><b>Berat</b> : {{ $produk->berat }}Kg</p>
               <p><b>Diskon</b> : {{ $produk->diskon }}%</p>
               <h4><b>Harga</b> :Rp {{ $produk->harga }}</h4>
-              <button class="details-button">Selengkapnya</button>
+              <a href="/produk/{{ $produk->slug }}" class="text-decoration-none">
+                <button class="details-button">Selengkapnya</button>
+            </a>
           </div>
 
           @endforeach
