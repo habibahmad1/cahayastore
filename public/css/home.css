@@ -41,7 +41,6 @@ html {
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    color: rgb(255, 255, 255);
     z-index: 2; /* Pastikan teks berada di atas overlay */
 }
 
@@ -49,7 +48,6 @@ html {
 .content h1 {
     font-size: 3.7em;
     margin: 0 0 15px;
-    color: white;
     text-transform: uppercase;
     letter-spacing: 5px;
     background: linear-gradient(45deg, #ff6f61, #f8ff61);
@@ -174,6 +172,7 @@ html {
 
 .content a {
     color: #ffffff;
+    font-size:15px;
 }
 
 .btn:hover:hover {
@@ -204,6 +203,45 @@ html {
     background-color: white;
 }
 
+@media (max-width: 768px) {
+    /* Gaya khusus untuk layar kecil seperti ponsel */
+    .content h1 {
+        font-size: 2rem; /* Ukuran lebih kecil */
+    }
+
+    .content p {
+        font-size: 1rem; /* Ukuran lebih kecil */
+    }
+
+    .content a {
+        font-size:13px;
+    }
+
+}
+
+@media (max-width: 480px) {
+    /* Gaya lebih spesifik untuk layar yang sangat kecil */
+    .content h1 {
+        font-size: 1.5rem; /* Ukuran lebih kecil */
+    }
+
+    .content p {
+        font-size: 0.7rem; /* Ukuran lebih kecil */
+    }
+
+    .content a {
+        font-size:0.7rem;
+    }
+
+    .slider  {
+        height: 500px;
+    }
+
+    .slide  {
+        height: 500px;
+    }
+}
+
 /*halaman tentang kami------------*/
 .about-company {
     background: linear-gradient(
@@ -216,7 +254,6 @@ html {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    color: white;
 }
 
 .about-content {
@@ -234,7 +271,7 @@ html {
 
 .about-icon i {
     font-size: 5rem;
-    color: white;
+    color:  #ffa600;
     animation: pulse 2s infinite;
 }
 
@@ -244,12 +281,14 @@ html {
     text-transform: uppercase;
     letter-spacing: 2px;
     animation: textGlow 3s infinite;
+    color:  #ffffff;
 }
 
 .about-description {
     font-size: 1.2rem;
     margin: 20px 0;
     line-height: 1.6;
+    color: white;
 }
 
 @keyframes textGlow {
@@ -379,9 +418,39 @@ html {
     }
 }
 
-@media (max-width: 600px) {
+
+
+@media (max-width: 768px) {
+    .about-title {
+        font-size: 2rem;
+        }
+    .about-description {
+        font-size: 1rem;
+        padding: 35px;
+        padding-top: 0%;
+    }
+    .about-icon i {
+        font-size: 4rem;
+
+    }
+
 }
 
+@media (max-width: 480px) {
+    /* Gaya lebih spesifik untuk layar yang sangat kecil */
+    .about-title {
+        font-size: 1.5rem;
+        }
+    .about-description {
+        font-size: 0.7rem;
+        padding: 35px;
+        padding-top: 0%;
+    }
+    .about-icon i {
+        font-size: 3rem;
+
+    }
+}
 
 /* css halaman story*/
 .story-and-experience {
