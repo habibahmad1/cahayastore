@@ -3,6 +3,9 @@
     text-align: center;
     background-color: #ff8d58;
     padding: 30px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 
 .kategori-list a {
@@ -17,6 +20,7 @@
     justify-content: space-evenly;
     align-items: center;
     flex-wrap: wrap;
+    gap: 40px;
 }
 
 .product-card {
@@ -46,15 +50,25 @@
 .product-card img {
     width: 300px;
 }
-
 .details-button {
-    background-color: #ff8d58;
-    padding: 10px 20px;
-    border-radius: 5px;
-    color: #fff;
-    transition: all 0.7s;
+    width: 100%; /* Tombol mengambil seluruh lebar elemen pembungkus */
+    padding: 10px 15px; /* Tambahkan ruang di dalam tombol */
+    background-color: #ff9f50; /* Warna latar belakang */
+    color: white; /* Warna teks */
+    border: none; /* Hilangkan border default */
+    border-radius: 5px; /* Opsional: buat sudut tombol melengkung */
+    font-size: 16px; /* Sesuaikan ukuran teks */
+    cursor: pointer; /* Menambahkan pointer saat hover */
+    text-transform: uppercase; /* Membuat teks kapital (opsional) */
+    display: block; /* Mengubah tombol menjadi elemen blok */
 }
 
 .details-button:hover {
-    background-color: #ff5100;
+    background-color: #ff7f20; /* Ubah warna saat hover */
+}
+
+.details-button a {
+    text-decoration: none; /* Hilangkan garis bawah pada elemen <a> */
+    display: block; /* Pastikan elemen <a> menjadi blok penuh */
+    width: 100%; /* Elemen pembungkus juga mengambil lebar penuh */
 }

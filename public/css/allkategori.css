@@ -1,0 +1,37 @@
+.kategori-container {
+    display: flex;
+    align-items: center;
+    flex-direction: row; /* Mengatur elemen dalam baris horizontal */
+    flex-wrap: wrap; /* Membungkus elemen ke baris baru jika ruang tidak cukup */
+    gap: 1rem; /* Jarak antar elemen */
+    margin: 100px 20px;
+    justify-content: space-evenly;
+}
+
+.card-all-kategori {
+    box-sizing: border-box;
+    padding: 1rem;
+    background-color: #ff9f50;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 450px;
+    height: 150px;
+    text-decoration: none; /* Pastikan tidak ada garis bawah */
+    color: #fff; /* Warna teks */
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.card-all-kategori:hover {
+    background-color: #ff7f20; /* Warna saat hover */
+    transform: scale(1.05); /* Efek memperbesar */
+}
+
+.card-all-kategori h2 {
+    margin: 0; /* Hilangkan margin default pada <h2> */
+}

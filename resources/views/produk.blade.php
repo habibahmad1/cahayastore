@@ -2,11 +2,13 @@
 
 @section('container')
 
-  <div class="kategori-list">
-    <a href="/kategori/sandal">Sandal</a>
-    <a href="/kategori/kopi">Kopi</a>
-    <a href="/kategori/lampu">Lampu</a>
+<div class="kategori-list">
+    @foreach ($kategori as $k)
+    <a href="/kategori/{{ $k->slug }}">{{ $k->nama }}</a>
+    @endforeach
+    <a href="/allkategori">All Kategori</a>
   </div>
+
 
   <!-- Kontainer Produk -->
   <br>
@@ -23,8 +25,10 @@
               <p><b>Stok</b> : {{ $produk->stok }}</p>
               <p><b>Berat</b> : {{ $produk->berat }}Kg</p>
               <p><b>Diskon</b> : {{ $produk->diskon }}%</p>
-              <h3><b>Harga</b> : {{ $produk->harga }}</h3>
-              <button class="details-button">Selengkapnya</button>
+              <h4><b>Harga</b> :Rp {{ $produk->harga }}</h4>
+              <a href="/produk/{{ $produk->slug }}" class="text-decoration-none">
+                <button class="details-button">Selengkapnya</button>
+            </a>
           </div>
 
           @endforeach
