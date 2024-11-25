@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ asset('css/login.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/home.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/produk.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/allkategori.css') }}" />
     {{-- Font Awesome --}}
     <link
       rel="stylesheet"
