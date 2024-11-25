@@ -222,15 +222,25 @@
 
 <div class="scroll-animated-section">
     <video autoplay loop muted class="background-video">
-        <source src="https://cdn.pixabay.com/video/2024/10/18/236893_large.mp4" type="video/mp4" />
+        <source src="https://cdn.pixabay.com/video/2021/09/10/88116-602317818_large.mp4" type="video/mp4" />
     </video>
+
     <div class="content-overlay">
-        <h1 id="scroll-animated-title" class="scroll-title">"PERBEDAAN ANTARA BIASA DAN LUAR BIASA HANYALAH SEDIKIT TAMBAHAN"</h1>
-        <p id="scroll-animated-subtitle" class="scroll-subtitle">CAHAYA SETIA TEAM</p>
+        <h1 class="scroll-title">"KAMI BERUPAYA MEMBERIKAN PRODUK DAN PELAYANAN YANG TERBAIK KEPADA PELANGGAN"</h1>
+        <p class="scroll-subtitle">CAHAYA SETIA TEAM</p>
     </div>
+    <!-- Tambahkan kontrol audio di bagian bawah -->
+    <div class="audio-controls">
+        <button id="playPauseBtn">
+            <i class="fas fa-play"></i> <!-- Ikon Play -->
+        </button>
+        <!--<button id="stopBtn">
+            <i class="fas fa-stop"></i>
+        </button>-->
+        <input id="volumeSlider" type="range" min="0" max="1" step="0.1">
+    </div>
+    <audio id="myAudio" src="img/bcvideo.mp3"></audio>
 </div>
-
-
 
 <script src="js/home.js"></script>
 @endsection
