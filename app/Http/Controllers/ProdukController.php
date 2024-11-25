@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Produk;
+use App\Models\Kategori;
 
 class ProdukController extends Controller
 {
@@ -11,7 +12,8 @@ class ProdukController extends Controller
 
         return view('produk',[
             "title" => "Produk",
-            "posts" => Produk::latest()->get()
+            "posts" => Produk::latest()->get(),
+            "kategori" => Kategori::all()
         ]);
     }
 

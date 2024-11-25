@@ -3,9 +3,9 @@
 @section('container')
 
 <div class="kategori-list">
-    <a href="/kategori/sandal">Sandal</a>
-    <a href="/kategori/kopi">Kopi</a>
-    <a href="/kategori/lampu">Lampu</a>
+    @foreach ($kategori as $k)
+    <a href="/kategori/{{ $k->slug }}">{{ $k->nama }}</a>
+    @endforeach
     <a href="/allkategori">All Kategori</a>
   </div>
 
