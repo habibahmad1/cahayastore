@@ -72,3 +72,14 @@
     display: block; /* Pastikan elemen <a> menjadi blok penuh */
     width: 100%; /* Elemen pembungkus juga mengambil lebar penuh */
 }
+
+/* Detail Produk */
+.detail-product-card {
+    width: 1000px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding: 100px 0;
+}

@@ -11,8 +11,7 @@ class KategoriController extends Controller
     {
         return view('kategori',[
             "title" => 'Kategori: ' .ucwords($kategori->nama),
-            "produk" => $kategori->produk,
-            "kategori" => $kategori->nama
+            "produk" => $kategori->produk->load('kategori'),
         ]);
     }
 }

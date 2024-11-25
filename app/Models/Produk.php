@@ -10,6 +10,8 @@ class Produk extends Model
 {
     protected $guarded = ['id'];
 
+    protected $with = ['kategori'];
+
     use HasFactory;
 
     public function kategori()

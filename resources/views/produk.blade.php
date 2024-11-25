@@ -4,7 +4,7 @@
 
 <div class="kategori-list">
     @foreach ($kategori as $k)
-    <a href="/kategori/{{ $k->slug }}">{{ $k->nama }}</a>
+    <a href="/kategori/{{ $k->slug }}" class="text-capitalize">{{ $k->nama }}</a>
     @endforeach
     <a href="/allkategori">All Kategori</a>
   </div>
@@ -21,7 +21,7 @@
           <div class="product-card" data-name="LED Fishing Light 1">
               <img src="img/1.png" alt="LED Fishing Light 1">
               <h2><a href="/produk/{{ $produk->slug }}">{{ $produk->nama_produk }}</a></h2>
-              <p><b>Kategori</b> : <a href="/kategori/{{ $produk->kategori->slug }}" class="text-decoration-none">{{ $produk->kategori->nama }}</a></p>
+              <p><b>Kategori</b> : <a href="/kategori/{{ $produk->kategori->slug }}" class="text-decoration-none text-capitalize">{{ $produk->kategori->nama }}</a></p>
               <p><b>Stok</b> : {{ $produk->stok }}</p>
               <p><b>Berat</b> : {{ $produk->berat }}Kg</p>
               <p><b>Diskon</b> : {{ $produk->diskon }}%</p>

@@ -26,7 +26,7 @@ class ProdukFactory extends Factory
             'deskripsi' => fake()->paragraph(mt_rand(2,4)),
             'harga' => fake()->numberBetween(10000, 100000),
             'stok' => fake()->numberBetween(1, 5),
-            'gambar' => 'contoh.jpg',
+            'gambar' => '1.png',
             'berat' => 1,
             'dimensi' => 30,
             'diskon' => 50,
