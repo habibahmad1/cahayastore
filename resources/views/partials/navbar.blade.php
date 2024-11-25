@@ -6,14 +6,27 @@
         <button class="menu-toggle" aria-label="Toggle Menu">☰</button>
         <nav class="mynavbar-menu">
             <ul>
-                <li><a href="/">Beranda</a></li>
-                <li><a href="/features">Keunggulan</a></li>
-                <li><a href="/produk">Produk</a></li>
-                <li><a href="/testimoni">Testimoni</a></li>
-                <li><a href="/faq">FAQ</a></li>
-                <li><a href="/tentang">Tentang</a></li>
+                <li class="{{ request()->is('/') ? 'active' : '' }}">
+                    <a href="/">Beranda</a>
+                </li>
+                <li class="{{ request()->is('features') ? 'active' : '' }}">
+                    <a href="/features">Keunggulan</a>
+                </li>
+                <li class="{{ request()->is('produk') ? 'active' : '' }}">
+                    <a href="/produk">Produk</a>
+                </li>
+                <li class="{{ request()->is('testimoni') ? 'active' : '' }}">
+                    <a href="/testimoni">Testimoni</a>
+                </li>
+                <li class="{{ request()->is('faq') ? 'active' : '' }}">
+                    <a href="/faq">FAQ</a>
+                </li>
+                <li class="{{ request()->is('tentang') ? 'active' : '' }}">
+                    <a href="/tentang">Tentang</a>
+                </li>
             </ul>
         </nav>
+
         <!-- Login Button -->
         <div class="mynavbar-login">
             <a href="/login" class="login-btn">Login</a>
