@@ -23,7 +23,7 @@
               <p><b>Stok</b> : {{ $produk->stok }}</p>
               <p><b>Berat</b> : {{ $produk->berat }}Kg</p>
               <p><b>Diskon</b> : {{ $produk->diskon }}%</p>
-              <h3><b>Harga</b> : {{ $produk->harga }}</h3>
+              <h4><b>Harga</b> :Rp {{ $produk->harga }}</h4>
               <button class="details-button">Selengkapnya</button>
           </div>
 
