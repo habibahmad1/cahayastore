@@ -2,11 +2,13 @@
 
 @section('container')
 
-  <div class="kategori-list">
+<div class="kategori-list">
     <a href="/kategori/sandal">Sandal</a>
     <a href="/kategori/kopi">Kopi</a>
     <a href="/kategori/lampu">Lampu</a>
+    <a href="/allkategori">All Kategori</a>
   </div>
+
 
   <!-- Kontainer Produk -->
   <br>
