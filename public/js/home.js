@@ -117,34 +117,32 @@ document.querySelectorAll('.team-card').forEach(card => {
 });
 
 
-//bagian kata kata bijak
-document.addEventListener("scroll", () => {
-    const title = document.getElementById("scroll-animated-title");
-    const subtitle = document.getElementById("scroll-animated-subtitle");
+//music bagian kata kata bijak
+const audio = document.getElementById('myAudio');
+const playPauseBtn = document.getElementById('playPauseBtn');
+const stopBtn = document.getElementById('stopBtn');
+const volumeSlider = document.getElementById('volumeSlider');
 
-    // Hitung jarak scroll dan elemen dari viewport
-    const titlePosition = title.getBoundingClientRect().top;
-    const subtitlePosition = subtitle.getBoundingClientRect().top;
-    const viewportHeight = window.innerHeight;
-
-    // Aktifkan animasi jika elemen muncul di viewport
-    if (titlePosition < viewportHeight && titlePosition > 0) {
-        title.style.animationPlayState = "running";
+// Play/Pause Toggle
+playPauseBtn.addEventListener('click', () => {
+    if (audio.paused) {
+        audio.play();
+        playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>'; // Ganti ikon menjadi Pause
+    } else {
+        audio.pause();
+        playPauseBtn.innerHTML = '<i class="fas fa-play"></i>'; // Ganti ikon menjadi Play
     }
+});
 
-    if (subtitlePosition < viewportHeight && subtitlePosition > 0) {
-        subtitle.style.animationPlayState = "running";
-    }
+// Stop Audio
+// stopBtn.addEventListener('click', () => {
+//     audio.pause();
+//     audio.currentTime = 0; // Reset audio ke awal
+//     playPauseBtn.innerHTML = '<i class="fas fa-play"></i>'; // Kembali ke ikon Play
+// });
 
-    // Hentikan animasi jika posisi sudah di akhir
-    if (titlePosition <= 0) {
-        title.style.animation = "none"; // Hapus animasi
-        title.style.transform = "translateY(0)"; // Pastikan tetap di posisi
-    }
-
-    if (subtitlePosition <= 0) {
-        subtitle.style.animation = "none";
-        subtitle.style.transform = "translateY(0)";
-    }
+// Adjust Volume
+volumeSlider.addEventListener('input', (e) => {
+    audio.volume = e.target.value;
 });
 
