@@ -19,12 +19,20 @@ class DatabaseSeeder extends Seeder
 
         Produk::factory(50)->create();
 
-        Kategori::factory(5)->create();
+        // Kategori::factory(5)->create();
 
-        // User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        Kategori::factory()->create([
+            'nama' => 'Sandal',
+            'slug' => 'sandal',
+        ]);
+        Kategori::factory()->create([
+            'nama' => 'Kopi',
+            'slug' => 'kopi',
+        ]);
+        Kategori::factory()->create([
+            'nama' => 'Lampu',
+            'slug' => 'lampu',
+        ]);
 
     }
 }

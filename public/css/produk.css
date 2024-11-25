@@ -15,6 +15,11 @@
     color: #fff;
 }
 
+.nama-produk {
+    text-decoration: none;
+    color: #ff8d58;
+}
+
 .product-list {
     display: flex;
     justify-content: space-evenly;
@@ -36,6 +41,32 @@
     border: 2px solid black;
     box-shadow: 3px 3px 3px #cccccb;
     transition: all 0.7s;
+}
+
+.kembali-button {
+    background-color: #00b7ff;
+    padding: 10px 10px;
+    border-radius: 5px;
+    color: #f0f0f0;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.detail-card img {
+    width: 500px;
+    transition: all 1s;
+    cursor: pointer;
+}
+
+.detail-card img:hover {
+    transform: scale(1.1);
+}
+
+.detail-card .img-detail {
+    margin: 0 auto;
+    display: flex;
+    text-align: center;
+    justify-content: center;
 }
 
 .product-card p {
@@ -79,7 +110,22 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    flex-wrap: wrap;
     align-items: center;
     margin: 0 auto;
-    padding: 100px 0;
+    padding: 100px 40px;
+    color: #000;
+    background-color: #e2e2e2;
+}
+
+.detail-card a {
+    text-decoration: none;
+}
+
+/* Media Query untuk layar dengan lebar kurang dari 600px */
+@media (max-width: 600px) {
+    .detail-product-card {
+        width: 100%; /* Membuat lebar elemen 100% dari lebar layar */
+        padding: 20px; /* Mengurangi padding agar tidak terlalu besar */
+    }
 }
