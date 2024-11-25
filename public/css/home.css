@@ -590,6 +590,29 @@ html {
     }
 }
 
+@media (max-width: 480px) {
+    /* Gaya lebih spesifik untuk layar yang sangat kecil */
+    .left-content .story-title {
+        font-size: 1.8rem;
+    }
+
+    .left-content .story-subtitle {
+        font-size: 0.8rem;
+    }
+
+    .left-content .story-btn{
+        font-size: 0.8rem;
+    }
+
+    .right-content .experience-title{
+        font-size: 1.8rem;
+    }
+
+    .right-content .experience-subtitle{
+        font-size: 0.8rem;
+    }
+}
+
 /* Animasi untuk teks */
 @keyframes fadeIn {
     from {
@@ -757,6 +780,25 @@ html {
 .fact-item p {
     color: white;
     font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+
+}
+
+@media (max-width: 480px) {
+    /* Gaya lebih spesifik untuk layar yang sangat kecil */
+    .facts-header .facts-title {
+        font-size: 1.3rem;
+    }
+
+    .facts-header .facts-subtitle {
+        font-size: 1rem;
+    }
+
+    .facts-items p {
+        font-size: 1rem;
+    }
 }
 
 /* halaman kruuuuuuu */
