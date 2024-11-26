@@ -15,15 +15,30 @@
               </div>
             @endif
 
+            @if (session()->has('failed'))
+
+            <div class="alert alert-danger" role="alert">
+                {{ session('failed') }}
+              </div>
+            @endif
+
             <h1>Silahkan Login</h1>
-            <form action="/login">
+            <form action="/login" method="POST">
+                @csrf
                 <div class="email-form">
                     <label for="email">Email</label>
-                    <input type="email" id="email" required>
+                    <input type="email" id="email" name="email" placeholder="Masukan Email" class="form-control @error('email')
+                    is-invalid
+                @enderror" required autofocus value="{{ old('email') }}">
+                    @error('email')
+                        <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
                 </div>
                 <div class="password-form"  style="position: relative">
                     <label for="password">Password</label>
-                    <input type="password" id="password" required>
+                    <input type="password" id="password" name="password" placeholder="Masukan Password" required>
                     <i class="fas fa-eye toggle-password" id="togglePassword" style="position: absolute; top:45px; right:20px;"></i>
                 </div>
                 <div class="forgetpw" style="text-align:right">
