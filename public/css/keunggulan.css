@@ -1,0 +1,129 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+
+
+.categories {
+    display: flex;
+    justify-content: center;
+    margin-top: 110px;
+    gap: 20px;
+    padding: 30px;
+    background: linear-gradient(to right, #000000e8, #2c3e50, #000000);
+}
+
+.category-button {
+    background-color: #ff8d58;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.category-button:hover {
+    background-color: #e76f42;
+    transform: scale(1.1);
+}
+
+
+.category-description h2 {
+    margin-bottom: 10px;
+    margin-top: 30px;
+}
+
+
+
+.category-description {
+    margin: 0%;
+    padding: 70px;
+    background-color: #2c3e50;
+    color: white;
+    width: 100%;
+    text-align: center;
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.category-description[style="display: block;"] {
+    opacity: 1;
+    transform: scale(1);
+}
+
+
+.card-orange {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:10px;
+}
+
+.card-orange .card {
+    display: flex;
+    flex-direction: column;
+    padding: 80px 40px;
+    margin: 0 20px;
+    width: 400px;
+    height: 140px;
+    background: linear-gradient(to top, #000000e8, #2c3e50);
+    border-radius: 8px;
+    font-size: 30px;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-orange .card i {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    font-size: 50px;
+    color: azure;
+    margin-bottom: 20px;
+}
+
+.card-orange .card p {
+    text-align: center;
+    color: azure;
+}
+
+.card img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: 200px;
+    border-radius: 8px;
+}
+
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+}
+
+.card:hover {
+    transform: scale(1.05); /* Membesar saat dihover */
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2); /* Memberikan bayangan */
+}
+
+.keunggulan{
+    background: linear-gradient(to right, #000000e8, #2c3e50, #000000);;
+}
+
+/* ukuran hp */
+@media screen and (max-width: 768px) {
+    .card-orange {
+        flex-direction: column;
+        margin: 20px;
+    }
+
+    .card-orange .card {
+        width: auto;
+        height: auto;
+        padding: 20px;
+        margin: 10px 0;
+    }
+}

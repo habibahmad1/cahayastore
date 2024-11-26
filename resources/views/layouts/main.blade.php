@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{{ asset('css/tentang.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/testimoni.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/faq.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/keunggulan.css') }}" />
     {{-- Font Awesome --}}
     <link
       rel="stylesheet"
