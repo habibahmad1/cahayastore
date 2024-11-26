@@ -21,7 +21,9 @@
 }
 
 .email-form,
-.password-form {
+.password-form,
+.ulangpassword-form,
+.nama-form {
     margin-bottom: 15px;
     text-align: left; /* Label dan input berjejer di kiri */
 }
@@ -33,7 +35,9 @@
 }
 
 .email-form input,
-.password-form input {
+.password-form input,
+.nama-form input,
+.ulangpassword-form input {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
@@ -59,4 +63,11 @@
 
 .submit-form button:hover {
     background-color: #0056b3; /* Warna latar belakang tombol saat hover */
+}
+
+@media screen and (max-width: 600px) {
+    .container-login {
+        padding-top: 200px;
+        padding-bottom: 1200px;
+    }
 }

@@ -23,13 +23,17 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
+        $name = fake()->name();
         return [
-            'name' => fake()->name(),
+            'name' => $name,
+            // Menghapus spasi dari nama dan menambahkan angka 3 digit
+            'username' => str_replace(' ', '', $name) . fake()->numberBetween(1000, 9999),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
         ];
+
     }
 
     /**

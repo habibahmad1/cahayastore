@@ -1,10 +1,12 @@
 <?php
 
-use App\Http\Controllers\KategoriController;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProdukController;
-use App\Models\Kategori;
 use App\Models\Produk;
+use App\Models\Kategori;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\RegisterController;
 
 Route::get('/', function () {
     return view('home',[
@@ -40,11 +42,11 @@ Route::get('/tentang', function () {
     ]);
 });
 
-Route::get('/login', function () {
-    return view('login',[
-        "title" => "Login"
-    ]);
-});
+Route::get('/login', [LoginController::class, 'index']);
+
+Route::get('/register', [RegisterController::class, 'index']);
+
+Route::post('/register', [RegisterController::class, 'store']);
 
 
 Route::get('/kategori/{kategori:slug}',[KategoriController::class,'index']);

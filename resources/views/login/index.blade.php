@@ -7,8 +7,16 @@
     <dotlottie-player src="https://lottie.host/a1b1760e-2fec-42a8-b661-dd2c27189cf4/ISYFrz8mef.json" background="transparent" speed="1" style="width: 500px; height: 500px;" loop autoplay></dotlottie-player>
         </div>
         <div class="login-form">
+
+            @if (session()->has('success'))
+
+            <div class="alert alert-success" role="alert">
+                {{ session('success') }}
+              </div>
+            @endif
+
             <h1>Silahkan Login</h1>
-            <form action="">
+            <form action="/login">
                 <div class="email-form">
                     <label for="email">Email</label>
                     <input type="email" id="email" required>
@@ -24,7 +32,7 @@
                 <div class="submit-form">
                     <button type="submit">Login</button>
                 </div>
-                <p class="mt-4">Belum punya akun? <a href="#" class="text-decoration-none">Daftar Sekarang!</a></p>
+                <p class="mt-4">Belum punya akun? <a href="/register" class="text-decoration-none">Daftar Sekarang!</a></p>
             </form>
         </div>
     </div>
