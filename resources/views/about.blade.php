@@ -58,5 +58,98 @@
         ></iframe>
       </div>
     </div>
+
+    <div class="kontak-kami">
+        <div class="kontak-title">
+            <h1>Kontak Kami</h1>
+            <p>Hubungi kami untuk pertanyaan, saran, atau kebutuhan lainnya!</p>
+        </div>
+        <div class="kontak-container">
+            <div class="kontak-form">
+                <form action="/kirim-pesan" method="POST">
+                    <div class="form-group">
+                        <label for="name">Nama:</label>
+                        <input type="text" id="name" name="name" placeholder="Masukkan nama Anda" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" placeholder="Masukkan email Anda" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Pesan:</label>
+                        <textarea id="message" name="message" placeholder="Tulis pesan Anda" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Kirim</button>
+                </form>
+            </div>
+            {{-- <div class="kontak-info">
+                <h3>Informasi Kontak</h3>
+                <p>Alamat: Jl. Contoh Alamat No. 123, Jakarta</p>
+                <p>Telepon: +62 123 4567 890</p>
+                <p>Email: info@contoh.com</p>
+            </div> --}}
+
+        </div>
+    </div>
+
+    <div class="kontak-links">
+        <h3>Temukan Kami di Toko Online</h3>
+        <ul class="online-stores">
+            <li>
+                <a href="#">
+                    <img src="https://img.icons8.com/color/48/shopee.png" alt="Shopee">
+                    Shopee
+                </a>
+                <ul class="dropdown">
+                    <li><a href="https://shopee.co.id/toko1" target="_blank">Toko 1</a></li>
+                    <li><a href="https://shopee.co.id/toko2" target="_blank">Toko 2</a></li>
+                    <li><a href="https://shopee.co.id/toko2" target="_blank">Toko 3</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="https://www.freepnglogos.com/uploads/logo-tokopedia-png/berita-tokopedia-info-berita-terbaru-tokopedia-6.png" alt="Tokopedia">
+                    Tokopedia
+                </a>
+                <ul class="dropdown">
+                    <li><a href="https://tokopedia.com/toko1" target="_blank">Toko 1</a></li>
+                    <li><a href="https://tokopedia.com/toko2" target="_blank">Toko 2</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="https://seeklogo.com/images/B/bukalapak-logo-E32BE44217-seeklogo.com.png" alt="Bukalapak">
+                    Bukalapak
+                </a>
+                <ul class="dropdown">
+                    <li><a href="https://bukalapak.com/toko1" target="_blank">Toko 1</a></li>
+                    <li><a href="https://bukalapak.com/toko2" target="_blank">Toko 2</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="https://img.icons8.com/color/48/tiktok.png" alt="TikTok">
+                    TikTok
+                </a>
+                <ul class="dropdown">
+                    <li><a href="https://tiktok.com/@toko1" target="_blank">Toko 1</a></li>
+                    <li><a href="https://tiktok.com/@toko2" target="_blank">Toko 2</a></li>
+                    <li><a href="https://tiktok.com/@toko3" target="_blank">Toko 3</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="https://freepnglogo.com/images/all_img/1701498816lazada-icon-png.png" alt="Lazada">
+                    Lazada
+                </a>
+                <ul class="dropdown">
+                    <li><a href="https://lazada.co.id/toko1" target="_blank">Toko 1</a></li>
+                    <li><a href="https://lazada.co.id/toko2" target="_blank">Toko 2</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+
   </section>
 @endsection

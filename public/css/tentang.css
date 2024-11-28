@@ -132,3 +132,257 @@
 .teks-about {
     width: 600px;
 }
+
+/* kontak kami ini yaaa */
+.kontak-kami {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Agar vertikal tengah */
+    padding: 40px 20px;
+    background-color: #2c3e50;
+    color: #ffffff;
+    border-radius: 20px;
+}
+
+.kontak-title h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+    background-color: #ff8d58;
+    color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    animation: fadeInDown 1s ease;
+}
+
+.kontak-title p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.kontak-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    margin-top: 30px;
+    animation: scaleUp 0.8s ease forwards;
+}
+
+.kontak-form,
+.kontak-info {
+    width: 45%;
+    max-width: 500px;
+}
+
+.kontak-form {
+    background-color: #34495e;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+    animation: slideUp 1s ease forwards;
+}
+
+.kontak-form .form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.kontak-form label {
+    font-size: 16px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.kontak-form input,
+.kontak-form textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    margin-bottom: 10px;
+}
+
+.kontak-form textarea {
+    resize: none;
+}
+
+.kontak-form .btn-submit {
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    background-color: #ff8d58;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: background-color 0.4s ease, transform 0.2s ease;
+}
+
+.kontak-form .btn-submit:hover {
+    background-color: #ff6f30;
+    transform: scale(1.05);
+}
+
+.kontak-info h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.kontak-info p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+/* Animasi */
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes scaleUp {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* toko online inii */
+.kontak-links {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #34495e;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+}
+
+.kontak-links h3 {
+    font-size: 24px;
+    color: #ff8d58;
+    margin-bottom: 20px;
+}
+
+/* Toko Online List */
+.online-stores {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.online-stores li {
+    display: inline-block;
+    position: relative;
+    padding: 0; /* Hilangkan padding */
+    border-radius: 0; /* Hilangkan radius */
+    box-shadow: none; /* Hilangkan bayangan */
+    transition: transform 0.3s ease;
+}
+
+.online-stores li:hover {
+    transform: translateY(-5px);
+}
+
+/* Link Utama */
+.online-stores a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    gap: 10px;
+}
+
+/* Ikon */
+.online-stores img {
+    width: 48px; /* Ukuran ikon */
+    height: 48px;
+    transition: transform 0.3s ease;
+}
+
+.online-stores li:hover img {
+    transform: scale(1.2); /* Membesar saat hover */
+}
+
+/* Dropdown Styles */
+.dropdown {
+    display: block;
+    position: absolute;
+    top: 20%; /* Posisikan lebih dekat ke ikon */
+    left: 10%;
+    transform: translateX(-50%);
+    background-color: #34495e;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    list-style: none;
+    text-align: left;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(5px); /* Kurangi jarak animasi */
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+/* Dropdown Tampilkan Saat Hover */
+.online-stores li:hover .dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0); /* Jarak lebih pendek */
+}
+
+/* Dropdown Item */
+.dropdown li {
+    margin: 5px 0;
+}
+
+.dropdown li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    display: block;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.dropdown li a:hover {
+    background-color: #ff8d58;
+    transform: scale(1.05);
+    color: #fff;
+}
