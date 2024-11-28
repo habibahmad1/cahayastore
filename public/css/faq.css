@@ -1,9 +1,9 @@
-
 .faq {
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
+    flex-wrap: wrap;
     flex-direction: column;
     width: 100%;
     background: linear-gradient(to right, #000000e8, #2c3e50, #000000);
@@ -13,6 +13,7 @@
 .faq-title {
     margin: 30px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -28,6 +29,9 @@
 }
 
 .card-faq {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
     width: 600px;
     background: #fff;
     border-radius: 5px;
@@ -60,4 +64,10 @@
     display: block;
     max-height: 400px; /* Mengatur tinggi maksimal untuk transisi animasi */
     padding: 10px 0; /* Menambahkan padding saat teks muncul */
+}
+
+@media (max-width: 600px) {
+    .card-faq {
+        width: 350px;
+    }
 }

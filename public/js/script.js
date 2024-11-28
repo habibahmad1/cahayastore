@@ -49,3 +49,9 @@ let hamburger = document.querySelector("#hamburger");
 hamburger.addEventListener("click", () => {
     navbarside.classList.toggle("active");
 });
+
+document.addEventListener("click", function (e) {
+    if (!hamburger.contains(e.target) & !navbarside.contains(e.target)) {
+        navbarside.classList.remove("active");
+    }
+});

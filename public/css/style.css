@@ -65,7 +65,6 @@ body {
 
 /* Contoh penerapan animasi */
 .hero,
-.mynavbar,
 .card,
 .card-orange,
 .keunggulan,
@@ -673,10 +672,6 @@ body {
 
     .myfooter {
         padding: 150px 20px;
-    }
-
-    .card-faq {
-        width: 300px;
     }
 
     .map iframe {
