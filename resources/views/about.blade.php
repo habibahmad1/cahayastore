@@ -5,10 +5,10 @@
 
     <div class="about-title">
       <h1>Tentang kami</h1>
-      <p>Memahami lebih dalam tentang visi dan misi kami.</p>
+      {{-- <p>Memahami lebih dalam tentang visi dan misi kami.</p> --}}
     </div>
 
-    <div class="gallery-container">
+    {{-- <div class="gallery-container">
       <div class="gallery-item">
         <img src="img/4.jpg" alt="Gallery Image 1" />
         <div class="overlay">Sejarah Perusahaan</div>
@@ -29,7 +29,7 @@
         <img src="img/1.jpg" alt="Gallery Image 4" />
         <div class="overlay">Penghargaan</div>
       </div>
-    </div>
+    </div> --}}
     <div class="map-teks">
       <div class="teks-about">
         <h1 style="margin: 40px 0; text-align: center">
