@@ -70,4 +70,14 @@
         padding-top: 200px;
         padding-bottom: 1200px;
     }
+
+    .login-form {
+        width: 300px;
+    }
+
+    .animasi-login {
+        width: 70%; /* Reduce the width on small screens */
+        height: auto; /* Maintain aspect ratio */
+        max-width: 400px; /* Set a max width suitable for smaller screens */
+    }
 }

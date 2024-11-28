@@ -4,7 +4,7 @@
     <div class="container-login">
         <div class="login-img">
             <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
-    <dotlottie-player src="https://lottie.host/a1b1760e-2fec-42a8-b661-dd2c27189cf4/ISYFrz8mef.json" background="transparent" speed="1" style="width: 500px; height: 500px;" loop autoplay></dotlottie-player>
+    <dotlottie-player class="animasi-login" src="https://lottie.host/a1b1760e-2fec-42a8-b661-dd2c27189cf4/ISYFrz8mef.json" background="transparent" speed="1" style="width: 500px; height: 500px;" loop autoplay></dotlottie-player>
         </div>
         <div class="login-form">
 
