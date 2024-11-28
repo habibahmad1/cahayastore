@@ -42,3 +42,10 @@ document.querySelectorAll(".card-faq").forEach((card) => {
         card.classList.toggle("active");
     });
 });
+
+let navbarside = document.querySelector(".mynavbar-nav");
+let hamburger = document.querySelector("#hamburger");
+
+hamburger.addEventListener("click", () => {
+    navbarside.classList.toggle("active");
+});
