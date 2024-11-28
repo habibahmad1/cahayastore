@@ -31,6 +31,8 @@
 
       @include('partials.navbar')
 
+      <div class="navbar-bottom"></div>
+
       <div class="container-layouts">
         @yield('container')
 

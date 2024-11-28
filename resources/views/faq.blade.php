@@ -3,13 +3,11 @@
 @section('container')
 <!-- FAQ -->
 <section class="faq" id="faq">
-    <h1>
-        FAQ LED Fishing Light
-      </h1>
-    <div class="faq-title">
 
-      <div class="card-faq">
-        <h2>Apa itu Lampu LED Fishing Light?</h2>
+    <div class="faq-title">
+        <h1>FAQ LED Fishing Light</h1>
+        <div class="card-faq">
+            <h2>Apa itu Lampu LED Fishing Light?</h2>
         <p>
           Lampu ini digunakan untuk menerangi perairan, memudahkan navigasi,
           dan membantu menarik ikan saat memancing.
