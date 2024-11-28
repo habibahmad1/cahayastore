@@ -55,6 +55,8 @@
 }
 
 
+/* bagian lampu */
+
 .card-orange {
     display: flex;
     justify-content: center;
@@ -113,21 +115,6 @@
     background: linear-gradient(to right, #000000e8, #2c3e50, #000000);;
 }
 
-/* ukuran hp */
-@media screen and (max-width: 768px) {
-    .card-orange {
-        flex-direction: column;
-        margin: 20px;
-    }
-
-    .card-orange .card {
-        width: auto;
-        height: auto;
-        padding: 20px;
-        margin: 10px 0;
-    }
-}
-
 /* Content Keunggulan */
 .keunggulan {
     display: flex;
@@ -170,4 +157,19 @@
 
 .keunggulan .card-keunggulan .list-keunggulan h3 {
     margin: 20px 0;
+}
+
+/* ukuran hp */
+@media screen and (max-width: 768px) {
+    .card-orange {
+        flex-direction: column;
+        margin: 20px;
+    }
+
+    .card-orange .card {
+        width: auto;
+        height: auto;
+        padding: 20px;
+        margin: 10px 0;
+    }
 }
