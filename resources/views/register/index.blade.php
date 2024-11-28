@@ -4,7 +4,7 @@
     <div class="container-login">
         <div class="login-img">
             <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
-<dotlottie-player src="https://lottie.host/55cb56e0-9731-4ca1-b51f-a70af325153b/Gj8wSz1AGo.lottie" background="transparent" speed="1" style="width: 500px; height: 500px" loop autoplay></dotlottie-player>
+<dotlottie-player class="animasi-login" src="https://lottie.host/55cb56e0-9731-4ca1-b51f-a70af325153b/Gj8wSz1AGo.lottie" background="transparent" speed="1" style="width: 500px; height: 500px" loop autoplay></dotlottie-player>
         </div>
         <div class="login-form">
             <h1>Silahkan Daftar</h1>
