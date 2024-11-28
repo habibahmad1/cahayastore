@@ -10,7 +10,7 @@
                 <a href="/tentang">Tentang</a>
                 @auth
                 <a class="dropdown-toggle text-decoration-none login-nav" href="#" role="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="fa-solid fa-user"></i> {{ strtoupper(auth()->user()->name) }}
+                    <i class="fa-solid fa-user"></i> {{ ucfirst(auth()->user()->name) }}
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                     <li><a class="dropdown-item text-black" href="/dashboard"><i class="fa-solid fa-square-poll-horizontal"></i> Dashboard</a></li>
@@ -29,7 +29,7 @@
             <div class="navbar-ekstra">
                 @auth
                 <a class="dropdown-toggle text-decoration-none" id="login" href="#" role="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="fa-solid fa-user"></i> {{ strtoupper(auth()->user()->name) }}
+                    <i class="fa-solid fa-user"></i> {{ ucfirst(auth()->user()->name) }}
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                     <li><a class="dropdown-item text-black" href="/dashboard"><i class="fa-solid fa-square-poll-horizontal"></i> Dashboard</a></li>
