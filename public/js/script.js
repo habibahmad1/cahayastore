@@ -16,25 +16,6 @@ function showTestimonial(index) {
     });
 }
 
-//navbar scroll
-// Add background and adjust navbar position when scrolling
-window.addEventListener('scroll', () => {
-    const navbar = document.querySelector('.mynavbar');
-    if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
-    }
-  });
-
-  // Toggle menu visibility on small screens
-  const menuToggle = document.querySelector('.menu-toggle');
-  const navbarMenu = document.querySelector('.mynavbar-menu ul');
-
-  menuToggle.addEventListener('click', () => {
-    navbarMenu.classList.toggle('active');
-  });
-
 // Show next testimonial
 function showNext() {
     currentIndex = (currentIndex + 1) % testimonials.length; // Move to the next card, loop back if at end
