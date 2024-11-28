@@ -1,7 +1,7 @@
 /* Content-Testimoni */
 .testimoni {
     background: linear-gradient(to right, #000000e8, #2c3e50, #000000);
-    padding: 40px 20px;
+    padding: 5px 20px;
     text-align: center;
     font-family: Arial, sans-serif;
 }
@@ -10,7 +10,7 @@
     color: #ffffff;
     font-size: 24px;
     margin-bottom: 20px;
-    margin-top: 60px;
+    margin-top: 25px;
     font-size: 30px;
     padding: 30px;
     background-color: #ff8d58;
