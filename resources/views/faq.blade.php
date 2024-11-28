@@ -118,32 +118,69 @@
             <div class="faq-title">
                 {{-- <h1>FAQ LED Fishing Light</h1> --}}
                 <div class="card-faq">
-                    <h2>Apa itu Lampu LED Fishing Light?</h2>
+                    <h2>Apakah sandal ini terbuat dari bahan yang tahan lama?</h2>
                 <p>
-                  Lampu ini digunakan untuk menerangi perairan, memudahkan navigasi,
-                  dan membantu menarik ikan saat memancing.
+                    Ya, sandal kami dibuat dari bahan berkualitas tinggi yang tahan lama dan nyaman digunakan untuk berbagai aktivitas.
                 </p>
               </div>
               <div class="card-faq">
-                <h2>Bagaimana cara menggunakan Lampu LED Fishing Light?</h2>
+                <h2>Apakah tersedia ukuran untuk semua usia?</h2>
                 <p>
-                  Pasang lampu LED Fishing Light di sisi kapal menggunakan pengikat
-                  atau bracket yang tersedia. Pastikan lampu dipasang dengan kokoh
-                  agar tidak mudah lepas saat kapal bergerak.
+                    Kami menyediakan berbagai ukuran untuk anak-anak, remaja, dan dewasa. Silakan cek tabel ukuran di halaman produk kami.
                 </p>
               </div>
               <div class="card-faq">
-                <h2>Berapa lama daya tahan baterainya?</h2>
+                <h2>Apakah sandal ini anti-slip?</h2>
                 <p>
-                  Rata-rata lampu LED Fishing Light dapat bertahan selama 6-8 jam
-                  tergantung pada jenis dan kekuatan baterai yang digunakan.
+                    Ya, desain alas sandal kami menggunakan material khusus untuk mencegah tergelincir.
                 </p>
               </div>
               <div class="card-faq">
-                <h2>Apakah lampu ini tahan air?</h2>
+                <h2>Bagaimana cara memesan sandal?</h2>
                 <p>
-                  Ya, lampu LED Fishing Light dirancang tahan air dan karat untuk
-                  aktifitas sekitar perairan .
+                    Anda dapat memesan langsung melalui website kami atau menghubungi admin melalui WhatsApp/Marketplace yang tersedia.
+                </p>
+              </div>
+              <div class="card-faq">
+                <h2> Apakah saya bisa memesan sandal custom?</h2>
+                <p>
+                    Kami menyediakan layanan custom untuk beberapa model. Hubungi kami untuk informasi lebih lanjut.
+                </p>
+              </div>
+              <div class="card-faq">
+                <h2>Apakah ada minimal pembelian?</h2>
+                <p>
+                    Tidak ada minimal pembelian untuk pembelian ritel. Namun, untuk grosir, minimal pembelian adalah 10 pasang.
+                </p>
+              </div>
+              <div class="card-faq">
+                <h2>Berapa lama waktu pengiriman?</h2>
+                <p>
+                    Waktu pengiriman tergantung lokasi Anda. Biasanya, untuk area dalam kota, pengiriman memakan waktu 1-3 hari kerja.
+                </p>
+              </div>
+              <div class="card-faq">
+                <h2>Apakah ada garansi untuk produk?</h2>
+                <p>
+                    Ya, kami memberikan garansi 7 hari untuk produk cacat produksi.
+                </p>
+              </div>
+              <div class="card-faq">
+                <h2>Bagaimana jika ukuran sandal tidak sesuai?</h2>
+                <p>
+                    Anda dapat mengajukan penukaran dalam waktu 3 hari setelah produk diterima, dengan syarat sandal belum digunakan.
+                </p>
+              </div>
+              <div class="card-faq">
+                <h2>Apakah ada diskon untuk pembelian dalam jumlah banyak?</h2>
+                <p>
+                    Ya, kami menawarkan harga khusus untuk pembelian grosir. Silakan hubungi tim kami untuk mendapatkan penawaran terbaik.
+                </p>
+              </div>
+              <div class="card-faq">
+                <h2>Apakah ada promo saat ini?</h2>
+                <p>
+                    Promo berlaku untuk pembelian melalui website kami. Informasi lebih lengkap bisa Anda cek di halaman promo kami.
                 </p>
               </div>
             </div>
