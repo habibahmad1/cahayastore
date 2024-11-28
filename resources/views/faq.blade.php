@@ -13,7 +13,7 @@
 
     <div id="led" class="page-content">
         <h2>LED Fishing Light</h2>
-        <p>Beberapa Informasi tentang produk LED Fishing Light.</p>
+        <p>Beberapa Informasi tentang produk LED Fishing Light Kami.</p>
 
         <section class="faq" id="faq">
             <div class="faq-title">
@@ -53,12 +53,138 @@
 
     <div id="coffee" class="page-content">
         <h2>Coffee Luwak</h2>
-        <p>Informasi tentang Coffee Luwak akan muncul di sini.</p>
+        <p>Beberapa informasi tentang Coffee Luwak Authentic Kami.</p>
+
+        <section class="faq" id="faq">
+            <div class="faq-title">
+                {{-- <h1>FAQ LED Fishing Light</h1> --}}
+                <div class="card-faq">
+                    <h2>Apa itu kopi luwak?</h2>
+                <p>
+                    Kopi luwak adalah kopi yang dihasilkan dari biji kopi yang telah dimakan dan dicerna sebagian oleh luwak (sejenis musang). Proses fermentasi alami dalam saluran pencernaan luwak memberikan cita rasa unik pada kopi ini.
+                </p>
+              </div>
+              <div class="card-faq">
+                <h2>Mengapa kopi luwak istimewa?</h2>
+                <p>
+                    Kopi luwak dianggap istimewa karena Proses fermentasi alami dalam tubuh luwak menciptakan rasa yang lebih lembut, dengan tingkat keasaman rendah. juga
+                    Kopi ini sering dianggap sebagai salah satu kopi termahal di dunia karena produksinya yang terbatas dan unik.
+                </p>
+              </div>
+              <div class="card-faq">
+                <h2>Bagaimana cara memproduksi kopi luwak?</h2>
+                <p>
+                    Luwak memakan buah kopi yang matang.
+                    Biji kopi yang tidak tercerna dikeluarkan bersama kotoran luwak.
+                    Biji kopi dikumpulkan, dicuci bersih, kemudian dikeringkan, disangrai, dan digiling menjadi bubuk kopi.
+                </p>
+              </div>
+              <div class="card-faq">
+                <h2>Apakah kopi luwak aman untuk dikonsumsi?</h2>
+                <p>
+                    Ya, kopi luwak aman dikonsumsi karena melalui proses pembersihan menyeluruh dan pemanasan saat pengolahan. Proses ini membunuh bakteri yang mungkin ada.
+                </p>
+              </div>
+              <div class="card-faq">
+                <h2>Berapa harga kopi luwak?</h2>
+                <p>
+                    Harga kopi luwak bervariasi tergantung kualitas dan asalnya. Kopi luwak asli bisa dihargai mulai dari ratusan ribu hingga jutaan rupiah per kilogram.
+                </p>
+              </div>
+              <div class="card-faq">
+                <h2>Apakah kopi luwak ramah lingkungan?</h2>
+                <p>
+                    Ada dua jenis produksi kopi luwak:
+                    1. Alami: Luwak liar mencari buah kopi sendiri di alam.
+                    2. Ternak: Luwak dipelihara dalam kandang dan diberi makan buah kopi.
+                    Produksi yang melibatkan luwak liar lebih ramah lingkungan, tetapi yang berbasis ternak sering menuai kritik karena melibatkan praktik tidak etis terhadap hewan.
+                </p>
+              </div>
+              <div class="card-faq">
+                <h2>Apa rasa khas dari kopi luwak?</h2>
+                <p>
+                    Rasa kopi luwak cenderung lebih lembut, dengan aroma khas, rasa cokelat atau karamel, dan sedikit asam. Cita rasa ini bervariasi tergantung pada jenis kopi yang dikonsumsi oleh luwak.
+                </p>
+              </div>
+            </div>
+          </section>
     </div>
 
     <div id="sandal" class="page-content">
         <h2>Sandal</h2>
-        <p>Informasi tentang produk sandal akan muncul di sini.</p>
+        <p>Beberapa informasi tentang produk sandal kami.</p>
+
+        <section class="faq" id="faq">
+            <div class="faq-title">
+                {{-- <h1>FAQ LED Fishing Light</h1> --}}
+                <div class="card-faq">
+                    <h2>Apakah sandal ini terbuat dari bahan yang tahan lama?</h2>
+                <p>
+                    Ya, sandal kami dibuat dari bahan berkualitas tinggi yang tahan lama dan nyaman digunakan untuk berbagai aktivitas.
+                </p>
+              </div>
+              <div class="card-faq">
+                <h2>Apakah tersedia ukuran untuk semua usia?</h2>
+                <p>
+                    Kami menyediakan berbagai ukuran untuk anak-anak, remaja, dan dewasa. Silakan cek tabel ukuran di halaman produk kami.
+                </p>
+              </div>
+              <div class="card-faq">
+                <h2>Apakah sandal ini anti-slip?</h2>
+                <p>
+                    Ya, desain alas sandal kami menggunakan material khusus untuk mencegah tergelincir.
+                </p>
+              </div>
+              <div class="card-faq">
+                <h2>Bagaimana cara memesan sandal?</h2>
+                <p>
+                    Anda dapat memesan langsung melalui website kami atau menghubungi admin melalui WhatsApp/Marketplace yang tersedia.
+                </p>
+              </div>
+              <div class="card-faq">
+                <h2> Apakah saya bisa memesan sandal custom?</h2>
+                <p>
+                    Kami menyediakan layanan custom untuk beberapa model. Hubungi kami untuk informasi lebih lanjut.
+                </p>
+              </div>
+              <div class="card-faq">
+                <h2>Apakah ada minimal pembelian?</h2>
+                <p>
+                    Tidak ada minimal pembelian untuk pembelian ritel. Namun, untuk grosir, minimal pembelian adalah 10 pasang.
+                </p>
+              </div>
+              <div class="card-faq">
+                <h2>Berapa lama waktu pengiriman?</h2>
+                <p>
+                    Waktu pengiriman tergantung lokasi Anda. Biasanya, untuk area dalam kota, pengiriman memakan waktu 1-3 hari kerja.
+                </p>
+              </div>
+              <div class="card-faq">
+                <h2>Apakah ada garansi untuk produk?</h2>
+                <p>
+                    Ya, kami memberikan garansi 7 hari untuk produk cacat produksi.
+                </p>
+              </div>
+              <div class="card-faq">
+                <h2>Bagaimana jika ukuran sandal tidak sesuai?</h2>
+                <p>
+                    Anda dapat mengajukan penukaran dalam waktu 3 hari setelah produk diterima, dengan syarat sandal belum digunakan.
+                </p>
+              </div>
+              <div class="card-faq">
+                <h2>Apakah ada diskon untuk pembelian dalam jumlah banyak?</h2>
+                <p>
+                    Ya, kami menawarkan harga khusus untuk pembelian grosir. Silakan hubungi tim kami untuk mendapatkan penawaran terbaik.
+                </p>
+              </div>
+              <div class="card-faq">
+                <h2>Apakah ada promo saat ini?</h2>
+                <p>
+                    Promo berlaku untuk pembelian melalui website kami. Informasi lebih lengkap bisa Anda cek di halaman promo kami.
+                </p>
+              </div>
+            </div>
+          </section>
     </div>
 </div>
 
