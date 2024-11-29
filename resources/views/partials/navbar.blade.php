@@ -2,12 +2,12 @@
     <div class="mynavbar-container">
             <a href="/" class="logo text-decoration-none">CSI</a>
             <div class="mynavbar-nav">
-                <a href="/">Beranda</a>
-                <a href="/features">Keunggulan</a>
-                <a href="/produk">Produk</a>
-                <a href="/testimoni">Testimoni</a>
-                <a href="/faq">FAQ</a>
-                <a href="/tentang">Tentang</a>
+                <a href="/" class="{{ Request::is('/') ? 'active-dashboard' : '' }}">Beranda</a>
+                <a href="/features" class="{{ Request::is('features') ? 'active-dashboard' : '' }}">Keunggulan</a>
+                <a href="/produk" class="{{ Request::is('produk') ? 'active-dashboard' : '' }}">Produk</a>
+                <a href="/testimoni" class="{{ Request::is('testimoni') ? 'active-dashboard' : '' }}">Testimoni</a>
+                <a href="/faq" class="{{ Request::is('faq') ? 'active-dashboard' : '' }}">FAQ</a>
+                <a href="/tentang" class="{{ Request::is('tentang') ? 'active-dashboard' : '' }}">Tentang</a>
                 @auth
                 <a class="dropdown-toggle text-decoration-none login-nav" href="#" role="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="fa-solid fa-user"></i> {{ ucfirst(auth()->user()->name) }}

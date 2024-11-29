@@ -171,6 +171,11 @@ body {
     margin-top: 100px;
 }
 
+.active-dashboard {
+    color: #fd9f61 !important;
+    font-weight: bold;
+}
+
 /* Mobile Responsiveness */
 @media screen and (max-width: 768px) {
     .mynavbar-nav {
