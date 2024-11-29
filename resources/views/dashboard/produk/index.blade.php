@@ -10,7 +10,7 @@
           <th scope="col">#</th>
           <th scope="col">Nama Produk</th>
           <th scope="col">Gambar</th>
-          <th scope="col">Kode Produk</th>
+          <th scope="col">Kode</th>
           <th scope="col">Deskripsi</th>
           <th scope="col">Stok</th>
           <th scope="col">Diskon</th>
@@ -22,118 +22,29 @@
         </tr>
       </thead>
       <tbody>
+        @foreach ($produk as $p)
+
         <tr>
-          <td>1,001</td>
-          <td>random</td>
-          <td>data</td>
-          <td>placeholder</td>
-          <td>text</td>
+          <td>{{ $loop->iteration }}</td>
+          <td>{{ $p->nama_produk }}</td>
+          <td>{{ $p->gambar }}</td>
+          <td>{{ $p->kode_produk }}</td>
+          <td>{{ $p->deskripsi }}</td>
+          <td>{{ $p->stok }}</td>
+          <td>{{ $p->diskon }}</td>
+          <td>{{ $p->berat }}</td>
+          <td>{{ $p->dimensi }}</td>
+          <td>{{ $p->harga }}</td>
+          <td>{{ $p->status }}</td>
+          <td>
+            <a href="/dashboard/produk/{{ $p->slug }}" class="badge bg-info"><span><i class="bi bi-eye-fill"></i></span></a>
+            <a href="/dashboard/produk/{{ $p->slug }}" class="badge bg-warning"><span><i class="bi bi-pencil-square"></i></span></a>
+            <a href="/dashboard/produk/{{ $p->slug }}" class="badge bg-danger"><span><i class="bi bi-trash"></i></span></a>
+          </td>
         </tr>
-        <tr>
-          <td>1,002</td>
-          <td>placeholder</td>
-          <td>irrelevant</td>
-          <td>visual</td>
-          <td>layout</td>
-        </tr>
-        <tr>
-          <td>1,003</td>
-          <td>data</td>
-          <td>rich</td>
-          <td>dashboard</td>
-          <td>tabular</td>
-        </tr>
-        <tr>
-          <td>1,003</td>
-          <td>information</td>
-          <td>placeholder</td>
-          <td>illustrative</td>
-          <td>data</td>
-        </tr>
-        <tr>
-          <td>1,004</td>
-          <td>text</td>
-          <td>random</td>
-          <td>layout</td>
-          <td>dashboard</td>
-        </tr>
-        <tr>
-          <td>1,005</td>
-          <td>dashboard</td>
-          <td>irrelevant</td>
-          <td>text</td>
-          <td>placeholder</td>
-        </tr>
-        <tr>
-          <td>1,006</td>
-          <td>dashboard</td>
-          <td>illustrative</td>
-          <td>rich</td>
-          <td>data</td>
-        </tr>
-        <tr>
-          <td>1,007</td>
-          <td>placeholder</td>
-          <td>tabular</td>
-          <td>information</td>
-          <td>irrelevant</td>
-        </tr>
-        <tr>
-          <td>1,008</td>
-          <td>random</td>
-          <td>data</td>
-          <td>placeholder</td>
-          <td>text</td>
-        </tr>
-        <tr>
-          <td>1,009</td>
-          <td>placeholder</td>
-          <td>irrelevant</td>
-          <td>visual</td>
-          <td>layout</td>
-        </tr>
-        <tr>
-          <td>1,010</td>
-          <td>data</td>
-          <td>rich</td>
-          <td>dashboard</td>
-          <td>tabular</td>
-        </tr>
-        <tr>
-          <td>1,011</td>
-          <td>information</td>
-          <td>placeholder</td>
-          <td>illustrative</td>
-          <td>data</td>
-        </tr>
-        <tr>
-          <td>1,012</td>
-          <td>text</td>
-          <td>placeholder</td>
-          <td>layout</td>
-          <td>dashboard</td>
-        </tr>
-        <tr>
-          <td>1,013</td>
-          <td>dashboard</td>
-          <td>irrelevant</td>
-          <td>text</td>
-          <td>visual</td>
-        </tr>
-        <tr>
-          <td>1,014</td>
-          <td>dashboard</td>
-          <td>illustrative</td>
-          <td>rich</td>
-          <td>data</td>
-        </tr>
-        <tr>
-          <td>1,015</td>
-          <td>random</td>
-          <td>tabular</td>
-          <td>information</td>
-          <td>text</td>
-        </tr>
+
+        @endforeach
+
       </tbody>
     </table>
   </div>
