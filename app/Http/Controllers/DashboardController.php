@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Produk;
+use App\Models\Kategori;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -23,13 +24,18 @@ class DashboardController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.produk.create', [
+            "kategori" => Kategori::all()
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request) {}
+    public function store(Request $request)
+    {
+        return $request;
+    }
 
     /**
      * Display the specified resource.

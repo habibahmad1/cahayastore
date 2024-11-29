@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-
+use Cviebrock\EloquentSluggable\Sluggable;
 
 class Produk extends Model
 {
+    use Sluggable;
+
     protected $guarded = ['id'];
 
     protected $with = ['kategori'];
@@ -38,5 +40,14 @@ class Produk extends Model
     public function getRouteKeyName()
     {
         return 'slug';
+    }
+
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'nama_produk'
+            ]
+        ];
     }
 }
