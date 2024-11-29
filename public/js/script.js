@@ -56,7 +56,6 @@ document.addEventListener("click", function (e) {
     }
 });
 
-// Menyimpan teks yang diketik
 let typedText = "";
 
 // Menangkap input pada kolom pencarian
@@ -64,7 +63,6 @@ document
     .getElementById("search-box")
     .addEventListener("input", function (event) {
         typedText = event.target.value.toLowerCase(); // Ambil nilai input dan ubah menjadi lowercase
-
         console.log("Teks yang diketik:", typedText); // Debug log
 
         // Cek jika kata yang diketik adalah "login"
@@ -75,3 +73,12 @@ document
             });
         }
     });
+
+// Menghapus teks pencarian saat klik kembali pada kolom pencarian
+document.getElementById("search-box").addEventListener("focus", function () {
+    this.value = ""; // Menghapus teks pada kolom pencarian
+    const loginButtons = document.querySelectorAll(".login-key");
+    loginButtons.forEach((button) => {
+        button.style.display = "none"; // Menyembunyikan tombol login lagi
+    });
+});

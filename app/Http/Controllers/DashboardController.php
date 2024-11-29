@@ -12,7 +12,10 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('dashboard.produk.index');
+
+        return view('dashboard.produk.index', [
+            "produk" =>  Produk::all()
+        ]);
     }
 
     /**
