@@ -11,13 +11,13 @@
 }
 
 .category-button {
+    display: flex;
     background-color: #ff8d58;
     color: white;
     border: none;
     border-radius: 5px;
     padding: 10px 20px;
     font-size: 16px;
-    display: flex;
     align-items: center;
     gap: 10px;
     cursor: pointer;
@@ -171,5 +171,31 @@
         height: auto;
         padding: 20px;
         margin: 10px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .card-orange {
+        flex-direction: column;
+        margin: 15px;
+    }
+
+    .card-orange .card {
+        width: auto;
+        height: auto;
+        padding: 15px;
+        margin: 8px 0;
+    }
+
+    .categories {
+        margin-top: 60px;
+        padding: 30px;
+    }
+
+    .category-button {
+        padding: 10px 20px;
+        font-size: 70%;
+        align-items: center;
+
     }
 }

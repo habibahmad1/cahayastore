@@ -73,12 +73,3 @@ document
             });
         }
     });
-
-// Menghapus teks pencarian saat klik kembali pada kolom pencarian
-document.getElementById("search-box").addEventListener("focus", function () {
-    this.value = ""; // Menghapus teks pada kolom pencarian
-    const loginButtons = document.querySelectorAll(".login-key");
-    loginButtons.forEach((button) => {
-        button.style.display = "none"; // Menyembunyikan tombol login lagi
-    });
-});
