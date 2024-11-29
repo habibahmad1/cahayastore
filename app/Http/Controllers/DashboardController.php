@@ -34,7 +34,13 @@ class DashboardController extends Controller
      */
     public function store(Request $request)
     {
-        return $request;
+        $validateData = $request->validate([
+            "nama_produk" => 'required|max:255',
+            "slug" => "required|unique:produks",
+            "kategori_id" => "required",
+            "deskripsi" => "required"
+
+        ]);
     }
 
     /**

@@ -35,4 +35,3 @@ class Produk_Variasi extends Model
         return $this->hasMany(Variasi_Gambar::class);
     }
 }
-
