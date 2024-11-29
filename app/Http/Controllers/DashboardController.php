@@ -36,7 +36,9 @@ class DashboardController extends Controller
      */
     public function show(Produk $produk)
     {
-        //
+        return view('dashboard.produk.show', [
+            "produk" => $produk
+        ]);
     }
 
     /**

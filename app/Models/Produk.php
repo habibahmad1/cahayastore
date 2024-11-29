@@ -17,14 +17,14 @@ class Produk extends Model
     public function scopeFilter($query, array $filters)
     {
 
-        $query->when($filters['search'] ?? false, function($query,$search){
+        $query->when($filters['search'] ?? false, function ($query, $search) {
             return $query->where('nama_produk', 'like', '%' . $search . '%')
-            ->orWhere('deskripsi', 'like', '%' . $search . '%');
+                ->orWhere('deskripsi', 'like', '%' . $search . '%');
         });
 
-        $query->when($filters['kategori'] ?? false, function($query,$kategori){
-            return $query->whereHas('kategori', function($query) use ($kategori){
-                $query->where('slug',$kategori);
+        $query->when($filters['kategori'] ?? false, function ($query, $kategori) {
+            return $query->whereHas('kategori', function ($query) use ($kategori) {
+                $query->where('slug', $kategori);
             });
         });
     }
@@ -33,5 +33,10 @@ class Produk extends Model
     public function kategori()
     {
         return $this->belongsTo(Kategori::class);
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
     }
 }

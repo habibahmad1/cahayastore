@@ -37,9 +37,9 @@
           <td>{{ $p->harga }}</td>
           <td>{{ $p->status }}</td>
           <td>
-            <a href="/dashboard/produk/{{ $p->id }}" class="badge bg-info"><span><i class="bi bi-eye-fill"></i></span></a>
-            <a href="/dashboard/produk/{{ $p->id }}" class="badge bg-warning"><span><i class="bi bi-pencil-square"></i></span></a>
-            <a href="/dashboard/produk/{{ $p->id }}" class="badge bg-danger"><span><i class="bi bi-trash"></i></span></a>
+            <a href="/dashboard/produk/{{ $p->slug }}" class="badge bg-info"><span><i class="bi bi-eye-fill"></i></span></a>
+            <a href="/dashboard/produk/{{ $p->slug }}" class="badge bg-warning"><span><i class="bi bi-pencil-square"></i></span></a>
+            <a href="/dashboard/produk/{{ $p->slug }}" class="badge bg-danger"><span><i class="bi bi-trash"></i></span></a>
           </td>
         </tr>
 
