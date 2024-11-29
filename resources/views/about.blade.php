@@ -66,7 +66,7 @@
       </div>
     </div>
 
-    <div class="kontak-kami">
+    {{-- <div class="kontak-kami">
         <div class="kontak-title">
             <h1>Kontak Kami</h1>
             <p>Hubungi kami untuk pertanyaan, saran, atau kebutuhan lainnya!</p>
@@ -88,15 +88,15 @@
                 </div>
                 <button type="submit" class="btn-submit">Kirim</button>
             </form>
-            {{-- <div class="kontak-info">
+            <div class="kontak-info">
                 <h3>Informasi Kontak</h3>
                 <p>Alamat: Jl. Contoh Alamat No. 123, Jakarta</p>
                 <p>Telepon: +62 123 4567 890</p>
                 <p>Email: info@contoh.com</p>
-            </div> --}}
+            </div>
 
         </div>
-    </div>
+    </div> --}}
 
     <div class="kontak-links">
         <h3>Temukan Kami di Toko Online</h3>
