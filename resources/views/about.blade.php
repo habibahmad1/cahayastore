@@ -1,5 +1,12 @@
 @extends('layouts.main')
 
+@if(session('success'))
+    <div style="color: green; text-align: center; margin: 20px;">
+        {{ session('success') }}
+    </div>
+@endif
+
+
 @section('container')
 <section class="about" id="about">
 
@@ -65,23 +72,22 @@
             <p>Hubungi kami untuk pertanyaan, saran, atau kebutuhan lainnya!</p>
         </div>
         <div class="kontak-container">
-            <div class="kontak-form">
-                <form action="/kirim-pesan" method="POST">
-                    <div class="form-group">
-                        <label for="name">Nama:</label>
-                        <input type="text" id="name" name="name" placeholder="Masukkan nama Anda" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" placeholder="Masukkan email Anda" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Pesan:</label>
-                        <textarea id="message" name="message" placeholder="Tulis pesan Anda" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="btn-submit">Kirim</button>
-                </form>
-            </div>
+            <form action="/send-message" method="POST" class="kontak-form">
+                @csrf
+                <div class="form-group">
+                    <label for="name">Nama:</label>
+                    <input type="text" id="name" name="name" placeholder="Masukkan nama Anda" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Masukkan email Anda" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Pesan:</label>
+                    <textarea id="message" name="message" placeholder="Tulis pesan Anda" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn-submit">Kirim</button>
+            </form>
             {{-- <div class="kontak-info">
                 <h3>Informasi Kontak</h3>
                 <p>Alamat: Jl. Contoh Alamat No. 123, Jakarta</p>
@@ -135,6 +141,7 @@
                     <li><a href="https://tiktok.com/@toko1" target="_blank">Toko 1</a></li>
                     <li><a href="https://tiktok.com/@toko2" target="_blank">Toko 2</a></li>
                     <li><a href="https://tiktok.com/@toko3" target="_blank">Toko 3</a></li>
+                    <li><a href="https://tiktok.com/@toko4" target="_blank">Toko 4</a></li>
                 </ul>
             </li>
             <li>
@@ -150,6 +157,27 @@
         </ul>
     </div>
 
+    <div class="floating-contact">
+        <div class="hubungi-icon" id="hubungiButton" title="Hubungi Kami">
+            <i class="fas fa-comments"></i>
+        </div>
+        <div class="contact-menu hidden" id="contactMenu">
+            <a href="https://wa.me/6281290032627" target="_blank" class="menu-item whatsapp" title="Chat via WhatsApp">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="tel:+6281290032627" class="menu-item call" title="Telepon Kami">
+                <i class="fas fa-phone-alt"></i>
+            </a>
+            <a href="mailto:cadangmaky@gmail.com" class="menu-item email" title="Kirim Email">
+                <i class="fas fa-envelope"></i>
+            </a>
+        </div>
+    </div>
+
+
+
 
   </section>
+
+  <script src="js/tentang.js"></script>
 @endsection
