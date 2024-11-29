@@ -5,17 +5,23 @@
         <div class="img-detail">
             <img src="{{ asset('img/' . $produk->gambar) }}" alt="LED Fishing Light">
         </div>
-        <h2><a href="/produk/{{ $produk->slug }}">{{ $produk->nama_produk }}</a></h2>
-        <p><b>Kategori</b> : <a href="/kategori/{{ $produk->kategori->slug }}" class="text-decoration-none text-capitalize">{{ $produk->kategori->nama }}</a></p>
-        <p><b>Deskripsi</b> : {{ $produk->deskripsi }}</p>
-        <p><b>Stok</b> : {{ $produk->stok }}</p>
-        <p><b>Berat</b> : {{ $produk->berat }}Kg</p>
-        <p><b>Diskon</b> : {{ $produk->diskon }}%</p>
-        <h4><b>Harga</b> :Rp {{ $produk->harga }}</h4>
-        <a href="/produk/{{ $produk->slug }}" class="text-decoration-none">
-            <button class="details-button mt-4">Beli Sekarang</button>
-            <a href="/produk" class="kembali-button">Kembali</a>
-      </a>
+        <div class="detail-info">
+            <div class="edit-produk">
+                <a href="/produk" class="badge bg-warning text-decoration-none my-3"><i class="bi bi-pencil-square"></i> Edit Produk</a>
+                <a href="/produk" class="badge bg-danger text-decoration-none my-3"><i class="bi bi-trash"></i> Hapus Produk </a>
+
+            </div>
+            <h2><a href="/produk/{{ $produk->slug }}" class="text-decoration-none">{{ $produk->nama_produk }}</a></h2>
+            <p><b>Kategori</b> : <a href="/kategori/{{ $produk->kategori->slug }}" class="text-decoration-none text-capitalize">{{ $produk->kategori->nama }}</a></p>
+            <p><b>Deskripsi</b> : {{ $produk->deskripsi }}</p>
+            <p><b>Stok</b> : {{ $produk->stok }}</p>
+            <p><b>Berat</b> : {{ $produk->berat }}Kg</p>
+            <p><b>Diskon</b> : {{ $produk->diskon }}%</p>
+            <h4><b>Harga</b> :Rp {{ $produk->harga }}</h4>
+            <div class="button">
+                <a href="/dashboard/produk" class="kembali-button">Kembali</a>
+            </div>
+        </div>
     </div>
 </div>
 @endsection
