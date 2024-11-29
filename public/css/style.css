@@ -167,6 +167,10 @@ body {
     display: none;
 }
 
+.login-key {
+    display: none;
+}
+
 .navbar-bottom {
     margin-top: 100px;
 }

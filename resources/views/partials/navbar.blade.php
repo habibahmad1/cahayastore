@@ -23,7 +23,7 @@
                     </li>
                 </ul>
                 @else
-                    <a href="/login" class="login-nav"><i class="fa-solid fa-arrow-right-to-bracket"></i> Login</a>
+                    <a href="/login" class="login-nav login-key d-none"><i class="fa-solid fa-arrow-right-to-bracket "></i> Login</a>
                 @endauth
             </div>
             <div class="navbar-ekstra">
@@ -42,7 +42,7 @@
                     </li>
                 </ul>
                 @else
-                    <a href="/login" id="login"><i class="fa-solid fa-arrow-right-to-bracket"></i> Login</a>
+                    <a href="/login" id="login" class=" login-key"><i class="fa-solid fa-arrow-right-to-bracket"></i> Login</a>
                 @endauth
                 <a href="#" id="hamburger"><i class="fa-solid fa-bars"></i></a>
             </div>

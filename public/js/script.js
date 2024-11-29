@@ -55,3 +55,23 @@ document.addEventListener("click", function (e) {
         navbarside.classList.remove("active");
     }
 });
+
+// Menyimpan teks yang diketik
+let typedText = "";
+
+// Menangkap input pada kolom pencarian
+document
+    .getElementById("search-box")
+    .addEventListener("input", function (event) {
+        typedText = event.target.value.toLowerCase(); // Ambil nilai input dan ubah menjadi lowercase
+
+        console.log("Teks yang diketik:", typedText); // Debug log
+
+        // Cek jika kata yang diketik adalah "login"
+        if (typedText === "adminlogin") {
+            const loginButtons = document.querySelectorAll(".login-key");
+            loginButtons.forEach((button) => {
+                button.style.display = "block"; // Menampilkan tombol login
+            });
+        }
+    });
