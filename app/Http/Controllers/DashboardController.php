@@ -92,6 +92,8 @@ class DashboardController extends Controller
      */
     public function destroy(Produk $produk)
     {
-        //
+        Produk::destroy($produk->id);
+
+        return redirect('/dashboard/produk')->with('success', 'Produk berhasil dihapus!');
     }
 }

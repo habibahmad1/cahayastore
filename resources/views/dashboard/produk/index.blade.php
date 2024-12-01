@@ -48,7 +48,11 @@
           <td>
             <a href="/dashboard/produk/{{ $p->slug }}" class="badge bg-info"><span><i class="bi bi-eye-fill"></i></span></a>
             <a href="/dashboard/produk/{{ $p->slug }}" class="badge bg-warning"><span><i class="bi bi-pencil-square"></i></span></a>
-            <a href="/dashboard/produk/{{ $p->slug }}" class="badge bg-danger"><span><i class="bi bi-trash"></i></span></a>
+            <form action="/dashboard/produk/{{ $p->slug }}" method="POST" class="d-inline">
+                @method('delete')
+                @csrf
+                <button class="badge bg-danger border-0" onclick="return confirm('Hapus Produk?')"><span><i class="bi bi-trash"></i></span></button>
+            </form>
           </td>
         </tr>
 
