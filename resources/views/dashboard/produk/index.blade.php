@@ -38,7 +38,7 @@
           <td>{{ $p->nama_produk }}</td>
           <td>{{ $p->gambar1 }}</td>
           <td>{{ $p->kode_produk }}</td>
-          <td>{{ $p->deskripsi }}</td>
+          <td>{!! $p->deskripsi !!}</td>
           <td>{{ $p->stok }}</td>
           <td>{{ $p->diskon }}</td>
           <td>{{ $p->berat }}</td>

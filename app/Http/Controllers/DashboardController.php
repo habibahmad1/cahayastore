@@ -57,7 +57,7 @@ class DashboardController extends Controller
 
         Produk::create($validatedData);
 
-        return redirect('/dashboard/produk')->with('success', 'Produk dan variasi berhasil ditambahkan!');
+        return redirect('/dashboard/produk')->with('success', 'Produk berhasil ditambahkan!');
     }
 
 
