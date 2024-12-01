@@ -44,7 +44,7 @@ class DashboardController extends Controller
             "deskripsi" => "required",
             "harga" => "required|numeric|min:0",
             "stok" => "required|integer|min:0",
-            "gambar1" => "nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048",
+            "gambar1" => "required|image|mimes:jpeg,png,jpg,gif,svg|max:2048",
             "gambar2" => "nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048",
             "gambar3" => "nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048",
             "gambar4" => "nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048",
