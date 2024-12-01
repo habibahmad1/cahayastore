@@ -76,7 +76,10 @@ class DashboardController extends Controller
      */
     public function edit(Produk $produk)
     {
-        //
+        return view('dashboard.produk.edit', [
+            "produk" => $produk,
+            "kategori" => Kategori::all()
+        ]);
     }
 
     /**
@@ -84,7 +87,40 @@ class DashboardController extends Controller
      */
     public function update(Request $request, Produk $produk)
     {
-        //
+        // Validasi data produk utama
+        $rules = [
+            "kategori_id" => "required",
+            "nama_produk" => "required|max:255",
+            "deskripsi" => "required",
+            "harga" => "required|numeric|min:0",
+            "stok" => "required|integer|min:0",
+            "gambar1" => "nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048",
+            "gambar2" => "nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048",
+            "gambar3" => "nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048",
+            "gambar4" => "nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048",
+            "gambar5" => "nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048",
+            "berat" => "required|numeric|min:0",
+            "dimensi" => "nullable",
+            "diskon" => "required|numeric|min:0|max:100",
+            "status" => "required"
+        ];
+
+        // Validasi slug jika diubah
+        if ($request->slug !== $produk->slug) {
+            $rules['slug'] = "required|unique:produks,slug";
+        }
+
+        // Validasi kode_produk jika diubah
+        if ($request->kode_produk !== $produk->kode_produk) {
+            $rules['kode_produk'] = "nullable|unique:produks,kode_produk";
+        }
+
+        $validatedData = $request->validate($rules);
+
+        Produk::where('id', $produk->id)
+            ->update($validatedData);
+
+        return redirect('/dashboard/produk')->with('success', 'Produk berhasil diedit!');
     }
 
     /**

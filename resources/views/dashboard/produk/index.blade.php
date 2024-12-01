@@ -18,6 +18,7 @@
         <tr>
           <th scope="col">No.</th>
           <th scope="col">Nama Produk</th>
+          <th scope="col">Kategori</th>
           <th scope="col">Gambar</th>
           <th scope="col">Kode</th>
           <th scope="col">Deskripsi</th>
@@ -36,6 +37,7 @@
         <tr>
           <td>{{ $loop->iteration }}</td>
           <td>{{ $p->nama_produk }}</td>
+          <td>{{ $p->kategori->nama }}</td>
           <td>{{ $p->gambar1 }}</td>
           <td>{{ $p->kode_produk }}</td>
           <td>{!! $p->deskripsi !!}</td>
@@ -47,7 +49,7 @@
           <td>{{ $p->status }}</td>
           <td>
             <a href="/dashboard/produk/{{ $p->slug }}" class="badge bg-info"><span><i class="bi bi-eye-fill"></i></span></a>
-            <a href="/dashboard/produk/{{ $p->slug }}" class="badge bg-warning"><span><i class="bi bi-pencil-square"></i></span></a>
+            <a href="/dashboard/produk/{{ $p->slug }}/edit" class="badge bg-warning"><span><i class="bi bi-pencil-square"></i></span></a>
             <form action="/dashboard/produk/{{ $p->slug }}" method="POST" class="d-inline">
                 @method('delete')
                 @csrf

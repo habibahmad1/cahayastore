@@ -8,8 +8,11 @@
         <div class="detail-info">
             <div class="edit-produk">
                 <a href="/produk" class="badge bg-warning text-decoration-none my-3"><i class="bi bi-pencil-square"></i> Edit Produk</a>
-                <a href="/produk" class="badge bg-danger text-decoration-none my-3"><i class="bi bi-trash"></i> Hapus Produk </a>
-
+                <form action="/dashboard/produk/{{ $produk->slug }}" method="POST" class="d-inline">
+                    @method('delete')
+                    @csrf
+                    <button class="badge bg-danger border-0" onclick="return confirm('Hapus Produk?')"><span><i class="bi bi-trash"></i></span>Hapus Produk</button>
+                </form>
             </div>
             <h2><a href="/produk/{{ $produk->slug }}" class="text-decoration-none">{{ $produk->nama_produk }}</a></h2>
             <p><b>Kategori</b> : <a href="/kategori/{{ $produk->kategori->slug }}" class="text-decoration-none text-capitalize">{{ $produk->kategori->nama }}</a></p>
