@@ -29,7 +29,7 @@
         <tr>
           <td>{{ $loop->iteration }}</td>
           <td>{{ $p->nama_produk }}</td>
-          <td>{{ $p->gambar }}</td>
+          <td>{{ $p->gambar1 }}</td>
           <td>{{ $p->kode_produk }}</td>
           <td>{{ $p->deskripsi }}</td>
           <td>{{ $p->stok }}</td>

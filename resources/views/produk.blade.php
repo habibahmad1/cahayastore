@@ -31,7 +31,7 @@
         @else
             @foreach ($posts as $produk)
                 <div class="product-card" data-name="LED Fishing Light 1">
-                    <img src="img/1.png" alt="LED Fishing Light 1">
+                    <img src="{{ asset('img/' . $produk->gambar1) }}" alt="LED Fishing Light">
                     <h2><a href="/produk/{{ $produk->slug }}" class="nama-produk">{{ $produk->nama_produk }}</a></h2>
                     <p><b>Kategori</b> : <a href="/kategori/{{ $produk->kategori->slug }}" class="text-decoration-none text-capitalize">{{ $produk->kategori->nama }}</a></p>
                     <p><b>Stok</b> : {{ $produk->stok }}</p>

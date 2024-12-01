@@ -11,9 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('variasi__warnas', function (Blueprint $table) {
+        Schema::create('variasi_warnas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('produk_variasi_id');
             $table->string('warna')->unique();
             $table->timestamps();
         });
@@ -24,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('variasi__warnas');
+        Schema::dropIfExists('variasi_warnas');
     }
 };

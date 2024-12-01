@@ -3,7 +3,7 @@
 <div class="detail-product-card" data-name="LED Fishing Light 1">
     <div class="detail-card">
         <div class="img-detail">
-            <img src="{{ asset('img/' . $produk->gambar) }}" alt="LED Fishing Light">
+            <img src="{{ asset('img/' . $produk->gambar1) }}" alt="LED Fishing Light">
         </div>
         <div class="detail-info">
             <div class="edit-produk">

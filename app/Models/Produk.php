@@ -37,6 +37,11 @@ class Produk extends Model
         return $this->belongsTo(Kategori::class);
     }
 
+    public function variasi()
+    {
+        return $this->hasMany(Produk_Variasi::class);
+    }
+
     public function getRouteKeyName()
     {
         return 'slug';

@@ -8,8 +8,8 @@ class Variasi_Stok extends Model
 {
     protected $guarded = ['id'];
 
-    public function produkVariasi()
+    public function variasi()
     {
-        return $this->belongsTo(Produk_Variasi::class);
+        return $this->hasMany(Produk_Variasi::class);
     }
 }
