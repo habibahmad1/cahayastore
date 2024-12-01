@@ -8,11 +8,11 @@
     <form method="POST" action="/dashboard/produk" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">
-          <label for="nama" class="form-label">Nama Produk</label>
-          <input type="text" class="form-control @error('nama')
+          <label for="nama_produk" class="form-label">Nama Produk</label>
+          <input type="text" class="form-control @error('nama_produk')
               is-invalid
-          @enderror" id="nama" name="nama" autofocus value="{{ old('nama') }}">
-          @error('nama')
+          @enderror" id="nama_produk" name="nama_produk" autofocus value="{{ old('nama_produk') }}">
+          @error('nama_produk')
               <div class="invalid-feedback">
                 {{ $message }}
               </div>
@@ -31,17 +31,17 @@
         </div>
 
         <div class="mb-3">
-          <label for="kategori_id" class="form-label">Kategori</label>
-          <select class="form-select" name="kategori_id" id="kategori_id">
-            @foreach ($kategori as $k)
-            @if (old('kategori_id') === $k)
-                <option value="{{ $k->id }}" selected>{{ $k->nama }}</option>
-            @else
-                <option value="{{ $k->id }}">{{ $k->nama }}</option>
-            @endif
-            @endforeach
-          </select>
+            <label for="kategori_id" class="form-label">Kategori</label>
+            <select class="form-select" name="kategori_id" id="kategori_id">
+                @foreach ($kategori as $k)
+                    <option value="{{ $k->id }}"
+                        {{ old('kategori_id') == $k->id ? 'selected' : '' }}>
+                        {{ $k->nama }}
+                    </option>
+                @endforeach
+            </select>
         </div>
+
 
         <div class="mb-3">
             <label for="kode_produk" class="form-label">Kode Produk</label>
@@ -50,27 +50,27 @@
 
         <div class="mb-3">
             <label for="gambar1" class="form-label">Gambar 1</label>
-            <input class="form-control" type="file" id="gambar1">
+            <input class="form-control" type="file" id="gambar1" name="gambar1">
         </div>
 
         <div class="mb-3">
             <label for="gambar2" class="form-label">Gambar 2</label>
-            <input class="form-control" type="file" id="gambar2">
+            <input class="form-control" type="file" id="gambar2" name="gambar2">
         </div>
 
         <div class="mb-3">
             <label for="gambar3" class="form-label">Gambar 3</label>
-            <input class="form-control" type="file" id="gambar3">
+            <input class="form-control" type="file" id="gambar3" name="gambar3">
         </div>
 
         <div class="mb-3">
             <label for="gambar4" class="form-label">Gambar 4</label>
-            <input class="form-control" type="file" id="gambar4">
+            <input class="form-control" type="file" id="gambar4" name="gambar4">
         </div>
 
         <div class="mb-3">
             <label for="gambar5" class="form-label">Gambar 5</label>
-            <input class="form-control" type="file" id="gambar5">
+            <input class="form-control" type="file" id="gambar5" name="gambar5">
         </div>
 
         <div class="mb-3">
@@ -112,7 +112,7 @@
           @error('deskripsi')
               <p class="text-danger">{{ $message }}</p>
           @enderror
-          <input id="deskripsi" type="hidden" name="deskripsi">
+          <input id="deskripsi" type="hidden" name="deskripsi" value="{{ old('deskripsi') }}">
           <trix-editor input="deskripsi"></trix-editor>
         </div>
         <div class="mb-3">
@@ -147,7 +147,7 @@
 </div>
 
 <script>
-    const title = document.querySelector("#nama");
+    const title = document.querySelector("#nama_produk");
     const slug = document.querySelector("#slug");
 
     title.addEventListener("keyup", function() {

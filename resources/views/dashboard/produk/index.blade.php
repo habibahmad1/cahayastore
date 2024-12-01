@@ -6,6 +6,13 @@
 
   <div class="table-responsive small">
     <a href="/dashboard/produk/create" class="btn btn-primary mb-3">Tambah Produk</a>
+
+    @if (session()->has('success'))
+    <div class="alert alert-success" role="alert">
+        {{ session('success') }}
+      </div>
+    @endif
+
     <table class="table table-striped table-sm">
       <thead>
         <tr>
