@@ -17,4 +17,9 @@ class Kategori extends Model
     {
         return $this->hasMany(Produk::class);
     }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }
