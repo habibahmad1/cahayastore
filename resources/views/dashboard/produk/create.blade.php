@@ -8,7 +8,7 @@
     <form method="POST" action="/dashboard/produk" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">
-          <label for="nama_produk" class="form-label">Nama Produk</label>
+          <label for="nama_produk" class="form-label">Nama Produk <span class="penting">*</span></label>
           <input type="text" class="form-control @error('nama_produk')
               is-invalid
           @enderror" id="nama_produk" name="nama_produk" autofocus value="{{ old('nama_produk') }}">
@@ -32,7 +32,7 @@
         </div>
 
         <div class="mb-3">
-            <label for="kategori_id" class="form-label">Kategori</label>
+            <label for="kategori_id" class="form-label">Kategori <span class="penting">*</span></label>
             <select class="form-select" name="kategori_id" id="kategori_id">
                 @foreach ($kategori as $k)
                     <option value="{{ $k->id }}"
@@ -57,7 +57,7 @@
           </div>
 
         <div class="mb-3">
-            <label for="gambar1" class="form-label">Gambar 1</label>
+            <label for="gambar1" class="form-label">Gambar 1 <span class="penting">*</span></label>
             <input class="form-control @error('gambar1')
               is-invalid
           @enderror" type="file" id="gambar1" name="gambar1" value="{{ old('gambar1') }}">
@@ -117,7 +117,7 @@
         </div>
 
         <div class="mb-3">
-            <label for="stok" class="form-label">Stok Produk</label>
+            <label for="stok" class="form-label">Stok Produk <span class="penting">*</span></label>
             <input type="number" class="form-control @error('stok')
               is-invalid
           @enderror" id="stok" name="stok" value="{{ old('stok') }}">
@@ -129,7 +129,7 @@
         </div>
 
         <div class="mb-3">
-            <label for="berat" class="form-label">Berat Produk</label>
+            <label for="berat" class="form-label">Berat Produk <span class="penting">*</span></label>
             <input type="number" class="form-control @error('berat')
               is-invalid
           @enderror" id="berat" name="berat" value="{{ old('berat') }}">
@@ -153,7 +153,7 @@
         </div>
 
         <div class="mb-3">
-            <label for="diskon" class="form-label">Diskon Produk</label>
+            <label for="diskon" class="form-label">Diskon Produk <span class="penting">*</span></label>
             <input type="number" class="form-control @error('diskon')
               is-invalid
           @enderror" id="diskon" name="diskon" value="{{ old('diskon') }}">
@@ -165,7 +165,7 @@
         </div>
 
         <div class="mb-3">
-            <label for="status" class="form-label">Status Produk</label>
+            <label for="status" class="form-label">Status Produk <span class="penting">*</span></label>
             <select class="form-select" name="status">
                 <option value="tersedia">Tersedia</option>
                 <option value="habis">Habis</option>
@@ -174,7 +174,7 @@
         </div>
 
         <div class="mb-3">
-            <label for="harga" class="form-label">Harga Produk</label>
+            <label for="harga" class="form-label">Harga Produk <span class="penting">*</span></label>
             <input type="number" class="form-control @error('harga')
               is-invalid
           @enderror" id="harga" name="harga" value="{{ old('harga') }}">
@@ -186,7 +186,7 @@
         </div>
 
         <div class="mb-3">
-          <label for="deskripsi" class="form-label">Deskripsi</label>
+          <label for="deskripsi" class="form-label">Deskripsi <span class="penting">*</span></label>
           @error('deskripsi')
               <p class="text-danger">{{ $message }}</p>
           @enderror

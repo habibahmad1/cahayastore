@@ -55,6 +55,15 @@ class DashboardController extends Controller
             "status" => "required"
         ]);
 
+        $gambarFields = ['gambar1', 'gambar2', 'gambar3', 'gambar4', 'gambar5'];
+
+        foreach ($gambarFields as $field) {
+            if ($request->file($field)) {
+                $validatedData[$field] = $request->file($field)->store('gambar');
+            }
+        }
+
+
         Produk::create($validatedData);
 
         return redirect('/dashboard/produk')->with('success', 'Produk berhasil ditambahkan!');

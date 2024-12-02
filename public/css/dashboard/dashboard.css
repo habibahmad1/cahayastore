@@ -8,7 +8,7 @@
     color: #ff8a2a;
 }
 /*
- * Sidebar
+ * Detail Produk
  */
 
 .detail-product-card {
@@ -30,7 +30,6 @@
 
 .detail-card .img-detail {
     max-width: 400px;
-    background-color: #e4e4e4;
     border-radius: 7px;
     margin: 10px;
 }
@@ -59,6 +58,12 @@
 .detail-info h2 a {
     color: #ff8a2a;
 }
+
+/* Info Penting tanda * */
+.penting {
+    color: #ff2d38;
+}
+
 @media (max-width: 768px) {
     .sidebar .offcanvas-lg {
         position: -webkit-sticky;

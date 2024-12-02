@@ -38,7 +38,9 @@
           <td>{{ $loop->iteration }}</td>
           <td>{{ $p->nama_produk }}</td>
           <td>{{ $p->kategori->nama }}</td>
-          <td>{{ $p->gambar1 }}</td>
+          <td>
+            <img src="{{ asset('storage/' . $p->gambar1) }}" alt="Img-Produk" style="max-height: 70px; max-width: 70px; overflow: hidden;  border-radius: 5px;">
+          </td>
           <td>{{ $p->kode_produk }}</td>
           <td>{!! $p->deskripsi !!}</td>
           <td>{{ $p->stok }}</td>
