@@ -13,9 +13,9 @@
       </div>
     @endif
 
-    <table class="table table-striped table-sm">
+    <table class="table table-hover table-sm">
       <thead>
-        <tr>
+        <tr class="table-warning">
           <th scope="col">No.</th>
           <th scope="col">Nama Produk</th>
           <th scope="col">Kategori</th>
@@ -34,13 +34,23 @@
       <tbody>
         @foreach ($produk as $p)
 
-        <tr>
+        <tr class="table-primary">
           <td>{{ $loop->iteration }}</td>
           <td>{{ $p->nama_produk }}</td>
           <td>{{ $p->kategori->nama }}</td>
           <td>
-            <img src="{{ asset('storage/' . $p->gambar1) }}" alt="Img-Produk" style="max-height: 70px; max-width: 70px; overflow: hidden;  border-radius: 5px;">
-          </td>
+            @php
+                $gambarFields = ['gambar1', 'gambar2', 'gambar3', 'gambar4', 'gambar5'];
+            @endphp
+
+            @foreach ($gambarFields as $field)
+                @if (!empty($p->$field))
+                    <img src="{{ asset('storage/' . $p->$field) }}" alt="Img-Produk"
+                         style="max-height: 70px; max-width: 70px; overflow: hidden; border-radius: 5px; margin-right: 5px;" class="mb-2">
+                @endif
+            @endforeach
+        </td>
+
           <td>{{ $p->kode_produk }}</td>
           <td>{!! $p->deskripsi !!}</td>
           <td>{{ $p->stok }}</td>

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Storage;
+
 use App\Models\Produk;
 use App\Models\Kategori;
 use App\Models\Produk_Variasi;
@@ -126,17 +128,42 @@ class DashboardController extends Controller
 
         $validatedData = $request->validate($rules);
 
+        $gambarFields = ['gambar1', 'gambar2', 'gambar3', 'gambar4', 'gambar5'];
+
+        foreach ($gambarFields as $field) {
+            if ($request->file($field)) {
+                // Menghapus gambar lama jika ada
+                if ($produk->$field) {
+                    Storage::delete($produk->$field); // Hapus file gambar lama dari storage
+                }
+                // Menyimpan gambar baru
+                $validatedData[$field] = $request->file($field)->store('gambar');
+            }
+        }
+
+        // Update data produk
         Produk::where('id', $produk->id)
             ->update($validatedData);
 
         return redirect('/dashboard/produk')->with('success', 'Produk berhasil diedit!');
     }
 
+
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(Produk $produk)
     {
+        // Daftar gambar yang terkait dengan produk
+        $gambarFields = ['gambar1', 'gambar2', 'gambar3', 'gambar4', 'gambar5'];
+
+        // Hapus gambar-gambar yang terkait dengan produk, jika ada
+        foreach ($gambarFields as $field) {
+            if ($produk->$field) {
+                Storage::delete($produk->$field);  // Hapus gambar dari storage
+            }
+        }
+
         Produk::destroy($produk->id);
 
         return redirect('/dashboard/produk')->with('success', 'Produk berhasil dihapus!');

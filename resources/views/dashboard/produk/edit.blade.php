@@ -57,64 +57,94 @@
           @enderror
           </div>
 
-        <div class="mb-3">
-            <label for="gambar1" class="form-label">Gambar 1</label>
-            <input class="form-control @error('gambar1')
-              is-invalid
-          @enderror" type="file" id="gambar1" name="gambar1" value="{{ old('gambar1') }}">
-          @error('gambar1')
-              <div class="invalid-feedback">
-                {{ $message }}
-              </div>
-          @enderror
+          <div class="mb-3">
+            <label for="gambar1" class="form-label">Gambar 1 <span class="penting">*</span></label>
+
+            @if ($produk->gambar1)
+                <img src="{{ asset('storage/' . $produk->gambar1) }}" class="img-preview-1 img-fluid mb-3 d-block" style="max-height: 100px">
+            @else
+                <!-- Preview Gambar 1 -->
+                <img class="img-preview-1 img-fluid mb-3">
+            @endif
+            <input class="form-control @error('gambar1') is-invalid @enderror" type="file" id="gambar1" name="gambar1" onchange="previewImg('gambar1', 'img-preview-1')">
+
+            @error('gambar1')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+            @enderror
         </div>
 
         <div class="mb-3">
             <label for="gambar2" class="form-label">Gambar 2</label>
-            <input class="form-control @error('gambar2')
-              is-invalid
-          @enderror" type="file" id="gambar2" name="gambar2" value="{{ old('gambar2') }}">
+
+            @if ($produk->gambar2)
+                <img src="{{ asset('storage/' . $produk->gambar2) }}" class="img-preview-2 img-fluid mb-3 d-block" style="max-height: 100px">
+            @else
+                <!-- Preview Gambar 2 -->
+                <img class="img-preview-2 img-fluid mb-3" style="max-height: 100px">
+            @endif
+            <input class="form-control @error('gambar2') is-invalid @enderror" type="file" id="gambar2" name="gambar2" onchange="previewImg('gambar2', 'img-preview-2')">
+
             @error('gambar2')
-              <div class="invalid-feedback">
-                {{ $message }}
-              </div>
-          @enderror
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+            @enderror
         </div>
 
         <div class="mb-3">
             <label for="gambar3" class="form-label">Gambar 3</label>
-            <input class="form-control @error('gambar3')
-              is-invalid
-          @enderror" type="file" id="gambar3" name="gambar3" value="{{ old('gambar3') }}">
-          @error('gambar3')
-          <div class="invalid-feedback">
-            {{ $message }}
-          </div>
-          @enderror
+
+            @if ($produk->gambar3)
+                <img src="{{ asset('storage/' . $produk->gambar3) }}" class="img-preview-3 img-fluid mb-3 d-block" style="max-height: 100px">
+            @else
+                <!-- Preview Gambar 3 -->
+                <img class="img-preview-3 img-fluid mb-3" style="max-height: 100px">
+            @endif
+            <input class="form-control @error('gambar3') is-invalid @enderror" type="file" id="gambar3" name="gambar3" onchange="previewImg('gambar3', 'img-preview-3')">
+
+            @error('gambar3')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+            @enderror
         </div>
 
         <div class="mb-3">
             <label for="gambar4" class="form-label">Gambar 4</label>
-            <input class="form-control @error('gambar4')
-              is-invalid
-          @enderror" type="file" id="gambar4" name="gambar4" value="{{ old('gambar4') }}">
-          @error('gambar4')
-          <div class="invalid-feedback">
-            {{ $message }}
-          </div>
-          @enderror
+
+            @if ($produk->gambar4)
+                <img src="{{ asset('storage/' . $produk->gambar4) }}" class="img-preview-4 img-fluid mb-3 d-block" style="max-height: 100px">
+            @else
+                <!-- Preview Gambar 4 -->
+                <img class="img-preview-4 img-fluid mb-3" style="max-height: 100px">
+            @endif
+            <input class="form-control @error('gambar4') is-invalid @enderror" type="file" id="gambar4" name="gambar4" onchange="previewImg('gambar4', 'img-preview-4')">
+
+            @error('gambar4')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+            @enderror
         </div>
 
         <div class="mb-3">
             <label for="gambar5" class="form-label">Gambar 5</label>
-            <input class="form-control @error('gambar5')
-              is-invalid
-          @enderror" type="file" id="gambar5" name="gambar5" value="{{ old('gambar5') }}">
-          @error('gambar5')
-          <div class="invalid-feedback">
-            {{ $message }}
-          </div>
-          @enderror
+
+            @if ($produk->gambar5)
+                <img src="{{ asset('storage/' . $produk->gambar5) }}" class="img-preview-5 img-fluid mb-3 d-block" style="max-height: 100px">
+            @else
+                <!-- Preview Gambar 5 -->
+                <img class="img-preview-5 img-fluid mb-3" style="max-height: 100px">
+            @endif
+            <input class="form-control @error('gambar5') is-invalid @enderror" type="file" id="gambar5" name="gambar5" onchange="previewImg('gambar5', 'img-preview-5')">
+
+            @error('gambar5')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+            @enderror
         </div>
 
         <div class="mb-3">
@@ -168,10 +198,11 @@
         <div class="mb-3">
             <label for="status" class="form-label">Status Produk</label>
             <select class="form-select" name="status">
-                <option value="tersedia">Tersedia</option>
-                <option value="habis">Habis</option>
-                <option value="pre-order">Pre-Order</option>
-              </select>
+                <option value="tersedia" {{ old('status', $produk->status) == 'tersedia' ? 'selected' : '' }}>Tersedia</option>
+                <option value="habis" {{ old('status', $produk->status) == 'habis' ? 'selected' : '' }}>Habis</option>
+                <option value="pre-order" {{ old('status', $produk->status) == 'pre-order' ? 'selected' : '' }}>Pre-Order</option>
+            </select>
+
         </div>
 
         <div class="mb-3">
@@ -284,6 +315,27 @@
         }
     }
 });
+
+function previewImg(inputId, previewClass) {
+    const image = document.querySelector('#' + inputId); // Mengambil input berdasarkan ID
+    const imagePreview = document.querySelector('.' + previewClass); // Mengambil elemen preview berdasarkan class
+
+    // Pastikan elemen preview terlihat
+    imagePreview.style.display = 'block';
+
+    // Membaca file yang dipilih
+    const file = image.files[0];
+    if (file) {
+        const reader = new FileReader();
+
+        reader.onload = function(event) {
+            // Set src dari preview ke file yang dipilih
+            imagePreview.src = event.target.result;
+        }
+
+        reader.readAsDataURL(file);
+    }
+}
 
 </script>
 
