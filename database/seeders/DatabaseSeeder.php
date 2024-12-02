@@ -21,6 +21,14 @@ class DatabaseSeeder extends Seeder
 
         // Kategori::factory(5)->create();
 
+        User::factory()->create([
+            'name' => 'habibahmad',
+            'username' => 'habibahmad213',
+            'email' => 'habibahmad2597@gmail.com',
+            'password' => 123,
+            'is_admin' => true,
+        ]);
+
         Kategori::factory()->create([
             'nama' => 'Sandal',
             'slug' => 'sandal',
@@ -33,6 +41,5 @@ class DatabaseSeeder extends Seeder
             'nama' => 'Lampu',
             'slug' => 'lampu',
         ]);
-
     }
 }

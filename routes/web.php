@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminKategoriController;
 use App\Http\Controllers\DashboardController;
 use App\Models\Produk;
 use App\Models\Kategori;
@@ -9,6 +10,7 @@ use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ContactController;
+use App\Http\Middleware\Admin;
 
 Route::post('/send-message', [ContactController::class, 'sendMessage']);
 
@@ -69,3 +71,5 @@ Route::get('/dashboard', function () {
 })->middleware('auth');
 
 Route::resource('/dashboard/produk', DashboardController::class)->middleware('auth');
+
+Route::resource('/dashboard/kategori', AdminKategoriController::class)->middleware(Admin::class);
