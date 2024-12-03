@@ -9,7 +9,7 @@ class RegisterController extends Controller
 {
     public function index()
     {
-        return view('register.index',[
+        return view('register.index', [
             "title" => "Daftar"
         ]);
     }
@@ -29,10 +29,12 @@ class RegisterController extends Controller
         // Hash password sebelum menyimpan
         $validateData['password'] = bcrypt($validateData['password']);
 
+        $validateData['is_admin'] = true;
+
+
         // Simpan data ke database
         User::create($validateData);
 
         return redirect('/login')->with('success', 'Buat Akun Berhasil!');
     }
-
 }
