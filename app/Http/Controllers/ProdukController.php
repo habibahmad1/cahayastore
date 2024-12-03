@@ -8,18 +8,19 @@ use App\Models\Kategori;
 
 class ProdukController extends Controller
 {
-    public function index(){
-
-        return view('produk',[
-            "title" => "Produk",
-            "posts" => Produk::latest()->filter(request(['search','kategori']))->paginate(10)->withQueryString(),
+    public function index()
+    {
+        return view('produk', [
+            "title" => "Semua Produk",
+            "posts" => Produk::latest()->filter(request(['search', 'kategori']))->paginate(10)->withQueryString(),
             "kategori" => Kategori::all()
         ]);
     }
 
-    public function show(Produk $produkid){
+    public function show(Produk $produkid)
+    {
 
-        return view('detailProduk',[
+        return view('detailProduk', [
             "title" => "Detail Produk",
             "post" => $produkid
         ]);

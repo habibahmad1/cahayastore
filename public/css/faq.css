@@ -133,11 +133,12 @@
 @media (max-width: 600px) {
     /* Gaya lebih spesifik untuk layar yang sangat kecil */
     .card-faq {
-        width: 220px;
+        width:100%;
     }
 
     .card-faq h2 {
         font-size: 15px;
+        margin: 5px;
     }
 
     .card-faq p {

@@ -18,13 +18,14 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->string('kode_produk')->nullable();
             $table->text('deskripsi');
-            $table->decimal('harga', 10, 2);
+            $table->integer('harga');
             $table->integer('stok')->default(10);
             $table->string('gambar1');
             $table->string('gambar2')->nullable();
             $table->string('gambar3')->nullable();
             $table->string('gambar4')->nullable();
             $table->string('gambar5')->nullable();
+            $table->string('video')->nullable();
             $table->float('berat')->nullable();
             $table->string('dimensi')->nullable();
             $table->integer('diskon')->default(0);

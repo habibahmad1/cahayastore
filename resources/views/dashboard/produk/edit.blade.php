@@ -57,14 +57,14 @@
           @enderror
           </div>
 
-          <div class="mb-3">
+                <!-- Gambar 1 -->
+        <div class="mb-3">
             <label for="gambar1" class="form-label">Gambar 1 <span class="penting">*</span></label>
 
             @if ($produk->gambar1)
-                <img src="{{ asset('storage/' . $produk->gambar1) }}" class="img-preview-1 img-fluid mb-3 d-block" style="max-height: 100px">
+                <img src="{{ asset('storage/' . $produk->gambar1) }}" class="img-preview-1 img-fluid mb-3 d-block" style="max-height: 200px">
             @else
-                <!-- Preview Gambar 1 -->
-                <img class="img-preview-1 img-fluid mb-3">
+                <img class="img-preview-1 img-fluid mb-3 d-none" style="max-height: 200px">
             @endif
             <input class="form-control @error('gambar1') is-invalid @enderror" type="file" id="gambar1" name="gambar1" onchange="previewImg('gambar1', 'img-preview-1')">
 
@@ -75,14 +75,14 @@
             @enderror
         </div>
 
+        <!-- Gambar 2 -->
         <div class="mb-3">
             <label for="gambar2" class="form-label">Gambar 2</label>
 
             @if ($produk->gambar2)
-                <img src="{{ asset('storage/' . $produk->gambar2) }}" class="img-preview-2 img-fluid mb-3 d-block" style="max-height: 100px">
+                <img src="{{ asset('storage/' . $produk->gambar2) }}" class="img-preview-2 img-fluid mb-3 d-block" style="max-height: 200px">
             @else
-                <!-- Preview Gambar 2 -->
-                <img class="img-preview-2 img-fluid mb-3" style="max-height: 100px">
+                <img class="img-preview-2 img-fluid mb-3 d-none" style="max-height: 200px">
             @endif
             <input class="form-control @error('gambar2') is-invalid @enderror" type="file" id="gambar2" name="gambar2" onchange="previewImg('gambar2', 'img-preview-2')">
 
@@ -93,14 +93,14 @@
             @enderror
         </div>
 
+        <!-- Gambar 3 -->
         <div class="mb-3">
             <label for="gambar3" class="form-label">Gambar 3</label>
 
             @if ($produk->gambar3)
-                <img src="{{ asset('storage/' . $produk->gambar3) }}" class="img-preview-3 img-fluid mb-3 d-block" style="max-height: 100px">
+                <img src="{{ asset('storage/' . $produk->gambar3) }}" class="img-preview-3 img-fluid mb-3 d-block" style="max-height: 200px">
             @else
-                <!-- Preview Gambar 3 -->
-                <img class="img-preview-3 img-fluid mb-3" style="max-height: 100px">
+                <img class="img-preview-3 img-fluid mb-3 d-none" style="max-height: 200px">
             @endif
             <input class="form-control @error('gambar3') is-invalid @enderror" type="file" id="gambar3" name="gambar3" onchange="previewImg('gambar3', 'img-preview-3')">
 
@@ -111,14 +111,14 @@
             @enderror
         </div>
 
+        <!-- Gambar 4 -->
         <div class="mb-3">
             <label for="gambar4" class="form-label">Gambar 4</label>
 
             @if ($produk->gambar4)
-                <img src="{{ asset('storage/' . $produk->gambar4) }}" class="img-preview-4 img-fluid mb-3 d-block" style="max-height: 100px">
+                <img src="{{ asset('storage/' . $produk->gambar4) }}" class="img-preview-4 img-fluid mb-3 d-block" style="max-height: 200px">
             @else
-                <!-- Preview Gambar 4 -->
-                <img class="img-preview-4 img-fluid mb-3" style="max-height: 100px">
+                <img class="img-preview-4 img-fluid mb-3 d-none" style="max-height: 200px">
             @endif
             <input class="form-control @error('gambar4') is-invalid @enderror" type="file" id="gambar4" name="gambar4" onchange="previewImg('gambar4', 'img-preview-4')">
 
@@ -129,14 +129,14 @@
             @enderror
         </div>
 
+        <!-- Gambar 5 -->
         <div class="mb-3">
             <label for="gambar5" class="form-label">Gambar 5</label>
 
             @if ($produk->gambar5)
-                <img src="{{ asset('storage/' . $produk->gambar5) }}" class="img-preview-5 img-fluid mb-3 d-block" style="max-height: 100px">
+                <img src="{{ asset('storage/' . $produk->gambar5) }}" class="img-preview-5 img-fluid mb-3 d-block" style="max-height: 200px">
             @else
-                <!-- Preview Gambar 5 -->
-                <img class="img-preview-5 img-fluid mb-3" style="max-height: 100px">
+                <img class="img-preview-5 img-fluid mb-3 d-none" style="max-height: 200px">
             @endif
             <input class="form-control @error('gambar5') is-invalid @enderror" type="file" id="gambar5" name="gambar5" onchange="previewImg('gambar5', 'img-preview-5')">
 
@@ -146,6 +146,31 @@
                 </div>
             @enderror
         </div>
+
+        <!-- Video -->
+        <div class="mb-3">
+            <label for="video" class="form-label">Video</label>
+
+            @if ($produk->video)
+                <div class="video-preview mb-3 d-block">
+                    <video width="200" controls>
+                        <source src="{{ asset('storage/' . $produk->video) }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            @else
+                <div class="video-preview-placeholder mb-3 d-none" style="max-height: 200px;"></div>
+            @endif
+
+            <input class="form-control @error('video') is-invalid @enderror" type="file" id="video" name="video" onchange="previewVideo('video', 'video-preview')">
+
+            @error('video')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+            @enderror
+        </div>
+
 
         <div class="mb-3">
             <label for="stok" class="form-label">Stok Produk</label>
@@ -316,26 +341,40 @@
     }
 });
 
+// Fungsi untuk preview gambar
 function previewImg(inputId, previewClass) {
-    const image = document.querySelector('#' + inputId); // Mengambil input berdasarkan ID
-    const imagePreview = document.querySelector('.' + previewClass); // Mengambil elemen preview berdasarkan class
+    const input = document.getElementById(inputId);
+    const preview = document.querySelector(`.${previewClass}`);
+    const file = input.files[0];
 
-    // Pastikan elemen preview terlihat
-    imagePreview.style.display = 'block';
-
-    // Membaca file yang dipilih
-    const file = image.files[0];
     if (file) {
         const reader = new FileReader();
-
-        reader.onload = function(event) {
-            // Set src dari preview ke file yang dipilih
-            imagePreview.src = event.target.result;
-        }
-
-        reader.readAsDataURL(file);
+        reader.onload = function(e) {
+            preview.src = e.target.result; // Set src untuk gambar preview
+            preview.classList.remove('d-none'); // Menampilkan gambar preview
+        };
+        reader.readAsDataURL(file); // Membaca file gambar sebagai DataURL
+    } else {
+        preview.classList.add('d-none'); // Sembunyikan gambar preview jika tidak ada file
     }
 }
+
+// Fungsi untuk preview video
+function previewVideo(inputId, previewClass) {
+    const input = document.getElementById(inputId);
+    const preview = document.querySelector(`.${previewClass}`);
+    const file = input.files[0];
+
+    if (file) {
+        const videoPreview = preview.querySelector('video');
+        const objectURL = URL.createObjectURL(file);
+        videoPreview.src = objectURL; // Set src untuk video preview
+        preview.classList.remove('d-none'); // Menampilkan video preview
+    } else {
+        preview.classList.add('d-none'); // Sembunyikan video preview jika tidak ada file
+    }
+}
+
 
 </script>
 
