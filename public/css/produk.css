@@ -37,13 +37,12 @@ html {
 
 .product-card {
     width: 400px;
-    max-height: 600px;
+    max-height: 700px;
     display: flex;
     justify-content: space-evenly;
     flex-direction: column;
     background-color: #fff;
     margin: 10px 0;
-    box-shadow: 3px 3px 3px #cccccb;
     transition: all 0.7s;
     position: relative;
 }
@@ -99,10 +98,6 @@ html {
 
 .product-card p {
     margin: 0;
-}
-
-.product-card:hover {
-    border: 2px solid #ff8d58;
 }
 
 .product-card img {
