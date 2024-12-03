@@ -2,9 +2,10 @@
 
 
 .categories {
-    display: flex;
     justify-content: center;
-    margin-top: 110px;
+    align-items: center;
+    flex-wrap: wrap;
+    display: flex;
     gap: 20px;
     padding: 30px;
     background: linear-gradient(to right, #000000e8, #2c3e50, #000000);
@@ -161,41 +162,80 @@
 
 /* ukuran hp */
 @media screen and (max-width: 768px) {
-    .card-orange {
-        flex-direction: column;
-        margin: 20px;
-    }
 
     .card-orange .card {
-        width: auto;
-        height: auto;
-        padding: 20px;
-        margin: 10px 0;
+        width: 100%;
+        height: 155px;
+        border-radius: 5px;
+        font-size: 15px;
+        justify-content: center;
+        padding: 30px;
+        margin: 10px;
     }
+
+    .card-orange .card i {
+        display: flex;
+        justify-content: center;
+        font-size:  30px;
+    }
+
+    .keunggulan .slogan {
+        font-size: 25px;
+        text-align: center;
+        margin: 25px;
+        margin-top: 35px;
+    }
+
 }
 
+
 @media (max-width: 480px) {
-    .card-orange {
-        flex-direction: column;
-        margin: 15px;
+    .category-description h2 {
+        margin-bottom: 10px;
+        margin-top: 10px;
+        font-size: 20px;
+    }
+
+    .category-description {
+        padding: 20px;
+        font-size: 15px;
     }
 
     .card-orange .card {
-        width: auto;
-        height: auto;
-        padding: 15px;
-        margin: 8px 0;
-    }
-
-    .categories {
-        margin-top: 60px;
+        width: 100%;
+        height: 155px;
+        border-radius: 5px;
+        font-size: 15px;
+        justify-content: center;
         padding: 30px;
+        margin: 10px;
     }
 
-    .category-button {
-        padding: 10px 20px;
-        font-size: 70%;
-        align-items: center;
-
+    .card-orange .card i {
+        display: flex;
+        justify-content: center;
+        font-size: 25px;
     }
+
+
+    .keunggulan {
+        padding: 0px;
+    }
+
+    .keunggulan .slogan {
+        font-size: 20px;
+        text-align: center;
+        margin: 25px;
+        margin-top: 35px;
+    }
+
+    .keunggulan .card-keunggulan .list-keunggulan {
+        margin: 0px;
+        padding: 0px;
+        width: 200px;
+        height: 400px;
+        text-align: center;
+    }
+
+
 }
