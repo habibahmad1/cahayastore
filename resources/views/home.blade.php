@@ -251,7 +251,7 @@
             <h2 id="promo-title"></h2>
             <p id="countdown-timer"></p>
             <p id="promo-description"></p>
-            <a id="promo-link" href="#" class="promo-btn">Belanja Sekarang</a>
+            <a id="promo-link" href="#" class="promo-btn">Lihat Produk</a>
         </div>
     </div>
 </div>
