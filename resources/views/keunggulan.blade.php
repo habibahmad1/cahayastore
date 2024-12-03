@@ -116,5 +116,9 @@
     <p>Sandal nyaman dan stylish untuk segala suasana.</p>
 </div>
 
+<div id="scrollTopButton" class="scroll-to-top" onclick="scrollToTop()">
+    ↑
+</div>
+
   <script src="js/keunggulan.js"></script>
 @endsection

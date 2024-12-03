@@ -71,6 +71,7 @@
     flex-direction: column;
 }
 
+
 .faq h1 {
     display: inline;
     color: #fff;
@@ -84,6 +85,9 @@
 }
 
 .card-faq {
+    transform: translateY(50px);
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -94,7 +98,6 @@
     padding: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     cursor: pointer;
-    transition: transform 0.3s ease; /* Animasi untuk efek zoom saat hover */
 }
 
 .card-faq:hover {
@@ -113,12 +116,52 @@
     margin-top: 10px;
     max-height: 0;
     overflow: hidden;
+
+    visibility: hidden; /* Elemen tidak terlihat tetapi masih ada dalam DOM */
+    opacity: 0; /* Tidak terlihat */
+    max-height: 0;
+    transition: all 0.3s ease; /* Transisi halus */
 }
 
 .card-faq.active p {
     display: block;
     max-height: 400px; /* Mengatur tinggi maksimal untuk transisi animasi */
     padding: 10px 0; /* Menambahkan padding saat teks muncul */
+
+    visibility: visible; /* Elemen terlihat */
+    opacity: 1; /* Sepenuhnya terlihat */
+}
+
+
+/* scrol langung ke atas */
+.scroll-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(to right, #ff7e5f, #feb47b);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+}
+
+.scroll-to-top:hover {
+    transform: scale(1.1);
+    background: linear-gradient(to right, #feb47b, #ff7e5f);
+}
+
+.scroll-to-top.visible {
+    opacity: 1;
+    visibility: visible;
 }
 
 
@@ -136,19 +179,6 @@
         width:100%;
     }
 
-    .card-faq h2 {
-        font-size: 15px;
-        margin: 5px;
-    }
-
-    .card-faq p {
-        font-size: 15px;
-    }
-
-    .faq h2, .faq p {
-        font-size: 12px;
-    }
-
     .faq-title {
         margin-right: 20px;
         margin-left: 20px;
@@ -161,7 +191,7 @@
     }
 
     .page-content h2 {
-        font-size: 15px;
+        font-size: 18px;
     }
 
     .category-container {
