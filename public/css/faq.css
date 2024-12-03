@@ -25,7 +25,7 @@
 
 .page-content {
     display: none;
-    animation: fadeIn 0.5s ease;
+    animation: fadeIn 3s ease;
 }
 
 .page-content p, h2 {
@@ -130,14 +130,15 @@
 
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
     /* Gaya lebih spesifik untuk layar yang sangat kecil */
     .card-faq {
-        width: 220px;
+        width:100%;
     }
 
     .card-faq h2 {
         font-size: 15px;
+        margin: 5px;
     }
 
     .card-faq p {
@@ -149,12 +150,14 @@
     }
 
     .faq-title {
-        margin: 10px;
+        margin-right: 20px;
+        margin-left: 20px;
     }
 
     .page-content p {
         font-size: 15px;
         margin: 15px;
+        padding: 35px;
     }
 
     .page-content h2 {
