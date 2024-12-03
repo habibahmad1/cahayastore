@@ -107,9 +107,9 @@
                     Shopee
                 </a>
                 <ul class="dropdown">
-                    <li><a href="https://shopee.co.id/toko1" target="_blank">Toko 1</a></li>
-                    <li><a href="https://shopee.co.id/toko2" target="_blank">Toko 2</a></li>
-                    <li><a href="https://shopee.co.id/toko2" target="_blank">Toko 3</a></li>
+                    <li><a href="https://shopee.co.id/cahayacoffee?uls_trackid=51daa06t031m&utm_campaign=-&utm_content=product&utm_medium=affiliates&utm_source=an_11345740520&utm_term=c6qjdy3fyvo1" target="_blank">Toko 1</a></li>
+                    <li><a href="https://shopee.co.id/cahayasetiaelectric?uls_trackid=51daa0bm004o&utm_campaign=-&utm_content=product&utm_medium=affiliates&utm_source=an_11345740520&utm_term=c6qje35g8wrf" target="_blank">Toko 2</a></li>
+                    <li><a href="https://shopee.co.id/cahayasetiastore_?uls_trackid=51daa0hi0145&utm_campaign=-&utm_content=product&utm_medium=affiliates&utm_source=an_11345740520&utm_term=c6qje8cpgeqm" target="_blank">Toko 3</a></li>
                 </ul>
             </li>
             <li>
@@ -118,8 +118,9 @@
                     Tokopedia
                 </a>
                 <ul class="dropdown">
-                    <li><a href="https://tokopedia.com/toko1" target="_blank">Toko 1</a></li>
-                    <li><a href="https://tokopedia.com/toko2" target="_blank">Toko 2</a></li>
+                    <li><a href="https://www.tokopedia.com/cahayacenterid" target="_blank">Toko 1</a></li>
+                    <li><a href="https://www.tokopedia.com/cahayasetiastore" target="_blank">Toko 2</a></li>
+                    <li><a href="https://www.tokopedia.com/cahayasetiaelektric" target="_blank">Toko 3</a></li>
                 </ul>
             </li>
             <li>
@@ -138,10 +139,10 @@
                     TikTok
                 </a>
                 <ul class="dropdown">
-                    <li><a href="https://tiktok.com/@toko1" target="_blank">Toko 1</a></li>
-                    <li><a href="https://tiktok.com/@toko2" target="_blank">Toko 2</a></li>
-                    <li><a href="https://tiktok.com/@toko3" target="_blank">Toko 3</a></li>
-                    <li><a href="https://tiktok.com/@toko4" target="_blank">Toko 4</a></li>
+                    <li><a href="https://www.tiktok.com/@cahayacoffee.id?is_from_webapp=1&sender_device=pc" target="_blank">Toko 1</a></li>
+                    <li><a href="https://www.tiktok.com/@cahayacenterid1?is_from_webapp=1&sender_device=pc" target="_blank">Toko 2</a></li>
+                    <li><a href="https://www.tiktok.com/@cahayacenterid1?is_from_webapp=1&sender_device=pc" target="_blank">Toko 3</a></li>
+                    <li><a href="https://www.tiktok.com/@cahayasbeautyskin?_t=8rtfW4SFX9D&_r=1" target="_blank">Toko 4</a></li>
                 </ul>
             </li>
             <li>
