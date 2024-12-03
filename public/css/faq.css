@@ -150,7 +150,8 @@
     }
 
     .faq-title {
-        margin: 10px;
+        margin-right: 20px;
+        margin-left: 20px;
     }
 
     .page-content p {
