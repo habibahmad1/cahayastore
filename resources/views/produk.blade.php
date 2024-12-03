@@ -18,9 +18,11 @@
 
 <div class="kategori-list">
     @foreach ($kategori as $k)
-    <a href="/kategori/{{ $k->slug }}" class="text-capitalize">{{ $k->nama }}</a>
+    <a href="/kategori/{{ $k->slug }}" data-aos="fade-up"
+        data-aos-duration="3000" class="text-capitalize">{{ $k->nama }}</a>
     @endforeach
-    <a href="/allkategori">All Kategori</a>
+    <a href="/allkategori" data-aos="fade-up"
+    data-aos-duration="3000">All Kategori</a>
 </div>
 
 <!-- Kontainer Produk -->
@@ -33,7 +35,7 @@
             <p class="text-center fs-4">Tidak ada produk yang ditemukan.</p>
         @else
             @foreach ($posts as $produk)
-                <div class="product-card" data-name="img-produk">
+                <div class="product-card" data-name="img-produk"  data-aos="flip-left" data-aos-duration="2000">
                     <div class="kategori-produk">
                         <p><a href="/kategori/{{ $produk->kategori->slug }}" class="text-decoration-none text-capitalize text-white">{{ $produk->kategori->nama }} <i class="fa-solid fa-tag"></i></a></p>
                     </div>
