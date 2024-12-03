@@ -1,12 +1,11 @@
 .category-button {
     background: linear-gradient(to right, #ff7e5f, #feb47b);
     color: #fff;
-    padding: 15px 30px;
+    padding: 10px 25px;
     border: none;
-    border-radius: 30px;
-    font-size: 18px;
+    border-radius: 25px;
     cursor: pointer;
-    margin: 10px;
+    margin: 5px;
     transition: transform 0.3s ease, background 0.3s ease;
 }
 
@@ -161,5 +160,11 @@
     .page-content h2 {
         font-size: 15px;
     }
+
+    .category-container {
+        gap: 10px;
+        margin: 25px;
+    }
+
 
 }
