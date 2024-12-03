@@ -1,14 +1,9 @@
 @extends('layouts.main')
 
 @section('container')
-<div class="kategori-list">
-    @foreach ($kategori as $k)
-    <a href="/kategori/{{ $k->slug }}" class="text-capitalize">{{ $k->nama }}</a>
-    @endforeach
-    <a href="/allkategori">All Kategori</a>
-</div>
 
-<h1 class="text-center mb-4">Semua Produk</h1>
+
+<h1 class="text-center mb-4" style="padding-top: 80px">Semua Produk</h1>
 
 <div class="row justify-content-center px-4">
     <div class="col-lg-8 pencarian">
@@ -19,6 +14,13 @@
             </div>
         </form>
     </div>
+</div>
+
+<div class="kategori-list">
+    @foreach ($kategori as $k)
+    <a href="/kategori/{{ $k->slug }}" class="text-capitalize">{{ $k->nama }}</a>
+    @endforeach
+    <a href="/allkategori">All Kategori</a>
 </div>
 
 <!-- Kontainer Produk -->
@@ -39,7 +41,7 @@
                     <div class="produk-info">
                         <h5><a href="/produk/{{ $produk->slug }}" class="nama-produk">{{ $produk->nama_produk }}</a></h5>
                         <p><span class="btn btn-warning text-danger"><i class="fa-solid fa-fire"></i> Diskon : {{ $produk->diskon }}% </span></p>
-                        <p><i class="fa-solid fa-truck-fast" style="color: #7bdb87"></i> Kab.Tangerang</p>
+                        <p><i class="fa-solid fa-truck-fast" style="color: #2fd946"></i> Kab.Tangerang</p>
                         <p><i class="fa-solid fa-store" style="color: #04b4c4"></i> Cahayacenterid</p>
                         <h4><b>Harga : Rp {{ number_format($produk->harga, 0, ',', '.') }}</b></h4>
                     </div>
