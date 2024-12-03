@@ -48,15 +48,15 @@
     });
 
 
-    // Fungsi untuk scroll ke atas
+// Fungsi untuk scroll ke atas
 function scrollToTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// Tampilkan tombol saat posisi scroll di bawah
+// Tampilkan atau sembunyikan tombol saat pengguna menggulir
 window.addEventListener('scroll', () => {
     const scrollTopButton = document.getElementById('scrollTopButton');
-    if (window.scrollY > 200) { // Sesuaikan nilai ini dengan kebutuhan
+    if (window.scrollY > 200) { // Tampilkan tombol jika scroll melebihi 200px
         scrollTopButton.classList.add('visible');
     } else {
         scrollTopButton.classList.remove('visible');

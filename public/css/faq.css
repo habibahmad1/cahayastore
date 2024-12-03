@@ -136,44 +136,49 @@
 /* scrol langung ke atas */
 .scroll-to-top {
     position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 50px;
-    height: 50px;
-    background: linear-gradient(to right, #ff7e5f, #feb47b);
-    color: white;
-    border-radius: 50%;
+    bottom: 20px; /* Jarak dari bawah layar */
+    right: 20px; /* Jarak dari kanan layar */
+    width: 40px; /* Ukuran tombol */
+    height: 40px;
+    background: rgba(0, 0, 0, 0.6); /* Warna background dengan transparansi */
+    color: white; /* Warna teks/icon */
+    border-radius: 50%; /* Membuat tombol bulat */
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 24px;
+    font-size: 20px; /* Ukuran icon */
     cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Efek bayangan */
+    opacity: 0; /* Default: tidak terlihat */
+    visibility: hidden; /* Tidak terlihat saat tidak aktif */
+    transition: all 0.3s ease; /* Transisi untuk efek kemunculan */
+    z-index: 1000; /* Selalu berada di atas elemen lain */
 }
 
 .scroll-to-top:hover {
-    transform: scale(1.1);
-    background: linear-gradient(to right, #feb47b, #ff7e5f);
+    background: rgba(0, 0, 0, 0.8); /* Sedikit lebih gelap saat hover */
+    transform: scale(1.1); /* Efek zoom saat hover */
 }
 
 .scroll-to-top.visible {
-    opacity: 1;
+    opacity: 1; /* Muncul saat visible */
     visibility: visible;
 }
 
-
 @media (max-width: 768px) {
-    /* Gaya khusus untuk layar kecil seperti ponsel */
-    .card-faq {
-        width: 300px;
+    /* Penyesuaian untuk perangkat mobile */
+    .scroll-to-top {
+        width: 35px; /* Ukuran lebih kecil untuk mobile */
+        height: 35px;
+        font-size: 18px; /* Ukuran icon lebih kecil */
+        bottom: 15px; /* Jarak lebih kecil dari bawah */
+        right: 15px;
     }
-
 }
 
-@media (max-width: 600px) {
+
+
+@media (max-width: 768px) {
     /* Gaya lebih spesifik untuk layar yang sangat kecil */
     .card-faq {
         width:100%;
@@ -197,6 +202,15 @@
     .category-container {
         gap: 10px;
         margin: 25px;
+    }
+
+    /* Penyesuaian untuk perangkat mobile */
+    .scroll-to-top {
+        width: 35px; /* Ukuran lebih kecil untuk mobile */
+        height: 35px;
+        font-size: 18px; /* Ukuran icon lebih kecil */
+        bottom: 15px; /* Jarak lebih kecil dari bawah */
+        right: 15px;
     }
 
 
