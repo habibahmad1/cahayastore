@@ -151,7 +151,7 @@
                     Lazada
                 </a>
                 <ul class="dropdown">
-                    <li><a href="https://lazada.co.id/toko1" target="_blank">Toko 1</a></li>
+                    <li><a href="https://sellercenter.lazada.co.id/apps/product/list?spm=a1zawh.portal_home.navi_left_sidebar.droot_normal_rp_asc_v2_products_rp_asc_v2_manageproducts_common_tools.4f811e13dcrPTp&tab=online_product" target="_blank">Toko 1</a></li>
                     <li><a href="https://lazada.co.id/toko2" target="_blank">Toko 2</a></li>
                 </ul>
             </li>
@@ -163,13 +163,13 @@
             <i class="fas fa-comments"></i>
         </div>
         <div class="contact-menu hidden" id="contactMenu">
-            <a href="https://wa.me/6281290032627" target="_blank" class="menu-item whatsapp" title="Chat via WhatsApp">
+            <a href="https://wa.me/6285693000255" target="_blank" class="menu-item whatsapp" title="Chat via WhatsApp">
                 <i class="fab fa-whatsapp"></i>
             </a>
-            <a href="tel:+6281290032627" class="menu-item call" title="Telepon Kami">
+            <a href="tel:+6285693000255" class="menu-item call" title="Telepon Kami">
                 <i class="fas fa-phone-alt"></i>
             </a>
-            <a href="mailto:cadangmaky@gmail.com" class="menu-item email" title="Kirim Email">
+            <a href="mailto:admin@cahayasetia.com" class="menu-item email" title="Kirim Email">
                 <i class="fas fa-envelope"></i>
             </a>
         </div>
