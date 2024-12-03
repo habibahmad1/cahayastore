@@ -12,7 +12,7 @@
     background-color: #ff8d58;
     padding: 30px;
     margin-bottom: 30px;
-    transition: transform 0.5s ease;
+    transition: transform 3s ease;
 }
 
 .about-title p {
@@ -40,7 +40,7 @@
     border-radius: 8px;
     position: relative;
     transform: scale(0.9);
-    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    transition: transform 3s ease, box-shadow 3s ease;
 }
 
 .gallery-item .overlay {
@@ -55,7 +55,7 @@
     font-size: 18px;
     opacity: 0;
     transform: translateY(100%);
-    transition: all 0.5s ease;
+    transition: all 3s ease;
 }
 
 .gallery-item:hover .overlay {
@@ -95,7 +95,7 @@
 
 .about-title,
 .gallery-container .gallery-item {
-    animation: fadeInUp 0.8s ease both;
+    animation: fadeInUp 3s ease both;
 }
 
 .gallery-container .gallery-item {
@@ -117,6 +117,7 @@
     width: 600px;
     height: 450px;
     border-radius: 20px;
+    animation: fadeInUp 3s ease forwards;
 }
 
 .teks-about {
@@ -276,7 +277,7 @@
     border-radius: 8px;
     text-align: center;
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
-    animation: fadeInUp 0.4s ease forwards;
+    animation: fadeInUp 3s ease forwards;
 }
 
 .kontak-links h3 {
@@ -293,7 +294,7 @@
     justify-content: center;
     flex-wrap: wrap;
     gap: 20px;
-    animation: fadeInUp 0.4s ease forwards;
+    animation: fadeInUp 3s ease forwards;
 }
 
 .online-stores li {
