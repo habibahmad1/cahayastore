@@ -20,6 +20,7 @@
           <th scope="col">Nama Produk</th>
           <th scope="col">Kategori</th>
           <th scope="col">Gambar</th>
+          <th scope="col">Video</th>
           <th scope="col">Kode</th>
           <th scope="col">Deskripsi</th>
           <th scope="col">Stok</th>
@@ -51,13 +52,20 @@
             @endforeach
         </td>
 
+          <td>
+            <video style="max-height: 270px; max-width: 200px; overflow: hidden; border-radius: 5px; margin-right: 5px;" class="mb-3" controls>
+                <source src="{{ asset('storage/' . $p->video) }}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+          </td>
+
           <td>{{ $p->kode_produk }}</td>
           <td>{!! $p->deskripsi !!}</td>
           <td>{{ $p->stok }}</td>
           <td>{{ $p->diskon }}</td>
           <td>{{ $p->berat }}</td>
           <td>{{ $p->dimensi }}</td>
-          <td>{{ $p->harga }}</td>
+          <td>{{ number_format($p->harga, 0, ',', '.') }}</td>
           <td>{{ $p->status }}</td>
           <td>
             <a href="/dashboard/produk/{{ $p->slug }}" class="badge bg-info"><span><i class="bi bi-eye-fill"></i></span></a>

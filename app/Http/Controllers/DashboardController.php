@@ -51,12 +51,14 @@ class DashboardController extends Controller
             "gambar3" => "nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048",
             "gambar4" => "nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048",
             "gambar5" => "nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048",
+            "video" => "nullable|mimetypes:video/mp4,video/avi,video/mpeg,video/quicktime|max:31230",
             "berat" => "required|numeric|min:0",
             "dimensi" => "nullable",
             "diskon" => "required|numeric|min:0|max:100",
             "status" => "required"
         ]);
 
+        // Menangani unggahan gambar
         $gambarFields = ['gambar1', 'gambar2', 'gambar3', 'gambar4', 'gambar5'];
 
         foreach ($gambarFields as $field) {
@@ -65,11 +67,18 @@ class DashboardController extends Controller
             }
         }
 
+        // Menangani unggahan video (untuk produk baru)
+        if ($request->file('video')) {
+            // Menyimpan video baru
+            $validatedData['video'] = $request->file('video')->store('video');
+        }
 
+        // Menyimpan data produk baru
         Produk::create($validatedData);
 
         return redirect('/dashboard/produk')->with('success', 'Produk berhasil ditambahkan!');
     }
+
 
 
     /**
@@ -110,6 +119,7 @@ class DashboardController extends Controller
             "gambar3" => "nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048",
             "gambar4" => "nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048",
             "gambar5" => "nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048",
+            "video" => "nullable|mimetypes:video/mp4,video/avi,video/mpeg,video/quicktime|max:31230",
             "berat" => "required|numeric|min:0",
             "dimensi" => "nullable",
             "diskon" => "required|numeric|min:0|max:100",
@@ -141,6 +151,16 @@ class DashboardController extends Controller
             }
         }
 
+        // Menangani unggahan video
+        if ($request->file('video')) {
+            // Menghapus video lama jika ada
+            if ($produk->video) {
+                Storage::delete($produk->video);
+            }
+            // Menyimpan video baru
+            $validatedData['video'] = $request->file('video')->store('video');
+        }
+
         // Update data produk
         Produk::where('id', $produk->id)
             ->update($validatedData);
@@ -164,7 +184,13 @@ class DashboardController extends Controller
             }
         }
 
-        Produk::destroy($produk->id);
+        // Hapus video jika ada
+        if ($produk->video) {
+            Storage::delete($produk->video);  // Hapus video dari storage
+        }
+
+        // Hapus produk dari database
+        $produk->delete();
 
         return redirect('/dashboard/produk')->with('success', 'Produk berhasil dihapus!');
     }
