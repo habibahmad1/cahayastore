@@ -29,6 +29,11 @@
     animation: fadeIn 0.5s ease;
 }
 
+.page-content p, h2 {
+    font-size: 20px;
+    margin: 25px;
+}
+
 .page-content.active {
     display: block;
 }
@@ -117,8 +122,44 @@
     padding: 10px 0; /* Menambahkan padding saat teks muncul */
 }
 
-@media (max-width: 600px) {
+
+@media (max-width: 768px) {
+    /* Gaya khusus untuk layar kecil seperti ponsel */
     .card-faq {
-        width: 350px;
+        width: 300px;
     }
+
+}
+
+@media (max-width: 480px) {
+    /* Gaya lebih spesifik untuk layar yang sangat kecil */
+    .card-faq {
+        width: 220px;
+    }
+
+    .card-faq h2 {
+        font-size: 15px;
+    }
+
+    .card-faq p {
+        font-size: 15px;
+    }
+
+    .faq h2, .faq p {
+        font-size: 12px;
+    }
+
+    .faq-title {
+        margin: 10px;
+    }
+
+    .page-content p {
+        font-size: 15px;
+        margin: 15px;
+    }
+
+    .page-content h2 {
+        font-size: 15px;
+    }
+
 }
