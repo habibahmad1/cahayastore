@@ -35,7 +35,7 @@
             <p class="text-center fs-4">Tidak ada produk yang ditemukan.</p>
         @else
             @foreach ($posts as $produk)
-                <div class="product-card" data-name="img-produk"  data-aos="flip-left" data-aos-duration="2000">
+                <div class="product-card" data-name="img-produk"  data-aos="zoom-out" data-aos-duration="1000">
                     <div class="kategori-produk">
                         <p><a href="/kategori/{{ $produk->kategori->slug }}" class="text-decoration-none text-capitalize text-white">{{ $produk->kategori->nama }} <i class="fa-solid fa-tag"></i></a></p>
                     </div>

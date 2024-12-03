@@ -9,8 +9,8 @@ class KategoriController extends Controller
 {
     public function index(Kategori $kategori)
     {
-        return view('kategori',[
-            "title" => 'Kategori: ' .ucwords($kategori->nama),
+        return view('kategori', [
+            "title" => 'Kategori: ' . ucwords($kategori->nama),
             "produk" => $kategori->produk->load('kategori'),
         ]);
     }
