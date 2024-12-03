@@ -146,3 +146,114 @@ volumeSlider.addEventListener('input', (e) => {
     audio.volume = e.target.value;
 });
 
+// iklan muncul beberapa detikik
+document.addEventListener("DOMContentLoaded", function () {
+    const promoBanner = document.getElementById("promo-banner");
+    const promoImage = document.getElementById("promo-image");
+    const promoTitle = document.getElementById("promo-title");
+    const promoDescription = document.getElementById("promo-description");
+    const countdownTimer = document.getElementById("countdown-timer");
+    const promoLink = document.getElementById("promo-link");
+
+    let isDragging = false;
+    let offsetX, offsetY;
+
+    // Daftar iklan
+    const ads = [
+        {
+            image: "img/iklan1.jpg",
+            title: "Diskon Spesial 50%!",
+            description: "Promo hanya berlaku hari ini, jangan sampai terlewat!",
+            link: "#",
+            duration: 30,
+            delay: 5000,
+        },
+        {
+            image: "img/iklan2.jpg",
+            title: "Gratis Ongkir!",
+            description: "Belanja minimal Rp100.000 untuk gratis ongkos kirim.",
+            link: "#",
+            duration: 30,
+            delay: 15000,
+        },
+        {
+            image: "img/iklan3.jpg",
+            title: "Buy 1 Get 1 Free!",
+            description: "Beli satu, dapatkan satu gratis. Promo hanya 3 hari!",
+            link: "#",
+            duration: 30,
+            delay: 30000,
+        },
+    ];
+
+    let currentAdIndex = 0;
+    let intervalId;
+
+    // Fungsi untuk menampilkan iklan
+    function showAd(ad) {
+        promoImage.src = ad.image;
+        promoTitle.textContent = ad.title;
+        promoDescription.textContent = ad.description;
+        promoLink.href = ad.link;
+
+        let remainingTime = ad.duration;
+
+        function updateCountdown() {
+            if (remainingTime > 0) {
+                countdownTimer.textContent = `Waktu Tersisa: ${remainingTime} detik`;
+                remainingTime--;
+            } else {
+                clearInterval(intervalId);
+                closeBanner();
+            }
+        }
+
+        updateCountdown();
+        intervalId = setInterval(updateCountdown, 1000);
+
+        promoBanner.classList.remove("hidden");
+    }
+
+    // Fungsi untuk menutup iklan
+    function closeBanner() {
+        promoBanner.classList.add("hidden");
+        clearInterval(intervalId);
+
+        currentAdIndex++;
+        if (currentAdIndex < ads.length) {
+            setTimeout(() => {
+                showAd(ads[currentAdIndex]);
+            }, ads[currentAdIndex].delay - ads[currentAdIndex - 1].delay);
+        }
+    }
+
+    // Mulai menampilkan iklan pertama
+    setTimeout(() => {
+        showAd(ads[currentAdIndex]);
+    }, ads[currentAdIndex].delay);
+
+    // Event listener untuk tombol close
+    document.querySelector(".close-btn").addEventListener("click", closeBanner);
+
+    // Fungsi drag and drop
+    promoBanner.addEventListener("mousedown", (event) => {
+        isDragging = true;
+        offsetX = event.clientX - promoBanner.offsetLeft;
+        offsetY = event.clientY - promoBanner.offsetTop;
+        promoBanner.style.cursor = "grabbing";
+    });
+
+    document.addEventListener("mousemove", (event) => {
+        if (isDragging) {
+            promoBanner.style.left = `${event.clientX - offsetX}px`;
+            promoBanner.style.top = `${event.clientY - offsetY}px`;
+        }
+    });
+
+    document.addEventListener("mouseup", () => {
+        isDragging = false;
+        promoBanner.style.cursor = "grab";
+    });
+});
+
+

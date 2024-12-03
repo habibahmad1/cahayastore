@@ -242,5 +242,21 @@
     <audio id="myAudio" src="img/bcvideo.mp3"></audio>
 </div>
 
+{{-- iklan muncul beberapa detik --}}
+<div id="promo-banner" class="promo-banner hidden" draggable="false">
+    <div class="promo-content">
+        <span class="close-btn" onclick="closeBanner()">×</span>
+        <img id="promo-image" src="" alt="Promo Diskon" class="promo-image" />
+        <div class="promo-text">
+            <h2 id="promo-title"></h2>
+            <p id="countdown-timer"></p>
+            <p id="promo-description"></p>
+            <a id="promo-link" href="#" class="promo-btn">Belanja Sekarang</a>
+        </div>
+    </div>
+</div>
+
+
+
 <script src="js/home.js"></script>
 @endsection

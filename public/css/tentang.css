@@ -482,7 +482,7 @@
 }
 
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
     /* Gaya lebih spesifik untuk layar yang sangat kecil */
     .about-title h1 {
         font-size: 20px;
