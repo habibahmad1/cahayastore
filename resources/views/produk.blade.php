@@ -45,9 +45,11 @@
             @endforeach
         @endif
 
-        {{ $posts->links() }}
     </div>
 
+    <div class="pagination d-flex justify-content-center my-5">
+        {{ $posts->links() }}
+    </div>
 </section>
 <br>
 
