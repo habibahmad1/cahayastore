@@ -1,7 +1,6 @@
 @extends('layouts.main')
 
 @section('container')
-
 <div class="kategori-list">
     @foreach ($kategori as $k)
     <a href="/kategori/{{ $k->slug }}" class="text-capitalize">{{ $k->nama }}</a>
@@ -9,8 +8,10 @@
     <a href="/allkategori">All Kategori</a>
 </div>
 
-<div class="row justify-content-center">
-    <div class="col-md-6 pencarian">
+<h1 class="text-center mb-4">Semua Produk</h1>
+
+<div class="row justify-content-center px-4">
+    <div class="col-lg-8 pencarian">
         <form action="/produk">
             <div class="input-group mb-3">
                 <input type="text" class="form-control" placeholder="Cari Produk.." name="search" value="{{ request('search') }}" id="search-box">
@@ -30,14 +31,18 @@
             <p class="text-center fs-4">Tidak ada produk yang ditemukan.</p>
         @else
             @foreach ($posts as $produk)
-                <div class="product-card" data-name="LED Fishing Light 1">
-                    <img src="{{ asset('storage/' . $produk->gambar1) }}" alt="Img-Produk" style="max-width: 250px; overflow: hidden; border-radius: 5px">
-                    <h2><a href="/produk/{{ $produk->slug }}" class="nama-produk">{{ $produk->nama_produk }}</a></h2>
-                    <p><b>Kategori</b> : <a href="/kategori/{{ $produk->kategori->slug }}" class="text-decoration-none text-capitalize">{{ $produk->kategori->nama }}</a></p>
-                    <p><b>Stok</b> : {{ $produk->stok }}</p>
-                    <p><b>Berat</b> : {{ $produk->berat }}Kg</p>
-                    <p><b>Diskon</b> : {{ $produk->diskon }}%</p>
-                    <h4><b>Harga</b> : Rp {{ number_format($produk->harga, 0, ',', '.') }}</h4>
+                <div class="product-card" data-name="img-produk">
+                    <div class="kategori-produk">
+                        <p><a href="/kategori/{{ $produk->kategori->slug }}" class="text-decoration-none text-capitalize text-white">{{ $produk->kategori->nama }} <i class="fa-solid fa-tag"></i></a></p>
+                    </div>
+                    <img src="{{ asset('storage/' . $produk->gambar1) }}" alt="Img-Produk">
+                    <div class="produk-info">
+                        <h5><a href="/produk/{{ $produk->slug }}" class="nama-produk">{{ $produk->nama_produk }}</a></h5>
+                        <p><span class="badge text-bg-warning"><i class="fa-solid fa-percent"></i></span> Diskon : {{ $produk->diskon }}%</p>
+                        <p> <span class="badge text-bg-success"><i class="fa-solid fa-truck-fast"></i></span>
+                             Kab.Tangerang</p>
+                        <h4><b>Harga</b> : Rp {{ number_format($produk->harga, 0, ',', '.') }}</h4>
+                    </div>
                     <a href="/produk/{{ $produk->slug }}" class="text-decoration-none">
                         <button class="details-button">Selengkapnya</button>
                     </a>

@@ -36,18 +36,24 @@ html {
 }
 
 .product-card {
-    width: 300px;
-    height: 600px;
+    width: 400px;
+    max-height: 600px;
     display: flex;
     justify-content: space-evenly;
     flex-direction: column;
-    background-color: #f0f0f0;
-    padding: 20px;
-    margin: 20px 0;
-    border-radius: 10px;
-    border: 2px solid black;
+    background-color: #fff;
+    margin: 10px 0;
     box-shadow: 3px 3px 3px #cccccb;
     transition: all 0.7s;
+    position: relative;
+}
+
+.produk-info {
+    max-height: 400px;
+    padding: 20px 20px 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .kembali-button {
@@ -59,14 +65,29 @@ html {
     margin-top: 10px;
 }
 
+.product-card h2 {
+    margin: 0;
+}
+
 .detail-card img {
     width: 500px;
     transition: all 1s;
     cursor: pointer;
 }
 
-.detail-card img:hover {
-    transform: scale(1.1);
+.kategori-produk {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: rgba(254, 132, 55, 0.7);
+    padding: 10px 30px;
+    color: #fff;
+    text-transform: capitalize;
+    border-bottom-left-radius: 5px;
+}
+
+.kategori-produk:hover {
+    cursor: pointer;
 }
 
 .detail-card .img-detail {
@@ -81,20 +102,19 @@ html {
 }
 
 .product-card:hover {
-    transform: scale(0.98);
     border: 2px solid #ff8d58;
 }
 
 .product-card img {
-    width: 300px;
+    max-width: 400px;
 }
+
 .details-button {
     width: 100%; /* Tombol mengambil seluruh lebar elemen pembungkus */
     padding: 10px 15px; /* Tambahkan ruang di dalam tombol */
     background-color: #ff9f50; /* Warna latar belakang */
     color: white; /* Warna teks */
     border: none; /* Hilangkan border default */
-    border-radius: 5px; /* Opsional: buat sudut tombol melengkung */
     font-size: 16px; /* Sesuaikan ukuran teks */
     cursor: pointer; /* Menambahkan pointer saat hover */
     text-transform: uppercase; /* Membuat teks kapital (opsional) */
