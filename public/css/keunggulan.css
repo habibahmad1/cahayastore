@@ -193,7 +193,7 @@
 
 /* ukuran hp */
 
-@media (max-width: 700px) {
+@media (max-width: 768px) {
     .category-description h2 {
         margin-bottom: 10px;
         margin-top: 10px;
