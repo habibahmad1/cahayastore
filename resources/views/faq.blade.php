@@ -188,5 +188,9 @@
     </div>
 </div>
 
+<div id="scrollTopButton" class="scroll-to-top" onclick="scrollToTop()">
+    ↑
+</div>
+
   <script src="js/faq.js"></script>
 @endsection

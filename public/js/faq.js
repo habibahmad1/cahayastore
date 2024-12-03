@@ -48,3 +48,20 @@
     });
 
 
+    // Fungsi untuk scroll ke atas
+function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Tampilkan tombol saat posisi scroll di bawah
+window.addEventListener('scroll', () => {
+    const scrollTopButton = document.getElementById('scrollTopButton');
+    if (window.scrollY > 200) { // Sesuaikan nilai ini dengan kebutuhan
+        scrollTopButton.classList.add('visible');
+    } else {
+        scrollTopButton.classList.remove('visible');
+    }
+});
+
+
+
