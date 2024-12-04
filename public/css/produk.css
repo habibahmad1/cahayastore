@@ -157,4 +157,23 @@ html {
         width: 100%; /* Membuat lebar elemen 100% dari lebar layar */
         padding: 20px; /* Mengurangi padding agar tidak terlalu besar */
     }
+
+    .product-card {
+        width: 350px;
+        max-height: 700px;
+    }
+
+    .kategori-list a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-transform: capitalize;
+        text-decoration: none;
+        color: #ffffff;
+        width: 150px;
+        height: 50px;
+        background-color: #ff7f20;
+        border-radius: 5px;
+        font-size: 12px;
+    }
 }
