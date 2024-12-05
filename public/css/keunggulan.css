@@ -243,3 +243,97 @@
 
 
 }
+
+
+/* untuk keunggulan cofee */
+  .container {
+    text-align: center;
+    padding: 50px;
+  }
+
+  .title {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    animation: fadeInDown 1s ease-in-out;
+  }
+
+  .features {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .feature {
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    padding: 20px;
+    width: 250px;
+    transition: transform 0.3s, background 0.3s;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(50px);
+    animation: fadeInUp 0.8s ease forwards;
+  }
+
+  .feature:nth-child(odd) {
+    animation-delay: 0.2s;
+  }
+
+  .feature:nth-child(even) {
+    animation-delay: 0.4s;
+  }
+
+  .feature:hover {
+    transform: scale(1.1);
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .icon {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    animation: bounce 2s infinite;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    margin: 10px 0;
+  }
+
+  p {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  /* Animasi Ikon */
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  /* Animasi Muncul */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
