@@ -162,7 +162,7 @@
         <div class="hubungi-icon" id="hubungiButton" title="Hubungi Kami">
             <i class="fas fa-comments"></i>
         </div>
-        <div class="contact-menu hidden" id="contactMenu">
+        <div class="contact-menu hidden1" id="contactMenu">
             <a href="https://wa.me/6285693000255" target="_blank" class="menu-item whatsapp" title="Chat via WhatsApp">
                 <i class="fab fa-whatsapp"></i>
             </a>
