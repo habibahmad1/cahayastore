@@ -98,7 +98,7 @@
         </div>
     </div> --}}
 
-    {{-- <div class="kontak-links">
+    <div class="kontak-links">
         <h3>Temukan Kami di Toko Online</h3>
         <ul class="online-stores">
             <li>
@@ -156,36 +156,7 @@
                 </ul>
             </li>
         </ul>
-    </div> --}}
-
-    <div class="kontak-links">
-        <h3>Our Online Stores</h3>
-        <ul class="online-stores">
-            <li>
-                <a href="#">
-                    <img src="https://logospng.org/download/tiktok/logo-tiktok-icone-2048.png" alt="TikTok">
-                    TikTok
-                </a>
-                <ul class="dropdown-slide">
-                    <li><a href="#tiktok1">Store 1</a></li>
-                    <li><a href="#tiktok2">Store 2</a></li>
-                    <li><a href="#tiktok3">Store 3</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="path/to/shopee-icon.png" alt="Shopee">
-                    Shopee
-                </a>
-                <ul class="dropdown-slide">
-                    <li><a href="#shopee1">Store 1</a></li>
-                    <li><a href="#shopee2">Store 2</a></li>
-                </ul>
-            </li>
-            <!-- Tambahkan elemen lainnya seperti Tokopedia, Lazada, Bukalapak -->
-        </ul>
     </div>
-
 
     <div class="floating-contact">
         <div class="hubungi-icon" id="hubungiButton" title="Hubungi Kami">

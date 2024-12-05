@@ -55,111 +55,6 @@
     transform: scale(1);
 }
 
-
-/* bagian lampu */
-
-.card-orange {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin:10px;
-}
-
-.card-orange .card {
-    display: flex;
-    flex-direction: column;
-    padding: 80px 40px;
-    margin: 0 20px;
-    width: 400px;
-    height: 140px;
-    background: linear-gradient(to top, #000000e8, #2c3e50);
-    border-radius: 8px;
-    font-size: 30px;
-    justify-content: center;
-    align-items: center;
-}
-
-.card-orange .card i {
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: center;
-    font-size: 50px;
-    color: azure;
-    margin-bottom: 20px;
-}
-
-.card-orange .card p {
-    text-align: center;
-    color: azure;
-}
-
-.card img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 100%;
-    height: 200px;
-    border-radius: 8px;
-}
-
-.card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-
-}
-
-.card:hover {
-    transform: scale(1.05); /* Membesar saat dihover */
-    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2); /* Memberikan bayangan */
-}
-
-.keunggulan{
-    background: linear-gradient(to right, #000000e8, #2c3e50, #000000);;
-}
-
-/* Content Keunggulan */
-.keunggulan {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: black;
-    color: #fff;
-    padding: 80px;
-    flex-wrap: wrap;
-}
-
-.keunggulan .slogan {
-    font-size: 40px;
-    margin-bottom: 80px;
-    text-align: center;
-    margin-top: 100px;
-}
-
-.keunggulan .card-keunggulan {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-.keunggulan .card-keunggulan .list-keunggulan {
-    margin: 20px;
-    padding: 40px;
-    width: 400px;
-    height: 300px;
-    text-align: center;
-}
-
-.keunggulan .card-keunggulan .list-keunggulan .icon {
-    font-size: 40px;
-    margin: 40px 0;
-    color: #ff8d58;
-}
-
-.keunggulan .card-keunggulan .list-keunggulan h3 {
-    margin: 20px 0;
-}
-
 /* scrol langung ke atas */
 .scroll-to-top {
     position: fixed;
@@ -243,3 +138,97 @@
 
 
 }
+
+
+/* untuk keunggulan card*/
+  .container {
+    text-align: center;
+    padding: 50px;
+  }
+
+  .title {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    animation: fadeInDown 1s ease-in-out;
+  }
+
+  .features {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .feature {
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    padding: 20px;
+    width: 250px;
+    transition: transform 0.3s, background 0.3s;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(50px);
+    animation: fadeInUp 0.8s ease forwards;
+  }
+
+  .feature:nth-child(odd) {
+    animation-delay: 0.2s;
+  }
+
+  .feature:nth-child(even) {
+    animation-delay: 0.4s;
+  }
+
+  .feature:hover {
+    transform: scale(1.1);
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .icon {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    animation: bounce 2s infinite;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    margin: 10px 0;
+  }
+
+  p {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  /* Animasi Ikon */
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  /* Animasi Muncul */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }

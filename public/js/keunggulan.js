@@ -28,3 +28,17 @@ window.addEventListener('scroll', () => {
         scrollTopButton.classList.remove('visible');
     }
 });
+
+// Menambahkan animasi saat elemen masuk ke viewport
+const features = document.querySelectorAll('.feature');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.style.animation = "fadeInUp 0.8s ease forwards";
+    }
+  });
+});
+
+features.forEach((feature) => observer.observe(feature));
+

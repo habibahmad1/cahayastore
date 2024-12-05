@@ -4,31 +4,8 @@
         contactMenu.classList.toggle("hidden");
     });
 
-
-    document.querySelectorAll(".online-stores li").forEach((item) => {
-        item.addEventListener("click", function (event) {
-            // Tutup semua dropdown kecuali yang diklik
-            document.querySelectorAll(".dropdown-slide").forEach((dropdown) => {
-                if (dropdown !== item.querySelector(".dropdown-slide")) {
-                    dropdown.classList.remove("visible");
-                }
-            });
-
-            // Toggle dropdown yang diklik
-            const dropdownMenu = item.querySelector(".dropdown-slide");
-            if (dropdownMenu) {
-                dropdownMenu.classList.toggle("visible");
-            }
-
-            // Mencegah tindakan default jika ada link di dalam
-            event.stopPropagation();
+    document.querySelectorAll(".kontak-links a").forEach(function (link) {
+        link.addEventListener("click", function (event) {
+            event.preventDefault(); // Mencegah scroll ke atas
         });
     });
-
-    // Tutup dropdown ketika mengklik di luar
-    document.addEventListener("click", function () {
-        document.querySelectorAll(".dropdown-slide").forEach((dropdown) => {
-            dropdown.classList.remove("visible");
-        });
-    });
-

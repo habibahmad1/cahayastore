@@ -1,3 +1,6 @@
+
+
+
 let currentSlide = 0;
 
 function changeSlide(index) {
@@ -19,7 +22,6 @@ setInterval(() => {
     currentSlide = (currentSlide + 1) % 3;
     changeSlide(currentSlide);
 }, 5000);
-
 
 // persentase pengalaman kami
     document.addEventListener("DOMContentLoaded", function () {

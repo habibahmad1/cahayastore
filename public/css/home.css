@@ -173,6 +173,8 @@
 .btn:hover:hover {
     background: linear-gradient(45deg, #ff6f61, #f8ff61);
     color: #000000;
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
 .navigation {
