@@ -43,7 +43,7 @@ html {
 
 .product-card {
     width: 400px;
-    max-height: 700px;
+    height: 700px;
     display: flex;
     justify-content: space-evenly;
     flex-direction: column;
@@ -73,6 +73,11 @@ html {
 
 .product-card h2 {
     margin: 0;
+}
+
+.detail-card {
+    position: absolute;
+    top: 0;
 }
 
 .detail-card img {
@@ -121,6 +126,8 @@ html {
     cursor: pointer; /* Menambahkan pointer saat hover */
     text-transform: uppercase; /* Membuat teks kapital (opsional) */
     display: block; /* Mengubah tombol menjadi elemen blok */
+    position: absolute;
+    bottom: 0;
 }
 
 .details-button:hover {
