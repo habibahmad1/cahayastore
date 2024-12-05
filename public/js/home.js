@@ -19,7 +19,7 @@ document.querySelectorAll('.nav-dot')[0].classList.add('active');
 
 // Auto-slide functionality
 setInterval(() => {
-    currentSlide = (currentSlide + 1) % 3;
+    currentSlide = (currentSlide + 1) % 4;
     changeSlide(currentSlide);
 }, 5000);
 

@@ -24,11 +24,19 @@
                 <a href="/produk" class="btn">Jelajahi Produk</a>
             </div>
         </div>
+        <div class="slide" style="background-image: url('https://static.mooimom.id/media/mamapedia/d6fIluYI--main-image.webp');">
+            <div class="content">
+                <h1>PT. CAHAYA SETIA INDONESIA</h1>
+                <p>"Teman Bermain yang Aman, Nyaman dan seru untuk Si Kecil dengan Playmat!"</p>
+                <a href="/produk" class="btn">Jelajahi Produk</a>
+            </div>
+        </div>
     </div>
     <div class="navigation">
         <span class="nav-dot" onclick="changeSlide(0)"></span>
         <span class="nav-dot" onclick="changeSlide(1)"></span>
         <span class="nav-dot" onclick="changeSlide(2)"></span>
+        <span class="nav-dot" onclick="changeSlide(3)"></span>
     </div>
 </div>
 
@@ -50,7 +58,7 @@
                         <div class="service-card">
                             <i class="fas fa-lightbulb"></i>
                             <h3>Produk Berkualitas</h3>
-                            <p>Menjual produk lampu, coffee, dan sandal dengan kualitas terbaik.</p>
+                            <p>Menjual produk lampu, coffee, sandal dan Playmat dengan kualitas terbaik.</p>
                         </div>
                         <div class="service-card">
                             <i class="fas fa-certificate"></i>

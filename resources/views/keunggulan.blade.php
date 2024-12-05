@@ -16,7 +16,7 @@
         Sandal
     </button>
     <button class="category-button" onclick="showCategory('playmat')">
-        <i class="fas fa-shoe-prints"></i> <!-- Ikon Sandal -->
+        <i class="fa-solid fa-rug"></i> <!-- Ikon Sandal -->
         Playmat
     </button>
 </div>
