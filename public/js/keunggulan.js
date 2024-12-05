@@ -29,16 +29,16 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Tambahkan animasi tambahan saat elemen di-scroll ke dalam viewport
+// Menambahkan animasi saat elemen masuk ke viewport
 const features = document.querySelectorAll('.feature');
 
 const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
+  entries.forEach((entry) => {
     if (entry.isIntersecting) {
-      entry.target.classList.add('animate');
+      entry.target.style.animation = "fadeInUp 0.8s ease forwards";
     }
   });
 });
 
-features.forEach(feature => observer.observe(feature));
+features.forEach((feature) => observer.observe(feature));
 

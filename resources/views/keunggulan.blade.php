@@ -15,6 +15,10 @@
         <i class="fas fa-shoe-prints"></i> <!-- Ikon Sandal -->
         Sandal
     </button>
+    <button class="category-button" onclick="showCategory('playmat')">
+        <i class="fas fa-shoe-prints"></i> <!-- Ikon Sandal -->
+        Playmat
+    </button>
 </div>
 
 <div id="led-light" class="category-description" style="display: none;">
@@ -165,6 +169,57 @@
             <i class="icon fas fa-wallet"></i>
             <h2>Harga Terjangkau</h2>
             <p>Kualitas premium dengan harga yang ramah di kantong.</p>
+          </div>
+        </div>
+      </div>
+</div>
+
+<div id="playmat" class="category-description" style="display: none;">
+    <h2>Playmat</h2>
+    <p>Sandal nyaman dan stylish untuk segala suasana.</p>
+
+    <div class="container">
+        {{-- <h1 class="title">Keunggulan Playmat</h1> --}}
+        <div class="features">
+          <div class="feature">
+            <i class="icon fas fa-child"></i>
+            <h2>Aman untuk Anak</h2>
+            <p>Playmat dirancang dengan bahan non-toxic yang aman bagi anak-anak.</p>
+          </div>
+          <div class="feature">
+            <i class="icon fas fa-heart"></i>
+            <h2>Lembut dan Nyaman</h2>
+            <p>Permukaan empuk memberikan kenyamanan maksimal untuk bermain atau belajar.</p>
+          </div>
+          <div class="feature">
+            <i class="icon fas fa-th"></i>
+            <h2>Desain Edukatif</h2>
+            <p>Dilengkapi dengan gambar dan pola edukatif untuk membantu perkembangan anak.</p>
+          </div>
+          <div class="feature">
+            <i class="icon fas fa-water"></i>
+            <h2>Mudah Dibersihkan</h2>
+            <p>Material tahan air memungkinkan Playmat dibersihkan dengan mudah.</p>
+          </div>
+          <div class="feature">
+            <i class="icon fas fa-puzzle-piece"></i>
+            <h2>Modular dan Fleksibel</h2>
+            <p>Bisa dirangkai sesuai kebutuhan, cocok untuk berbagai ukuran ruangan.</p>
+          </div>
+          <div class="feature">
+            <i class="icon fas fa-shield-alt"></i>
+            <h2>Perlindungan Optimal</h2>
+            <p>Melindungi anak dari cedera saat bermain di lantai.</p>
+          </div>
+          <div class="feature">
+            <i class="icon fas fa-palette"></i>
+            <h2>Warna Menarik</h2>
+            <p>Tersedia dalam berbagai warna ceria untuk meningkatkan kreativitas anak.</p>
+          </div>
+          <div class="feature">
+            <i class="icon fas fa-recycle"></i>
+            <h2>Ramah Lingkungan</h2>
+            <p>Terbuat dari bahan yang dapat didaur ulang untuk menjaga kelestarian alam.</p>
           </div>
         </div>
       </div>
