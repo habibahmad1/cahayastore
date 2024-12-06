@@ -39,7 +39,9 @@
                     <div class="kategori-produk">
                         <p><a href="/kategori/{{ $produk->kategori->slug }}" class="text-decoration-none text-capitalize text-white">{{ $produk->kategori->nama }} <i class="fa-solid fa-tag"></i></a></p>
                     </div>
-                    <img src="{{ asset('storage/' . $produk->gambar1) }}" alt="Img-Produk">
+                    <div class="gambar-thumbnail">
+                        <img src="{{ asset('storage/' . $produk->gambar1) }}" alt="Img-Produk">
+                    </div>
                     <div class="produk-info">
                         <h5><a href="/produk/{{ $produk->slug }}" class="nama-produk">{{ $produk->nama_produk }}</a></h5>
                         <p><span class="btn btn-warning text-danger"><i class="fa-solid fa-fire"></i> Diskon : {{ $produk->diskon }}% </span></p>

@@ -45,10 +45,10 @@ html {
     width: 400px;
     height: 700px;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     flex-direction: column;
     background-color: #fff;
-    margin: 10px 0;
+    margin: 0 0 0 0;
     transition: all 0.7s;
     position: relative;
     box-shadow: 3px 3px 3px rgb(172, 172, 172);
@@ -58,39 +58,25 @@ html {
     max-height: 400px;
     padding: 20px 20px 0 20px;
     display: flex;
+    justify-content: start;
     flex-direction: column;
     gap: 10px;
 }
 
-.kembali-button {
-    background-color: #00b7ff;
-    padding: 10px 10px;
-    border-radius: 5px;
-    color: #f0f0f0;
-    display: inline-block;
-    margin-top: 10px;
+.gambar-thumbnail {
+    width: 400px;
+    height: 400px;
 }
 
-.product-card h2 {
-    margin: 0;
-}
-
-.detail-card {
-    position: absolute;
-    top: 0;
-}
-
-.detail-card img {
-    width: 500px;
-    transition: all 1s;
-    cursor: pointer;
+.gambar-thumbnail img {
+    max-width: 400px;
 }
 
 .kategori-produk {
     position: absolute;
     top: 0;
     right: 0;
-    background-color: rgba(254, 132, 55, 0.7);
+    background-color: rgba(0, 0, 0, 0.7);
     padding: 10px 30px;
     color: #fff;
     text-transform: capitalize;
@@ -110,10 +96,6 @@ html {
 
 .product-card p {
     margin: 0;
-}
-
-.product-card img {
-    max-width: 400px;
 }
 
 .details-button {
@@ -141,20 +123,128 @@ html {
 }
 
 /* Detail Produk */
-.detail-product-card {
-    width: 1000px;
+
+.container-detail-card {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     flex-wrap: wrap;
-    align-items: center;
-    margin: 0 auto;
-    padding: 100px 40px;
-    color: #000;
-    background-color: #e2e2e2;
+    justify-content: center;
+    flex-direction: row;
+    gap: 30px;
+    padding: 60px 30px;
 }
 
-.detail-card a {
+.gambar-produk img {
+    max-width: 400px;
+    max-height: 400px;
+    border-radius: 5px;
+    margin: 10px 5px;
+}
+
+.gambar-produk-detail img {
+    width: 70px;
+    height: 70px;
+}
+
+.video-img {
+    filter: brightness(0.6);
+}
+
+.video-place {
+    position: relative;
+}
+
+.video-place i {
+    position: absolute;
+    top: 22%;
+    left: 40%;
+    color: #fff;
+    font-size: 22px;
+}
+
+/* detail produk info */
+.produk-info-detail {
+    max-width: 600px;
+}
+
+.diskon-coret {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.diskon-coret .diskon {
+    background-color: #ffcfcf;
+    font-size: 13px;
+    padding: 3px;
+    border-radius: 3px;
+    color: #ff5454;
+}
+
+.diskon-coret .harga-coret {
+    font-size: 20px;
+    color: #bdb2b2;
+    text-decoration: line-through;
+}
+
+/* Form Beli */
+.form-beli {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    border: 2px solid #dadada;
+    border-radius: 10px;
+    padding: 15px;
+    width: 300px;
+}
+
+.form-beli .img-produk {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.form-beli .img-produk img {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+}
+
+.coret-form-harga {
+    font-size: 20px;
+    color: #bdb2b2;
+    text-decoration: line-through;
+    text-align: right;
+}
+
+.form-beli .harga-asli {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-beli .harga-asli h5 {
+    color: #adaaaa;
+}
+
+.form-beli .form-wa {
+    display: inline;
+    padding: 15px;
+    background-color: #ff9f50;
+    text-align: center;
+    border-radius: 10px;
+    margin-top: 20px;
+    transition: all 0.6s;
+}
+
+.form-beli .form-wa:hover {
+    background-color: #ff7f20;
+    cursor: pointer;
+}
+
+.form-beli .form-wa a {
+    color: #fff;
     text-decoration: none;
 }
 
@@ -182,5 +272,9 @@ html {
         background-color: #ff7f20;
         border-radius: 5px;
         font-size: 12px;
+    }
+
+    .gambar-thumbnail img {
+        max-width: 350px;
     }
 }
