@@ -176,7 +176,7 @@
 
 <div id="playmat" class="category-description" style="display: none;">
     <h2>Playmat</h2>
-    <p>Sandal nyaman dan stylish untuk segala suasana.</p>
+    <p>Karpet Kualitas premium, mudah dibersihkan, cocok untuk segala aktivitas.</p>
 
     <div class="container">
         {{-- <h1 class="title">Keunggulan Playmat</h1> --}}
