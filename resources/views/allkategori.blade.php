@@ -8,7 +8,6 @@
     @else
         <div class="kategori-container">
             @foreach($kategori as $kategoriproduk)
-            <img src="https://picsum.photos/seed/{{ $kategoriproduk->nama }}/300/300" alt="Gambar Alam">
             <a href="/kategori/{{ $kategoriproduk->slug }}" class="card-all-kategori">
                 <h2>{{ $kategoriproduk->nama }}</h2>
             </a>

@@ -1,4 +1,3 @@
-
 .slider {
     position: relative;
     height: 100vh;
@@ -167,7 +166,7 @@
 
 .content a {
     color: #ffffff;
-    font-size:15px;
+    font-size: 15px;
 }
 
 .btn:hover:hover {
@@ -211,9 +210,8 @@
     }
 
     .content a {
-        font-size:13px;
+        font-size: 13px;
     }
-
 }
 
 @media (max-width: 480px) {
@@ -227,14 +225,14 @@
     }
 
     .content a {
-        font-size:0.7rem;
+        font-size: 0.7rem;
     }
 
-    .slider  {
+    .slider {
         height: 500px;
     }
 
-    .slide  {
+    .slide {
         height: 500px;
     }
 }
@@ -264,7 +262,7 @@
 
 .about-icon i {
     font-size: 5rem;
-    color:  #ffa600;
+    color: #ffa600;
     animation: pulse 2s infinite;
 }
 
@@ -274,7 +272,7 @@
     text-transform: uppercase;
     letter-spacing: 2px;
     animation: textGlow 3s infinite;
-    color:  #ffffff;
+    color: #ffffff;
 }
 
 .about-description {
@@ -325,7 +323,7 @@
 
 .service-card {
     width: 280px;
-    background:  rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.5);
     border: #f8ff61;
     padding: 20px;
     border-radius: 20px;
@@ -336,7 +334,7 @@
 }
 
 .services-section {
-    background: linear-gradient(to top, #141414, #2c3e50 );
+    background: linear-gradient(to top, #141414, #2c3e50);
     color: white;
     padding: 50px 20px;
     text-align: center;
@@ -408,12 +406,10 @@
     }
 }
 
-
-
 @media (max-width: 768px) {
     .about-title {
         font-size: 2rem;
-        }
+    }
     .about-description {
         font-size: 1rem;
         padding: 35px;
@@ -421,16 +417,14 @@
     }
     .about-icon i {
         font-size: 4rem;
-
     }
-
 }
 
 @media (max-width: 480px) {
     /* Gaya lebih spesifik untuk layar yang sangat kecil */
     .about-title {
         font-size: 1.5rem;
-        }
+    }
     .about-description {
         font-size: 0.7rem;
         padding: 35px;
@@ -455,9 +449,7 @@
     .service-card p {
         font-size: 0.7rem;
     }
-
 }
-
 
 /* css halaman story*/
 .story-and-experience {
@@ -572,8 +564,6 @@
     animation: fadeIn 2s ease-in-out;
 }
 
-
-
 @media (max-width: 768px) {
     .story-and-experience {
         flex-direction: column;
@@ -590,15 +580,15 @@
         font-size: 0.8rem;
     }
 
-    .left-content .story-btn{
+    .left-content .story-btn {
         font-size: 0.8rem;
     }
 
-    .right-content .experience-title{
+    .right-content .experience-title {
         font-size: 1.8rem;
     }
 
-    .right-content .experience-subtitle{
+    .right-content .experience-subtitle {
         font-size: 0.8rem;
     }
 }
@@ -685,16 +675,13 @@
     }
 }
 
-
 .facts-and-achievements {
     color: white;
     padding: 80px 20px;
     text-align: center;
     position: relative;
     overflow: hidden;
-
 }
-
 
 .facts-and-achievements::before {
     content: "";
@@ -841,7 +828,7 @@
 }
 
 .meet-the-team-section {
-    background :#01080f;
+    background: #01080f;
     color: white;
     text-align: center;
     padding: 50px 20px;
@@ -874,7 +861,8 @@
     padding: 20px;
     border-radius: 10px;
     width: 250px;
-    transition: transform 0.5s ease, box-shadow 0.5s ease, background-color 0.5s ease;
+    transition: transform 0.5s ease, box-shadow 0.5s ease,
+        background-color 0.5s ease;
     text-align: center;
     backdrop-filter: blur(5px);
     animation: zoomIn 0.8s ease-in-out;
@@ -883,7 +871,12 @@
 .team-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
-    background-color: rgba(255, 255, 255, 0.15); /* Warna sedikit berbeda untuk efek hover */
+    background-color: rgba(
+        255,
+        255,
+        255,
+        0.15
+    ); /* Warna sedikit berbeda untuk efek hover */
 }
 
 .team-card img {
@@ -934,7 +927,7 @@
         font-size: 1rem;
     }
 
-     .team-container {
+    .team-container {
         flex-direction: column;
         align-items: center;
     }
@@ -951,7 +944,6 @@
         font-size: 0.9rem;
     }
 }
-
 
 /*sound*/
 .audio-controls {
@@ -989,7 +981,6 @@
     background: none;
 }
 
-
 /*kata kata biajk*/
 .scroll-animated-section {
     position: relative;
@@ -1025,7 +1016,6 @@
     position: relative;
     animation-fill-mode: forwards;
     color: white;
-
 }
 
 .scroll-subtitle {
@@ -1061,7 +1051,6 @@
         opacity: 1;
     }
 }
-
 
 /* iklannnnn muncul beberapa detik */
 .promo-banner {
@@ -1180,8 +1169,6 @@
     }
 }
 
-
-
 /* Responsif untuk mobile */
 @media (max-width: 768px) {
     /* Gaya khusus untuk layar kecil seperti ponsel */
@@ -1207,9 +1194,3 @@
         width: 80px;
     }
 }
-
-
-
-
-
-
