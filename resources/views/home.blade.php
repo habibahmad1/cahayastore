@@ -157,7 +157,9 @@
     </div>
 </section>
 
-<section id="meet-the-team" class="meet-the-team-section">
+
+
+{{-- <section id="meet-the-team" class="meet-the-team-section">
     <div class="container">
         <div class="title">
             <h1>Temui Kru</h1>
@@ -226,7 +228,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> --}}
 
 <div class="scroll-animated-section">
     <video autoplay loop muted class="background-video">

@@ -257,8 +257,3 @@ document.addEventListener("DOMContentLoaded", function () {
         promoBanner.style.cursor = "grab";
     });
 });
-
-
-
-
-
