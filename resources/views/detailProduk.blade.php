@@ -21,16 +21,16 @@
 
 <div class="container-detail-card">
     <div class="gambar-produk">
-        <img src="{{ asset('img/' . $post->gambar1) }}" alt="img-produk">
+        <img src="{{ asset('storage/' . $post->gambar1) }}" alt="img-produk">
         <div class="gambar-produk-detail">
             <div class="video-place d-inline">
-                <img src="{{ asset('img/' . $post->gambar1) }}" alt="" class="video-img">
+                <img src="{{ asset('storage/' . $post->gambar1) }}" alt="" class="video-img">
                 <i class="fa-solid fa-play"></i>
             </div>
-            <img src="{{ asset('img/' . $post->gambar2) }}" alt="">
-            <img src="{{ asset('img/' . $post->gambar3) }}" alt="">
-            <img src="{{ asset('img/' . $post->gambar4) }}" alt="">
-            <img src="{{ asset('img/' . $post->gambar5) }}" alt="">
+            <img src="{{ asset('storage/' . $post->gambar2) }}" alt="">
+            <img src="{{ asset('storage/' . $post->gambar3) }}" alt="">
+            <img src="{{ asset('storage/' . $post->gambar4) }}" alt="">
+            <img src="{{ asset('storage/' . $post->gambar5) }}" alt="">
         </div>
     </div>
 
@@ -39,7 +39,7 @@
         </h3>
         <h2><b>Rp {{ number_format($post->harga, 0, ',', '.') }}</b></h2>
         <div class="diskon-coret">
-            <div class="diskon">{{ $post->diskon }}</div>
+            <div class="diskon">-{{ $post->diskon }}%</div>
             <div class="harga-coret">Rp {{ number_format($post->harga * 2, 0, ',', '.') }}</div>
         </div>
         <hr>
@@ -54,7 +54,7 @@
     <div class="form-beli">
         <h5><b>Atur Jumlah dan Catatan</b></h5>
         <div class="img-produk">
-            <img src="{{ asset('img/1.jpg') }}" alt="img-form">
+            <img src="{{ asset('storage/' . $post->gambar1) }}" alt="img-form">
             <p>variasi</p>
         </div>
         <p><b>Stok: 12</b></p>

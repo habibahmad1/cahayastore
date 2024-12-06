@@ -43,7 +43,7 @@ html {
 
 .product-card {
     width: 400px;
-    height: 700px;
+    height: 750px;
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
@@ -179,6 +179,7 @@ html {
     padding: 3px;
     border-radius: 3px;
     color: #ff5454;
+    font-weight: bold;
 }
 
 .diskon-coret .harga-coret {
@@ -257,7 +258,7 @@ html {
 
     .product-card {
         width: 350px;
-        max-height: 700px;
+        max-height: 750px;
     }
 
     .kategori-list a {
@@ -276,5 +277,18 @@ html {
 
     .gambar-thumbnail img {
         max-width: 350px;
+    }
+
+    /* Detail Produk */
+    .gambar-produk img {
+        max-width: 300px;
+        max-height: 300px;
+        border-radius: 5px;
+        margin: 10px 5px;
+    }
+
+    .gambar-produk-detail img {
+        width: 45px;
+        height: 45px;
     }
 }
