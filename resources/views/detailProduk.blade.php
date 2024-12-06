@@ -40,7 +40,7 @@
         <h2><b>Rp {{ number_format($post->harga, 0, ',', '.') }}</b></h2>
         <div class="diskon-coret">
             <div class="diskon">-{{ $post->diskon }}%</div>
-            <div class="harga-coret">Rp {{ number_format($post->harga * 2, 0, ',', '.') }}</div>
+            <div class="harga-coret">Rp {{ number_format($post->harga / (1 - ($post->diskon / 100)), 0, ',', '.') }}</div>
         </div>
         <hr>
         <h3>Detail</h3>
@@ -58,7 +58,7 @@
             <p>variasi</p>
         </div>
         <p><b>Stok: 12</b></p>
-        <p class="coret-form-harga">Rp {{ number_format($post->harga * 2, 0, ',', '.') }}</p>
+        <p class="coret-form-harga">Rp {{ number_format($post->harga / (1 - ($post->diskon / 100)), 0, ',', '.') }}</p>
         <div class="harga-asli">
             <h5>Subtotal</h5>
             <h4>Rp {{ number_format($post->harga, 0, ',', '.') }}</h4>
