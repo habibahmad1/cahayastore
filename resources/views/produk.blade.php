@@ -47,7 +47,8 @@
                         <p><span class="btn btn-warning text-danger"><i class="fa-solid fa-fire"></i> Diskon : {{ $produk->diskon }}% </span></p>
                         <p><i class="fa-solid fa-truck-fast" style="color: #2fd946"></i> Kab.Tangerang</p>
                         <p><i class="fa-solid fa-store" style="color: #04b4c4"></i> Cahayacenterid</p>
-                        <p> Harga Sebelumnya : <span class="text-decoration-line-through text-secondary fw-bold badge text-bg-danger text-white">Rp {{ number_format($produk->harga * 2, 0, ',', '.') }}</span></p>
+                        <p> Harga Sebelumnya : <span class="text-decoration-line-through text-secondary fw-bold badge text-bg-danger text-white">Rp {{ number_format($produk->harga / (1 - ($produk->diskon / 100)), 0, ',', '.') }}
+                        </span></p>
                         <h4><b>Harga : Rp {{ number_format($produk->harga, 0, ',', '.') }}</b></h4>
                     </div>
                     <a href="/produk/{{ $produk->slug }}" class="text-decoration-none">
