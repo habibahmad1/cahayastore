@@ -121,7 +121,7 @@
     animation: fadeIn 2s ease-in-out;
 }
 
-.btn {
+.btn-banner {
     cursor: pointer;
     position: relative;
     padding: 10px 20px;
@@ -167,9 +167,10 @@
 .content a {
     color: #ffffff;
     font-size: 15px;
+    animation: fadeIn 3s ease-in-out;
 }
 
-.btn:hover:hover {
+.btn-banner:hover:hover {
     background: linear-gradient(45deg, #ff6f61, #f8ff61);
     color: #000000;
     transform: scale(1.05);
