@@ -261,7 +261,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 // spill produkkkk
-
 // Kumpulan produk berdasarkan kategori
 const products = {
     led: [
@@ -278,8 +277,8 @@ const products = {
       ],
   };
 
-  // Gabungkan semua produk
-  const allProducts = [
+// Gabungkan semua produk
+const allProducts = [
     ...products.led,
     ...products.coffee,
     ...products.sendal,
@@ -325,11 +324,22 @@ const products = {
 
     // Tampilkan produk saat tombol diklik
     button.addEventListener("click", () => {
+      // Menampilkan produk dan mengganti warna tombol
       displayProducts(productImages);
+
+      // Reset semua tombol ke warna default
+      buttons.forEach((btn) => btn.classList.remove("clicked"));
+
+      // Menambahkan warna pada tombol yang diklik
+      button.classList.add("clicked");
     });
   });
 
   // Menampilkan semua produk saat pertama kali halaman dimuat
   window.addEventListener('load', () => {
     displayProducts(allProducts);
+
+    // Menambahkan kelas 'clicked' pada tombol "All" saat halaman dimuat
+    const allButton = document.querySelector(".filter-btn-prd.all-btn");
+    allButton.classList.add("clicked");
   });
