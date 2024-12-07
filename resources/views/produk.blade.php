@@ -43,11 +43,11 @@
                         <img src="{{ asset('storage/' . $produk->gambar1) }}" alt="Img-Produk">
                     </div>
                     <div class="produk-info">
-                        <h5><a href="/produk/{{ $produk->slug }}" class="nama-produk">{{ $produk->nama_produk }}</a></h5>
-                        <p><span class="btn btn-warning text-danger"><i class="fa-solid fa-fire"></i> Diskon : {{ $produk->diskon }}% </span></p>
+                        <h5 class="text-ellipsis"><a href="/produk/{{ $produk->slug }}" class="nama-produk">{{ $produk->nama_produk }}</a></h5>
+                        <p><span class="badge text-bg-warning text-danger"><i class="fa-solid fa-fire"></i> Diskon : {{ $produk->diskon }}% </span></p>
                         <p><i class="fa-solid fa-truck-fast" style="color: #2fd946"></i> Kab.Tangerang</p>
                         <p><i class="fa-solid fa-store" style="color: #04b4c4"></i> Cahayacenterid</p>
-                        <p> Harga Sebelumnya : <span class="text-decoration-line-through text-secondary fs-6 fw-bold badge text-bg-danger text-white">Rp {{ number_format($produk->harga / (1 - ($produk->diskon / 100)), 0, ',', '.') }}
+                        <p>  <span class="text-decoration-line-through text-secondary badge text-bg-danger text-white">Rp {{ number_format($produk->harga / (1 - ($produk->diskon / 100)), 0, ',', '.') }}
                         </span></p>
                         <h4><b>Harga : Rp {{ number_format($produk->harga, 0, ',', '.') }}</b></h4>
                     </div>

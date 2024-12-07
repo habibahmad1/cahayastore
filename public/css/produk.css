@@ -164,6 +164,13 @@ html {
     font-size: 22px;
 }
 
+.text-ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 400px; /* Ubah sesuai kebutuhan */
+}
+
 /* detail produk info */
 .produk-info-detail {
     max-width: 600px;
@@ -285,11 +292,6 @@ html {
         padding: 20px; /* Mengurangi padding agar tidak terlalu besar */
     }
 
-    .product-card {
-        width: 350px;
-        max-height: 750px;
-    }
-
     .kategori-list a {
         display: flex;
         align-items: center;
@@ -304,8 +306,66 @@ html {
         font-size: 12px;
     }
 
+    .gambar-thumbnail {
+        width: 150px;
+        height: 150px;
+    }
+
     .gambar-thumbnail img {
-        max-width: 350px;
+        max-width: 150px;
+        max-height: 150px;
+    }
+
+    .kategori-produk {
+        width: 65px;
+        height: 30px;
+        padding: 0;
+        text-align: center;
+    }
+
+    .kategori-produk a {
+        font-size: 10px;
+    }
+
+    .produk-info {
+        gap: 5px;
+        padding: 5px 5px;
+    }
+
+    .produk-info p {
+        font-size: 10px;
+    }
+
+    .produk-info p span {
+        font-size: 10px;
+    }
+
+    .produk-info h5 {
+        font-size: 14px;
+    }
+
+    .produk-info h4 {
+        font-size: 12px;
+    }
+
+    .details-button {
+        font-size: 10px;
+    }
+
+    .product-card {
+        width: 150px;
+        height: 330px;
+    }
+
+    .product-list {
+        gap: 10px;
+    }
+
+    .text-ellipsis {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 150px; /* Ubah sesuai kebutuhan */
     }
 
     /* Detail Produk */
