@@ -43,7 +43,7 @@
             <div class="harga-coret">Rp {{ number_format($post->harga / (1 - ($post->diskon / 100)), 0, ',', '.') }}</div>
         </div>
         <hr>
-        <h3>Detail</h3>
+        <h3>Detail Produk</h3>
         <hr>
         <p>Kondisi: Baru</p>
         <p>Min. Pemesanan: 1</p>
@@ -54,7 +54,7 @@
     </div>
 
     <div class="form-beli">
-        <h5><b>Atur Jumlah dan Catatan</b></h5>
+        <h5><b>Detail Harga</b></h5>
         <div class="img-produk">
             <img src="{{ asset('storage/' . $post->gambar1) }}" alt="img-form">
             <p>variasi</p>

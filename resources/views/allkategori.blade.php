@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('container')
-<h1 class="mb-5">Kategori Produk</h1>
+<h1 class="mb-5 pt-5 text-center">Kategori Produk</h1>
 
     @if($kategori->isEmpty())
         <p>Tidak ada kategori yang tersedia.</p>
