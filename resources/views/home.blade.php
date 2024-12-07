@@ -95,7 +95,7 @@
 <div class="story-and-experience">
     <div class="left-content">
         <h2 class="story-title"><i class="fa-solid fa-book-open"></i> Cerita Kami</h2>
-        <p class="story-subtitle">Perjalanan kami dari awal hingga sekarang.</p>
+        <p class="story-subtitle">PT. Cahaya Setia Indonesia, kami percaya bahwa setiap langkah kecil menuju inovasi adalah langkah besar menuju masa depan yang lebih baik. Sejak didirikan pada 2024, kami telah berkomitmen untuk menyediakan solusi yang tidak hanya memenuhi kebutuhan pasar, tetapi juga melampaui ekspektasi pelanggan kami.</p>
         <a href="/tentang" class="story-btn">Baca Selengkapnya</a>
     </div>
     <div class="right-content">
