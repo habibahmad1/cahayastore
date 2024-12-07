@@ -45,8 +45,8 @@
                     <div class="produk-info">
                         <h5 class="text-ellipsis"><a href="/produk/{{ $produk->slug }}" class="nama-produk">{{ $produk->nama_produk }}</a></h5>
                         <p><span class="badge text-bg-warning text-danger"><i class="fa-solid fa-fire"></i> Diskon : {{ $produk->diskon }}% </span></p>
-                        <p><i class="fa-solid fa-truck-fast" style="color: #2fd946"></i> Kab.Tangerang</p>
                         <p><i class="fa-solid fa-store" style="color: #04b4c4"></i> Cahayacenterid</p>
+                        <p><i class="fa-solid fa-truck-fast" style="color: #2fd946"></i> Kab.Tangerang</p>
                         <p>  <span class="text-decoration-line-through text-secondary badge text-bg-danger text-white">Rp {{ number_format($produk->harga / (1 - ($produk->diskon / 100)), 0, ',', '.') }}
                         </span></p>
                         <h4><b>Harga : Rp {{ number_format($produk->harga, 0, ',', '.') }}</b></h4>
@@ -57,6 +57,10 @@
                 </div>
             @endforeach
         @endif
+        <button id="back-to-top" class="btn" style="background-color: #fd8c45; color: white; display: none; position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
+            <i class="fa-solid fa-angle-up"></i>
+        </button>
+
 
     </div>
 
@@ -68,5 +72,26 @@
 
 
 <script src="{{ asset('js/produk.js') }}"></script>
+<script>
+    // Menampilkan tombol jika scroll lebih dari 100px
+    const backToTopButton = document.getElementById("back-to-top");
+
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 100) {
+            backToTopButton.style.display = "block";
+        } else {
+            backToTopButton.style.display = "none";
+        }
+    });
+
+    // Scroll ke atas saat tombol diklik
+    backToTopButton.addEventListener("click", () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    });
+</script>
+
 
 @endsection

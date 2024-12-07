@@ -307,13 +307,13 @@ html {
     }
 
     .gambar-thumbnail {
-        width: 150px;
-        height: 150px;
+        width: 170px;
+        height: 170px;
     }
 
     .gambar-thumbnail img {
-        max-width: 150px;
-        max-height: 150px;
+        max-width: 170px;
+        max-height: 170px;
     }
 
     .kategori-produk {
@@ -329,7 +329,7 @@ html {
 
     .produk-info {
         gap: 5px;
-        padding: 5px 5px;
+        padding: 5px 10px;
     }
 
     .produk-info p {
@@ -345,7 +345,7 @@ html {
     }
 
     .produk-info h4 {
-        font-size: 12px;
+        font-size: 14px;
     }
 
     .details-button {
@@ -353,8 +353,8 @@ html {
     }
 
     .product-card {
-        width: 150px;
-        height: 330px;
+        width: 170px;
+        height: 320px;
     }
 
     .product-list {
@@ -366,6 +366,10 @@ html {
         overflow: hidden;
         text-overflow: ellipsis;
         max-width: 150px; /* Ubah sesuai kebutuhan */
+    }
+
+    .details-button {
+        display: none;
     }
 
     /* Detail Produk */
