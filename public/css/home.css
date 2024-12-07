@@ -168,6 +168,7 @@
     color: #ffffff;
     font-size: 15px;
     animation: fadeIn 3s ease-in-out;
+    text-decoration: none;
 }
 
 .btn-banner:hover:hover {
@@ -457,10 +458,12 @@
     display: flex;
     justify-content: space-between;
     gap: 30px;
-    padding: 60px 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 60px;
+    padding-top: 0px;
     background: linear-gradient(to top, #141414, #2c3e50);
     color: white;
-    animation: fadeIn 2s ease-in-out;
 }
 
 .left-content,
@@ -470,7 +473,7 @@
     border-radius: 15px;
     background: rgba(0, 0, 0, 0.5);
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
-    animation: zoomIn 1s ease-in-out;
+    animation: zoomIn 2s ease-in-out;
 }
 
 .left-content {
@@ -1299,16 +1302,45 @@
     background-size: cover;
     background-position: center;
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-  }
+    transform: rotateY(90deg) scale(0.8);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition:
+        transform 1s cubic-bezier(0.4, 0, 0.2, 1),
+        opacity 0.8s ease-out,
+        box-shadow 1s ease-in-out;
+}
 
-  .product-item.show {
+.product-item.show {
     opacity: 1;
-    transform: translateY(0);
-  }
+    transform: rotateY(0deg) scale(1);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.5);
+}
+
+.product-item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent);
+    opacity: 0.6; /* Kurangi opacity agar gambar lebih terlihat */
+    transform: scale(1.5);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.product-item.show::before {
+    opacity: 0.2; /* Mengurangi opacity supaya tidak terlalu terang */
+    transform: scale(1);
+}
+
+.product-item:hover {
+    transform: scale(1.1);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
+}
+
 
   .see-more-btn {
     display: inline-block;
@@ -1341,6 +1373,16 @@
       max-width: 100%;
       border-radius: 0px;
     }
+
+    .containerspill h1 {
+        font-size: 25px;
+
+      }
+
+    .containerspill h2 {
+        font-size: 15px;
+        margin: 30px;
+      }
 
     .button-group {
         flex-wrap: wrap; /* Atur tombol dalam beberapa baris jika tidak cukup ruang */

@@ -291,20 +291,20 @@ const allProducts = [
 
   // Fungsi untuk menampilkan produk
   function displayProducts(images) {
-    productDisplay.innerHTML = ""; // Bersihkan gambar sebelumnya
+    productDisplay.innerHTML = ""; // Bersihkan konten sebelumnya
     images.forEach((image, index) => {
-      const productItem = document.createElement("div");
-      productItem.classList.add("product-item");
-      productItem.style.backgroundImage = `url(${image})`;
+        const productItem = document.createElement("div");
+        productItem.classList.add("product-item");
+        productItem.style.backgroundImage = `url(${image})`;
 
-      // Tambahkan animasi delay
-      setTimeout(() => {
-        productItem.classList.add("show");
-      }, index * 200); // Delay 200ms untuk setiap item
+        // Tambahkan delay untuk efek cascading
+        setTimeout(() => {
+            productItem.classList.add("show");
+        }, index * 200); // 200ms delay per produk
 
-      productDisplay.appendChild(productItem);
+        productDisplay.appendChild(productItem);
     });
-  }
+}
 
   // Tambahkan event listener ke setiap tombol
   buttons.forEach((button) => {
@@ -343,3 +343,4 @@ const allProducts = [
     const allButton = document.querySelector(".filter-btn-prd.all-btn");
     allButton.classList.add("clicked");
   });
+
