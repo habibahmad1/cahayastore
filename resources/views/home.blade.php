@@ -157,6 +157,37 @@
     </div>
 </section>
 
+<div class="containerspill">
+    <h1>Produk Unggulan</h1>
+    <h2>Beberapa Produk Unggulan Yang Kami Rekomendasikan Untuk Anda.</h2>
+    <div class="button-group">
+      <div class="button-wrapper">
+        <span class="product-count"></span>
+        <button class="filter-btn-prd" data-category="all">All</button>
+      </div>
+      <div class="button-wrapper">
+        <span class="product-count"></span>
+        <button class="filter-btn-prd" data-category="led">LED</button>
+      </div>
+      <div class="button-wrapper">
+        <span class="product-count"></span>
+        <button class="filter-btn-prd" data-category="coffee">Coffee</button>
+      </div>
+      <div class="button-wrapper">
+        <span class="product-count"></span>
+        <button class="filter-btn-prd" data-category="sendal">Sendal</button>
+      </div>
+      <div class="button-wrapper">
+        <span class="product-count"></span>
+        <button class="filter-btn-prd" data-category="playmat">Playmat</button>
+      </div>
+    </div>
+    <div class="product-display">
+      <!-- Gambar akan muncul di sini berdasarkan kategori -->
+    </div>
+    <a href="https://example.com" class="see-more-btn">Lihat Lebih Banyak</a>
+  </div>
+
 
 
 {{-- <section id="meet-the-team" class="meet-the-team-section">

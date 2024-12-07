@@ -257,3 +257,79 @@ document.addEventListener("DOMContentLoaded", function () {
         promoBanner.style.cursor = "grab";
     });
 });
+
+
+
+// spill produkkkk
+
+// Kumpulan produk berdasarkan kategori
+const products = {
+    led: [
+        "img/iklan1.jpg", "img/iklan1.jpg", "img/iklan1.jpg", "img/iklan1.jpg", "img/iklan1.jpg", "img/iklan1.jpg",
+      ],
+      coffee: [
+        "img/iklan1.jpg", "img/iklan1.jpg", "img/iklan1.jpg", "img/iklan1.jpg", "img/iklan1.jpg",
+      ],
+      sendal: [
+        "img/iklan1.jpg", "img/iklan1.jpg", "img/iklan1.jpg", "img/iklan1.jpg", "img/iklan1.jpg", "img/iklan1.jpg",
+      ],
+      playmat: [
+        "img/iklan1.jpg", "img/iklan1.jpg", "img/iklan1.jpg", "img/iklan1.jpg", "img/iklan1.jpg",
+      ],
+  };
+
+  // Gabungkan semua produk
+  const allProducts = [
+    ...products.led,
+    ...products.coffee,
+    ...products.sendal,
+    ...products.playmat,
+  ];
+
+  // Dapatkan elemen tombol dan area untuk menampilkan produk
+  const buttons = document.querySelectorAll(".filter-btn-prd");
+  const productDisplay = document.querySelector(".product-display");
+
+  // Fungsi untuk menampilkan produk
+  function displayProducts(images) {
+    productDisplay.innerHTML = ""; // Bersihkan gambar sebelumnya
+    images.forEach((image, index) => {
+      const productItem = document.createElement("div");
+      productItem.classList.add("product-item");
+      productItem.style.backgroundImage = `url(${image})`;
+
+      // Tambahkan animasi delay
+      setTimeout(() => {
+        productItem.classList.add("show");
+      }, index * 200); // Delay 200ms untuk setiap item
+
+      productDisplay.appendChild(productItem);
+    });
+  }
+
+  // Tambahkan event listener ke setiap tombol
+  buttons.forEach((button) => {
+    const category = button.getAttribute("data-category");
+
+    // Update angka produk berdasarkan kategori
+    const productCountSpan = button.closest(".button-wrapper").querySelector(".product-count");
+
+    let productImages = [];
+    if (category === "all") {
+      productImages = allProducts;
+      productCountSpan.textContent = allProducts.length;
+    } else {
+      productImages = products[category];
+      productCountSpan.textContent = products[category].length;
+    }
+
+    // Tampilkan produk saat tombol diklik
+    button.addEventListener("click", () => {
+      displayProducts(productImages);
+    });
+  });
+
+  // Menampilkan semua produk saat pertama kali halaman dimuat
+  window.addEventListener('load', () => {
+    displayProducts(allProducts);
+  });

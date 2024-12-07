@@ -1194,3 +1194,218 @@
         width: 80px;
     }
 }
+
+/* produkk spill */
+.containerspill h1 {
+    margin: 10px 0;
+    color: floralwhite;
+  }
+
+  .containerspill h2 {
+    margin: 10px 0;
+    color: floralwhite;
+    margin-bottom: 50px;
+    font-size: 20px;
+  }
+
+  .button-group {
+    display: flex;
+    justify-content: center;
+    gap: 0px;
+    margin-bottom: 20px;
+  }
+
+
+/* Gaya dasar tombol */
+.filter-btn-prd {
+    padding: 10px 5px;
+    border: none;
+    background: #007BFF;
+    color: white;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    font-size: 14px;
+    min-width: 80px;
+  }
+
+  /* Gaya hover tombol */
+  .filter-btn-prd:hover {
+    background: linear-gradient(45deg, #ffa600, #ff6f61);
+  }
+
+  /* Gaya untuk pembungkus tombol */
+  .button-wrapper {
+    position: relative;
+    display: inline-block;
+    margin: 10px;
+  }
+
+  /* Gaya untuk angka total produk */
+  .product-count {
+    position: absolute;
+    top: -25px; /* Lokasi awal di atas tombol */
+    left: 50%; /* Pusatkan secara horizontal */
+    transform: translateX(-50%);
+    background: #ff6f61;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 20px;
+    opacity: 0; /* Tidak terlihat secara default */
+    transition: top 0.3s ease, opacity 0.3s ease; /* Transisi untuk kemunculan */
+  }
+
+  /* Tampilkan angka saat hover tombol */
+  .button-wrapper:hover .product-count {
+    top: -40px; /* Geser lebih tinggi saat hover */
+    opacity: 1; /* Angka terlihat */
+  }
+
+  /* Gaya untuk container dan produk */
+  .containerspill {
+    max-width: 100%;
+    padding: 20px;
+    background: linear-gradient(to top, #000208f3, #141414 );
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 0px;
+    text-align: center;
+    margin: 0 auto; /* Centang konten */
+  }
+
+  .product-display {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin: 20px 0;
+    min-height: 200px;
+  }
+
+  .product-item {
+    width: 150px;
+    height: 150px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  .product-item.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .see-more-btn {
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    background: linear-gradient(45deg, #ffa600, #ff6f61);
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: transform 0.3s ease, background 0.3s ease;
+  }
+
+  .see-more-btn:hover {
+    background: linear-gradient(45deg, #ff6f61, #ffa600);
+    transform: translateY(-5px);
+  }
+
+  /* Media Query untuk tampilan tablet dan ponsel */
+  @media (max-width: 768px) {
+    /* Container */
+    .containerspill {
+      max-width: 95%;
+      padding: 15px;
+      max-width: 100%;
+      border-radius: 0px;
+    }
+
+    .button-group {
+        flex-wrap: wrap; /* Atur tombol dalam beberapa baris jika tidak cukup ruang */
+        gap: 10px;
+      }
+
+    /* Tombol filter dan jumlah produk */
+    .button-wrapper {
+      display: block;
+      margin: 5px 0;
+      text-align: center;
+    }
+
+    .filter-btn-prd {
+      width: 100%; /* Membuat tombol lebar penuh */
+      font-size: 16px;
+      padding: 12px;
+    }
+
+    .product-display {
+        gap: 8px;
+      }
+
+    .product-count {
+      font-size: 12px;
+      padding: 4px 8px;
+    }
+
+    .product-item {
+      width: 120px;
+      height: 120px;
+    }
+
+    .see-more-btn {
+      font-size: 16px;
+      padding: 8px 16px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    /* Container */
+    .containerspill {
+      max-width: 95%;
+      padding: 10px;
+      max-width: 100%;
+      border-radius: 0px;
+    }
+
+    .button-group {
+        flex-wrap: wrap; /* Atur tombol dalam beberapa baris jika tidak cukup ruang */
+        gap: 10px;
+      }
+
+    .product-display {
+        gap: 8px;
+      }
+
+
+    /* Tombol filter dan jumlah produk */
+    .filter-btn-prd {
+      width: 100%; /* Membuat tombol lebar penuh */
+      font-size: 14px;
+      padding: 10px;
+    }
+
+    .product-count {
+      font-size: 10px;
+      padding: 4px 8px;
+    }
+
+    .product-item {
+      width: 100px;
+      height: 100px;
+    }
+
+    .see-more-btn {
+      font-size: 14px;
+      padding: 6px 12px;
+    }
+  }
