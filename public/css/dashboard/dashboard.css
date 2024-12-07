@@ -64,6 +64,25 @@
     color: #ff2d38;
 }
 
+/* Dashboard index */
+.card-jml-produk {
+    display: flex;
+    text-align: center;
+    color: #fff;
+    border-radius: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.card-jml-produk .info {
+    width: 300px;
+    padding: 10px;
+    margin: 20px;
+    background-color: #2ad4ff;
+    color: #000;
+    border-radius: 5px;
+}
+
 @media (max-width: 768px) {
     .sidebar .offcanvas-lg {
         position: -webkit-sticky;

@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminKategoriController;
 use App\Http\Controllers\DashboardController;
 use App\Models\Produk;
 use App\Models\Kategori;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProdukController;
@@ -67,7 +68,11 @@ Route::get('/allkategori', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard.index');
+    return view('dashboard.index', [
+        "produk" => Produk::all(),
+        "kategori" => Kategori::all(),
+        "user" => User::all()
+    ]);
 })->middleware('auth');
 
 Route::resource('/dashboard/produk', DashboardController::class)->middleware('auth');
