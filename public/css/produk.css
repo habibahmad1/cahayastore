@@ -64,12 +64,15 @@ html {
 }
 
 .gambar-thumbnail {
-    width: 400px;
-    height: 400px;
+    width: 400px; /* Tentukan lebar tetap untuk kontainer */
+    height: 400px; /* Tentukan tinggi tetap untuk kontainer */
+    overflow: hidden; /* Menyembunyikan bagian gambar yang terpotong */
 }
 
 .gambar-thumbnail img {
-    max-width: 400px;
+    width: 100%; /* Gambar akan mengisi lebar kontainer */
+    height: 100%; /* Gambar akan mengisi tinggi kontainer */
+    object-fit: cover; /* Gambar akan terpotong jika perlu untuk mengisi kontainer */
 }
 
 .kategori-produk {
