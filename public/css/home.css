@@ -1369,8 +1369,8 @@
     }
 
     .product-item {
-      width: 190px;
-      height: 190px;
+      width: 175px;
+      height: 175px;
       margin: 10px;
       border-radius: 0px;
     }
@@ -1412,8 +1412,8 @@
       padding: 4px 8px;
     }
     .product-item {
-        width: 180px;
-        height: 180px;
+        width: 150px;
+        height: 150px;
         margin: 7px;
         border-radius: 0px;
       }
