@@ -488,6 +488,10 @@
 }
 
 .left-content .story-btn {
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+    border-radius: 5px;
     padding: 10px 20px;
     font-size: 1rem;
     background: linear-gradient(45deg, #ffa600, #ff6f61);
@@ -1215,23 +1219,23 @@
     margin-bottom: 20px;
   }
 
-
 /* Gaya dasar tombol */
 .filter-btn-prd {
-    padding: 10px 5px;
+    padding: 10px 20px;
     border: none;
-    background: #007BFF;
     color: white;
-    border-radius: 3px;
+    border-radius: 5px;
     cursor: pointer;
     transition: background 0.3s ease;
     font-size: 14px;
-    min-width: 80px;
+    min-width: 120px;
+    text-align: center;
+    background-color: #007BFF; /* Warna default biru */
   }
 
   /* Gaya hover tombol */
   .filter-btn-prd:hover {
-    background: linear-gradient(45deg, #ffa600, #ff6f61);
+    opacity: 0.8;
   }
 
   /* Gaya untuk pembungkus tombol */
@@ -1263,11 +1267,16 @@
     opacity: 1; /* Angka terlihat */
   }
 
+  /* Gaya aktif tombol ketika diklik */
+  .filter-btn-prd.clicked {
+    background: linear-gradient(45deg, #ffa600, #ff6f61); /* Merah ketika tombol diklik */
+  }
+
   /* Gaya untuk container dan produk */
   .containerspill {
     max-width: 100%;
     padding: 20px;
-    background: linear-gradient(to top, #000208f3, #141414 );
+    background: linear-gradient(to top,#2c3e50, #141414 );
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     border-radius: 0px;
     text-align: center;
@@ -1281,11 +1290,12 @@
     justify-content: center;
     margin: 20px 0;
     min-height: 200px;
+
   }
 
   .product-item {
-    width: 150px;
-    height: 150px;
+    width: 250px;
+    height: 250px;
     background-size: cover;
     background-position: center;
     border-radius: 10px;
@@ -1313,12 +1323,14 @@
     cursor: pointer;
     border-radius: 10px;
     transition: transform 0.3s ease, background 0.3s ease;
+    margin-bottom: 20px;
   }
 
   .see-more-btn:hover {
     background: linear-gradient(45deg, #ff6f61, #ffa600);
     transform: translateY(-5px);
   }
+
 
   /* Media Query untuk tampilan tablet dan ponsel */
   @media (max-width: 768px) {
@@ -1349,7 +1361,7 @@
     }
 
     .product-display {
-        gap: 8px;
+        gap: 0px;
       }
 
     .product-count {
@@ -1358,8 +1370,10 @@
     }
 
     .product-item {
-      width: 120px;
-      height: 120px;
+      width: 190px;
+      height: 190px;
+      margin: 10px;
+      border-radius: 0px;
     }
 
     .see-more-btn {
@@ -1383,7 +1397,7 @@
       }
 
     .product-display {
-        gap: 8px;
+        gap: 0px;
       }
 
 
@@ -1398,11 +1412,12 @@
       font-size: 10px;
       padding: 4px 8px;
     }
-
     .product-item {
-      width: 100px;
-      height: 100px;
-    }
+        width: 180px;
+        height: 180px;
+        margin: 7px;
+        border-radius: 0px;
+      }
 
     .see-more-btn {
       font-size: 14px;

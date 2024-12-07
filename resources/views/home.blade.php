@@ -7,28 +7,28 @@
             <div class="content">
                 <h1>PT. CAHAYA SETIA INDONESIA</h1>
                 <p>"Cahaya Tepat untuk Tangkap yang Hebat, Terangi Laut, Raih Hasil yang Maksimal"</p>
-                <a href="/produk" class="btn">Jelajahi Produk</a>
+                <a href="/kategori/lampu" class="btn">Jelajahi Produk</a>
             </div>
         </div>
         <div class="slide" style="background-image: url('https://cdn.pixabay.com/photo/2014/12/11/02/56/coffee-563797_1280.jpg');">
             <div class="content">
                 <h1>PT. CAHAYA SETIA INDONESIA</h1>
                 <p>"Nikmati Keaslian, Hirup Kenikmatan Bersama Luwak Coffee Authentic"</p>
-                <a href="/produk" class="btn">Jelajahi Produk</a>
+                <a href="/kategori/kopi" class="btn">Jelajahi Produk</a>
             </div>
         </div>
         <div class="slide" style="background-image: url('https://cdn.pixabay.com/photo/2018/08/18/14/26/feet-3614862_1280.jpg');">
             <div class="content">
                 <h1>PT. CAHAYA SETIA INDONESIA</h1>
                 <p>"Sandal Praktis untuk Gaya Dinamis, Setiap Langkah Bersama Kenyamanan"</p>
-                <a href="/produk" class="btn">Jelajahi Produk</a>
+                <a href="/kategori/sandal" class="btn">Jelajahi Produk</a>
             </div>
         </div>
         <div class="slide" style="background-image: url('https://static.mooimom.id/media/mamapedia/d6fIluYI--main-image.webp');">
             <div class="content">
                 <h1>PT. CAHAYA SETIA INDONESIA</h1>
                 <p>"Teman Bermain yang Aman, Nyaman dan seru untuk Si Kecil dengan Playmat!"</p>
-                <a href="/produk" class="btn">Jelajahi Produk</a>
+                <a href="/kategori/playmat" class="btn">Jelajahi Produk</a>
             </div>
         </div>
     </div>
@@ -96,7 +96,7 @@
     <div class="left-content">
         <h2 class="story-title"><i class="fa-solid fa-book-open"></i> Cerita Kami</h2>
         <p class="story-subtitle">Perjalanan kami dari awal hingga sekarang.</p>
-        <button class="story-btn">Baca Selengkapnya</button>
+        <a href="/tentang" class="story-btn">Baca Selengkapnya</a>
     </div>
     <div class="right-content">
         <h2 class="experience-title"><i class="fa-solid fa-star"></i> Pengalaman Kami</h2>
@@ -163,31 +163,30 @@
     <div class="button-group">
       <div class="button-wrapper">
         <span class="product-count"></span>
-        <button class="filter-btn-prd" data-category="all">All</button>
+        <button class="filter-btn-prd all-btn" data-category="all">All</button>
       </div>
       <div class="button-wrapper">
         <span class="product-count"></span>
-        <button class="filter-btn-prd" data-category="led">LED</button>
+        <button class="filter-btn-prd led-btn" data-category="led">LED</button>
       </div>
       <div class="button-wrapper">
         <span class="product-count"></span>
-        <button class="filter-btn-prd" data-category="coffee">Coffee</button>
+        <button class="filter-btn-prd coffee-btn" data-category="coffee">Coffee</button>
       </div>
       <div class="button-wrapper">
         <span class="product-count"></span>
-        <button class="filter-btn-prd" data-category="sendal">Sendal</button>
+        <button class="filter-btn-prd sendal-btn" data-category="sendal">Sendal</button>
       </div>
       <div class="button-wrapper">
         <span class="product-count"></span>
-        <button class="filter-btn-prd" data-category="playmat">Playmat</button>
+        <button class="filter-btn-prd playmat-btn" data-category="playmat">Playmat</button>
       </div>
     </div>
     <div class="product-display">
       <!-- Gambar akan muncul di sini berdasarkan kategori -->
     </div>
-    <a href="https://example.com" class="see-more-btn">Lihat Lebih Banyak</a>
+    <a href="/produk" class="see-more-btn">Lihat Lebih Banyak</a>
   </div>
-
 
 
 {{-- <section id="meet-the-team" class="meet-the-team-section">
