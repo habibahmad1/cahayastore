@@ -4,7 +4,8 @@
     <h1 class="h2">Daftar Produk</h1>
   </div>
 
-  <div class="table-responsive small">
+
+
     <a href="/dashboard/produk/create" class="btn btn-primary mb-3">Tambah Produk</a>
 
     @if (session()->has('success'))
@@ -12,6 +13,18 @@
         {{ session('success') }}
       </div>
     @endif
+
+    <div class="table-responsive small">
+        <div class="row justify-content-center px-2">
+            <div class="col-lg-8 pencarian">
+                <form action="/dashboard/produk">
+                    <div class="input-group my-3">
+                        <input type="text" class="form-control" placeholder="Cari Produk.." name="search" value="{{ request('search') }}" id="search-box">
+                        <button class="btn btn-warning" type="submit">Cari</button>
+                    </div>
+                </form>
+            </div>
+        </div>
 
     <table class="table table-hover table-sm">
       <thead>
@@ -83,4 +96,8 @@
       </tbody>
     </table>
   </div>
+
+  <div class="pagination d-flex justify-content-center my-5">
+    {{ $produk->links() }}
+</div>
 @endsection
