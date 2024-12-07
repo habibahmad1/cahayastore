@@ -65,12 +65,17 @@
             @endforeach
         </td>
 
-          <td>
-            <video style="max-height: 270px; max-width: 200px; overflow: hidden; border-radius: 5px; margin-right: 5px;" class="mb-3" controls>
-                <source src="{{ asset('storage/' . $p->video) }}" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-          </td>
+        <td>
+            @if (!empty($p->video))
+                <video style="max-height: 270px; max-width: 200px; overflow: hidden; border-radius: 5px; margin-right: 5px;" class="mb-3" controls>
+                    <source src="{{ asset('storage/' . $p->video) }}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            @else
+                <p>No Video</p>  <!-- Atau Anda bisa kosongkan atau tampilkan teks lain jika tidak ada video -->
+            @endif
+        </td>
+
 
           <td>{{ $p->kode_produk }}</td>
           <td>{!! $p->deskripsi !!}</td>

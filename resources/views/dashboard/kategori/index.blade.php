@@ -8,7 +8,7 @@
     <a href="/dashboard/kategori/create" class="btn btn-primary mb-3">Tambah Kategori</a>
 
     @if (session()->has('success'))
-    <div class="alert alert-success col-lg-4" role="alert">
+    <div class="alert alert-success" role="alert">
         {{ session('success') }}
       </div>
     @endif
@@ -28,12 +28,12 @@
           <td>{{ $loop->iteration }}</td>
           <td>{{ $p->nama }}</td>
           <td>
-            <a href="/dashboard/produk/{{ $p->slug }}" class="badge bg-info"><span><i class="bi bi-eye-fill"></i></span></a>
-            <a href="/dashboard/produk/{{ $p->slug }}/edit" class="badge bg-warning"><span><i class="bi bi-pencil-square"></i></span></a>
-            <form action="/dashboard/produk/{{ $p->slug }}" method="POST" class="d-inline">
+            {{-- <a href="/dashboard/kategori/{{ $p->slug }}" class="badge bg-info"><span><i class="bi bi-eye-fill"></i></span></a> --}}
+            <a href="/dashboard/kategori/{{ $p->slug }}/edit" class="badge bg-warning"><span><i class="bi bi-pencil-square"></i></span></a>
+            <form action="/dashboard/kategori/{{ $p->slug }}" method="POST" class="d-inline">
                 @method('delete')
                 @csrf
-                <button class="badge bg-danger border-0" onclick="return confirm('Hapus Produk?')"><span><i class="bi bi-trash"></i></span></button>
+                <button class="badge bg-danger border-0" onclick="return confirm('Hapus Kategori?')"><span><i class="bi bi-trash"></i></span></button>
             </form>
           </td>
         </tr>

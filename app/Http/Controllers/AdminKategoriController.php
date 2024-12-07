@@ -28,7 +28,7 @@ class AdminKategoriController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.kategori.create');
     }
 
     /**
@@ -36,7 +36,14 @@ class AdminKategoriController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validasiData = $request->validate([
+            "nama" => "required",
+            "slug" => "required|unique:kategoris,nama"
+        ]);
+
+        Kategori::create($validasiData);
+
+        return redirect('/dashboard/kategori')->with('success', 'Kategori berhasil ditambahkan!');
     }
 
     /**
@@ -52,7 +59,9 @@ class AdminKategoriController extends Controller
      */
     public function edit(Kategori $kategori)
     {
-        //
+        return view('dashboard.kategori.edit', [
+            "kategori" => $kategori
+        ]);
     }
 
     /**
@@ -60,14 +69,27 @@ class AdminKategoriController extends Controller
      */
     public function update(Request $request, Kategori $kategori)
     {
-        //
+        // Validasi data
+        $validasiData = $request->validate([
+            "nama" => "required",
+            "slug" => "required"
+        ]);
+
+        // Mengupdate data kategori
+        $kategori->update($validasiData);
+
+        // Redirect ke halaman kategori dengan pesan sukses
+        return redirect('/dashboard/kategori')->with('success', 'Kategori berhasil diedit!');
     }
+
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(Kategori $kategori)
     {
-        //
+        $kategori->delete();
+
+        return redirect('/dashboard/kategori')->with('success', 'Kategori berhasil dihapus!');
     }
 }
