@@ -7,28 +7,28 @@
             <div class="content">
                 <h1>PT. CAHAYA SETIA INDONESIA</h1>
                 <p>"Cahaya Tepat untuk Tangkap yang Hebat, Terangi Laut, Raih Hasil yang Maksimal"</p>
-                <a href="/kategori/lampu" class="btn">Jelajahi Produk</a>
+                <a href="/kategori/lampu" class="btn-banner">Jelajahi Produk</a>
             </div>
         </div>
         <div class="slide" style="background-image: url('https://cdn.pixabay.com/photo/2014/12/11/02/56/coffee-563797_1280.jpg');">
             <div class="content">
                 <h1>PT. CAHAYA SETIA INDONESIA</h1>
                 <p>"Nikmati Keaslian, Hirup Kenikmatan Bersama Luwak Coffee Authentic"</p>
-                <a href="/kategori/kopi" class="btn">Jelajahi Produk</a>
+                <a href="/kategori/kopi" class="btn-banner">Jelajahi Produk</a>
             </div>
         </div>
         <div class="slide" style="background-image: url('https://cdn.pixabay.com/photo/2018/08/18/14/26/feet-3614862_1280.jpg');">
             <div class="content">
                 <h1>PT. CAHAYA SETIA INDONESIA</h1>
                 <p>"Sandal Praktis untuk Gaya Dinamis, Setiap Langkah Bersama Kenyamanan"</p>
-                <a href="/kategori/sandal" class="btn">Jelajahi Produk</a>
+                <a href="/kategori/sandal" class="btn-banner">Jelajahi Produk</a>
             </div>
         </div>
         <div class="slide" style="background-image: url('https://static.mooimom.id/media/mamapedia/d6fIluYI--main-image.webp');">
             <div class="content">
                 <h1>PT. CAHAYA SETIA INDONESIA</h1>
                 <p>"Teman Bermain yang Aman, Nyaman dan seru untuk Si Kecil dengan Playmat!"</p>
-                <a href="/kategori/playmat" class="btn">Jelajahi Produk</a>
+                <a href="/kategori/playmat" class="btn-banner">Jelajahi Produk</a>
             </div>
         </div>
     </div>
@@ -167,7 +167,7 @@
       </div>
       <div class="button-wrapper">
         <span class="product-count"></span>
-        <button class="filter-btn-prd led-btn" data-category="led">LED</button>
+        <button class="filter-btn-prd led-btn" data-category="led">LED Fishing Light</button>
       </div>
       <div class="button-wrapper">
         <span class="product-count"></span>

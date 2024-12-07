@@ -264,16 +264,16 @@ document.addEventListener("DOMContentLoaded", function () {
 // Kumpulan produk berdasarkan kategori
 const products = {
     led: [
-        "img/iklan1.jpg", "img/iklan1.jpg", "img/iklan1.jpg", "img/iklan1.jpg", "img/iklan1.jpg", "img/iklan1.jpg",
+        "img/iklan1.jpg", "img/iklan2.jpg", "img/iklan3.jpg", "img/iklan1.jpg",
       ],
       coffee: [
-        "img/iklan1.jpg", "img/iklan1.jpg", "img/iklan1.jpg", "img/iklan1.jpg", "img/iklan1.jpg",
+        "img/iklan1.jpg", "img/iklan2.jpg", "img/iklan3.jpg", "img/iklan1.jpg",
       ],
       sendal: [
-        "img/iklan1.jpg", "img/iklan1.jpg", "img/iklan1.jpg", "img/iklan1.jpg", "img/iklan1.jpg", "img/iklan1.jpg",
+        "img/iklan1.jpg", "img/iklan2.jpg", "img/iklan3.jpg", "img/iklan1.jpg",
       ],
       playmat: [
-        "img/iklan1.jpg", "img/iklan1.jpg", "img/iklan1.jpg", "img/iklan1.jpg", "img/iklan1.jpg",
+        "img/iklan1.jpg", "img/iklan2.jpg", "img/iklan3.jpg", "img/iklan1.jpg",
       ],
   };
 

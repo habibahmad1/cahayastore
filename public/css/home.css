@@ -121,7 +121,7 @@
     animation: fadeIn 2s ease-in-out;
 }
 
-.btn {
+.btn-banner {
     cursor: pointer;
     position: relative;
     padding: 10px 20px;
@@ -167,9 +167,10 @@
 .content a {
     color: #ffffff;
     font-size: 15px;
+    animation: fadeIn 3s ease-in-out;
 }
 
-.btn:hover:hover {
+.btn-banner:hover:hover {
     background: linear-gradient(45deg, #ff6f61, #f8ff61);
     color: #000000;
     transform: scale(1.05);
@@ -1223,13 +1224,13 @@
     padding: 10px 20px;
     border: none;
     color: white;
-    border-radius: 5px;
+    border-radius: 3px;
     cursor: pointer;
     transition: background 0.3s ease;
     font-size: 14px;
     min-width: 120px;
     text-align: center;
-    background-color: #007BFF; /* Warna default biru */
+    background-color: #3a3a3a; /* Warna default biru */
   }
 
   /* Gaya hover tombol */
@@ -1250,7 +1251,7 @@
     top: -25px; /* Lokasi awal di atas tombol */
     left: 50%; /* Pusatkan secara horizontal */
     transform: translateX(-50%);
-    background: #ff6f61;
+    background: #ffac40;
     color: white;
     font-size: 14px;
     font-weight: bold;
@@ -1369,8 +1370,8 @@
     }
 
     .product-item {
-      width: 190px;
-      height: 190px;
+      width: 175px;
+      height: 175px;
       margin: 10px;
       border-radius: 0px;
     }
@@ -1412,8 +1413,8 @@
       padding: 4px 8px;
     }
     .product-item {
-        width: 180px;
-        height: 180px;
+        width: 150px;
+        height: 150px;
         margin: 7px;
         border-radius: 0px;
       }
