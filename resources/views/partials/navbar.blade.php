@@ -4,7 +4,7 @@
             <div class="mynavbar-nav">
                 <a href="/" class="{{ Request::is('/') ? 'active-dashboard' : '' }}">Beranda</a>
                 <a href="/features" class="{{ Request::is('features') ? 'active-dashboard' : '' }}">Keunggulan</a>
-                <a href="/produk" class="{{ Request::is('produk') ? 'active-dashboard' : '' }}">Produk</a>
+                <a href="/produk" class="{{ Request::is('produk*') ? 'active-dashboard' : '' }}">Produk</a>
                 <a href="/testimoni" class="{{ Request::is('testimoni') ? 'active-dashboard' : '' }}">Testimoni</a>
                 <a href="/faq" class="{{ Request::is('faq') ? 'active-dashboard' : '' }}">FAQ</a>
                 <a href="/tentang" class="{{ Request::is('tentang') ? 'active-dashboard' : '' }}">Tentang</a>

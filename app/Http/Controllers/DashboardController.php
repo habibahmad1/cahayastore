@@ -18,7 +18,7 @@ class DashboardController extends Controller
     {
 
         return view('dashboard.produk.index', [
-            "produk" =>  Produk::all()
+            "produk" =>  Produk::latest()->get()
         ]);
     }
 
@@ -126,11 +126,6 @@ class DashboardController extends Controller
             "status" => "required"
         ];
 
-        // Validasi slug jika diubah
-        if ($request->slug !== $produk->slug) {
-            $rules['slug'] = "required|unique:produks,slug";
-        }
-
         // Validasi kode_produk jika diubah
         if ($request->kode_produk !== $produk->kode_produk) {
             $rules['kode_produk'] = "nullable|unique:produks,kode_produk";
@@ -138,35 +133,33 @@ class DashboardController extends Controller
 
         $validatedData = $request->validate($rules);
 
+        // Menangani unggahan gambar
         $gambarFields = ['gambar1', 'gambar2', 'gambar3', 'gambar4', 'gambar5'];
-
         foreach ($gambarFields as $field) {
             if ($request->file($field)) {
-                // Menghapus gambar lama jika ada
+                // Hapus gambar lama jika ada
                 if ($produk->$field) {
-                    Storage::delete($produk->$field); // Hapus file gambar lama dari storage
+                    Storage::delete($produk->$field);
                 }
-                // Menyimpan gambar baru
+                // Simpan gambar baru
                 $validatedData[$field] = $request->file($field)->store('gambar');
             }
         }
 
         // Menangani unggahan video
         if ($request->file('video')) {
-            // Menghapus video lama jika ada
             if ($produk->video) {
                 Storage::delete($produk->video);
             }
-            // Menyimpan video baru
             $validatedData['video'] = $request->file('video')->store('video');
         }
 
-        // Update data produk
-        Produk::where('id', $produk->id)
-            ->update($validatedData);
+        // Update data produk, kecuali slug
+        $produk->update(collect($validatedData)->except(['slug'])->toArray());
 
         return redirect('/dashboard/produk')->with('success', 'Produk berhasil diedit!');
     }
+
 
 
     /**

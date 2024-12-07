@@ -20,19 +20,39 @@
 </div> --}}
 
 <div class="container-detail-card">
-    <div class="gambar-produk">
-        <img src="{{ asset('storage/' . $post->gambar1) }}" alt="img-produk">
-        <div class="gambar-produk-detail">
-            <div class="video-place d-inline">
-                <img src="{{ asset('storage/' . $post->gambar1) }}" alt="" class="video-img">
-                <i class="fa-solid fa-play"></i>
+    <div class="container-detail-card-gambar">
+        <div class="gambar-produk">
+            {{-- Area Gambar Utama --}}
+            <img id="preview-image" src="{{ asset('storage/' . $post->gambar1) }}" alt="img-produk" class="img-fluid">
+
+            {{-- Thumbnail Gambar --}}
+            <div class="gambar-produk-detail">
+                {{-- Thumbnail Video (jika ada) --}}
+                @if (!empty($post->video))
+                    <div class="video-place d-inline">
+                        <img src="{{ asset('storage/' . $post->gambar1) }}" alt="img-thumbnail" class="thumbnail video-img" data-src="{{ asset('storage/' . $post->video) }}">
+                        <i class="fa-solid fa-play"></i>
+                    </div>
+                @endif
+                <img src="{{ asset('storage/' . $post->gambar1) }}" alt="img-produk" class="img-fluid thumbnail" data-src="{{ asset('storage/' . $post->gambar1) }}">
+                {{-- Thumbnail Gambar Tambahan --}}
+                @if (!empty($post->gambar2))
+                    <img src="{{ asset('storage/' . $post->gambar2) }}" alt="img-thumbnail" class="thumbnail" data-src="{{ asset('storage/' . $post->gambar2) }}">
+                @endif
+                @if (!empty($post->gambar3))
+                    <img src="{{ asset('storage/' . $post->gambar3) }}" alt="img-thumbnail" class="thumbnail" data-src="{{ asset('storage/' . $post->gambar3) }}">
+                @endif
+                @if (!empty($post->gambar4))
+                    <img src="{{ asset('storage/' . $post->gambar4) }}" alt="img-thumbnail" class="thumbnail" data-src="{{ asset('storage/' . $post->gambar4) }}">
+                @endif
+                @if (!empty($post->gambar5))
+                    <img src="{{ asset('storage/' . $post->gambar5) }}" alt="img-thumbnail" class="thumbnail" data-src="{{ asset('storage/' . $post->gambar5) }}">
+                @endif
             </div>
-            <img src="{{ asset('storage/' . $post->gambar2) }}" alt="">
-            <img src="{{ asset('storage/' . $post->gambar3) }}" alt="">
-            <img src="{{ asset('storage/' . $post->gambar4) }}" alt="">
-            <img src="{{ asset('storage/' . $post->gambar5) }}" alt="">
         </div>
     </div>
+
+
 
     <div class="produk-info-detail">
         <h3>{{ $post->nama_produk }}
@@ -45,7 +65,7 @@
         <hr>
         <h3>Detail Produk</h3>
         <hr>
-        <p>Kondisi: Baru</p>
+        <p>Kondisi: <span class="badge text-bg-success text-white">Baru</span> </p>
         <p>Min. Pemesanan: 1</p>
         <p>Kategori: <a href="/kategori/{{ $post->kategori->slug }}" class="text-decoration-none fw-bold badge text-bg-primary text-white">{{ $post->kategori->nama }}</a></p>
         <p>{!! $post->deskripsi !!}</p>
@@ -63,7 +83,7 @@
         <p class="coret-form-harga">Rp {{ number_format($post->harga / (1 - ($post->diskon / 100)), 0, ',', '.') }}</p>
         <div class="harga-asli">
             <h5>Subtotal</h5>
-            <h4>Rp {{ number_format($post->harga, 0, ',', '.') }}</h4>
+            <h4><b>Rp {{ number_format($post->harga, 0, ',', '.') }}</b></h4>
         </div>
         <div class="form-wa">
             {{-- <a
@@ -80,6 +100,22 @@
     </div>
 </div>
 
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Ambil elemen thumbnail
+        const thumbnails = document.querySelectorAll(".thumbnail");
+        const previewImage = document.getElementById("preview-image");
+
+        // Tambahkan event click ke setiap thumbnail
+        thumbnails.forEach(thumbnail => {
+            thumbnail.addEventListener("click", function () {
+                // Perbarui src gambar utama dengan data-src dari thumbnail yang diklik
+                const newSrc = thumbnail.getAttribute("data-src");
+                previewImage.setAttribute("src", newSrc);
+            });
+        });
+    });
+</script>
 
 
 @endsection
