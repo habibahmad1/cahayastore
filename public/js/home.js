@@ -273,7 +273,7 @@ const products = {
         "img/iklan1.jpg", "img/iklan1.jpg", "img/iklan1.jpg", "img/iklan1.jpg", "img/iklan1.jpg", "img/iklan1.jpg",
       ],
       playmat: [
-        "img/iklan1.jpg", "img/iklan1.jpg", "img/iklan1.jpg", "img/iklan1.jpg", "img/iklan1.jpg",
+        "img/iklan1.jpg", "img/iklan1.jpg", "img/iklan1.jpg", "img/iklan1.jpg",
       ],
   };
 
