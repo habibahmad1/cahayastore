@@ -114,9 +114,9 @@ class DashboardController extends Controller
     private function validateVariasiData(array $variasi)
     {
         return validator($variasi, [
-            'warna' => 'required|string|max:255',
-            'ukuran' => 'required|string|max:255',
-            'stok' => 'required|integer|min:0',
+            'warna' => 'nullable|string|max:255',
+            'ukuran' => 'nullable|string|max:255',
+            'stok' => 'nullable|integer|min:0',
         ])->validate();
     }
 
