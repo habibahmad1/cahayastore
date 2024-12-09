@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('variasi_gambars', function (Blueprint $table) {
             $table->id();
-            $table->string('gambar');
+            $table->string('gambar')->nullable();
             $table->timestamps();
         });
     }

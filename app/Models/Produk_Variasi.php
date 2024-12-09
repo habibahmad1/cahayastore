@@ -9,6 +9,8 @@ class Produk_Variasi extends Model
 {
     protected $guarded = ['id'];
 
+    protected $table = 'produk_variasis';
+
     use HasFactory;
 
     public function produk()

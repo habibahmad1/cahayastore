@@ -8,6 +8,8 @@ class Variasi_Ukuran extends Model
 {
     protected $guarded = ['id'];
 
+    protected $table = 'variasi_ukurans';
+
     // Relasi dengan produk variasi
     public function variasi()
     {

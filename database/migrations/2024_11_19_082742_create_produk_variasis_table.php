@@ -16,8 +16,8 @@ return new class extends Migration
             $table->foreignId('produk_id');
             $table->foreignId('warna_id');
             $table->foreignId('ukuran_id');
-            $table->foreignId('stok_id');
             $table->foreignId('gambar_id');
+            $table->integer('stok');
             $table->timestamps();
         });
     }

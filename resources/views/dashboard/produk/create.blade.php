@@ -212,21 +212,22 @@
                 <!-- Variasi pertama (default) -->
                 <div class="variasi-item">
                     <div class="mb-3">
-                        <label for="warna_0" class="form-label">Warna</label>
-                        <input type="text" class="form-control" name="variasi[0][warna]" id="warna_0">
+                        <label for="warna_0" class="form-label">Warna/Varian</label>
+                        <input type="text" class="form-control" name="variasi[0][warna]" id="warna_0" required>
                     </div>
                     <div class="mb-3">
                         <label for="ukuran_0" class="form-label">Ukuran</label>
-                        <input type="text" class="form-control" name="variasi[0][ukuran]" id="ukuran_0">
+                        <input type="text" class="form-control" name="variasi[0][ukuran]" id="ukuran_0" required>
                     </div>
                     <div class="mb-3">
                         <label for="stok_0" class="form-label">Stok</label>
-                        <input type="number" class="form-control" name="variasi[0][stok]" id="stok_0">
+                        <input type="number" class="form-control" name="variasi[0][stok]" id="stok_0" required>
                     </div>
                     <div class="mb-3">
                         <label for="gambar_0" class="form-label">Gambar</label>
                         <input class="form-control" type="file" name="variasi[0][gambar]" id="gambar_0">
                     </div>
+
                     <hr>
                 </div>
             </div>

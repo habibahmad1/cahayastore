@@ -5,9 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Storage;
 
 use App\Models\Produk;
+use App\Models\Variasi_Warna;
+use App\Models\Variasi_Ukuran;
+use App\Models\Variasi_Stok;
+use App\Models\Variasi_Gambar;
 use App\Models\Kategori;
 use App\Models\Produk_Variasi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+
 
 class DashboardController extends Controller
 {
@@ -56,28 +62,83 @@ class DashboardController extends Controller
             "berat" => "required|numeric|min:0",
             "dimensi" => "nullable",
             "diskon" => "required|numeric|min:0|max:100",
-            "status" => "required"
+            "status" => "required",
         ]);
 
-        // Menangani unggahan gambar
+        // Menangani unggahan gambar utama
         $gambarFields = ['gambar1', 'gambar2', 'gambar3', 'gambar4', 'gambar5'];
-
         foreach ($gambarFields as $field) {
             if ($request->file($field)) {
                 $validatedData[$field] = $request->file($field)->store('gambar');
             }
         }
 
-        // Menangani unggahan video (untuk produk baru)
+        // Menangani unggahan video
         if ($request->file('video')) {
-            // Menyimpan video baru
             $validatedData['video'] = $request->file('video')->store('video');
         }
 
-        // Menyimpan data produk baru
-        Produk::create($validatedData);
+        // Simpan data produk utama
+        $produk = Produk::create($validatedData);
+
+        // Validasi dan simpan variasi produk
+        $variasiData = $request->input('variasi', []);
+        foreach ($variasiData as $index => $variasi) {
+            if (!empty($variasi['warna']) || !empty($variasi['ukuran']) || !empty($variasi['stok'])) {
+                // Validasi variasi
+                $validatedVariasi = $this->validateVariasiData($variasi);
+
+                // Menangani warna dan ukuran (mapping ke ID)
+                $validatedVariasi['warna_id'] = Variasi_Warna::firstOrCreate(['warna' => $variasi['warna']])->id;
+                $validatedVariasi['ukuran_id'] = Variasi_Ukuran::firstOrCreate(['ukuran' => $variasi['ukuran']])->id;
+
+                // Menangani unggahan gambar untuk variasi
+                if ($request->file("variasi.{$index}.gambar")) {
+                    $validatedVariasi['gambar_id'] = Variasi_Gambar::create([
+                        'gambar' => $request->file("variasi.{$index}.gambar")->store('gambar/variasi'),
+                    ])->id;
+                }
+
+                // Isi stok_id jika ada data stok
+                $validatedVariasi['stok_id'] = $variasi['stok_id'] ?? null;
+
+                // Simpan variasi produk
+                $produk->variasi()->create($validatedVariasi);
+            }
+        }
 
         return redirect('/dashboard/produk')->with('success', 'Produk berhasil ditambahkan!');
+    }
+
+
+    private function validateVariasiData(array $variasi)
+    {
+        return validator($variasi, [
+            'warna' => 'required|string|max:255',
+            'ukuran' => 'required|string|max:255',
+            'stok' => 'required|integer|min:0',
+        ])->validate();
+    }
+
+    /**
+     * Validasi data variasi.
+     *
+     * @param array $variasi
+     * @param int $produkId
+     * @return array
+     */
+    private function validateVariasi(array $variasi, int $produkId)
+    {
+        $rules = [
+            'warna' => 'nullable|max:255',
+            'ukuran' => 'nullable|max:255',
+            'stok' => 'required|integer|min:0',
+        ];
+
+        $validated = Validator::make($variasi, $rules)->validate();
+        $validated['produk_id'] = $produkId;
+
+        return $validated;
     }
 
 
