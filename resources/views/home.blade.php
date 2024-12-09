@@ -182,7 +182,7 @@
             </div>
             <div class="button-wrapper">
                 <span class="product-count"></span>
-                <button class="filter-btn-prd led-btn" data-category="led">LED Fishing Light</button>
+                <button class="filter-btn-prd led-btn" data-category="led">LED</button>
             </div>
             <div class="button-wrapper">
                 <span class="product-count"></span>
