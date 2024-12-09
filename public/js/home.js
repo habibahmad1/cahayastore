@@ -264,18 +264,30 @@ document.addEventListener("DOMContentLoaded", function () {
 // Kumpulan produk berdasarkan kategori
 const products = {
     led: [
-        "img/iklan1.jpg", "img/iklan2.jpg", "img/iklan3.jpg", "img/iklan1.jpg",
-      ],
-      coffee: [
-        "img/iklan1.jpg", "img/iklan2.jpg", "img/iklan3.jpg", "img/iklan1.jpg",
-      ],
-      sendal: [
-        "img/iklan1.jpg", "img/iklan2.jpg", "img/iklan3.jpg", "img/iklan1.jpg",
-      ],
-      playmat: [
-        "img/iklan1.jpg", "img/iklan2.jpg", "img/iklan3.jpg", "img/iklan1.jpg",
-      ],
-  };
+        { image: "img/iklan1.jpg", link: "/produk/led1" },
+        { image: "img/iklan2.jpg", link: "/produk/led2" },
+        { image: "img/iklan3.jpg", link: "/produk/led3" },
+        { image: "img/iklan1.jpg", link: "/produk/led4" },
+    ],
+    coffee: [
+        { image: "img/kopi/kopi1.png", link: "/produk" },
+        { image: "img/kopi/kopi2.png", link: "/produk/kopi2" },
+        { image: "img/kopi/kopi3.png", link: "/produk/kopi3" },
+        { image: "img/kopi/kopi4.png", link: "/produk/kopi4" },
+    ],
+    sendal: [
+        { image: "img/iklan1.jpg", link: "/produk/sendal1" },
+        { image: "img/iklan2.jpg", link: "/produk/sendal2" },
+        { image: "img/iklan3.jpg", link: "/produk/sendal3" },
+        { image: "img/iklan1.jpg", link: "/produk/sendal4" },
+    ],
+    playmat: [
+        { image: "img/iklan1.jpg", link: "/produk/playmat1" },
+        { image: "img/iklan2.jpg", link: "/produk/playmat2" },
+        { image: "img/iklan3.jpg", link: "/produk/playmat3" },
+        { image: "img/iklan1.jpg", link: "/produk/playmat4" },
+    ],
+};
 
 // Gabungkan semua produk
 const allProducts = [
@@ -289,22 +301,52 @@ const allProducts = [
   const buttons = document.querySelectorAll(".filter-btn-prd");
   const productDisplay = document.querySelector(".product-display");
 
-  // Fungsi untuk menampilkan produk
-  function displayProducts(images) {
-    productDisplay.innerHTML = ""; // Bersihkan gambar sebelumnya
-    images.forEach((image, index) => {
-      const productItem = document.createElement("div");
-      productItem.classList.add("product-item");
-      productItem.style.backgroundImage = `url(${image})`;
+  function displayProducts(items) {
+    productDisplay.innerHTML = ""; // Bersihkan konten sebelumnya
+    items.forEach((item, index) => {
+        const productItem = document.createElement("div");
+        productItem.classList.add("product-item");
 
-      // Tambahkan animasi delay
-      setTimeout(() => {
-        productItem.classList.add("show");
-      }, index * 200); // Delay 200ms untuk setiap item
+        // Bungkus dengan link
+        const link = document.createElement("a");
+        link.href = item.link; // Gunakan properti 'link'
+        link.target = "_blank"; // Membuka di tab baru (opsional)
 
-      productDisplay.appendChild(productItem);
+        productItem.style.backgroundImage = `url(${item.image})`;
+
+        // Tambahkan delay untuk efek cascading
+        setTimeout(() => {
+            productItem.classList.add("show");
+        }, index * 200); // 200ms delay per produk
+
+        link.appendChild(productItem); // Masukkan div ke dalam tautan
+        productDisplay.appendChild(link); // Masukkan tautan ke dalam kontainer
     });
-  }
+}
+
+buttons.forEach((button) => {
+    const category = button.getAttribute("data-category");
+
+    button.addEventListener("click", () => {
+        let productData = [];
+        if (category === "all") {
+            productData = [...products.led, ...products.coffee, ...products.sendal, ...products.playmat];
+        } else {
+            productData = products[category];
+        }
+
+        displayProducts(productData);
+    });
+});
+
+
+
+// Fungsi untuk membuka gambar dalam ukuran besar
+function openImage(image) {
+    const imageWindow = window.open("", "_blank");
+    imageWindow.document.write(`<img src="${image}" style="width:100%;height:auto;">`);
+    imageWindow.document.title = "View Image";
+}
 
   // Tambahkan event listener ke setiap tombol
   buttons.forEach((button) => {
@@ -343,3 +385,4 @@ const allProducts = [
     const allButton = document.querySelector(".filter-btn-prd.all-btn");
     allButton.classList.add("clicked");
   });
+
