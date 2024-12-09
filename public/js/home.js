@@ -264,28 +264,28 @@ document.addEventListener("DOMContentLoaded", function () {
 // Kumpulan produk berdasarkan kategori
 const products = {
     led: [
-        { image: "img/iklan1.jpg", link: "/produk/led1" },
-        { image: "img/iklan2.jpg", link: "/produk/led2" },
-        { image: "img/iklan3.jpg", link: "/produk/led3" },
-        { image: "img/iklan1.jpg", link: "/produk/led4" },
+        { image: "img/unggulan/led1.png", link: "/kategori/lampu" },
+        { image: "img/unggulan/led2.png", link: "/kategori/lampu" },
+        { image: "img/unggulan/led3.png", link: "/kategori/lampu" },
+        { image: "img/unggulan/led4.png", link: "/kategori/lampu" },
     ],
     coffee: [
-        { image: "img/kopi/kopi1.png", link: "/produk" },
-        { image: "img/kopi/kopi2.png", link: "/produk/kopi2" },
-        { image: "img/kopi/kopi3.png", link: "/produk/kopi3" },
-        { image: "img/kopi/kopi4.png", link: "/produk/kopi4" },
+        { image: "img/unggulan/kopi1.png", link: "/kategori/kopi" },
+        { image: "img/unggulan/kopi2.png", link: "/kategori/kopi" },
+        { image: "img/unggulan/kopi3.png", link: "/kategori/kopi" },
+        { image: "img/unggulan/kopi4.png", link: "/kategori/kopi" },
     ],
     sendal: [
-        { image: "img/iklan1.jpg", link: "/produk/sendal1" },
-        { image: "img/iklan2.jpg", link: "/produk/sendal2" },
-        { image: "img/iklan3.jpg", link: "/produk/sendal3" },
-        { image: "img/iklan1.jpg", link: "/produk/sendal4" },
+        { image: "img/unggulan/sendal1.png", link: "/kategori/sandal" },
+        { image: "img/unggulan/sendal2.png", link: "/kategori/sandal" },
+        { image: "img/unggulan/sendal3.png", link: "/kategori/sandal" },
+        { image: "img/unggulan/sendal4.png", link: "/kategori/sandal" },
     ],
     playmat: [
-        { image: "img/iklan1.jpg", link: "/produk/playmat1" },
-        { image: "img/iklan2.jpg", link: "/produk/playmat2" },
-        { image: "img/iklan3.jpg", link: "/produk/playmat3" },
-        { image: "img/iklan1.jpg", link: "/produk/playmat4" },
+        { image: "img/unggulan/pl1.png", link: "/kategori/playmat" },
+        { image: "img/unggulan/pl2.png", link: "/kategori/playmat" },
+        // { image: "img/iklan3.jpg", link: "/kategori/playmat3" },
+        // { image: "img/iklan1.jpg", link: "/kategori/playmat4" },
     ],
 };
 
@@ -339,15 +339,6 @@ buttons.forEach((button) => {
     });
 });
 
-
-
-// Fungsi untuk membuka gambar dalam ukuran besar
-function openImage(image) {
-    const imageWindow = window.open("", "_blank");
-    imageWindow.document.write(`<img src="${image}" style="width:100%;height:auto;">`);
-    imageWindow.document.title = "View Image";
-}
-
   // Tambahkan event listener ke setiap tombol
   buttons.forEach((button) => {
     const category = button.getAttribute("data-category");
@@ -385,4 +376,7 @@ function openImage(image) {
     const allButton = document.querySelector(".filter-btn-prd.all-btn");
     allButton.classList.add("clicked");
   });
+
+
+
 
