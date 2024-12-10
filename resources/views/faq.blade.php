@@ -6,17 +6,18 @@
     <div class="faq">
         {{-- <h1>Pilih Kategori</h1> --}}
         <div class="category-container">
-            <button class="category-button" onclick="showCategory('led')"><i class="fas fa-lightbulb"></i>LED Fishing
-                Light</button>
-            <button class="category-button" onclick="showCategory('coffee')"><i class="fas fa-coffee"></i>Coffee Luwak</button>
-            <button class="category-button" onclick="showCategory('sandal')"><i class="fas fa-shoe-prints"></i>Sandal</button>
-            <button class="category-button" onclick="showCategory('playmat')"><i
-                    class="fa-solid fa-rug"></i>Playmat</button>
+            <button class="category-button" onclick="showCategory('led')"><i class="fas fa-lightbulb"></i> LED</button>
+            <button class="category-button" onclick="showCategory('coffee')"><i class="fas fa-coffee"></i> Coffee</button>
+            <button class="category-button" onclick="showCategory('sandal')"><i class="fas fa-shoe-prints"></i> Sandal</button>
+            <button class="category-button" onclick="showCategory('playmat')"><i class="fa-solid fa-rug"></i> Playmat</button>
+
         </div>
+
+
 
         <div id="led" class="page-content">
             <h2>LED Fishing Light</h2>
-            <p>Beberapa Informasi tentang produk LED Fishing Light Kami.</p>
+            <p>Beberapa Informasi tentang produk LED Fishing Light Kami dibawah.</p>
 
             <section class="faq" id="faq">
                 <div class="faq-title">
@@ -56,7 +57,7 @@
 
         <div id="coffee" class="page-content">
             <h2>Coffee Luwak</h2>
-            <p>Beberapa informasi tentang Coffee Luwak Authentic Kami.</p>
+            <p>Beberapa informasi tentang Coffee Luwak Authentic Kami dibawah.</p>
 
             <section class="faq" id="faq">
                 <div class="faq-title">
@@ -124,7 +125,7 @@
 
         <div id="sandal" class="page-content">
             <h2>Sandal</h2>
-            <p>Beberapa informasi tentang produk sandal kami.</p>
+            <p>Beberapa informasi tentang produk sandal kami dibawah.</p>
 
             <section class="faq" id="faq">
                 <div class="faq-title">
@@ -209,7 +210,7 @@
 
         <div id="playmat" class="page-content">
             <h2>Playmat</h2>
-            <p>Beberapa informasi tentang Coffee Luwak Authentic Kami.</p>
+            <p>Beberapa informasi tentang Flaymat Kami dibawah.</p>
 
             <section class="faq" id="faq">
                 <div class="faq-title">

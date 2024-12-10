@@ -41,7 +41,7 @@
 /* Efek keren untuk h1 */
 .content h1 {
     font-size: 3.7em;
-    margin: 0 0 15px;
+    margin: 0 0 20px;
     text-transform: uppercase;
     letter-spacing: 5px;
     background: linear-gradient(45deg, #ff6f61, #f8ff61);
@@ -113,6 +113,7 @@
 
 /* Efek untuk p */
 .content p {
+    padding-bottom: 20px;
     font-size: 1.4em;
     margin: 0 0 20px;
     color: rgba(255, 255, 255, 0.85);
@@ -122,12 +123,13 @@
 }
 
 .btn-banner {
+    background: linear-gradient(45deg, #ff6f61, #f8ff61);
     cursor: pointer;
     position: relative;
     padding: 10px 20px;
     font-size: 28px;
-    border-top-right-radius: 10px;
-    border-bottom-left-radius: 10px;
+    border-top-right-radius: 110px;
+    border-bottom-left-radius: 110px;
     transition: all 1s;
     &:after,
     &:before {
@@ -138,23 +140,23 @@
         border: 0px solid #fff;
         transition: all 1s;
     }
-    &:after {
+    /* &:after {
         top: -1px;
         left: -1px;
-        border-top: 5px solid #ffffff;
-        border-left: 5px solid #ffffff;
+        border-top: 2px solid #ffffff;
+        border-left: 2px solid #ffffff;
     }
     &:before {
         bottom: -1px;
         right: -1px;
-        border-bottom: 5px solid #ffffff;
-        border-right: 5px solid #ffffff;
-    }
+        border-bottom: 2px solid #ffffff;
+        border-right: 2px solid #ffffff;
+    } */
     &:hover {
         border-top-right-radius: 0px;
         border-bottom-left-radius: 0px;
-        /* background:rgba(0,0,0,.5)
-         color:white; */
+        /* background:rgba(0,0,0,.5);
+        color:white; */
         &:before,
         &:after {
             width: 100%;
@@ -165,14 +167,14 @@
 }
 
 .content a {
-    color: #ffffff;
+    color: #222222;
     font-size: 15px;
     animation: fadeIn 3s ease-in-out;
     text-decoration: none;
 }
 
 .btn-banner:hover:hover {
-    background: linear-gradient(45deg, #ff6f61, #f8ff61);
+    background: linear-gradient(45deg, #f8ff61,  #ff6f61);
     color: #000000;
     transform: scale(1.05);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
@@ -209,10 +211,15 @@
 
     .content p {
         font-size: 1rem; /* Ukuran lebih kecil */
+        padding-bottom: 0px;
     }
 
     .content a {
         font-size: 13px;
+    }
+
+    .content {
+        min-width:325px;
     }
 }
 
@@ -224,6 +231,7 @@
 
     .content p {
         font-size: 0.7rem; /* Ukuran lebih kecil */
+        padding-bottom: 0px;
     }
 
     .content a {
@@ -231,12 +239,17 @@
     }
 
     .slider {
-        height: 500px;
+        height: 570px;
     }
 
     .slide {
-        height: 500px;
+        height: 570px;
     }
+
+    .content {
+        min-width:275px;
+    }
+
 }
 
 /*halaman tentang kami------------*/
@@ -1124,7 +1137,7 @@
 }
 
 .promo-btn:hover {
-    background: #000;
+    background: #000000c4;
     color: #fff;
 }
 

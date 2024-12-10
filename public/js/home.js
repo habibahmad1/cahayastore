@@ -168,7 +168,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // description: "Promo hanya berlaku hari ini, jangan sampai terlewat!",
             link: "#",
             duration: 60,
-            delay: 5000,
+            delay: 10000,
         },
         {
             image: "img/iklan2.jpg",
@@ -176,7 +176,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // description: "Belanja minimal Rp100.000 untuk gratis ongkos kirim.",
             link: "#",
             duration: 60,
-            delay: 15000,
+            delay: 25000,
         },
         {
             image: "img/iklan3.jpg",
@@ -184,7 +184,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // description: "Beli satu, dapatkan satu gratis. Promo hanya 3 hari!",
             link: "#",
             duration: 60,
-            delay: 30000,
+            delay: 45000,
         },
     ];
 
