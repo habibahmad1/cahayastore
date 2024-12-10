@@ -277,7 +277,7 @@
 
     <div class="scroll-animated-section">
         <video autoplay loop muted class="background-video">
-            <source src="https://cdn.pixabay.com/video/2020/08/21/47712-451772931_large.mp4" type="video/mp4" />
+            <source src="https://cdn.pixabay.com/video/2017/03/08/8252-207598592_large.mp4" type="video/mp4" />
         </video>
 
         <div class="content-overlay">

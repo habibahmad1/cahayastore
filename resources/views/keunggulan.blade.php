@@ -5,11 +5,11 @@
 <div class="categories">
     <button class="category-button" onclick="showCategory('led-light')">
         <i class="fas fa-lightbulb"></i> <!-- Ikon LED -->
-        LED Fishing Light
+        LED
     </button>
     <button class="category-button" onclick="showCategory('coffee-luwak')">
         <i class="fas fa-coffee"></i> <!-- Ikon Kopi -->
-        Coffee Luwak
+        Coffee
     </button>
     <button class="category-button" onclick="showCategory('sandal')">
         <i class="fas fa-shoe-prints"></i> <!-- Ikon Sandal -->

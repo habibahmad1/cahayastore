@@ -2,17 +2,17 @@
 
 
 .categories {
-    justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    display: flex;
-    gap: 20px;
     padding: 30px;
     background: linear-gradient(to right, #000000e8, #2c3e50, #000000);
+    display: flex;
+    justify-content: center;
+    gap: 10px;
 }
 
 .category-button {
-    display: flex;
+    display: inline-block;
     background-color: #ff8d58;
     color: white;
     border: none;
@@ -23,6 +23,11 @@
     gap: 10px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease;
+
+    position: relative;
+    margin: 10px;
+    min-width: 120px;
+    text-align: center;
 }
 
 .category-button:hover {
