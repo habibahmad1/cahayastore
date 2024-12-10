@@ -239,11 +239,11 @@
     }
 
     .slider {
-        height: 570px;
+        height: 650px;
     }
 
     .slide {
-        height: 570px;
+        height: 650px;
     }
 
     .content {
@@ -1526,3 +1526,93 @@
     }
   }
 
+/*
+  halamannnnn klien */
+  .client-section {
+    padding: 50px 20px;
+    background: linear-gradient(to top, #2c3e50, #141414);
+    color: white;
+    text-align: center;
+    border-radius: 0px;
+}
+
+.client-section h1 {
+    font-size: 2.5rem;
+    color: #ffa600;
+    margin-bottom: 10px;
+    animation: fadeIn 2s ease-in-out;
+}
+
+.client-section h2 {
+    font-size: 1.2rem;
+    color: white;
+    margin-bottom: 30px;
+    animation: fadeIn 2.5s ease-in-out;
+}
+
+.section-divider {
+    width: 60%;
+    height: 3px;
+    margin: 20px auto;
+    background: linear-gradient(45deg, #ffa600, #ff6f61);
+    border: none;
+    animation: slideIn 1.5s ease-in-out;
+}
+
+.logo-slider {
+    position: relative;
+    overflow: hidden;
+    margin: 30px auto;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+}
+
+.logo-container {
+    display: flex;
+    gap: 30px;
+    animation: moveLogos 20s linear infinite;
+    will-change: transform;
+    position: relative;
+}
+
+.logo {
+    width: 150px;
+    height: auto;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.1);
+    filter: brightness(1.2);
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .client-section h1 {
+        font-size: 1.8rem;
+    }
+
+    .client-section h2 {
+        font-size: 1rem;
+    }
+
+    .logo {
+        width: 120px;
+    }
+}
+
+@media (max-width: 480px) {
+    .client-section h1 {
+        font-size: 1.5rem;
+    }
+
+    .client-section h2 {
+        font-size: 0.9rem;
+    }
+
+    .logo {
+        width: 90px;
+    }
+}
