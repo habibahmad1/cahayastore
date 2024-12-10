@@ -253,31 +253,42 @@
         <div class="mb-3">
             <h3>Variasi Produk</h3>
             <div id="variasi-container">
-                <!-- Variasi pertama (default) -->
-                <div class="variasi-item">
-                    <div class="mb-3">
-                        <label for="warna_0" class="form-label">Warna</label>
-                        <input type="text" class="form-control" name="variasi[0][warna]" id="warna_0">
+                @foreach ($produk->variasi as $key => $variasi)
+                    <div class="variasi-item mb-3" id="variasi-item-{{ $key }}">
+                        <div class="mb-3">
+                            <label for="warna_{{ $key }}" class="form-label">Warna</label>
+                            <input type="text" class="form-control" name="variasi[{{ $key }}][warna]" id="warna_{{ $key }}"
+                                   value="{{ old("variasi.$key.warna", $variasi->warna->warna ?? '') }}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="ukuran_{{ $key }}" class="form-label">Ukuran</label>
+                            <input type="text" class="form-control" name="variasi[{{ $key }}][ukuran]" id="ukuran_{{ $key }}"
+                                   value="{{ old("variasi.$key.ukuran", $variasi->ukuran->ukuran ?? '') }}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="stok_{{ $key }}" class="form-label">Stok</label>
+                            <input type="number" class="form-control" name="variasi[{{ $key }}][stok]" id="stok_{{ $key }}"
+                                   value="{{ old("variasi.$key.stok", $variasi->stok ?? '') }}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="gambar_{{ $key }}" class="form-label">Gambar</label>
+                            @if ($variasi->gambar)
+                                <img src="{{ asset('storage/' . $variasi->gambar->gambar) }}" class="img-preview-{{ $key }} img-fluid mb-3 d-block" style="max-height: 200px">
+                            @else
+                                <img id="img-preview-{{ $key }}" class="img-preview-{{ $key }} img-fluid mb-3 d-none" style="max-height: 200px">
+                            @endif
+                            <input class="form-control" type="file" name="variasi[{{ $key }}][gambar]" id="gambar_{{ $key }}" onchange="previewImgVariasi(event, 'img-preview-{{ $key }}')">
+                        </div>
+                        <button type="button" class="btn btn-danger btn-sm mt-2 hapus-variasi" data-id="variasi-item-{{ $key }}">Hapus Variasi</button>
+                        <hr>
                     </div>
-                    <div class="mb-3">
-                        <label for="ukuran_0" class="form-label">Ukuran</label>
-                        <input type="text" class="form-control" name="variasi[0][ukuran]" id="ukuran_0">
-                    </div>
-                    <div class="mb-3">
-                        <label for="stok_0" class="form-label">Stok</label>
-                        <input type="number" class="form-control" name="variasi[0][stok]" id="stok_0">
-                    </div>
-                    <div class="mb-3">
-                        <label for="gambar_0" class="form-label">Gambar</label>
-                        <input class="form-control" type="file" name="variasi[0][gambar]" id="gambar_0">
-                    </div>
-                    <hr>
-                </div>
+                @endforeach
             </div>
             <button type="button" class="btn btn-secondary mt-2" id="tambah-variasi">Tambah Variasi</button>
         </div>
 
-        <button type="submit" class="btn btn-primary">Edit Produk</button>
+
+        <button type="submit" class="btn btn-primary mb-5">Edit Produk</button>
     </form>
 </div>
 
@@ -374,6 +385,26 @@ function previewVideo(inputId, previewClass) {
         preview.classList.add('d-none'); // Sembunyikan video preview jika tidak ada file
     }
 }
+
+
+// Fungsi untuk preview gambar
+function previewImgVariasi(event, previewId) {
+    const file = event.target.files[0]; // Ambil file gambar yang dipilih
+    const preview = document.getElementById(previewId); // Ambil elemen preview gambar
+
+    // Jika ada file yang dipilih
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function () {
+            preview.src = reader.result; // Set gambar preview dengan file baru
+            preview.style.display = 'block'; // Menampilkan gambar preview
+        };
+        reader.readAsDataURL(file); // Membaca file gambar sebagai DataURL
+    } else {
+        preview.style.display = 'none'; // Jika tidak ada file, sembunyikan preview
+    }
+}
+
 
 
 </script>

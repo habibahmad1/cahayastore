@@ -45,7 +45,7 @@
 
 
         <div class="mb-3">
-            <label for="kode_produk" class="form-label">Kode Produk</label>
+            <label for="kode_produk" class="form-label">Kode Produk <span class="text-secondary">(Optional)</span></label>
             <input type="text" class="form-control @error('kode_produk')
               is-invalid
           @enderror" id="kode_produk" name="kode_produk" value="{{ old('kode_produk') }}">
@@ -70,7 +70,7 @@
 
             <!-- Gambar 2 -->
             <div class="mb-3">
-                <label for="gambar2" class="form-label">Gambar 2</label>
+                <label for="gambar2" class="form-label">Gambar 2 <span class="text-secondary">(Optional)</span></label>
                 <img class="img-preview-2 img-fluid mb-3 d-none" style="max-height: 200px">
                 <input class="form-control @error('gambar2') is-invalid @enderror" type="file" id="gambar2" name="gambar2" onchange="previewFile('gambar2', 'img-preview-2')">
                 @error('gambar2')
@@ -82,7 +82,7 @@
 
             <!-- Gambar 3 -->
             <div class="mb-3">
-                <label for="gambar3" class="form-label">Gambar 3</label>
+                <label for="gambar3" class="form-label">Gambar 3 <span class="text-secondary">(Optional)</span></label>
                 <img class="img-preview-3 img-fluid mb-3 d-none" style="max-height: 200px">
                 <input class="form-control @error('gambar3') is-invalid @enderror" type="file" id="gambar3" name="gambar3" onchange="previewFile('gambar3', 'img-preview-3')">
                 @error('gambar3')
@@ -94,7 +94,7 @@
 
             <!-- Gambar 4 -->
             <div class="mb-3">
-                <label for="gambar4" class="form-label">Gambar 4</label>
+                <label for="gambar4" class="form-label">Gambar 4 <span class="text-secondary">(Optional)</span></label>
                 <img class="img-preview-4 img-fluid mb-3 d-none" style="max-height: 200px">
                 <input class="form-control @error('gambar4') is-invalid @enderror" type="file" id="gambar4" name="gambar4" onchange="previewFile('gambar4', 'img-preview-4')">
                 @error('gambar4')
@@ -106,7 +106,7 @@
 
             <!-- Gambar 5 -->
             <div class="mb-3">
-                <label for="gambar5" class="form-label">Gambar 5</label>
+                <label for="gambar5" class="form-label">Gambar 5 <span class="text-secondary">(Optional)</span></label>
                 <img class="img-preview-5 img-fluid mb-3 d-none" style="max-height: 200px">
                 <input class="form-control @error('gambar5') is-invalid @enderror" type="file" id="gambar5" name="gambar5" onchange="previewFile('gambar5', 'img-preview-5')">
                 @error('gambar5')
@@ -118,7 +118,7 @@
 
             <!-- Video -->
             <div class="mb-3">
-                <label for="video" class="form-label">Video</label>
+                <label for="video" class="form-label">Video <span class="text-secondary">(Optional)</span></label>
                 <video class="video-preview img-fluid mb-3 d-none" style="max-height: 300px" controls></video>
                 <input class="form-control @error('video') is-invalid @enderror" type="file" id="video" name="video" onchange="previewFile('video', 'video-preview')">
                 @error('video')
@@ -141,7 +141,7 @@
         </div>
 
         <div class="mb-3">
-            <label for="berat" class="form-label">Berat Produk <span class="penting">*</span></label>
+            <label for="berat" class="form-label">Berat Produk (gram)<span class="penting">*</span></label>
             <input type="number" class="form-control @error('berat')
               is-invalid
           @enderror" id="berat" name="berat" value="{{ old('berat') }}">
@@ -153,7 +153,7 @@
         </div>
 
         <div class="mb-3">
-            <label for="dimensi" class="form-label">Dimensi Produk</label>
+            <label for="dimensi" class="form-label">Dimensi Produk <span class="text-secondary">(Optional)</span></label>
             <input type="number" class="form-control @error('dimensi')
               is-invalid
           @enderror" id="dimensi" name="dimensi" value="{{ old('dimensi') }}">

@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('produk_variasis', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('produk_id');
-            $table->foreignId('warna_id');
-            $table->foreignId('ukuran_id');
-            $table->foreignId('gambar_id');
+            $table->foreignId('produk_id')->nullable();
+            $table->foreignId('warna_id')->nullable();
+            $table->foreignId('ukuran_id')->nullable();
+            $table->foreignId('gambar_id')->nullable();
             $table->integer('stok');
             $table->timestamps();
         });

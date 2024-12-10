@@ -117,28 +117,8 @@ class DashboardController extends Controller
             'warna' => 'nullable|string|max:255',
             'ukuran' => 'nullable|string|max:255',
             'stok' => 'nullable|integer|min:0',
+            'gambar' => 'nullable'
         ])->validate();
-    }
-
-    /**
-     * Validasi data variasi.
-     *
-     * @param array $variasi
-     * @param int $produkId
-     * @return array
-     */
-    private function validateVariasi(array $variasi, int $produkId)
-    {
-        $rules = [
-            'warna' => 'nullable|max:255',
-            'ukuran' => 'nullable|max:255',
-            'stok' => 'required|integer|min:0',
-        ];
-
-        $validated = Validator::make($variasi, $rules)->validate();
-        $validated['produk_id'] = $produkId;
-
-        return $validated;
     }
 
 
@@ -160,7 +140,10 @@ class DashboardController extends Controller
     {
         return view('dashboard.produk.edit', [
             "produk" => $produk,
-            "kategori" => Kategori::all()
+            "kategori" => Kategori::all(),
+            "warnas" => Variasi_Warna::all(),
+            "gambars" => Variasi_Gambar::all(),
+            "ukurans" => Variasi_Ukuran::all()
         ]);
     }
 
@@ -169,7 +152,7 @@ class DashboardController extends Controller
      */
     public function update(Request $request, Produk $produk)
     {
-        // Validasi data produk utama
+        // Aturan validasi produk utama
         $rules = [
             "kategori_id" => "required",
             "nama_produk" => "required|max:255",
@@ -216,10 +199,52 @@ class DashboardController extends Controller
             $validatedData['video'] = $request->file('video')->store('video');
         }
 
-        // Update data produk, kecuali slug
+        // Update data produk utama, kecuali slug
         $produk->update(collect($validatedData)->except(['slug'])->toArray());
 
-        return redirect('/dashboard/produk')->with('success', 'Produk berhasil diedit!');
+        // Mengupdate variasi produk
+        $variasiData = $request->input('variasi', []); // Variasi yang dikirimkan dari form
+        foreach ($variasiData as $index => $variasi) {
+            dd($request->file("variasi.{$index}.gambar"));
+
+            if (!empty($variasi['warna']) || !empty($variasi['ukuran']) || !empty($variasi['stok'])) {
+                // Validasi variasi
+                $validatedVariasi = $this->validateVariasiData($variasi);
+
+                // Menangani warna dan ukuran (mapping ke ID)
+                $validatedVariasi['warna_id'] = Variasi_Warna::firstOrCreate(['warna' => $variasi['warna']])->id;
+                $validatedVariasi['ukuran_id'] = Variasi_Ukuran::firstOrCreate(['ukuran' => $variasi['ukuran']])->id;
+
+                // Mengupdate variasi atau membuat yang baru
+                $existingVariasi = $produk->variasi()->updateOrCreate(
+                    ['id' => $variasi['id'] ?? null], // Cek berdasarkan id
+                    $validatedVariasi
+                );
+
+                if (isset($variasi['gambar']) && $request->file("variasi.{$index}.gambar")) {
+                    // Hapus gambar lama jika ada
+                    if ($existingVariasi && $existingVariasi->gambar) {
+                        Storage::delete($existingVariasi->gambar->gambar);
+                    }
+                    // Simpan gambar baru
+                    $gambar = $request->file("variasi.{$index}.gambar")->store('gambar/variasi');
+
+                    // Menambahkan gambar_id jika ada gambar yang diunggah
+                    $validatedVariasi['gambar_id'] = Variasi_Gambar::create([
+                        'gambar' => $gambar,
+                    ])->id;
+                }
+
+
+                // Update variasi dengan gambar jika ada
+                $existingVariasi->update($validatedVariasi);
+            }
+        }
+
+
+
+
+        return redirect('/dashboard/produk')->with('success', 'Produk dan variasi berhasil diedit!');
     }
 
 
@@ -229,19 +254,34 @@ class DashboardController extends Controller
      */
     public function destroy(Produk $produk)
     {
-        // Daftar gambar yang terkait dengan produk
+        // Daftar gambar utama produk
         $gambarFields = ['gambar1', 'gambar2', 'gambar3', 'gambar4', 'gambar5'];
 
-        // Hapus gambar-gambar yang terkait dengan produk, jika ada
+        // Hapus gambar utama jika ada
         foreach ($gambarFields as $field) {
             if ($produk->$field) {
-                Storage::delete($produk->$field);  // Hapus gambar dari storage
+                Storage::delete($produk->$field); // Hapus dari storage
             }
         }
 
         // Hapus video jika ada
         if ($produk->video) {
-            Storage::delete($produk->video);  // Hapus video dari storage
+            Storage::delete($produk->video); // Hapus video dari storage
+        }
+
+        // Hapus gambar variasi dan data variasi yang terkait
+        $variasiProduk = $produk->variasi; // Ambil semua variasi terkait
+        foreach ($variasiProduk as $variasi) {
+            if ($variasi->gambar_id) {
+                // Hapus file gambar variasi dari storage
+                Storage::delete($variasi->gambar->gambar);
+
+                // Hapus data gambar variasi dari database
+                $variasi->gambar->delete();
+            }
+
+            // Hapus data variasi dari database
+            $variasi->delete();
         }
 
         // Hapus produk dari database
