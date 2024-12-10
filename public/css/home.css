@@ -1017,12 +1017,15 @@
 }
 
 .scroll-title {
-    font-size: 2.5rem;
     text-transform: uppercase;
     opacity: 0;
     position: relative;
     animation-fill-mode: forwards;
-    color: white;
+    font-size: 2rem; /* Ukuran teks */
+    color: #2c3e50; /* Warna teks gelap */
+    text-shadow:
+        1px 1px 2px rgba(255, 255, 255, 0.8), /* Bayangan luar terang */
+        0px 0px 10px rgba(255, 255, 255, 0.5); /* Efek cahaya lembut */
 }
 
 .scroll-subtitle {
@@ -1180,7 +1183,7 @@
 @media (max-width: 768px) {
     /* Gaya khusus untuk layar kecil seperti ponsel */
     .scroll-title {
-        font-size: 1.2rem; /* Ukuran lebih kecil */
+        font-size: 1rem; /* Ukuran lebih kecil */
     }
 
     .scroll-subtitle {
@@ -1188,7 +1191,7 @@
     }
 
     .content-overlay {
-        padding: 10px; /* Sesuaikan padding */
+        padding: 5px; /* Sesuaikan padding */
     }
 
     .audio-controls {
