@@ -41,4 +41,13 @@ class LoginController extends Controller
 
         return redirect('/');
     }
+
+    public function setLoginAccess()
+    {
+        // Set session flag untuk memberikan akses ke halaman login
+        session(['can_access_login' => true]);
+
+        // Redirect ke halaman login
+        return redirect('/login');
+    }
 }

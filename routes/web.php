@@ -50,8 +50,12 @@ Route::get('/tentang', function () {
     ]);
 });
 
-Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::get('/login', [LoginController::class, 'index'])
+    ->name('login')
+    ->middleware(['guest', 'login.access']);
 Route::post('/login', [LoginController::class, 'authenticate']);
+Route::get('/set-login-access', [LoginController::class, 'setLoginAccess']);
+
 Route::post('/logout', [LoginController::class, 'logout']);
 
 Route::get('/register', [RegisterController::class, 'index']);
