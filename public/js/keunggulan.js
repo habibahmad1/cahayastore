@@ -1,17 +1,41 @@
 
-    function showCategory(categoryId) {
-        // Sembunyikan semua deskripsi kategori
-        const descriptions = document.querySelectorAll('.category-description');
-        descriptions.forEach(description => {
-            description.style.display = 'none';
-        });
 
-        // Tampilkan deskripsi kategori yang sesuai
-        const selectedCategory = document.getElementById(categoryId);
-        if (selectedCategory) {
-            selectedCategory.style.display = 'block';
-        }
+
+// Event untuk menggulir halaman ke bawah
+scrollDownIcon.addEventListener('click', () => {
+    window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+});
+
+
+function showCategory(categoryId) {
+    // Sembunyikan semua deskripsi kategori
+    const descriptions = document.querySelectorAll('.category-description');
+    descriptions.forEach(description => {
+        description.style.display = 'none';
+    });
+
+    // Tampilkan deskripsi kategori yang sesuai
+    const selectedCategory = document.getElementById(categoryId);
+    if (selectedCategory) {
+        selectedCategory.style.display = 'block';
     }
+}
+
+// Observer untuk mendeteksi elemen yang masuk ke viewport
+const categoryDescriptions = document.querySelectorAll('.category-description');
+
+const categoryObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            const categoryId = entry.target.id; // Ambil ID elemen yang terlihat
+            showCategory(categoryId); // Tampilkan kategori terkait
+        }
+    });
+});
+
+// Mendaftarkan observer ke semua elemen deskripsi kategori
+categoryDescriptions.forEach((description) => categoryObserver.observe(description));
+
 
 
 // Fungsi untuk scroll ke atas

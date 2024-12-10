@@ -6,13 +6,14 @@
     <div class="faq">
         {{-- <h1>Pilih Kategori</h1> --}}
         <div class="category-container">
-            <button class="category-button" onclick="showCategory('led')"><i class="fas fa-lightbulb"></i>LED Fishing
-                Light</button>
-            <button class="category-button" onclick="showCategory('coffee')"><i class="fas fa-coffee"></i>Coffee Luwak</button>
-            <button class="category-button" onclick="showCategory('sandal')"><i class="fas fa-shoe-prints"></i>Sandal</button>
-            <button class="category-button" onclick="showCategory('playmat')"><i
-                    class="fa-solid fa-rug"></i>Playmat</button>
+            <button class="category-button" onclick="showCategory('led')"><i class="fas fa-lightbulb"></i> LED</button>
+            <button class="category-button" onclick="showCategory('coffee')"><i class="fas fa-coffee"></i> Coffee</button>
+            <button class="category-button" onclick="showCategory('sandal')"><i class="fas fa-shoe-prints"></i> Sandal</button>
+            <button class="category-button" onclick="showCategory('playmat')"><i class="fa-solid fa-rug"></i> Playmat</button>
+
         </div>
+
+
 
         <div id="led" class="page-content">
             <h2>LED Fishing Light</h2>
