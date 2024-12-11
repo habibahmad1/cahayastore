@@ -114,10 +114,11 @@ class DashboardController extends Controller
     private function validateVariasiData(array $variasi)
     {
         return validator($variasi, [
+            'id' => 'nullable|exists:produk_variasis,id',
             'warna' => 'nullable|string|max:255',
             'ukuran' => 'nullable|string|max:255',
             'stok' => 'nullable|integer|min:0',
-            'gambar' => 'nullable'
+            'gambar' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048'
         ])->validate();
     }
 
@@ -205,47 +206,63 @@ class DashboardController extends Controller
         // Mengupdate variasi produk
         $variasiData = $request->input('variasi', []); // Variasi yang dikirimkan dari form
         foreach ($variasiData as $index => $variasi) {
-            dd($request->file("variasi.{$index}.gambar"));
+            // Validasi variasi
+            $validatedVariasi = $this->validateVariasiData($variasi);
 
-            if (!empty($variasi['warna']) || !empty($variasi['ukuran']) || !empty($variasi['stok'])) {
-                // Validasi variasi
-                $validatedVariasi = $this->validateVariasiData($variasi);
+            // Menangani warna dan ukuran (mapping ke ID)
+            $validatedVariasi['warna_id'] = Variasi_Warna::firstOrCreate(['warna' => $variasi['warna']])->id;
+            $validatedVariasi['ukuran_id'] = Variasi_Ukuran::firstOrCreate(['ukuran' => $variasi['ukuran']])->id;
 
-                // Menangani warna dan ukuran (mapping ke ID)
-                $validatedVariasi['warna_id'] = Variasi_Warna::firstOrCreate(['warna' => $variasi['warna']])->id;
-                $validatedVariasi['ukuran_id'] = Variasi_Ukuran::firstOrCreate(['ukuran' => $variasi['ukuran']])->id;
+            // Cek apakah variasi sudah ada, jika ada maka update, jika tidak create baru
+            $existingVariasi = isset($variasi['id']) ? $produk->variasi()->find($variasi['id']) : null;
 
-                // Mengupdate variasi atau membuat yang baru
-                $existingVariasi = $produk->variasi()->updateOrCreate(
-                    ['id' => $variasi['id'] ?? null], // Cek berdasarkan id
-                    $validatedVariasi
-                );
+            // Menangani unggahan gambar untuk variasi
+            if ($request->file("variasi.{$index}.gambar")) {
 
-                if (isset($variasi['gambar']) && $request->file("variasi.{$index}.gambar")) {
-                    // Hapus gambar lama jika ada
-                    if ($existingVariasi && $existingVariasi->gambar) {
-                        Storage::delete($existingVariasi->gambar->gambar);
-                    }
-                    // Simpan gambar baru
-                    $gambar = $request->file("variasi.{$index}.gambar")->store('gambar/variasi');
+                // Hapus gambar lama jika ada
+                if ($existingVariasi && $existingVariasi->gambar) {
+                    // Hapus gambar dari penyimpanan
+                    Storage::delete($existingVariasi->gambar);
 
-                    // Menambahkan gambar_id jika ada gambar yang diunggah
-                    $validatedVariasi['gambar_id'] = Variasi_Gambar::create([
-                        'gambar' => $gambar,
-                    ])->id;
+                    // Hapus entri gambar dari database
+                    Variasi_Gambar::where('id', $existingVariasi->gambar_id)->delete();
                 }
 
+                // Simpan gambar baru
+                $gambar = $request->file("variasi.{$index}.gambar")->store('gambar/variasi');
 
-                // Update variasi dengan gambar jika ada
+                // Menambahkan gambar_id
+
+                $validatedVariasi['gambar_id'] = Variasi_Gambar::create([
+                    'gambar' => $gambar,
+                ])->id;
+            }
+
+            // Isi stok jika ada data stok
+            $validatedVariasi['stok'] = $variasi['stok'] ?? null;
+
+            // Hapus variasi yang dihapus
+            if ($request->has('deleted_variasi_ids')) {
+                $deletedIds = json_decode($request->deleted_variasi_ids, true); // Decode JSON ke array
+                if (is_array($deletedIds) && count($deletedIds) > 0) {
+                    Produk_Variasi::whereIn('id', $deletedIds)->delete();
+                }
+            }
+
+
+            // Jika variasi sudah ada, update, jika belum, buat yang baru
+            if ($existingVariasi) {
+                // Update variasi yang sudah ada
                 $existingVariasi->update($validatedVariasi);
+            } else {
+                // Tambahkan variasi baru jika id tidak ada
+                $produk->variasi()->create($validatedVariasi);
             }
         }
 
-
-
-
         return redirect('/dashboard/produk')->with('success', 'Produk dan variasi berhasil diedit!');
     }
+
 
 
 

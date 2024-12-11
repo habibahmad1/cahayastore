@@ -255,6 +255,8 @@
             <div id="variasi-container">
                 @foreach ($produk->variasi as $key => $variasi)
                     <div class="variasi-item mb-3" id="variasi-item-{{ $key }}">
+                        <input type="hidden" name="variasi[{{ $key }}][id]" value="{{ $variasi->id }}">
+
                         <div class="mb-3">
                             <label for="warna_{{ $key }}" class="form-label">Warna</label>
                             <input type="text" class="form-control" name="variasi[{{ $key }}][warna]" id="warna_{{ $key }}"
@@ -284,10 +286,9 @@
                     </div>
                 @endforeach
             </div>
+            <input type="hidden" id="deleted_variasi_ids" name="deleted_variasi_ids">
             <button type="button" class="btn btn-secondary mt-2" id="tambah-variasi">Tambah Variasi</button>
         </div>
-
-
         <button type="submit" class="btn btn-primary mb-5">Edit Produk</button>
     </form>
 </div>
@@ -347,7 +348,17 @@
         if (confirm('Apakah Anda yakin ingin menghapus variasi ini?')) {
             const itemId = e.target.getAttribute('data-id');
             const item = document.getElementById(itemId);
-            item.remove();
+            const inputId = item.querySelector('input[name*="[id]"]'); // Cari ID variasi
+
+            // Tambahkan ID ke input hidden jika variasi memiliki ID
+            if (inputId && inputId.value) {
+                const deletedInput = document.getElementById('deleted_variasi_ids');
+                const currentIds = deletedInput.value ? JSON.parse(deletedInput.value) : [];
+                currentIds.push(inputId.value); // Tambahkan ID variasi ke daftar
+                deletedInput.value = JSON.stringify(currentIds);
+            }
+
+            item.remove(); // Hapus elemen variasi dari DOM
         }
     }
 });

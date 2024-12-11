@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('variasi_stoks', function (Blueprint $table) {
             $table->id();
-            $table->string('stok');
+            $table->integer('stok');
             $table->timestamps();
         });
     }

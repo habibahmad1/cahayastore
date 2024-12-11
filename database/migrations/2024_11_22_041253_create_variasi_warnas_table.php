@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('variasi_warnas', function (Blueprint $table) {
             $table->id();
-            $table->string('warna')->unique();
+            $table->string('warna');
             $table->timestamps();
         });
     }
