@@ -175,6 +175,7 @@
     <div class="containerspill">
         <h1>Produk Unggulan</h1>
         <h2>Beberapa Produk Unggulan Yang Kami Rekomendasikan Untuk Anda.</h2>
+        <hr class="section-divider">
         <div class="button-group">
             <div class="button-wrapper">
                 <span class="product-count"></span>
