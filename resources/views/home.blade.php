@@ -175,6 +175,7 @@
     <div class="containerspill">
         <h1>Produk Unggulan</h1>
         <h2>Beberapa Produk Unggulan Yang Kami Rekomendasikan Untuk Anda.</h2>
+        <hr class="section-divider">
         <div class="button-group">
             <div class="button-wrapper">
                 <span class="product-count"></span>
@@ -202,6 +203,28 @@
         </div>
         <a href="/produk" class="see-more-btn">Lihat Lebih Banyak</a>
     </div>
+
+    {{-- <div class="client-section containerspill">
+        <h1>Mitra Tepercaya Kami</h1>
+        <h2>Perusahaan yang dengan bangga kami ajak berkolaborasi</h2>
+        <hr class="section-divider">
+
+        <div class="logo-slider" id="logoSlider">
+            <div class="logo-container">
+                <img src="https://www.pixelldesign.com/wp-content/uploads/logo-perusahaan-PT-SIK.webp" alt="Logo 1" class="logo">
+                <img src="https://www.pixelldesign.com/wp-content/uploads/logo-perusahaan-UD-bahan-bangunan.webp" alt="Logo 2" class="logo">
+                <img src="https://www.pixelldesign.com/wp-content/uploads/desain-logo-perusahaan-1.webp" alt="Logo 3" class="logo">
+                <img src="https://www.pixelldesign.com/wp-content/uploads/logo-perusahaan-PT-Cipta-Guna.webp" alt="Logo 4" class="logo">
+                <img src="https://www.pixelldesign.com/wp-content/uploads/desain-gambar-logo-perusahaan-karya-inspira-gemilang.webp" alt="Logo 5" class="logo">
+                <img src="img/partner/beauty.png" alt="Logo 6" class="logo">
+                <img src="img/partner/kopi.png" alt="Logo 7" class="logo">
+                <img src="https://www.pixelldesign.com/wp-content/uploads/logo-perusahaan-CV-Furqon.webp" alt="Logo 8" class="logo">
+                <img src="https://www.pixelldesign.com/wp-content/uploads/desain-logo-perusahaan-PT-Royalnusapersada.webp" alt="Logo 9" class="logo">
+                <img src="https://www.pixelldesign.com/wp-content/uploads/logo-perusahaan-PT-Cahayabakti.webp" alt="Logo 10" class="logo">
+            </div>
+        </div>
+    </div> --}}
+
 
 
     {{-- <section id="meet-the-team" class="meet-the-team-section">
@@ -275,7 +298,7 @@
     </div>
 </section> --}}
 
-    <div class="scroll-animated-section">
+    {{-- <div class="scroll-animated-section">
         <video autoplay loop muted class="background-video">
             <source src="https://cdn.pixabay.com/video/2017/03/08/8252-207598592_large.mp4" type="video/mp4" />
         </video>
@@ -295,7 +318,7 @@
             <input id="volumeSlider" type="range" min="0" max="1" step="0.1">
         </div>
         <audio id="myAudio" src="img/bcvideo.mp3"></audio>
-    </div>
+    </div> --}}
 
     {{-- iklan muncul beberapa detik --}}
     <div id="promo-banner" class="promo-banner hidden" draggable="false">

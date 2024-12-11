@@ -108,33 +108,33 @@ const observer = new IntersectionObserver(animateNumbers, {
 observer.observe(factsSection);
 
 
-//halaman kruuuuuuuuuuu
-document.querySelectorAll('.team-card').forEach(card => {
-    card.addEventListener('mouseover', () => {
-        card.querySelector('h3').style.transform = 'scale(1.1)';
-    });
-    card.addEventListener('mouseout', () => {
-        card.querySelector('h3').style.transform = 'scale(1)';
-    });
-});
+// //halaman kruuuuuuuuuuu
+// document.querySelectorAll('.team-card').forEach(card => {
+//     card.addEventListener('mouseover', () => {
+//         card.querySelector('h3').style.transform = 'scale(1.1)';
+//     });
+//     card.addEventListener('mouseout', () => {
+//         card.querySelector('h3').style.transform = 'scale(1)';
+//     });
+// });
 
 
 //music bagian kata kata bijak
-const audio = document.getElementById('myAudio');
-const playPauseBtn = document.getElementById('playPauseBtn');
-const stopBtn = document.getElementById('stopBtn');
-const volumeSlider = document.getElementById('volumeSlider');
+// const audio = document.getElementById('myAudio');
+// const playPauseBtn = document.getElementById('playPauseBtn');
+// const stopBtn = document.getElementById('stopBtn');
+// const volumeSlider = document.getElementById('volumeSlider');
 
-// Play/Pause Toggle
-playPauseBtn.addEventListener('click', () => {
-    if (audio.paused) {
-        audio.play();
-        playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>'; // Ganti ikon menjadi Pause
-    } else {
-        audio.pause();
-        playPauseBtn.innerHTML = '<i class="fas fa-play"></i>'; // Ganti ikon menjadi Play
-    }
-});
+// // Play/Pause Toggle
+// playPauseBtn.addEventListener('click', () => {
+//     if (audio.paused) {
+//         audio.play();
+//         playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>'; // Ganti ikon menjadi Pause
+//     } else {
+//         audio.pause();
+//         playPauseBtn.innerHTML = '<i class="fas fa-play"></i>'; // Ganti ikon menjadi Play
+//     }
+// });
 
 // Stop Audio
 // stopBtn.addEventListener('click', () => {
@@ -144,9 +144,9 @@ playPauseBtn.addEventListener('click', () => {
 // });
 
 // Adjust Volume
-volumeSlider.addEventListener('input', (e) => {
-    audio.volume = e.target.value;
-});
+// volumeSlider.addEventListener('input', (e) => {
+//     audio.volume = e.target.value;
+// });
 
 // iklan muncul beberapa detikik
 document.addEventListener("DOMContentLoaded", function () {
@@ -379,4 +379,50 @@ buttons.forEach((button) => {
 
 
 
+
+// // -------------halaman klien logo
+// document.addEventListener("DOMContentLoaded", () => {
+//     const logoSlider = document.getElementById("logoSlider");
+//     const logoContainer = logoSlider.querySelector(".logo-container");
+
+//     let isDragging = false;
+//     let startX;
+//     let initialPosition = 0;
+//     let animationFrame;
+
+//     // Auto-scroll functionality
+//     function autoScroll() {
+//         initialPosition -= 0.3; // Pindah ke kiri secara perlahan
+//         if (Math.abs(initialPosition) >= logoContainer.offsetWidth) {
+//             initialPosition = 0; // Ulangi scroll
+//         }
+//         logoContainer.style.transform = `translateX(${initialPosition}px)`;
+//         animationFrame = requestAnimationFrame(autoScroll);
+//     }
+
+//     autoScroll(); // Mulai auto-scroll
+
+//     // Drag functionality
+//     logoSlider.addEventListener("mousedown", (e) => {
+//         isDragging = true;
+//         startX = e.pageX - logoSlider.offsetLeft;
+//         cancelAnimationFrame(animationFrame); // Hentikan auto-scroll saat drag
+//     });
+
+//     window.addEventListener("mouseup", () => {
+//         if (isDragging) {
+//             isDragging = false;
+//             autoScroll(); // Lanjutkan auto-scroll setelah drag selesai
+//         }
+//     });
+
+//     logoSlider.addEventListener("mousemove", (e) => {
+//         if (!isDragging) return;
+//         const x = e.pageX - logoSlider.offsetLeft;
+//         const walk = x - startX; // Perbedaan drag
+//         initialPosition += walk; // Pindahkan posisi kontainer
+//         logoContainer.style.transform = `translateX(${initialPosition}px)`;
+//         startX = x; // Perbarui posisi awal
+//     });
+// });
 

@@ -4,7 +4,7 @@
         contactMenu.classList.toggle("hidden");
     });
 
-    document.querySelectorAll(".kontak-links a").forEach(function (link) {
+    document.querySelectorAll(".tok").forEach(function (link) {
         link.addEventListener("click", function (event) {
             event.preventDefault(); // Mencegah scroll ke atas
         });

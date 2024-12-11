@@ -116,7 +116,7 @@
             <h3>Temukan Kami di Toko Online</h3>
             <ul class="online-stores">
                 <li>
-                    <a href="#">
+                    <a href="#" class="tok">
                         <img src="https://img.icons8.com/color/48/shopee.png" alt="Shopee">
                         Shopee
                     </a>
@@ -130,7 +130,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="#" class="tok">
                         <img src="https://www.freepnglogos.com/uploads/logo-tokopedia-png/berita-tokopedia-info-berita-terbaru-tokopedia-6.png"
                             alt="Tokopedia">
                         Tokopedia
@@ -142,8 +142,8 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#">
-                        <img src="https://seeklogo.com/images/B/bukalapak-logo-E32BE44217-seeklogo.com.png" alt="Bukalapak">
+                    <a href="#" class="tok">
+                        <img src="https://planetsains.com/wp-content/uploads/2022/09/bukalapak.png" alt="Bukalapak">
                         Bukalapak
                     </a>
                     <ul class="dropdown">
@@ -152,7 +152,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="#" class="tok">
                         <img src="https://img.icons8.com/color/48/tiktok.png" alt="TikTok">
                         TikTok
                     </a>
@@ -168,7 +168,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="#" class="tok">
                         <img src="https://freepnglogo.com/images/all_img/1701498816lazada-icon-png.png" alt="Lazada">
                         Lazada
                     </a>
