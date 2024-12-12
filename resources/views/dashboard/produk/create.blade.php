@@ -165,7 +165,7 @@
         </div>
 
         <div class="mb-3">
-            <label for="diskon" class="form-label">Diskon Produk <span class="penting">*</span></label>
+            <label for="diskon" class="form-label">Diskon Produk (%) <span class="penting">*</span></label>
             <input type="number" class="form-control @error('diskon')
               is-invalid
           @enderror" id="diskon" name="diskon" value="{{ old('diskon') }}">

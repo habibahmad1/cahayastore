@@ -48,6 +48,10 @@
                 @if (!empty($post->gambar5))
                     <img src="{{ asset('storage/' . $post->gambar5) }}" alt="img-thumbnail" class="thumbnail" data-src="{{ asset('storage/' . $post->gambar5) }}">
                 @endif
+                @if (!empty($post->variasi->gambar))
+
+
+                @endif
             </div>
         </div>
     </div>
@@ -62,6 +66,39 @@
             <div class="diskon">-{{ $post->diskon }}%</div>
             <div class="harga-coret">Rp {{ number_format($post->harga / (1 - ($post->diskon / 100)), 0, ',', '.') }}</div>
         </div>
+        <p class="title-variasi mt-3">Warna/Variasi:</p>
+        <div class="detail-variasi">
+            @foreach ($produk_variasi as $variasi)
+                <div class="card-variasi"
+                    data-warna="{{ $variasi->warna->warna ?? 'Tidak ada' }}"
+                    data-gambar="{{ asset('storage/' . ($variasi->gambar->gambar ?? 'default-image.jpg')) }}">
+                    <img src="{{ asset('storage/' . ($variasi->gambar->gambar ?? 'default-image.jpg')) }}" alt="Gambar Produk" width="30px">
+                    <p style="margin-left: 10px">{{ $variasi->warna->warna ?? 'Tidak ada' }}</p>
+                </div>
+            @endforeach
+        </div>
+
+
+
+
+        <p class="title-variasi mt-3">Ukuran:</p>
+        <div class="detail-variasi">
+            @php
+                $checkedUkuran = []; // Array untuk menyimpan ukuran yang sudah ditampilkan
+            @endphp
+
+            @foreach ($produk_variasi as $variasi)
+                @if (!in_array($variasi->ukuran->ukuran ?? 'Tidak ada', $checkedUkuran))
+                    <div class="card-variasi" data-ukuran="{{ $variasi->ukuran->ukuran ?? 'Tidak ada' }}">
+                        <p>{{ $variasi->ukuran->ukuran ?? 'Tidak ada' }}</p>
+                    </div>
+                    @php
+                        $checkedUkuran[] = $variasi->ukuran->ukuran ?? 'Tidak ada'; // Tambahkan ukuran ke array
+                    @endphp
+                @endif
+            @endforeach
+        </div>
+
         <hr>
         <h3>Detail Produk</h3>
         <hr>
@@ -79,7 +116,7 @@
             <img src="{{ asset('storage/' . $post->gambar1) }}" alt="img-form">
             <p>variasi</p>
         </div>
-        <p><b>Stok: 12</b></p>
+        <p><b>Stok: {{ $post->stok }}</b></p>
         <p class="coret-form-harga">Rp {{ number_format($post->harga / (1 - ($post->diskon / 100)), 0, ',', '.') }}</p>
         <div class="harga-asli">
             <h5>Subtotal</h5>
@@ -116,6 +153,66 @@
         });
     });
 </script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const warnaVariasi = document.querySelectorAll(".detail-variasi .card-variasi[data-warna]");
+        const ukuranVariasi = document.querySelectorAll(".detail-variasi .card-variasi[data-ukuran]");
+        const stokElement = document.querySelector(".form-beli p b"); // Elemen stok di form beli
+        const produkVariasi = @json($produk_variasi); // Kirim data PHP ke JavaScript
+
+        let selectedWarna = null;
+        let selectedUkuran = null;
+
+        // Event klik untuk warna
+        warnaVariasi.forEach(warna => {
+            warna.addEventListener("click", function () {
+                // Tandai warna terpilih
+                warnaVariasi.forEach(w => w.classList.remove("selected"));
+                this.classList.add("selected");
+
+                // Simpan warna yang dipilih
+                selectedWarna = this.getAttribute("data-warna");
+
+                // Update stok
+                updateStok();
+            });
+        });
+
+        // Event klik untuk ukuran
+        ukuranVariasi.forEach(ukuran => {
+            ukuran.addEventListener("click", function () {
+                // Tandai ukuran terpilih
+                ukuranVariasi.forEach(u => u.classList.remove("selected"));
+                this.classList.add("selected");
+
+                // Simpan ukuran yang dipilih
+                selectedUkuran = this.getAttribute("data-ukuran");
+
+                // Update stok
+                updateStok();
+            });
+        });
+
+        // Fungsi untuk memperbarui stok berdasarkan warna dan ukuran yang dipilih
+        function updateStok() {
+            if (selectedWarna && selectedUkuran) {
+                const selectedVariasi = produkVariasi.find(variasi =>
+                    (variasi.warna?.warna === selectedWarna) &&
+                    (variasi.ukuran?.ukuran === selectedUkuran)
+                );
+
+                // Perbarui stok di form beli
+                if (selectedVariasi) {
+                    stokElement.textContent = `Stok: ${selectedVariasi.stok}`;
+                } else {
+                    stokElement.textContent = "Stok: Tidak tersedia";
+                }
+            }
+        }
+    });
+</script>
+
 
 
 @endsection

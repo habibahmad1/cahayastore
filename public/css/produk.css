@@ -197,10 +197,43 @@ html {
     color: #bdb2b2;
     text-decoration: line-through;
 }
+/* Variasi */
+.card-variasi {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    max-width: 200px;
+    max-height: 100px;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+
+.card-variasi:hover {
+    cursor: pointer;
+}
+
+.card-variasi.selected {
+    border: 2px solid #007bff;
+    background-color: #f0f8ff;
+}
+
+.card-variasi p {
+    margin: 0;
+}
+
+.detail-variasi {
+    max-width: 400px;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 8px;
+}
 
 /* Form Beli */
 .form-beli {
     display: flex;
+    height: 400px;
     flex-wrap: wrap;
     flex-direction: column;
     border: 2px solid #dadada;
@@ -257,6 +290,17 @@ html {
 .form-beli .form-wa a {
     color: #fff;
     text-decoration: none;
+}
+
+.gambar-produk {
+    width: 350px;
+}
+
+.gambar-produk-detail {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
 }
 
 .gambar-produk-detail {
@@ -378,6 +422,10 @@ html {
         max-height: 300px;
         border-radius: 5px;
         margin: 10px 5px;
+    }
+
+    .gambar-produk {
+        width: 300px;
     }
 
     .gambar-produk-detail img {

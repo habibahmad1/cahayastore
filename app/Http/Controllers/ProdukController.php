@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Produk;
 use App\Models\Kategori;
+use App\Models\Produk_Variasi;
 
 class ProdukController extends Controller
 {
@@ -20,9 +21,14 @@ class ProdukController extends Controller
     public function show(Produk $produkid)
     {
 
+        $produkVariasi = Produk_Variasi::where('produk_id', $produkid->id)
+            ->with(['warna', 'ukuran', 'gambar']) // Memuat relasi terkait
+            ->get();
+
         return view('detailProduk', [
             "title" => "Detail Produk",
-            "post" => $produkid
+            "post" => $produkid,
+            "produk_variasi" => $produkVariasi,
         ]);
     }
 }

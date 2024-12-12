@@ -42,6 +42,11 @@ class Produk extends Model
         return $this->hasMany(Produk_Variasi::class);
     }
 
+    public function warna()
+    {
+        return $this->hasMany(Variasi_Warna::class);
+    }
+
     public function getRouteKeyName()
     {
         return 'slug';
