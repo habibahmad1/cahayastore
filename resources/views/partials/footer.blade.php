@@ -29,18 +29,18 @@
     </div>
     <div class="footer-2">
       <h3>Beranda</h3>
-      <a href="#why">Kenapa Kita?</a>
-      <a href="#slogan">Slogan</a>
+      <a href="/tentang">About</a>
+      <a href="#about-company">Kenapa Kita?</a>
     </div>
     <div class="footer-3">
       <h3>Pelayanan</h3>
-      <a href="#produk">Produk</a>
-      <a href="#features">Keunggulan</a>
+      <a href="/produk">Produk</a>
+      <a href="/features">Keunggulan</a>
     </div>
     <div class="footer-4">
       <h3>Testimoni</h3>
-      <a href="#testimoni">Testimoni Pelanggan</a>
-      <a href="#faq">FAQ</a>
+      <a href="/testimoni">Testimoni Pelanggan</a>
+      <a href="/faq">FAQ</a>
     </div>
   </section>
   <p
