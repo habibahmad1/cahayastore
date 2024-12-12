@@ -8,8 +8,11 @@
         <div class="category-container">
             <button class="category-button" onclick="showCategory('led')"><i class="fas fa-lightbulb"></i> LED</button>
             <button class="category-button" onclick="showCategory('coffee')"><i class="fas fa-coffee"></i> Coffee</button>
-            <button class="category-button" onclick="showCategory('sandal')"><i class="fas fa-shoe-prints"></i> Sandal</button>
-            <button class="category-button" onclick="showCategory('playmat')"><i class="fa-solid fa-rug"></i> Playmat</button>
+            <button class="category-button" onclick="showCategory('sandal')"><i class="fas fa-shoe-prints"></i>
+                Sandal</button>
+            <button class="category-button" onclick="showCategory('playmat')"><i class="fa-solid fa-rug"></i>
+                Playmat</button>
+            <button class="category-button" onclick="showCategory('toko')"><i class="fa-solid fa-toolbox"></i> Toko</button>
 
         </div>
 
@@ -275,6 +278,82 @@
                             Untuk merawat playmat, hindari paparan sinar matahari langsung dalam waktu lama, bersihkan
                             secara rutin dengan kain lembab, dan pastikan playmat disimpan di tempat yang kering untuk
                             mencegah kerusakan.
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div id="toko" class="page-content">
+            <h2>Playmat</h2>
+            <p>Beberapa informasi tentang Flaymat Kami dibawah.</p>
+
+            <section class="faq" id="faq">
+                <div class="faq-title">
+                    {{-- <h1>FAQ LED Fishing Light</h1> --}}
+                    <div class="card-faq">
+                        <h2> Apa jam operasional toko Anda?</h2>
+                        <p>
+                            Toko kami buka setiap hari dari pukul 08.00 hingga 17.00 WIB.
+                        </p>
+                    </div>
+                    <div class="card-faq">
+                        <h2>Apakah Anda menyediakan layanan pengiriman?</h2>
+                        <p>
+                            Ya, kami menyediakan layanan pengiriman untuk seluruh wilayah Kab. Tangerang Biaya pengiriman
+                            dihitung
+                            berdasarkan jarak dan berat paket.
+                        </p>
+                    </div>
+                    <div class="card-faq">
+                        <h2>Metode pembayaran apa saja yang diterima?</h2>
+                        <p>
+                            Kami menerima pembayaran tunai, kartu kredit/debit, dan pembayaran digital seperti OVO, GoPay,
+                            dan Dana.
+                        </p>
+                    </div>
+                    <div class="card-faq">
+                        <h2>Apakah produk yang saya beli bisa dikembalikan atau ditukar?</h2>
+                        <p>
+                            Ya, kami menerima pengembalian dan penukaran produk dalam waktu 7 hari setelah pembelian dengan
+                            syarat produk masih dalam kondisi baik dan disertai dengan struk pembelian dan video unboxing.
+                        </p>
+                    </div>
+                    <div class="card-faq">
+                        <h2>Bagaimana cara melacak pesanan saya?</h2>
+                        <p>
+                            Anda dapat melacak pesanan Anda melalui nomor resi yang dikirimkan ke email atau SMS setelah
+                            pengiriman dilakukan. Masukkan nomor resi tersebut di situs web ekspedisi terkait untuk melihat
+                            status
+                            pengiriman.
+                        </p>
+                    </div>
+                    <div class="card-faq">
+                        <h2>Apakah ada diskon khusus untuk pelanggan baru?</h2>
+                        <p>
+                            Ya, kami menawarkan diskon 50% untuk pembelian pertama pelanggan baru. Gunakan kode promo
+                            "CAHAYA01" saat checkout di Online Shop.
+                        </p>
+                    </div>
+                    <div class="card-faq">
+                        <h2>Apakah Anda memiliki toko cabang di tempat lain?</h2>
+                        <p>
+                            Saat ini, kami hanya memiliki satu toko fisik di Tangerang, tetapi Anda dapat berbelanja secara
+                            online melalui situs web kami.
+                        </p>
+                    </div>
+                    <div class="card-faq">
+                        <h2>Apakah produk yang dijual asli dan berkualitas?</h2>
+                        <p>
+                            Ya, kami hanya menjual produk asli dan berkualitas tinggi. Setiap produk telah melalui proses
+                            pengecekan kualitas sebelum dijual.
+                        </p>
+                    </div>
+                    <div class="card-faq">
+                        <h2>Bagaimana cara menghubungi layanan pelanggan?</h2>
+                        <p>
+                            Anda dapat menghubungi layanan pelanggan kami melalui telepon di (021) 1234-5678 atau email di
+                            admin@cahayasetia.com <admin@cahayasetia.com>;. Tim kami siap membantu Anda setiap hari dari pukul 09.00 hingga 18.00 WIB.
                         </p>
                     </div>
                 </div>
