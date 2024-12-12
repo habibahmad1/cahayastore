@@ -27,9 +27,7 @@
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     overflow: hidden;
-
-    gap: 10px;
-    min-width: 130px;
+    min-width: 125px;
     animation: fadeInUp 2s ease forwards;
 }
 
