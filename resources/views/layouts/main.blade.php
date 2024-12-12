@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="{{ asset('css/produk.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/allkategori.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/tentang.css') }}" />
-    <link rel="stylesheet" href="{{ asset('css/testimoni.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/artikel.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/faq.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/keunggulan.css') }}" />
     {{-- Font Awesome --}}
