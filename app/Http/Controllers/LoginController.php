@@ -28,7 +28,7 @@ class LoginController extends Controller
             return redirect()->intended('/dashboard');
         }
 
-        return back()->with('failed', 'Login Gagal!');
+        return redirect('/')->with('failed', 'Login Gagal!');
     }
 
     public function logout(Request $request)

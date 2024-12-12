@@ -35,6 +35,6 @@ class RegisterController extends Controller
         // Simpan data ke database
         User::create($validateData);
 
-        return redirect('/login')->with('success', 'Buat Akun Berhasil!');
+        return redirect('/')->with('success', 'Buat Akun Berhasil!');
     }
 }

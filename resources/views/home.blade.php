@@ -2,6 +2,16 @@
 
 @section('container')
     <div class="slider">
+    @if (session()->has('failed'))
+    <div class="alert alert-danger text-center m-0" role="alert">
+        {{ session('failed') }}
+      </div>
+    @endif
+    @if (session()->has('success'))
+    <div class="alert alert-success text-center m-0" role="alert">
+        {{ session('success') }}
+      </div>
+    @endif
         <div class="slides">
             <div class="slide"
                 style="background-image: url('https://cdn.pixabay.com/photo/2012/03/03/23/54/animal-21668_1280.jpg');">
