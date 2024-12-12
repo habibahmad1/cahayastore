@@ -81,6 +81,7 @@
 
 
 
+
         <p class="title-variasi mt-3">Ukuran:</p>
         <div class="detail-variasi">
             @php
@@ -156,28 +157,34 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        const warnaVariasi = document.querySelectorAll(".detail-variasi .card-variasi[data-warna]");
-        const ukuranVariasi = document.querySelectorAll(".detail-variasi .card-variasi[data-ukuran]");
-        const stokElement = document.querySelector(".form-beli p b"); // Elemen stok di form beli
-        const produkVariasi = @json($produk_variasi); // Kirim data PHP ke JavaScript
+    const warnaVariasi = document.querySelectorAll(".detail-variasi .card-variasi[data-warna]");
+    const previewImage = document.getElementById("preview-image");
+    const ukuranVariasi = document.querySelectorAll(".detail-variasi .card-variasi[data-ukuran]");
+    const stokElement = document.querySelector(".form-beli p b"); // Elemen stok di form beli
+    const produkVariasi = @json($produk_variasi); // Kirim data PHP ke JavaScript
 
-        let selectedWarna = null;
-        let selectedUkuran = null;
+    let selectedWarna = null;
 
-        // Event klik untuk warna
-        warnaVariasi.forEach(warna => {
-            warna.addEventListener("click", function () {
-                // Tandai warna terpilih
-                warnaVariasi.forEach(w => w.classList.remove("selected"));
-                this.classList.add("selected");
+    // Event klik untuk warna
+    warnaVariasi.forEach(warna => {
+        warna.addEventListener("click", function () {
+            // Tandai warna terpilih
+            warnaVariasi.forEach(w => w.classList.remove("selected"));
+            this.classList.add("selected");
 
-                // Simpan warna yang dipilih
-                selectedWarna = this.getAttribute("data-warna");
+            // Ambil gambar terkait variasi
+            const newImage = this.getAttribute("data-gambar");
 
-                // Update stok
-                updateStok();
-            });
+            // Perbarui gambar utama
+            previewImage.setAttribute("src", newImage);
+
+            // Simpan warna yang dipilih
+            selectedWarna = this.getAttribute("data-warna");
+
+            // Anda bisa memperbarui stok atau informasi lainnya di sini
+            updateStok();
         });
+    });
 
         // Event klik untuk ukuran
         ukuranVariasi.forEach(ukuran => {
