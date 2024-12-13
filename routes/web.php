@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Models\Produk;
 use App\Models\Kategori;
 use App\Models\User;
+use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProdukController;
@@ -29,9 +30,10 @@ Route::get('/features', function () {
     ]);
 });
 
-Route::get('/testimoni', function () {
-    return view('testimoni', [
-        "title" => "Testimoni"
+Route::get('/artikel', function () {
+    return view('artikel', [
+        "title" => "Artikel",
+        "artikel" => Post::latest()->filtercoy()->paginate(10)->withQueryString(),
     ]);
 });
 
