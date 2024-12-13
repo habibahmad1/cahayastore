@@ -10,7 +10,7 @@
         <form action="/produk">
             <div class="input-group mb-3">
                 <input type="text" class="form-control" placeholder="Cari Produk.." name="search" value="{{ request('search') }}" id="search-box">
-                <button class="btn btn-warning" type="submit">Cari</button>
+                <button class="btn btn-warning" style="background-color: #fd8c45; color:#fff" type="submit">Cari</button>
             </div>
         </form>
     </div>

@@ -3,7 +3,9 @@
 namespace Database\Seeders;
 
 use App\Models\Kategori;
+use App\Models\KategoriPost;
 use App\Models\User;
+use App\Models\Post;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Produk;
 use Illuminate\Database\Seeder;
@@ -41,5 +43,12 @@ class DatabaseSeeder extends Seeder
             'nama' => 'Lampu',
             'slug' => 'lampu',
         ]);
+
+        KategoriPost::factory()->tutorial()->create();
+        KategoriPost::factory()->informasi()->create();
+        KategoriPost::factory()->personal()->create();
+        KategoriPost::factory()->random()->create();
+
+        Post::factory(20)->create();
     }
 }

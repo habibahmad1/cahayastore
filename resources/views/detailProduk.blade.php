@@ -63,7 +63,7 @@
         </h3>
         <h2><b>Rp {{ number_format($post->harga, 0, ',', '.') }}</b></h2>
         <div class="diskon-coret">
-            <div class="diskon">-{{ $post->diskon }}%</div>
+            <div class="diskon">Diskon -{{ $post->diskon }}%</div>
             <div class="harga-coret">Rp {{ number_format($post->harga / (1 - ($post->diskon / 100)), 0, ',', '.') }}</div>
         </div>
         <p class="title-variasi mt-3">Warna/Variasi:</p>
@@ -72,15 +72,11 @@
                 <div class="card-variasi"
                     data-warna="{{ $variasi->warna->warna ?? 'Tidak ada' }}"
                     data-gambar="{{ asset('storage/' . ($variasi->gambar->gambar ?? 'default-image.jpg')) }}">
-                    <img src="{{ asset('storage/' . ($variasi->gambar->gambar ?? 'default-image.jpg')) }}" alt="Gambar Produk" width="30px">
+                    <img src="{{ asset('storage/' . ($variasi->gambar->gambar ?? 'default-image.jpg')) }}" alt="img" width="30px">
                     <p style="margin-left: 10px">{{ $variasi->warna->warna ?? 'Tidak ada' }}</p>
                 </div>
             @endforeach
         </div>
-
-
-
-
 
         <p class="title-variasi mt-3">Ukuran:</p>
         <div class="detail-variasi">

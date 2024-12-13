@@ -11,6 +11,7 @@ use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\PostController;
 use App\Http\Middleware\Admin;
 
 Route::post('/send-message', [ContactController::class, 'sendMessage']);
@@ -82,3 +83,5 @@ Route::get('/dashboard', function () {
 Route::resource('/dashboard/produk', DashboardController::class)->middleware('auth');
 
 Route::resource('/dashboard/kategori', AdminKategoriController::class)->middleware(Admin::class);
+
+Route::resource('/dashboard/artikel', PostController::class)->middleware(['auth']);
