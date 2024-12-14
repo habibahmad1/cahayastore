@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Artikel;
 use App\Models\Kategori;
 use App\Models\KategoriPost;
 use App\Models\User;
@@ -49,6 +50,6 @@ class DatabaseSeeder extends Seeder
         KategoriPost::factory()->personal()->create();
         KategoriPost::factory()->random()->create();
 
-        Post::factory(20)->create();
+        Artikel::factory(20)->create();
     }
 }

@@ -9,22 +9,22 @@
     <a href="/dashboard/artikel/create" class="btn btn-primary mb-3">Tambah Artikel</a>
 
     @if (session()->has('success'))
-    <div class="alert alert-success" role="alert">
+    <div class="alert alert-success col-lg-7" role="alert">
         {{ session('success') }}
       </div>
     @endif
 
-    <div class="table-responsive small col-lg-6">
-        <div class="row justify-content-center px-2">
-            <div class="col-lg-8 pencarian">
-                <form action="/dashboard/artikel">
-                    <div class="input-group my-3">
-                        <input type="text" class="form-control" placeholder="Cari Artikel.." name="search" value="{{ request('search') }}" id="search-box">
-                        <button class="btn btn-warning" type="submit">Cari</button>
-                    </div>
-                </form>
-            </div>
+    <div class="row justify-content-center px-2 col-lg-6">
+        <div class="pencarian">
+            <form action="/dashboard/artikel">
+                <div class="input-group my-3">
+                    <input type="text" class="form-control" placeholder="Cari Artikel.." name="search" value="{{ request('search') }}" id="search-box">
+                    <button class="btn btn-warning" type="submit">Cari</button>
+                </div>
+            </form>
         </div>
+    </div>
+    <div class="table-responsive small col-lg-7">
 
     <table class="table table-hover table-sm">
       <thead>

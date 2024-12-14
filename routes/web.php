@@ -1,19 +1,22 @@
 <?php
 
 use App\Http\Controllers\AdminKategoriController;
-use App\Http\Controllers\DashboardController;
-use App\Models\Produk;
-use App\Models\Kategori;
-use App\Models\User;
-use App\Models\Post;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\ProdukController;
-use App\Http\Controllers\KategoriController;
-use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\RegisterController;
 use App\Http\Middleware\Admin;
+use App\Models\Artikel;
+use App\Models\Kategori;
+use App\Models\Post;
+use App\Models\Produk;
+use App\Models\User;
+use Illuminate\Support\Facades\Route;
+
 
 Route::post('/send-message', [ContactController::class, 'sendMessage']);
 
@@ -33,7 +36,7 @@ Route::get('/features', function () {
 Route::get('/artikel', function () {
     return view('artikel', [
         "title" => "Artikel",
-        "artikel" => Post::latest()->filtercoy()->paginate(10)->withQueryString(),
+        "artikel" => Artikel::latest()->filtercoy()->paginate(10)->withQueryString(),
     ]);
 });
 
@@ -86,4 +89,4 @@ Route::resource('/dashboard/produk', DashboardController::class)->middleware('au
 
 Route::resource('/dashboard/kategori', AdminKategoriController::class)->middleware(Admin::class);
 
-Route::resource('/dashboard/artikel', PostController::class)->middleware(['auth']);
+Route::resource('/dashboard/artikel', ArtikelController::class)->middleware(['auth']);

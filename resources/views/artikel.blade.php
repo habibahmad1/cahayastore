@@ -229,7 +229,7 @@
                         <small class="fw-bold">Penulis :<a href="/authors/{{ $post->user->username }}" style="color: #41a77e" > {{ $post->user->name }} </a>
 
                         <div class="badge text-bg-danger"><a href="/categories/{{ $post->kategoripost->slug }}" class="text-white">{{ $post->kategoripost->nama }}</a></div>
-                            <a class="text-info">{{ $post->created_at->diffForHumans() }}</a>
+                           <br> <a class="text-info">{{ $post->created_at->diffForHumans() }}</a>
                         </small>
 
 

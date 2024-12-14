@@ -12,9 +12,9 @@ class KategoriPost extends Model
 
     protected $guarded = ["id"];
 
-    public function post()
+    public function artikel()
     {
-        return $this->hasMany(Post::class);
+        return $this->hasMany(Artikel::class);
     }
 
     public function getRouteKeyName()
