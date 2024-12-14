@@ -204,11 +204,11 @@
 
                       <a href="/artikel/{{ $artikel[0]->slug }}" class="selengkapnya my-2 d-inline-block" style="color: white">Baca Selengkapnya</a>
                     </div>
-                  </div>
+                </div>
 
-
+                <div class="all-card">
                 @foreach ($artikel->skip(1) as $post)
-                    <article class="mb-5">
+                    <article class="mb-5 artikel-card">
                         @if ($post->image)
                             <div class="text-center gambarTiapPost" style="max-height: 350px; overflow:hidden">
                                 <img src="{{ asset('storage/' . $post->image) }}"  alt="imgPost" class="rounded mb-3">
@@ -238,6 +238,7 @@
                         <a href="/artikel/{{ $post->slug }}" class="more" style="color: white">Baca Selengkapnya</a>
                     </article>
                     @endforeach
+                </div>
             </div>
         </div>
         @else
