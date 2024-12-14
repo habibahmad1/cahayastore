@@ -352,8 +352,8 @@
                     <div class="card-faq">
                         <h2>Bagaimana cara menghubungi layanan pelanggan?</h2>
                         <p>
-                            Anda dapat menghubungi layanan pelanggan kami melalui telepon di (021) 1234-5678 atau email di
-                            admin@cahayasetia.com <admin@cahayasetia.com>;. Tim kami siap membantu Anda setiap hari dari pukul 09.00 hingga 18.00 WIB.
+                            Anda dapat menghubungi layanan pelanggan kami melalui telepon di (+62) 856-9300-0255 atau email di
+                            admin@cahayasetia.com <admin@cahayasetia.com>. Tim kami siap membantu Anda setiap hari dari pukul 08.00 hingga 17.00 WIB.
                         </p>
                     </div>
                 </div>

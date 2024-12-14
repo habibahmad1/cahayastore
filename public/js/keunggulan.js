@@ -65,4 +65,3 @@ const observer = new IntersectionObserver((entries) => {
 });
 
 features.forEach((feature) => observer.observe(feature));
-

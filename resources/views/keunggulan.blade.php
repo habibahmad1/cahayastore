@@ -22,7 +22,7 @@
 </div>
 
 <div id="led-light" class="category-description" style="display: none;">
-    <h2>LED Fishing Light</h2>
+    <h2>Keunggulan LED Fishing Light</h2>
     <p>Lampu berkualitas tinggi untuk membantu memancing di malam hari. Hemat energi dan tahan lama.</p>
 
     <div class="container">
@@ -73,7 +73,7 @@
 </div>
 
 <div id="coffee-luwak" class="category-description" style="display: none;">
-    <h2>Coffee Luwak</h2>
+    <h2>Keunggulan Coffee Luwak</h2>
     <p>Kopi terbaik dengan cita rasa unik, langsung dari perkebunan pilihan.</p>
 
     <div class="container">
@@ -124,7 +124,7 @@
 </div>
 
 <div id="sandal" class="category-description" style="display: none;">
-    <h2>Sandal</h2>
+    <h2>Keunggulan Sandal</h2>
     <p>Sandal nyaman dan stylish untuk segala suasana.</p>
 
     <div class="container">
@@ -175,7 +175,7 @@
 </div>
 
 <div id="playmat" class="category-description" style="display: none;">
-    <h2>Playmat</h2>
+    <h2>Keunggulan Playmat</h2>
     <p>Karpet Kualitas premium, mudah dibersihkan, cocok untuk segala aktivitas.</p>
 
     <div class="container">

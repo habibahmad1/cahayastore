@@ -141,7 +141,7 @@
                         <li><a href="https://www.tokopedia.com/cahayasetiaelektric" target="_blank">Toko 3</a></li>
                     </ul>
                 </li>
-                <li>
+                {{-- <li>
                     <a href="#" class="tok">
                         <img src="https://planetsains.com/wp-content/uploads/2022/09/bukalapak.png" alt="Bukalapak">
                         Bukalapak
@@ -150,7 +150,7 @@
                         <li><a href="https://bukalapak.com/toko1" target="_blank">Toko 1</a></li>
                         <li><a href="https://bukalapak.com/toko2" target="_blank">Toko 2</a></li>
                     </ul>
-                </li>
+                </li> --}}
                 <li>
                     <a href="#" class="tok">
                         <img src="https://img.icons8.com/color/48/tiktok.png" alt="TikTok">
@@ -167,7 +167,7 @@
                                 4</a></li>
                     </ul>
                 </li>
-                <li>
+                {{-- <li>
                     <a href="#" class="tok">
                         <img src="https://freepnglogo.com/images/all_img/1701498816lazada-icon-png.png" alt="Lazada">
                         Lazada
@@ -177,7 +177,7 @@
                                 target="_blank">Toko 1</a></li>
                         <li><a href="https://lazada.co.id/toko2" target="_blank">Toko 2</a></li>
                     </ul>
-                </li>
+                </li> --}}
             </ul>
         </div>
 
