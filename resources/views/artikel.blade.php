@@ -183,7 +183,7 @@
 
                 @if ($artikel->count())
 
-                <div class="card mb-5 text-center">
+                <div class="card my-5 text-center">
                     @if ($artikel[0]->image)
 
                         <div class="text-center gambarTiapPost" style="max-height: 350px; overflow:hidden">
@@ -202,7 +202,7 @@
                       <p class="card-text">{{ $artikel[0]->excerpt }}</p>
                       <p class="card-text"><small class="text-info fw-bold">{{ $artikel[0]->created_at->diffForHumans() }}</small></p>
 
-                      <a href="/artikel/{{ $artikel[0]->slug }}" class="selengkapnya my-2 d-inline-block" style="color: white">Baca Selengkapnya</a>
+                      <a href="/artikel/{{ $artikel[0]->slug }}" class="selengkapnya my-2 d-inline-block" style="color: black">Baca Selengkapnya</a>
                     </div>
                 </div>
 
@@ -235,7 +235,7 @@
 
                         <p>{{ $post->excerpt }}</p>
 
-                        <a href="/artikel/{{ $post->slug }}" class="more" style="color: white">Baca Selengkapnya</a>
+                        <a href="/artikel/{{ $post->slug }}" class="more" style="color: black">Baca Selengkapnya</a>
                     </article>
                     @endforeach
                 </div>
