@@ -19,7 +19,7 @@
 
 
         <div id="led" class="page-content">
-            <h2>LED Fishing Light</h2>
+            <h2>Faq LED Fishing Light</h2>
             <p>Beberapa Informasi tentang produk LED Fishing Light Kami dibawah.</p>
 
             <section class="faq" id="faq">
@@ -59,7 +59,7 @@
         </div>
 
         <div id="coffee" class="page-content">
-            <h2>Coffee Luwak</h2>
+            <h2>Faq Coffee Luwak</h2>
             <p>Beberapa informasi tentang Coffee Luwak Authentic Kami dibawah.</p>
 
             <section class="faq" id="faq">
@@ -127,7 +127,7 @@
         </div>
 
         <div id="sandal" class="page-content">
-            <h2>Sandal</h2>
+            <h2>Faq Sandal</h2>
             <p>Beberapa informasi tentang produk sandal kami dibawah.</p>
 
             <section class="faq" id="faq">
@@ -212,7 +212,7 @@
         </div>
 
         <div id="playmat" class="page-content">
-            <h2>Playmat</h2>
+            <h2>Faq Playmat</h2>
             <p>Beberapa informasi tentang Flaymat Kami dibawah.</p>
 
             <section class="faq" id="faq">
@@ -285,8 +285,8 @@
         </div>
 
         <div id="toko" class="page-content">
-            <h2>Playmat</h2>
-            <p>Beberapa informasi tentang Flaymat Kami dibawah.</p>
+            <h2>Faq Toko</h2>
+            <p>Beberapa informasi tentang Toko Kami dibawah.</p>
 
             <section class="faq" id="faq">
                 <div class="faq-title">
