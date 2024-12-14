@@ -1,5 +1,12 @@
+.content-informasi {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
 .artikel {
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
     width: 1200px;
     justify-content: center;
@@ -8,16 +15,17 @@
 
 .all-card {
     display: flex;
-    flex-direction: row;
     justify-content: space-evenly;
     flex-wrap: wrap;
     border: 0.1px solid grey;
-    padding: 40px 0;
     border-radius: 5px;
     margin-bottom: 20px;
 }
 
 .artikel-card {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
     width: 350px;
     text-align: justify;
     border: 0.1px solid #ff9e65;
@@ -52,5 +60,61 @@
         margin: 15px;
         margin-bottom: 20px;
         margin-top: 20px;
+    }
+
+    .all-card {
+        border: none;
+        width: 350px;
+    }
+
+    .artikel {
+        width: 300px;
+    }
+
+    .content-informasi {
+        width: 350px;
+        margin-left: -30px;
+    }
+
+    .artikel-card img {
+        width: 300px;
+    }
+
+    .heroimg {
+        width: 350px;
+    }
+
+    .heroimg img {
+        width: 350px;
+    }
+}
+
+@media (width: 900px) and (max-width: 1200px) {
+    /* Styles for wider tablets */
+
+    .all-card {
+        border: none;
+        width: 350px;
+    }
+
+    .artikel {
+        width: 600px;
+    }
+
+    .content-informasi {
+        width: 350px;
+        margin-left: -30px;
+    }
+
+    .artikel-card img {
+        width: 300px;
+    }
+
+    .heroimg {
+        width: 350px;
+    }
+
+    .heroimg img {
+        width: 350px;
     }
 }

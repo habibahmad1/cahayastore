@@ -179,30 +179,31 @@
             {{-- Content Informasi --}}
             <div class="content-informasi">
 
-                {{-- Hero IMG --}}
+                <div class="heroimg">
 
-                @if ($artikel->count())
+                    @if ($artikel->count())
 
-                <div class="card my-5 text-center">
-                    @if ($artikel[0]->image)
+                    <div class="card my-5 text-center">
+                        @if ($artikel[0]->image)
 
-                        <div class="text-center gambarTiapPost" style="max-height: 350px; overflow:hidden">
-                            <img src="{{ asset('storage/' . $artikel[0]->image) }}"  alt="imgPost" class="rounded">
+                            <div class="text-center gambarTiapPost" style="max-height: 350px; overflow:hidden">
+                                <img src="{{ asset('storage/' . $artikel[0]->image) }}"  alt="imgPost" width="1200" class="rounded">
+                            </div>
+
+                        @else
+                            <img src="https://picsum.photos/seed/{{ $artikel[0]->kategoripost->nama }}/1200/400" class="card-img-top" alt="{{ $artikel[0]->kategoripost->nama }}">
+                        @endif
+
+                        <div class="card-body">
+                          <h3 class="card-title" style="color: #41a77e"><a href="/artikel/{{ $artikel[0]->slug }}" class="text-decoration-none" style="color: #41a77e">{{ $artikel[0]->judul }}</a></h3>
+
+                          <h5>Penulis : <a href="/authors/{{ $artikel[0]->user->username }}" style="color: #41a77e" class="text-decoration-none">{{ $artikel[0]->user->name }}</a> <a href="/categories/{{ $artikel[0]->kategoripost->slug }}" style="color: #41a77e" class="text-decoration-none badge text-bg-danger">{{ $artikel[0]->kategoripost->nama }}</a> </h5>
+
+                          <p class="card-text">{{ $artikel[0]->excerpt }}</p>
+                          <p class="card-text"><small class="text-info fw-bold">{{ $artikel[0]->created_at->diffForHumans() }}</small></p>
+
+                          <a href="/artikel/{{ $artikel[0]->slug }}" class="selengkapnya my-2 d-inline-block" style="color: black">Baca Selengkapnya</a>
                         </div>
-
-                    @else
-                        <img src="https://picsum.photos/seed/{{ $artikel[0]->kategoripost->nama }}/1200/400" class="card-img-top" alt="{{ $artikel[0]->kategoripost->nama }}">
-                    @endif
-
-                    <div class="card-body">
-                      <h3 class="card-title" style="color: #41a77e"><a href="/artikel/{{ $artikel[0]->slug }}" class="text-decoration-none" style="color: #41a77e">{{ $artikel[0]->judul }}</a></h3>
-
-                      <h5>Penulis : <a href="/authors/{{ $artikel[0]->user->username }}" style="color: #41a77e" class="text-decoration-none">{{ $artikel[0]->user->name }}</a> <a href="/categories/{{ $artikel[0]->kategoripost->slug }}" style="color: #41a77e" class="text-decoration-none badge text-bg-danger">{{ $artikel[0]->kategoripost->nama }}</a> </h5>
-
-                      <p class="card-text">{{ $artikel[0]->excerpt }}</p>
-                      <p class="card-text"><small class="text-info fw-bold">{{ $artikel[0]->created_at->diffForHumans() }}</small></p>
-
-                      <a href="/artikel/{{ $artikel[0]->slug }}" class="selengkapnya my-2 d-inline-block" style="color: black">Baca Selengkapnya</a>
                     </div>
                 </div>
 
