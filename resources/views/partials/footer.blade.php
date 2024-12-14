@@ -30,7 +30,7 @@
     <div class="footer-2">
       <h3>Beranda</h3>
       <a href="/tentang">About</a>
-      <a href="#about-company">Kenapa Kita?</a>
+      <a href="/artikel">Artikel</a>
     </div>
     <div class="footer-3">
       <h3>Pelayanan</h3>
@@ -39,7 +39,7 @@
     </div>
     <div class="footer-4">
       <h3>Testimoni</h3>
-      <a href="/testimoni">Testimoni Pelanggan</a>
+      <a href="/features">Testimoni Pelanggan</a>
       <a href="/faq">FAQ</a>
     </div>
   </section>
