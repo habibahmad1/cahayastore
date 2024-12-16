@@ -93,6 +93,15 @@ Route::resource('/dashboard/kategori', AdminKategoriController::class)->middlewa
 
 Route::resource('/dashboard/artikel', ArtikelController::class)->middleware(['auth']);
 
+// Route untuk data page
+Route::get('/dashboard/data', function () {
+    return view('dashboard.data', [
+        'data' => User::all()
+    ]);
+})->middleware(['auth']);
+
+Route::delete('/dashboard/deleteUser', [UserController::class, 'deleteUser'])->name('user.deleteUser')->middleware('role:Admin,Super Admin');
+
 // Route::get('/dashboard/artikel/cekSlug', [ArtikelController::class, 'cekSlug']);
 
 

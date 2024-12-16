@@ -19,7 +19,7 @@
             </div>
         @endif
 
-        <h6 class="fw-bold mb-3">Penulis :<a href="/authors/{{ $artikel->user->nama }}" style="color: #41a77e" class="text-decoration-none"> {{ $artikel->user->name }} </a>
+        <h6 class="fw-bold mb-3">Penulis :<a href="/authors/{{ $artikel->user->username }}" style="color: #41a77e" class="text-decoration-none"> {{ $artikel->user->name }} </a>
             <div class="badge text-bg-danger"><a href="/categories/{{ $artikel->kategoripost->slug }}" class="text-white text-decoration-none">{{ $artikel->kategoripost->nama }}</a></div>
             <a class="text-info text-decoration-none">{{ $artikel->created_at->diffForHumans() }}</a>
             </h6>
