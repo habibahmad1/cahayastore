@@ -100,7 +100,7 @@ Route::get('/artikel/{slug}', function ($slug) {
 
     // Tampilkan view untuk halaman public
     return view('artikel.public', [
-        'title' => 'Detail Artikel',
+        'title' => 'Artikel',
         'artikel' => $artikel,
 
     ]);

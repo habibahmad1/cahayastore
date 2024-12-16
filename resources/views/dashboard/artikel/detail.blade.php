@@ -16,12 +16,12 @@
 
         @if ($artikel->image)
 
-            <div class="text-center gambarTiapPost mb-4 mt-1">
+            <div class="text-center  postimg mb-4 mt-1">
                 <img src="{{ asset('storage/' . $artikel->image) }}"  alt="imgPost" class="rounded my-3">
             </div>
 
         @else
-            <div class="text-center gambarTiapPost mb-4 mt-1">
+            <div class="text-center  postimg mb-4 mt-1">
                 <img src="https://picsum.photos/seed/{{ $artikel->kategoripost->nama }}/1200/600"  alt="imgPost" class="rounded my-3">
             </div>
         @endif
@@ -33,7 +33,7 @@
             </h6>
 
         <p>{!! $artikel->body !!}</p>
-        <a href="/dashboard/artikel" class="kembaliButton my-5"><i class="fa-solid fa-arrow-left-long"></i> Back</a>
+        <a href="/dashboard/artikel" class="kembaliButton my-5 btn btn-primary"><i class="fa-solid fa-arrow-left-long"></i> Back</a>
     </article>
 </div>
 

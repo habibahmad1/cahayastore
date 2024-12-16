@@ -212,11 +212,11 @@
                     <article class="mb-5 artikel-card">
                         @if ($post->image)
                             <div class="text-center gambarTiapPost rounded mb-3" style="max-height: 150px; overflow:hidden">
-                                <img src="{{ asset('storage/' . $post->image) }}"  alt="imgPost" class="rounded-top mb-3">
+                                <img src="{{ asset('storage/' . $post->image) }}"  alt="imgPost" class="rounded mb-3">
                             </div>
                         @else
                             <div class="text-center gambarTiapPost">
-                                <img src="https://picsum.photos/seed/{{ $post->kategoripost->nama }}/1200/600"  alt="imgPost" class="rounded-top mb-3">
+                                <img src="https://picsum.photos/seed/{{ $post->kategoripost->nama }}/1200/600"  alt="imgPost" class="rounded mb-3">
                             </div>
                             {{-- <div class="text-center gambarTiapPost">
                                 <img src="https://source.unsplash.com/500x400?{{ $post->category->nama }}"  alt="imgPost" class="rounded mb-3">
@@ -236,7 +236,7 @@
 
                         <p>{{ $post->excerpt }}</p>
 
-                        <a href="/artikel/{{ $post->slug }}" class="more" style="color: black">Baca Selengkapnya</a>
+                        <a href="/artikel/{{ $post->slug }}" class="btn-more" style="color: black">Baca Selengkapnya</a>
                     </article>
                     @endforeach
                 </div>

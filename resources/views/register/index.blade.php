@@ -54,9 +54,6 @@
                     </div>
                     @enderror
                 </div>
-                <div class="forgetpw" style="text-align:right">
-                    <a href="#" class="text-decoration-none">Lupa Password</a>
-                </div>
                 <div class="submit-form">
                     <button type="submit">Buat Akun</button>
                 </div>

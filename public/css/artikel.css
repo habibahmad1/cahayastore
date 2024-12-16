@@ -28,14 +28,20 @@
     flex-wrap: wrap;
     width: 350px;
     text-align: justify;
-    border: 0.1px solid #ff9e65;
+    border: 0.1px solid gray;
     padding: 20px;
     border-radius: 5px;
     margin: 20px 0;
+    position: relative;
+    box-shadow: 3px 3px 3px gray;
 }
 
 .artikel-card a {
     text-decoration: none;
+}
+
+.artikel-card:hover {
+    background-color: #fffbd4;
 }
 
 .artikel-card img {
@@ -45,6 +51,60 @@
 .artikelPost {
     display: flex;
     justify-content: center;
+}
+
+/* Setiap Artikel */
+.kanvasAll {
+    background-color: white;
+    color: black;
+    border-radius: 20px;
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.setiapArtikel {
+    width: 800px;
+    background-color: white;
+    color: black;
+}
+
+.postimg img {
+    max-width: 800px;
+    height: 400px;
+}
+
+/* .gambarTiapPost img {
+    max-width: 100%;
+    height: auto;
+} */
+
+.selengkapnya {
+    background-color: #ff9e65;
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: white !important;
+    font-weight: bold;
+}
+
+.btn-more {
+    background-color: #ff9e65;
+    padding: 10px 10px;
+    border-radius: 5px;
+    color: #fff !important;
+    display: block;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    transition: all 1s;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.btn-more:hover {
+    background-color: #ff853e;
+    transform: scale(0.9);
 }
 
 @media (max-width: 600px) {
@@ -86,6 +146,11 @@
 
     .heroimg img {
         width: 350px;
+    }
+
+    .postimg img {
+        max-width: 100%;
+        height: auto;
     }
 }
 
