@@ -9,9 +9,11 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\UserController;
 use App\Http\Middleware\Admin;
 use App\Models\Artikel;
 use App\Models\Kategori;
+use App\Models\KategoriPost;
 use App\Models\Post;
 use App\Models\Produk;
 use App\Models\User;
@@ -35,7 +37,7 @@ Route::get('/features', function () {
 
 Route::get('/artikel', function () {
     return view('artikel', [
-        "title" => "Artikel",
+        "title" => "Semua Artikel",
         "artikel" => Artikel::latest()->filtercoy()->paginate(10)->withQueryString(),
     ]);
 });
@@ -105,3 +107,25 @@ Route::get('/artikel/{slug}', function ($slug) {
 
     ]);
 })->name('artikel.public.show');
+
+// Route ke user posting
+Route::get('/authors/{author:username}', [UserController::class, "index"]);
+
+// Route ke category
+Route::get('/categories/{kategoripost:slug}', function (KategoriPost $kategoripost) {
+    return view('kategoripost', [
+        "title" => $kategoripost->nama,
+        "artikelPost" => $kategoripost->artikel(),
+        "category" => $kategoripost->nama
+    ]);
+});
+
+
+
+// Route ke Semua category
+Route::get('/categories', function () {
+    return view('categories', [
+        "title" => 'All Categories',
+        "categories" => KategoriPost::all()
+    ]);
+});

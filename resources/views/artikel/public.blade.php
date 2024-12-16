@@ -25,7 +25,7 @@
             </h6>
 
         <p>{!! $artikel->body !!}</p>
-        <a href="/artikel" class="kembaliButton my-5 btn btn-primary"><i class="fa-solid fa-arrow-left-long"></i> Back</a>
+        <a href="/artikel" class="kembaliButton my-5 btn btn-primary"><i class="fa-solid fa-arrow-left-long"></i> Kembali</a>
     </article>
 </div>
 

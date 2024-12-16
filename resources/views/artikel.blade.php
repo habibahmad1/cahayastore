@@ -174,6 +174,8 @@
         </div>
     </section> --}}
 
+    <h2 class="pt-5 text-center">{{ $title }}</h2>
+
     <section class="artikel">
         <div class="artikelPost">
             {{-- Content Informasi --}}

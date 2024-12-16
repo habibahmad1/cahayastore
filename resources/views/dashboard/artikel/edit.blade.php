@@ -70,7 +70,8 @@
           @enderror
         </div>
 
-        <button type="submit" class="btn btn-primary mb-5">Edit Artikel</button>
+        <button type="submit" class="btn btn-success mb-5">Edit Artikel</button>
+        <a href="/dashboard/artikel" class="mb-5 btn btn-primary"><i class="fa-solid fa-arrow-left-long"></i> Kembali</a>
     </form>
 </div>
 
