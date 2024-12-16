@@ -11,8 +11,8 @@
             <form action="/register" method="POST">
                 @csrf
                 <div class="nama-form">
-                    <label for="nama">Nama Lengkap</label>
-                    <input type="text" id="nama" name="name" class="form-control @error('name') is-invalid @enderror"
+                    <label for="name">Nama Lengkap</label>
+                    <input type="text" id="name" name="name" class="form-control @error('name') is-invalid @enderror"
                            placeholder="Masukan Nama" value="{{ old('name') }}">
                     @error('name')
                     <div class="invalid-feedback">
@@ -25,7 +25,7 @@
                     <label for="email">Email</label>
                     <input type="email" id="email" name="email" class="form-control @error('email')
                     is-invalid
-                    @enderror " placeholder="Masukan Email" value={{ old('email') }}>
+                    @enderror " placeholder="Masukan Email" value="{{ old('email') }}">
                     @error('email')
                     <div class="invalid-feedback">
                         {{ $message }}
