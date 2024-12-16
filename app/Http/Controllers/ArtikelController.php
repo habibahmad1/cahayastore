@@ -6,6 +6,7 @@ use App\Models\Artikel;
 use App\Models\KategoriPost;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use \Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Http\Request;
 
 class ArtikelController extends Controller
@@ -53,7 +54,7 @@ class ArtikelController extends Controller
 
         // Menambahkan user_id dan excerpt
         $validasiData['user_id'] = auth()->user()->id;
-        $validasiData['excerpt'] = Str::limit(strip_tags($request->artikelPost), 120);
+        $validasiData['excerpt'] = Str::limit(strip_tags($request->body), 120);
 
         // Menyimpan artikel baru
         Artikel::create($validasiData);
@@ -113,7 +114,7 @@ class ArtikelController extends Controller
 
         // Tambahkan user_id dan excerpt ke validasi data
         $validasiData['user_id'] = auth()->user()->id;
-        $validasiData['excerpt'] = Str::limit(strip_tags($request->artikelPost), 120);
+        $validasiData['excerpt'] = Str::limit(strip_tags($request->body), 120);
 
         // Update artikel dengan data yang telah divalidasi
         $artikel->update($validasiData);

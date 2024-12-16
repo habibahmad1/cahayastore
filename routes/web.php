@@ -90,3 +90,18 @@ Route::resource('/dashboard/produk', DashboardController::class)->middleware('au
 Route::resource('/dashboard/kategori', AdminKategoriController::class)->middleware(Admin::class);
 
 Route::resource('/dashboard/artikel', ArtikelController::class)->middleware(['auth']);
+
+// Route::get('/dashboard/artikel/cekSlug', [ArtikelController::class, 'cekSlug']);
+
+
+Route::get('/artikel/{slug}', function ($slug) {
+    // Cari artikel berdasarkan slug
+    $artikel = Artikel::where('slug', $slug)->firstOrFail();
+
+    // Tampilkan view untuk halaman public
+    return view('artikel.public', [
+        'title' => 'Detail Artikel',
+        'artikel' => $artikel,
+
+    ]);
+})->name('artikel.public.show');

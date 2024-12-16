@@ -1,4 +1,4 @@
-@extends('./dashboard.layouts.main')
+@extends('layouts.main')
 
 @section('container')
 
@@ -6,13 +6,6 @@
     <article class="setiapArtikel">
 
         <h2>{{ $artikel->judul }}</h2>
-
-        <a href="/dashboard/artikel/{{ $artikel->slug }}/edit" class="badge bg-success py-2 text-decoration-none"><i class="fa-solid fa-pencil"></i> Edit</a>
-        <form action="/dashboard/artikel/{{ $artikel->slug }}" method="POST" class="d-inline">
-            @method('delete')
-            @csrf
-            <button class="badge bg-danger border-0 py-2" onclick="return confirm('Yakin Mau Hapus?')"><i class="fa-solid fa-trash-can"></i> Delete</button>
-          </form>
 
         @if ($artikel->image)
 
@@ -27,13 +20,13 @@
         @endif
 
         <h6 class="fw-bold mb-3">Penulis :<a href="/authors/{{ $artikel->user->username }}" style="color: #41a77e" class="text-decoration-none"> {{ $artikel->user->name }} </a>
-
+            <p>{{ $artikel->excerpt }}</p>
             <div class="badge text-bg-danger"><a href="/categories/{{ $artikel->kategoripost->slug }}" class="text-white text-decoration-none">{{ $artikel->kategoripost->nama }}</a></div>
             <a class="text-info text-decoration-none">{{ $artikel->created_at->diffForHumans() }}</a>
             </h6>
 
         <p>{!! $artikel->body !!}</p>
-        <a href="/dashboard/artikel" class="kembaliButton my-5"><i class="fa-solid fa-arrow-left-long"></i> Back</a>
+        <a href="/artikel" class="kembaliButton my-5"><i class="fa-solid fa-arrow-left-long"></i> Back</a>
     </article>
 </div>
 
