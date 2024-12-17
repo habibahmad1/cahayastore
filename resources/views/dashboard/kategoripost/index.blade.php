@@ -1,11 +1,11 @@
 @extends('dashboard.layouts.main')
 @section('container')
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Daftar Kategori Produk</h1>
+    <h1 class="h2">Daftar Kategori Artikel</h1>
   </div>
 
   <div class="table-responsive small col-lg-4">
-    <a href="/dashboard/kategori/create" class="btn btn-primary mb-3">Tambah Kategori</a>
+    <a href="/dashboard/kategoripost/create" class="btn btn-primary mb-3">Tambah Kategori</a>
 
     @if (session()->has('success'))
     <div class="alert alert-success" role="alert">

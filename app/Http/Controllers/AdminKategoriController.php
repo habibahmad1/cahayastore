@@ -11,12 +11,8 @@ class AdminKategoriController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Kategori $kategori)
+    public function index()
     {
-        if (Gate::allows('admin', $kategori)) {
-        } else {
-            abort(403, 'Tidak ada izin');
-        }
 
         return view('dashboard.kategori.index', [
             'kategori' => Kategori::all()

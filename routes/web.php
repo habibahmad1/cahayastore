@@ -5,6 +5,7 @@ use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\KategoriPostController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProdukController;
@@ -143,3 +144,6 @@ Route::get('/categories', function () {
         "categories" => KategoriPost::all()
     ]);
 });
+
+// Kategori Artikel
+Route::resource('/dashboard/kategoripost', KategoriPostController::class)->middleware(['auth', 'admin']);

@@ -29,7 +29,7 @@ class Artikel extends Model
     {
         if (request('search')) {
             return $query->where('judul', 'like', '%' . request('search') . '%')
-                ->orWhere('artikelPost', 'like', '%' . request('search') . '%');
+                ->orWhere('body', 'like', '%' . request('search') . '%');
         }
     }
 
