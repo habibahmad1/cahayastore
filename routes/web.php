@@ -98,9 +98,14 @@ Route::get('/dashboard/data', function () {
     return view('dashboard.data', [
         'data' => User::all()
     ]);
-})->middleware(['auth']);
+})->middleware(['auth', 'admin']);
 
-Route::delete('/dashboard/deleteUser', [UserController::class, 'deleteUser'])->name('user.deleteUser')->middleware('role:Admin,Super Admin');
+Route::delete('/dashboard/deleteUser', [UserController::class, 'deleteUser'])->name('user.deleteUser')->middleware(['auth', 'admin']);
+
+Route::get('/dashboard/jadiAdmin/{id}', [UserController::class, 'jadiAdmin'])->middleware(['auth', 'admin']);
+
+Route::get('/dashboard/jadiUser/{id}', [UserController::class, 'makeUser'])->middleware(['auth', 'admin']);
+
 
 // Route::get('/dashboard/artikel/cekSlug', [ArtikelController::class, 'cekSlug']);
 
