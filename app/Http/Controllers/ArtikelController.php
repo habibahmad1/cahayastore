@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Artikel;
-use App\Models\KategoriPost;
+use App\Models\KategoriArtikel;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
@@ -30,7 +30,7 @@ class ArtikelController extends Controller
     public function create()
     {
         return view('dashboard.artikel.create', [
-            'data' => KategoriPost::all()  // Mengambil semua kategori
+            'data' => KategoriArtikel::all()  // Mengambil semua kategori
         ]);
     }
 
@@ -79,7 +79,7 @@ class ArtikelController extends Controller
     {
         return view('dashboard.artikel.edit', [
             'artikel' => $artikel,
-            'data' => KategoriPost::all()  // Mengambil semua kategori
+            'data' => KategoriArtikel::all()  // Mengambil semua kategori
         ]);
     }
 

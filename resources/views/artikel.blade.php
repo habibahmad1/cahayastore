@@ -180,7 +180,7 @@
         <form action="/artikel">
             <div class="input-group mt-3 ">
                 <input type="text" class="form-control" placeholder="Cari Artikel.." name="search" value="{{ request('search') }}" id="search-box">
-                <button class="btn btn-warning" type="submit">Cari</button>
+                <button class="btn btn-warning" style="background-color: #ffa135" type="submit">Cari</button>
             </div>
         </form>
     </div>

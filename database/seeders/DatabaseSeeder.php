@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Artikel;
 use App\Models\Kategori;
-use App\Models\KategoriPost;
+use App\Models\KategoriArtikel;
 use App\Models\User;
 use App\Models\Post;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -45,10 +45,10 @@ class DatabaseSeeder extends Seeder
             'slug' => 'lampu',
         ]);
 
-        KategoriPost::factory()->tutorial()->create();
-        KategoriPost::factory()->informasi()->create();
-        KategoriPost::factory()->personal()->create();
-        KategoriPost::factory()->random()->create();
+        KategoriArtikel::factory()->tutorial()->create();
+        KategoriArtikel::factory()->informasi()->create();
+        KategoriArtikel::factory()->personal()->create();
+        KategoriArtikel::factory()->random()->create();
 
         Artikel::factory(20)->create();
     }

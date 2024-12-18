@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\KategoriPost;
+use App\Models\KategoriArtikel;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 
-class KategoriPostPolicy
+class KategoriArtikelPolicy
 {
     /**
      * Determine whether the user can view any models.
@@ -19,7 +19,7 @@ class KategoriPostPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, KategoriPost $kategoriPost): bool
+    public function view(User $user, KategoriArtikel $kategoriArtikel): bool
     {
         //
     }
@@ -35,7 +35,7 @@ class KategoriPostPolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, KategoriPost $kategoriPost): bool
+    public function update(User $user, KategoriArtikel $kategoriArtikel): bool
     {
         //
     }
@@ -43,7 +43,7 @@ class KategoriPostPolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, KategoriPost $kategoriPost): bool
+    public function delete(User $user, KategoriArtikel $kategoriArtikel): bool
     {
         //
     }
@@ -51,7 +51,7 @@ class KategoriPostPolicy
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, KategoriPost $kategoriPost): bool
+    public function restore(User $user, KategoriArtikel $kategoriArtikel): bool
     {
         //
     }
@@ -59,7 +59,7 @@ class KategoriPostPolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, KategoriPost $kategoriPost): bool
+    public function forceDelete(User $user, KategoriArtikel $kategoriArtikel): bool
     {
         //
     }
