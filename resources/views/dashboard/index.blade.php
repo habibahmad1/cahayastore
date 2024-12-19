@@ -25,6 +25,14 @@
       </div>
       @endcan
 
+      @can('admin')
+      <div class="info">
+        <h3>Total Artikel</h3>
+        <hr>
+        <h1>{{ $artikel->count() }}</h1>
+      </div>
+      @endcan
+
       <a href="/dashboard/artikel" class="text-decoration-none">
         <div class="info">
             <h3>Artikel Saya</h3>

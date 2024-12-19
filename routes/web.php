@@ -83,7 +83,8 @@ Route::get('/dashboard', function () {
     return view('dashboard.index', [
         "produk" => Produk::all(),
         "kategori" => Kategori::all(),
-        "user" => User::all()
+        "user" => User::all(),
+        "artikel" => Artikel::all()
     ]);
 })->middleware('auth');
 

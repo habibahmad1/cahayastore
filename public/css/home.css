@@ -174,7 +174,7 @@
 }
 
 .btn-banner:hover:hover {
-    background: linear-gradient(45deg, #f8ff61,  #ff6f61);
+    background: linear-gradient(45deg, #f8ff61, #ff6f61);
     color: #000000;
     transform: scale(1.05);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
@@ -219,7 +219,7 @@
     }
 
     .content {
-        min-width:325px;
+        min-width: 325px;
     }
 }
 
@@ -247,9 +247,8 @@
     }
 
     .content {
-        min-width:275px;
+        min-width: 275px;
     }
-
 }
 
 /*halaman tentang kami------------*/
@@ -1037,9 +1036,8 @@
     animation-fill-mode: forwards;
     font-size: 2rem; /* Ukuran teks */
     color: #2c3e50; /* Warna teks gelap */
-    text-shadow:
-        1px 1px 2px rgba(255, 255, 255, 0.8), /* Bayangan luar terang */
-        0px 0px 10px rgba(255, 255, 255, 0.5); /* Efek cahaya lembut */
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8),
+        /* Bayangan luar terang */ 0px 0px 10px rgba(255, 255, 255, 0.5); /* Efek cahaya lembut */
 }
 
 .scroll-subtitle {
@@ -1223,21 +1221,21 @@
 .containerspill h1 {
     margin: 10px 0;
     color: floralwhite;
-  }
+}
 
-  .containerspill h2 {
+.containerspill h2 {
     margin: 10px 0;
     color: floralwhite;
     margin-bottom: 50px;
     font-size: 20px;
-  }
+}
 
-  .button-group {
+.button-group {
     display: flex;
     justify-content: center;
     gap: 0px;
     margin-bottom: 20px;
-  }
+}
 
 /* Gaya dasar tombol */
 .filter-btn-prd {
@@ -1251,22 +1249,22 @@
     min-width: 120px;
     text-align: center;
     background-color: #3a3a3a; /* Warna default biru */
-  }
+}
 
-  /* Gaya hover tombol */
-  .filter-btn-prd:hover {
+/* Gaya hover tombol */
+.filter-btn-prd:hover {
     opacity: 0.8;
-  }
+}
 
-  /* Gaya untuk pembungkus tombol */
-  .button-wrapper {
+/* Gaya untuk pembungkus tombol */
+.button-wrapper {
     position: relative;
     display: inline-block;
     margin: 10px;
-  }
+}
 
-  /* Gaya untuk angka total produk */
-  .product-count {
+/* Gaya untuk angka total produk */
+.product-count {
     position: absolute;
     top: -25px; /* Lokasi awal di atas tombol */
     left: 50%; /* Pusatkan secara horizontal */
@@ -1279,41 +1277,44 @@
     border-radius: 20px;
     opacity: 0; /* Tidak terlihat secara default */
     transition: top 0.3s ease, opacity 0.3s ease; /* Transisi untuk kemunculan */
-  }
+}
 
-  /* Tampilkan angka saat hover tombol */
-  .button-wrapper:hover .product-count {
+/* Tampilkan angka saat hover tombol */
+.button-wrapper:hover .product-count {
     top: -40px; /* Geser lebih tinggi saat hover */
     opacity: 1; /* Angka terlihat */
-  }
+}
 
-  /* Gaya aktif tombol ketika diklik */
-  .filter-btn-prd.clicked {
-    background: linear-gradient(45deg, #ffa600, #ff6f61); /* Merah ketika tombol diklik */
-  }
+/* Gaya aktif tombol ketika diklik */
+.filter-btn-prd.clicked {
+    background: linear-gradient(
+        45deg,
+        #ffa600,
+        #ff6f61
+    ); /* Merah ketika tombol diklik */
+}
 
-  /* Gaya untuk container dan produk */
-  .containerspill {
+/* Gaya untuk container dan produk */
+.containerspill {
     max-width: 100%;
     padding: 20px;
-    background: linear-gradient(to top,#2c3e50, #141414 );
+    background: linear-gradient(to top, #2c3e50, #141414);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     border-radius: 0px;
     text-align: center;
     margin: 0 auto; /* Centang konten */
-  }
+}
 
-  .product-display {
+.product-display {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
     justify-content: center;
     margin: 20px 0;
     min-height: 200px;
+}
 
-  }
-
-  .product-item {
+.product-item {
     width: 250px;
     height: 250px;
     background-size: cover;
@@ -1322,9 +1323,7 @@
     opacity: 0;
     transform: rotateY(90deg) scale(0.8);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    transition:
-        transform 1s cubic-bezier(0.4, 0, 0.2, 1),
-        opacity 0.8s ease-out,
+    transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.8s ease-out,
         box-shadow 1s ease-in-out;
 }
 
@@ -1358,8 +1357,7 @@
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
 }
 
-
-  .see-more-btn {
+.see-more-btn {
     display: inline-block;
     margin-top: 20px;
     text-decoration: none;
@@ -1373,15 +1371,15 @@
     border-radius: 10px;
     transition: transform 0.3s ease, background 0.3s ease;
     margin-bottom: 20px;
-  }
+}
 
-  .see-more-btn:hover {
+.see-more-btn:hover {
     background: linear-gradient(45deg, #ff6f61, #ffa600);
     transform: translateY(-5px);
-  }
+}
 
-  /* link dan zoom produk */
-  .product-link {
+/* link dan zoom produk */
+.product-link {
     display: block;
     position: relative;
     width: 100%;
@@ -1422,114 +1420,110 @@
     font-size: 1.2rem;
 }
 
-
-
-  /* Media Query untuk tampilan tablet dan ponsel */
-  @media (max-width: 768px) {
+/* Media Query untuk tampilan tablet dan ponsel */
+@media (max-width: 768px) {
     /* Container */
     .containerspill {
-      max-width: 95%;
-      padding: 15px;
-      max-width: 100%;
-      border-radius: 0px;
+        max-width: 95%;
+        padding: 15px;
+        max-width: 100%;
+        border-radius: 0px;
     }
 
     .containerspill h1 {
         font-size: 25px;
-
-      }
+    }
 
     .containerspill h2 {
         font-size: 15px;
         margin: 30px;
-      }
+    }
 
     .button-group {
         flex-wrap: wrap; /* Atur tombol dalam beberapa baris jika tidak cukup ruang */
         gap: 10px;
-      }
+    }
 
     /* Tombol filter dan jumlah produk */
     .button-wrapper {
-      display: block;
-      margin: 5px 0;
-      text-align: center;
+        display: block;
+        margin: 5px 0;
+        text-align: center;
     }
 
     .filter-btn-prd {
-      width: 100%; /* Membuat tombol lebar penuh */
-      font-size: 16px;
-      padding: 12px;
+        width: 100%; /* Membuat tombol lebar penuh */
+        font-size: 16px;
+        padding: 12px;
     }
 
     .product-display {
         gap: 0px;
-      }
+    }
 
     .product-count {
-      font-size: 12px;
-      padding: 4px 8px;
+        font-size: 12px;
+        padding: 4px 8px;
     }
 
     .product-item {
-      width: 175px;
-      height: 175px;
-      margin: 10px;
-      border-radius: 0px;
+        width: 175px;
+        height: 175px;
+        margin: 10px;
+        border-radius: 0px;
     }
 
     .see-more-btn {
-      font-size: 16px;
-      padding: 8px 16px;
+        font-size: 16px;
+        padding: 8px 16px;
     }
-  }
+}
 
-  @media (max-width: 480px) {
+@media (max-width: 480px) {
     /* Container */
     .containerspill {
-      max-width: 95%;
-      padding: 10px;
-      max-width: 100%;
-      border-radius: 0px;
+        max-width: 95%;
+        padding: 10px;
+        max-width: 100%;
+        border-radius: 0px;
     }
 
     .button-group {
         flex-wrap: wrap; /* Atur tombol dalam beberapa baris jika tidak cukup ruang */
         gap: 10px;
-      }
+    }
 
     .product-display {
         gap: 0px;
-      }
-
+    }
 
     /* Tombol filter dan jumlah produk */
     .filter-btn-prd {
-      width: 100%; /* Membuat tombol lebar penuh */
-      font-size: 14px;
-      padding: 10px;
+        width: 100%; /* Membuat tombol lebar penuh */
+        font-size: 14px;
+        padding: 10px;
     }
 
     .product-count {
-      font-size: 10px;
-      padding: 4px 8px;
+        font-size: 10px;
+        padding: 4px 8px;
     }
     .product-item {
         width: 150px;
         height: 150px;
         margin: 7px;
         border-radius: 0px;
-      }
+    }
 
     .see-more-btn {
-      font-size: 14px;
-      padding: 6px 12px;
+        font-size: 14px;
+        padding: 6px 12px;
     }
-  }
+}
 
 /*
   halamannnnn klien */
-  .client-section {
+.client-section {
     padding: 50px 20px;
     background: linear-gradient(to top, #2c3e50, #141414);
     color: white;
@@ -1587,6 +1581,31 @@
 .logo:hover {
     transform: scale(1.1);
     filter: brightness(1.2);
+}
+
+/* Marquee */
+.marquee-container {
+    width: 100%;
+    overflow: hidden;
+    background-color: #ff8330; /* Warna biru cerah */
+    padding: 3px 0;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    font-size: 20px;
+    font-weight: bold;
+}
+.marquee {
+    display: inline-block;
+    white-space: nowrap;
+    animation: marquee 25s linear infinite;
+    color: #fff;
+}
+@keyframes marquee {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
 }
 
 /* Responsiveness */
