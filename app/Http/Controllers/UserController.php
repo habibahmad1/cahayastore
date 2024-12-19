@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Artikel;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
+
 
 
 use Illuminate\Http\Request;
@@ -87,6 +89,11 @@ class UserController extends Controller
         // Jika user tidak ditemukan
         if (!$user) {
             return redirect()->back()->with('error', 'User tidak ditemukan.');
+        }
+
+        // Cek jika yang ingin diubah adalah diri sendiri
+        if (Auth::user()->id == $user->id) {
+            return redirect()->back()->with('error', 'Anda tidak bisa mengubah status diri sendiri.');
         }
 
         // Periksa apakah user sudah user biasa

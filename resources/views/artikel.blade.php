@@ -176,8 +176,18 @@
 
     <h2 class="pt-5 text-center">{{ $title }}</h2>
 
+    <div class="pencarian col-lg-8 px-3 mx-auto">
+        <form action="/artikel">
+            <div class="input-group mt-3 ">
+                <input type="text" class="form-control" placeholder="Cari Artikel.." name="search" value="{{ request('search') }}" id="search-box">
+                <button class="btn btn-warning" style="background-color: #ffa135" type="submit">Cari</button>
+            </div>
+        </form>
+    </div>
+
     <section class="artikel">
         <div class="artikelPost">
+
             {{-- Content Informasi --}}
             <div class="content-informasi">
 

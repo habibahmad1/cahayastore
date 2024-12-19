@@ -4,16 +4,19 @@ use App\Http\Controllers\AdminKategoriController;
 use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\KategoriArtikelController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\KategoriPostController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\PostKategoriController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\Admin;
 use App\Models\Artikel;
 use App\Models\Kategori;
-use App\Models\KategoriPost;
+use App\Models\KategoriArtikel;
 use App\Models\Post;
 use App\Models\Produk;
 use App\Models\User;
@@ -89,7 +92,7 @@ Route::get('/dashboard', function () {
 
 Route::resource('/dashboard/produk', DashboardController::class)->middleware('auth');
 
-Route::resource('/dashboard/kategori', AdminKategoriController::class)->middleware(Admin::class);
+Route::resource('/dashboard/kategori', AdminKategoriController::class)->middleware(['auth', 'admin']);
 
 Route::resource('/dashboard/artikel', ArtikelController::class)->middleware(['auth']);
 
@@ -126,7 +129,7 @@ Route::get('/artikel/{slug}', function ($slug) {
 Route::get('/authors/{author:username}', [UserController::class, "index"]);
 
 // Route ke category
-Route::get('/categories/{kategoripost:slug}', function (KategoriPost $kategoripost) {
+Route::get('/categories/{kategoripost:slug}', function (KategoriArtikel $kategoripost) {
     return view('kategoripost', [
         "title" => $kategoripost->nama,
         "artikelPost" => $kategoripost->artikel(),
@@ -140,6 +143,9 @@ Route::get('/categories/{kategoripost:slug}', function (KategoriPost $kategoripo
 Route::get('/categories', function () {
     return view('categories', [
         "title" => 'All Categories',
-        "categories" => KategoriPost::all()
+        "categories" => KategoriArtikel::all()
     ]);
 });
+
+// Kategori Artikel
+Route::resource('/dashboard/kategoriartikel', KategoriArtikelController::class)->middleware(['auth', 'admin']);

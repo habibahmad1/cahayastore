@@ -38,7 +38,7 @@
         <td>{{ $p->username }}</td>
         <td>{{ $p->image }}</td>
         <td>{{ $p->email }}</td>
-        <td>{{ $p->is_admin }}</td>
+        <td>{{ $p->is_admin ? 'Ya' : 'Tidak' }}</td>
         <td>
             <a href="/dashboard/jadiAdmin/{{ $p->id }}"
                 class="badge bg-success"

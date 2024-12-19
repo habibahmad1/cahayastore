@@ -17,7 +17,7 @@ class Artikel extends Model
 
     public function kategoripost()
     {
-        return $this->belongsTo(KategoriPost::class);
+        return $this->belongsTo(KategoriArtikel::class);
     }
 
     public function user()
@@ -29,7 +29,7 @@ class Artikel extends Model
     {
         if (request('search')) {
             return $query->where('judul', 'like', '%' . request('search') . '%')
-                ->orWhere('artikelPost', 'like', '%' . request('search') . '%');
+                ->orWhere('body', 'like', '%' . request('search') . '%');
         }
     }
 

@@ -6,7 +6,7 @@ use App\Models\Post;
 use App\Models\User;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
-use App\Models\KategoriPost;
+use App\Models\KategoriArtikel;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
@@ -37,7 +37,7 @@ class PostController extends Controller
     public function create()
     {
         return view('dashboard.artikel.create', [
-            'data' => KategoriPost::all()
+            'data' => KategoriArtikel::all()
         ]);
     }
 
@@ -83,7 +83,7 @@ class PostController extends Controller
     {
         return view('dashboard.artikel.edit', [
             'artikel' => $post,
-            'data' => KategoriPost::all()
+            'data' => KategoriArtikel::all()
         ]);
     }
 

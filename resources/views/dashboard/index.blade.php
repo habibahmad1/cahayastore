@@ -17,11 +17,22 @@
         <h1>{{ $kategori->count() }}</h1>
       </div>
 
+      @can('admin')
       <div class="info">
         <h3>Total User</h3>
         <hr>
         <h1>{{ $user->count() }}</h1>
       </div>
+      @endcan
+
+      <a href="/dashboard/artikel" class="text-decoration-none">
+        <div class="info">
+            <h3>Artikel Saya</h3>
+            <hr>
+            <h1>{{  auth()->user()->artikel->count()  }}</h1>
+        </div>
+      </a>
+
   </div>
 
 @endsection
