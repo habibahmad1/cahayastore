@@ -6,6 +6,8 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
 use App\Models\User;
 use Illuminate\Support\Facades\Gate;
+use App\Models\KategoriArtikel;
+use Illuminate\Support\Facades\Route;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -27,5 +29,7 @@ class AppServiceProvider extends ServiceProvider
         Gate::define('admin', function (User $user) {
             return $user->is_admin;
         });
+
+        Route::model('kategoriartikel', KategoriArtikel::class);
     }
 }

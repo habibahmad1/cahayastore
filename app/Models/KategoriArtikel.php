@@ -17,8 +17,8 @@ class KategoriArtikel extends Model
         return $this->hasMany(Artikel::class);
     }
 
-    // public function getRouteKeyName()
-    // {
-    //     return 'slug';
-    // }
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }
