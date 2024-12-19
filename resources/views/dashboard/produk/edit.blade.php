@@ -9,7 +9,7 @@
         @method('put')
         @csrf
         <div class="mb-3">
-          <label for="nama_produk" class="form-label">Nama Produk</label>
+          <label for="nama_produk" class="form-label">Nama Produk <span class="penting">*</span></label>
           <input type="text" class="form-control @error('nama_produk')
               is-invalid
           @enderror" id="nama_produk" name="nama_produk" autofocus value="{{ old('nama_produk', $produk->nama_produk) }}">
@@ -21,7 +21,7 @@
         </div>
 
         <div class="mb-3">
-          <label for="slug" class="form-label">Slug</label>
+          <label for="slug" class="form-label">Slug <span class="penting">*</span></label>
           <input type="text" class="form-control  @error('slug')
               is-invalid
           @enderror" id="slug" name="slug" readonly value="{{ old('slug', $produk->slug) }}">
@@ -33,7 +33,7 @@
         </div>
 
         <div class="mb-3">
-            <label for="kategori_id" class="form-label">Kategori</label>
+            <label for="kategori_id" class="form-label">Kategori <span class="penting">*</span></label>
             <select class="form-select" name="kategori_id" id="kategori_id">
                 @foreach ($kategori as $k)
                     <option value="{{ $k->id }}"
@@ -46,7 +46,7 @@
 
 
         <div class="mb-3">
-            <label for="kode_produk" class="form-label">Kode Produk</label>
+            <label for="kode_produk" class="form-label">Kode Produk <span class="text-secondary">(Optional)</span></label>
             <input type="text" class="form-control @error('kode_produk')
               is-invalid
           @enderror" id="kode_produk" name="kode_produk" value="{{ old('kode_produk',$produk->kode_produk) }}">
@@ -77,7 +77,7 @@
 
         <!-- Gambar 2 -->
         <div class="mb-3">
-            <label for="gambar2" class="form-label">Gambar 2</label>
+            <label for="gambar2" class="form-label">Gambar 2 <span class="text-secondary">(Optional)</span></label>
 
             @if ($produk->gambar2)
                 <img src="{{ asset('storage/' . $produk->gambar2) }}" class="img-preview-2 img-fluid mb-3 d-block" style="max-height: 200px">
@@ -95,7 +95,7 @@
 
         <!-- Gambar 3 -->
         <div class="mb-3">
-            <label for="gambar3" class="form-label">Gambar 3</label>
+            <label for="gambar3" class="form-label">Gambar 3 <span class="text-secondary">(Optional)</span></label>
 
             @if ($produk->gambar3)
                 <img src="{{ asset('storage/' . $produk->gambar3) }}" class="img-preview-3 img-fluid mb-3 d-block" style="max-height: 200px">
@@ -113,7 +113,7 @@
 
         <!-- Gambar 4 -->
         <div class="mb-3">
-            <label for="gambar4" class="form-label">Gambar 4</label>
+            <label for="gambar4" class="form-label">Gambar 4 <span class="text-secondary">(Optional)</span></label>
 
             @if ($produk->gambar4)
                 <img src="{{ asset('storage/' . $produk->gambar4) }}" class="img-preview-4 img-fluid mb-3 d-block" style="max-height: 200px">
@@ -131,7 +131,7 @@
 
         <!-- Gambar 5 -->
         <div class="mb-3">
-            <label for="gambar5" class="form-label">Gambar 5</label>
+            <label for="gambar5" class="form-label">Gambar 5 <span class="text-secondary">(Optional)</span></label>
 
             @if ($produk->gambar5)
                 <img src="{{ asset('storage/' . $produk->gambar5) }}" class="img-preview-5 img-fluid mb-3 d-block" style="max-height: 200px">
@@ -149,7 +149,7 @@
 
         <!-- Video -->
         <div class="mb-3">
-            <label for="video" class="form-label">Video</label>
+            <label for="video" class="form-label">Video <span class="text-secondary">(Optional)</span></label>
 
             @if ($produk->video)
                 <div class="video-preview mb-3 d-block">
@@ -173,7 +173,7 @@
 
 
         <div class="mb-3">
-            <label for="stok" class="form-label">Stok Produk</label>
+            <label for="stok" class="form-label">Total Stok Produk <span class="penting">*</span></label>
             <input type="number" class="form-control @error('stok')
               is-invalid
           @enderror" id="stok" name="stok" value="{{ old('stok',$produk->stok) }}">
@@ -185,7 +185,7 @@
         </div>
 
         <div class="mb-3">
-            <label for="berat" class="form-label">Berat Produk</label>
+            <label for="berat" class="form-label">Berat Produk <span class="penting">*</span></label>
             <input type="number" class="form-control @error('berat')
               is-invalid
           @enderror" id="berat" name="berat" value="{{ old('berat', $produk->berat) }}">
@@ -197,7 +197,7 @@
         </div>
 
         <div class="mb-3">
-            <label for="dimensi" class="form-label">Dimensi Produk</label>
+            <label for="dimensi" class="form-label">Dimensi Produk <span class="text-secondary">(Optional)</span></label>
             <input type="number" class="form-control @error('dimensi')
               is-invalid
           @enderror" id="dimensi" name="dimensi" value="{{ old('dimensi',$produk->dimensi) }}">
@@ -209,7 +209,7 @@
         </div>
 
         <div class="mb-3">
-            <label for="diskon" class="form-label">Diskon Produk</label>
+            <label for="diskon" class="form-label">Diskon Produk <span class="penting">*</span></label>
             <input type="number" class="form-control @error('diskon')
               is-invalid
           @enderror" id="diskon" name="diskon" value="{{ old('diskon', $produk->diskon) }}">
@@ -221,7 +221,7 @@
         </div>
 
         <div class="mb-3">
-            <label for="status" class="form-label">Status Produk</label>
+            <label for="status" class="form-label">Status Produk <span class="penting">*</span></label>
             <select class="form-select" name="status">
                 <option value="tersedia" {{ old('status', $produk->status) == 'tersedia' ? 'selected' : '' }}>Tersedia</option>
                 <option value="habis" {{ old('status', $produk->status) == 'habis' ? 'selected' : '' }}>Habis</option>
@@ -231,7 +231,7 @@
         </div>
 
         <div class="mb-3">
-            <label for="harga" class="form-label">Harga Produk</label>
+            <label for="harga" class="form-label">Harga Produk <span class="penting">*</span></label>
             <input type="number" class="form-control @error('harga')
               is-invalid
           @enderror" id="harga" name="harga" value="{{ old('harga',$produk->harga) }}">
@@ -243,7 +243,7 @@
         </div>
 
         <div class="mb-3">
-          <label for="deskripsi" class="form-label">Deskripsi</label>
+          <label for="deskripsi" class="form-label">Deskripsi <span class="penting">*</span></label>
           @error('deskripsi')
               <p class="text-danger">{{ $message }}</p>
           @enderror
@@ -258,12 +258,12 @@
                         <input type="hidden" name="variasi[{{ $key }}][id]" value="{{ $variasi->id }}">
 
                         <div class="mb-3">
-                            <label for="warna_{{ $key }}" class="form-label">Warna</label>
+                            <label for="warna_{{ $key }}" class="form-label">Warna/Varian</label>
                             <input type="text" class="form-control" name="variasi[{{ $key }}][warna]" id="warna_{{ $key }}"
                                    value="{{ old("variasi.$key.warna", $variasi->warna->warna ?? '') }}">
                         </div>
                         <div class="mb-3">
-                            <label for="ukuran_{{ $key }}" class="form-label">Ukuran</label>
+                            <label for="ukuran_{{ $key }}" class="form-label">Ukuran(Kosongkan jika tidak ada)</label>
                             <input type="text" class="form-control" name="variasi[{{ $key }}][ukuran]" id="ukuran_{{ $key }}"
                                    value="{{ old("variasi.$key.ukuran", $variasi->ukuran->ukuran ?? '') }}">
                         </div>
@@ -319,15 +319,15 @@
         item.setAttribute('id', `variasi-item-${variasiIndex}`); // Set ID untuk identifikasi
         item.innerHTML = `
             <div class="mb-3">
-                <label for="warna_${variasiIndex}" class="form-label">Warna</label>
+                <label for="warna_${variasiIndex}" class="form-label">Warna/Varian  <span class="penting">*</span></label>
                 <input type="text" class="form-control" name="variasi[${variasiIndex}][warna]" id="warna_${variasiIndex}">
             </div>
             <div class="mb-3">
-                <label for="ukuran_${variasiIndex}" class="form-label">Ukuran</label>
+                <label for="ukuran_${variasiIndex}" class="form-label">Ukuran (kosongkan jika tidak ada)</label>
                 <input type="text" class="form-control" name="variasi[${variasiIndex}][ukuran]" id="ukuran_${variasiIndex}">
             </div>
             <div class="mb-3">
-                <label for="stok_${variasiIndex}" class="form-label">Stok</label>
+                <label for="stok_${variasiIndex}" class="form-label">Stok  <span class="penting">*</span></label>
                 <input type="number" class="form-control" name="variasi[${variasiIndex}][stok]" id="stok_${variasiIndex}">
             </div>
             <div class="mb-3">

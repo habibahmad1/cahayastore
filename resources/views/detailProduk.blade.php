@@ -78,7 +78,22 @@
             @endforeach
         </div>
 
-        <p class="title-variasi mt-3">Ukuran:</p>
+        @php
+        // Cek apakah ada ukuran yang tersedia dalam variasi produk
+        $hasUkuran = false;
+        foreach ($produk_variasi as $variasi) {
+            if (!empty($variasi->ukuran->ukuran)) {
+                $hasUkuran = true;
+                break;
+            }
+        }
+    @endphp
+
+    @if ($hasUkuran)
+        <p class="title-variasi mt-3">
+            Ukuran:
+        </p>
+
         <div class="detail-variasi">
             @php
                 $checkedUkuran = []; // Array untuk menyimpan ukuran yang sudah ditampilkan
@@ -95,14 +110,44 @@
                 @endif
             @endforeach
         </div>
+    @endif
+
 
         <hr>
         <h3>Detail Produk</h3>
         <hr>
-        <p>Kondisi: <span class="badge text-bg-success text-white">Baru</span> </p>
-        <p>Min. Pemesanan: 1</p>
-        <p>Kategori: <a href="/kategori/{{ $post->kategori->slug }}" class="text-decoration-none fw-bold badge text-bg-primary text-white">{{ $post->kategori->nama }}</a></p>
-        <p>{!! $post->deskripsi !!}</p>
+        <p><b>Kondisi</b>: Baru </p>
+        <p><b>Min. Pemesanan:</b> 1</p>
+        <p>
+            @if ( $post->kode_produk )
+                <b>Kode Produk:</b> {{ $post->kode_produk }}
+            @else
+
+            @endif
+        </p>
+        <p>
+            @if ( $post->dimensi )
+                <b>Dimensi Produk:</b> {{ $post->dimensi }}
+            @else
+
+            @endif
+        </p>
+        <p><b>Berat</b>: {{ $post->berat }}(gram)</p>
+        <p><b>Status Produk:</b>
+            <span class="badge
+                @if($post->status == 'pre-order')
+                    bg-warning
+                @elseif($post->status == 'habis')
+                    bg-danger
+                @else
+                    text-bg-success
+                @endif
+                text-white">
+                {{ ucwords($post->status) }}
+            </span>
+        </p>
+        <p><b>Kategori</b>: <a href="/kategori/{{ $post->kategori->slug }}" class="text-decoration-none fw-bold badge text-bg-primary text-white">{{ $post->kategori->nama }}</a></p>
+        <p><b>Deskripsi</b>: <br>{!! $post->deskripsi !!}</p>
 
         <a href="/produk" class="d-inline-block btn btn-primary float-end">Kembali</a>
     </div>
@@ -152,14 +197,15 @@
 </script>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function () {
     const warnaVariasi = document.querySelectorAll(".detail-variasi .card-variasi[data-warna]");
     const previewImage = document.getElementById("preview-image");
     const ukuranVariasi = document.querySelectorAll(".detail-variasi .card-variasi[data-ukuran]");
     const stokElement = document.querySelector(".form-beli p b"); // Elemen stok di form beli
     const produkVariasi = @json($produk_variasi); // Kirim data PHP ke JavaScript
 
-    let selectedWarna = null;
+    let selectedWarna = null;  // Inisialisasi selectedWarna
+    let selectedUkuran = null; // Inisialisasi selectedUkuran
 
     // Event klik untuk warna
     warnaVariasi.forEach(warna => {
@@ -177,44 +223,60 @@
             // Simpan warna yang dipilih
             selectedWarna = this.getAttribute("data-warna");
 
-            // Anda bisa memperbarui stok atau informasi lainnya di sini
+            // Perbarui stok
             updateStok();
         });
     });
 
-        // Event klik untuk ukuran
-        ukuranVariasi.forEach(ukuran => {
-            ukuran.addEventListener("click", function () {
-                // Tandai ukuran terpilih
-                ukuranVariasi.forEach(u => u.classList.remove("selected"));
-                this.classList.add("selected");
+    // Event klik untuk ukuran
+    ukuranVariasi.forEach(ukuran => {
+        ukuran.addEventListener("click", function () {
+            // Tandai ukuran terpilih
+            ukuranVariasi.forEach(u => u.classList.remove("selected"));
+            this.classList.add("selected");
 
-                // Simpan ukuran yang dipilih
-                selectedUkuran = this.getAttribute("data-ukuran");
+            // Simpan ukuran yang dipilih
+            selectedUkuran = this.getAttribute("data-ukuran");
 
-                // Update stok
-                updateStok();
-            });
+            // Perbarui stok
+            updateStok();
         });
-
-        // Fungsi untuk memperbarui stok berdasarkan warna dan ukuran yang dipilih
-        function updateStok() {
-            if (selectedWarna && selectedUkuran) {
-                const selectedVariasi = produkVariasi.find(variasi =>
-                    (variasi.warna?.warna === selectedWarna) &&
-                    (variasi.ukuran?.ukuran === selectedUkuran)
-                );
-
-                // Perbarui stok di form beli
-                if (selectedVariasi) {
-                    stokElement.textContent = `Stok: ${selectedVariasi.stok}`;
-                } else {
-                    stokElement.textContent = "Stok: Tidak tersedia";
-                }
-            }
-        }
     });
+
+    // Fungsi untuk memperbarui stok berdasarkan warna atau ukuran yang dipilih
+    function updateStok() {
+        let selectedVariasi = null;
+
+        // Jika warna dipilih
+        if (selectedWarna && !selectedUkuran) {
+            selectedVariasi = produkVariasi.find(variasi =>
+                (variasi.warna?.warna === selectedWarna)
+            );
+        }
+        // Jika ukuran dipilih
+        if (!selectedWarna && selectedUkuran) {
+            selectedVariasi = produkVariasi.find(variasi =>
+                (variasi.ukuran?.ukuran === selectedUkuran)
+            );
+        }
+        // Jika warna dan ukuran keduanya dipilih
+        if (selectedWarna && selectedUkuran) {
+            selectedVariasi = produkVariasi.find(variasi =>
+                (variasi.warna?.warna === selectedWarna) &&
+                (variasi.ukuran?.ukuran === selectedUkuran)
+            );
+        }
+
+        // Perbarui stok di form beli
+        if (selectedVariasi) {
+            stokElement.textContent = `Stok: ${selectedVariasi.stok}`;
+        } else {
+            stokElement.textContent = "Stok: Tidak tersedia"; // Jika variasi yang dipilih tidak ada
+        }
+    }
+});
 </script>
+
 
 
 

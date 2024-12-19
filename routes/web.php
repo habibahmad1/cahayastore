@@ -10,6 +10,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ForgotPasswordController;
+use App\Http\Controllers\SettingController;
 use App\Http\Controllers\UserController;
 use App\Models\Artikel;
 use App\Models\Kategori;
@@ -163,5 +164,7 @@ Route::get('reset-password/{token}/{email}', [ForgotPasswordController::class, '
 Route::post('reset-password', [ForgotPasswordController::class, 'resetPassword'])->name('password.update');
 
 // Route All Artikel
-Route::get('dashboard/allartikel', [ArtikelController::class, 'allartikel']);
-// Route::get('/dashboard/artikel/cekSlug', [ArtikelController::class, 'cekSlug']);
+Route::get('dashboard/allartikel', [ArtikelController::class, 'allartikel'])->middleware(['auth', 'admin']);
+
+// Route Setting
+Route::get('dashboard/settings/', [SettingController::class, 'index'])->middleware('auth');

@@ -170,6 +170,74 @@
     height: 400px;
 }
 
+/* Dark Mode */
+.container-setting {
+    background: #fff;
+    border: 1px solid grey;
+    padding: 20px;
+    border-radius: 20px;
+    width: 700px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0 auto;
+    user-select: none;
+}
+
+.tema {
+    border-bottom: 1px solid grey;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    cursor: pointer;
+}
+.musik {
+    border-bottom: 1px solid grey;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.boxTema {
+    border: 1px solid grey;
+    border-radius: 5px;
+    padding: 10px 10px 0 10px;
+    display: none;
+    cursor: pointer;
+    position: absolute;
+    background-color: #fff;
+}
+
+.boxMusik {
+    border: 1px solid grey;
+    border-radius: 5px;
+    padding: 10px 10px 0 10px;
+    display: none;
+    cursor: pointer;
+    position: absolute;
+    background-color: #fff;
+}
+
+.darkActive {
+    background-color: #353535;
+    color: #fff;
+}
+
+.lightActive {
+    background-color: #fff;
+    color: #000;
+}
+
+.darkActive .container-setting,
+.darkActive .container-setting .boxTema,
+.darkActive .container-setting .boxMusik {
+    background-color: #353535;
+    color: #fff;
+}
+
 @media (max-width: 768px) {
     .sidebar .offcanvas-lg {
         position: -webkit-sticky;

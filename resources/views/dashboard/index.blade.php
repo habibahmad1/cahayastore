@@ -11,11 +11,13 @@
         <h1>{{ $produk->count() }}</h1>
       </div></a>
 
+      @can('admin')
       <div class="info">
         <h3>Kategori Produk</h3>
         <hr>
         <h1>{{ $kategori->count() }}</h1>
       </div>
+      @endcan
 
       @can('admin')
       <div class="info">

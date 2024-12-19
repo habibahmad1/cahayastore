@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('variasi_ukurans', function (Blueprint $table) {
             $table->id();
-            $table->string('ukuran');
+            $table->string('ukuran')->nullable();
             $table->timestamps();
         });
     }

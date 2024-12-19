@@ -59,7 +59,7 @@
 
             @foreach ($gambarFields as $field)
                 @if (!empty($p->$field))
-                    <img src="{{ asset('storage/' . $p->$field) }}" alt="Img-Produk"
+                    <img src="{{ asset('storage/' . $p->$field) }}" alt=""
                          style="max-height: 70px; max-width: 70px; overflow: hidden; border-radius: 5px; margin-right: 5px;" class="mb-2">
                 @endif
             @endforeach

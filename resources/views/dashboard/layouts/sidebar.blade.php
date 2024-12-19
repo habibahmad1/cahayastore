@@ -33,8 +33,6 @@
           </li>
         </ul>
 
-        @can('admin')
-
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase" style="background-color: #90c7ff; padding: 10px; color: #ffffff;">
             <span>BAG PRODUK</span>
         </h6>
@@ -51,6 +49,7 @@
                 </a>
             </li>
 
+            @can('admin')
             <li class="nav-item">
                 <a class="nav-link d-flex align-items-center gap-2 {{ Request::is('dashboard/kategori', 'dashboard/kategori/*') ? 'active-dashboard' : '' }}" href="/dashboard/kategori">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bounding-box-circles" viewBox="0 0 16 16">
@@ -59,8 +58,8 @@
                     Kategori Produk
                 </a>
             </li>
+            @endcan
         </ul>
-        @endcan
 
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase" style="background-color: #90c7ff; padding: 10px; color: #ffffff;">
             <span> BAG Artikel</span>
@@ -78,6 +77,7 @@
                 </a>
             </li>
 
+            @can('admin')
             <li class="nav-item">
                 <a class="nav-link d-flex align-items-center gap-2 {{ Request::is('dashboard/kategoriartikel', 'dashboard/kategoriartikel/*') ? 'active-dashboard' : '' }}" href="/dashboard/kategoriartikel">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bounding-box-circles" viewBox="0 0 16 16">
@@ -86,6 +86,7 @@
                     Kategori Artikel
                 </a>
             </li>
+            @endcan
         </ul>
 
         @can('admin')
@@ -122,7 +123,7 @@
 
         <ul class="nav flex-column mb-auto">
           <li class="nav-item">
-            <a class="nav-link d-flex align-items-center gap-2" href="#">
+            <a class="nav-link d-flex align-items-center gap-2" href="/dashboard/settings">
               <svg class="bi"><use xlink:href="#gear-wide-connected"/></svg>
               Settings
             </a>
