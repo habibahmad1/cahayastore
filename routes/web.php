@@ -6,21 +6,18 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KategoriArtikelController;
 use App\Http\Controllers\KategoriController;
-use App\Http\Controllers\KategoriPostController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\PostController;
-use App\Http\Controllers\PostKategoriController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\UserController;
-use App\Http\Middleware\Admin;
 use App\Models\Artikel;
 use App\Models\Kategori;
 use App\Models\KategoriArtikel;
-use App\Models\Post;
 use App\Models\Produk;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
+
 
 
 Route::post('/send-message', [ContactController::class, 'sendMessage']);
@@ -149,3 +146,17 @@ Route::get('/categories', function () {
 
 // Kategori Artikel
 Route::resource('/dashboard/kategoriartikel', KategoriArtikelController::class)->middleware(['auth', 'admin']);
+
+
+// Route untuk tampil form lupa pw
+Route::get('forgot-password', [ForgotPasswordController::class, 'showForgotPasswordForm'])->name('password.request')->middleware('guest');
+
+
+// Route untuk kirim email
+Route::post('forgot-password', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email')->middleware('guest');
+
+// Untuk tampil form Lupa PW
+Route::get('reset-password/{token}/{email}', [ForgotPasswordController::class, 'showResetForm'])->name('password.reset');
+
+// Untuk proses form lupa pw
+Route::post('reset-password', [ForgotPasswordController::class, 'resetPassword'])->name('password.update');

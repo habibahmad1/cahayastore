@@ -5,7 +5,7 @@
   </div>
 
   <div class="col-lg-4 mt-3 mb-5">
-    <form method="POST" action="/dashboard/kategoriartikel/kategoriartikel/{{ $kategori->slug }}">
+    <form method="POST" action="/dashboard/kategoriartikel/{{ $kategori->slug }}">
         @method('put')
         @csrf
         <div class="mb-3">

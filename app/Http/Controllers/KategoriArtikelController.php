@@ -33,7 +33,7 @@ class KategoriArtikelController extends Controller
     {
         $validasiData = $request->validate([
             "nama" => "required|unique:kategori_artikels,nama",
-            "slug" => "required|unique:kategori_artikels,nama"
+            "slug" => "required|unique:kategori_artikels,slug"
         ]);
 
         KategoriArtikel::create($validasiData);

@@ -42,7 +42,7 @@
                     <i class="fas fa-eye toggle-password" id="togglePassword" style="position: absolute; top:45px; right:20px;"></i>
                 </div>
                 <div class="forgetpw" style="text-align:right">
-                    <a href="#" class="text-decoration-none">Lupa Password</a>
+                    <a href="/forgot-password" class="text-decoration-none">Lupa Password</a>
                 </div>
                 <div class="submit-form">
                     <button type="submit">Login</button>
