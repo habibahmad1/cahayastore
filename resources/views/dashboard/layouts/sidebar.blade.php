@@ -6,11 +6,11 @@
       </div>
       <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
 
-        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase">
-            <span>MENU</span>
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase"  style="background-color: #90c7ff; padding: 10px; color: #ffffff;">
+            <span>BAG home</span>
         </h6>
 
-        <hr class="my-3">
+        {{-- <hr class="my-3"> --}}
 
         <ul class="nav flex-column">
           <li class="nav-item">
@@ -22,14 +22,7 @@
               Dashboard
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link d-flex align-items-center gap-2 {{ Request::is('dashboard/produk*') ? 'active-dashboard' : '' }}" href="/dashboard/produk">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-basket" viewBox="0 0 16 16">
-                    <path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9zM1 7v1h14V7zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10m2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10m2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10m2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5m2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5"/>
-                  </svg>
-              Produk
-            </a>
-          </li>
+
           <li class="nav-item">
             <a class="nav-link d-flex align-items-center gap-2" href="/"  target="_blank">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
@@ -42,13 +35,22 @@
 
         @can('admin')
 
-        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase">
-            <span>Kategori</span>
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase" style="background-color: #90c7ff; padding: 10px; color: #ffffff;">
+            <span>BAG PRODUK</span>
         </h6>
 
-        <hr class="my-3">
+        {{-- <hr class="my-3"> --}}
 
         <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link d-flex align-items-center gap-2 {{ Request::is('dashboard/produk*') ? 'active-dashboard' : '' }}" href="/dashboard/produk">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-basket" viewBox="0 0 16 16">
+                        <path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9zM1 7v1h14V7zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10m2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10m2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10m2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5m2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5"/>
+                      </svg>
+                  Produk
+                </a>
+            </li>
+
             <li class="nav-item">
                 <a class="nav-link d-flex align-items-center gap-2 {{ Request::is('dashboard/kategori', 'dashboard/kategori/*') ? 'active-dashboard' : '' }}" href="/dashboard/kategori">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bounding-box-circles" viewBox="0 0 16 16">
@@ -58,25 +60,13 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav flex-column">
-            <li class="nav-item">
-                <a class="nav-link d-flex align-items-center gap-2 {{ Request::is('dashboard/kategoriartikel*') ? 'active-dashboard' : '' }}" href="/dashboard/kategoriartikel">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bounding-box" viewBox="0 0 16 16">
-                        <path d="M5 2V0H0v5h2v6H0v5h5v-2h6v2h5v-5h-2V5h2V0h-5v2zm6 1v2h2v6h-2v2H5v-2H3V5h2V3zm1-2h3v3h-3zm3 11v3h-3v-3zM4 15H1v-3h3zM1 4V1h3v3z"/>
-                      </svg>
-                    Kategori Artikel
-                </a>
-            </li>
-        </ul>
         @endcan
 
-        <hr class="my-3">
-
-        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase">
-            <span>Artikel</span>
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase" style="background-color: #90c7ff; padding: 10px; color: #ffffff;">
+            <span> BAG Artikel</span>
         </h6>
 
-        <hr class="my-3">
+        {{-- <hr class="my-3"> --}}
 
         <ul class="nav flex-column">
             <li class="nav-item">
@@ -89,15 +79,13 @@
             </li>
         </ul>
 
-
-        <hr class="my-3">
         @can('admin')
 
-        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase">
-            <span>User Manajemen</span>
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase" style=" background-color: #90c7ff; padding: 10px; color: #ffffff">
+            <span>BAG User Manajemen</span>
         </h6>
 
-        <hr class="my-3">
+        {{-- <hr class="my-3"> --}}
 
         <ul class="nav flex-column">
             <li class="nav-item">
