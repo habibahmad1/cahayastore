@@ -112,8 +112,10 @@ class ArtikelController extends Controller
             $validasiData['image'] = $request->file('image')->store('artikel-image');
         }
 
-        // Tambahkan user_id dan excerpt ke validasi data
-        $validasiData['user_id'] = auth()->user()->id;
+        if ($artikel->user_id == auth()->user()->id) {
+            $validasiData['user_id'] = auth()->user()->id; // Set user_id hanya jika yang mengedit adalah pemilik artikel
+        }
+
         $validasiData['excerpt'] = Str::limit(strip_tags($request->body), 120);
 
         // Update artikel dengan data yang telah divalidasi

@@ -35,7 +35,14 @@
           <td>{{ $loop->iteration }}</td>
           <td>{{ $p->judul }}</td>
           <td>{{ $p->kategoripost->nama }}</td>
-          <td>{{ $p->gambar }}</td>
+          <td>
+            @if ($p->image)
+            <img src="{{ asset('storage/' . $p->image) }}" alt="Img"
+            style="max-height: 70px; max-width: 70px; overflow: hidden; border-radius: 5px; margin-right: 5px;" class="mb-2">
+            @else
+             <p>No Image</p>
+            @endif
+          </td>
           <td>
             <a href="/dashboard/artikel/{{ $p->slug }}" class="badge bg-info"><span><i class="bi bi-eye-fill"></i></span></a>
             <a href="/dashboard/artikel/{{ $p->slug }}/edit" class="badge bg-warning"><span><i class="bi bi-pencil-square"></i></span></a>

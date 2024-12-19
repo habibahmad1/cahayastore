@@ -5,9 +5,6 @@
   </div>
 
 
-
-    <a href="/dashboard/artikel/create" class="btn btn-primary mb-3">Tambah Artikel</a>
-
     @if (session()->has('success'))
     <div class="alert alert-success col-lg-7" role="alert">
         {{ session('success') }}
@@ -37,8 +34,12 @@
           <td>{{ $p->judul }}</td>
           <td>{{ $p->kategoripost->nama }}</td>
           <td>
+            @if ($p->image)
             <img src="{{ asset('storage/' . $p->image) }}" alt="Img"
-                         style="max-height: 70px; max-width: 70px; overflow: hidden; border-radius: 5px; margin-right: 5px;" class="mb-2">
+            style="max-height: 70px; max-width: 70px; overflow: hidden; border-radius: 5px; margin-right: 5px;" class="mb-2">
+            @else
+             <p>No Image</p>
+            @endif
           </td>
           <td>{{ $p->user->name }}</td>
 
