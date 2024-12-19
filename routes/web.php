@@ -160,3 +160,7 @@ Route::get('reset-password/{token}/{email}', [ForgotPasswordController::class, '
 
 // Untuk proses form lupa pw
 Route::post('reset-password', [ForgotPasswordController::class, 'resetPassword'])->name('password.update');
+
+// Route All Artikel
+Route::get('dashboard/allartikel', [ArtikelController::class, 'allartikel']);
+// Route::get('/dashboard/artikel/cekSlug', [ArtikelController::class, 'cekSlug']);

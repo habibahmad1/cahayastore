@@ -54,6 +54,6 @@
   </div>
 
   <div class="pagination d-flex justify-content-center my-5">
-    {{-- {{ $dataArtikel->links() }} --}}
+    {{ $dataArtikel->links() }}
 </div>
 @endsection

@@ -12,6 +12,12 @@
         {{ session('success') }}
       </div>
     @endif
+    @if(session('status'))
+            <div class="alert alert-success text-center" role="alert">
+                {{ session('status') }}
+            </div>
+    @endif
+
         <div class="slides">
             <div class="slide"
                 style="background-image: url('https://cdn.pixabay.com/photo/2012/03/03/23/54/animal-21668_1280.jpg');">

@@ -137,4 +137,13 @@ class ArtikelController extends Controller
 
         return redirect('/dashboard/artikel')->with('success', 'Artikel Berhasil di Hapus');
     }
+
+    public function allartikel()
+    {
+        return view('dashboard.artikel.allartikel', [
+            'dataArtikel' => Artikel::latest()
+                ->paginate(10)
+                ->withQueryString()
+        ]);
+    }
 }
