@@ -12,7 +12,7 @@
       </div></a>
 
       <div class="info">
-        <h3>Total Kategori</h3>
+        <h3>Kategori Produk</h3>
         <hr>
         <h1>{{ $kategori->count() }}</h1>
       </div>
