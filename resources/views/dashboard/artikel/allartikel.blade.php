@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.main')
 @section('container')
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Artikel Saya</h1>
+    <h1 class="h2">Semua Artikel</h1>
   </div>
 
 
@@ -25,6 +25,7 @@
           <th scope="col">Judul Artikel</th>
           <th scope="col">Kategori</th>
           <th scope="col">Gambar</th>
+          <th scope="col">Author</th>
           <th scope="col">Aksi</th>
         </tr>
       </thead>
@@ -35,7 +36,8 @@
           <td>{{ $loop->iteration }}</td>
           <td>{{ $p->judul }}</td>
           <td>{{ $p->kategoripost->nama }}</td>
-          <td>{{ $p->gambar }}</td>
+          <td>{{ $p->image }}</td>
+          <td>{{ $p->user->name }}</td>
           <td>
             <a href="/dashboard/artikel/{{ $p->slug }}" class="badge bg-info"><span><i class="bi bi-eye-fill"></i></span></a>
             <a href="/dashboard/artikel/{{ $p->slug }}/edit" class="badge bg-warning"><span><i class="bi bi-pencil-square"></i></span></a>
