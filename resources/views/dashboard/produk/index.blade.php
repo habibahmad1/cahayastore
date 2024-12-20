@@ -80,7 +80,7 @@
           <td>{{ $p->kode_produk }}</td>
           <td>{!! $p->deskripsi !!}</td>
           <td>{{ $p->stok }}</td>
-          <td>{{ $p->diskon }}</td>
+          <td>{{ $p->diskon }}%</td>
           <td>{{ $p->berat }}</td>
           <td>{{ $p->dimensi }}</td>
           <td>{{ number_format($p->harga, 0, ',', '.') }}</td>
