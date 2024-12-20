@@ -320,7 +320,7 @@
                         </p>
                     </div>
                     <div class="card-faq">
-                        <h2>Bagaimana cara melacak pesanan saya?</h2>
+                        <h2>Bagaimana cara melacak pesanan saya??</h2>
                         <p>
                             Anda dapat melacak pesanan Anda melalui nomor resi yang dikirimkan ke email atau SMS setelah
                             pengiriman dilakukan. Masukkan nomor resi tersebut di situs web ekspedisi terkait untuk melihat
