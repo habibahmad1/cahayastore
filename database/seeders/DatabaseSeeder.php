@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
     {
         User::factory(5)->create();
 
-        Produk::factory(20)->create();
+        // Produk::factory(20)->create();
 
         // Kategori::factory(5)->create();
 
@@ -28,6 +28,14 @@ class DatabaseSeeder extends Seeder
             'name' => 'habibahmad',
             'username' => 'habibahmad213',
             'email' => 'habibahmad2597@gmail.com',
+            'password' => 123,
+            'is_admin' => true,
+        ]);
+
+        User::factory()->create([
+            'name' => 'mak',
+            'username' => 'maki988',
+            'email' => 'cadangmaky@gmail.com',
             'password' => 123,
             'is_admin' => true,
         ]);
