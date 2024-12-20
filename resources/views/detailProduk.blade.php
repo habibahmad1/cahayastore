@@ -66,17 +66,20 @@
             <div class="diskon">Diskon -{{ $post->diskon }}%</div>
             <div class="harga-coret">Rp {{ number_format($post->harga / (1 - ($post->diskon / 100)), 0, ',', '.') }}</div>
         </div>
+        @if ($produk_variasi->isNotEmpty())
         <p class="title-variasi mt-3">Warna/Variasi:</p>
         <div class="detail-variasi">
             @foreach ($produk_variasi as $variasi)
                 <div class="card-variasi"
                     data-warna="{{ $variasi->warna->warna ?? 'Tidak ada' }}"
                     data-gambar="{{ asset('storage/' . ($variasi->gambar->gambar ?? 'default-image.jpg')) }}">
-                    <img src="{{ asset('storage/' . ($variasi->gambar->gambar ?? 'default-image.jpg')) }}" alt="img" width="30px">
+                    <img src="{{ asset('storage/' . ($variasi->gambar->gambar ?? $post->gambar1)) }}" alt="img" width="30px">
                     <p style="margin-left: 10px">{{ $variasi->warna->warna ?? 'Tidak ada' }}</p>
                 </div>
             @endforeach
         </div>
+        @endif
+
 
         @php
         // Cek apakah ada ukuran yang tersedia dalam variasi produk
@@ -156,7 +159,7 @@
         <h5><b>Detail Harga</b></h5>
         <div class="img-produk">
             <img src="{{ asset('storage/' . $post->gambar1) }}" alt="img-form">
-            <p>variasi</p>
+            <p>Variasi</p>
         </div>
         <p><b>Stok: {{ $post->stok }}</b></p>
         <p class="coret-form-harga">Rp {{ number_format($post->harga / (1 - ($post->diskon / 100)), 0, ',', '.') }}</p>
@@ -165,15 +168,15 @@
             <h4><b>Rp {{ number_format($post->harga, 0, ',', '.') }}</b></h4>
         </div>
         <div class="form-wa">
-            {{-- <a
+            <a
                 href="https://wa.me/6289529907437?text={{ urlencode('Halo, saya tertarik dengan produk ini: ' . url('/produk/' . $post->slug) . '\n\nTerima kasih.') }}"
                 target="_blank">
                 Beli Sekarang
-            </a> --}}
-            <a
-                href="#" onclick="alert('Dalam Pengembangan')">
-                Beli Sekarang
             </a>
+            {{-- <a
+                href="buy-now-link" onclick="alert('Dalam Pengembangan')">
+                Beli Sekarang
+            </a> --}}
         </div>
 
     </div>

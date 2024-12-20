@@ -273,7 +273,7 @@
                                    value="{{ old("variasi.$key.stok", $variasi->stok ?? '') }}">
                         </div>
                         <div class="mb-3">
-                            <label for="gambar_{{ $key }}" class="form-label">Gambar</label>
+                            <label for="gambar_{{ $key }}" class="form-label">Gambar <span class="penting">*</span></label>
                             @if ($variasi->gambar)
                                 <img src="{{ asset('storage/' . $variasi->gambar->gambar) }}" class="img-preview-{{ $key }} img-fluid mb-3 d-block" style="max-height: 200px">
                             @else
@@ -331,8 +331,8 @@
                 <input type="number" class="form-control" name="variasi[${variasiIndex}][stok]" id="stok_${variasiIndex}">
             </div>
             <div class="mb-3">
-                <label for="gambar_${variasiIndex}" class="form-label">Gambar</label>
-                <input class="form-control" type="file" name="variasi[${variasiIndex}][gambar]" id="gambar_${variasiIndex}">
+                <label for="gambar_${variasiIndex}" class="form-label">Gambar <span class="penting">*</span></label>
+                <input class="form-control" type="file" name="variasi[${variasiIndex}][gambar]" id="gambar_${variasiIndex}" required>
             </div>
             <button type="button" class="btn btn-danger btn-sm mt-2 hapus-variasi" data-id="variasi-item-${variasiIndex}">Hapus Variasi</button>
             <hr>

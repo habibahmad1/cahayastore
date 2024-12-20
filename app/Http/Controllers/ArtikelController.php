@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Artikel;
+use App\Models\User;
 use App\Models\KategoriArtikel;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
@@ -137,7 +138,7 @@ class ArtikelController extends Controller
             Storage::delete($artikel->image);
         }
 
-        return redirect('/dashboard/artikel')->with('success', 'Artikel Berhasil di Hapus');
+        return back()->with('success', 'Artikel Berhasil dihapus');
     }
 
     public function allartikel()
@@ -145,7 +146,7 @@ class ArtikelController extends Controller
         return view('dashboard.artikel.allartikel', [
             'dataArtikel' => Artikel::latest()
                 ->paginate(10)
-                ->withQueryString()
+                ->withQueryString(),
         ]);
     }
 }

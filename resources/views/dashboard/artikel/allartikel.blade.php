@@ -23,6 +23,7 @@
           <th scope="col">Kategori</th>
           <th scope="col">Gambar</th>
           <th scope="col">Author</th>
+          <th scope="col">Upload</th>
           <th scope="col">Aksi</th>
         </tr>
       </thead>
@@ -42,7 +43,7 @@
             @endif
           </td>
           <td>{{ $p->user->name }}</td>
-
+          <td>{{ $p->created_at->format('d-m-Y') }}</td>
           <td>
             <a href="/dashboard/artikel/{{ $p->slug }}" class="badge bg-info"><span><i class="bi bi-eye-fill"></i></span></a>
             <a href="/dashboard/artikel/{{ $p->slug }}/edit" class="badge bg-warning"><span><i class="bi bi-pencil-square"></i></span></a>

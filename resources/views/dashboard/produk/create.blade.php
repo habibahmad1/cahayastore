@@ -242,7 +242,7 @@
                         >
                     </div>
                     <div class="mb-3">
-                        <label for="gambar_0" class="form-label">Gambar</label>
+                        <label for="gambar_0" class="form-label">Gambar </label>
                         <input
                             class="form-control"
                             type="file"
@@ -302,7 +302,7 @@
             </div>
             <div class="mb-3">
                 <label for="gambar_${variasiIndex}" class="form-label">Gambar</label>
-                <input class="form-control" type="file" name="variasi[${variasiIndex}][gambar]" id="gambar_${variasiIndex}">
+                <input class="form-control" type="file" name="variasi[${variasiIndex}][gambar]" id="gambar_${variasiIndex}" required>
             </div>
             <button type="button" class="btn btn-danger btn-sm mt-2 hapus-variasi" data-id="variasi-item-${variasiIndex}">Hapus Variasi</button>
             <hr>
