@@ -225,7 +225,7 @@
       </div>
 </div>
 
-<div id="scrollTopButtonug" class="scroll-to-topug" onclick="scrollToTopug()">
+<div id="scrollTopButtonug" class="scroll-to-top" onclick="scrollToTopug()">
     ↑
 </div>
 

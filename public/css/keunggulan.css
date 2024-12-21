@@ -82,7 +82,7 @@
 }
 
 /* scrol langung ke atas */
-.scroll-to-topug {
+.scroll-to-top {
     position: fixed;
     bottom: 30px;
     right: 30px;
@@ -102,12 +102,12 @@
     transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
 }
 
-.scroll-to-topug:hover {
+.scroll-to-top:hover {
     transform: scale(1.1);
     background: linear-gradient(to right, #feb47b, #ff7e5f);
 }
 
-.scroll-to-topug.visible {
+.scroll-to-top.visible {
     opacity: 1;
     visibility: visible;
 }
