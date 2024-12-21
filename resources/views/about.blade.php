@@ -43,12 +43,12 @@
                     PT.CAHAYA SETIA INDONESIA
                 </h1>
                 <p>
-                    kami percaya bahwa setiap langkah kecil menuju inovasi adalah langkah besar menuju
+                    Kami percaya bahwa setiap langkah kecil menuju inovasi adalah langkah besar menuju
                     masa depan yang lebih baik. Sejak didirikan pada 2024, kami telah berkomitmen untuk
                     menyediakan solusi yang tidak hanya memenuhi kebutuhan pasar, tetapi juga melampaui ekspektasi pelanggan
-                    kami.<br /><br />
+                    kami.</p>
 
-                    {{-- Kami berawal dari sebuah ide sederhana : untuk menciptakan produk dan layanan yang mampu memecahkan
+                {{-- Kami berawal dari sebuah ide sederhana : untuk menciptakan produk dan layanan yang mampu memecahkan
                     masalah nyata di masyarakat. Dengan tim yang berdedikasi dan berpengalaman, kami terus berkembang,
                     menghadirkan teknologi dan pendekatan terbaru dalam setiap proyek yang kami kerjakan.<br /><br />
 
@@ -56,22 +56,24 @@
                     kualitas, dan integritas. Setiap tantangan yang kami hadapi adalah kesempatan untuk belajar dan
                     berkembang, yang mendorong kami untuk terus berinovasi dalam menghadirkan solusi yang lebih baik.<br /><br /> --}}
 
-                    PT Cahaya Setia Indonesia berperan aktif dalam penjualan online
+                <p> Cahaya Setia Indonesia berperan aktif dalam penjualan online
                     dengan memanfaatkan platform digital untuk menjangkau konsumen
                     secara luas. Melalui pengembangan situs e-commerce dan penggunaan
                     marketplace, perusahaan dapat langsung menjual produk dan layanan
-                    kepada audiens. <br /><br />
+                    kepada audiens. </p>
 
-                    Strategi pemasaran konten yang menarik, seperti artikel dan video,
+
+                <p>Strategi pemasaran konten yang menarik, seperti artikel dan video,
                     juga berkontribusi pada peningkatan visibilitas dan membangun
                     kepercayaan di kalangan pelanggan. Media sosial menjadi saluran
                     penting untuk berinteraksi dengan audiens, mengiklankan produk,
-                    dan melakukan promosi.<br /><br />
+                    dan melakukan promosi. </p>
 
-                    Visi Kami : Menjadi pemimpin industri yang berfokus pada keberlanjutan dan dampak positif bagi masyarakat melalui inovasi yang berkelanjutan.<br /><br />
+                <p> Visi Kami : Menjadi pemimpin industri yang berfokus pada keberlanjutan dan dampak positif bagi
+                    masyarakat melalui inovasi yang berkelanjutan.</p>
 
-                    Misi Kami : Menyediakan produk dan layanan terbaik yang mendukung perkembangan bisnis pelanggan kami, dengan selalu mengutamakan kualitas dan kepuasan.
-                </p>
+                <p> Misi Kami : Menyediakan produk dan layanan terbaik yang mendukung perkembangan bisnis pelanggan kami,
+                    dengan selalu mengutamakan kualitas dan kepuasan.</p>
             </div>
             <div class="map">
                 <iframe
