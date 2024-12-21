@@ -25,8 +25,6 @@
     background-color: #3a3a3a; /* Warna default biru */
     animation: fadeInUp 2s ease forwards;
     overflow: hidden;
-
-
 }
 
 .category-button::after {
