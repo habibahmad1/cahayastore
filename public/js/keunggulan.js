@@ -1,12 +1,4 @@
 
-
-
-// Event untuk menggulir halaman ke bawah
-scrollDownIcon.addEventListener('click', () => {
-    window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
-});
-
-
 function showCategory(categoryId) {
     // Sembunyikan semua deskripsi kategori
     const descriptions = document.querySelectorAll('.category-description');
@@ -39,17 +31,17 @@ categoryDescriptions.forEach((description) => categoryObserver.observe(descripti
 
 
 // Fungsi untuk scroll ke atas
-function scrollToTop() {
+function scrollToTopug() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 // Tampilkan tombol saat posisi scroll di bawah
 window.addEventListener('scroll', () => {
-    const scrollTopButton = document.getElementById('scrollTopButton');
+    const scrollTopButtonug = document.getElementById('scrollTopButtonug');
     if (window.scrollY > 200) { // Sesuaikan nilai ini dengan kebutuhan
-        scrollTopButton.classList.add('visible');
+        scrollTopButtonug.classList.add('visible');
     } else {
-        scrollTopButton.classList.remove('visible');
+        scrollTopButtonug.classList.remove('visible');
     }
 });
 
