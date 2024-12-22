@@ -14,16 +14,16 @@
       </div>
     @endif
 
+    <div class="col-lg-8 pencarian">
+        <form action="/dashboard/produk">
+            <div class="input-group my-3">
+                <input type="text" class="form-control" placeholder="Cari Produk.." name="search" value="{{ request('search') }}" id="search-box">
+                <button class="btn btn-warning" type="submit">Cari</button>
+            </div>
+        </form>
+    </div>
     <div class="table-responsive small">
         <div class="row justify-content-center px-2">
-            <div class="col-lg-8 pencarian">
-                <form action="/dashboard/produk">
-                    <div class="input-group my-3">
-                        <input type="text" class="form-control" placeholder="Cari Produk.." name="search" value="{{ request('search') }}" id="search-box">
-                        <button class="btn btn-warning" type="submit">Cari</button>
-                    </div>
-                </form>
-            </div>
         </div>
 
     <table class="table table-hover table-sm">
