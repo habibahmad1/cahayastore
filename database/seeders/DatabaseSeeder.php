@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
     {
         User::factory(5)->create();
 
-        // Produk::factory(20)->create();
+        Produk::factory(30)->create();
 
         // Kategori::factory(5)->create();
 
@@ -52,10 +52,15 @@ class DatabaseSeeder extends Seeder
             'nama' => 'Lampu',
             'slug' => 'lampu',
         ]);
+        Kategori::factory()->create([
+            'nama' => 'Playmat',
+            'slug' => 'playmat',
+        ]);
 
         KategoriArtikel::factory()->tutorial()->create();
         KategoriArtikel::factory()->informasi()->create();
         KategoriArtikel::factory()->personal()->create();
+        KategoriArtikel::factory()->sharing()->create();
         KategoriArtikel::factory()->random()->create();
 
         Artikel::factory(20)->create();

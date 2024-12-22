@@ -66,4 +66,14 @@ class KategoriArtikelFactory extends Factory
             ];
         });
     }
+
+    public function sharing()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'nama' => 'Sharing',
+                'slug' => 'sharing',
+            ];
+        });
+    }
 }

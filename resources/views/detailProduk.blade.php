@@ -67,18 +67,40 @@
             <div class="harga-coret">Rp {{ number_format($post->harga / (1 - ($post->diskon / 100)), 0, ',', '.') }}</div>
         </div>
         @if ($produk_variasi->isNotEmpty())
-        <p class="title-variasi mt-3">Warna/Variasi:</p>
-        <div class="detail-variasi">
-            @foreach ($produk_variasi as $variasi)
+    <p class="title-variasi mt-3">Warna/Variasi:</p>
+    <div class="detail-variasi">
+        @php
+            $checkedWarna = []; // Array untuk menyimpan warna yang sudah ditampilkan
+        @endphp
+        @foreach ($produk_variasi as $variasi)
+            @php
+                $warna = $variasi->warna->warna ?? 'Tidak ada';
+            @endphp
+            @if (!in_array($warna, $checkedWarna))
                 <div class="card-variasi"
-                    data-warna="{{ $variasi->warna->warna ?? 'Tidak ada' }}"
+                    data-warna="{{ $warna }}"
                     data-gambar="{{ asset('storage/' . ($variasi->gambar->gambar ?? 'default-image.jpg')) }}">
                     <img src="{{ asset('storage/' . ($variasi->gambar->gambar ?? $post->gambar1)) }}" alt="img" width="30px">
-                    <p style="margin-left: 10px">{{ $variasi->warna->warna ?? 'Tidak ada' }}</p>
+                    <p style="margin-left: 10px">{{ $warna }}</p>
                 </div>
-            @endforeach
-        </div>
-        @endif
+                @php
+                    $checkedWarna[] = $warna; // Tambahkan warna ke array
+                @endphp
+            @endif
+        @endforeach
+    </div>
+@endif
+
+@php
+// Cek apakah ada ukuran yang tersedia dalam variasi produk
+$hasUkuran = false;
+foreach ($produk_variasi as $variasi) {
+    if (!empty($variasi->ukuran->ukuran)) {
+        $hasUkuran = true;
+        break;
+    }
+}
+@endphp
 
 
         @php

@@ -53,11 +53,11 @@ class DashboardController extends Controller
             "deskripsi" => "required",
             "harga" => "required|numeric|min:0",
             "stok" => "required|integer|min:0",
-            "gambar1" => "required|image|mimes:jpeg,png,jpg,gif,svg|max:2048",
-            "gambar2" => "nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048",
-            "gambar3" => "nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048",
-            "gambar4" => "nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048",
-            "gambar5" => "nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048",
+            "gambar1" => "required|image|mimes:jpeg,png,jpg,gif,svg|max:4048",
+            "gambar2" => "nullable|image|mimes:jpeg,png,jpg,gif,svg|max:4048",
+            "gambar3" => "nullable|image|mimes:jpeg,png,jpg,gif,svg|max:4048",
+            "gambar4" => "nullable|image|mimes:jpeg,png,jpg,gif,svg|max:4048",
+            "gambar5" => "nullable|image|mimes:jpeg,png,jpg,gif,svg|max:4048",
             "video" => "nullable|mimetypes:video/mp4,video/avi,video/mpeg,video/quicktime|max:31230",
             "berat" => "required|numeric|min:0",
             "dimensi" => "nullable",
@@ -118,7 +118,7 @@ class DashboardController extends Controller
             'warna' => 'nullable|string|max:255',
             'ukuran' => 'nullable|string|max:255',
             'stok' => 'nullable|integer|min:0',
-            'gambar' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048'
+            'gambar' => 'image|mimes:jpg,png,jpeg,gif,svg|max:4048'
         ])->validate();
     }
 
@@ -160,11 +160,11 @@ class DashboardController extends Controller
             "deskripsi" => "required",
             "harga" => "required|numeric|min:0",
             "stok" => "required|integer|min:0",
-            "gambar1" => "nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048",
-            "gambar2" => "nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048",
-            "gambar3" => "nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048",
-            "gambar4" => "nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048",
-            "gambar5" => "nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048",
+            "gambar1" => "nullable|image|mimes:jpeg,png,jpg,gif,svg|max:4048",
+            "gambar2" => "nullable|image|mimes:jpeg,png,jpg,gif,svg|max:4048",
+            "gambar3" => "nullable|image|mimes:jpeg,png,jpg,gif,svg|max:4048",
+            "gambar4" => "nullable|image|mimes:jpeg,png,jpg,gif,svg|max:4048",
+            "gambar5" => "nullable|image|mimes:jpeg,png,jpg,gif,svg|max:4048",
             "video" => "nullable|mimetypes:video/mp4,video/avi,video/mpeg,video/quicktime|max:31230",
             "berat" => "required|numeric|min:0",
             "dimensi" => "nullable",

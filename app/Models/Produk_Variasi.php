@@ -11,6 +11,8 @@ class Produk_Variasi extends Model
 
     protected $table = 'produk_variasis';
 
+    protected $with = ['produk', 'ukuran', 'gambar', 'warna'];
+
     use HasFactory;
 
     public function produk()
