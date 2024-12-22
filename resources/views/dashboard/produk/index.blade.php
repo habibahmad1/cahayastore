@@ -46,57 +46,55 @@
         </tr>
       </thead>
       <tbody>
-        @foreach ($produk as $p)
+        @foreach ($produk as $index => $p)
+<tr class="table-primary">
+    <td>{{ $produk->firstItem() + $index }}</td> <!-- Menampilkan nomor urut yang berlanjut -->
+    <td>{{ $p->nama_produk }}</td>
+    <td>{{ $p->kategori->nama }}</td>
+    <td>
+        @php
+            $gambarFields = ['gambar1', 'gambar2', 'gambar3', 'gambar4', 'gambar5'];
+        @endphp
 
-        <tr class="table-primary">
-          <td>{{ $loop->iteration }}</td>
-          <td>{{ $p->nama_produk }}</td>
-          <td>{{ $p->kategori->nama }}</td>
-          <td>
-            @php
-                $gambarFields = ['gambar1', 'gambar2', 'gambar3', 'gambar4', 'gambar5'];
-            @endphp
-
-            @foreach ($gambarFields as $field)
-                @if (!empty($p->$field))
-                    <img src="{{ asset('storage/' . $p->$field) }}" alt=""
-                         style="max-height: 70px; max-width: 70px; overflow: hidden; border-radius: 5px; margin-right: 5px;" class="mb-2">
-                @endif
-            @endforeach
-        </td>
-
-        <td>
-            @if (!empty($p->video))
-                <video style="max-height: 270px; max-width: 200px; overflow: hidden; border-radius: 5px; margin-right: 5px;" class="mb-3" controls>
-                    <source src="{{ asset('storage/' . $p->video) }}" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            @else
-                <p>No Video</p>  <!-- Atau Anda bisa kosongkan atau tampilkan teks lain jika tidak ada video -->
+        @foreach ($gambarFields as $field)
+            @if (!empty($p->$field))
+                <img src="{{ asset('storage/' . $p->$field) }}" alt=""
+                     style="max-height: 70px; max-width: 70px; overflow: hidden; border-radius: 5px; margin-right: 5px;" class="mb-2">
             @endif
-        </td>
-
-
-          <td>{{ $p->kode_produk }}</td>
-          <td>{!! $p->deskripsi !!}</td>
-          <td>{{ $p->stok }}</td>
-          <td>{{ $p->diskon }}%</td>
-          <td>{{ $p->berat }}</td>
-          <td>{{ $p->dimensi }}</td>
-          <td>{{ number_format($p->harga, 0, ',', '.') }}</td>
-          <td>{{ $p->status }}</td>
-          <td>
-            <a href="/dashboard/produk/{{ $p->slug }}" class="badge bg-info"><span><i class="bi bi-eye-fill"></i></span></a>
-            <a href="/dashboard/produk/{{ $p->slug }}/edit" class="badge bg-warning"><span><i class="bi bi-pencil-square"></i></span></a>
-            <form action="/dashboard/produk/{{ $p->slug }}" method="POST" class="d-inline">
-                @method('delete')
-                @csrf
-                <button class="badge bg-danger border-0" onclick="return confirm('Hapus Produk?')"><span><i class="bi bi-trash"></i></span></button>
-            </form>
-          </td>
-        </tr>
-
         @endforeach
+    </td>
+
+    <td>
+        @if (!empty($p->video))
+            <video style="max-height: 270px; max-width: 200px; overflow: hidden; border-radius: 5px; margin-right: 5px;" class="mb-3" controls>
+                <source src="{{ asset('storage/' . $p->video) }}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        @else
+            <p>No Video</p>
+        @endif
+    </td>
+
+    <td>{{ $p->kode_produk }}</td>
+    <td>{!! \Illuminate\Support\Str::limit($p->deskripsi, 100) !!}</td>
+    <td>{{ $p->stok }}</td>
+    <td>{{ $p->diskon }}%</td>
+    <td>{{ $p->berat }}</td>
+    <td>{{ $p->dimensi }}</td>
+    <td>{{ number_format($p->harga, 0, ',', '.') }}</td>
+    <td>{{ $p->status }}</td>
+    <td>
+        <a href="/dashboard/produk/{{ $p->slug }}" class="badge bg-info"><span><i class="bi bi-eye-fill"></i></span></a>
+        <a href="/dashboard/produk/{{ $p->slug }}/edit" class="badge bg-warning"><span><i class="bi bi-pencil-square"></i></span></a>
+        <form action="/dashboard/produk/{{ $p->slug }}" method="POST" class="d-inline">
+            @method('delete')
+            @csrf
+            <button class="badge bg-danger border-0" onclick="return confirm('Hapus Produk?')"><span><i class="bi bi-trash"></i></span></button>
+        </form>
+    </td>
+</tr>
+@endforeach
+
 
       </tbody>
     </table>

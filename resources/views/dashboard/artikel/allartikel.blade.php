@@ -4,17 +4,15 @@
     <h1 class="h2">Semua Artikel</h1>
   </div>
 
-
     @if (session()->has('success'))
     <div class="alert alert-success col-lg-7" role="alert">
         {{ session('success') }}
-      </div>
+    </div>
     @endif
 
     <div class="row justify-content-center px-2 col-lg-6">
     </div>
     <div class="table-responsive small col-lg-7">
-
     <table class="table table-hover table-sm">
       <thead>
         <tr class="table-warning">
@@ -28,10 +26,9 @@
         </tr>
       </thead>
       <tbody>
-        @foreach ($dataArtikel as $p)
-
+        @foreach ($dataArtikel as $index => $p)
         <tr class="table-primary">
-          <td>{{ $loop->iteration }}</td>
+          <td>{{ $dataArtikel->firstItem() + $index }}</td> <!-- Menampilkan nomor urut yang berlanjut -->
           <td>{{ $p->judul }}</td>
           <td>{{ $p->kategoripost->nama }}</td>
           <td>
@@ -54,14 +51,12 @@
             </form>
           </td>
         </tr>
-
         @endforeach
-
       </tbody>
     </table>
   </div>
 
   <div class="pagination d-flex justify-content-center my-5">
     {{ $dataArtikel->links() }}
-</div>
+  </div>
 @endsection
