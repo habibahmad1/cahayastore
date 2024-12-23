@@ -1,16 +1,7 @@
 @extends('dashboard.layouts.main')
+
 @section('container')
-<div class="detail-product-card" data-name="LED Fishing Light 1">
-    {{-- <div class="">
-        @if ($produk->gambar1)
-        <div class="img-detail">
-            <img src="{{ asset('storage/' . $produk->gambar1) }}" alt="Img-Produk">
-        </div>
-    @else
-        <div class="img-detail">
-            <img src="{{ asset('img/noimg.png' ) }}" alt="Img-Produk">
-        </div>
-    @endif --}}
+<div class="detail-product-card" data-name="{{ $produk->nama_produk }}">
     <div class="detail-card">
         <div class="gambar-produk">
             {{-- Area Gambar Utama --}}
@@ -25,64 +16,154 @@
                         <i class="fa-solid fa-play"></i>
                     </div>
                 @endif
-                <img src="{{ asset('storage/' . $produk->gambar1) }}" alt="img-produk" class="img-fluid thumbnail" data-src="{{ asset('storage/' . $produk->gambar1) }}">
+                <img src="{{ asset('storage/' . $produk->gambar1) }}" alt="img-thumbnail" class="img-fluid thumbnail" data-src="{{ asset('storage/' . $produk->gambar1) }}">
+
                 {{-- Thumbnail Gambar Tambahan --}}
-                @if (!empty($produk->gambar2))
-                    <img src="{{ asset('storage/' . $produk->gambar2) }}" alt="img-thumbnail" class="thumbnail" data-src="{{ asset('storage/' . $produk->gambar2) }}">
-                @endif
-                @if (!empty($produk->gambar3))
-                    <img src="{{ asset('storage/' . $produk->gambar3) }}" alt="img-thumbnail" class="thumbnail" data-src="{{ asset('storage/' . $produk->gambar3) }}">
-                @endif
-                @if (!empty($produk->gambar4))
-                    <img src="{{ asset('storage/' . $produk->gambar4) }}" alt="img-thumbnail" class="thumbnail" data-src="{{ asset('storage/' . $produk->gambar4) }}">
-                @endif
-                @if (!empty($produk->gambar5))
-                    <img src="{{ asset('storage/' . $produk->gambar5) }}" alt="img-thumbnail" class="thumbnail" data-src="{{ asset('storage/' . $produk->gambar5) }}">
-                @endif
+                @foreach (['gambar2', 'gambar3', 'gambar4', 'gambar5'] as $gambar)
+                    @if (!empty($produk->$gambar))
+                        <img src="{{ asset('storage/' . $produk->$gambar) }}" alt="img-thumbnail" class="thumbnail" data-src="{{ asset('storage/' . $produk->$gambar) }}">
+                    @endif
+                @endforeach
             </div>
         </div>
     </div>
 
-
-        <div class="detail-info">
-            <div class="edit-produk">
-                <a href="/dashboard/produk/{{ $produk->slug }}/edit" class="badge bg-warning text-decoration-none my-3"><i class="bi bi-pencil-square"></i> Edit Produk</a>
-                <form action="/dashboard/produk/{{ $produk->slug }}" method="POST" class="d-inline">
-                    @method('delete')
-                    @csrf
-                    <button class="badge bg-danger border-0" onclick="return confirm('Hapus Produk?')"><span><i class="bi bi-trash"></i></span>Hapus Produk</button>
-                </form>
-            </div>
-            <h2><a href="/produk/{{ $produk->slug }}" class="text-decoration-none">{{ $produk->nama_produk }}</a></h2>
-            <p><b>Kategori</b> : <a href="/kategori/{{ $produk->kategori->slug }}" class="text-decoration-none text-capitalize badge text-bg-success">{{ $produk->kategori->nama }}</a></p>
-            <p><b>Deskripsi</b> : {!! $produk->deskripsi !!}</p>
-            <p><b>Stok</b> : {{ $produk->stok }}</p>
-            <p><b>Berat</b> : {{ $produk->berat }}Kg</p>
-            <p><b>Diskon</b> : {{ $produk->diskon }}%</p>
-            <h4><b>Harga</b> :Rp {{ $produk->harga }}</h4>
-            <div class="button d-flex">
-                <div class="me-auto"></div>
-                <a href="/dashboard/produk" class="kembali-button">Kembali</a>
-            </div>
-
+    <div class="detail-info">
+        {{-- Tombol Edit dan Hapus --}}
+        <div class="edit-produk">
+            <a href="/dashboard/produk/{{ $produk->slug }}/edit" class="badge bg-warning text-decoration-none my-3"><i class="bi bi-pencil-square"></i> Edit Produk</a>
+            <form action="/dashboard/produk/{{ $produk->slug }}" method="POST" class="d-inline">
+                @method('delete')
+                @csrf
+                <button class="badge bg-danger border-0" onclick="return confirm('Hapus Produk?')"><span><i class="bi bi-trash"></i></span>Hapus Produk</button>
+            </form>
         </div>
+
+        {{-- Informasi Produk --}}
+        <h2><a href="/produk/{{ $produk->slug }}" class="text-decoration-none">{{ $produk->nama_produk }}</a></h2>
+        <p><b>Kondisi</b>: Baru </p>
+        <p><b>Min. Pemesanan:</b> 1</p>
+        <p><b>Kode Produk:</b> {{ $produk->kode_produk ?? 'Tidak tersedia' }}</p>
+        <p><b>Dimensi Produk:</b> {{ $produk->dimensi ?? 'Tidak tersedia' }}</p>
+        <p><b>Kategori</b> : <a href="/kategori/{{ $produk->kategori->slug }}" class="badge bg-primary text-decoration-none">{{ $produk->kategori->nama }}</a></p>
+        <p><b>Berat</b> : {{ $produk->berat }}Kg</p>
+        <p><b>Status Produk:</b>
+            <span class="badge
+                @if($produk->status == 'pre-order')
+                    bg-warning
+                @elseif($produk->status == 'habis')
+                    bg-danger
+                @else
+                    text-bg-success
+                @endif
+                text-white">
+                {{ ucwords($produk->status) }}
+            </span>
+        </p>
+        <p><b>Diskon</b> : {{ $produk->diskon }}%</p>
+        <p><b>Deskripsi</b> : {!! $produk->deskripsi !!}</p>
+        <h4><b>Harga</b>: Rp {{ number_format($produk->harga, 0, ',', '.') }}</h4>
+
+        {{-- Variasi Produk --}}
+        <div>
+            <p class="title-variasi mt-3">Warna:</p>
+            <div class="detail-variasi d-flex flex-wrap">
+                @foreach ($produk_variasi->unique('warna_id') as $variasi)
+                    <div class="card-variasi m-2" data-warna="{{ $variasi->warna->warna ?? 'Tidak ada' }}" data-id="{{ $variasi->id }}" data-gambar="{{ asset('storage/' . ($variasi->gambar->gambar ?? $produk->gambar1)) }}">
+                        <img src="{{ asset('storage/' . ($variasi->gambar->gambar ?? $produk->gambar1)) }}" alt="img" width="50px">
+                        <p>{{ $variasi->warna->warna ?? 'Tidak ada' }}</p>
+                    </div>
+                @endforeach
+            </div>
+
+            {{-- Ukuran Produk --}}
+            @php
+                $ukuranVariasi = $produk_variasi->unique('ukuran_id');
+            @endphp
+            @if ($ukuranVariasi->isNotEmpty())
+                <p class="title-variasi mt-3">Ukuran:</p>
+                <div class="detail-variasi d-flex flex-wrap">
+                    @foreach ($ukuranVariasi as $variasi)
+                        <div class="card-variasi m-2" data-ukuran="{{ $variasi->ukuran->ukuran ?? 'Tidak ada' }}">
+                            <p>{{ $variasi->ukuran->ukuran ?? 'Tidak ada' }}</p>
+                        </div>
+                    @endforeach
+                </div>
+            @endif
+
+            {{-- Stok --}}
+            <p class="mt-2"><b>Stok:</b> <span id="stok-tersedia">{{ $produk->stok }}</span></p>
+        </div>
+
+        {{-- Tombol Kembali --}}
+        <div class="button d-flex">
+            <div class="me-auto"></div> <!-- Tambahkan ini untuk memberikan ruang kosong di sebelah kiri -->
+            <a href="/dashboard/produk" class="kembali-button">Kembali</a>
+        </div>
+
     </div>
 </div>
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        // Ambil elemen thumbnail
-        const thumbnails = document.querySelectorAll(".thumbnail");
         const previewImage = document.getElementById("preview-image");
+        const thumbnails = document.querySelectorAll(".thumbnail");
+        const warnaVariasi = document.querySelectorAll(".card-variasi[data-warna]");
+        const ukuranVariasi = document.querySelectorAll(".card-variasi[data-ukuran]");
+        const stokTersedia = document.getElementById("stok-tersedia");
+        const produkVariasi = @json($produk_variasi);
 
-        // Tambahkan event click ke setiap thumbnail
+        let selectedWarna = null;
+        let selectedUkuran = null;
+
+        // Thumbnail Gambar
         thumbnails.forEach(thumbnail => {
             thumbnail.addEventListener("click", function () {
-                // Perbarui src gambar utama dengan data-src dari thumbnail yang diklik
                 const newSrc = thumbnail.getAttribute("data-src");
                 previewImage.setAttribute("src", newSrc);
             });
         });
+
+        // Variasi Warna
+        warnaVariasi.forEach(warna => {
+            warna.addEventListener("click", function () {
+                warnaVariasi.forEach(w => w.classList.remove("selected"));
+                this.classList.add("selected");
+                selectedWarna = this.getAttribute("data-warna");
+                const newImage = this.getAttribute("data-gambar");
+                if (newImage) {
+                    previewImage.setAttribute("src", newImage);
+                }
+                updateStok();
+            });
+        });
+
+        // Variasi Ukuran
+        ukuranVariasi.forEach(ukuran => {
+            ukuran.addEventListener("click", function () {
+                ukuranVariasi.forEach(u => u.classList.remove("selected"));
+                this.classList.add("selected");
+                selectedUkuran = this.getAttribute("data-ukuran");
+                updateStok();
+            });
+        });
+
+        // Update Stok Berdasarkan Pilihan
+        function updateStok() {
+            const variasiTerpilih = produkVariasi.find(variasi => {
+                return (
+                    (!selectedWarna || variasi.warna?.warna === selectedWarna) &&
+                    (!selectedUkuran || variasi.ukuran?.ukuran === selectedUkuran)
+                );
+            });
+
+            if (variasiTerpilih) {
+                stokTersedia.textContent = variasiTerpilih.stok;
+            } else {
+                stokTersedia.textContent = "Tidak tersedia";
+            }
+        }
     });
 </script>
+
 @endsection

@@ -214,7 +214,7 @@ html {
 }
 
 .card-variasi.selected {
-    border: 2px solid #007bff;
+    border: 2px solid #ff7f20;
     background-color: #f0f8ff;
 }
 
@@ -299,14 +299,7 @@ html {
 .gambar-produk-detail {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 15px;
-}
-
-.gambar-produk-detail {
-    display: flex;
-    gap: 10px;
-    margin-top: 15px;
+    gap: 6px;
 }
 
 .thumbnail {
@@ -326,7 +319,6 @@ html {
     width: 100%;
     max-height: 500px;
     object-fit: contain;
-    margin-bottom: 15px;
 }
 
 /* Media Query untuk layar dengan lebar kurang dari 600px */
@@ -334,6 +326,16 @@ html {
     .detail-product-card {
         width: 100%; /* Membuat lebar elemen 100% dari lebar layar */
         padding: 20px; /* Mengurangi padding agar tidak terlalu besar */
+    }
+
+    .container-detail-card {
+        padding: 20px;
+        gap: 10px;
+    }
+
+    .judul-detail {
+        font-size: 18px;
+        color: #ff7f20;
     }
 
     .kategori-list a {
@@ -431,5 +433,9 @@ html {
     .gambar-produk-detail img {
         width: 45px;
         height: 45px;
+    }
+
+    .gambar-produk-detail {
+        margin: 0;
     }
 }

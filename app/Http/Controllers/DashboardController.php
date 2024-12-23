@@ -129,8 +129,13 @@ class DashboardController extends Controller
      */
     public function show(Produk $produk)
     {
+        $produkVariasi = Produk_Variasi::where('produk_id', $produk->id)
+            ->with(['produk', 'warna', 'ukuran', 'gambar']) // Memuat relasi terkait
+            ->get();
+
         return view('dashboard.produk.show', [
-            "produk" => $produk
+            "produk" => $produk,
+            "produk_variasi" => $produkVariasi,
         ]);
     }
 

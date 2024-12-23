@@ -59,7 +59,7 @@
 
 
     <div class="produk-info-detail">
-        <h3>{{ $post->nama_produk }}
+        <h3 class="judul-detail">{{ $post->nama_produk }}
         </h3>
         <h2><b>Rp {{ number_format($post->harga, 0, ',', '.') }}</b></h2>
         <div class="diskon-coret">
@@ -177,10 +177,10 @@ foreach ($produk_variasi as $variasi) {
         <a href="/produk" class="d-inline-block btn btn-primary float-end">Kembali</a>
     </div>
 
-    <div class="form-beli">
+        <div class="form-beli">
         <h5><b>Detail Harga</b></h5>
         <div class="img-produk">
-            <img src="{{ asset('storage/' . $post->gambar1) }}" alt="img-form">
+            <img id="img-form" src="{{ asset('storage/' . $post->gambar1) }}" alt="img-form">
             <p>Variasi</p>
         </div>
         <p><b>Stok: {{ $post->stok }}</b></p>
@@ -224,6 +224,7 @@ foreach ($produk_variasi as $variasi) {
 document.addEventListener("DOMContentLoaded", function () {
     const warnaVariasi = document.querySelectorAll(".detail-variasi .card-variasi[data-warna]");
     const previewImage = document.getElementById("preview-image");
+    const imgForm = document.getElementById("img-form"); // Gambar di Detail Harga
     const ukuranVariasi = document.querySelectorAll(".detail-variasi .card-variasi[data-ukuran]");
     const stokElement = document.querySelector(".form-beli p b"); // Elemen stok di form beli
     const produkVariasi = @json($produk_variasi); // Kirim data PHP ke JavaScript
@@ -244,6 +245,9 @@ document.addEventListener("DOMContentLoaded", function () {
             // Perbarui gambar utama
             previewImage.setAttribute("src", newImage);
 
+            // Perbarui gambar di Detail Harga
+            imgForm.setAttribute("src", newImage);  // Mengubah gambar Detail Harga
+
             // Simpan warna yang dipilih
             selectedWarna = this.getAttribute("data-warna");
 
@@ -258,6 +262,17 @@ document.addEventListener("DOMContentLoaded", function () {
             // Tandai ukuran terpilih
             ukuranVariasi.forEach(u => u.classList.remove("selected"));
             this.classList.add("selected");
+
+            // Ambil gambar terkait variasi ukuran
+            const newImage = this.getAttribute("data-gambar");
+
+            // Perbarui gambar di Detail Harga
+            if (newImage) {
+                imgForm.setAttribute("src", newImage);  // Mengubah gambar Detail Harga
+            } else {
+                // Jika tidak ada gambar, kembalikan ke gambar utama atau gambar default
+                imgForm.setAttribute("src", "{{ asset('storage/' . $post->gambar1) }}");
+            }
 
             // Simpan ukuran yang dipilih
             selectedUkuran = this.getAttribute("data-ukuran");
@@ -299,6 +314,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 });
+
 </script>
 
 

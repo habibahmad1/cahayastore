@@ -109,9 +109,6 @@ Route::get('/dashboard/jadiAdmin/{id}', [UserController::class, 'jadiAdmin'])->m
 Route::get('/dashboard/jadiUser/{id}', [UserController::class, 'makeUser'])->middleware(['auth', 'admin']);
 
 
-// Route::get('/dashboard/artikel/cekSlug', [ArtikelController::class, 'cekSlug']);
-
-
 Route::get('/artikel/{slug}', function ($slug) {
     // Cari artikel berdasarkan slug
     $artikel = Artikel::where('slug', $slug)->firstOrFail();
@@ -136,13 +133,9 @@ Route::get('/category/{kategoriartikel:slug}', function (KategoriArtikel $katego
     ]);
 });
 
-
-
-
-
 // Route ke Semua category
 Route::get('/categories', function () {
-    return view('categories', [
+    return view('kategoripost', [
         "title" => 'All Categories',
         "categories" => KategoriArtikel::all()
     ]);

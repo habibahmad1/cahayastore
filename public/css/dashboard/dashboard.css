@@ -238,6 +238,32 @@
     color: #fff;
 }
 
+/* Variasi detail produk */
+
+.card-variasi {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    max-width: 200px;
+    max-height: 100px;
+    border: 1px solid #dcdcdc;
+    border-radius: 5px;
+}
+
+.card-variasi:hover {
+    cursor: pointer;
+}
+
+.card-variasi.selected {
+    border: 2px solid #ff943d;
+    background-color: #f0f8ff;
+}
+
+.card-variasi p {
+    margin: 0;
+}
+
 @media (max-width: 768px) {
     .sidebar .offcanvas-lg {
         position: -webkit-sticky;
@@ -269,9 +295,23 @@
         height: 45px;
     }
 
+    .gambar-produk-detail {
+        margin: 0;
+        max-width: 350px;
+    }
+
     .postimg img {
         max-width: 100%;
         height: auto;
+    }
+    /* Variasi detail show */
+    .detail-card {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        flex-direction: row;
+        gap: 10px;
+        padding: 10px 10px;
     }
 }
 

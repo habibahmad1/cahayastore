@@ -12,7 +12,7 @@
 
     <div class="row justify-content-center px-2 col-lg-6">
     </div>
-    <div class="table-responsive small col-lg-7">
+    <div class="table-responsive small col-lg-12">
     <table class="table table-hover table-sm">
       <thead>
         <tr class="table-warning">
