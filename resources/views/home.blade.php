@@ -1,11 +1,11 @@
 @extends('layouts.main')
 
 @section('container')
-{{-- <div class="marquee-container">
+<div class="marquee-container">
     <div class="marquee">
         Promo Spesial Hari Ini: Diskon Hingga 50%! Jangan Lewatkan Kesempatan Emas Ini! 🤗🎉
     </div>
-</div> --}}
+</div>
 
     <div class="slider">
     @if (session()->has('failed'))
