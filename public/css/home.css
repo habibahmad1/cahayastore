@@ -295,6 +295,8 @@
     margin-top: 30px;
     line-height: 1.6;
     color: white;
+    text-align: justify;
+    text-indent: 25px;
 }
 
 @keyframes textGlow {
@@ -355,6 +357,7 @@
     text-align: center;
     overflow: hidden;
     width: 95vw;
+    border-radius: 10px;
 }
 
 .services-title {
@@ -502,6 +505,8 @@
 .left-content .story-subtitle {
     font-size: 1.2rem;
     margin-bottom: 20px;
+    text-align: justify;
+    text-indent: 25px;
 }
 
 .left-content .story-btn {
@@ -782,7 +787,7 @@
 @media (max-width: 480px) {
     /* Gaya lebih spesifik untuk layar yang sangat kecil */
     .facts-header .facts-title {
-        font-size: 1.3rem;
+        font-size: 1.1rem;
     }
 
     .facts-header .facts-subtitle {
@@ -1648,13 +1653,10 @@
     font-family: Arial, sans-serif;
 }
 
-.text-testimoni h1 {
+.testimoni .text-testimoni h1 {
     color: #ffffff;
-    font-size: 24px;
-    margin-bottom: 20px;
-    margin-top: 25px;
+    padding-bottom: 25px;
     font-size: 30px;
-    padding: 30px;
 }
 
 .next-text {
@@ -1680,7 +1682,7 @@
     overflow: hidden;
 }
 
-.card-testi {
+.testi-slider .card-testi {
     display: none; /* Hide all cards initially */
     width: 100%;
     max-width: 800px; /* Optional: limit the width of the testimonial */
@@ -1710,12 +1712,12 @@
 .card-testi p {
     margin: 20px 0 40px 0;
     padding: 0 60px;
+    text-align: justify;
 }
 
 /* Style untuk bintang */
 .star-testi i {
     color: #ffc107;
-    font-size: 20px;
     opacity: 0; /* Bintang tidak terlihat di awal */
     transform: scale(0); /* Ukuran bintang diatur jadi 0 */
     transition: opacity 0.3s ease, transform 0.3s ease; /* Animasi opacity dan transform */
@@ -1777,17 +1779,24 @@
 }
 
 @media (max-width: 768px) {
-    .card-testi {
+    .testi-slider .card-testi {
         max-width: 350px;
         font-size: 16px;
-        height: 500px;
+        height: 310px;
     }
 
-    .text-testimoni h1 {
+    .testimoni .text-testimoni h1 {
         font-size: 20px;
-        border-radius: 20px;
-        margin: 15px;
-        margin-bottom: 20px;
-        margin-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    .card-testi p {
+        font-size: 0.8rem;
+    }
+
+
+    .star-testi i {
+        font-size: 20px;
+        margin-top: 30px;
     }
 }

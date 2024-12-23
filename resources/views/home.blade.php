@@ -131,24 +131,24 @@
         </div>
         <div class="right-content">
             <h2 class="experience-title"><i class="fa-solid fa-star"></i> Pengalaman Kami</h2>
-            <div class="experience-item" data-target="90%">
-                <span class="experience-subtitle">Merek</span>
+            <div class="experience-item" data-target="97%">
+                <span class="experience-subtitle">Kepercayaan Pelanggan</span>
                 <div class="progress-bar">
-                    <div class="progress" data-progress="90" style="width: 90%;">
+                    <div class="progress" data-progress="97" style="width: 97%;">
+                        <span class="data-target-text">97%</span>
+                    </div>
+                </div>
+            </div>
+            <div class="experience-item" data-target="90%">
+                <span class="experience-subtitle">Kepuasan Pelanggan</span>
+                <div class="progress-bar">
+                    <div class="progress" data-progress="90" style="width:90%;">
                         <span class="data-target-text">90%</span>
                     </div>
                 </div>
             </div>
-            <div class="experience-item" data-target="85%">
-                <span class="experience-subtitle">Pengalaman Pengguna</span>
-                <div class="progress-bar">
-                    <div class="progress" data-progress="85" style="width: 85%;">
-                        <span class="data-target-text">85%</span>
-                    </div>
-                </div>
-            </div>
             <div class="experience-item" data-target="95%">
-                <span class="experience-subtitle">Desain Produk</span>
+                <span class="experience-subtitle">Rekomendasi Pelanggan</span>
                 <div class="progress-bar">
                     <div class="progress" data-progress="95" style="width: 95%;">
                         <span class="data-target-text">95%</span>
@@ -177,19 +177,19 @@
         <div class="facts-items">
             <div class="fact-item">
                 <h3 class="fact-number" data-target="1200">0</h3>
-                <p>Pelanggan yang puas</p>
+                <p>Produk Terjual</p>
             </div>
             <div class="fact-item">
-                <h3 class="fact-number" data-target="800">0</h3>
-                <p>Produk Terlengkap</p>
+                <h3 class="fact-number" data-target="820">0</h3>
+                <p>Ulasan Positif</p>
             </div>
             <div class="fact-item">
-                <h3 class="fact-number" data-target="500">0</h3>
-                <p>Kualitas Terjamin</p>
+                <h3 class="fact-number" data-target="350">0</h3>
+                <p>Pengiriman Setiap Bulan </p>
             </div>
             <div class="fact-item">
                 <h3 class="fact-number" data-target="100">0</h3>
-                <p>Kerjasama Perusahaan</p>
+                <p>Produk Terlengkap</p>
             </div>
         </div>
     </section>
@@ -215,9 +215,9 @@
                         class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                 </div>
                 <p>
-                    Layanan dari tim ini sangat memuaskan! Mereka cepat, profesional,
+                    "Layanan dari tim ini sangat memuaskan! Mereka cepat, profesional,
                     dan benar-benar memahami apa yang saya butuhkan. Masalah listrik
-                    saya selesai dalam waktu singkat. Sangat direkomendasikan!
+                    saya selesai dalam waktu singkat. Sangat direkomendasikan!"
                 </p>
                 <div class="profil-testi">
                     <img src="img/profil.jpg" alt="profil" width="40px" style="border-radius: 40px" />
@@ -235,9 +235,9 @@
                         class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                 </div>
                 <p>
-                    Pelayanan yang luar biasa! Saya menggunakan jasa mereka untuk
+                    "Pelayanan yang luar biasa! Saya menggunakan jasa mereka untuk
                     perbaikan rumah dan hasilnya sangat memuaskan. Pekerjaannya rapi
-                    dan selesai tepat waktu. Saya sangat senang dengan hasilnya!
+                    dan selesai tepat waktu. Saya sangat senang dengan hasilnya!"
                 </p>
                 <div class="profil-testi">
                     <img src="img/profil2.jpg" alt="profil" width="40px" style="border-radius: 40px" />
@@ -255,9 +255,9 @@
                         class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                 </div>
                 <p>
-                    Mereka sangat profesional dan komunikatif. Tim ini bekerja dengan
+                    "Mereka sangat profesional dan komunikatif. Tim ini bekerja dengan
                     sangat baik dan hasilnya bahkan melebihi ekspektasi saya.
-                    Pekerjaan dilakukan dengan teliti dan hasil akhirnya sangat bagus.
+                    Pekerjaan dilakukan dengan teliti dan hasil akhirnya sangat bagus"
                 </p>
                 <div class="profil-testi">
                     <img src="img/profil3.jpg" alt="profil" width="40px" style="border-radius: 40px" />
@@ -275,9 +275,9 @@
                         class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                 </div>
                 <p>
-                    Pekerjaan yang dilakukan benar-benar berkualitas tinggi! Tim ini
+                    "Pekerjaan yang dilakukan benar-benar berkualitas tinggi! Tim ini
                     tahu apa yang mereka lakukan dan memberikan saran yang sangat
-                    membantu. Sangat puas dengan layanan ini.
+                    membantu. Sangat puas dengan layanan ini"
                 </p>
                 <div class="profil-testi">
                     <img src="img/profil4.jpg" alt="profil" width="40px" style="border-radius: 40px" />
@@ -295,8 +295,8 @@
                         class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                 </div>
                 <p>
-                    LED Fishing Light ini luar biasa! Sangat terang dan efisien, membantu saya memancing lebih efektif.
-                    Baterainya tahan lama dan desainnya yang tahan air sangat praktis. Sangat direkomendasikan!
+                    "LED Fishing Light ini luar biasa! Sangat terang dan efisien, membantu saya memancing lebih efektif.
+                    Baterainya tahan lama dan desainnya yang tahan air sangat praktis. Sangat direkomendasikan!"
                 </p>
                 <div class="profil-testi">
                     <img src="img/profil5.jpg" alt="profil" width="40px" style="border-radius: 40px" />
@@ -314,8 +314,8 @@
                         class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                 </div>
                 <p>
-                    Pengalaman menikmati kopi luwak ini luar biasa! Rasa dan aromanya sangat khas dan mewah. Setiap cangkir
-                    memberikan sensasi yang unik dan nikmat. Sangat direkomendasikan untuk pecinta kopi sejati.
+                    "Pengalaman menikmati kopi luwak ini luar biasa! Rasa dan aromanya sangat khas dan mewah. Setiap cangkir
+                    memberikan sensasi yang unik dan nikmat. Sangat direkomendasikan untuk pecinta kopi sejati"
                 </p>
                 <div class="profil-testi">
                     <img src="img/profil6.jpg" alt="profil" width="40px" style="border-radius: 40px" />
@@ -333,8 +333,8 @@
                         class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                 </div>
                 <p>
-                    Playmat ini sangat memukau! Desainnya penuh warna dan menarik, serta bahannya lembut dan aman untuk
-                    anak. Mudah dibersihkan dan sangat praktis digunakan. Sangat direkomendasikan!
+                    "Playmat ini sangat memukau! Desainnya penuh warna dan menarik, serta bahannya lembut dan aman untuk
+                    anak. Mudah dibersihkan dan sangat praktis digunakan. Sangat direkomendasikan!"
                 </p>
                 <div class="profil-testi">
                     <img src="img/profil7.jpg" alt="profil" width="40px" style="border-radius: 40px" />
@@ -352,8 +352,8 @@
                         class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                 </div>
                 <p>
-                    Saya sangat puas dengan sandal ini! Desainnya stylish dan modern, nyaman dipakai sehari-hari, dan
-                    sangat tahan lama. Sol anti slip memberikan keamanan ekstra. Sangat direkomendasikan!
+                    "Saya sangat puas dengan sandal ini! Desainnya stylish dan modern, nyaman dipakai sehari-hari, dan
+                    sangat tahan lama. Sol anti slip memberikan keamanan ekstra. Sangat direkomendasikan!"
                 </p>
                 <div class="profil-testi">
                     <img src="img/profil8.jpg" alt="profil" width="40px" style="border-radius: 40px" />
