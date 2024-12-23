@@ -127,14 +127,16 @@ Route::get('/artikel/{slug}', function ($slug) {
 // Route ke user posting
 Route::get('/authors/{author:username}', [UserController::class, "index"]);
 
-// Route ke category
-Route::get('/categories/{kategoripost:slug}', function (KategoriArtikel $kategoripost) {
-    return view('kategoripost', [
-        "title" => $kategoripost->nama,
-        "artikelPost" => $kategoripost->artikel(),
-        "category" => $kategoripost->nama
+// Route ke kategori
+Route::get('/category/{kategoriartikel:slug}', function (KategoriArtikel $kategoriartikel) {
+    return view('artikel', [
+        "title" => 'Artikel Kategori: ' . $kategoriartikel->nama,
+        "artikel" => $kategoriartikel->artikel()->latest()->paginate(10), // Memfilter berdasarkan kategori
+        "category" => $kategoriartikel->nama,
     ]);
 });
+
+
 
 
 

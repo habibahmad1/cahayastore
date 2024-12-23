@@ -209,7 +209,7 @@
                         <div class="card-body">
                           <h3 class="card-title" style="color: #41a77e"><a href="artikel/{{ $artikel[0]->slug }}" class="text-decoration-none" style="color: #41a77e">{{ $artikel[0]->judul }}</a></h3>
 
-                          <h5>Penulis : <a href="/authors/{{ $artikel[0]->user->username }}" style="color: #41a77e" class="text-decoration-none">{{ $artikel[0]->user->name }}</a> <a href="/categories/{{ $artikel[0]->kategoripost->slug }}" style="color: #41a77e" class="text-decoration-none badge text-bg-danger">{{ $artikel[0]->kategoripost->nama }}</a> </h5>
+                          <h5>Penulis : <a href="/authors/{{ $artikel[0]->user->username }}" style="color: #41a77e" class="text-decoration-none">{{ $artikel[0]->user->name }}</a> <a href="/category/{{ $artikel[0]->kategoripost->slug }}" style="color: #41a77e" class="text-decoration-none badge text-bg-danger">{{ $artikel[0]->kategoripost->nama }}</a> </h5>
 
                           <p class="card-text">{{ $artikel[0]->excerpt }}</p>
                           <p class="card-text"><small class="text-info fw-bold">{{ $artikel[0]->created_at->diffForHumans() }}</small></p>
@@ -241,7 +241,7 @@
 
                         <small class="fw-bold">Penulis :<a href="/authors/{{ $post->user->username }}" style="color: #41a77e" > {{ $post->user->name }} </a>
 
-                        <div class="badge text-bg-danger"><a href="/categories/{{ $post->kategoripost->slug }}" class="text-white">{{ $post->kategoripost->nama }}</a></div>
+                        <div class="badge text-bg-danger"><a href="/category/{{ $post->kategoripost->slug }}" class="text-white">{{ $post->kategoripost->nama }}</a></div>
                            <br> <a class="text-info">{{ $post->created_at->diffForHumans() }}</a>
                         </small>
 

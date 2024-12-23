@@ -14,7 +14,7 @@ class KategoriArtikel extends Model
 
     public function artikel()
     {
-        return $this->hasMany(Artikel::class);
+        return $this->hasMany(Artikel::class, 'kategoripost_id');
     }
 
     public function getRouteKeyName()

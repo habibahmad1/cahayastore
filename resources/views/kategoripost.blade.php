@@ -1,7 +1,7 @@
 @extends('./layouts/main')
 @section('container')
 
-<h1 class="text-center my-4">Artikel Category : {{ $category }}</h1>
+<h1 class="text-center my-4">Artikel Kategori : {{ $category }}</h1>
 <div class="kanvas">
     <div class="artikelPost">
         <div class="content-informasi">
@@ -16,7 +16,7 @@
 
                   <small class="fw-bold">By: <a href="/authors/{{ $post->user->username }}" style="color: #41a77e" > {{ $post->user->name }} </a>
 
-                    <div class="badge text-bg-danger"><a href="/categories/{{ $post->category->slug }}" class="text-white">{{ $post->category->nama }}</a></div>
+                    <div class="badge text-bg-danger"><a href="/categories/{{ $post->kategoripost->slug }}" class="text-white">{{ $post->kategoripost->nama }}</a></div>
                         <a class="text-info">{{ $post->created_at->diffForHumans() }}</a>
                   </small>
 
