@@ -357,6 +357,7 @@
     text-align: center;
     overflow: hidden;
     width: 95vw;
+    border-radius: 10px;
 }
 
 .services-title {
@@ -1781,7 +1782,7 @@
     .testi-slider .card-testi {
         max-width: 350px;
         font-size: 16px;
-        height: 400px;
+        height: 310px;
     }
 
     .testimoni .text-testimoni h1 {
