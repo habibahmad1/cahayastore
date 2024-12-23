@@ -137,6 +137,16 @@ foreach ($produk_variasi as $variasi) {
         </div>
     @endif
 
+        <!-- Share Button -->
+        <div class="share-button-container my-3">
+            <button id="share-button" class="btn btn text-white" style="background-color: #ff9553">Bagikan</button>
+        </div>
+
+        <!-- Share Menu -->
+        <div id="share-menu" style="display:none;">
+            <a id="whatsapp-share" href="#" target="_blank" class="btn btn-success"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+            <button id="copy-url" class="btn btn-secondary"><i class="fa-regular fa-clipboard"></i> Copy URL</button>
+        </div>
 
         <hr>
         <h3>Detail Produk</h3>
@@ -191,7 +201,7 @@ foreach ($produk_variasi as $variasi) {
         </div>
         <div class="form-wa">
             <a
-                href="https://wa.me/6289529907437?text={{ urlencode('Halo, saya tertarik dengan produk ini: ' . url('/produk/' . $post->slug) . '\n\nTerima kasih.') }}"
+                href="https://wa.me/6289529907437?text={{ urlencode('Halo, saya tertarik dengan produk ini: ' . url('/produk/' . $post->slug) . ' Terima kasih.') }}"
                 target="_blank">
                 Beli Sekarang
             </a>
@@ -317,6 +327,43 @@ document.addEventListener("DOMContentLoaded", function () {
 
 </script>
 
+<script>
+    document.getElementById("share-button").addEventListener("click", function() {
+        const shareMenu = document.getElementById("share-menu");
+
+        // Generate the URL using the product's slug
+        const productUrl = window.location.origin + "/produk/" + "{{ $post->slug }}"; // Ensure slug is available
+
+        // Construct the URL for sharing on WhatsApp
+        const whatsappUrl = "https://wa.me/?text=" + encodeURIComponent("Check out this product: " + productUrl);
+
+        // Set the href attribute for the WhatsApp share button
+        document.getElementById("whatsapp-share").setAttribute("href", whatsappUrl);
+
+        // Toggle the visibility of the share menu
+        if (shareMenu.style.display === "none" || shareMenu.style.display === "") {
+            // Show the share menu
+            shareMenu.style.display = "block";
+        } else {
+            // Hide the share menu
+            shareMenu.style.display = "none";
+        }
+
+        // Add functionality to copy URL to clipboard
+        document.getElementById("copy-url").addEventListener("click", function() {
+            // Create a temporary input element to copy the URL
+            const tempInput = document.createElement("input");
+            tempInput.value = productUrl;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+
+            // Alert the user that the URL has been copied
+            alert("Link berhasil disalin");
+        });
+    });
+</script>
 
 
 

@@ -46,7 +46,7 @@
         <p><b>Kode Produk:</b> {{ $produk->kode_produk ?? 'Tidak tersedia' }}</p>
         <p><b>Dimensi Produk:</b> {{ $produk->dimensi ?? 'Tidak tersedia' }}</p>
         <p><b>Kategori</b> : <a href="/kategori/{{ $produk->kategori->slug }}" class="badge bg-primary text-decoration-none">{{ $produk->kategori->nama }}</a></p>
-        <p><b>Berat</b> : {{ $produk->berat }}Kg</p>
+        <p><b>Berat</b> : {{ $produk->berat }}(gram)</p>
         <p><b>Status Produk:</b>
             <span class="badge
                 @if($produk->status == 'pre-order')
