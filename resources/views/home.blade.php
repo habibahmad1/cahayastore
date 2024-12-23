@@ -177,19 +177,19 @@
         <div class="facts-items">
             <div class="fact-item">
                 <h3 class="fact-number" data-target="1200">0</h3>
-                <p>Pelanggan yang puas</p>
+                <p>Produk Terjual</p>
             </div>
             <div class="fact-item">
-                <h3 class="fact-number" data-target="800">0</h3>
-                <p>Produk Terlengkap</p>
+                <h3 class="fact-number" data-target="820">0</h3>
+                <p>Ulasan Positif</p>
             </div>
             <div class="fact-item">
-                <h3 class="fact-number" data-target="500">0</h3>
-                <p>Kualitas Terjamin</p>
+                <h3 class="fact-number" data-target="350">0</h3>
+                <p>Pengiriman Setiap Bulan </p>
             </div>
             <div class="fact-item">
                 <h3 class="fact-number" data-target="100">0</h3>
-                <p>Kerjasama Perusahaan</p>
+                <p>Produk Terlengkap</p>
             </div>
         </div>
     </section>
