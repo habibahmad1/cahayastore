@@ -72,9 +72,9 @@
                 <i class="fas fa-building"></i>
             </div>
             <div class="about-content">
-                <h2 class="about-title">Tentang Kami</h2>
+                <h2 class="about-title">Tentang CSI</h2>
                 <p class="about-description">
-                    Kami adalah perusahaan inovatif yang berkomitmen untuk memberikan solusi terbaik bagi klien kami. Dengan
+                    CSI atau Cahaya Setia Indonesia adalah perusahaan inovatif yang berkomitmen untuk memberikan solusi terbaik bagi klien kami. Dengan
                     tim yang berdedikasi dan pengalaman bertahun-tahun, kami selalu menghadirkan layanan yang berkualitas
                     tinggi.
                 </p>
@@ -400,29 +400,6 @@
         </div>
         <a href="/produk" class="see-more-btn">Lihat Lebih Banyak</a>
     </div>
-
-    {{-- <div class="client-section containerspill">
-        <h1>Mitra Tepercaya Kami</h1>
-        <h2>Perusahaan yang dengan bangga kami ajak berkolaborasi</h2>
-        <hr class="section-divider">
-
-        <div class="logo-slider" id="logoSlider">
-            <div class="logo-container">
-                <img src="https://www.pixelldesign.com/wp-content/uploads/logo-perusahaan-PT-SIK.webp" alt="Logo 1" class="logo">
-                <img src="https://www.pixelldesign.com/wp-content/uploads/logo-perusahaan-UD-bahan-bangunan.webp" alt="Logo 2" class="logo">
-                <img src="https://www.pixelldesign.com/wp-content/uploads/desain-logo-perusahaan-1.webp" alt="Logo 3" class="logo">
-                <img src="https://www.pixelldesign.com/wp-content/uploads/logo-perusahaan-PT-Cipta-Guna.webp" alt="Logo 4" class="logo">
-                <img src="https://www.pixelldesign.com/wp-content/uploads/desain-gambar-logo-perusahaan-karya-inspira-gemilang.webp" alt="Logo 5" class="logo">
-                <img src="img/partner/beauty.png" alt="Logo 6" class="logo">
-                <img src="img/partner/kopi.png" alt="Logo 7" class="logo">
-                <img src="https://www.pixelldesign.com/wp-content/uploads/logo-perusahaan-CV-Furqon.webp" alt="Logo 8" class="logo">
-                <img src="https://www.pixelldesign.com/wp-content/uploads/desain-logo-perusahaan-PT-Royalnusapersada.webp" alt="Logo 9" class="logo">
-                <img src="https://www.pixelldesign.com/wp-content/uploads/logo-perusahaan-PT-Cahayabakti.webp" alt="Logo 10" class="logo">
-            </div>
-        </div>
-    </div> --}}
-
-
 
     {{-- <section id="meet-the-team" class="meet-the-team-section">
     <div class="container">

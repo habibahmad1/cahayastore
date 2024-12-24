@@ -104,7 +104,7 @@ body {
     align-items: center;
     padding: 1rem 7%;
     background-color: rgba(1, 1, 1, 0.8);
-    border-bottom: 1px solid #fff;
+    border-bottom: 1px solid #ffa600;
     position: fixed;
     top: 0;
     left: 0;
@@ -182,7 +182,7 @@ body {
 }
 
 .navbar-bottom {
-    margin-top: 100px;
+    margin-top: 74px;
 }
 
 .active-dashboard {
@@ -234,6 +234,9 @@ body {
 
     .mobile {
         display: inline;
+    }
+    .navbar-bottom {
+        margin-top: 80px;
     }
 }
 

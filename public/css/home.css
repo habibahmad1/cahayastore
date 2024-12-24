@@ -1,6 +1,6 @@
 .slider {
     position: relative;
-    height: 100vh;
+    height: 88.5vh;
     width: 100%;
     overflow: hidden;
 }
@@ -12,7 +12,7 @@
 
 .slide {
     min-width: 100%;
-    height: 100vh;
+    height: 88.5vh;
     background-size: cover;
     background-position: center;
     position: relative;
@@ -220,6 +220,7 @@
 
     .content {
         min-width: 325px;
+        top: 48%;
     }
 }
 
@@ -239,11 +240,11 @@
     }
 
     .slider {
-        height: 620px;
+        height: 640px;
     }
 
     .slide {
-        height: 620px;
+        height: 640px;
     }
 
     .content {
@@ -266,6 +267,7 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    margin: 0px;
 }
 
 .about-wrapper {
@@ -297,6 +299,7 @@
     color: white;
     text-align: justify;
     text-indent: 25px;
+    padding: 0px;
 }
 
 @keyframes textGlow {
@@ -357,7 +360,6 @@
     text-align: center;
     overflow: hidden;
     width: 95vw;
-    border-radius: 10px;
 }
 
 .services-title {
@@ -1526,68 +1528,6 @@
     }
 }
 
-/*
-  halamannnnn klien */
-.client-section {
-    padding: 50px 20px;
-    background: linear-gradient(to top, #2c3e50, #141414);
-    color: white;
-    text-align: center;
-    border-radius: 0px;
-}
-
-.client-section h1 {
-    font-size: 2.5rem;
-    color: #ffa600;
-    margin-bottom: 10px;
-    animation: fadeIn 2s ease-in-out;
-}
-
-.client-section h2 {
-    font-size: 1.2rem;
-    color: white;
-    margin-bottom: 30px;
-    animation: fadeIn 2.5s ease-in-out;
-}
-
-.section-divider {
-    width: 60%;
-    height: 3px;
-    margin: 20px auto;
-    background: linear-gradient(45deg, #ffa600, #ff6f61);
-    border: none;
-    animation: slideIn 1.5s ease-in-out;
-}
-
-.logo-slider {
-    position: relative;
-    overflow: hidden;
-    margin: 30px auto;
-    width: 80%;
-    display: flex;
-    justify-content: center;
-}
-
-.logo-container {
-    display: flex;
-    gap: 30px;
-    animation: moveLogos 20s linear infinite;
-    will-change: transform;
-    position: relative;
-}
-
-.logo {
-    width: 150px;
-    height: auto;
-    object-fit: contain;
-    transition: transform 0.3s ease;
-}
-
-.logo:hover {
-    transform: scale(1.1);
-    filter: brightness(1.2);
-}
-
 /* Marquee */
 .marquee-container {
     width: 100%;
@@ -1641,6 +1581,7 @@
         width: 90px;
     }
 }
+
 
 /* BAGIAN TESTIMONI YAAAAAAAAAAAAA */
 /* Content-Testimoni */
