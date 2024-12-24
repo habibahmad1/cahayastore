@@ -82,6 +82,12 @@ class KategoriArtikelController extends Controller
      */
     public function destroy(KategoriArtikel $kategoriArtikel)
     {
+        // Cek jika kategori masih memiliki artikel yang terkait
+        if ($kategoriArtikel->artikel()->count() > 0) {
+            return redirect('/dashboard/kategoriartikel')->with('error', 'Kategori tidak dapat dihapus karena masih memiliki artikel terkait.');
+        }
+
+        // Jika tidak ada artikel, lakukan penghapusan kategori
         $kategoriArtikel->delete();
 
         return redirect('/dashboard/kategoriartikel')->with('success', 'Kategori berhasil dihapus!');

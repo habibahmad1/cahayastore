@@ -84,6 +84,12 @@ class AdminKategoriController extends Controller
      */
     public function destroy(Kategori $kategori)
     {
+        // Cek apakah kategori memiliki produk yang terkait
+        if ($kategori->produk()->count() > 0) {
+            return redirect('/dashboard/kategori')->with('error', 'Kategori tidak dapat dihapus karena masih memiliki produk terkait.');
+        }
+
+        // Jika tidak ada produk terkait, hapus kategori
         $kategori->delete();
 
         return redirect('/dashboard/kategori')->with('success', 'Kategori berhasil dihapus!');

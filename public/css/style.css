@@ -63,6 +63,16 @@ body {
     }
 }
 
+/* Menyembunyikan teks desktop di perangkat mobile */
+.mobile {
+    display: none;
+}
+
+/* Menyembunyikan teks mobile di perangkat desktop */
+.desktop {
+    display: inline;
+}
+
 /* Contoh penerapan animasi */
 .hero,
 .card,
@@ -244,6 +254,13 @@ body {
     .login-nav {
         display: block;
         color: #ff5722;
+    }
+    .desktop {
+        display: none;
+    }
+
+    .mobile {
+        display: inline;
     }
     .navbar-bottom {
         margin-top: 80px;

@@ -12,6 +12,11 @@
         {{ session('success') }}
       </div>
     @endif
+    @if (session()->has('error'))
+    <div class="alert alert-danger" role="alert">
+        {{ session('error') }}
+      </div>
+    @endif
 
     <table class="table table-hover table-sm">
       <thead>
