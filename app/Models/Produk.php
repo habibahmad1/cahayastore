@@ -24,6 +24,12 @@ class Produk extends Model
                 ->orWhere('deskripsi', 'like', '%' . $search . '%');
         });
 
+        // Gabungkan tabel kategori_posts dan cari berdasarkan nama kategori
+        $query->when($filters['search'] ?? false, function ($query, $search) {
+            return $query->join('kategoris', 'kategoris.id', '=', 'produks.kategori_id')
+                ->orWhere('kategoris.nama', 'like', '%' . $search . '%');
+        });
+
         $query->when($filters['kategori'] ?? false, function ($query, $kategori) {
             return $query->whereHas('kategori', function ($query) use ($kategori) {
                 $query->where('slug', $kategori);

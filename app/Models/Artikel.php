@@ -50,6 +50,12 @@ class Artikel extends Model
             });
         });
 
+        // Gabungkan tabel kategori_posts dan cari berdasarkan nama kategori
+        $query->when($filters['search'] ?? false, function ($query, $search) {
+            return $query->join('kategori_artikels', 'kategori_artikels.id', '=', 'artikels.kategoripost_id')
+                ->orWhere('kategori_artikels.nama', 'like', '%' . $search . '%');
+        });
+
         $query->when($filters['kategori'] ?? false, function ($query, $kategori) {
             return $query->whereHas('kategori', function ($query) use ($kategori) {
                 $query->where('slug', $kategori);
