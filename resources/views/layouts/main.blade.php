@@ -3,7 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Perusahaan yang bergerak dibidang penjualan pada platform online marketplace">
+    {{-- <meta name="description" content="Perusahaan yang bergerak dibidang penjualan pada platform online marketplace"> --}}
+
+    <!-- Meta Description -->
+    <meta name="description" content="Perusahaan yang bergerak dibidang penjualan pada platform online marketplace , Temukan berbagai produk berkualitas di toko online kami yang tersedia di marketplace populer. Kami menyediakan solusi belanja mudah dan terpercaya untuk memenuhi kebutuhan Anda.">
+
+    <!-- Meta Keywords -->
+    <meta name="keywords" content="toko online, jual produk, marketplace, belanja online, produk berkualitas, solusi belanja, harga terbaik, pengiriman cepat, belanja terpercaya">
     <meta name="author" content="PT. CAHAYA SETIA INDONESIA">
     <title>PT. CAHAYA SETIA INDONESIA | {{ $title }}</title>
     {{-- Favicon --}}

@@ -139,7 +139,7 @@ foreach ($produk_variasi as $variasi) {
 
         <!-- Share Button -->
         <div class="share-button-container my-3">
-            <button id="share-button" class="btn btn text-white" style="background-color: #ff9553">Bagikan</button>
+            <button id="share-button" class="btn btn text-white" style="background-color: #ff9553"><i class="fa-solid fa-share"></i> Bagikan</button>
         </div>
 
         <!-- Share Menu -->
@@ -363,6 +363,49 @@ document.addEventListener("DOMContentLoaded", function () {
             alert("Link berhasil disalin");
         });
     });
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // Ambil semua elemen dengan class "video-place"
+    const videoPlaces = document.querySelectorAll(".video-place");
+
+    videoPlaces.forEach((videoPlace) => {
+        videoPlace.addEventListener("click", () => {
+            // Ambil URL video dari atribut data-src
+            const videoSrc = videoPlace.querySelector(".video-img").getAttribute("data-src");
+
+            // Buat elemen wrapper video
+            const videoWrapper = document.createElement("div");
+            videoWrapper.classList.add("video-wrapper");
+
+            // Buat elemen video
+            const videoElement = document.createElement("video");
+            videoElement.src = videoSrc;
+            videoElement.controls = true; // Tampilkan kontrol video
+            videoElement.autoplay = true; // Langsung putar video
+
+            // Tambahkan tombol "X"
+            const closeButton = document.createElement("button");
+            closeButton.classList.add("close-button");
+            closeButton.innerHTML = "&times;"; // Karakter X
+
+            // Tutup video saat tombol "X" diklik
+            closeButton.addEventListener("click", () => {
+                videoWrapper.remove();
+            });
+
+            // Masukkan video dan tombol ke dalam wrapper
+            videoWrapper.appendChild(closeButton);
+            videoWrapper.appendChild(videoElement);
+
+            // Tambahkan wrapper ke elemen body
+            document.body.appendChild(videoWrapper);
+        });
+    });
+});
+
+
 </script>
 
 

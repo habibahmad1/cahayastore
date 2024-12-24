@@ -230,6 +230,53 @@ html {
     gap: 8px;
 }
 
+/* Video CSS Detail Produk */
+/* Responsivitas untuk video */
+.video-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8); /* Background transparan */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.video-wrapper video {
+    max-width: 90%; /* Maksimal 90% lebar layar */
+    max-height: 90%; /* Maksimal 90% tinggi layar */
+    border-radius: 8px; /* Tambahkan sedikit sudut melengkung */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Tombol tutup (X) */
+.close-button {
+    position: absolute;
+    top: 120px; /* Jarak dari atas, sesuaikan sesuai kebutuhan */
+    right: 40px; /* Jarak dari kanan */
+    background: #ff4d4d; /* Warna latar tombol */
+    color: #fff; /* Warna teks (X) */
+    border: none; /* Hapus border */
+    font-size: 18px; /* Ukuran tanda X */
+    cursor: pointer; /* Ubah kursor jadi pointer */
+    border-radius: 50%; /* Membuat tombol berbentuk lingkaran */
+    width: 30px; /* Lebar tombol */
+    height: 30px; /* Tinggi tombol */
+    display: flex; /* Gunakan flexbox untuk memastikan konten di tengah */
+    justify-content: center; /* Pusatkan secara horizontal */
+    align-items: center; /* Pusatkan secara vertikal */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Tambahkan bayangan */
+    z-index: 1001;
+    line-height: 0; /* Pastikan line-height tidak mengganggu posisi X */
+}
+
+.close-button:hover {
+    background: #ff1a1a;
+}
+
 /* Form Beli */
 .form-beli {
     display: flex;
