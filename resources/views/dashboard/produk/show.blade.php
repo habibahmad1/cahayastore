@@ -41,36 +41,14 @@
 
         {{-- Informasi Produk --}}
         <h2><a href="/produk/{{ $produk->slug }}" class="text-decoration-none">{{ $produk->nama_produk }}</a></h2>
-        <p><b>Kondisi</b>: Baru </p>
-        <p><b>Min. Pemesanan:</b> 1</p>
-        <p><b>Kode Produk:</b> {{ $produk->kode_produk ?? 'Tidak tersedia' }}</p>
-        <p><b>Dimensi Produk:</b> {{ $produk->dimensi ?? 'Tidak tersedia' }}</p>
-        <p><b>Kategori</b> : <a href="/kategori/{{ $produk->kategori->slug }}" class="badge bg-primary text-decoration-none">{{ $produk->kategori->nama }}</a></p>
-        <p><b>Berat</b> : {{ $produk->berat }}(gram)</p>
-        <p><b>Status Produk:</b>
-            <span class="badge
-                @if($produk->status == 'pre-order')
-                    bg-warning
-                @elseif($produk->status == 'habis')
-                    bg-danger
-                @else
-                    text-bg-success
-                @endif
-                text-white">
-                {{ ucwords($produk->status) }}
-            </span>
-        </p>
-        <p><b>Diskon</b> : {{ $produk->diskon }}%</p>
-        <p><b>Deskripsi</b> : {!! $produk->deskripsi !!}</p>
-        <h4><b>Harga</b>: Rp {{ number_format($produk->harga, 0, ',', '.') }}</h4>
-
+        <h4><b>Rp {{ number_format($produk->harga, 0, ',', '.') }}</b></h4>
         {{-- Variasi Produk --}}
         <div>
-            <p class="title-variasi mt-3">Warna:</p>
+            <p class="title-variasi mt-3">Warna/Variasi:</p>
             <div class="detail-variasi d-flex flex-wrap">
                 @foreach ($produk_variasi->unique('warna_id') as $variasi)
-                    <div class="card-variasi m-2" data-warna="{{ $variasi->warna->warna ?? 'Tidak ada' }}" data-id="{{ $variasi->id }}" data-gambar="{{ asset('storage/' . ($variasi->gambar->gambar ?? $produk->gambar1)) }}">
-                        <img src="{{ asset('storage/' . ($variasi->gambar->gambar ?? $produk->gambar1)) }}" alt="img" width="50px">
+                    <div class="card-variasi me-2 w-20 d-flex  justify-content-evenly" data-warna="{{ $variasi->warna->warna ?? 'Tidak ada' }}" data-id="{{ $variasi->id }}" data-gambar="{{ asset('storage/' . ($variasi->gambar->gambar ?? $produk->gambar1)) }}">
+                        <img src="{{ asset('storage/' . ($variasi->gambar->gambar ?? $produk->gambar1)) }}" alt="img" width="30px" class="me-2">
                         <p>{{ $variasi->warna->warna ?? 'Tidak ada' }}</p>
                     </div>
                 @endforeach
@@ -94,6 +72,27 @@
             {{-- Stok --}}
             <p class="mt-2"><b>Stok:</b> <span id="stok-tersedia">{{ $produk->stok }}</span></p>
         </div>
+        <p><b>Kondisi</b>: Baru </p>
+        <p><b>Min. Pemesanan:</b> 1</p>
+        <p><b>Kode Produk:</b> {{ $produk->kode_produk ?? 'Tidak tersedia' }}</p>
+        <p><b>Dimensi Produk:</b> {{ $produk->dimensi ?? 'Tidak tersedia' }}</p>
+        <p><b>Kategori</b> : <a href="/kategori/{{ $produk->kategori->slug }}" class="badge bg-primary text-decoration-none">{{ $produk->kategori->nama }}</a></p>
+        <p><b>Berat</b> : {{ $produk->berat }}(gram)</p>
+        <p><b>Status Produk:</b>
+            <span class="badge
+                @if($produk->status == 'pre-order')
+                    bg-warning
+                @elseif($produk->status == 'habis')
+                    bg-danger
+                @else
+                    text-bg-success
+                @endif
+                text-white">
+                {{ ucwords($produk->status) }}
+            </span>
+        </p>
+        <p><b>Diskon</b> : {{ $produk->diskon }}%</p>
+        <p><b>Deskripsi</b> : {!! $produk->deskripsi !!}</p>
 
         {{-- Tombol Kembali --}}
         <div class="button d-flex">
@@ -165,5 +164,48 @@
         }
     });
 </script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Ambil semua elemen dengan class "video-place"
+      const videoPlaces = document.querySelectorAll(".video-place");
+
+      videoPlaces.forEach((videoPlace) => {
+          videoPlace.addEventListener("click", () => {
+              // Ambil URL video dari atribut data-src
+              const videoSrc = videoPlace.querySelector(".video-img").getAttribute("data-src");
+
+              // Buat elemen wrapper video
+              const videoWrapper = document.createElement("div");
+              videoWrapper.classList.add("video-wrapper");
+
+              // Buat elemen video
+              const videoElement = document.createElement("video");
+              videoElement.src = videoSrc;
+              videoElement.controls = true; // Tampilkan kontrol video
+              videoElement.autoplay = true; // Langsung putar video
+
+              // Tambahkan tombol "X"
+              const closeButton = document.createElement("button");
+              closeButton.classList.add("close-button");
+              closeButton.innerHTML = "&times;"; // Karakter X
+
+              // Tutup video saat tombol "X" diklik
+              closeButton.addEventListener("click", () => {
+                  videoWrapper.remove();
+              });
+
+              // Masukkan video dan tombol ke dalam wrapper
+              videoWrapper.appendChild(closeButton);
+              videoWrapper.appendChild(videoElement);
+
+              // Tambahkan wrapper ke elemen body
+              document.body.appendChild(videoWrapper);
+          });
+      });
+  });
+
+
+  </script>
 
 @endsection
