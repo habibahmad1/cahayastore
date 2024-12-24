@@ -220,6 +220,7 @@
 
     .content {
         min-width: 325px;
+        top: 48%;
     }
 }
 
@@ -239,11 +240,11 @@
     }
 
     .slider {
-        height: 620px;
+        height: 640px;
     }
 
     .slide {
-        height: 620px;
+        height: 640px;
     }
 
     .content {

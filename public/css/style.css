@@ -218,6 +218,9 @@ body {
         display: block;
         color: #ff5722;
     }
+    .navbar-bottom {
+        margin-top: 81px;
+    }
 }
 
 /* Responsive Styling for Small Screens */
