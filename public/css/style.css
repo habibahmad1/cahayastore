@@ -136,38 +136,28 @@ body {
     font-size: 16px;
     padding: 5px 10px;
     transition: color 0.3s ease;
+    overflow: hidden;
 }
 
-.mynavbar-nav a::before,
 .mynavbar-nav a::after {
     content: '';
     position: absolute;
-    width: 0;
+    bottom: 0; /* Garis berada di bawah */
+    left: 50%; /* Awalnya di tengah */
+    width: 0; /* Awalnya tidak terlihat */
     height: 2px;
     background: #ff8d58;
+    transform: translateX(-50%);
     transition: width 0.3s ease;
-    left: 0;
 }
 
-.mynavbar-nav a::before {
-    top: 0; /* Garis atas */
-    transform-origin: left; /* Animasi dari kiri */
-}
-
-.mynavbar-nav a::after {
-    bottom: 0; /* Garis bawah */
-    transform-origin: left; /* Animasi dari kiri */
-}
-
-.mynavbar-nav a:hover::before,
 .mynavbar-nav a:hover::after {
-    width: 100%; /* Tampilkan garis sepenuhnya saat hover */
+    width: 100%; /* Garis meluas ke seluruh elemen */
 }
 
 .mynavbar-nav a:hover {
-    color: #ff8d58; /* Ubah warna teks saat hover */
+    color: #fd9f61; /* Ubah warna teks saat hover */
 }
-
 
 /* Extra Links (Login & Hamburger Menu) */
 .navbar-ekstra {
