@@ -16,14 +16,14 @@
     </div>
 </div>
 
-<div class="kategori-list">
+{{-- <div class="kategori-list">
     @foreach ($kategori as $k)
     <a href="/kategori/{{ $k->slug }}" data-aos="fade-up"
         data-aos-duration="3000" class="text-capitalize">{{ $k->nama }}</a>
     @endforeach
     <a href="/allkategori" data-aos="fade-up"
     data-aos-duration="3000">All Kategori</a>
-</div>
+</div> --}}
 
 <!-- Kontainer Produk -->
 <br>

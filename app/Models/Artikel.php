@@ -33,6 +33,32 @@ class Artikel extends Model
         }
     }
 
+
+    public function scopeFilter($query, array $filters)
+    {
+        $query->when($filters['search'] ?? false, function ($query, $search) {
+            return $query->where(function ($query) use ($search) {
+                $query->where('judul', 'like', '%' . $search . '%')
+                    ->orWhere('excerpt', 'like', '%' . $search . '%')
+                    ->orWhere('body', 'like', '%' . $search . '%')
+                    ->orWhere('user_id', 'like', '%' . $search . '%')
+                    // Cari berdasarkan nama pengguna melalui relasi
+                    ->orWhereHas('user', function ($q) use ($search) {
+                        $q->where('name', 'like', '%' . $search . '%');
+                    })
+                    ->orWhere('kategoripost_id', 'like', '%' . $search . '%');
+            });
+        });
+
+        $query->when($filters['kategori'] ?? false, function ($query, $kategori) {
+            return $query->whereHas('kategori', function ($query) use ($kategori) {
+                $query->where('slug', $kategori);
+            });
+        });
+    }
+
+
+
     public function sluggable(): array
     {
         return [

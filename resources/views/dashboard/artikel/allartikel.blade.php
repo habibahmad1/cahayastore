@@ -12,6 +12,16 @@
 
     <div class="row justify-content-center px-2 col-lg-6">
     </div>
+
+    <div class="col-lg-8 pencarian">
+        <form action="/dashboard/allartikel">
+            <div class="input-group my-3">
+                <input type="text" class="form-control" placeholder="Cari Artikel.." name="search" value="{{ request('search') }}" id="search-box">
+                <button class="btn btn-warning" type="submit">Cari</button>
+            </div>
+        </form>
+    </div>
+
     <div class="table-responsive small col-lg-12">
     <table class="table table-hover table-sm">
       <thead>

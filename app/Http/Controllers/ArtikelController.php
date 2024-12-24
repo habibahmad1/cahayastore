@@ -144,7 +144,7 @@ class ArtikelController extends Controller
     public function allartikel()
     {
         return view('dashboard.artikel.allartikel', [
-            'dataArtikel' => Artikel::latest()
+            'dataArtikel' => Artikel::latest()->filter(request(['search', 'kategori']))
                 ->paginate(10)
                 ->withQueryString(),
         ]);
