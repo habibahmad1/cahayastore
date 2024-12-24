@@ -53,7 +53,7 @@
           <td>{{ $p->created_at->format('d-m-Y') }}</td>
           <td>
             <a href="/dashboard/artikel/{{ $p->slug }}" class="badge bg-info"><span><i class="bi bi-eye-fill"></i></span></a>
-            <a href="/dashboard/artikel/{{ $p->slug }}/edit" class="badge bg-warning"><span><i class="bi bi-pencil-square"></i></span></a>
+            <a href="{{ url('/dashboard/artikel/' . $p->slug . '/edit') }}" class="badge bg-warning"><span><i class="bi bi-pencil-square"></i></span></a>
             <form action="/dashboard/artikel/{{ $p->slug }}" method="POST" class="d-inline">
                 @method('delete')
                 @csrf

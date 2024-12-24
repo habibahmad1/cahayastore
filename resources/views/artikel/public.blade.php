@@ -8,16 +8,25 @@
         <h2>{{ $artikel->judul }}</h2>
 
         @if ($artikel->image)
-
-            <div class="text-center gambarTiapPost postimg mb-4 mt-1">
-                <img src="{{ asset('storage/' . $artikel->image) }}"  alt="imgPost" class="rounded my-3">
+        <div class="text-center gambarTiapPost postimg mb-4 mt-1">
+            <img src="{{ asset('storage/' . $artikel->image) }}" alt="imgPost" class="rounded my-3">
+            <div class="text-end mt-2">
+                <a href="{{ asset('storage/' . $artikel->image) }}" download class="text-decoration-none badge bg-primary">
+                    <i class="fa-solid fa-download"></i> Unduh
+                </a>
             </div>
-
-        @else
-            <div class="text-center gambarTiapPost postimg mb-4 mt-1">
-                <img src="https://picsum.photos/seed/{{ $artikel->kategoripost->nama }}/1200/600"  alt="imgPost" class="rounded my-3">
+        </div>
+    @else
+        <div class="text-center gambarTiapPost postimg mb-4 mt-1">
+            <img src="https://picsum.photos/seed/{{ $artikel->kategoripost->nama }}/1200/600" alt="imgPost" class="rounded my-3">
+            <div class="text-end mt-2">
+                <a href="https://picsum.photos/seed/{{ $artikel->kategoripost->nama }}/1200/600" download class="text-decoration-none badge bg-primary">
+                    <i class="fa-solid fa-download"></i> Unduh
+                </a>
             </div>
-        @endif
+        </div>
+    @endif
+
 
         <h6 class="fw-bold mb-3">Penulis :<a href="/authors/{{ $artikel->user->username }}" style="color: #41a77e" class="text-decoration-none"> {{ $artikel->user->name }} </a>
             <div class="badge text-bg-danger"><a href="/categories/{{ $artikel->kategoripost->slug }}" class="text-white text-decoration-none">{{ $artikel->kategoripost->nama }}</a></div>
