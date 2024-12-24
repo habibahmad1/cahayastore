@@ -47,7 +47,7 @@
             <p class="title-variasi mt-3">Warna/Variasi:</p>
             <div class="detail-variasi d-flex flex-wrap">
                 @foreach ($produk_variasi->unique('warna_id') as $variasi)
-                    <div class="card-variasi me-2 w-20 d-flex  justify-content-evenly" data-warna="{{ $variasi->warna->warna ?? 'Tidak ada' }}" data-id="{{ $variasi->id }}" data-gambar="{{ asset('storage/' . ($variasi->gambar->gambar ?? $produk->gambar1)) }}">
+                    <div class="card-variasi m-2 w-20 d-flex  justify-content-evenly" data-warna="{{ $variasi->warna->warna ?? 'Tidak ada' }}" data-id="{{ $variasi->id }}" data-gambar="{{ asset('storage/' . ($variasi->gambar->gambar ?? $produk->gambar1)) }}">
                         <img src="{{ asset('storage/' . ($variasi->gambar->gambar ?? $produk->gambar1)) }}" alt="img" width="30px" class="me-2">
                         <p>{{ $variasi->warna->warna ?? 'Tidak ada' }}</p>
                     </div>
