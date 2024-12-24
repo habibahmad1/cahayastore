@@ -3,7 +3,7 @@
 @section('container')
 <div class="marquee-container">
     <div class="marquee">
-        Promo Spesial Hari Ini: Diskon Hingga 50%! Jangan Lewatkan Kesempatan Emas Ini! 🤗🎉
+        Promo Spesial Hari Ini: Diskon Hingga 50%! Jangan Lewatkan Kesempatan Emas <a href="/produk">Ini!</a> 🤗🎉
     </div>
 </div>
 

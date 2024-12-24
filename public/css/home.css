@@ -1552,9 +1552,39 @@
     }
 }
 
-  /* BAGIAN TESTIMONI YAAAAAAAAAAAAA */
-  /* Content-Testimoni */
-  .testimoni {
+/* Responsiveness */
+@media (max-width: 768px) {
+    .client-section h1 {
+        font-size: 1.8rem;
+    }
+
+    .client-section h2 {
+        font-size: 1rem;
+    }
+
+    .logo {
+        width: 120px;
+    }
+}
+
+@media (max-width: 480px) {
+    .client-section h1 {
+        font-size: 1.5rem;
+    }
+
+    .client-section h2 {
+        font-size: 0.9rem;
+    }
+
+    .logo {
+        width: 90px;
+    }
+}
+
+
+/* BAGIAN TESTIMONI YAAAAAAAAAAAAA */
+/* Content-Testimoni */
+.testimoni {
     background: linear-gradient(to top, #2c3e50, #141414);
     /* background: #2c3e50; */
     padding: 5px 20px;
@@ -1703,9 +1733,12 @@
         font-size: 0.8rem;
     }
 
-
     .star-testi i {
         font-size: 20px;
         margin-top: 30px;
+    }
+
+    .marquee-container {
+        font-size: 12px;
     }
 }

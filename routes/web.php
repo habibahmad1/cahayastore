@@ -137,7 +137,8 @@ Route::get('/category/{kategoriartikel:slug}', function (KategoriArtikel $katego
 Route::get('/categories', function () {
     return view('kategoripost', [
         "title" => 'All Categories',
-        "categories" => KategoriArtikel::all()
+        "categories" => KategoriArtikel::all(),
+        "categoriproduk" => Kategori::all()
     ]);
 });
 

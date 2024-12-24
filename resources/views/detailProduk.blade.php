@@ -139,13 +139,13 @@ foreach ($produk_variasi as $variasi) {
 
         <!-- Share Button -->
         <div class="share-button-container my-3">
-            <button id="share-button" class="btn btn text-white" style="background-color: #ff9553"><i class="fa-solid fa-share"></i> Bagikan</button>
+            <button id="share-button" class="badge btn text-white" style="background-color: #ff9553"><i class="fa-solid fa-share"></i> Bagikan</button>
         </div>
 
         <!-- Share Menu -->
         <div id="share-menu" style="display:none;">
-            <a id="whatsapp-share" href="#" target="_blank" class="btn btn-success"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
-            <button id="copy-url" class="btn btn-secondary"><i class="fa-regular fa-clipboard"></i> Copy URL</button>
+            <a id="whatsapp-share" href="#" target="_blank" class="badge bg-success text-decoration-none"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+            <button id="copy-url" class="badge bg-secondary border-0"><i class="fa-regular fa-clipboard"></i> Copy URL</button>
         </div>
 
         <hr>
