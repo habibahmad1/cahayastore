@@ -94,7 +94,7 @@ body {
     align-items: center;
     padding: 1rem 7%;
     background-color: rgba(1, 1, 1, 0.8);
-    border-bottom: 1px solid #ffa600;
+    border-bottom: 1px solid #fffffff3;
     position: fixed;
     top: 0;
     left: 0;
@@ -120,17 +120,44 @@ body {
 }
 
 .mynavbar-nav a {
+    position: relative;
     text-decoration: none;
     color: #fff;
     font-size: 16px;
     padding: 5px 10px;
-    transition: color 0.3s ease, transform 0.3s ease;
+    transition: color 0.3s ease;
+}
+
+.mynavbar-nav a::before,
+.mynavbar-nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: #ff8d58;
+    transition: width 0.3s ease;
+    left: 0;
+}
+
+.mynavbar-nav a::before {
+    top: 0; /* Garis atas */
+    transform-origin: left; /* Animasi dari kiri */
+}
+
+.mynavbar-nav a::after {
+    bottom: 0; /* Garis bawah */
+    transform-origin: left; /* Animasi dari kiri */
+}
+
+.mynavbar-nav a:hover::before,
+.mynavbar-nav a:hover::after {
+    width: 100%; /* Tampilkan garis sepenuhnya saat hover */
 }
 
 .mynavbar-nav a:hover {
-    color: #ff8d58;
-    transform: scale(1.1);
+    color: #ff8d58; /* Ubah warna teks saat hover */
 }
+
 
 /* Extra Links (Login & Hamburger Menu) */
 .navbar-ekstra {
