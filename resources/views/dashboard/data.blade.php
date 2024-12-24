@@ -23,8 +23,8 @@
         <th scope="col">No.</th>
         <th scope="col">Nama User</th>
         <th scope="col">Username</th>
-        <th scope="col">Gambar</th>
         <th scope="col">Email</th>
+        <th scope="col">Daftar</th>
         <th scope="col">Admin</th>
         <th scope="col">Aksi</th>
       </tr>
@@ -36,8 +36,8 @@
         <td>{{ $loop->iteration }}</td>
         <td>{{ $p->name }}</td>
         <td>{{ $p->username }}</td>
-        <td>{{ $p->image }}</td>
         <td>{{ $p->email }}</td>
+        <td>{{ $p->created_at->format('d-m-Y') }}</td>
         <td>{{ $p->is_admin ? 'Ya' : 'Tidak' }}</td>
         <td>
             <a href="/dashboard/jadiAdmin/{{ $p->id }}"

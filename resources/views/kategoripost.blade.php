@@ -16,7 +16,7 @@
                                 <img src="https://picsum.photos/seed/{{ $post->nama }}/600/200" alt="imgPost" class="img-fluid rounded">
                                 <!-- Overlay dengan teks di tengah -->
                                 <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-flex align-items-center justify-content-center">
-                                    <h2 class="text-white fs-4 text-center">{{ $post->judul }}</h2>
+                                    <h2 class="text-white text-center">{{ $post->judul }}</h2>
                                 </div>
                             </div>
                             <!-- Teks di depan gambar, posisikan di tengah -->
@@ -47,7 +47,7 @@
                                 <img src="https://picsum.photos/seed/{{ $post->nama }}/600/200" alt="imgPost" class="img-fluid rounded">
                                 <!-- Overlay dengan teks di tengah -->
                                 <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-flex align-items-center justify-content-center">
-                                    <h2 class="text-white fs-4 text-center">{{ $post->judul }}</h2>
+                                    <h2 class="text-white text-center">{{ $post->judul }}</h2>
                                 </div>
                             </div>
                             <!-- Teks di depan gambar, posisikan di tengah -->

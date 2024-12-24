@@ -164,13 +164,6 @@ html {
     font-size: 22px;
 }
 
-.text-ellipsis {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 400px; /* Ubah sesuai kebutuhan */
-}
-
 /* detail produk info */
 .produk-info-detail {
     max-width: 600px;
@@ -447,18 +440,11 @@ html {
 
     .product-card {
         width: 170px;
-        height: 320px;
+        height: 335px;
     }
 
     .product-list {
         gap: 10px;
-    }
-
-    .text-ellipsis {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        max-width: 150px; /* Ubah sesuai kebutuhan */
     }
 
     .details-button {

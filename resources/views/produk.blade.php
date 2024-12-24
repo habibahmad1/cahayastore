@@ -45,7 +45,15 @@
                         </div>
                     </a>
                     <div class="produk-info">
-                        <h5 class="text-ellipsis"><a href="/produk/{{ $produk->slug }}" class="nama-produk">{{ $produk->nama_produk }}</a></h5>
+                        <h5>
+                            <a href="/produk/{{ $produk->slug }}" class="nama-produk">
+                                <!-- Untuk desktop, tampilkan 70 karakter -->
+                                <span class="desktop">{{ \Illuminate\Support\Str::limit($produk->nama_produk, 70) }}</span>
+
+                                <!-- Untuk mobile, tampilkan 40 karakter -->
+                                <span class="mobile">{{ \Illuminate\Support\Str::limit($produk->nama_produk, 40) }}</span>
+                            </a>
+                        </h5>
                         <p><span class="badge text-bg-warning text-danger"><i class="fa-solid fa-fire"></i> Diskon : {{ $produk->diskon }}% </span></p>
                         <p><i class="fa-solid fa-store" style="color: #04b4c4"></i> Cahayacenterid</p>
                         <p><i class="fa-solid fa-truck-fast" style="color: #2fd946"></i> Kab.Tangerang</p>
