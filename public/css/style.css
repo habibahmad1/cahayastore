@@ -96,7 +96,27 @@ body {
     transform: scale(1.1);
 }
 
-/* Navbar Styling */
+/* Translate */
+/* Mengubah background menjadi hitam pada elemen Google Translate */
+.goog-te-gadget-simple {
+    background-color: black !important; /* Mengatur background menjadi hitam */
+    color: white !important; /* Mengatur warna teks menjadi putih untuk kontras yang baik */
+}
+
+/* Mengubah warna tombol drop-down dan teks agar tetap kontras */
+.goog-te-gadget-simple select,
+.goog-te-gadget-simple button {
+    background-color: black !important; /* Background hitam */
+    color: white !important; /* Teks putih agar terlihat */
+    border: 1px solid white; /* Border putih */
+}
+
+/* Mengatur warna teks saat hover atau aktif */
+.goog-te-gadget-simple select:hover,
+.goog-te-gadget-simple button:hover {
+    background-color: #333 !important; /* Warna gelap saat hover */
+}
+
 /* Navbar Container */
 .mynavbar-container {
     display: flex;
@@ -140,7 +160,7 @@ body {
 }
 
 .mynavbar-nav a::after {
-    content: '';
+    content: "";
     position: absolute;
     bottom: 0; /* Garis berada di bawah */
     left: 50%; /* Awalnya di tengah */

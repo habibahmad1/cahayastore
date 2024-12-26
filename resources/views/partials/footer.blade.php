@@ -3,8 +3,7 @@
     <div class="footer-1">
       <h3>CSI</h3>
       <p>
-        PT CAHAYA SETIA INDONESIA: Menyediakan lampu pancing berkualitas
-        tinggi untuk dermaga dan kapal.
+        PT CAHAYA SETIA INDONESIA: Perusahaan yang bergerak dibidang penjualan pada platform online Marketplace.
       </p>
       <div class="sosmed">
         <p>Follow Us</p>
@@ -33,14 +32,26 @@
       <a href="/faq">FAQ</a>
     </div>
     <div class="footer-3">
-      <h3>Pelayanan</h3>
+      <h3>Unggulan</h3>
       <a href="/produk">Produk</a>
-      <a href="/features">Keunggulan</a>
+      <a href="/artikel">Artikel</a>
     </div>
     <div class="footer-4">
-      <h3>Kategori</h3>
+      <h3>Pelayanan</h3>
       <a href="/categories">All Kategori</a>
-      <a href="/artikel">Artikel</a>
+      <!-- Google Translate Widget -->
+      <div id="google_translate_element"></div>
+      <script type="text/javascript">
+      function googleTranslateElementInit() {
+          new google.translate.TranslateElement({
+          pageLanguage: 'id',  // Bahasa halaman default
+          includedLanguages: 'en,id,zh-CN', // Bahasa yang ingin disediakan untuk diterjemahkan
+          layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+          }, 'google_translate_element');
+      }
+      </script>
+      <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
     </div>
   </section>
   <p

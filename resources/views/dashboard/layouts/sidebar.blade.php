@@ -122,12 +122,29 @@
         <hr class="my-3">
 
         <ul class="nav flex-column mb-auto">
-          {{-- <li class="nav-item">
+          <li class="nav-item">
             <a class="nav-link d-flex align-items-center gap-2" href="/dashboard/settings">
               <svg class="bi"><use xlink:href="#gear-wide-connected"/></svg>
               Settings
             </a>
-          </li> --}}
+          </li>
+          <li class="nav-item">
+            <a class="nav-link d-flex align-items-center gap-2" href="#">
+                <i class="bi bi-translate"></i>
+            <div id="google_translate_element"></div>
+            <script type="text/javascript">
+            function googleTranslateElementInit() {
+                new google.translate.TranslateElement({
+                pageLanguage: 'id',  // Bahasa halaman default
+                includedLanguages: 'en,id,zh-CN', // Bahasa yang ingin disediakan untuk diterjemahkan
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+                }, 'google_translate_element');
+            }
+            </script>
+            <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+            </a>
+          </li>
           <li class="nav-item">
             <a class="nav-link d-flex align-items-center gap-2" href="#">
               <svg class="bi"><use xlink:href="#door-closed"/></svg>

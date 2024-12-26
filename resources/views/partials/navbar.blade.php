@@ -9,6 +9,7 @@
                 <a href="/categories" class="{{ Request::is('categories*') ? 'active-dashboard' : '' }}">Kategori</a>
                 <a href="/faq" class="{{ Request::is('faq') ? 'active-dashboard' : '' }}">FAQ</a>
                 <a href="/tentang" class="{{ Request::is('tentang') ? 'active-dashboard' : '' }}">Tentang</a>
+
                 @auth
                 <a class="dropdown-toggle text-decoration-none login-nav" href="#" role="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="fa-solid fa-user"></i> {{ ucfirst(auth()->user()->name) }}

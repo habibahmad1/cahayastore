@@ -263,4 +263,29 @@
     </div>
     </section>
 
+    <button id="back-to-top" class="btn" style="background-color: #fd8c45; color: white; display: none; position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
+        <i class="fa-solid fa-angle-up"></i>
+    </button>
+
+
+<script>
+    // Menampilkan tombol jika scroll lebih dari 100px
+    const backToTopButton = document.getElementById("back-to-top");
+
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 100) {
+            backToTopButton.style.display = "block";
+        } else {
+            backToTopButton.style.display = "none";
+        }
+    });
+
+    // Scroll ke atas saat tombol diklik
+    backToTopButton.addEventListener("click", () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    });
+</script>
 @endsection
