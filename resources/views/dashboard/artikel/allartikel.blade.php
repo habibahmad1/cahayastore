@@ -14,7 +14,7 @@
     </div>
 
     <div class="col-lg-8 pencarian">
-        <form action="/dashboard/allartikel">
+        <form action="{{ url('/dashboard/allartikel') }}">
             <div class="input-group my-3">
                 <input type="text" class="form-control" placeholder="Cari Artikel.." name="search" value="{{ request('search') }}" id="search-box">
                 <button class="btn btn-warning" type="submit">Cari</button>

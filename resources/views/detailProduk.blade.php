@@ -213,6 +213,14 @@ foreach ($produk_variasi as $variasi) {
     </div>
 </div>
 
+<div class="box-beli">
+    <div class="nempel-beli">
+        <div class="stok" id="stok-nempel-beli"><i class="fa-solid fa-box"></i> Stok 20</div>
+        <a href="https://wa.me/6289529907437?text={{ urlencode('Halo, saya tertarik dengan produk ini: ' . url('/produk/' . $post->slug) . ' Terima kasih.') }}" target="_blank" class="beli-sekarang-hp text-decoration-none">
+            <i class="fa-solid fa-cart-shopping"></i> Beli Sekarang
+        </a>    </div>
+</div>
+
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         // Ambil elemen thumbnail
@@ -237,6 +245,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const imgForm = document.getElementById("img-form"); // Gambar di Detail Harga
     const ukuranVariasi = document.querySelectorAll(".detail-variasi .card-variasi[data-ukuran]");
     const stokElement = document.querySelector(".form-beli p b"); // Elemen stok di form beli
+    const stokNempelBeliElement = document.getElementById("stok-nempel-beli"); // Elemen stok di bagian bawah
     const produkVariasi = @json($produk_variasi); // Kirim data PHP ke JavaScript
 
     let selectedWarna = null;  // Inisialisasi selectedWarna
@@ -319,11 +328,14 @@ document.addEventListener("DOMContentLoaded", function () {
         // Perbarui stok di form beli
         if (selectedVariasi) {
             stokElement.textContent = `Stok: ${selectedVariasi.stok}`;
+            stokNempelBeliElement.textContent = `Stok: ${selectedVariasi.stok}`;
         } else {
             stokElement.textContent = "Stok: Tidak tersedia"; // Jika variasi yang dipilih tidak ada
+            stokNempelBeliElement.textContent = "Stok: Tidak tersedia"; // Jika variasi yang dipilih tidak ada
         }
     }
 });
+
 
 </script>
 

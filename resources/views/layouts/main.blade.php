@@ -11,7 +11,7 @@
     <!-- Meta Keywords -->
     <meta name="keywords" content="toko online, jual produk, marketplace, belanja online, produk berkualitas, solusi belanja, harga terbaik, pengiriman cepat, belanja terpercaya">
     <meta name="author" content="PT. CAHAYA SETIA INDONESIA">
-    <title>PT. CAHAYA SETIA INDONESIA | {{ $title }}</title>
+    <title>PT. CAHAYA SETIA INDONESIA | {{ $title ?? '404' }}</title>
     {{-- Favicon --}}
     <link rel="icon" href="{{ asset('img/favicon.png') }}" type="image/png">
     {{-- My CSS --}}

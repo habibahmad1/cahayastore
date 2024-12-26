@@ -18,24 +18,26 @@ class Produk extends Model
 
     public function scopeFilter($query, array $filters)
     {
-
+        // Pencarian berdasarkan produk (nama produk, deskripsi)
         $query->when($filters['search'] ?? false, function ($query, $search) {
-            return $query->where('nama_produk', 'like', '%' . $search . '%')
-                ->orWhere('deskripsi', 'like', '%' . $search . '%');
+            return $query->where(function ($query) use ($search) {
+                $query->where('nama_produk', 'like', '%' . $search . '%')
+                    ->orWhere('deskripsi', 'like', '%' . $search . '%')
+                    // Cari berdasarkan kategori menggunakan relasi
+                    ->orWhereHas('kategori', function ($q) use ($search) {
+                        $q->where('nama', 'like', '%' . $search . '%');
+                    });
+            });
         });
 
-        // Gabungkan tabel kategori_posts dan cari berdasarkan nama kategori
-        $query->when($filters['search'] ?? false, function ($query, $search) {
-            return $query->join('kategoris', 'kategoris.id', '=', 'produks.kategori_id')
-                ->orWhere('kategoris.nama', 'like', '%' . $search . '%');
-        });
-
+        // Pencarian berdasarkan kategori (slug)
         $query->when($filters['kategori'] ?? false, function ($query, $kategori) {
             return $query->whereHas('kategori', function ($query) use ($kategori) {
                 $query->where('slug', $kategori);
             });
         });
     }
+
 
 
     public function kategori()

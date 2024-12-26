@@ -160,7 +160,7 @@ Route::get('reset-password/{token}/{email}', [ForgotPasswordController::class, '
 Route::post('reset-password', [ForgotPasswordController::class, 'resetPassword'])->name('password.update');
 
 // Route All Artikel
-Route::get('dashboard/allartikel', [ArtikelController::class, 'allartikel'])->middleware(['auth', 'admin']);
+Route::get('dashboard/allartikel', [ArtikelController::class, 'allartikel'])->middleware(['auth', 'admin'])->name('allartikel');
 
 // Route Setting
 Route::get('dashboard/settings/', [SettingController::class, 'index'])->middleware('auth');

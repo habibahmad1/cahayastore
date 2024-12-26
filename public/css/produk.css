@@ -361,6 +361,39 @@ html {
     object-fit: contain;
 }
 
+/* Box Beli Hp */
+.box-beli {
+    display: none;
+    position: relative;
+    width: 100vw; /* Menggunakan lebar penuh viewport */
+}
+
+.nempel-beli {
+    display: flex;
+    position: fixed; /* Tetap di posisi bawah layar */
+    bottom: 0; /* Menempel di bawah */
+    left: 0; /* Memastikan mulai dari sisi kiri layar */
+    width: 100%; /* Mengisi lebar penuh */
+    background-color: #ff8944; /* Warna latar */
+    z-index: 1000; /* (Opsional) Menjaga elemen tetap di atas elemen lain */
+}
+
+.stok,
+.beli-sekarang-hp {
+    flex: 1; /* Membagi lebar sama rata */
+    text-align: center; /* Menyelaraskan teks di tengah elemen */
+    border: 1px solid #ddd; /* (Opsional) Menambahkan garis luar */
+    padding: 10px; /* Memberikan ruang dalam elemen */
+    color: #f0f8ff; /* Warna teks */
+    font-size: 16px; /* (Opsional) Mengatur ukuran teks */
+    box-sizing: border-box; /* Memastikan padding dan border dihitung dalam lebar */
+}
+
+.stok,
+.beli-sekarang-hp:hover {
+    cursor: pointer;
+}
+
 /* Media Query untuk layar dengan lebar kurang dari 600px */
 @media (max-width: 600px) {
     .detail-product-card {
@@ -470,5 +503,10 @@ html {
 
     .gambar-produk-detail {
         margin: 0;
+    }
+
+    /* Box Beli HP */
+    .box-beli {
+        display: flex;
     }
 }
