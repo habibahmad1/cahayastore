@@ -18,6 +18,9 @@ use App\Models\KategoriArtikel;
 use App\Models\Produk;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+
 
 
 
@@ -164,3 +167,33 @@ Route::get('dashboard/allartikel', [ArtikelController::class, 'allartikel'])->mi
 
 // Route Setting
 Route::get('dashboard/settings/', [SettingController::class, 'index'])->middleware('auth');
+
+// Route Edit User
+Route::get('dashboard/settings/edituser', function () {
+    return view('resetpassword.edituser', [
+        "title" => 'Edit Profil',
+        "user" => Auth::user() // Ambil data pengguna yang login
+    ]);
+})->middleware('auth');
+
+Route::put('/dashboard/settings/updateuser', function (Request $request) {
+    // Ambil data pengguna yang sedang login
+    $user = Auth::user();
+
+    // Validasi data
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'username' => 'required|string|max:255|unique:users,username,' . $user->id,
+        'email' => 'required|email|max:255|unique:users,email,' . $user->id,
+    ]);
+
+    // Update data pengguna
+    $user->update([
+        'name' => $request->name,
+        'username' => $request->username,
+        'email' => $request->email,
+    ]);
+
+    // Redirect kembali dengan pesan sukses
+    return redirect('/dashboard/settings')->with('success', 'Profil berhasil diperbarui!');
+})->middleware('auth');

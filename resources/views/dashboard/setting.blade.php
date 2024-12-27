@@ -4,6 +4,54 @@
     <div class="settings-container">
         <h2 class="settings-title my-3">Pengaturan</h2>
         <hr>
+
+        <!-- Menampilkan pesan sukses jika ada -->
+        @if (session('success'))
+        <div class="alert alert-success col-lg-3">
+            {{ session('success') }}
+        </div>
+        @endif
+
+        <!-- Pengaturan Profil -->
+        <div class="settings-item" style="background-color: var(--bs-body-bg); color: var(--bs-body-color)">
+            <h5 class="settings-item-title mt-3">Profil Saya</h5>
+            <div class="box-form-profil col-lg-3">
+                <div class="mb-3">
+                    <label for="nama_pengguna" class="form-label">Nama Lengkap</label>
+                    <input
+                    type="text"
+                    class="form-control text-secondary"
+                    id="nama_pengguna"
+                    name="nama_pengguna"
+                    value="{{ auth()->user()->name }}"
+                    readonly>
+                </div>
+                <div class="mb-3">
+                    <label for="nama_pengguna" class="form-label">Username</label>
+                    <input
+                    type="text"
+                    class="form-control text-secondary"
+                    id="nama_pengguna"
+                    name="nama_pengguna"
+                    value="{{ auth()->user()->username }}"
+                    readonly>
+                </div>
+                <div class="mb-3">
+                    <label for="nama_pengguna" class="form-label">Email</label>
+                    <input
+                    type="text"
+                    class="form-control text-secondary"
+                    id="nama_pengguna"
+                    name="nama_pengguna"
+                    value="{{ auth()->user()->email }}"
+                    readonly>
+                </div>
+                <div class="text-end"> <!-- Tambahkan div dengan class text-end -->
+                    <a href="/dashboard/settings/edituser" class="btn btn-primary my-3">Edit Profil</a>
+                </div>
+            </div>
+        </div>
+
         <!-- Pengaturan Tema -->
         <div class="settings-item">
             <div class="settings-item">
@@ -24,11 +72,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- Pengaturan Bahasa -->
-        {{-- <div class="settings-item">
-            <h5 class="settings-item-title mt-3">Bahasa</h5>
-        </div> --}}
     </div>
 
 @endsection

@@ -123,7 +123,7 @@
 
         <ul class="nav flex-column mb-auto">
           <li class="nav-item">
-            <a class="nav-link d-flex align-items-center gap-2" href="/dashboard/settings">
+            <a class="nav-link d-flex align-items-center gap-2 {{ Request::is('dashboard/settings*') ? 'active-dashboard' : '' }}" href="/dashboard/settings">
               <svg class="bi"><use xlink:href="#gear-wide-connected"/></svg>
               Settings
             </a>
