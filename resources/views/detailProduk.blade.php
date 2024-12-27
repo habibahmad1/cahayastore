@@ -251,6 +251,10 @@ document.addEventListener("DOMContentLoaded", function () {
     let selectedWarna = null;  // Inisialisasi selectedWarna
     let selectedUkuran = null; // Inisialisasi selectedUkuran
 
+    // Tampilkan stok awal produk
+    const stokAwal = {{ $post->stok }}; // Stok awal produk tanpa variasi
+    updateStokDisplay(stokAwal);
+
     // Event klik untuk warna
     warnaVariasi.forEach(warna => {
         warna.addEventListener("click", function () {
@@ -327,14 +331,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Perbarui stok di form beli
         if (selectedVariasi) {
-            stokElement.textContent = `Stok: ${selectedVariasi.stok}`;
-            stokNempelBeliElement.textContent = `Stok: ${selectedVariasi.stok}`;
+            updateStokDisplay(selectedVariasi.stok);
         } else {
-            stokElement.textContent = "Stok: Tidak tersedia"; // Jika variasi yang dipilih tidak ada
-            stokNempelBeliElement.textContent = "Stok: Tidak tersedia"; // Jika variasi yang dipilih tidak ada
+            // Jika tidak ada variasi yang sesuai, tampilkan stok awal
+            updateStokDisplay(stokAwal);
         }
     }
+
+    // Fungsi untuk memperbarui tampilan stok (dengan ikon stok)
+    function updateStokDisplay(stok) {
+        const stokIconHTML = `<i class="fas fa-box"></i>`; // Ikon stok, sesuaikan dengan ikon yang Anda gunakan
+        const stokText = `Stok: ${stok}`;
+        stokElement.innerHTML = `${stokIconHTML} ${stokText}`;
+        stokNempelBeliElement.innerHTML = `${stokIconHTML} ${stokText}`;
+    }
 });
+
 
 
 </script>
