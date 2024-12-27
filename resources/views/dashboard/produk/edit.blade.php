@@ -96,7 +96,7 @@
         <!-- Gambar 3 -->
         <div class="mb-3">
             <label for="gambar3" class="form-label">Gambar 3 <span class="text-secondary">(Optional)</span></label>
-
+            <br>
             @if ($produk->gambar3)
                 <img src="{{ asset('storage/' . $produk->gambar3) }}" class="img-preview-3 img-fluid mb-3 d-block" style="max-height: 200px">
             @else
@@ -114,7 +114,7 @@
         <!-- Gambar 4 -->
         <div class="mb-3">
             <label for="gambar4" class="form-label">Gambar 4 <span class="text-secondary">(Optional)</span></label>
-
+            <br>
             @if ($produk->gambar4)
                 <img src="{{ asset('storage/' . $produk->gambar4) }}" class="img-preview-4 img-fluid mb-3 d-block" style="max-height: 200px">
             @else
@@ -132,7 +132,7 @@
         <!-- Gambar 5 -->
         <div class="mb-3">
             <label for="gambar5" class="form-label">Gambar 5 <span class="text-secondary">(Optional)</span></label>
-
+            <br>
             @if ($produk->gambar5)
                 <img src="{{ asset('storage/' . $produk->gambar5) }}" class="img-preview-5 img-fluid mb-3 d-block" style="max-height: 200px">
             @else
