@@ -48,10 +48,10 @@
                         <h5>
                             <a href="/produk/{{ $produk->slug }}" class="nama-produk">
                                 <!-- Untuk desktop, tampilkan 70 karakter -->
-                                <span class="desktop">{{ \Illuminate\Support\Str::limit($produk->nama_produk, 70) }}</span>
+                                <span class="desktop">{{ \Illuminate\Support\Str::limit($produk->nama_produk, 65) }}</span>
 
                                 <!-- Untuk mobile, tampilkan 40 karakter -->
-                                <span class="mobile">{{ \Illuminate\Support\Str::limit($produk->nama_produk, 40) }}</span>
+                                <span class="mobile">{{ \Illuminate\Support\Str::limit($produk->nama_produk, 35) }}</span>
                             </a>
                         </h5>
                         <p><span class="badge text-bg-warning text-danger"><i class="fa-solid fa-fire"></i> Diskon : {{ $produk->diskon }}% </span></p>
