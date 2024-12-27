@@ -3,7 +3,7 @@
 <h2 class="settings-title my-3">Edit Profil</h2>
 <hr>
 <div class="box-edit-user col-lg-3">
-    <form method="POST" action="/dashboard/settings/updateuser/" enctype="multipart/form-data">
+    <form method="POST" action="/dashboard/settings/updateuser" enctype="multipart/form-data">
         @method('put')
         @csrf
 

@@ -77,6 +77,7 @@
     title.addEventListener("keyup", function() {
         let preslug = title.value;
         preslug = preslug.replace(/ /g,"-");
+        preslug = preslug.replace(/\//g, "-");
         slug.value = preslug.toLowerCase();
     });
 
