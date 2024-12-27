@@ -29,7 +29,7 @@ class RegisterController extends Controller
         // Hash password sebelum menyimpan
         $validateData['password'] = bcrypt($validateData['password']);
 
-        $validateData['is_admin'] = true;
+        $validateData['is_admin'] = false;
 
 
         // Simpan data ke database
