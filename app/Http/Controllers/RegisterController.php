@@ -20,7 +20,7 @@ class RegisterController extends Controller
         $validateData = $request->validate([
             'name' => 'required|max:255',
             'email' => 'required|email:dns|unique:users',
-            'password' => 'required|min:3|confirmed',
+            'password' => 'required|min:8|confirmed',
         ]);
 
         // Generate username dari name dengan angka random 3 digit
