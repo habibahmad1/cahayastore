@@ -12,7 +12,7 @@ class KategoriController extends Controller
     {
         return view('produk', [
             "title" => 'Kategori: ' . ucwords($kategori->nama),
-            "posts" => $kategori->produk()->latest()->filter(request(['search']))->paginate(10)->withQueryString(), // Filter produk berdasarkan kategori
+            "posts" => $kategori->produk()->latest()->filter(request(['search']))->paginate(12)->withQueryString(), // Filter produk berdasarkan kategori
             "kategori" => Kategori::all(),
         ]);
     }

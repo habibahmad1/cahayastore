@@ -201,7 +201,7 @@ foreach ($produk_variasi as $variasi) {
         </div>
         <div class="form-wa">
             <a
-                href="https://wa.me/6289529907437?text={{ urlencode('Halo, saya tertarik dengan produk ini: ' . url('/produk/' . $post->slug) . ' Terima kasih.') }}"
+                href="https://wa.me/628119910388?text={{ urlencode('Halo, saya tertarik dengan produk ini: ' . url('/produk/' . $post->slug) . ' Terima kasih.') }}"
                 target="_blank">
                 Beli Sekarang
             </a>
@@ -216,7 +216,7 @@ foreach ($produk_variasi as $variasi) {
 <div class="box-beli">
     <div class="nempel-beli">
         <div class="stok" id="stok-nempel-beli"><i class="fa-solid fa-box"></i> Stok 20</div>
-        <a href="https://wa.me/6289529907437?text={{ urlencode('Halo, saya tertarik dengan produk ini: ' . url('/produk/' . $post->slug) . ' Terima kasih.') }}" target="_blank" class="beli-sekarang-hp text-decoration-none">
+        <a href="https://wa.me/628119910388?text={{ urlencode('Halo, saya tertarik dengan produk ini: ' . url('/produk/' . $post->slug) . ' Terima kasih.') }}" target="_blank" class="beli-sekarang-hp text-decoration-none">
             <i class="fa-solid fa-cart-shopping"></i> Beli Sekarang
         </a>    </div>
 </div>

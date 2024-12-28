@@ -13,7 +13,7 @@ class ProdukController extends Controller
     {
         return view('produk', [
             "title" => "Semua Produk",
-            "posts" => Produk::with(['kategori', 'variasi'])->latest()->filter(request(['search', 'kategori']))->paginate(10)->withQueryString(),
+            "posts" => Produk::with(['kategori', 'variasi'])->latest()->filter(request(['search', 'kategori']))->paginate(12)->withQueryString(),
             "kategori" => Kategori::all()
         ]);
     }
