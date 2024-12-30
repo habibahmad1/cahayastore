@@ -75,7 +75,7 @@
     </div>
 
     <div class="pagination d-flex justify-content-center my-5">
-        {{ $posts->links() }}
+        {{ $posts->links('vendor.pagination.default') }}
     </div>
 </section>
 <br>
