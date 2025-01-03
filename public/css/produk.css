@@ -51,7 +51,7 @@ html {
     margin: 0 0 0 0;
     transition: all 0.7s;
     position: relative;
-    box-shadow: 3px 3px 3px rgb(172, 172, 172);
+    box-shadow: 3px 3px 3px rgb(74, 255, 255);
 }
 
 .produk-info {
@@ -171,6 +171,8 @@ html {
     background-position: center; /* Gambar dipusatkan */
     width: 100%; /* Lebar penuh */
     min-height: 100vh; /* Tinggi minimal setara dengan layar */
+    margin-bottom: -30px;
+    padding-bottom: 20px;
 }
 
 /* detail produk info */
