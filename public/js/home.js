@@ -166,9 +166,9 @@ document.addEventListener("DOMContentLoaded", function () {
             image: "img/iklan1.jpg",
             // title: "Diskon Spesial 50%!",
             // description: "Promo hanya berlaku hari ini, jangan sampai terlewat!",
-            link: "#",
+            link: "/produk/Cumque%20asperiores.1",
             duration: 60,
-            delay: 10000,
+            delay: 1000,
         },
         {
             image: "img/iklan2.jpg",
@@ -176,7 +176,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // description: "Belanja minimal Rp100.000 untuk gratis ongkos kirim.",
             link: "#",
             duration: 60,
-            delay: 25000,
+            delay: 5000,
         },
         {
             image: "img/iklan3.jpg",
@@ -184,7 +184,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // description: "Beli satu, dapatkan satu gratis. Promo hanya 3 hari!",
             link: "#",
             duration: 60,
-            delay: 45000,
+            delay: 15000,
         },
     ];
 

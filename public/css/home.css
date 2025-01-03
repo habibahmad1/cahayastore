@@ -215,7 +215,7 @@
     }
 
     .content a {
-        font-size: 13px;
+        font-size: 0.8rem;
     }
 
     .content {
@@ -231,12 +231,12 @@
     }
 
     .content p {
-        font-size: 0.7rem; /* Ukuran lebih kecil */
+        font-size: 0.8rem; /* Ukuran lebih kecil */
         padding-bottom: 0px;
     }
 
     .content a {
-        font-size: 0.7rem;
+        font-size: 0.8rem;
     }
 
     .slider {
