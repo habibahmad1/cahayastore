@@ -160,9 +160,9 @@ document.addEventListener("DOMContentLoaded", function () {
             image: "img/iklan1.jpg",
             // title: "Diskon Spesial 50%!",
             // description: "Promo hanya berlaku hari ini, jangan sampai terlewat!",
-            link: "/produk/lampu-led-1000watt-fishing-light-lampu-kapal-lampu-memancing",
+            link: "#",
             duration: 60,
-            delay: 10000,
+            delay: 1000,
         },
         {
             image: "img/iklan2.jpg",
@@ -170,7 +170,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // description: "Belanja minimal Rp100.000 untuk gratis ongkos kirim.",
             link: "/produk/worcas-kopi-luwak-blue-mandheling-300gr",
             duration: 60,
-            delay: 25000,
+            delay: 5000,
         },
         {
             image: "img/iklan3.jpg",
@@ -178,7 +178,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // description: "Beli satu, dapatkan satu gratis. Promo hanya 3 hari!",
             link: "/produk/sendal-vanchnee-baim-anak-perempuan-anti-slip-model-707t-fashion-sandal",
             duration: 60,
-            delay: 45000,
+            delay: 15000,
         },
     ];
 
