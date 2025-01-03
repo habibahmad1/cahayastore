@@ -35,3 +35,14 @@
 .card-all-kategori h2 {
     margin: 0; /* Hilangkan margin default pada <h2> */
 }
+
+.kategori-wrapper {
+    background: url("/img/bg/bg3.jpg");
+    background-repeat: no-repeat;
+    background-size: cover; /* Gambar menutupi area penuh */
+    background-position: center; /* Gambar dipusatkan */
+    width: 100%; /* Lebar penuh */
+    min-height: 100vh; /* Tinggi minimal setara dengan layar */
+    margin-bottom: -30px;
+    padding-bottom: 20px;
+}
