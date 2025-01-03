@@ -163,6 +163,15 @@ html {
     color: #fff;
     font-size: 22px;
 }
+/* Produk Container */
+.produk-container {
+    background: url("/img/bg/bg-produk.jpg");
+    background-repeat: no-repeat;
+    background-size: cover; /* Gambar menutupi area penuh */
+    background-position: center; /* Gambar dipusatkan */
+    width: 100%; /* Lebar penuh */
+    min-height: 100vh; /* Tinggi minimal setara dengan layar */
+}
 
 /* detail produk info */
 .produk-info-detail {

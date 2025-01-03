@@ -1,21 +1,18 @@
-
-
-
 let currentSlide = 0;
 
 function changeSlide(index) {
-    const slides = document.querySelector('.slides');
-    const dots = document.querySelectorAll('.nav-dot');
+    const slides = document.querySelector(".slides");
+    const dots = document.querySelectorAll(".nav-dot");
 
     slides.style.transform = `translateX(-${index * 100}%)`;
-    dots.forEach(dot => dot.classList.remove('active'));
-    dots[index].classList.add('active');
+    dots.forEach((dot) => dot.classList.remove("active"));
+    dots[index].classList.add("active");
 
     currentSlide = index;
 }
 
 // Set default active dot
-document.querySelectorAll('.nav-dot')[0].classList.add('active');
+document.querySelectorAll(".nav-dot")[0].classList.add("active");
 
 // Auto-slide functionality
 setInterval(() => {
@@ -24,62 +21,61 @@ setInterval(() => {
 }, 5000);
 
 // persentase pengalaman kami
-    document.addEventListener("DOMContentLoaded", function () {
-        const progressBars = document.querySelectorAll(".progress");
+document.addEventListener("DOMContentLoaded", function () {
+    const progressBars = document.querySelectorAll(".progress");
 
-        progressBars.forEach(progress => {
-            const target = parseInt(progress.getAttribute("data-target"), 10);
-            const percentDisplay = progress.nextElementSibling;
-            let current = 0;
+    progressBars.forEach((progress) => {
+        const target = parseInt(progress.getAttribute("data-target"), 10);
+        const percentDisplay = progress.nextElementSibling;
+        let current = 0;
 
-            const updateProgress = setInterval(() => {
-                if (current <= target) {
-                    progress.style.width = `${current}%`;
-                    percentDisplay.textContent = `${current}%`;
-                    current++;
-                } else {
-                    clearInterval(updateProgress);
-                }
-            }, 15); // Kecepatan animasi (15ms per step)
+        const updateProgress = setInterval(() => {
+            if (current <= target) {
+                progress.style.width = `${current}%`;
+                percentDisplay.textContent = `${current}%`;
+                current++;
+            } else {
+                clearInterval(updateProgress);
+            }
+        }, 15); // Kecepatan animasi (15ms per step)
+    });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    const progressBars = document.querySelectorAll(".progress");
+
+    const animateProgress = () => {
+        progressBars.forEach((bar) => {
+            const rect = bar.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+
+            // Periksa apakah elemen terlihat di viewport
+            if (rect.top >= 0 && rect.top <= windowHeight) {
+                const targetProgress = bar.getAttribute("data-progress");
+                bar.style.width = `${targetProgress}%`;
+            }
         });
-    });
+    };
 
-    document.addEventListener("DOMContentLoaded", () => {
-        const progressBars = document.querySelectorAll(".progress");
+    // Tambahkan event listener untuk scroll
+    window.addEventListener("scroll", animateProgress);
 
-        const animateProgress = () => {
-            progressBars.forEach((bar) => {
-                const rect = bar.getBoundingClientRect();
-                const windowHeight = window.innerHeight;
-
-                // Periksa apakah elemen terlihat di viewport
-                if (rect.top >= 0 && rect.top <= windowHeight) {
-                    const targetProgress = bar.getAttribute("data-progress");
-                    bar.style.width = `${targetProgress}%`;
-                }
-            });
-        };
-
-        // Tambahkan event listener untuk scroll
-        window.addEventListener("scroll", animateProgress);
-
-        // Jalankan fungsi saat halaman dimuat
-        animateProgress();
-    });
-
+    // Jalankan fungsi saat halaman dimuat
+    animateProgress();
+});
 
 // bagian fakta tentang kami
-const factsSection = document.querySelector('.facts-and-achievements');
-const factNumbers = document.querySelectorAll('.fact-number');
+const factsSection = document.querySelector(".facts-and-achievements");
+const factNumbers = document.querySelectorAll(".fact-number");
 
 // Function to animate numbers
 const animateNumbers = (entries, observer) => {
-    entries.forEach(entry => {
+    entries.forEach((entry) => {
         if (entry.isIntersecting) {
             // Jalankan animasi hanya sekali
-            factNumbers.forEach(num => {
+            factNumbers.forEach((num) => {
                 const updateCount = () => {
-                    const target = +num.getAttribute('data-target');
+                    const target = +num.getAttribute("data-target");
                     const count = +num.innerText;
 
                     const increment = target / 100; // Kecepatan animasi
@@ -107,7 +103,6 @@ const observer = new IntersectionObserver(animateNumbers, {
 // Observasi elemen
 observer.observe(factsSection);
 
-
 // //halaman kruuuuuuuuuuu
 // document.querySelectorAll('.team-card').forEach(card => {
 //     card.addEventListener('mouseover', () => {
@@ -117,7 +112,6 @@ observer.observe(factsSection);
 //         card.querySelector('h3').style.transform = 'scale(1)';
 //     });
 // });
-
 
 //music bagian kata kata bijak
 // const audio = document.getElementById('myAudio');
@@ -166,7 +160,7 @@ document.addEventListener("DOMContentLoaded", function () {
             image: "img/iklan1.jpg",
             // title: "Diskon Spesial 50%!",
             // description: "Promo hanya berlaku hari ini, jangan sampai terlewat!",
-            link: "/produk/Cumque%20asperiores.1",
+            link: "#",
             duration: 60,
             delay: 1000,
         },
@@ -174,7 +168,7 @@ document.addEventListener("DOMContentLoaded", function () {
             image: "img/iklan2.jpg",
             // title: "Gratis Ongkir!",
             // description: "Belanja minimal Rp100.000 untuk gratis ongkos kirim.",
-            link: "#",
+            link: "/produk/worcas-kopi-luwak-blue-mandheling-300gr",
             duration: 60,
             delay: 5000,
         },
@@ -182,7 +176,7 @@ document.addEventListener("DOMContentLoaded", function () {
             image: "img/iklan3.jpg",
             // title: "Buy 1 Get 1 Free!",
             // description: "Beli satu, dapatkan satu gratis. Promo hanya 3 hari!",
-            link: "#",
+            link: "/produk/sendal-vanchnee-baim-anak-perempuan-anti-slip-model-707t-fashion-sandal",
             duration: 60,
             delay: 15000,
         },
@@ -258,8 +252,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-
-
 // spill produkkkk
 // Kumpulan produk berdasarkan kategori
 const products = {
@@ -295,13 +287,13 @@ const allProducts = [
     ...products.coffee,
     ...products.sendal,
     ...products.playmat,
-  ];
+];
 
-  // Dapatkan elemen tombol dan area untuk menampilkan produk
-  const buttons = document.querySelectorAll(".filter-btn-prd");
-  const productDisplay = document.querySelector(".product-display");
+// Dapatkan elemen tombol dan area untuk menampilkan produk
+const buttons = document.querySelectorAll(".filter-btn-prd");
+const productDisplay = document.querySelector(".product-display");
 
-  function displayProducts(items) {
+function displayProducts(items) {
     productDisplay.innerHTML = ""; // Bersihkan konten sebelumnya
     items.forEach((item, index) => {
         const productItem = document.createElement("div");
@@ -330,7 +322,12 @@ buttons.forEach((button) => {
     button.addEventListener("click", () => {
         let productData = [];
         if (category === "all") {
-            productData = [...products.led, ...products.coffee, ...products.sendal, ...products.playmat];
+            productData = [
+                ...products.led,
+                ...products.coffee,
+                ...products.sendal,
+                ...products.playmat,
+            ];
         } else {
             productData = products[category];
         }
@@ -339,40 +336,42 @@ buttons.forEach((button) => {
     });
 });
 
-  // Tambahkan event listener ke setiap tombol
-  buttons.forEach((button) => {
+// Tambahkan event listener ke setiap tombol
+buttons.forEach((button) => {
     const category = button.getAttribute("data-category");
 
     // Update angka produk berdasarkan kategori
-    const productCountSpan = button.closest(".button-wrapper").querySelector(".product-count");
+    const productCountSpan = button
+        .closest(".button-wrapper")
+        .querySelector(".product-count");
 
     let productImages = [];
     if (category === "all") {
-      productImages = allProducts;
-      productCountSpan.textContent = allProducts.length;
+        productImages = allProducts;
+        productCountSpan.textContent = allProducts.length;
     } else {
-      productImages = products[category];
-      productCountSpan.textContent = products[category].length;
+        productImages = products[category];
+        productCountSpan.textContent = products[category].length;
     }
 
     // Tampilkan produk saat tombol diklik
     button.addEventListener("click", () => {
-      // Menampilkan produk dan mengganti warna tombol
-      displayProducts(productImages);
+        // Menampilkan produk dan mengganti warna tombol
+        displayProducts(productImages);
 
-      // Reset semua tombol ke warna default
-      buttons.forEach((btn) => btn.classList.remove("clicked"));
+        // Reset semua tombol ke warna default
+        buttons.forEach((btn) => btn.classList.remove("clicked"));
 
-      // Menambahkan warna pada tombol yang diklik
-      button.classList.add("clicked");
+        // Menambahkan warna pada tombol yang diklik
+        button.classList.add("clicked");
     });
-  });
+});
 
-  // Menampilkan semua produk saat pertama kali halaman dimuat
-  window.addEventListener('load', () => {
+// Menampilkan semua produk saat pertama kali halaman dimuat
+window.addEventListener("load", () => {
     displayProducts(allProducts);
 
     // Menambahkan kelas 'clicked' pada tombol "All" saat halaman dimuat
     const allButton = document.querySelector(".filter-btn-prd.all-btn");
     allButton.classList.add("clicked");
-  });
+});

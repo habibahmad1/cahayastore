@@ -201,7 +201,7 @@ foreach ($produk_variasi as $variasi) {
         </div>
         <div class="form-wa">
             <a
-                href="https://wa.me/6289529907437?text={{ urlencode('Halo, saya tertarik dengan produk ini: ' . url('/produk/' . $post->slug) . ' Terima kasih.') }}"
+                href="https://wa.me/628119910388?text={{ urlencode('Halo, saya tertarik dengan produk ini: ' . url('/produk/' . $post->slug) . ' Terima kasih.') }}"
                 target="_blank">
                 Beli Sekarang
             </a>
@@ -216,7 +216,7 @@ foreach ($produk_variasi as $variasi) {
 <div class="box-beli">
     <div class="nempel-beli">
         <div class="stok" id="stok-nempel-beli"><i class="fa-solid fa-box"></i> Stok 20</div>
-        <a href="https://wa.me/6289529907437?text={{ urlencode('Halo, saya tertarik dengan produk ini: ' . url('/produk/' . $post->slug) . ' Terima kasih.') }}" target="_blank" class="beli-sekarang-hp text-decoration-none">
+        <a href="https://wa.me/628119910388?text={{ urlencode('Halo, saya tertarik dengan produk ini: ' . url('/produk/' . $post->slug) . ' Terima kasih.') }}" target="_blank" class="beli-sekarang-hp text-decoration-none">
             <i class="fa-solid fa-cart-shopping"></i> Beli Sekarang
         </a>    </div>
 </div>
@@ -250,6 +250,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let selectedWarna = null;  // Inisialisasi selectedWarna
     let selectedUkuran = null; // Inisialisasi selectedUkuran
+
+    // Tampilkan stok awal produk
+    const stokAwal = {{ $post->stok }}; // Stok awal produk tanpa variasi
+    updateStokDisplay(stokAwal);
 
     // Event klik untuk warna
     warnaVariasi.forEach(warna => {
@@ -327,14 +331,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Perbarui stok di form beli
         if (selectedVariasi) {
-            stokElement.textContent = `Stok: ${selectedVariasi.stok}`;
-            stokNempelBeliElement.textContent = `Stok: ${selectedVariasi.stok}`;
+            updateStokDisplay(selectedVariasi.stok);
         } else {
-            stokElement.textContent = "Stok: Tidak tersedia"; // Jika variasi yang dipilih tidak ada
-            stokNempelBeliElement.textContent = "Stok: Tidak tersedia"; // Jika variasi yang dipilih tidak ada
+            // Jika tidak ada variasi yang sesuai, tampilkan stok awal
+            updateStokDisplay(stokAwal);
         }
     }
+
+    // Fungsi untuk memperbarui tampilan stok (dengan ikon stok)
+    function updateStokDisplay(stok) {
+        const stokIconHTML = `<i class="fas fa-box"></i>`; // Ikon stok, sesuaikan dengan ikon yang Anda gunakan
+        const stokText = `Stok: ${stok}`;
+        stokElement.innerHTML = `${stokIconHTML} ${stokText}`;
+        stokNempelBeliElement.innerHTML = `${stokIconHTML} ${stokText}`;
+    }
 });
+
 
 
 </script>

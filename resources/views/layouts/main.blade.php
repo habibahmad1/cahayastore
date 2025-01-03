@@ -13,7 +13,7 @@
     <meta name="author" content="PT. CAHAYA SETIA INDONESIA">
     <title>PT. CAHAYA SETIA INDONESIA | {{ $title ?? '404' }}</title>
     {{-- Favicon --}}
-    <link rel="icon" href="{{ asset('img/favicon.png') }}" type="image/png">
+    <link rel="icon" href="{{ asset('img/matahari.png') }}" type="image/png">
     {{-- My CSS --}}
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/login.css') }}" />
