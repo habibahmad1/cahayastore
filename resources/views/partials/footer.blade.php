@@ -63,5 +63,8 @@
       margin:0;
     "
   >
-    © 2024 CSI. All Rights Reserved
+  <?php
+  echo "© " . date("Y") . " CSI. All Rights Reserved.";
+  ?>
+
   </p>
