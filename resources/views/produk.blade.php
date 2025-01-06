@@ -12,8 +12,28 @@
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="Cari Produk.." name="search" value="{{ request('search') }}" id="search-box">
                     <button class="btn btn-warning" style="background-color: #fd8c45; color:#fff" type="submit">Cari</button>
+                    <button class="btn btn-light btn-filter" style="background-color: #fd8c45; border: 1px solid #ffffff; color: #fff;" type="button">
+                        <i class="fa-solid fa-filter"></i>
+                    </button>
                 </div>
             </form>
+
+        </div>
+    </div>
+
+    {{-- Filter Kategori --}}
+    <div class="filter-kategori">
+        <div class="card">
+            <h5 class="text-center">Filter Kategori</h5>
+            <hr>
+            <span class="btnx"><i class="fa-solid fa-xmark"></i></span>
+            <div class="list-kategori">
+                @foreach ($kategori as $category)
+                    <a href="/kategori/{{ $category->slug }}" class="text-decoration-none text-capitalize">
+                        {{ $category->nama }}
+                    </a>
+                @endforeach
+            </div>
         </div>
     </div>
 

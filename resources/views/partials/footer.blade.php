@@ -64,7 +64,7 @@
     "
   >
   <?php
-  echo "© " . date("Y") . " CSI. All Rights Reserved.";
+  echo "© 2024-" . date("Y") . " CSI. All Rights Reserved.";
   ?>
 
   </p>
