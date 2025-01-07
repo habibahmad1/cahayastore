@@ -1,6 +1,5 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
 
-
 .categories {
     align-items: center;
     flex-wrap: wrap;
@@ -157,7 +156,6 @@
         font-size: 25px;
     }
 
-
     .keunggulan {
         padding: 0px;
     }
@@ -176,32 +174,29 @@
         height: 400px;
         text-align: center;
     }
-
-
 }
 
-
-/* untuk keunggulan card*/
-  .container {
+/* untuk keunggulan card */
+.container {
     text-align: center;
     padding: 50px;
-  }
+}
 
-  .title {
+.title {
     font-size: 3rem;
     margin-bottom: 20px;
     animation: fadeInDown 1s ease-in-out;
-  }
+}
 
-  .features {
+.features {
     display: flex;
     justify-content: center;
     gap: 20px;
     flex-wrap: wrap;
-  }
+}
 
-  .feature {
-    background: rgba(0, 0, 0, 0.6);
+.feature {
+    background: rgba(0, 0, 0, .6);
     border-radius: 10px;
     padding: 20px;
     width: 250px;
@@ -210,87 +205,85 @@
     opacity: 0;
     transform: translateY(50px);
     animation: fadeInUp 0.8s ease forwards;
-  }
+}
 
-  .feature:nth-child(odd) {
+.feature:nth-child(odd) {
     animation-delay: 0.2s;
-  }
+}
 
-  .feature:nth-child(even) {
+.feature:nth-child(even) {
     animation-delay: 0.4s;
-  }
+}
 
-  .feature:hover {
+.feature:hover {
     transform: scale(1.1);
     background: rgba(255, 255, 255, 0.1);
-  }
+}
 
-  .icon {
+.icon {
     font-size: 3rem;
     margin-bottom: 10px;
     animation: bounce 2s infinite;
-  }
+}
 
-  h2 {
+h2 {
     font-size: 1.5rem;
     margin: 10px 0;
-  }
+}
 
-  p {
+p {
     font-size: 1rem;
     line-height: 1.5;
-  }
+}
 
-  /* Animasi Ikon */
-  @keyframes bounce {
+/* Animasi Ikon */
+@keyframes bounce {
     0%, 100% {
-      transform: translateY(0);
+        transform: translateY(0);
     }
     50% {
-      transform: translateY(-10px);
+        transform: translateY(-10px);
     }
-  }
+}
 
-  /* Animasi Muncul */
-  @keyframes fadeInUp {
+/* Animasi Muncul */
+@keyframes fadeInUp {
     from {
-      opacity: 0;
-      transform: translateY(50px);
+        opacity: 0;
+        transform: translateY(50px);
     }
     to {
-      opacity: 1;
-      transform: translateY(0);
+        opacity: 1;
+        transform: translateY(0);
     }
-  }
+}
 
-  @keyframes fadeInDown {
+@keyframes fadeInDown {
     from {
-      opacity: 0;
-      transform: translateY(-50px);
+        opacity: 0;
+        transform: translateY(-50px);
     }
     to {
-      opacity: 1;
-      transform: translateY(0);
+        opacity: 1;
+        transform: translateY(0);
     }
-  }
+}
 
-
-
-
-  .gkeunggulan {
+.gkeunggulan {
     position: relative;
     background: url('https://cdn.pixabay.com/photo/2016/06/24/18/30/businessman-1477601_960_720.jpg') no-repeat center center/cover;
     color: white;
-    height: 300px;
+    height: 550px;
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 1; /* Tambahkan ini untuk memastikan gambar berada di bawah */
 }
 
 .gkeunggulan h1 {
     font-size: 3em;
-    margin: 0;
+    margin-bottom: 100px;
 }
 
 .gkeunggulan p {
@@ -313,7 +306,7 @@
 .keunggulan p {
     font-size: 1.1em;
     margin-bottom: 50px;
-    color: white;
+    color: rgb(255, 255, 255);
 }
 
 /* Gaya untuk keunggulan individual */
@@ -322,16 +315,18 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
+    margin-top: -120px; /* Menyentuh gambar di atas sekitar 20% */
+    position: relative;
+    z-index: 2; /* Tambahkan ini untuk memastikan elemen berada di atas gambar */
 }
 
 .keunggulan-item {
-    background-color: #fff;
+    background-color: #121d29;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 280px;
     padding: 20px;
     text-align: center;
-    transition: transform 0.3s;
 }
 
 .keunggulan-item:hover {
@@ -340,18 +335,19 @@
 
 .keunggulan-item i {
     font-size: 3em;
-    color: #3498db;
+    color:  #ff9a5f;
     margin-bottom: 20px;
 }
 
 .keunggulan-item h3 {
     font-size: 1.5em;
     margin-bottom: 10px;
+    color: #ffffffd8;
 }
 
 .keunggulan-item p {
     font-size: 1em;
-    color: #7f8c8d;
+    color: #ffffffd8;
 }
 
 /* Responsif */

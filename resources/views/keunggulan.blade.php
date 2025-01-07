@@ -3,14 +3,13 @@
 @section('container')
     <div class="gkeunggulan">
         <h1>Keunggulan Perusahaan Kami</h1>
-        {{-- <p>Mengapa Memilih Kami?</p> --}}
+        {{-- <p>Perusahaan kami memiliki berbagai keunggulan yang mendukung kepuasan dan kesuksesan Anda. Berikut adalah beberapa
+            alasan mengapa kami menjadi pilihan yang tepat untuk Anda.</p> --}}
     </div>
 
     <!-- Keunggulan Perusahaan -->
     <div class="keunggulan">
-        {{-- <h2>Kenapa Perusahaan Kami adalah Pilihan Tepat?</h2>
-        <p>Perusahaan kami memiliki berbagai keunggulan yang mendukung kepuasan dan kesuksesan Anda. Berikut adalah beberapa
-            alasan mengapa kami menjadi pilihan yang tepat untuk Anda.</p> --}}
+        {{-- <h2>Kenapa Perusahaan Kami adalah Pilihan Tepat?</h2> --}}
 
         <!-- Daftar Keunggulan -->
         <div class="keunggulan-list">
@@ -39,7 +38,7 @@
     </div>
 
     <div class="categories">
-        <h2>Beberapa keunggulan kategori produk kami</h2>
+        <h2>Beberapa keunggulan produk kami</h2>
         <div class="category-buttons">
             <button class="category-button active" onclick="showCategory('led-light')">
                 <i class="fas fa-lightbulb"></i> <!-- Ikon LED -->
