@@ -4,7 +4,7 @@
 
 <div class="produk-container">
 
-    <h1 class="text-center mb-4 text-white" style="padding-top: 80px">{{ $title }}</h1>
+    <h1 class="text-center mb-4" style="padding-top: 80px">{{ $title }}</h1>
 
     <div class="row justify-content-center px-4">
         <div class="col-lg-8 pencarian">
