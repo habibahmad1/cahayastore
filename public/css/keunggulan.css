@@ -7,8 +7,23 @@
     padding: 30px;
     background: linear-gradient(to right, #000000e8, #2c3e50, #000000);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     gap: 10px;
+}
+
+.categories h2 {
+    font-size: 2em;
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.category-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
 }
 
 .category-button {
@@ -24,6 +39,7 @@
     background-color: #3a3a3a; /* Warna default biru */
     animation: fadeInUp 2s ease forwards;
     overflow: hidden;
+    position: relative; /* Tambahkan ini untuk ::after */
 }
 
 .category-button::after {
@@ -38,7 +54,6 @@
     transition: transform 0.3s ease;
     border-radius: 50%;
     z-index: 0;
-    min-width: 120px;
 }
 
 .category-button:hover {
@@ -258,3 +273,96 @@
       transform: translateY(0);
     }
   }
+
+
+
+
+  .gkeunggulan {
+    position: relative;
+    background: url('https://cdn.pixabay.com/photo/2016/06/24/18/30/businessman-1477601_960_720.jpg') no-repeat center center/cover;
+    color: white;
+    height: 300px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.gkeunggulan h1 {
+    font-size: 3em;
+    margin: 0;
+}
+
+.gkeunggulan p {
+    font-size: 1.2em;
+}
+
+/* Gaya untuk konten keunggulan */
+.keunggulan {
+    padding: 50px 20px;
+    text-align: center;
+    background-color: #2c3e50;
+}
+
+.keunggulan h2 {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    color: white;
+}
+
+.keunggulan p {
+    font-size: 1.1em;
+    margin-bottom: 50px;
+    color: white;
+}
+
+/* Gaya untuk keunggulan individual */
+.keunggulan-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.keunggulan-item {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 280px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.keunggulan-item:hover {
+    transform: translateY(-10px);
+}
+
+.keunggulan-item i {
+    font-size: 3em;
+    color: #3498db;
+    margin-bottom: 20px;
+}
+
+.keunggulan-item h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.keunggulan-item p {
+    font-size: 1em;
+    color: #7f8c8d;
+}
+
+/* Responsif */
+@media (max-width: 768px) {
+    .keunggulan-list {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .keunggulan-item {
+        width: 100%;
+        max-width: 400px;
+    }
+}
