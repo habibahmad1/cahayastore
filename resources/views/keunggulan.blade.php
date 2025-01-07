@@ -64,7 +64,6 @@
         <p>Lampu berkualitas tinggi untuk membantu memancing di malam hari. Hemat energi dan tahan lama.</p>
 
         <div class="container">
-            {{-- <h1 class="title">Keunggulan LED Fishing Light</h1> --}}
             <div class="features">
                 <div class="feature">
                     <i class="icon fas fa-lightbulb"></i>
@@ -118,7 +117,6 @@
         <p>Kopi terbaik dengan cita rasa unik, langsung dari perkebunan pilihan.</p>
 
         <div class="container">
-            {{-- <h1 class="title">Keunggulan Kopi Luwak</h1> --}}
             <div class="features">
                 <div class="feature">
                     <i class="icon fas fa-leaf"></i>
@@ -170,7 +168,6 @@
         <p>Sandal nyaman dan stylish untuk segala suasana.</p>
 
         <div class="container">
-            {{-- <h1 class="title">Keunggulan Sandal Anti Slip</h1> --}}
             <div class="features">
                 <div class="feature">
                     <i class="icon fas fa-shoe-prints"></i>
@@ -221,7 +218,6 @@
         <p>Karpet Kualitas premium, mudah dibersihkan, cocok untuk segala aktivitas.</p>
 
         <div class="container">
-            {{-- <h1 class="title">Keunggulan Playmat</h1> --}}
             <div class="features">
                 <div class="feature">
                     <i class="icon fas fa-child"></i>

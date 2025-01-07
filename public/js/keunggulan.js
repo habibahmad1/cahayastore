@@ -1,4 +1,3 @@
-
 function showCategory(categoryId) {
     // Sembunyikan semua deskripsi kategori
     const descriptions = document.querySelectorAll('.category-description');
@@ -57,3 +56,18 @@ const observer = new IntersectionObserver((entries) => {
 });
 
 features.forEach((feature) => observer.observe(feature));
+
+
+// button aktif
+document.addEventListener('DOMContentLoaded', function() {
+    const buttons = document.querySelectorAll('.category-button');
+
+    buttons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Hapus kelas 'active' dari semua tombol
+            buttons.forEach(btn => btn.classList.remove('active'));
+            // Tambahkan kelas 'active' ke tombol yang diklik
+            this.classList.add('active');
+        });
+    });
+});
