@@ -1,67 +1,48 @@
+document.addEventListener("DOMContentLoaded", function () {
+    const buttons = document.querySelectorAll(".btn-buka-card");
+    const popup = document.querySelector(".faq-popup");
+    const popupContent = document.querySelector("#faq-popup-content");
+    const popupTitle = document.querySelector("#faq-popup-title");
+    const closeButton = document.querySelector(".close-popup");
 
-    function showCategory(categoryId) {
-        const categories = document.querySelectorAll('.page-content');
-        categories.forEach(category => category.classList.remove('active'));
-        document.getElementById(categoryId).classList.add('active');
-    }
+    // Event listener untuk tombol buka kategori
+    buttons.forEach((button) => {
+        button.addEventListener("click", function () {
+            const kategori = button.getAttribute("data-kategori");
 
-    document.querySelectorAll('.card-faq').forEach(card => {
-        card.addEventListener('click', () => {
-            card.classList.toggle('active');
+            // Ubah judul popup sesuai kategori
+            popupTitle.textContent = `Kategori: ${kategori}`;
+
+            // Filter pertanyaan berdasarkan kategori
+            const faqItems = popupContent.querySelectorAll(".faq-item");
+            faqItems.forEach((item) => {
+                if (item.getAttribute("data-kategori") === kategori) {
+                    item.style.display = "block"; // Tampilkan
+                } else {
+                    item.style.display = "none"; // Sembunyikan
+                }
+            });
+
+            // Tampilkan popup
+            popup.style.display = "block";
         });
     });
 
-
-    // Efek klik pada kartu FAQ
-    document.querySelectorAll('.card-faq').forEach(card => {
-        card.addEventListener('click', () => {
-            card.classList.toggle('active');
-        });
+    // Event listener untuk tombol tutup
+    closeButton.addEventListener("click", function () {
+        popup.style.display = "none";
     });
 
-    // Efek animasi scroll reveal
-    window.addEventListener('scroll', () => {
-        document.querySelectorAll('.card-faq').forEach(card => {
-            const rect = card.getBoundingClientRect();
-            if (rect.top < window.innerHeight && rect.bottom > 0) {
-                card.style.transform = "translateY(0)";
-                card.style.opacity = "1";
+    // Event listener untuk menampilkan/menyembunyikan jawaban
+    const faqQuestions = document.querySelectorAll(".faq-question");
+    faqQuestions.forEach((question) => {
+        question.addEventListener("click", function () {
+            const answer = this.nextElementSibling; // Elemen jawaban di bawahnya
+            if (answer.style.display === "block") {
+                answer.style.display = "none"; // Sembunyikan jika sedang ditampilkan
             } else {
-                card.style.transform = "translateY(50px)";
-                card.style.opacity = "0";
+                answer.style.display = "block"; // Tampilkan jika sedang disembunyikan
             }
         });
     });
-
-    // Filter kategori (opsional jika ada tombol kategori)
-    document.querySelectorAll('.category-button').forEach(button => {
-        button.addEventListener('click', () => {
-            const category = button.getAttribute('data-category');
-            document.querySelectorAll('.card-faq').forEach(card => {
-                if (category === 'all' || card.getAttribute('data-category') === category) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        });
-    });
-
-
-// Fungsi untuk scroll ke atas
-function scrollToTop() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-// Tampilkan atau sembunyikan tombol saat pengguna menggulir
-window.addEventListener('scroll', () => {
-    const scrollTopButton = document.getElementById('scrollTopButton');
-    if (window.scrollY > 200) { // Tampilkan tombol jika scroll melebihi 200px
-        scrollTopButton.classList.add('visible');
-    } else {
-        scrollTopButton.classList.remove('visible');
-    }
 });
-
-
-
