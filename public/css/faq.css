@@ -1,222 +1,112 @@
-.category-button {
-    background: linear-gradient(to right, #ff7e5f, #feb47b);
-    color: #fff;
-    padding: 10px 25px;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    margin: 5px;
-    transition: transform 0.3s ease, background 0.3s ease;
-}
-
-.category-button:hover {
-    transform: translateY(-5px);
-    background: linear-gradient(to right, #feb47b, #ff7e5f);
-}
-
-.category-container {
+.body-faq {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 20px;
-    margin: 30px;
-}
-
-.page-content {
-    display: none;
-    animation: fadeIn 3s ease;
-}
-
-.page-content p, h2 {
-    font-size: 20px;
-    margin: 25px;
-}
-
-.page-content.active {
-    display: block;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: scale(0.9);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-
-.faq {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    flex-wrap: wrap;
     flex-direction: column;
-    width: 100%;
-    background: linear-gradient(to right, #000000e8, #2c3e50, #000000);
-    user-select: none;
+    justify-content: center;
 }
 
-.faq-title {
-    margin: 30px;
+.faq-hero {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
-    text-align: center;
+    padding: 70px 0;
+    background: url("https://cdn.pixabay.com/photo/2023/01/29/08/33/photo-7752809_960_720.jpg");
+    background-size: cover;
+    height: 250px;
+    color: #fff;
+}
+
+.container-card-faq {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.container-card-faq .card-faq {
+    display: flex;
+    gap: 10px;
     flex-direction: column;
-}
-
-
-.faq h1 {
-    display: inline;
-    color: #fff;
-    font-size: 36px;
-    background-color: #ff8d58;
-    padding: 30px;
-}
-
-.faq h2, .faq p {
-    color: #fff;
-}
-
-.card-faq {
-    transform: translateY(50px);
-    opacity: 0;
-    transition: transform 0.5s ease, opacity 0.5s ease;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    padding: 20px;
     width: 600px;
+    height: 200px;
+    border-radius: 10px;
+    border: 1px solid #000;
+    margin: 20px;
+}
+
+.container-card-faq .card-faq:hover {
+    background: url("https://cdn.pixabay.com/photo/2023/01/29/08/33/photo-7752809_960_720.jpg");
+    color: #fff;
+}
+
+.container-card-faq .card-faq .title-faq {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 40px;
+}
+
+/* FAQ PUPUP */
+.faq-popup {
+    display: none; /* Popup tersembunyi secara default */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background: #fff;
-    border-radius: 5px;
-    margin: 10px 0;
-    padding: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    z-index: 1000;
+    width: 50%;
+    max-height: 90%;
+    overflow-y: auto;
 }
 
-.card-faq:hover {
-    transform: scale(1.03); /* Efek perbesaran saat hover */
+.faq-popup.active {
+    display: block; /* Popup muncul saat memiliki kelas active */
 }
 
-.card-faq h2 {
-    margin: 0;
+.faq-item {
+    margin-bottom: 15px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+}
+
+.faq-question {
     font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
     color: #333;
 }
 
-.card-faq p {
-    display: none;
-    color: #666;
+.faq-answer {
+    display: none; /* Jawaban tersembunyi secara default */
+    font-size: 16px;
+    color: #555;
     margin-top: 10px;
-    max-height: 0;
-    overflow: hidden;
-    text-align: justify;
-    text-indent: 20px;
-
-    visibility: hidden; /* Elemen tidak terlihat tetapi masih ada dalam DOM */
-    opacity: 0; /* Tidak terlihat */
-    max-height: 0;
-    transition: all 0.3s ease; /* Transisi halus */
 }
 
-.card-faq.active p {
+.faq-item.active .faq-answer {
+    display: block; /* Jawaban muncul saat faq-item memiliki kelas active */
+}
+
+/* Search */
+.faq-search {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#faq-search-input {
+    width: 80%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    margin: 0 auto;
     display: block;
-    max-height: 400px; /* Mengatur tinggi maksimal untuk transisi animasi */
-    padding: 10px 0; /* Menambahkan padding saat teks muncul */
-
-    visibility: visible; /* Elemen terlihat */
-    opacity: 1; /* Sepenuhnya terlihat */
 }
 
-
-/* scrol langung ke atas */
-.scroll-to-top {
-    position: fixed;
-    bottom: 20px; /* Jarak dari bawah layar */
-    right: 20px; /* Jarak dari kanan layar */
-    width: 40px; /* Ukuran tombol */
-    height: 40px;
-    background: rgba(0, 0, 0, 0.6); /* Warna background dengan transparansi */
-    color: white; /* Warna teks/icon */
-    border-radius: 50%; /* Membuat tombol bulat */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 20px; /* Ukuran icon */
-    cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Efek bayangan */
-    opacity: 0; /* Default: tidak terlihat */
-    visibility: hidden; /* Tidak terlihat saat tidak aktif */
-    transition: all 0.3s ease; /* Transisi untuk efek kemunculan */
-    z-index: 1000; /* Selalu berada di atas elemen lain */
-}
-
-.scroll-to-top:hover {
-    background: rgba(0, 0, 0, 0.8); /* Sedikit lebih gelap saat hover */
-    transform: scale(1.1); /* Efek zoom saat hover */
-}
-
-.scroll-to-top.visible {
-    opacity: 1; /* Muncul saat visible */
-    visibility: visible;
-}
-
-@media (max-width: 768px) {
-    /* Penyesuaian untuk perangkat mobile */
-    .scroll-to-top {
-        width: 35px; /* Ukuran lebih kecil untuk mobile */
-        height: 35px;
-        font-size: 18px; /* Ukuran icon lebih kecil */
-        bottom: 15px; /* Jarak lebih kecil dari bawah */
-        right: 15px;
+@media (max-width: 600px) {
+    .faq-popup {
+        width: 90%;
     }
-}
-
-
-
-@media (max-width: 768px) {
-    /* Gaya lebih spesifik untuk layar yang sangat kecil */
-    .card-faq {
-        width:100%;
-    }
-
-    .faq-title {
-        margin-right: 20px;
-        margin-left: 20px;
-    }
-
-    .page-content h2 {
-        font-size: 18px;
-    }
-
-    .page-content p {
-        font-size: 15px;
-        margin : 0px;
-        padding: 5px;
-        padding-left: 25px;
-        padding-right: 25px;
-    }
-
-
-    .category-container {
-        gap: 10px;
-        margin: 25px;
-    }
-
-    /* Penyesuaian untuk perangkat mobile */
-    .scroll-to-top {
-        width: 35px; /* Ukuran lebih kecil untuk mobile */
-        height: 35px;
-        font-size: 18px; /* Ukuran icon lebih kecil */
-        bottom: 15px; /* Jarak lebih kecil dari bawah */
-        right: 15px;
-    }
-
-
 }
