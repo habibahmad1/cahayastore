@@ -60,7 +60,7 @@ features.forEach((feature) => observer.observe(feature));
 
 // button aktif
 document.addEventListener('DOMContentLoaded', function() {
-    const buttons = document.querySelectorAll('.category-button');
+    const buttons = document.querySelectorAll('.category-buttonn');
 
     buttons.forEach(button => {
         button.addEventListener('click', function() {

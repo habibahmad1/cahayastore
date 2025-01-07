@@ -18,14 +18,19 @@
     margin-bottom: 20px;
 }
 
-.category-buttons {
+.category-buttonss {
     display: flex;
     justify-content: center;
     gap: 10px;
     flex-wrap: wrap;
 }
 
-.category-button {
+.category-buttonn.active {
+    background-color: #ff9a5f; /* Warna tombol saat aktif */
+    color: white;
+}
+
+.category-buttonn {
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
@@ -35,15 +40,13 @@
     font-size: 14px;
     min-width: 120px;
     text-align: center;
-    background-color: #3a3a3a; /* Warna default biru */
+    background-color:  #0f0f0fe3; /* Warna default biru */
     animation: fadeInUp 2s ease forwards;
     overflow: hidden;
     position: relative; /* Tambahkan ini untuk ::after */
 }
 
-
-
-.category-button::after {
+.category-buttonn::after {
     content: '';
     position: absolute;
     top: 0;
@@ -57,23 +60,23 @@
     z-index: 0;
 }
 
-.category-button:hover {
+.category-buttonn:hover {
     transform: scale(1.05);
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.4);
 }
 
-.category-button:hover::after {
+.category-buttonn:hover::after {
     transform: scale(4);
 }
 
-.category-button i {
+.category-buttonn i {
     margin-right: 8px;
     font-size: 18px;
 }
 
 .category-description h2 {
-    margin-bottom: 10px;
-    margin-top: 0px;
+    margin-bottom: 5px;
+    margin-top: -20px;
     animation: fadeInUp 2s ease forwards;
 }
 
@@ -182,6 +185,11 @@
 .container {
     text-align: center;
     padding: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap; /* Pastikan elemen tidak membungkus ke baris berikutnya */
+    gap: 20px; /* Tambahkan jarak antar elemen jika diperlukan */
 }
 
 .title {

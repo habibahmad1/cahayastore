@@ -9,9 +9,6 @@
 
     <!-- Keunggulan Perusahaan -->
     <div class="keunggulan">
-        {{-- <h2>Kenapa Perusahaan Kami adalah Pilihan Tepat?</h2> --}}
-
-        <!-- Daftar Keunggulan -->
         <div class="keunggulan-list">
             <div class="keunggulan-item">
                 <i class="fas fa-cogs"></i>
@@ -39,20 +36,20 @@
 
     <div class="categories">
         <h2>Beberapa keunggulan produk kami</h2>
-        <div class="category-buttons">
-            <button class="category-button active" onclick="showCategory('led-light')">
+        <div class="category-buttonss">
+            <button class="category-buttonn active" onclick="showCategory('led-light')">
                 <i class="fas fa-lightbulb"></i> <!-- Ikon LED -->
                 LED
             </button>
-            <button class="category-button" onclick="showCategory('coffee-luwak')">
+            <button class="category-buttonn" onclick="showCategory('coffee-luwak')">
                 <i class="fas fa-coffee"></i> <!-- Ikon Kopi -->
                 Coffee
             </button>
-            <button class="category-button" onclick="showCategory('sandal')">
+            <button class="category-buttonn" onclick="showCategory('sandal')">
                 <i class="fas fa-shoe-prints"></i> <!-- Ikon Sandal -->
                 Sandal
             </button>
-            <button class="category-button" onclick="showCategory('playmat')">
+            <button class="category-buttonn" onclick="showCategory('playmat')">
                 <i class="fa-solid fa-rug"></i> <!-- Ikon Sandal -->
                 Playmat
             </button>
