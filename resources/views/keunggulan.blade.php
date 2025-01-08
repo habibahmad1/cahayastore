@@ -2,13 +2,16 @@
 
 @section('container')
     <div class="gkeunggulan">
+        <div class="background bg1"></div>
+        <div class="background bg2"></div>
+        <div class="background bg3"></div>
         <h1>Keunggulan Perusahaan Kami</h1>
         {{-- <p>Perusahaan kami memiliki berbagai keunggulan yang mendukung kepuasan dan kesuksesan Anda. Berikut adalah beberapa
             alasan mengapa kami menjadi pilihan yang tepat untuk Anda.</p> --}}
     </div>
 
     <!-- Keunggulan Perusahaan -->
-    <div class="keunggulan">
+    <div class="keunggulanz">
         <div class="keunggulan-list">
             <div class="keunggulan-item">
                 <i class="fas fa-cogs"></i>
@@ -60,7 +63,7 @@
         <h2>Keunggulan LED Fishing Light</h2>
         <p>Lampu berkualitas tinggi untuk membantu memancing di malam hari. Hemat energi dan tahan lama.</p>
 
-        <div class="container">
+        <div class="containers">
             <div class="features">
                 <div class="feature">
                     <i class="icon fas fa-lightbulb"></i>
