@@ -1,2 +1,10 @@
 1737450901-6569-1537778759,1737450901.4094,GET,/features,Closure,200,605.31401634216,request
 1737450903-5111-1936993669,1737450903.3888,GET,/produk,App\Http\Controllers\ProdukController@index,200,1140.368938446,request
+1737451001-3501-537437866,1737451001.2211,GET,/produk?page=2,App\Http\Controllers\ProdukController@index,200,298.25401306152,request
+1737451064-8575-262649622,1737451064.6431,GET,/produk?page=2,App\Http\Controllers\ProdukController@index,200,400.31313896179,request
+1737451141-5552-1118778809,1737451141.3956,GET,/produk?page=2,App\Http\Controllers\ProdukController@index,200,298.96402359009,request
+1737451145-2373-991123757,1737451145.0953,GET,/produk?page=2,App\Http\Controllers\ProdukController@index,200,266.4840221405,request
+1737451175-8312-169140463,1737451175.6593,GET,/produk?page=2,App\Http\Controllers\ProdukController@index,200,328.28187942505,request
+1737451178-8757-1371229497,1737451178.6586,GET,/produk?page=2,App\Http\Controllers\ProdukController@index,200,360.19206047058,request
+1737451193-2261-429482838,1737451193.0328,GET,/produk?page=2,App\Http\Controllers\ProdukController@index,200,388.76700401306,request
+1737451245-7465-1330236702,1737451245.5932,GET,/produk?page=2,App\Http\Controllers\ProdukController@index,200,345.98016738892,request
