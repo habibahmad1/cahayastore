@@ -18,6 +18,7 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DataBarangController;
+use App\Http\Controllers\BarangKeluarController;
 use App\Http\Controllers\AdminKategoriController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\KategoriArtikelController;
@@ -203,4 +204,8 @@ Route::put('/dashboard/settings/updateuser', function (Request $request) {
 Route::resource('/dashboard/databarang', DataBarangController::class)->middleware(['auth', 'admin']);
 
 // Route Barang Keluar
-Route::resource('/dashboard/barangkeluar', BarangKeluarController::class)->middleware(['auth', 'admin']);
+Route::resource('/dashboard/barang-keluar', BarangKeluarController::class)->middleware(['auth', 'admin']);
+
+Route::get('/dashboard/barang-keluar/get-produk', [BarangKeluarController::class, 'getProduk'])
+    ->name('barang-keluar.getProduk')
+    ->middleware(['auth', 'admin']);

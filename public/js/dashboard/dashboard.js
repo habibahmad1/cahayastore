@@ -2,45 +2,46 @@ document.addEventListener("DOMContentLoaded", function () {
     const themeLight = document.getElementById("theme-light");
     const themeDark = document.getElementById("theme-dark");
     const themeAuto = document.getElementById("theme-auto");
-    const themeButtons = [themeLight, themeDark, themeAuto]; // Semua tombol tema
 
-    // Fungsi untuk mengatur tema
+    const themeButtons = [themeLight, themeDark, themeAuto].filter(Boolean); // Hanya tombol yang ada
+
     function setTheme(theme) {
-        document.documentElement.setAttribute("data-bs-theme", theme); // Terapkan tema
-        localStorage.setItem("theme", theme); // Simpan tema ke localStorage
+        document.documentElement.setAttribute("data-bs-theme", theme);
+        localStorage.setItem("theme", theme);
 
-        // Perbarui tampilan tombol yang aktif
-        themeButtons.forEach((button) => button.classList.remove("active")); // Hapus class aktif dari semua tombol
-        const activeButton = document.querySelector(`[data-theme="${theme}"]`); // Cari tombol sesuai tema
-        if (activeButton) activeButton.classList.add("active"); // Tambahkan class aktif ke tombol
+        themeButtons.forEach((button) => button.classList.remove("active"));
+        const activeButton = document.querySelector(`[data-theme="${theme}"]`);
+        if (activeButton) activeButton.classList.add("active");
     }
 
-    // Ambil tema yang disimpan dari localStorage
-    const savedTheme = localStorage.getItem("theme") || "auto"; // Default ke "auto" jika tidak ada
-    setTheme(savedTheme); // Terapkan tema saat halaman dimuat
+    const savedTheme = localStorage.getItem("theme") || "auto";
+    setTheme(savedTheme);
 
-    // Event listener untuk tombol tema
-    themeLight.addEventListener("click", () => setTheme("light"));
-    themeDark.addEventListener("click", () => setTheme("dark"));
-    themeAuto.addEventListener("click", () => setTheme("auto"));
+    // Pastikan hanya menambahkan event listener jika tombol ada
+    if (themeLight)
+        themeLight.addEventListener("click", () => setTheme("light"));
+    if (themeDark) themeDark.addEventListener("click", () => setTheme("dark"));
+    if (themeAuto) themeAuto.addEventListener("click", () => setTheme("auto"));
 });
 
+// Dropdown Kelola Barang
 const dropkelolabarang = document.getElementById("dropkelolabarang");
 const barangmasuk = document.getElementById("barangmasuk");
 const barangkeluar = document.getElementById("barangkeluar");
-const riwayatbarang = document.getElementById("riwayatbarang");
 
-const riwayatstok = document.getElementById("riwayatstok");
-const uploadriwayat = document.getElementById("uploadriwayat");
-const lihatriwayat = document.getElementById("lihatriwayat");
-
-if (dropkelolabarang) {
+if (dropkelolabarang && barangmasuk && barangkeluar) {
     dropkelolabarang.addEventListener("click", () => {
         barangmasuk.classList.toggle("d-none");
         barangkeluar.classList.toggle("d-none");
     });
 }
-if (riwayatstok) {
+
+// Dropdown Riwayat Stok
+const riwayatstok = document.getElementById("riwayatstok");
+const uploadriwayat = document.getElementById("uploadriwayat");
+const lihatriwayat = document.getElementById("lihatriwayat");
+
+if (riwayatstok && uploadriwayat && lihatriwayat) {
     riwayatstok.addEventListener("click", () => {
         uploadriwayat.classList.toggle("d-none");
         lihatriwayat.classList.toggle("d-none");

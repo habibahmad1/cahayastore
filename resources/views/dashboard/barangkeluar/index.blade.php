@@ -23,8 +23,12 @@
             <select class="form-select" name="produk_id" id="produk_id" required>
               <option value="">-- Pilih Produk --</option>
               @foreach ($produks as $produk)
-                <option value="{{ $produk->id }}" data-variasi="{{ $produk->variasi }}">{{ $produk->nama_produk }}</option>
-              @endforeach
+            <option value="{{ $produk->id }}"
+                    data-variasi="{{ $produk->variasi->toJson() }}">
+                {{ $produk->nama_produk }}
+            </option>
+            @endforeach
+
             </select>
           </div>
           <div class="col-md-3">
@@ -37,7 +41,7 @@
             <label for="qty" class="form-label">Jumlah</label>
             <input type="number" class="form-control" name="qty" min="1" required>
           </div>
-          <div class="col-md-2 d-flex align-items-end">
+          <div class="col-md-2 d-flex align-items-end my-3">
             <button type="submit" class="btn btn-success w-100"><i class="bi bi-save"></i> Simpan</button>
           </div>
         </div>
@@ -93,19 +97,20 @@
   </div>
 
   <script>
-    // Menampilkan variasi berdasarkan produk yang dipilih
-    document.getElementById('produk_id').addEventListener('change', function () {
-      let selectedProduct = this.options[this.selectedIndex];
-      let variasiDropdown = document.getElementById('variasi_id');
-      let variasiData = JSON.parse(selectedProduct.getAttribute('data-variasi') || '[]');
+   document.getElementById('produk_id').addEventListener('change', function () {
+    let selectedProduct = this.options[this.selectedIndex];
+    let variasiDropdown = document.getElementById('variasi_id');
+    let variasiData = JSON.parse(selectedProduct.getAttribute('data-variasi') || '[]');
 
-      variasiDropdown.innerHTML = '<option value="">-- Pilih Variasi --</option>';
-      variasiData.forEach(variasi => {
+    variasiDropdown.innerHTML = '<option value="">-- Pilih Variasi --</option>';
+    variasiData.forEach(variasi => {
         let option = document.createElement('option');
         option.value = variasi.id;
-        option.textContent = variasi.warna ? variasi.warna.warna : 'Tanpa Variasi';
+        option.textContent = (variasi.ukuran ? variasi.ukuran.ukuran : 'Tanpa Ukuran') +
+                             ' - ' + (variasi.warna ? variasi.warna.warna : 'Tanpa Warna');
         variasiDropdown.appendChild(option);
-      });
     });
+});
+
   </script>
 @endsection
