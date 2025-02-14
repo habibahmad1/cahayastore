@@ -24,3 +24,25 @@ document.addEventListener("DOMContentLoaded", function () {
     themeDark.addEventListener("click", () => setTheme("dark"));
     themeAuto.addEventListener("click", () => setTheme("auto"));
 });
+
+const dropkelolabarang = document.getElementById("dropkelolabarang");
+const barangmasuk = document.getElementById("barangmasuk");
+const barangkeluar = document.getElementById("barangkeluar");
+const riwayatbarang = document.getElementById("riwayatbarang");
+
+const riwayatstok = document.getElementById("riwayatstok");
+const uploadriwayat = document.getElementById("uploadriwayat");
+const lihatriwayat = document.getElementById("lihatriwayat");
+
+if (dropkelolabarang) {
+    dropkelolabarang.addEventListener("click", () => {
+        barangmasuk.classList.toggle("d-none");
+        barangkeluar.classList.toggle("d-none");
+    });
+}
+if (riwayatstok) {
+    riwayatstok.addEventListener("click", () => {
+        uploadriwayat.classList.toggle("d-none");
+        lihatriwayat.classList.toggle("d-none");
+    });
+}
