@@ -19,29 +19,40 @@
             <input type="date" class="form-control" name="tanggal" required>
           </div>
           <div class="col-md-3">
-            <label for="produk_id" class="form-label">Nama Barang</label>
-            <select class="form-select" name="produk_id" id="produk_id" required>
-              <option value="">-- Pilih Produk --</option>
-              @foreach ($produks as $produk)
-            <option value="{{ $produk->id }}"
-                    data-variasi="{{ $produk->variasi->toJson() }}">
-                {{ $produk->nama_produk }}
-            </option>
-            @endforeach
-
-            </select>
+            <label for="nama_barang" class="form-label">Nama Barang</label>
+            <input type="text" class="form-control" name="nama_barang" required>
           </div>
           <div class="col-md-3">
-            <label for="variasi_id" class="form-label">Variasi (Opsional)</label>
-            <select class="form-select" name="variasi_id" id="variasi_id">
-              <option value="">-- Pilih Variasi --</option>
-            </select>
+            <label for="variasi" class="form-label">Variasi (Opsional)</label>
+            <input type="text" class="form-control" name="variasi">
           </div>
           <div class="col-md-2">
             <label for="qty" class="form-label">Jumlah</label>
             <input type="number" class="form-control" name="qty" min="1" required>
           </div>
-          <div class="col-md-2 d-flex align-items-end my-3">
+          <div class="col-md-2 mt-3">
+            <label for="platform" class="form-label">Platform</label>
+            <select class="form-select" name="platform" required>
+              <option value="">-- Pilih Platform --</option>
+              <option value="Shopee1">Shopee 1</option>
+              <option value="Shopee2">Shopee 2</option>
+              <option value="Shopee3">Shopee 3</option>
+              <option value="Shopee4">Shopee 4</option>
+              <option value="Tiktok1">Tiktok 1</option>
+              <option value="Tiktok2">Tiktok 2</option>
+              <option value="Tiktok3">Tiktok 3</option>
+              <option value="Tiktok4">Tiktok 4</option>
+            </select>
+          </div>
+          <div class="col-md-2 mt-3">
+            <label for="host" class="form-label">Host</label>
+            <input type="text" class="form-control" name="host" required>
+          </div>
+          <div class="col-md-2 mt-3">
+            <label for="jamlive" class="form-label">Jam Live / Toko</label>
+            <input type="text" class="form-control" name="jamlive" required>
+          </div>
+          <div class="col-md-2 d-flex align-items-end mt-3">
             <button type="submit" class="btn btn-success w-100"><i class="bi bi-save"></i> Simpan</button>
           </div>
         </div>
@@ -64,6 +75,9 @@
               <th>Nama Barang</th>
               <th>Variasi</th>
               <th>Jumlah</th>
+              <th>Platform</th>
+              <th>Host</th>
+              <th>Jam Live/Toko</th>
               <th>Aksi</th>
             </tr>
           </thead>
@@ -72,9 +86,12 @@
               <tr>
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $bk->tanggal }}</td>
-                <td>{{ $bk->produk->nama_produk }}</td>
-                <td>{{ $bk->variasi->warna->warna ?? '-' }}</td>
+                <td>{{ $bk->nama_barang }}</td>
+                <td>{{ $bk->variasi ?? '-' }}</td>
                 <td>{{ $bk->qty }}</td>
+                <td>{{ $bk->platform }}</td>
+                <td>{{ $bk->host }}</td>
+                <td>{{ $bk->jamlive }}</td>
                 <td>
                   <form action="{{ route('barang-keluar.destroy', $bk->id) }}" method="POST" class="d-inline">
                     @csrf
@@ -87,7 +104,7 @@
               </tr>
             @empty
               <tr>
-                <td colspan="6" class="text-center">Belum ada laporan barang keluar.</td>
+                <td colspan="9" class="text-center">Belum ada laporan barang keluar.</td>
               </tr>
             @endforelse
           </tbody>
@@ -95,22 +112,4 @@
       </div>
     </div>
   </div>
-
-  <script>
-   document.getElementById('produk_id').addEventListener('change', function () {
-    let selectedProduct = this.options[this.selectedIndex];
-    let variasiDropdown = document.getElementById('variasi_id');
-    let variasiData = JSON.parse(selectedProduct.getAttribute('data-variasi') || '[]');
-
-    variasiDropdown.innerHTML = '<option value="">-- Pilih Variasi --</option>';
-    variasiData.forEach(variasi => {
-        let option = document.createElement('option');
-        option.value = variasi.id;
-        option.textContent = (variasi.ukuran ? variasi.ukuran.ukuran : 'Tanpa Ukuran') +
-                             ' - ' + (variasi.warna ? variasi.warna.warna : 'Tanpa Warna');
-        variasiDropdown.appendChild(option);
-    });
-});
-
-  </script>
 @endsection
