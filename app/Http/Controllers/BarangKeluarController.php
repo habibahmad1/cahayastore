@@ -14,10 +14,11 @@ class BarangKeluarController extends Controller
     public function index()
     {
         $produks = Produk::with(['variasi.warna', 'variasi.ukuran'])->get();
-        $barangKeluar = BarangKeluar::with('produk')->latest()->get();
+        $barangKeluar = BarangKeluar::latest()->get(); // ✅ Hapus with('produk')
 
         return view('dashboard.barangkeluar.index', compact('barangKeluar', 'produks'));
     }
+
 
 
 
@@ -36,28 +37,28 @@ class BarangKeluarController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'produk_id' => 'required|exists:produks,id',
             'tanggal' => 'required|date',
+            'nama_produk' => 'required|string|max:255', // Nama barang diketik manual
+            'variasi' => 'nullable|string|max:255', // Variasi juga diketik manual
             'qty' => 'required|integer|min:1',
-            'platform' => 'required|string',
-            'host' => 'required|string',
-            'darijam' => 'required|string',
+            'platform' => 'required|string|max:50',
+            'host' => 'required|string|max:255',
+            'jamlive' => 'required|string|max:50',
         ]);
 
-        $produk = Produk::findOrFail($request->produk_id);
-        if ($produk->stok < $request->qty) {
-            return back()->withErrors(['qty' => 'Stok tidak mencukupi!']);
-        }
+        BarangKeluar::create([
+            'tanggal' => $request->tanggal,
+            'nama_produk' => $request->nama_produk, // Simpan langsung nama barang
+            'variasi' => $request->variasi, // Simpan langsung variasi
+            'qty' => $request->qty,
+            'platform' => $request->platform,
+            'host' => $request->host,
+            'jamlive' => $request->jamlive,
+        ]);
 
-        // Kurangi stok produk
-        $produk->stok -= $request->qty;
-        $produk->save();
-
-        // Simpan laporan barang keluar
-        BarangKeluar::create($request->all());
-
-        return redirect()->route('barang-keluar.index')->with('success', 'Laporan barang keluar berhasil dibuat.');
+        return redirect()->route('barang-keluar.index')->with('success', 'Laporan barang keluar berhasil disimpan.');
     }
+
 
     /**
      * Display the specified resource.

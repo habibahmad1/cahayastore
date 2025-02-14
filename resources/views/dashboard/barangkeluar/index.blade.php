@@ -20,7 +20,7 @@
           </div>
           <div class="col-md-3">
             <label for="nama_barang" class="form-label">Nama Barang</label>
-            <input type="text" class="form-control" name="nama_barang" required>
+            <input type="text" class="form-control" name="nama_produk" required>
           </div>
           <div class="col-md-3">
             <label for="variasi" class="form-label">Variasi (Opsional)</label>
@@ -34,14 +34,14 @@
             <label for="platform" class="form-label">Platform</label>
             <select class="form-select" name="platform" required>
               <option value="">-- Pilih Platform --</option>
-              <option value="Shopee1">Shopee 1</option>
-              <option value="Shopee2">Shopee 2</option>
-              <option value="Shopee3">Shopee 3</option>
-              <option value="Shopee4">Shopee 4</option>
-              <option value="Tiktok1">Tiktok 1</option>
-              <option value="Tiktok2">Tiktok 2</option>
-              <option value="Tiktok3">Tiktok 3</option>
-              <option value="Tiktok4">Tiktok 4</option>
+              <option value="Shopee 1">Shopee 1</option>
+              <option value="Shopee 2">Shopee 2</option>
+              <option value="Shopee 3">Shopee 3</option>
+              <option value="Shopee 4">Shopee 4</option>
+              <option value="Tiktok 1">Tiktok 1</option>
+              <option value="Tiktok 2">Tiktok 2</option>
+              <option value="Tiktok 3">Tiktok 3</option>
+              <option value="Tiktok 4">Tiktok 4</option>
             </select>
           </div>
           <div class="col-md-2 mt-3">
@@ -86,7 +86,7 @@
               <tr>
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $bk->tanggal }}</td>
-                <td>{{ $bk->nama_barang }}</td>
+                <td>{{ $bk->nama_produk }}</td>
                 <td>{{ $bk->variasi ?? '-' }}</td>
                 <td>{{ $bk->qty }}</td>
                 <td>{{ $bk->platform }}</td>
