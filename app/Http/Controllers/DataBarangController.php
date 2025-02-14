@@ -14,8 +14,11 @@ class DataBarangController extends Controller
      */
     public function index()
     {
-        return view('dashboard.databarang.index', ['produk' => Produk::all()]);
+        $produk = Produk::with(['variasi.warna', 'variasi.ukuran'])->paginate(10);
+        return view('dashboard.databarang.index', compact('produk'));
     }
+
+
 
     /**
      * Show the form for creating a new resource.
