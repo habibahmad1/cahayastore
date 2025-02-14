@@ -14,9 +14,13 @@ class DataBarangController extends Controller
      */
     public function index()
     {
-        $produk = Produk::with(['variasi.warna', 'variasi.ukuran'])->paginate(10);
+        // Mengambil semua produk beserta variasinya (warna & ukuran)
+        $produk = Produk::with(['variasi.warna', 'variasi.ukuran'])->get();
+
+        // Mengirim data ke view
         return view('dashboard.databarang.index', compact('produk'));
     }
+
 
 
 
