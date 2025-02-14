@@ -201,3 +201,6 @@ Route::put('/dashboard/settings/updateuser', function (Request $request) {
 
 // Route Data Barang
 Route::resource('/dashboard/databarang', DataBarangController::class)->middleware(['auth', 'admin']);
+
+// Route Barang Keluar
+Route::resource('/dashboard/barangkeluar', BarangKeluarController::class)->middleware(['auth', 'admin']);

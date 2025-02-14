@@ -144,7 +144,7 @@
                     Kelola Stok Barang <i class="bi bi-caret-down-fill"></i>
                 </a>
                 <a href="" class="nav-link d-flex align-items-center gap-2 ms-3 d-none {{ Request::is('dashboard/datamasuk*') ? 'active-dashboard' : '' }}" id="barangmasuk"><i class="bi bi-bag-plus"></i> Barang Masuk</a>
-                <a href="" class="nav-link d-flex align-items-center gap-2 ms-3 d-none" id="barangkeluar"><i class="bi bi-bag-dash"></i> Barang Keluar</a>
+                <a href="/dashboard/barangkeluar" class="nav-link d-flex align-items-center gap-2 ms-3 d-none {{ Request::is('dashboard/barangkeluar*') ? 'active-dashboard' : '' }}" id="barangkeluar"><i class="bi bi-bag-dash"></i> Barang Keluar</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link d-flex align-items-center gap-2 {{ Request::is('dashboard/allartikel*') ? 'active-dashboard' : '' }}" style="cursor: pointer; user-select: none" id="riwayatstok">

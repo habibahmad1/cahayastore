@@ -21,11 +21,11 @@
       <thead>
         <tr class="table-warning">
           <th scope="col">No.</th>
-          <th scope="col">Kode</th>
+          <th scope="col">Kode Barang</th>
           <th scope="col">Gambar</th>
           <th scope="col">Nama Barang</th>
           <th scope="col">Harga</th>
-          <th scope="col">Stok</th>
+          <th scope="col">Total Stok</th>
           <th scope="col">Variasi</th>
           <th scope="col" class="aksi-column">Aksi</th>
         </tr>
@@ -45,7 +45,7 @@
             </td>
             <td>{{ $p->nama_produk }}</td>
             <td>Rp{{ number_format($p->harga, 0, ',', '.') }}</td>
-            <td>{{ $p->stok }}</td>
+            <td>{{ $p->total_stok }}</td>
             <td>
               @if ($p->variasi->count() > 0)
                 <ul>
@@ -54,7 +54,7 @@
                     $stokClass = ($variasi->stok > 5) ? 'bg-success' : 'bg-danger';
                   @endphp
                     <li style="list-style-type: number">
-                      <span class="badge bg-primary">Warna: {{ $variasi->warna->warna ?? '-' }}</span>
+                      <span class="badge bg-primary">Variasi: {{ $variasi->warna->warna ?? '-' }}</span>
                       <span class="badge bg-warning text-black">Ukuran: {{ $variasi->ukuran->ukuran ?? '-' }}</span>
                       <span class="badge {{ $stokClass }}">Stok: {{ $variasi->stok ?? 0 }}</span>
                     </li>
@@ -104,7 +104,7 @@
       const ws = XLSX.utils.aoa_to_sheet(data);
       const wb = XLSX.utils.book_new();
       XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
-      XLSX.writeFile(wb, 'data_barang.xlsx');
+      XLSX.writeFile(wb, 'Data_stok_barang.xlsx');
 
       // Reload halaman agar kolom aksi tetap ada
       location.reload();

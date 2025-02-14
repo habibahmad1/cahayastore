@@ -50,6 +50,17 @@ class Produk extends Model
         return $this->hasMany(Produk_Variasi::class);
     }
 
+    public function getTotalStokAttribute()
+    {
+        // Jika ada variasi, jumlahkan stok variasi
+        if ($this->variasi->count() > 0) {
+            return $this->variasi->sum('stok');
+        }
+        // Jika tidak ada variasi, gunakan stok utama
+        return $this->stok;
+    }
+
+
     public function warna()
     {
         return $this->hasMany(Variasi_Warna::class);
