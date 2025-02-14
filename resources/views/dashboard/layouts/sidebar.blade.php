@@ -99,7 +99,7 @@
 
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link d-flex align-items-center gap-2 {{ Request::is('dashboard/data*') ? 'active-dashboard' : '' }}" href="/dashboard/data">
+                <a class="nav-link d-flex align-items-center gap-2 {{ Request::is('dashboard/data') ? 'active-dashboard' : '' }}" href="/dashboard/data">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
                         <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/>
                       </svg>
@@ -115,6 +115,47 @@
                       </svg>
                     Daftar Artikel
                 </a>
+            </li>
+        </ul>
+        @endcan
+
+        @can('admin')
+
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase" style=" background-color: #90c7ff; padding: 10px; color: #ffffff">
+            <span>BAG Stok Barang</span>
+        </h6>
+
+        {{-- <hr class="my-3"> --}}
+
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link d-flex align-items-center gap-2 {{ Request::is('dashboard/databarang*') ? 'active-dashboard' : '' }}" href="/dashboard/databarang">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box2-fill" viewBox="0 0 16 16">
+                        <path d="M3.75 0a1 1 0 0 0-.8.4L.1 4.2a.5.5 0 0 0-.1.3V15a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V4.5a.5.5 0 0 0-.1-.3L13.05.4a1 1 0 0 0-.8-.4zM15 4.667V5H1v-.333L1.5 4h6V1h1v3h6z"/>
+                      </svg>
+                    Data Stok Barang
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link d-flex align-items-center gap-2 {{ Request::is('dashboard/allartikel*') ? 'active-dashboard' : '' }}" style="cursor: pointer; user-select: none" id="dropkelolabarang">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dropbox" viewBox="0 0 16 16">
+                        <path d="M8.01 4.555 4.005 7.11 8.01 9.665 4.005 12.22 0 9.651l4.005-2.555L0 4.555 4.005 2zm-4.026 8.487 4.006-2.555 4.005 2.555-4.005 2.555zm4.026-3.39 4.005-2.556L8.01 4.555 11.995 2 16 4.555 11.995 7.11 16 9.665l-4.005 2.555z"/>
+                      </svg>
+                    Kelola Stok Barang <i class="bi bi-caret-down-fill"></i>
+                </a>
+                <a href="" class="nav-link d-flex align-items-center gap-2 ms-3 d-none {{ Request::is('dashboard/datamasuk*') ? 'active-dashboard' : '' }}" id="barangmasuk"><i class="bi bi-bag-plus"></i> Barang Masuk</a>
+                <a href="" class="nav-link d-flex align-items-center gap-2 ms-3 d-none" id="barangkeluar"><i class="bi bi-bag-dash"></i> Barang Keluar</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link d-flex align-items-center gap-2 {{ Request::is('dashboard/allartikel*') ? 'active-dashboard' : '' }}" style="cursor: pointer; user-select: none" id="riwayatstok">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-data-fill" viewBox="0 0 16 16">
+                        <path d="M6.5 0A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0zm3 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5z"/>
+                        <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1A2.5 2.5 0 0 1 9.5 5h-3A2.5 2.5 0 0 1 4 2.5zM10 8a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0zm-6 4a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0zm4-3a1 1 0 0 1 1 1v3a1 1 0 1 1-2 0v-3a1 1 0 0 1 1-1"/>
+                      </svg>
+                    Riwayat Stok Barang <i class="bi bi-caret-down-fill"></i>
+                </a>
+                <a href="" class="nav-link d-flex align-items-center gap-2 ms-3 d-none {{ Request::is('dashboard/datamasuk*') ? 'active-dashboard' : '' }}" id="uploadriwayat"><i class="bi bi-file-earmark-arrow-up"></i> Upload Riwayat Stok</a>
+                <a href="" class="nav-link d-flex align-items-center gap-2 ms-3 d-none" id="lihatriwayat"><i class="bi bi-file-earmark-bar-graph"></i> Lihat Riwayat Stok</a>
             </li>
         </ul>
         @endcan

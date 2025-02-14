@@ -10,7 +10,7 @@
             </div>
         </div>
         <div class="container-card-faq py-4">
-            <div class="card-faq"  data-aos="fade-right">
+            <div class="card-faq">
                 <div class="title-faq">
                     <h4>Kopi</h4>
                     <i class="fa-solid fa-mug-saucer"></i>
@@ -20,7 +20,7 @@
                     <button class="btn-buka-card btn text-white" style="background-color: #ffa340" data-kategori="Kopi">Baca</button>
                 </div>
             </div>
-            <div class="card-faq" data-aos="fade-left">
+            <div class="card-faq">
                 <div class="title-faq">
                     <h4>Sandal</h4>
                     <i class="fas fa-shoe-prints"></i>
@@ -30,7 +30,7 @@
                     <button class="btn-buka-card btn text-white" style="background-color: #ffa340" data-kategori="Sandal">Baca</button>
                 </div>
             </div>
-            <div class="card-faq" data-aos="fade-right">
+            <div class="card-faq">
                 <div class="title-faq">
                     <h4>Playmat</h4>
                     <i class="fas fa-border-all"></i>
@@ -40,7 +40,7 @@
                     <button class="btn-buka-card btn text-white" style="background-color: #ffa340" data-kategori="Playmat">Baca</button>
                 </div>
             </div>
-            <div class="card-faq" data-aos="fade-left">
+            <div class="card-faq">
                 <div class="title-faq">
                     <h4>Lampu</h4>
                     <i class="fas fa-lightbulb"></i>
@@ -50,7 +50,7 @@
                     <button class="btn-buka-card btn text-white" style="background-color: #ffa340" data-kategori="Lampu">Baca</button>
                 </div>
             </div>
-            <div class="card-faq" data-aos="fade-right">
+            <div class="card-faq">
                 <div class="title-faq">
                     <h4>Toko</h4>
                     <i class="fa-solid fa-shop"></i>

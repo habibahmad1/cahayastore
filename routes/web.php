@@ -1,25 +1,26 @@
 <?php
 
-use App\Http\Controllers\AdminKategoriController;
-use App\Http\Controllers\ArtikelController;
-use App\Http\Controllers\ContactController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\KategoriArtikelController;
-use App\Http\Controllers\KategoriController;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\ProdukController;
-use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\ForgotPasswordController;
-use App\Http\Controllers\SettingController;
-use App\Http\Controllers\UserController;
+use App\Models\User;
+use App\Models\Produk;
 use App\Models\Artikel;
 use App\Models\Kategori;
-use App\Models\KategoriArtikel;
-use App\Models\Produk;
-use App\Models\User;
-use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Models\KategoriArtikel;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\ArtikelController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\SettingController;
+use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DataBarangController;
+use App\Http\Controllers\AdminKategoriController;
+use App\Http\Controllers\ForgotPasswordController;
+use App\Http\Controllers\KategoriArtikelController;
 
 
 
@@ -197,3 +198,6 @@ Route::put('/dashboard/settings/updateuser', function (Request $request) {
     // Redirect kembali dengan pesan sukses
     return redirect('/dashboard/settings')->with('success', 'Profil berhasil diperbarui!');
 })->middleware('auth');
+
+// Route Data Barang
+Route::resource('/dashboard/databarang', DataBarangController::class)->middleware(['auth', 'admin']);
