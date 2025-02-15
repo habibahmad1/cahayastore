@@ -276,6 +276,25 @@ body {
     background: #ff1a1a;
 }
 
+/* Styling untuk autocomplete */
+.ui-autocomplete {
+    max-height: 200px; /* Atur tinggi maksimum agar bisa di-scroll */
+    overflow-y: auto; /* Menambahkan scroll jika daftar terlalu panjang */
+    background-color: #ffffff !important; /* Pastikan backgroundnya tidak transparan */
+    border: 1px solid #ccc; /* Tambahkan border untuk memperjelas elemen */
+}
+
+/* Styling untuk item autocomplete */
+.ui-menu-item {
+    cursor: pointer; /* Menambahkan pointer saat hover */
+}
+
+/* Efek hover pada item autocomplete */
+.ui-menu-item:hover {
+    background-color: #007bff; /* Warna biru saat hover */
+    color: white; /* Warna teks putih saat hover */
+}
+
 @media (max-width: 768px) {
     .sidebar .offcanvas-lg {
         position: -webkit-sticky;
