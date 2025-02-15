@@ -130,20 +130,71 @@ class BarangKeluarController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, BarangKeluar $barangKeluar)
+    public function update(Request $request, $id)
     {
         $request->validate([
-            'produk_id' => 'required|exists:produks,id',
             'tanggal' => 'required|date',
+            'produk_id' => 'required|exists:produks,id',
+            'variasi_id' => 'nullable|exists:produk_variasis,id',
             'qty' => 'required|integer|min:1',
             'platform' => 'required|string',
             'host' => 'required|string',
-            'darijam' => 'required|string',
+            'jamlive' => 'required|string',
         ]);
 
-        $barangKeluar->update($request->all());
-        return redirect()->route('barang-keluar.index')->with('success', 'Laporan barang keluar berhasil diperbarui.');
+        $barangKeluar = BarangKeluar::findOrFail($id);
+
+        // Ambil produk dan variasi sebelumnya
+        $produkLama = Produk::find($barangKeluar->produk_id);
+        $variasiLama = Produk_Variasi::find($barangKeluar->variasi_id);
+
+        // Kembalikan stok sebelumnya
+        if ($variasiLama) {
+            $variasiLama->stok += $barangKeluar->qty;
+            $variasiLama->save();
+        } else {
+            $produkLama->stok += $barangKeluar->qty;
+            $produkLama->save();
+        }
+
+        // Update dengan data yang baru
+        $barangKeluar->update([
+            'tanggal' => $request->tanggal,
+            'produk_id' => $request->produk_id,
+            'variasi_id' => $request->variasi_id,
+            'qty' => $request->qty,
+            'platform' => $request->platform,
+            'host' => $request->host,
+            'jamlive' => $request->jamlive,
+        ]);
+
+        // Ambil produk dan variasi baru setelah update
+        $produkBaru = Produk::find($request->produk_id);
+        $variasiBaru = Produk_Variasi::find($request->variasi_id);
+
+        // Kurangi stok sesuai dengan variasi baru jika ada perubahan
+        if ($variasiBaru) {
+            // Pastikan stok cukup sebelum mengurangi
+            if ($variasiBaru->stok >= $request->qty) {
+                $variasiBaru->stok -= $request->qty;
+                $variasiBaru->save();
+            } else {
+                return redirect()->back()->withErrors(['qty' => 'Jumlah barang yang dikeluarkan melebihi stok variasi.'])->withInput();
+            }
+        } else {
+            // Pastikan stok cukup pada produk utama jika tidak ada variasi
+            if ($produkBaru->stok >= $request->qty) {
+                $produkBaru->stok -= $request->qty;
+                $produkBaru->save();
+            } else {
+                return redirect()->back()->withErrors(['qty' => 'Jumlah barang yang dikeluarkan melebihi stok produk.'])->withInput();
+            }
+        }
+
+        return redirect()->route('barang-keluar.index')->with('success', 'Data barang keluar berhasil diperbarui.');
     }
+
+
 
     /**
      * Remove the specified resource from storage.
