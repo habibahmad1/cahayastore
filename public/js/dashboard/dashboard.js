@@ -47,3 +47,13 @@ if (riwayatstok && uploadriwayat && lihatriwayat) {
         lihatriwayat.classList.toggle("d-none");
     });
 }
+
+//sidebar
+document.addEventListener('DOMContentLoaded', function() {
+    const bagHomeToggle = document.getElementById('bagHomeToggle');
+    const bagHomeSubmenu = document.getElementById('bagHomeSubmenu');
+
+    bagHomeToggle.addEventListener('click', function() {
+        bagHomeSubmenu.classList.toggle('d-none');
+    });
+});
