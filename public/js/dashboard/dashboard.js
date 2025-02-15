@@ -48,12 +48,31 @@ if (riwayatstok && uploadriwayat && lihatriwayat) {
     });
 }
 
-//sidebar
+// Sidebar
 document.addEventListener('DOMContentLoaded', function() {
     const bagHomeToggle = document.getElementById('bagHomeToggle');
     const bagHomeSubmenu = document.getElementById('bagHomeSubmenu');
+    const bagProdukToggle = document.getElementById('bagProdukToggle');
+    const bagProdukSubmenu = document.getElementById('bagProdukSubmenu');
+    const bagArtikelToggle = document.getElementById('bagArtikelToggle');
+    const bagArtikelSubmenu = document.getElementById('bagArtikelSubmenu');
+    const bagUserManajemenToggle = document.getElementById('bagUserManajemenToggle');
+    const bagUserManajemenSubmenu = document.getElementById('bagUserManajemenSubmenu');
 
     bagHomeToggle.addEventListener('click', function() {
         bagHomeSubmenu.classList.toggle('d-none');
     });
+
+    bagProdukToggle.addEventListener('click', function() {
+        bagProdukSubmenu.classList.toggle('d-none');
+    });
+
+    bagArtikelToggle.addEventListener('click', function() {
+        bagArtikelSubmenu.classList.toggle('d-none');
+    });
+
+    bagUserManajemenToggle.addEventListener('click', function() {
+        bagUserManajemenSubmenu.classList.toggle('d-none');
+    });
+
 });
