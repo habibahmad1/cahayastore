@@ -130,6 +130,11 @@
         <div class="col-md-3 d-flex align-items-end mt-3">
             <button type="submit" class="btn btn-primary">Filter</button>
         </div>
+
+        <div class="col-md-3 d-flex align-items-end mt-3">
+            <a href="{{ route('barang-keluar.index') }}" class="btn btn-danger">Reset</a>
+        </div>
+
     </div>
 </form>
 
@@ -174,6 +179,14 @@
                       <i class="bi bi-trash"></i> Hapus
                     </button>
                   </form>
+
+                  <button type="button" class="btn btn-warning btn-sm edit-btn mt-2" data-bs-toggle="modal" data-bs-target="#editModal"
+                data-id="{{ $bk->id }}" data-tanggal="{{ $bk->tanggal }}" data-produk="{{ $bk->produk->id }}"
+                data-variasi="{{ $bk->variasi_id }}" data-qty="{{ $bk->qty }}" data-platform="{{ $bk->platform }}"
+                data-host="{{ $bk->host }}" data-jamlive="{{ $bk->jamlive }}">
+                <i class="bi bi-pencil"></i> Edit
+                </button>
+
                 </td>
               </tr>
             @empty
@@ -186,6 +199,83 @@
       </div>
     </div>
   </div>
+
+  {{-- Modal Edit --}}
+  <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editModalLabel">Edit Barang Keluar</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="editForm" method="POST">
+            @csrf
+            @method('PUT')
+
+            <input type="hidden" name="id" id="edit-id">
+
+            <div class="mb-3">
+              <label for="edit-tanggal" class="form-label">Tanggal</label>
+              <input type="date" class="form-control" name="tanggal" id="edit-tanggal" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="edit-produk_id" class="form-label">Nama Barang</label>
+              <select name="produk_id" class="form-control" id="edit-produk_id" required>
+                @foreach ($produks as $produk)
+                  <option value="{{ $produk->id }}">{{ $produk->nama_produk }}</option>
+                @endforeach
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label for="edit-variasi_id" class="form-label">Variasi</label>
+              <select name="variasi_id" class="form-control" id="edit-variasi_id">
+                <option value="">-- Pilih Variasi --</option>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label for="edit-qty" class="form-label">Jumlah</label>
+              <input type="number" class="form-control" name="qty" id="edit-qty" min="1" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="edit-platform" class="form-label">Platform</label>
+                <select class="form-control" name="platform" id="edit-platform" required>
+                  <option value="Shopee 1">Shopee 1</option>
+                  <option value="Shopee 2">Shopee 2</option>
+                  <option value="Shopee 3">Shopee 3</option>
+                  <option value="Shopee 4">Shopee 4</option>
+                  <option value="Tiktok 1">Tiktok 1</option>
+                  <option value="Tiktok 2">Tiktok 2</option>
+                  <option value="Tiktok 3">Tiktok 3</option>
+                  <option value="Tiktok 4">Tiktok 4</option>
+                  <option value="Tokopedia 1">Tokopedia 1</option>
+                  <option value="Tokopedia 2">Tokopedia 2</option>
+                  <option value="Tokopedia 3">Tokopedia 3</option>
+                </select>
+              </div>
+
+
+            <div class="mb-3">
+              <label for="edit-host" class="form-label">Host</label>
+              <input type="text" class="form-control" name="host" id="edit-host" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="edit-jamlive" class="form-label">Jam Live / Toko</label>
+              <input type="text" class="form-control" name="jamlive" id="edit-jamlive" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">Simpan Perubahan</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
 @endsection
 
 @section('scripts')
@@ -260,4 +350,61 @@
 });
 
   </script>
+
+<script>
+    $(document).ready(function() {
+    $(".edit-btn").click(function() {
+    let id = $(this).data("id");
+    let tanggal = $(this).data("tanggal");
+    let produk = $(this).data("produk");
+    let variasi = $(this).data("variasi");
+    let qty = $(this).data("qty");
+    let platform = $(this).data("platform");
+    let host = $(this).data("host");
+    let jamlive = $(this).data("jamlive");
+
+    $("#edit-id").val(id);
+    $("#edit-tanggal").val(tanggal);
+    $("#edit-produk_id").val(produk);
+    $("#edit-variasi_id").val(variasi);
+    $("#edit-qty").val(qty);
+    $("#edit-platform").val(platform);  // Pastikan nilai platform disesuaikan
+    $("#edit-host").val(host);
+    $("#edit-jamlive").val(jamlive);
+
+
+    // Memuat variasi ketika produk dipilih di modal edit
+    $.ajax({
+      url: '/barang-keluar/' + produk + '/variasi',  // Sesuaikan dengan route yang tepat
+      type: 'GET',
+      success: function(data) {
+        var variasiSelect = $("#edit-variasi_id");
+        variasiSelect.empty();  // Hapus pilihan sebelumnya
+
+        if (data.variasi.length > 0) {
+          variasiSelect.append('<option value="">Pilih Variasi</option>');
+
+          data.variasi.forEach(function(variasi) {
+            var warna = variasi.warna ? variasi.warna.warna : '-';
+            var ukuran = variasi.ukuran && variasi.ukuran.ukuran ? variasi.ukuran.ukuran : '';
+
+            if (ukuran) {
+              variasiSelect.append('<option value="' + variasi.id + '">' + warna + ' - ' + ukuran + '</option>');
+            } else {
+              variasiSelect.append('<option value="' + variasi.id + '">' + warna + ' - ' + '</option>');
+            }
+          });
+        } else {
+          variasiSelect.append('<option value="">Tidak ada variasi</option>');
+        }
+      }
+    });
+
+    // Update action form dengan ID
+    $("#editForm").attr("action", "/dashboard/barang-keluar/" + id);
+  });
+});
+
+  </script>
+
 @endsection
