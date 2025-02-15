@@ -21,7 +21,9 @@
           <div class="col-md-3">
             <label for="produk_id" class="form-label">Nama Barang</label>
             <input type="text" class="form-control" name="nama_produk" id="nama_produk" required>
+            <input type="hidden" name="produk_id" id="produk_id">  <!-- Input tersembunyi untuk produk_id -->
           </div>
+
           <div class="col-md-3">
             <label for="variasi_id" class="form-label">Variasi (Opsional)</label>
             <select name="variasi_id" class="form-select" id="variasi_id">
@@ -133,53 +135,64 @@
 
 
   <script>
-    $(document).ready(function() {
-    // Autocomplete untuk nama produk
-    $("input[name='nama_produk']").autocomplete({
-        source: function(request, response) {
-            $.ajax({
-                url: "{{ route('barang-keluar.autocomplete') }}",
-                data: { term: request.term },
-                success: function(data) {
-                    console.log(data);  // Cek data yang diterima
+   $(document).ready(function() {
+  // Autocomplete untuk nama produk
+  $("input[name='nama_produk']").autocomplete({
+    source: function(request, response) {
+      $.ajax({
+        url: "{{ route('barang-keluar.autocomplete') }}",
+        data: { term: request.term },
+        success: function(data) {
+          console.log(data);  // Cek data yang diterima
 
-                    response($.map(data, function(item) {
-                        return {
-                            label: item.nama_produk,  // Nama produk ditampilkan
-                            value: item.nama_produk,  // Nilai yang akan diisi di input
-                            id: item.id  // ID produk yang akan digunakan saat memilih
-                        };
-                    }));
-                }
-            });
-        },
-        minLength: 2,  // Minimal 2 karakter untuk mulai pencarian
-        select: function(event, ui) {
-            var produkId = ui.item.id;
-            console.log('Produk ID yang dipilih: ' + produkId);
-
-            // Kirim permintaan untuk mendapatkan variasi produk berdasarkan ID produk
-            $.ajax({
-                url: '/barang-keluar/' + produkId + '/variasi',  // Sesuaikan route untuk mendapatkan variasi produk
-                type: 'GET',
-                success: function(data) {
-                    var variasiSelect = $("select[name='variasi_id']");
-                    variasiSelect.empty();  // Hapus pilihan yang ada sebelumnya
-
-                    if (data.variasi.length > 0) {
-                        variasiSelect.append('<option value="">Pilih Variasi</option>');
-                        data.variasi.forEach(function(variasi) {
-                            var warna = variasi.warna ? variasi.warna.warna : '-';
-                            var ukuran = variasi.ukuran ? variasi.ukuran.ukuran : '-';
-                            variasiSelect.append('<option value="' + variasi.id + '">' + warna + ' - ' + ukuran + '</option>');
-                        });
-                    } else {
-                        variasiSelect.append('<option value="">Tidak ada variasi</option>');
-                    }
-                }
-            });
+          response($.map(data, function(item) {
+            return {
+              label: item.nama_produk,  // Nama produk ditampilkan
+              value: item.nama_produk,  // Nilai yang akan diisi di input
+              id: item.id  // ID produk yang akan digunakan saat memilih
+            };
+          }));
         }
-    });
+      });
+    },
+    minLength: 2,  // Minimal 2 karakter untuk mulai pencarian
+    select: function(event, ui) {
+      var produkId = ui.item.id;
+      console.log('Produk ID yang dipilih: ' + produkId);
+
+      // Menyimpan produk_id yang dipilih ke dalam input tersembunyi
+      $("#produk_id").val(produkId);
+
+      // Kirim permintaan untuk mendapatkan variasi produk berdasarkan ID produk
+      $.ajax({
+        url: '/barang-keluar/' + produkId + '/variasi',  // Sesuaikan route untuk mendapatkan variasi produk
+        type: 'GET',
+        success: function(data) {
+          var variasiSelect = $("select[name='variasi_id']");
+          variasiSelect.empty();  // Hapus pilihan yang ada sebelumnya
+
+          if (data.variasi.length > 0) {
+            variasiSelect.append('<option value="">Pilih Variasi</option>');  // Pilihan default
+
+            data.variasi.forEach(function(variasi) {
+              var warna = variasi.warna ? variasi.warna.warna : '-';
+              var ukuran = variasi.ukuran && variasi.ukuran.ukuran ? variasi.ukuran.ukuran : '';  // Mengecek jika ukuran ada
+
+              // Menampilkan variasi dan warna, jika ukuran tidak ada, jangan ditulis "null"
+              if (ukuran) {
+                variasiSelect.append('<option value="' + variasi.id + '">' + warna + ' - ' + ukuran + '</option>');
+              } else {
+                variasiSelect.append('<option value="' + variasi.id + '">' + warna + ' - ' + '</option>');
+              }
+            });
+          } else {
+            variasiSelect.append('<option value="">Tidak ada variasi</option>');
+          }
+        }
+      });
+    }
+  });
 });
+
   </script>
 @endsection

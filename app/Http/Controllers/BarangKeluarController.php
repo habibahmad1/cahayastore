@@ -44,56 +44,50 @@ class BarangKeluarController extends Controller
             'jamlive' => 'required|string|max:50',
         ]);
 
-        // Mengambil produk berdasarkan produk_id
         $produk = Produk::find($request->produk_id);
 
-        // Jika produk tidak ditemukan, kembalikan error
+        // Pastikan produk ditemukan
         if (!$produk) {
             return redirect()->back()->withErrors(['produk_id' => 'Produk tidak ditemukan.'])->withInput();
         }
 
-        // Jika variasi_id dipilih, ambil variasi terkait
+        // Proses variasi jika ada
         if ($request->variasi_id) {
             $variasi = Produk_Variasi::find($request->variasi_id);
-
-            // Jika variasi tidak ditemukan, kembalikan error
             if (!$variasi) {
                 return redirect()->back()->withErrors(['variasi_id' => 'Variasi tidak ditemukan.'])->withInput();
             }
 
-            // Cek apakah jumlah yang dikeluarkan melebihi stok variasi
+            // Cek stok variasi
             if ($variasi->stok < $request->qty) {
                 return redirect()->back()->withErrors(['qty' => 'Jumlah barang yang dikeluarkan melebihi stok variasi.'])->withInput();
             }
 
-            // Kurangi stok variasi
             $variasi->stok -= $request->qty;
             $variasi->save();
         } else {
-            // Jika tidak ada variasi, kurangi stok produk
             if ($produk->stok < $request->qty) {
                 return redirect()->back()->withErrors(['qty' => 'Jumlah barang yang dikeluarkan melebihi stok produk.'])->withInput();
             }
 
-            // Kurangi stok produk
             $produk->stok -= $request->qty;
             $produk->save();
         }
 
-        // Menyimpan data barang keluar dengan user_id secara otomatis
         BarangKeluar::create([
             'tanggal' => $request->tanggal,
-            'produk_id' => $request->produk_id,
-            'variasi_id' => $request->variasi_id,
+            'produk_id' => $request->produk_id,  // Menggunakan produk_id
+            'variasi_id' => $request->variasi_id, // Variasi jika ada
             'qty' => $request->qty,
             'platform' => $request->platform,
             'host' => $request->host,
             'jamlive' => $request->jamlive,
-            'user_id' => auth()->id(), // Menambahkan user_id secara otomatis
+            'user_id' => auth()->id(),
         ]);
 
         return redirect()->route('barang-keluar.index')->with('success', 'Laporan barang keluar berhasil disimpan.');
     }
+
 
 
 
