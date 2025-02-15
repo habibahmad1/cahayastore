@@ -19,12 +19,12 @@
             <input type="date" class="form-control" name="tanggal" required>
           </div>
           <div class="col-md-3">
-            <label for="nama_produk" class="form-label">Nama Barang</label>
+            <label for="produk_id" class="form-label">Nama Barang</label>
             <input type="text" class="form-control" name="nama_produk" id="nama_produk" required>
           </div>
           <div class="col-md-3">
-            <label for="variasi" class="form-label">Variasi (Opsional)</label>
-            <select name="variasi" class="form-select" id="variasi">
+            <label for="variasi_id" class="form-label">Variasi (Opsional)</label>
+            <select name="variasi_id" class="form-select" id="variasi_id">
               <option value="">-- Pilih Variasi --</option>
               <!-- Variasi akan dimuat disini setelah produk dipilih -->
             </select>
@@ -93,8 +93,8 @@
               <tr>
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $bk->tanggal }}</td>
-                <td>{{ $bk->nama_produk }}</td>
-                <td>{{ $bk->variasi ?? '-' }}</td>
+                <td>{{ $bk->produk->nama_produk }}</td> <!-- Ganti sesuai relasi dengan model -->
+                <td>{{ $bk->variasi ? $bk->variasi->warna->warna . ' - ' . $bk->variasi->ukuran->ukuran : '-' }}</td>
                 <td>{{ $bk->qty }}</td>
                 <td>{{ $bk->platform }}</td>
                 <td>{{ $bk->host }}</td>
@@ -123,10 +123,14 @@
 
 @section('scripts')
   <!-- Muat jQuery terlebih dahulu -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-  <!-- Setelah itu muat jQuery UI -->
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<!-- Setelah itu muat jQuery UI -->
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+
+<!-- Pastikan untuk memuat CSS jQuery UI agar tampilan autocomplete muncul dengan benar -->
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
 
   <script>
     $(document).ready(function() {
@@ -134,16 +138,14 @@
     $("input[name='nama_produk']").autocomplete({
         source: function(request, response) {
             $.ajax({
-                url: "{{ route('barang-keluar.autocomplete') }}",  // Pastikan URL sesuai dengan route backend
+                url: "{{ route('barang-keluar.autocomplete') }}",
                 data: { term: request.term },
                 success: function(data) {
-                    // Cek apakah data yang diterima benar
-                    console.log(data);  // Cek data yang diterima di console browser
+                    console.log(data);  // Cek data yang diterima
 
-                    // Tampilkan hasil pencarian
                     response($.map(data, function(item) {
                         return {
-                            label: item.nama_produk,  // Menampilkan nama produk di autocomplete
+                            label: item.nama_produk,  // Nama produk ditampilkan
                             value: item.nama_produk,  // Nilai yang akan diisi di input
                             id: item.id  // ID produk yang akan digunakan saat memilih
                         };
@@ -161,27 +163,23 @@
                 url: '/barang-keluar/' + produkId + '/variasi',  // Sesuaikan route untuk mendapatkan variasi produk
                 type: 'GET',
                 success: function(data) {
-                   // Tampilkan variasi di field variasi
-var variasiSelect = $("select[name='variasi']");
-variasiSelect.empty(); // Hapus pilihan yang ada sebelumnya
+                    var variasiSelect = $("select[name='variasi_id']");
+                    variasiSelect.empty();  // Hapus pilihan yang ada sebelumnya
 
-if (data.variasi.length > 0) {
-    // Jika variasi tersedia, tambahkan ke dropdown
-    variasiSelect.append('<option value="">Pilih Variasi</option>');
-    data.variasi.forEach(function(variasi) {
-        // Pastikan untuk menggunakan variasi.nama untuk label dan variasi.id untuk value
-        variasiSelect.append('<option value="' + variasi.id + '">' + (variasi.warna.warna + ' - ' + (variasi.ukuran.ukuran || 'Ukuran Tidak Ditemukan')) + '</option>');
-    });
-} else {
-    // Jika tidak ada variasi, beri pesan atau biarkan kosong
-    variasiSelect.append('<option value="">Tidak ada variasi</option>');
-}
-
+                    if (data.variasi.length > 0) {
+                        variasiSelect.append('<option value="">Pilih Variasi</option>');
+                        data.variasi.forEach(function(variasi) {
+                            var warna = variasi.warna ? variasi.warna.warna : '-';
+                            var ukuran = variasi.ukuran ? variasi.ukuran.ukuran : '-';
+                            variasiSelect.append('<option value="' + variasi.id + '">' + warna + ' - ' + ukuran + '</option>');
+                        });
+                    } else {
+                        variasiSelect.append('<option value="">Tidak ada variasi</option>');
+                    }
                 }
             });
         }
     });
 });
-
   </script>
 @endsection

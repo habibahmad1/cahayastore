@@ -36,26 +36,66 @@ class BarangKeluarController extends Controller
     {
         $request->validate([
             'tanggal' => 'required|date',
-            'nama_produk' => 'required|string|max:255', // Nama barang diketik manual
-            'variasi' => 'nullable|exists:variasis,id', // Jika variasi dipilih, pastikan ID variasi valid
+            'produk_id' => 'required|exists:produks,id', // Validasi produk_id
+            'variasi_id' => 'nullable|exists:produk_variasis,id', // Validasi variasi_id
             'qty' => 'required|integer|min:1',
             'platform' => 'required|string|max:50',
             'host' => 'required|string|max:255',
             'jamlive' => 'required|string|max:50',
         ]);
 
+        // Mengambil produk berdasarkan produk_id
+        $produk = Produk::find($request->produk_id);
+
+        // Jika produk tidak ditemukan, kembalikan error
+        if (!$produk) {
+            return redirect()->back()->withErrors(['produk_id' => 'Produk tidak ditemukan.'])->withInput();
+        }
+
+        // Jika variasi_id dipilih, ambil variasi terkait
+        if ($request->variasi_id) {
+            $variasi = Produk_Variasi::find($request->variasi_id);
+
+            // Jika variasi tidak ditemukan, kembalikan error
+            if (!$variasi) {
+                return redirect()->back()->withErrors(['variasi_id' => 'Variasi tidak ditemukan.'])->withInput();
+            }
+
+            // Cek apakah jumlah yang dikeluarkan melebihi stok variasi
+            if ($variasi->stok < $request->qty) {
+                return redirect()->back()->withErrors(['qty' => 'Jumlah barang yang dikeluarkan melebihi stok variasi.'])->withInput();
+            }
+
+            // Kurangi stok variasi
+            $variasi->stok -= $request->qty;
+            $variasi->save();
+        } else {
+            // Jika tidak ada variasi, kurangi stok produk
+            if ($produk->stok < $request->qty) {
+                return redirect()->back()->withErrors(['qty' => 'Jumlah barang yang dikeluarkan melebihi stok produk.'])->withInput();
+            }
+
+            // Kurangi stok produk
+            $produk->stok -= $request->qty;
+            $produk->save();
+        }
+
+        // Menyimpan data barang keluar dengan user_id secara otomatis
         BarangKeluar::create([
             'tanggal' => $request->tanggal,
-            'nama_produk' => $request->nama_produk, // Simpan langsung nama barang
-            'variasi' => $request->variasi, // Simpan ID variasi jika dipilih
+            'produk_id' => $request->produk_id,
+            'variasi_id' => $request->variasi_id,
             'qty' => $request->qty,
             'platform' => $request->platform,
             'host' => $request->host,
             'jamlive' => $request->jamlive,
+            'user_id' => auth()->id(), // Menambahkan user_id secara otomatis
         ]);
 
         return redirect()->route('barang-keluar.index')->with('success', 'Laporan barang keluar berhasil disimpan.');
     }
+
+
 
     /**
      * Display the specified resource.
@@ -119,14 +159,17 @@ class BarangKeluarController extends Controller
         return response()->json($produks);
     }
 
-
     /**
      * Mendapatkan variasi berdasarkan produk ID.
      */
     public function getVariasi($produkId)
     {
-        $variasi = Produk_Variasi::where('produk_id', $produkId)->get(); // Mengambil variasi berdasarkan produk_id
+        // Mengambil variasi berdasarkan produk_id dan memuat informasi warna dan ukuran
+        $variasi = Produk_Variasi::where('produk_id', $produkId)
+            ->with(['warna', 'ukuran']) // Pastikan relasi warna dan ukuran dimuat
+            ->get();
 
+        // Mengirimkan variasi dengan nama warna dan ukuran
         return response()->json(['variasi' => $variasi]);
     }
 }
