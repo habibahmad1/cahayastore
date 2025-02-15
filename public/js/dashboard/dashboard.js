@@ -74,4 +74,5 @@ document.addEventListener('DOMContentLoaded', function() {
     bagUserManajemenToggle.addEventListener('click', function() {
         bagUserManajemenSubmenu.classList.toggle('d-none');
     });
+
 });
