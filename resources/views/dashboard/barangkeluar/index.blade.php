@@ -6,6 +6,23 @@
   </div>
 
   {{-- Form Buat Laporan Barang Keluar --}}
+     <!-- Menampilkan pesan sukses jika ada -->
+     @if (session('success'))
+     <div class="alert alert-success col-lg-12">
+         {{ session('success') }}
+     </div>
+     @endif
+
+     @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+
   <div class="card mb-4">
     <div class="card-header bg-primary text-white">
       <strong>Buat Laporan Barang Keluar</strong>
@@ -68,6 +85,54 @@
       </form>
     </div>
   </div>
+
+  {{-- Filter --}}
+  <form action="{{ route('barang-keluar.index') }}" method="GET" class="mb-3">
+    <div class="row">
+        <!-- Filter Tanggal Mulai -->
+        <div class="col-md-3">
+            <label for="tanggal_mulai" class="form-label">Tanggal Mulai</label>
+            <input type="date" class="form-control" name="tanggal_mulai" value="{{ request('tanggal_mulai') }}">
+        </div>
+
+        <!-- Filter Tanggal Selesai -->
+        <div class="col-md-3">
+            <label for="tanggal_selesai" class="form-label">Tanggal Selesai</label>
+            <input type="date" class="form-control" name="tanggal_selesai" value="{{ request('tanggal_selesai') }}">
+        </div>
+
+        <!-- Filter Platform -->
+        <div class="col-md-3">
+            <label for="platform" class="form-label">Platform</label>
+            <select class="form-control" name="platform">
+                <option value="">-- Pilih Platform --</option>
+                <option value="Shopee 1" {{ request('platform') == 'Shopee 1' ? 'selected' : '' }}>Shopee 1</option>
+                <option value="Shopee 2" {{ request('platform') == 'Shopee 2' ? 'selected' : '' }}>Shopee 2</option>
+                <option value="Shopee 3" {{ request('platform') == 'Shopee 3' ? 'selected' : '' }}>Shopee 3</option>
+                <option value="Shopee 4" {{ request('platform') == 'Shopee 4' ? 'selected' : '' }}>Shopee 4</option>
+                <option value="Tiktok 1" {{ request('platform') == 'Tiktok 1' ? 'selected' : '' }}>Tiktok 1</option>
+                <option value="Tiktok 2" {{ request('platform') == 'Tiktok 2' ? 'selected' : '' }}>Tiktok 2</option>
+                <option value="Tiktok 3" {{ request('platform') == 'Tiktok 3' ? 'selected' : '' }}>Tiktok 3</option>
+                <option value="Tiktok 4" {{ request('platform') == 'Tiktok 4' ? 'selected' : '' }}>Tiktok 4</option>
+                <option value="Tokopedia 1" {{ request('platform') == 'Tokopedia 1' ? 'selected' : '' }}>Tokopedia 1</option>
+                <option value="Tokopedia 2" {{ request('platform') == 'Tokopedia 2' ? 'selected' : '' }}>Tokopedia 2</option>
+                <option value="Tokopedia 3" {{ request('platform') == 'Tokopedia 3' ? 'selected' : '' }}>Tokopedia 3</option>
+            </select>
+        </div>
+
+        <!-- Filter Host -->
+        <div class="col-md-3">
+            <label for="host" class="form-label">Host</label>
+            <input type="text" class="form-control" name="host" placeholder="Cari host..." value="{{ request('host') }}">
+        </div>
+
+        <!-- Tombol Filter -->
+        <div class="col-md-3 d-flex align-items-end mt-3">
+            <button type="submit" class="btn btn-primary">Filter</button>
+        </div>
+    </div>
+</form>
+
 
   {{-- Tabel Riwayat Barang Keluar --}}
   <div class="card">

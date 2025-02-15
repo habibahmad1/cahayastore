@@ -12,13 +12,32 @@ class BarangKeluarController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+        $query = BarangKeluar::query();
+
+        // Filter berdasarkan tanggal
+        if ($request->filled('tanggal_mulai') && $request->filled('tanggal_selesai')) {
+            $query->whereBetween('tanggal', [$request->tanggal_mulai, $request->tanggal_selesai]);
+        }
+
+        // Filter berdasarkan platform (hanya jika dipilih)
+        if ($request->filled('platform')) {
+            $query->where('platform', $request->platform);
+        }
+
+        // Filter berdasarkan host (pencarian sebagian)
+        if ($request->filled('host')) {
+            $query->where('host', 'LIKE', '%' . $request->host . '%');
+        }
+
+        $barangKeluar = $query->latest()->get();
         $produks = Produk::with(['variasi.warna', 'variasi.ukuran'])->get();
-        $barangKeluar = BarangKeluar::latest()->get(); // ✅ Hapus with('produk')
 
         return view('dashboard.barangkeluar.index', compact('barangKeluar', 'produks'));
     }
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -131,9 +150,28 @@ class BarangKeluarController extends Controller
      */
     public function destroy(BarangKeluar $barangKeluar)
     {
+        // Ambil informasi produk dan variasi
+        $produk = Produk::find($barangKeluar->produk_id);
+
+        if ($barangKeluar->variasi_id) {
+            $variasi = Produk_Variasi::find($barangKeluar->variasi_id);
+            if ($variasi) {
+                $variasi->stok += $barangKeluar->qty; // Tambahkan kembali stok variasi
+                $variasi->save();
+            }
+        } else {
+            if ($produk) {
+                $produk->stok += $barangKeluar->qty; // Tambahkan kembali stok produk utama
+                $produk->save();
+            }
+        }
+
+        // Hapus laporan barang keluar setelah stok dikembalikan
         $barangKeluar->delete();
-        return redirect()->route('barang-keluar.index')->with('success', 'Laporan barang keluar berhasil dihapus.');
+
+        return redirect()->route('barang-keluar.index')->with('success', 'Laporan barang keluar berhasil dihapus dan stok dikembalikan.');
     }
+
 
     /**
      * Autocomplete untuk pencarian nama produk.
