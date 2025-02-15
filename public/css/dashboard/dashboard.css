@@ -302,6 +302,12 @@ body {
     color: white; /* Warna teks putih saat hover */
 }
 
+.ui-autocomplete {
+    width: 100% !important; /* Agar lebar dropdown sama dengan input */
+    max-height: 200px; /* Atur batas tinggi dropdown */
+    overflow-y: auto; /* Scroll vertikal jika diperlukan */
+}
+
 @media (max-width: 768px) {
     .sidebar .offcanvas-lg {
         position: -webkit-sticky;
