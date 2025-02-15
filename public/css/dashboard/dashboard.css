@@ -23,7 +23,7 @@ body {
 
 .sidebar .nav-link.active {
     background-color: #1a252f; /* Warna latar belakang untuk link aktif */
-    color: #ffffff; /* Warna teks putih */
+    color: #00ff3c; /* Warna teks putih */
 }
 
 .sidebar .nav-link:hover {
@@ -303,7 +303,7 @@ body {
 }
 
 .ui-autocomplete {
-    width: 100% !important; /* Agar lebar dropdown sama dengan input */
+    width: 40% !important; /* Agar lebar dropdown sama dengan input */
     max-height: 200px; /* Atur batas tinggi dropdown */
     overflow-y: auto; /* Scroll vertikal jika diperlukan */
 }
@@ -356,6 +356,10 @@ body {
         flex-direction: row;
         gap: 10px;
         padding: 10px 10px;
+    }
+
+    .ui-autocomplete {
+        width: 90% !important;
     }
 }
 
