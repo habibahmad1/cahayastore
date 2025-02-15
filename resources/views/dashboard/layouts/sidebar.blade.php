@@ -1,12 +1,12 @@
-<div class="sidebar border border-right col-md-3 col-lg-2 p-0 bg-body-tertiary">
-    <div class="offcanvas-md offcanvas-end bg-body-tertiary" tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
+<div class="sidebar border border-right col-md-3 col-lg-2 p-0 bg-dark-gray">
+    <div class="offcanvas-md offcanvas-end bg-dark-gray" tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
       <div class="offcanvas-header">
         <h5 class="offcanvas-title" id="sidebarMenuLabel">PT.Cahaya Setia Indonesia</h5>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebarMenu" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
 
-        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase"  style="background-color: #90c7ff; padding: 10px; color: #ffffff;">
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase"  style="background-color: #0084ff; padding: 10px; color: #ffffff !important">
             <span>BAG home</span>
         </h6>
 
@@ -33,7 +33,7 @@
           </li>
         </ul>
 
-        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase" style="background-color: #90c7ff; padding: 10px; color: #ffffff;">
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase" style="background-color: #0084ff; padding: 10px; color: #ffffff !important">
             <span>BAG PRODUK</span>
         </h6>
 
@@ -61,7 +61,7 @@
             @endcan
         </ul>
 
-        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase" style="background-color: #90c7ff; padding: 10px; color: #ffffff;">
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase" style="background-color: #0084ff; padding: 10px; color: #ffffff !important">
             <span> BAG Artikel</span>
         </h6>
 
@@ -91,7 +91,7 @@
 
         @can('admin')
 
-        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase" style=" background-color: #90c7ff; padding: 10px; color: #ffffff">
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase" style=" background-color: #0084ff; padding: 10px; color: #ffffff !important">
             <span>BAG User Manajemen</span>
         </h6>
 
@@ -121,7 +121,7 @@
 
         @can('admin')
 
-        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase" style=" background-color: #90c7ff; padding: 10px; color: #ffffff">
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase" style=" background-color: #0084ff; padding: 10px; color: #ffffff !important">
             <span>BAG Stok Barang</span>
         </h6>
 
