@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\BarangKeluar;
+use App\Models\Produk_Variasi;
 use App\Models\Produk;
 use Illuminate\Http\Request;
 
@@ -19,15 +20,12 @@ class BarangKeluarController extends Controller
         return view('dashboard.barangkeluar.index', compact('barangKeluar', 'produks'));
     }
 
-
-
-
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        $produks = Produk::all();
+        $produks = Produk::with(['variasi'])->get(); // Pastikan variasi dimuat di sini
         return view('dashboard.barangkeluar.create', compact('produks'));
     }
 
@@ -39,7 +37,7 @@ class BarangKeluarController extends Controller
         $request->validate([
             'tanggal' => 'required|date',
             'nama_produk' => 'required|string|max:255', // Nama barang diketik manual
-            'variasi' => 'nullable|string|max:255', // Variasi juga diketik manual
+            'variasi' => 'nullable|exists:variasis,id', // Jika variasi dipilih, pastikan ID variasi valid
             'qty' => 'required|integer|min:1',
             'platform' => 'required|string|max:50',
             'host' => 'required|string|max:255',
@@ -49,7 +47,7 @@ class BarangKeluarController extends Controller
         BarangKeluar::create([
             'tanggal' => $request->tanggal,
             'nama_produk' => $request->nama_produk, // Simpan langsung nama barang
-            'variasi' => $request->variasi, // Simpan langsung variasi
+            'variasi' => $request->variasi, // Simpan ID variasi jika dipilih
             'qty' => $request->qty,
             'platform' => $request->platform,
             'host' => $request->host,
@@ -58,7 +56,6 @@ class BarangKeluarController extends Controller
 
         return redirect()->route('barang-keluar.index')->with('success', 'Laporan barang keluar berhasil disimpan.');
     }
-
 
     /**
      * Display the specified resource.
@@ -73,7 +70,7 @@ class BarangKeluarController extends Controller
      */
     public function edit(BarangKeluar $barangKeluar)
     {
-        $produks = Produk::all();
+        $produks = Produk::with(['variasi'])->get(); // Pastikan variasi dimuat di sini
         return view('dashboard.barangkeluar.edit', compact('barangKeluar', 'produks'));
     }
 
@@ -104,13 +101,32 @@ class BarangKeluarController extends Controller
         return redirect()->route('barang-keluar.index')->with('success', 'Laporan barang keluar berhasil dihapus.');
     }
 
-    public function getProduk(Request $request)
+    /**
+     * Autocomplete untuk pencarian nama produk.
+     */
+    public function autocomplete(Request $request)
     {
-        $search = $request->get('q'); // Menerima input pencarian
-        $produks = Produk::where('nama_produk', 'like', "%$search%")
-            ->with('variasi')
-            ->get();
+        $term = $request->get('term');
+
+        if (empty($term)) {
+            return response()->json([]);
+        }
+
+        // Mengambil produk berdasarkan nama produk yang sesuai dengan term pencarian
+        $produks = Produk::where('nama_produk', 'LIKE', '%' . $term . '%')
+            ->get(['id', 'nama_produk']);  // Pastikan ID dan nama produk ada
 
         return response()->json($produks);
+    }
+
+
+    /**
+     * Mendapatkan variasi berdasarkan produk ID.
+     */
+    public function getVariasi($produkId)
+    {
+        $variasi = Produk_Variasi::where('produk_id', $produkId)->get(); // Mengambil variasi berdasarkan produk_id
+
+        return response()->json(['variasi' => $variasi]);
     }
 }

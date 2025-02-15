@@ -203,9 +203,11 @@ Route::put('/dashboard/settings/updateuser', function (Request $request) {
 // Route Data Barang
 Route::resource('/dashboard/databarang', DataBarangController::class)->middleware(['auth', 'admin']);
 
-// Route Barang Keluar
+// Route Barang Keluar (CRUD)
 Route::resource('/dashboard/barang-keluar', BarangKeluarController::class)->middleware(['auth', 'admin']);
 
-Route::get('/dashboard/barang-keluar/get-produk', [BarangKeluarController::class, 'getProduk'])
-    ->name('barang-keluar.getProduk')
-    ->middleware(['auth', 'admin']);
+// Route untuk Autocomplete nama produk
+Route::get('/barang-keluar/autocomplete', [BarangKeluarController::class, 'autocomplete'])->name('barang-keluar.autocomplete');
+
+// Route untuk mendapatkan variasi produk berdasarkan ID produk
+Route::get('/barang-keluar/{produkId}/variasi', [BarangKeluarController::class, 'getVariasi']);

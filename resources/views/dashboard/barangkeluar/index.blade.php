@@ -19,13 +19,17 @@
             <input type="date" class="form-control" name="tanggal" required>
           </div>
           <div class="col-md-3">
-            <label for="nama_barang" class="form-label">Nama Barang</label>
-            <input type="text" class="form-control" name="nama_produk" required>
+            <label for="nama_produk" class="form-label">Nama Barang</label>
+            <input type="text" class="form-control" name="nama_produk" id="nama_produk" required>
           </div>
           <div class="col-md-3">
             <label for="variasi" class="form-label">Variasi (Opsional)</label>
-            <input type="text" class="form-control" name="variasi">
+            <select name="variasi" class="form-select" id="variasi">
+              <option value="">-- Pilih Variasi --</option>
+              <!-- Variasi akan dimuat disini setelah produk dipilih -->
+            </select>
           </div>
+
           <div class="col-md-2">
             <label for="qty" class="form-label">Jumlah</label>
             <input type="number" class="form-control" name="qty" min="1" required>
@@ -42,6 +46,9 @@
               <option value="Tiktok 2">Tiktok 2</option>
               <option value="Tiktok 3">Tiktok 3</option>
               <option value="Tiktok 4">Tiktok 4</option>
+              <option value="Tokopedia 1">Tokopedia 1</option>
+              <option value="Tokopedia 2">Tokopedia 2</option>
+              <option value="Tokopedia 3">Tokopedia 3</option>
             </select>
           </div>
           <div class="col-md-2 mt-3">
@@ -112,4 +119,69 @@
       </div>
     </div>
   </div>
+@endsection
+
+@section('scripts')
+  <!-- Muat jQuery terlebih dahulu -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!-- Setelah itu muat jQuery UI -->
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+
+  <script>
+    $(document).ready(function() {
+    // Autocomplete untuk nama produk
+    $("input[name='nama_produk']").autocomplete({
+        source: function(request, response) {
+            $.ajax({
+                url: "{{ route('barang-keluar.autocomplete') }}",  // Pastikan URL sesuai dengan route backend
+                data: { term: request.term },
+                success: function(data) {
+                    // Cek apakah data yang diterima benar
+                    console.log(data);  // Cek data yang diterima di console browser
+
+                    // Tampilkan hasil pencarian
+                    response($.map(data, function(item) {
+                        return {
+                            label: item.nama_produk,  // Menampilkan nama produk di autocomplete
+                            value: item.nama_produk,  // Nilai yang akan diisi di input
+                            id: item.id  // ID produk yang akan digunakan saat memilih
+                        };
+                    }));
+                }
+            });
+        },
+        minLength: 2,  // Minimal 2 karakter untuk mulai pencarian
+        select: function(event, ui) {
+            var produkId = ui.item.id;
+            console.log('Produk ID yang dipilih: ' + produkId);
+
+            // Kirim permintaan untuk mendapatkan variasi produk berdasarkan ID produk
+            $.ajax({
+                url: '/barang-keluar/' + produkId + '/variasi',  // Sesuaikan route untuk mendapatkan variasi produk
+                type: 'GET',
+                success: function(data) {
+                   // Tampilkan variasi di field variasi
+var variasiSelect = $("select[name='variasi']");
+variasiSelect.empty(); // Hapus pilihan yang ada sebelumnya
+
+if (data.variasi.length > 0) {
+    // Jika variasi tersedia, tambahkan ke dropdown
+    variasiSelect.append('<option value="">Pilih Variasi</option>');
+    data.variasi.forEach(function(variasi) {
+        // Pastikan untuk menggunakan variasi.nama untuk label dan variasi.id untuk value
+        variasiSelect.append('<option value="' + variasi.id + '">' + (variasi.warna.warna + ' - ' + (variasi.ukuran.ukuran || 'Ukuran Tidak Ditemukan')) + '</option>');
+    });
+} else {
+    // Jika tidak ada variasi, beri pesan atau biarkan kosong
+    variasiSelect.append('<option value="">Tidak ada variasi</option>');
+}
+
+                }
+            });
+        }
+    });
+});
+
+  </script>
 @endsection

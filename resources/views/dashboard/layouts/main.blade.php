@@ -5,11 +5,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>CSI | Dashboard</title>
-    {{-- Select2 --}}
-    <!-- Tambahkan jQuery sebelum Select2 -->
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
 
 
      {{-- Favicon --}}
@@ -235,4 +230,6 @@
 {{-- Print CDN --}}
 <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.0/dist/xlsx.full.min.js"></script>
 </body>
+@yield('scripts')
+
 </html>
