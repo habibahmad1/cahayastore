@@ -132,6 +132,7 @@ class BarangKeluarController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         $request->validate([
             'tanggal' => 'required|date',
             'produk_id' => 'required|exists:produks,id',
@@ -142,24 +143,33 @@ class BarangKeluarController extends Controller
             'jamlive' => 'required|string',
         ]);
 
+        // Ambil data barang keluar yang akan diupdate
         $barangKeluar = BarangKeluar::findOrFail($id);
 
-        // Ambil produk dan variasi sebelumnya
-        $produkLama = Produk::find($barangKeluar->produk_id);
-        $variasiLama = Produk_Variasi::find($barangKeluar->variasi_id);
-
-        // Kembalikan stok sebelumnya
-        if ($variasiLama) {
-            $variasiLama->stok += $barangKeluar->qty;
-            $variasiLama->save();
-        } else {
-            $produkLama->stok += $barangKeluar->qty;
-            $produkLama->save();
+        // Cek apakah produk yang baru berbeda dengan produk sebelumnya
+        if ($barangKeluar->produk_id != $request->produk_id) {
+            // Kembalikan stok produk lama
+            $produkLama = Produk::find($barangKeluar->produk_id);
+            if ($produkLama) {
+                $produkLama->stok += $barangKeluar->qty;
+                $produkLama->save();
+            }
         }
 
-        // Update dengan data yang baru
+        // Cek apakah variasi yang baru berbeda dengan variasi sebelumnya
+        if ($barangKeluar->variasi_id != $request->variasi_id) {
+            // Kembalikan stok variasi lama
+            if ($barangKeluar->variasi_id) {
+                $variasiLama = Produk_Variasi::find($barangKeluar->variasi_id);
+                if ($variasiLama) {
+                    $variasiLama->stok += $barangKeluar->qty;
+                    $variasiLama->save();
+                }
+            }
+        }
+
+        // Update data barang keluar dengan data baru
         $barangKeluar->update([
-            'tanggal' => $request->tanggal,
             'produk_id' => $request->produk_id,
             'variasi_id' => $request->variasi_id,
             'qty' => $request->qty,
@@ -168,31 +178,24 @@ class BarangKeluarController extends Controller
             'jamlive' => $request->jamlive,
         ]);
 
-        // Ambil produk dan variasi baru setelah update
+        // Mengurangi stok produk atau variasi baru
         $produkBaru = Produk::find($request->produk_id);
-        $variasiBaru = Produk_Variasi::find($request->variasi_id);
+        if ($produkBaru) {
+            $produkBaru->stok -= $request->qty;
+            $produkBaru->save();
+        }
 
-        // Kurangi stok sesuai dengan variasi baru jika ada perubahan
-        if ($variasiBaru) {
-            // Pastikan stok cukup sebelum mengurangi
-            if ($variasiBaru->stok >= $request->qty) {
+        if ($request->variasi_id) {
+            $variasiBaru = Produk_Variasi::find($request->variasi_id);
+            if ($variasiBaru) {
                 $variasiBaru->stok -= $request->qty;
                 $variasiBaru->save();
-            } else {
-                return redirect()->back()->withErrors(['qty' => 'Jumlah barang yang dikeluarkan melebihi stok variasi.'])->withInput();
-            }
-        } else {
-            // Pastikan stok cukup pada produk utama jika tidak ada variasi
-            if ($produkBaru->stok >= $request->qty) {
-                $produkBaru->stok -= $request->qty;
-                $produkBaru->save();
-            } else {
-                return redirect()->back()->withErrors(['qty' => 'Jumlah barang yang dikeluarkan melebihi stok produk.'])->withInput();
             }
         }
 
         return redirect()->route('barang-keluar.index')->with('success', 'Data barang keluar berhasil diperbarui.');
     }
+
 
 
 
