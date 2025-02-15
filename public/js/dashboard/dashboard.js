@@ -58,6 +58,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const bagArtikelSubmenu = document.getElementById('bagArtikelSubmenu');
     const bagUserManajemenToggle = document.getElementById('bagUserManajemenToggle');
     const bagUserManajemenSubmenu = document.getElementById('bagUserManajemenSubmenu');
+    const bagStokBarangToggle = document.getElementById('bagStokBarangToggle');
+    const bagStokBarangSubmenu = document.getElementById('bagStokBarangSubmenu');
 
     bagHomeToggle.addEventListener('click', function() {
         bagHomeSubmenu.classList.toggle('d-none');
@@ -75,4 +77,34 @@ document.addEventListener('DOMContentLoaded', function() {
         bagUserManajemenSubmenu.classList.toggle('d-none');
     });
 
+    bagStokBarangToggle.addEventListener('click', function() {
+        bagStokBarangSubmenu.classList.toggle('d-none');
+    });
+
+});
+
+//WARNA BELAKANG TEKS PADA BAG
+document.addEventListener('DOMContentLoaded', function() {
+    const sections = [
+        'bagHomeToggle',
+        'bagProdukToggle',
+        'bagArtikelToggle',
+        'bagUserManajemenToggle',
+        'bagStokBarangToggle'
+    ];
+
+    sections.forEach(sectionId => {
+        const section = document.getElementById(sectionId);
+        if (section) {
+            section.addEventListener('click', function() {
+                sections.forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) {
+                        el.classList.remove('active-section');
+                    }
+                });
+                section.classList.add('active-section');
+            });
+        }
+    });
 });

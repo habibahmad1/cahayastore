@@ -6,7 +6,7 @@
       </div>
       <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
 
-        <h6 id="bagHomeToggle" class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-2 mb-1 text-body-secondary text-uppercase" style="background-color: #2980B9; padding: 10px; color: #ffffff !important; cursor: pointer;">
+        <h6 id="bagHomeToggle" class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-2 mb-1 text-body-secondary text-uppercase" style=" padding: 10px; color: #ffffff !important; cursor: pointer;">
             <span>BAG home</span>
             <i class="bi bi-caret-down-fill"></i>
         </h6>
@@ -32,7 +32,7 @@
           </li>
         </ul>
 
-        <h6 id="bagProdukToggle" class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-2 mb-1 text-body-secondary text-uppercase" style="background-color: #2980B9; padding: 10px; color: #ffffff !important; cursor: pointer;">
+        <h6 id="bagProdukToggle" class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-2 mb-1 text-body-secondary text-uppercase" style=" padding: 10px; color: #ffffff !important; cursor: pointer;">
             <span>BAG PRODUK</span>
             <i class="bi bi-caret-down-fill"></i>
         </h6>
@@ -59,7 +59,7 @@
             @endcan
         </ul>
 
-        <h6 id="bagArtikelToggle" class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-2 mb-1 text-body-secondary text-uppercase" style="background-color: #2980B9; padding: 10px; color: #ffffff !important; cursor: pointer;">
+        <h6 id="bagArtikelToggle" class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-2 mb-1 text-body-secondary text-uppercase" style=" padding: 10px; color: #ffffff !important; cursor: pointer;">
             <span>BAG Artikel</span>
             <i class="bi bi-caret-down-fill"></i>
         </h6>
@@ -88,7 +88,7 @@
 
         @can('admin')
 
-        <h6 id="bagUserManajemenToggle" class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-2 mb-1 text-body-secondary text-uppercase" style=" background-color: #2980B9; padding: 10px; color: #ffffff !important; cursor: pointer;">
+        <h6 id="bagUserManajemenToggle" class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-2 mb-1 text-body-secondary text-uppercase" style=" padding: 10px; color: #ffffff !important; cursor: pointer;">
             <span>BAG User Manajemen</span>
             <i class="bi bi-caret-down-fill"></i>
         </h6>
@@ -117,13 +117,12 @@
 
         @can('admin')
 
-        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-2 mb-1 text-body-secondary text-uppercase" style=" background-color: #2980B9;; padding: 10px; color: #ffffff !important">
+        <h6 id="bagStokBarangToggle" class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-2 mb-1 text-body-secondary text-uppercase" style="padding: 10px; color: #ffffff !important; cursor: pointer;">
             <span>BAG Stok Barang</span>
+            <i class="bi bi-caret-down-fill"></i>
         </h6>
 
-        {{-- <hr class="my-3"> --}}
-
-        <ul class="nav flex-column">
+        <ul id="bagStokBarangSubmenu" class="nav flex-column d-none">
             <li class="nav-item">
                 <a class="nav-link d-flex align-items-center gap-2 {{ Request::is('dashboard/databarang*') ? 'active-dashboard' : '' }}" href="/dashboard/databarang">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box2-fill" viewBox="0 0 16 16">
