@@ -4,17 +4,16 @@
 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">Riwayat Stok Masuk</h1>
-  </div>
+</div>
 
-   {{-- Form Buat Laporan Barang Keluar --}}
-     <!-- Menampilkan pesan sukses jika ada -->
-     @if (session('success'))
-     <div class="alert alert-success col-lg-12">
-         {{ session('success') }}
-     </div>
-     @endif
+{{-- Form Buat Laporan Barang Masuk --}}
+@if (session('success'))
+    <div class="alert alert-success col-lg-12">
+        {{ session('success') }}
+    </div>
+@endif
 
-     @if ($errors->any())
+@if ($errors->any())
     <div class="alert alert-danger">
         <ul>
             @foreach ($errors->all() as $error)
@@ -22,62 +21,46 @@
             @endforeach
         </ul>
     </div>
-    @endif
+@endif
 
-  {{-- Filter --}}
-  <form action="{{ route('barang-keluar.index') }}" method="GET" class="my-3">
+{{-- Filter --}}
+<form action="{{ route('barang-masuk.index') }}" method="GET" class="my-3">
     <div class="row">
-        <!-- Filter Tanggal Mulai -->
-        <div class="col-md-3">
-            <label for="tanggal_mulai" class="form-label">Tanggal Mulai</label>
-            <input type="date" class="form-control" name="tanggal_mulai" value="{{ request('tanggal_mulai') }}">
+        <!-- Filter Tanggal -->
+        <div class="col-md-4">
+            <label for="tanggal_mulai">Tanggal Mulai</label>
+            <input type="date" name="tanggal_mulai" id="tanggal_mulai" class="form-control" value="{{ request()->tanggal_mulai }}">
         </div>
-
-        <!-- Filter Tanggal Selesai -->
-        <div class="col-md-3">
-            <label for="tanggal_selesai" class="form-label">Tanggal Selesai</label>
-            <input type="date" class="form-control" name="tanggal_selesai" value="{{ request('tanggal_selesai') }}">
+        <div class="col-md-4">
+            <label for="tanggal_selesai">Tanggal Selesai</label>
+            <input type="date" name="tanggal_selesai" id="tanggal_selesai" class="form-control" value="{{ request()->tanggal_selesai }}">
         </div>
-
-        <!-- Filter Platform -->
-        <div class="col-md-3">
-            <label for="platform" class="form-label">Platform</label>
-            <select class="form-control" name="platform">
-                <option value="">-- Pilih Platform --</option>
-                <option value="Shopee 1" {{ request('platform') == 'Shopee 1' ? 'selected' : '' }}>Shopee 1</option>
-                <option value="Shopee 2" {{ request('platform') == 'Shopee 2' ? 'selected' : '' }}>Shopee 2</option>
-                <option value="Shopee 3" {{ request('platform') == 'Shopee 3' ? 'selected' : '' }}>Shopee 3</option>
-                <option value="Shopee 4" {{ request('platform') == 'Shopee 4' ? 'selected' : '' }}>Shopee 4</option>
-                <option value="Tiktok 1" {{ request('platform') == 'Tiktok 1' ? 'selected' : '' }}>Tiktok 1</option>
-                <option value="Tiktok 2" {{ request('platform') == 'Tiktok 2' ? 'selected' : '' }}>Tiktok 2</option>
-                <option value="Tiktok 3" {{ request('platform') == 'Tiktok 3' ? 'selected' : '' }}>Tiktok 3</option>
-                <option value="Tiktok 4" {{ request('platform') == 'Tiktok 4' ? 'selected' : '' }}>Tiktok 4</option>
-                <option value="Tokopedia 1" {{ request('platform') == 'Tokopedia 1' ? 'selected' : '' }}>Tokopedia 1</option>
-                <option value="Tokopedia 2" {{ request('platform') == 'Tokopedia 2' ? 'selected' : '' }}>Tokopedia 2</option>
-                <option value="Tokopedia 3" {{ request('platform') == 'Tokopedia 3' ? 'selected' : '' }}>Tokopedia 3</option>
+        <!-- Filter Produk -->
+        <div class="col-md-4">
+            <label for="produk_id">Produk</label>
+            <select name="produk_id" id="produk_id" class="form-control">
+                <option value="">Semua Produk</option>
+                @foreach ($produks as $produk)
+                    <option value="{{ $produk->id }}" {{ request()->produk_id == $produk->id ? 'selected' : '' }}>
+                        {{ $produk->nama_produk }}
+                    </option>
+                @endforeach
             </select>
         </div>
+    </div>
 
-        <!-- Filter Host -->
-        <div class="col-md-3">
-            <label for="host" class="form-label">Host</label>
-            <input type="text" class="form-control" name="host" placeholder="Cari host..." value="{{ request('host') }}">
-        </div>
-
-        <!-- Tombol Filter dan Reset di sebelah kanan -->
-        <div class="col-md-3 text-start mt-3">
-            <button type="submit" class="btn btn-primary">Filter</button>
-            <a href="{{ route('barang-keluar.index') }}" class="btn btn-danger ms-2">Reset</a>
-        </div>
+    <div class="mt-3">
+        <button type="submit" class="btn btn-primary">Filter</button>
+        <a href="{{ route('barang-masuk.index') }}" class="btn btn-danger ms-2">Reset</a>
 
     </div>
 </form>
 
 
-  {{-- Tabel Riwayat Barang Keluar --}}
-  <div class="card">
+{{-- Tabel Riwayat Barang Masuk --}}
+<div class="card">
     <div class="card-header bg-secondary text-white">
-      <strong>Riwayat Barang Keluar</strong>
+        <strong>Riwayat Barang Masuk</strong>
     </div>
 
     <div class="col-md-3 m-1">
@@ -86,326 +69,157 @@
     </div>
 
     <div class="card-body">
-      <div class="table-responsive">
-        <table class="table table-bordered" id="myTable">
-          <thead class="table-dark">
-            <tr>
-              <th>No</th>
-              <th>Tanggal</th>
-              <th>Nama Barang</th>
-              <th>Variasi</th>
-              <th>Jumlah</th>
-              <th>Platform</th>
-              <th>Host/Toko</th>
-              <th>Jam Live/Toko</th>
-              <th class="aksi">Aksi</th>
-            </tr>
-          </thead>
-          <tbody>
-            @forelse ($barangKeluar as $bk)
-              <tr>
-                <td>{{ $loop->iteration }}</td>
-                <td>{{ $bk->tanggal }}</td>
-                <td>{{ $bk->produk->nama_produk }}</td> <!-- Ganti sesuai relasi dengan model -->
-                <td>{{ $bk->variasi ? $bk->variasi->warna->warna . ' - ' . $bk->variasi->ukuran->ukuran : '-' }}</td>
-                <td>{{ $bk->qty }}</td>
-                <td>{{ $bk->platform }}</td>
-                <td>{{ $bk->host }}</td>
-                <td>{{ $bk->jamlive }}</td>
-                <td class="aksi">
-                  <form action="{{ route('barang-keluar.destroy', $bk->id) }}" method="POST" class="d-inline">
-                    @csrf
-                    @method('DELETE')
-                    <button class="btn btn-danger btn-sm m-2" onclick="return confirm('Hapus data ini?')">
-                      <i class="bi bi-trash"></i> Hapus
-                    </button>
-                  </form>
-
-                  <button type="button" class="btn btn-warning btn-sm edit-btn m-2"
-                  data-bs-toggle="modal" data-bs-target="#editModal"
-                  data-id="{{ $bk->id }}"
-                  data-tanggal="{{ $bk->tanggal }}"
-                  data-produk="{{ $bk->produk->id }}"
-                  data-produk-nama="{{ $bk->produk->nama_produk }}"
-                  data-variasi="{{ $bk->variasi_id }}"
-                  data-qty="{{ $bk->qty }}"
-                  data-platform="{{ $bk->platform }}"
-                  data-host="{{ $bk->host }}"
-                  data-jamlive="{{ $bk->jamlive }}">
-                  <i class="bi bi-pencil"></i> Edit
-                </button>
+        <div class="table-responsive">
+            <table class="table table-bordered" id="myTable">
+                <thead class="table-dark">
+                    <tr>
+                        <th>No</th>
+                        <th>Tanggal</th>
+                        <th>Nama Barang</th>
+                        <th>Variasi</th>
+                        <th>Jumlah</th>
+                        <th>Expired</th>
+                        <th class="aksi">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @forelse ($barangMasuk as $bm)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $bm->tanggal }}</td>
+                            <td>{{ $bm->produk->nama_produk }}</td>
+                            <td>{{ $bm->variasi ? $bm->variasi->warna->warna . ' - ' . $bm->variasi->ukuran->ukuran : '-' }}</td>
+                            <td>{{ $bm->qty }}</td>
+                            <td>{{ $bm->exp }}</td>
+                            <td class="aksi">
+                                <button class="btn btn-warning btn-sm"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#editModal{{ $bm->id }}"
+                                        data-produk-id="{{ $bm->produk->id }}"
+                                        data-variasi-id="{{ $bm->variasi_id }}">
+                                    Edit
+                                </button>
 
 
-                </td>
-              </tr>
-            @empty
-              <tr>
-                <td colspan="9" class="text-center">Belum ada laporan barang keluar.</td>
-              </tr>
-            @endforelse
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
+                                <!-- Delete Button -->
+                                <form action="{{ route('barang-masuk.destroy', $bm->id) }}" method="POST" style="display:inline;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this item?')">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
 
-  {{-- Modal Edit --}}
-  <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="editModalLabel">Edit Barang Keluar</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        {{-- Edit Modal --}}
+                        <div class="modal fade" id="editModal{{ $bm->id }}" tabindex="-1" aria-labelledby="editModalLabel{{ $bm->id }}" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="editModalLabel{{ $bm->id }}">Edit Barang Masuk</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="{{ route('barang-masuk.update', $bm->id) }}" method="POST">
+                                            @csrf
+                                            @method('PUT')
+
+                                            {{-- Hidden input for id_produk --}}
+                                            <input type="hidden" name="produk_id" value="{{ $bm->produk->id }}">
+
+                                            <div class="mb-3">
+                                                <label for="tanggal" class="form-label">Tanggal</label>
+                                                <input type="date" class="form-control" id="tanggal" name="tanggal" value="{{ $bm->tanggal }}" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="produk" class="form-label">Nama Barang</label>
+                                                <input type="text" class="form-control" id="produk" name="produk" value="{{ $bm->produk->nama_produk }}" readonly>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="edit-variasi_id{{ $bm->id }}" class="form-label">Variasi</label>
+                                                <select name="variasi_id" class="form-control" id="edit-variasi_id{{ $bm->id }}">
+                                                    <option value="">-- Pilih Variasi --</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="qty" class="form-label">Jumlah</label>
+                                                <input type="number" class="form-control" id="qty" name="qty" value="{{ $bm->qty }}" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="exp" class="form-label">Expired</label>
+                                                <input type="date" class="form-control" id="exp" name="exp" value="{{ $bm->exp }}" required>
+                                            </div>
+
+                                            <button type="submit" class="btn btn-primary">Update</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    @empty
+                        <tr>
+                            <td colspan="8" class="text-center">Belum ada laporan barang masuk.</td>
+                        </tr>
+                    @endforelse
+                </tbody>
+            </table>
         </div>
-        <div class="modal-body">
-          <form id="editForm" method="POST">
-            @csrf
-            @method('PUT')
-
-            <input type="hidden" name="id" id="edit-id">
-
-            <div class="mb-3">
-              <label for="edit-tanggal" class="form-label">Tanggal</label>
-              <input type="date" class="form-control" name="tanggal" id="edit-tanggal" required>
-            </div>
-
-            {{-- <div class="mb-3">
-              <label for="edit-produk_id" class="form-label">Nama Barang</label>
-              <select name="produk_id" class="form-control" id="edit-produk_id" required>
-                @foreach ($produks as $produk)
-                  <option value="{{ $produk->id }}">{{ $produk->nama_produk }}</option>
-                @endforeach
-              </select>
-            </div> --}}
-
-            <div class="mb-3">
-                <label for="edit-produk_nama" class="form-label">Nama Barang</label>
-                <input type="text" class="form-control" id="edit-produk_nama" readonly>
-                <input type="hidden" name="produk_id" id="edit-produk_id">
-              </div>
-
-
-            <div class="mb-3">
-              <label for="edit-variasi_id" class="form-label">Variasi</label>
-              <select name="variasi_id" class="form-control" id="edit-variasi_id">
-                <option value="">-- Pilih Variasi --</option>
-              </select>
-            </div>
-
-            <div class="mb-3">
-              <label for="edit-qty" class="form-label">Jumlah</label>
-              <input type="number" class="form-control" name="qty" id="edit-qty" min="1" required>
-            </div>
-
-            <div class="mb-3">
-                <label for="edit-platform" class="form-label">Platform</label>
-                <select class="form-control" name="platform" id="edit-platform" required>
-                  <option value="Shopee 1">Shopee 1</option>
-                  <option value="Shopee 2">Shopee 2</option>
-                  <option value="Shopee 3">Shopee 3</option>
-                  <option value="Shopee 4">Shopee 4</option>
-                  <option value="Tiktok 1">Tiktok 1</option>
-                  <option value="Tiktok 2">Tiktok 2</option>
-                  <option value="Tiktok 3">Tiktok 3</option>
-                  <option value="Tiktok 4">Tiktok 4</option>
-                  <option value="Tokopedia 1">Tokopedia 1</option>
-                  <option value="Tokopedia 2">Tokopedia 2</option>
-                  <option value="Tokopedia 3">Tokopedia 3</option>
-                </select>
-              </div>
-
-
-            <div class="mb-3">
-              <label for="edit-host" class="form-label">Host</label>
-              <input type="text" class="form-control" name="host" id="edit-host" required>
-            </div>
-
-            <div class="mb-3">
-              <label for="edit-jamlive" class="form-label">Jam Live / Toko</label>
-              <input type="text" class="form-control" name="jamlive" id="edit-jamlive" required>
-            </div>
-
-            <button type="submit" class="btn btn-primary w-100">Simpan Perubahan</button>
-          </form>
-        </div>
-      </div>
     </div>
-  </div>
+</div>
 
 @endsection
 
 @section('scripts')
-  <!-- Muat jQuery terlebih dahulu -->
+<!-- jQuery, jQuery UI, and other required libraries -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-<!-- Setelah itu muat jQuery UI -->
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-
-<!-- Pastikan untuk memuat CSS jQuery UI agar tampilan autocomplete muncul dengan benar -->
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
-
-  <script>
-   $(document).ready(function() {
-  // Autocomplete untuk nama produk
-  $("input[name='nama_produk']").autocomplete({
-    source: function(request, response) {
-      $.ajax({
-        url: "{{ route('barang-keluar.autocomplete') }}",
-        data: { term: request.term },
-        success: function(data) {
-          console.log(data);  // Cek data yang diterima
-
-          response($.map(data, function(item) {
-            return {
-              label: item.nama_produk,  // Nama produk ditampilkan
-              value: item.nama_produk,  // Nilai yang akan diisi di input
-              id: item.id  // ID produk yang akan digunakan saat memilih
-            };
-          }));
-        }
-      });
-    },
-    minLength: 2,  // Minimal 2 karakter untuk mulai pencarian
-    select: function(event, ui) {
-      var produkId = ui.item.id;
-      console.log('Produk ID yang dipilih: ' + produkId);
-
-      // Menyimpan produk_id yang dipilih ke dalam input tersembunyi
-      $("#produk_id").val(produkId);
-
-      // Kirim permintaan untuk mendapatkan variasi produk berdasarkan ID produk
-      $.ajax({
-        url: '/barang-keluar/' + produkId + '/variasi',  // Sesuaikan route untuk mendapatkan variasi produk
-        type: 'GET',
-        success: function(data) {
-          var variasiSelect = $("select[name='variasi_id']");
-          variasiSelect.empty();  // Hapus pilihan yang ada sebelumnya
-
-          if (data.variasi.length > 0) {
-            variasiSelect.append('<option value="">Pilih Variasi</option>');  // Pilihan default
-
-            data.variasi.forEach(function(variasi) {
-              var warna = variasi.warna ? variasi.warna.warna : '-';
-              var ukuran = variasi.ukuran && variasi.ukuran.ukuran ? variasi.ukuran.ukuran : '';  // Mengecek jika ukuran ada
-
-              // Menampilkan variasi dan warna, jika ukuran tidak ada, jangan ditulis "null"
-              if (ukuran) {
-                variasiSelect.append('<option value="' + variasi.id + '">' + warna + ' - ' + ukuran + '</option>');
-              } else {
-                variasiSelect.append('<option value="' + variasi.id + '">' + warna + ' - ' + '</option>');
-              }
-            });
-          } else {
-            variasiSelect.append('<option value="">Tidak ada variasi</option>');
-          }
-        }
-      });
-    }
-  });
-});
-
-  </script>
-
-<script>
-    $(document).ready(function() {
-  $(".edit-btn").click(function() {
-    let id = $(this).data("id");
-    let tanggal = $(this).data("tanggal");
-    let produkNama = $(this).data("produk-nama");  // Ambil nama produk
-    let produkId = $(this).data("produk");
-    let variasiId = $(this).data("variasi");
-    let qty = $(this).data("qty");
-    let platform = $(this).data("platform");
-    let host = $(this).data("host");
-    let jamlive = $(this).data("jamlive");
-
-    $("#edit-id").val(id);
-    $("#edit-tanggal").val(tanggal);
-    $("#edit-produk_nama").val(produkNama);  // Isi input readonly
-    $("#edit-produk_id").val(produkId);  // Simpan ID produk
-    $("#edit-qty").val(qty);
-    $("#edit-platform").val(platform);
-    $("#edit-host").val(host);
-    $("#edit-jamlive").val(jamlive);
-
-    // Memuat variasi berdasarkan produk yang dipilih
-    $.ajax({
-      url: '/barang-keluar/' + produkId + '/variasi',
-      type: 'GET',
-      success: function(data) {
-        let variasiSelect = $("#edit-variasi_id");
-        variasiSelect.empty();  // Hapus pilihan sebelumnya
-
-        if (data.variasi.length > 0) {
-          variasiSelect.append('<option value="">Pilih Variasi</option>');
-
-          data.variasi.forEach(function(variasi) {
-            let warna = variasi.warna ? variasi.warna.warna : '-';
-            let ukuran = variasi.ukuran && variasi.ukuran.ukuran ? variasi.ukuran.ukuran : '';
-            let selected = variasi.id == variasiId ? 'selected' : '';
-
-            variasiSelect.append(`<option value="${variasi.id}" ${selected}>${warna} - ${ukuran}</option>`);
-          });
-        } else {
-          variasiSelect.append('<option value="">Tidak ada variasi</option>');
-        }
-      }
-    });
-
-    // Update action form dengan ID
-    $("#editForm").attr("action", "/dashboard/barang-keluar/" + id);
-  });
-});
-
-
-  </script>
-
-{{-- To Excel --}}
+<!-- Export to Excel -->
 <script>
     function confirmExport() {
-      if (confirm("Mengekspor data ke Excel?")) {
-        exportToExcel();
-      }
+        if (confirm("Mengekspor data ke Excel?")) {
+            exportToExcel();
+        }
     }
 
     function exportToExcel() {
-      const table = document.getElementById('myTable');
-      const rows = Array.from(table.querySelectorAll('tr'));
+        const table = document.getElementById('myTable');
+        const rows = Array.from(table.querySelectorAll('tr'));
 
-      // Ambil data dari tabel, kecuali kolom aksi (misalnya kolom terakhir)
-      const data = rows.map(row => {
-        const cells = Array.from(row.querySelectorAll('th, td')).map(cell => cell.innerText);
+        // Ambil data dari tabel, kecuali kolom aksi
+        const data = rows.map(row => {
+            const cells = Array.from(row.querySelectorAll('th, td')).map(cell => cell.innerText);
 
-        // Menghapus kolom aksi (misalnya kolom terakhir) sebelum diekspor
-        cells.pop(); // Menghapus kolom terakhir (aksi)
+            // Menghapus kolom aksi
+            cells.pop(); // Menghapus kolom terakhir (aksi)
 
-        return cells;
-      });
+            return cells;
+        });
 
-      // Membuat worksheet dari data yang sudah diproses
-      const ws = XLSX.utils.aoa_to_sheet(data);
-      const wb = XLSX.utils.book_new();
-      XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+        // Membuat worksheet dari data yang sudah diproses
+        const ws = XLSX.utils.aoa_to_sheet(data);
+        const wb = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
 
-      // Mendapatkan tanggal hari ini dalam format YYYY-MM-DD
-      const today = new Date();
-      const formattedDate = today.toISOString().split('T')[0];  // Menghasilkan format: YYYY-MM-DD
+        // Mendapatkan tanggal hari ini dalam format YYYY-MM-DD
+        const today = new Date();
+        const formattedDate = today.toISOString().split('T')[0];
 
-      // Membuat nama file dengan tanggal hari ini dan "laporan keluar"
-      const filename = `laporan-keluar-${formattedDate}.xlsx`;
+        // Nama file dengan tanggal hari ini
+        const filename = `laporan-masuk-${formattedDate}.xlsx`;
 
-      // Menyimpan file dengan nama yang sesuai
-      XLSX.writeFile(wb, filename);
+        // Menyimpan file
+        XLSX.writeFile(wb, filename);
 
-      // Menampilkan alert setelah ekspor berhasil
-      alert('Data berhasil diekspor sebagai ' + filename);
+        // Alert setelah ekspor berhasil
+        alert('Data berhasil diekspor sebagai ' + filename);
     }
-  </script>
+</script>
 
-
-  {{-- Screenshot --}}
-  <script>
+<!-- Screenshot -->
+<script>
     function captureTable() {
         // Konfirmasi sebelum mengambil screenshot
         const confirmed = confirm("Apakah Anda yakin ingin mendownload screenshot laporan?");
@@ -420,21 +234,67 @@
         aksiColumns.forEach(col => col.style.display = 'none');
 
         html2canvas(table).then(canvas => {
-            // Tampilkan kembali kolom "Aksi" setelah screenshot
+            // Tampilkan kembali kolom "Aksi"
             aksiColumns.forEach(col => col.style.display = '');
 
-            // Membuat link download
+            // Link download
             const link = document.createElement('a');
             link.href = canvas.toDataURL('image/png');
             link.download = 'screenshot-laporan.png';
             link.click();
 
-            // Tampilkan pesan sukses
+            // Pesan sukses
             alert("Screenshot berhasil diunduh!");
         });
     }
 </script>
 
+<script>
+$(document).ready(function() {
+    function loadVariasi(produkId, variasiSelect, selectedVariasiId = null) {
+        $.ajax({
+            url: '/barang-masuk/' + produkId + '/variasi', // Pastikan URL benar
+            type: 'GET',
+            success: function(data) {
+                console.log("Data variasi:", data); // Debugging
+                variasiSelect.empty(); // Hapus pilihan sebelumnya
 
+                if (data.variasi.length > 0) {
+                    variasiSelect.append('<option value="">Pilih Variasi</option>');
+                    data.variasi.forEach(function(variasi) {
+                        let warna = variasi.warna ? variasi.warna.warna : '-';
+                        let ukuran = variasi.ukuran ? variasi.ukuran.ukuran : '';
+                        let selected = (variasi.id == selectedVariasiId) ? 'selected' : '';
+                        variasiSelect.append(`<option value="${variasi.id}" ${selected}>${warna} - ${ukuran}</option>`);
+                    });
+                } else {
+                    variasiSelect.append('<option value="">Tidak ada variasi</option>');
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error("Error loading variasi:", error);
+            }
+        });
+    }
+
+    $('[id^=editModal]').on('shown.bs.modal', function (e) {
+        let modal = $(this);
+        let produkId = modal.find('input[name="produk_id"]').val();
+        let variasiSelect = modal.find('select[name="variasi_id"]');
+        let variasiId = modal.find('button[data-bs-target]').data('variasi-id');
+
+        loadVariasi(produkId, variasiSelect, variasiId);
+    });
+
+    $('[id^=edit-produk_id]').change(function() {
+        let modal = $(this).closest('.modal');
+        let produkId = $(this).val();
+        let variasiSelect = modal.find('select[name="variasi_id"]');
+
+        loadVariasi(produkId, variasiSelect);
+    });
+});
+
+</script>
 
 @endsection

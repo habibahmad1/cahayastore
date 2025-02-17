@@ -16,8 +16,8 @@ return new class extends Migration
             $table->date('tanggal');
             $table->foreignId('produk_id')->constrained('produks')->onDelete('cascade');
             $table->foreignId('variasi_id')->nullable()->constrained('produk_variasis')->onDelete('set null');
-            $table->string('exp');
             $table->integer('qty');
+            $table->string('exp')->nullable();
             $table->foreignId('user_id');
             $table->timestamps();
         });

@@ -18,6 +18,7 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DataBarangController;
+use App\Http\Controllers\BarangMasukController;
 use App\Http\Controllers\BarangKeluarController;
 use App\Http\Controllers\AdminKategoriController;
 use App\Http\Controllers\ForgotPasswordController;
@@ -213,10 +214,10 @@ Route::get('/barang-keluar/autocomplete', [BarangKeluarController::class, 'autoc
 Route::get('/barang-keluar/{produkId}/variasi', [BarangKeluarController::class, 'getVariasi']);
 
 // Route Barang Masuk (CRUD)
-Route::resource('/dashboard/barang-masuk', BarangKeluarController::class)->middleware(['auth', 'admin']);
+Route::resource('/dashboard/barang-masuk', BarangMasukController::class)->middleware(['auth', 'admin']);
 
 // Route untuk Autocomplete nama produk
-Route::get('/barang-masuk/autocomplete', [BarangKeluarController::class, 'autocomplete'])->name('barang-keluar.autocomplete');
+Route::get('/barang-masuk/autocomplete', [BarangMasukController::class, 'autocomplete'])->name('barang-masuk.autocomplete');
 
 // Route untuk mendapatkan variasi produk berdasarkan ID produk
-Route::get('/barang-masuk/{produkId}/variasi', [BarangKeluarController::class, 'getVariasi']);
+Route::get('/barang-masuk/{produkId}/variasi', [BarangMasukController::class, 'getVariasi']);
