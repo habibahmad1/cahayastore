@@ -121,12 +121,20 @@
                     </button>
                   </form>
 
-                  <button type="button" class="btn btn-warning btn-sm edit-btn m-2" data-bs-toggle="modal" data-bs-target="#editModal"
-                data-id="{{ $bk->id }}" data-tanggal="{{ $bk->tanggal }}" data-produk="{{ $bk->produk->id }}"
-                data-variasi="{{ $bk->variasi_id }}" data-qty="{{ $bk->qty }}" data-platform="{{ $bk->platform }}"
-                data-host="{{ $bk->host }}" data-jamlive="{{ $bk->jamlive }}">
-                <i class="bi bi-pencil"></i> Edit
+                  <button type="button" class="btn btn-warning btn-sm edit-btn m-2"
+                  data-bs-toggle="modal" data-bs-target="#editModal"
+                  data-id="{{ $bk->id }}"
+                  data-tanggal="{{ $bk->tanggal }}"
+                  data-produk="{{ $bk->produk->id }}"
+                  data-produk-nama="{{ $bk->produk->nama_produk }}"
+                  data-variasi="{{ $bk->variasi_id }}"
+                  data-qty="{{ $bk->qty }}"
+                  data-platform="{{ $bk->platform }}"
+                  data-host="{{ $bk->host }}"
+                  data-jamlive="{{ $bk->jamlive }}">
+                  <i class="bi bi-pencil"></i> Edit
                 </button>
+
 
                 </td>
               </tr>
@@ -161,14 +169,21 @@
               <input type="date" class="form-control" name="tanggal" id="edit-tanggal" required>
             </div>
 
-            <div class="mb-3">
+            {{-- <div class="mb-3">
               <label for="edit-produk_id" class="form-label">Nama Barang</label>
               <select name="produk_id" class="form-control" id="edit-produk_id" required>
                 @foreach ($produks as $produk)
                   <option value="{{ $produk->id }}">{{ $produk->nama_produk }}</option>
                 @endforeach
               </select>
-            </div>
+            </div> --}}
+
+            <div class="mb-3">
+                <label for="edit-produk_nama" class="form-label">Nama Barang</label>
+                <input type="text" class="form-control" id="edit-produk_nama" readonly>
+                <input type="hidden" name="produk_id" id="edit-produk_id">
+              </div>
+
 
             <div class="mb-3">
               <label for="edit-variasi_id" class="form-label">Variasi</label>
@@ -294,11 +309,12 @@
 
 <script>
     $(document).ready(function() {
-    $(".edit-btn").click(function() {
+  $(".edit-btn").click(function() {
     let id = $(this).data("id");
     let tanggal = $(this).data("tanggal");
-    let produk = $(this).data("produk");
-    let variasi = $(this).data("variasi");
+    let produkNama = $(this).data("produk-nama");  // Ambil nama produk
+    let produkId = $(this).data("produk");
+    let variasiId = $(this).data("variasi");
     let qty = $(this).data("qty");
     let platform = $(this).data("platform");
     let host = $(this).data("host");
@@ -306,34 +322,30 @@
 
     $("#edit-id").val(id);
     $("#edit-tanggal").val(tanggal);
-    $("#edit-produk_id").val(produk);
-    $("#edit-variasi_id").val(variasi);
+    $("#edit-produk_nama").val(produkNama);  // Isi input readonly
+    $("#edit-produk_id").val(produkId);  // Simpan ID produk
     $("#edit-qty").val(qty);
-    $("#edit-platform").val(platform);  // Pastikan nilai platform disesuaikan
+    $("#edit-platform").val(platform);
     $("#edit-host").val(host);
     $("#edit-jamlive").val(jamlive);
 
-
-    // Memuat variasi ketika produk dipilih di modal edit
+    // Memuat variasi berdasarkan produk yang dipilih
     $.ajax({
-      url: '/barang-keluar/' + produk + '/variasi',  // Sesuaikan dengan route yang tepat
+      url: '/barang-keluar/' + produkId + '/variasi',
       type: 'GET',
       success: function(data) {
-        var variasiSelect = $("#edit-variasi_id");
+        let variasiSelect = $("#edit-variasi_id");
         variasiSelect.empty();  // Hapus pilihan sebelumnya
 
         if (data.variasi.length > 0) {
           variasiSelect.append('<option value="">Pilih Variasi</option>');
 
           data.variasi.forEach(function(variasi) {
-            var warna = variasi.warna ? variasi.warna.warna : '-';
-            var ukuran = variasi.ukuran && variasi.ukuran.ukuran ? variasi.ukuran.ukuran : '';
+            let warna = variasi.warna ? variasi.warna.warna : '-';
+            let ukuran = variasi.ukuran && variasi.ukuran.ukuran ? variasi.ukuran.ukuran : '';
+            let selected = variasi.id == variasiId ? 'selected' : '';
 
-            if (ukuran) {
-              variasiSelect.append('<option value="' + variasi.id + '">' + warna + ' - ' + ukuran + '</option>');
-            } else {
-              variasiSelect.append('<option value="' + variasi.id + '">' + warna + ' - ' + '</option>');
-            }
+            variasiSelect.append(`<option value="${variasi.id}" ${selected}>${warna} - ${ukuran}</option>`);
           });
         } else {
           variasiSelect.append('<option value="">Tidak ada variasi</option>');
@@ -345,6 +357,7 @@
     $("#editForm").attr("action", "/dashboard/barang-keluar/" + id);
   });
 });
+
 
   </script>
 

@@ -153,6 +153,20 @@ class BarangKeluarController extends Controller
                 $produkLama->stok += $barangKeluar->qty;
                 $produkLama->save();
             }
+
+            // Kurangi stok produk baru
+            $produkBaru = Produk::find($request->produk_id);
+            if ($produkBaru) {
+                $produkBaru->stok -= $request->qty;
+                $produkBaru->save();
+            }
+        } else {
+            // Jika produk sama, update stok produk tanpa mengurangi lagi
+            $produk = Produk::find($request->produk_id);
+            if ($produk) {
+                $produk->stok = $produk->stok + $barangKeluar->qty - $request->qty;
+                $produk->save();
+            }
         }
 
         // Cek apakah variasi yang baru berbeda dengan variasi sebelumnya
@@ -194,15 +208,6 @@ class BarangKeluarController extends Controller
             'host' => $request->host,
             'jamlive' => $request->jamlive,
         ]);
-
-        // Mengurangi stok produk baru jika produk berbeda
-        if ($barangKeluar->produk_id != $request->produk_id) {
-            $produkBaru = Produk::find($request->produk_id);
-            if ($produkBaru) {
-                $produkBaru->stok -= $request->qty;
-                $produkBaru->save();
-            }
-        }
 
         return redirect()->route('barang-keluar.index')->with('success', 'Data barang keluar berhasil diperbarui.');
     }
