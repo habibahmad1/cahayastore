@@ -18,8 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
     setTheme(savedTheme);
 
     // Pastikan hanya menambahkan event listener jika tombol ada
-    if (themeLight)
-        themeLight.addEventListener("click", () => setTheme("light"));
+    if (themeLight) themeLight.addEventListener("click", () => setTheme("light"));
     if (themeDark) themeDark.addEventListener("click", () => setTheme("dark"));
     if (themeAuto) themeAuto.addEventListener("click", () => setTheme("auto"));
 });
@@ -50,60 +49,37 @@ if (riwayatstok && uploadriwayat && lihatriwayat) {
 
 // Sidebar
 document.addEventListener('DOMContentLoaded', function() {
-    const bagHomeToggle = document.getElementById('bagHomeToggle');
-    const bagHomeSubmenu = document.getElementById('bagHomeSubmenu');
-    const bagProdukToggle = document.getElementById('bagProdukToggle');
-    const bagProdukSubmenu = document.getElementById('bagProdukSubmenu');
-    const bagArtikelToggle = document.getElementById('bagArtikelToggle');
-    const bagArtikelSubmenu = document.getElementById('bagArtikelSubmenu');
-    const bagUserManajemenToggle = document.getElementById('bagUserManajemenToggle');
-    const bagUserManajemenSubmenu = document.getElementById('bagUserManajemenSubmenu');
-    const bagStokBarangToggle = document.getElementById('bagStokBarangToggle');
-    const bagStokBarangSubmenu = document.getElementById('bagStokBarangSubmenu');
-
-    bagHomeToggle.addEventListener('click', function() {
-        bagHomeSubmenu.classList.toggle('d-none');
-    });
-
-    bagProdukToggle.addEventListener('click', function() {
-        bagProdukSubmenu.classList.toggle('d-none');
-    });
-
-    bagArtikelToggle.addEventListener('click', function() {
-        bagArtikelSubmenu.classList.toggle('d-none');
-    });
-
-    bagUserManajemenToggle.addEventListener('click', function() {
-        bagUserManajemenSubmenu.classList.toggle('d-none');
-    });
-
-    bagStokBarangToggle.addEventListener('click', function() {
-        bagStokBarangSubmenu.classList.toggle('d-none');
-    });
-
-});
-
-//WARNA BELAKANG TEKS PADA BAG
-document.addEventListener('DOMContentLoaded', function() {
     const sections = [
-        'bagHomeToggle',
-        'bagProdukToggle',
-        'bagArtikelToggle',
-        'bagUserManajemenToggle',
-        'bagStokBarangToggle'
+        { toggle: 'bagHomeToggle', submenu: 'bagHomeSubmenu' },
+        { toggle: 'bagProdukToggle', submenu: 'bagProdukSubmenu' },
+        { toggle: 'bagArtikelToggle', submenu: 'bagArtikelSubmenu' },
+        { toggle: 'bagUserManajemenToggle', submenu: 'bagUserManajemenSubmenu' },
+        { toggle: 'bagStokBarangToggle', submenu: 'bagStokBarangSubmenu' }
     ];
 
-    sections.forEach(sectionId => {
-        const section = document.getElementById(sectionId);
-        if (section) {
-            section.addEventListener('click', function() {
-                sections.forEach(id => {
-                    const el = document.getElementById(id);
+    sections.forEach(section => {
+        const toggleElement = document.getElementById(section.toggle);
+        const submenuElement = document.getElementById(section.submenu);
+
+        if (toggleElement && submenuElement) {
+            toggleElement.addEventListener('click', function() {
+                submenuElement.classList.toggle('d-none');
+            });
+        }
+    });
+
+    // Warna belakang teks pada BAG
+    sections.forEach(section => {
+        const toggleElement = document.getElementById(section.toggle);
+        if (toggleElement) {
+            toggleElement.addEventListener('click', function() {
+                sections.forEach(sec => {
+                    const el = document.getElementById(sec.toggle);
                     if (el) {
                         el.classList.remove('active-section');
                     }
                 });
-                section.classList.add('active-section');
+                toggleElement.classList.add('active-section');
             });
         }
     });
