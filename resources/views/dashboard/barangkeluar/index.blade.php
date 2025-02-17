@@ -419,9 +419,18 @@
         const aksiColumns = document.querySelectorAll('.aksi');
         aksiColumns.forEach(col => col.style.display = 'none');
 
-        html2canvas(table).then(canvas => {
+        // Tambahkan judul sementara
+        const title = document.createElement('h2');
+        title.innerText = 'Laporan Barang Keluar';
+        title.style.textAlign = 'center';
+        table.parentElement.insertBefore(title, table);
+
+        html2canvas(table.parentElement).then(canvas => {
             // Tampilkan kembali kolom "Aksi" setelah screenshot
             aksiColumns.forEach(col => col.style.display = '');
+
+            // Hapus judul sementara
+            title.remove();
 
             // Membuat link download
             const link = document.createElement('a');

@@ -72,11 +72,11 @@
             </select>
           </div>
           <div class="col-md-2 mt-3">
-            <label for="host" class="form-label">Host</label>
+            <label for="host" class="form-label">Host/Toko</label>
             <input type="text" class="form-control" name="host" required>
           </div>
           <div class="col-md-2 mt-3">
-            <label for="jamlive" class="form-label">Jam Live / Toko</label>
+            <label for="jamlive" class="form-label">Jam Live</label>
             <input type="text" class="form-control" name="jamlive" required>
           </div>
           <div class="col-md-2 d-flex align-items-end mt-3">
