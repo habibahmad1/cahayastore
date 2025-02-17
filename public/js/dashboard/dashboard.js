@@ -57,12 +57,19 @@ document.addEventListener('DOMContentLoaded', function() {
         { toggle: 'bagStokBarangToggle', submenu: 'bagStokBarangSubmenu' }
     ];
 
-    // Load submenu state from localStorage
+    // Load submenu state and active class from localStorage
     sections.forEach(section => {
         const submenuElement = document.getElementById(section.submenu);
+        const toggleElement = document.getElementById(section.toggle);
         const isVisible = localStorage.getItem(section.submenu) === 'true';
+        const isActive = localStorage.getItem(section.toggle) === 'true';
+
         if (submenuElement && isVisible) {
             submenuElement.classList.remove('d-none');
+        }
+
+        if (toggleElement && isActive) {
+            toggleElement.classList.add('active-section');
         }
     });
 
@@ -86,6 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     const secToggleElement = document.getElementById(sec.toggle);
                     if (secToggleElement && secToggleElement !== toggleElement) {
                         secToggleElement.classList.remove('active-section');
+                        localStorage.setItem(sec.toggle, 'false');
                     }
                 });
 
@@ -94,6 +102,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 submenuElement.classList.toggle('d-none');
                 toggleElement.classList.toggle('active-section');
                 localStorage.setItem(section.submenu, !isCurrentlyVisible);
+                localStorage.setItem(section.toggle, !isCurrentlyVisible);
             });
         }
     });
