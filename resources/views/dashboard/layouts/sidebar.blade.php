@@ -149,7 +149,7 @@
                       </svg>
                     Barang Keluar <i class="bi bi-caret-down-fill"></i>
                 </a>
-                <a href="" class="nav-link d-flex align-items-center gap-2 ms-3 d-none {{ Request::is('dashboard/datamasuk*') ? 'active-dashboard' : '' }}" id="uploadriwayat"><i class="bi bi-file-earmark-plus"></i> Tambah Barang Keluar</a>
+                <a href="" class="nav-link d-flex align-items-center gap-2 ms-3 d-none {{ Request::is('dashboard/barangkeluar*') ? 'active-dashboard' : '' }}" id="uploadriwayat"><i class="bi bi-file-earmark-plus"></i> Tambah Barang Keluar</a>
                 <a href="/dashboard/barang-keluar/" class="nav-link d-flex align-items-center gap-2 ms-3 d-none" id="lihatriwayat"><i class="bi bi-file-earmark-minus"></i> Data Barang Keluar</a>
             </li>
         </ul>
