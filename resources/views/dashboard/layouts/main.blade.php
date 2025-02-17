@@ -22,6 +22,9 @@
     <!-- Custom styles for this template -->
     <link href="{{ asset('css/dashboard/dashboard.css') }}" rel="stylesheet">
 
+    {{-- Screenshot --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
     <style>
         trix-toolbar [data-trix-button-group="file-tools"]{
             display: none
@@ -228,6 +231,9 @@
 <script src="{{ asset('js/dashboard/dashboard.js') }}"></script>
 
 {{-- Print CDN --}}
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.0/dist/xlsx.full.min.js"></script>
+
+{{-- Print Screenshot --}}
 <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.0/dist/xlsx.full.min.js"></script>
 </body>
 @yield('scripts')

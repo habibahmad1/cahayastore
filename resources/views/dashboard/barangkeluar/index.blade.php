@@ -146,7 +146,8 @@
     </div>
 
     <div class="col-md-3 m-1">
-        <button onclick="exportToExcel()" class="btn btn-success m-2">Export to Excel</button>
+        <button onclick="confirmExport()" class="btn btn-success m-2"><i class="bi bi-file-earmark-spreadsheet"></i> Excel</button>
+        <button onclick="captureTable()" class="btn btn-primary m-2"><i class="bi bi-camera"></i> Screenshot</button>
     </div>
 
     <div class="card-body">
@@ -162,7 +163,7 @@
               <th>Platform</th>
               <th>Host</th>
               <th>Jam Live/Toko</th>
-              <th>Aksi</th>
+              <th class="aksi">Aksi</th>
             </tr>
           </thead>
           <tbody>
@@ -176,7 +177,7 @@
                 <td>{{ $bk->platform }}</td>
                 <td>{{ $bk->host }}</td>
                 <td>{{ $bk->jamlive }}</td>
-                <td>
+                <td class="aksi">
                   <form action="{{ route('barang-keluar.destroy', $bk->id) }}" method="POST" class="d-inline">
                     @csrf
                     @method('DELETE')
@@ -414,25 +415,78 @@
 
 {{-- To Excel --}}
 <script>
+    function confirmExport() {
+      if (confirm("Mengekspor data ke Excel?")) {
+        exportToExcel();
+      }
+    }
+
     function exportToExcel() {
       const table = document.getElementById('myTable');
       const rows = Array.from(table.querySelectorAll('tr'));
-      const data = rows.map(row => Array.from(row.querySelectorAll('th, td')).map(cell => cell.innerText));
 
+      // Ambil data dari tabel, kecuali kolom aksi (misalnya kolom terakhir)
+      const data = rows.map(row => {
+        const cells = Array.from(row.querySelectorAll('th, td')).map(cell => cell.innerText);
+
+        // Menghapus kolom aksi (misalnya kolom terakhir) sebelum diekspor
+        cells.pop(); // Menghapus kolom terakhir (aksi)
+
+        return cells;
+      });
+
+      // Membuat worksheet dari data yang sudah diproses
       const ws = XLSX.utils.aoa_to_sheet(data);
       const wb = XLSX.utils.book_new();
       XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
 
       // Mendapatkan tanggal hari ini dalam format YYYY-MM-DD
-        const today = new Date();
-        const formattedDate = today.toISOString().split('T')[0];  // Menghasilkan format: YYYY-MM-DD
+      const today = new Date();
+      const formattedDate = today.toISOString().split('T')[0];  // Menghasilkan format: YYYY-MM-DD
 
-        // Membuat nama file dengan tanggal hari ini dan "laporan keluar"
-        const filename = `laporan-keluar-${formattedDate}.xlsx`;
+      // Membuat nama file dengan tanggal hari ini dan "laporan keluar"
+      const filename = `laporan-keluar-${formattedDate}.xlsx`;
 
-        // Menyimpan file dengan nama yang sesuai
-        XLSX.writeFile(wb, filename);
+      // Menyimpan file dengan nama yang sesuai
+      XLSX.writeFile(wb, filename);
+
+      // Menampilkan alert setelah ekspor berhasil
+      alert('Data berhasil diekspor sebagai ' + filename);
     }
   </script>
+
+
+  {{-- Screenshot --}}
+  <script>
+    function captureTable() {
+        // Konfirmasi sebelum mengambil screenshot
+        const confirmed = confirm("Apakah Anda yakin ingin mendownload screenshot laporan?");
+        if (!confirmed) {
+            return; // Batalkan jika pengguna menolak
+        }
+
+        const table = document.getElementById('myTable');
+
+        // Sembunyikan kolom "Aksi"
+        const aksiColumns = document.querySelectorAll('.aksi');
+        aksiColumns.forEach(col => col.style.display = 'none');
+
+        html2canvas(table).then(canvas => {
+            // Tampilkan kembali kolom "Aksi" setelah screenshot
+            aksiColumns.forEach(col => col.style.display = '');
+
+            // Membuat link download
+            const link = document.createElement('a');
+            link.href = canvas.toDataURL('image/png');
+            link.download = 'screenshot-laporan.png';
+            link.click();
+
+            // Tampilkan pesan sukses
+            alert("Screenshot berhasil diunduh!");
+        });
+    }
+</script>
+
+
 
 @endsection
