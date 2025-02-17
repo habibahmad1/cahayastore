@@ -132,7 +132,6 @@ class BarangKeluarController extends Controller
      */
     public function update(Request $request, $id)
     {
-
         $request->validate([
             'tanggal' => 'required|date',
             'produk_id' => 'required|exists:produks,id',
@@ -166,6 +165,24 @@ class BarangKeluarController extends Controller
                     $variasiLama->save();
                 }
             }
+
+            // Kurangi stok variasi baru
+            if ($request->variasi_id) {
+                $variasiBaru = Produk_Variasi::find($request->variasi_id);
+                if ($variasiBaru) {
+                    $variasiBaru->stok -= $request->qty;
+                    $variasiBaru->save();
+                }
+            }
+        } else {
+            // Jika variasi sama, update stok tanpa mengurangi lagi
+            if ($request->variasi_id) {
+                $variasi = Produk_Variasi::find($request->variasi_id);
+                if ($variasi) {
+                    $variasi->stok = $variasi->stok + $barangKeluar->qty - $request->qty;
+                    $variasi->save();
+                }
+            }
         }
 
         // Update data barang keluar dengan data baru
@@ -178,25 +195,17 @@ class BarangKeluarController extends Controller
             'jamlive' => $request->jamlive,
         ]);
 
-        // Mengurangi stok produk atau variasi baru
-        $produkBaru = Produk::find($request->produk_id);
-        if ($produkBaru) {
-            $produkBaru->stok -= $request->qty;
-            $produkBaru->save();
-        }
-
-        if ($request->variasi_id) {
-            $variasiBaru = Produk_Variasi::find($request->variasi_id);
-            if ($variasiBaru) {
-                $variasiBaru->stok -= $request->qty;
-                $variasiBaru->save();
+        // Mengurangi stok produk baru jika produk berbeda
+        if ($barangKeluar->produk_id != $request->produk_id) {
+            $produkBaru = Produk::find($request->produk_id);
+            if ($produkBaru) {
+                $produkBaru->stok -= $request->qty;
+                $produkBaru->save();
             }
         }
 
         return redirect()->route('barang-keluar.index')->with('success', 'Data barang keluar berhasil diperbarui.');
     }
-
-
 
 
     /**
