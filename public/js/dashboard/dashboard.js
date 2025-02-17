@@ -57,29 +57,43 @@ document.addEventListener('DOMContentLoaded', function() {
         { toggle: 'bagStokBarangToggle', submenu: 'bagStokBarangSubmenu' }
     ];
 
+    // Load submenu state from localStorage
+    sections.forEach(section => {
+        const submenuElement = document.getElementById(section.submenu);
+        const isVisible = localStorage.getItem(section.submenu) === 'true';
+        if (submenuElement && isVisible) {
+            submenuElement.classList.remove('d-none');
+        }
+    });
+
     sections.forEach(section => {
         const toggleElement = document.getElementById(section.toggle);
         const submenuElement = document.getElementById(section.submenu);
 
         if (toggleElement && submenuElement) {
             toggleElement.addEventListener('click', function() {
-                submenuElement.classList.toggle('d-none');
-            });
-        }
-    });
-
-    // Warna belakang teks pada BAG
-    sections.forEach(section => {
-        const toggleElement = document.getElementById(section.toggle);
-        if (toggleElement) {
-            toggleElement.addEventListener('click', function() {
+                // Hide all submenus except the clicked one
                 sections.forEach(sec => {
-                    const el = document.getElementById(sec.toggle);
-                    if (el) {
-                        el.classList.remove('active-section');
+                    const secSubmenuElement = document.getElementById(sec.submenu);
+                    if (secSubmenuElement && secSubmenuElement !== submenuElement) {
+                        secSubmenuElement.classList.add('d-none');
+                        localStorage.setItem(sec.submenu, 'false');
                     }
                 });
-                toggleElement.classList.add('active-section');
+
+                // Remove active class from all toggle elements except the clicked one
+                sections.forEach(sec => {
+                    const secToggleElement = document.getElementById(sec.toggle);
+                    if (secToggleElement && secToggleElement !== toggleElement) {
+                        secToggleElement.classList.remove('active-section');
+                    }
+                });
+
+                // Toggle the clicked submenu and add active class to the clicked toggle element
+                const isCurrentlyVisible = !submenuElement.classList.contains('d-none');
+                submenuElement.classList.toggle('d-none');
+                toggleElement.classList.toggle('active-section');
+                localStorage.setItem(section.submenu, !isCurrentlyVisible);
             });
         }
     });
