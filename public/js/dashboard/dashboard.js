@@ -57,6 +57,15 @@ document.addEventListener('DOMContentLoaded', function() {
         { toggle: 'bagStokBarangToggle', submenu: 'bagStokBarangSubmenu' }
     ];
 
+    // Load submenu state from localStorage
+    sections.forEach(section => {
+        const submenuElement = document.getElementById(section.submenu);
+        const isVisible = localStorage.getItem(section.submenu) === 'true';
+        if (submenuElement && isVisible) {
+            submenuElement.classList.remove('d-none');
+        }
+    });
+
     sections.forEach(section => {
         const toggleElement = document.getElementById(section.toggle);
         const submenuElement = document.getElementById(section.submenu);
@@ -68,6 +77,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     const secSubmenuElement = document.getElementById(sec.submenu);
                     if (secSubmenuElement && secSubmenuElement !== submenuElement) {
                         secSubmenuElement.classList.add('d-none');
+                        localStorage.setItem(sec.submenu, 'false');
                     }
                 });
 
@@ -80,8 +90,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
 
                 // Toggle the clicked submenu and add active class to the clicked toggle element
+                const isCurrentlyVisible = !submenuElement.classList.contains('d-none');
                 submenuElement.classList.toggle('d-none');
                 toggleElement.classList.toggle('active-section');
+                localStorage.setItem(section.submenu, !isCurrentlyVisible);
             });
         }
     });

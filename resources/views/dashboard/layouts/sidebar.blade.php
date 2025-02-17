@@ -12,7 +12,7 @@
         </h6>
 
         <ul id="bagHomeSubmenu" class="nav flex-column d-none">
-          <li class="nav-item">
+          <li class="nav-item" id="nav-item-dashboard">
             <a class="nav-link d-flex align-items-center gap-2 {{ Request::is('dashboard') ? 'active-dashboard' : '' }}" aria-current="page" href="/dashboard">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-layout-text-sidebar-reverse" viewBox="0 0 16 16">
                     <path d="M12.5 3a.5.5 0 0 1 0 1h-5a.5.5.5 0 0 1 0-1zm0 3a.5.5 0 0 1 0 1h-5a.5.5.5 0 0 1 0-1zm.5 3.5a.5.5 0 0 0-.5-.5h-5a.5.5.5 0 0 0 0 1h5a.5.5.5 0 0 0 .5-.5m-.5 2.5a.5.5 0 0 1 0 1h-5a.5.5.5 0 0 1 0-1z"/>
@@ -22,7 +22,7 @@
             </a>
           </li>
 
-          <li class="nav-item">
+          <li class="nav-item" id="nav-item-homepage">
             <a class="nav-link d-flex align-items-center gap-2" href="/"  target="_blank">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
                     <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/>
@@ -38,7 +38,7 @@
         </h6>
 
         <ul id="bagProdukSubmenu" class="nav flex-column d-none">
-            <li class="nav-item">
+            <li class="nav-item" id="nav-item-produk">
                 <a class="nav-link d-flex align-items-center gap-2 {{ Request::is('dashboard/produk*') ? 'active-dashboard' : '' }}" href="/dashboard/produk">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-basket" viewBox="0 0 16 16">
                         <path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9zM1 7v1h14V7zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10m2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10m2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10m2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5m2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5"/>
@@ -48,7 +48,7 @@
             </li>
 
             @can('admin')
-            <li class="nav-item">
+            <li class="nav-item" id="nav-item-kategori-produk">
                 <a class="nav-link d-flex align-items-center gap-2 {{ Request::is('dashboard/kategori', 'dashboard/kategori/*') ? 'active-dashboard' : '' }}" href="/dashboard/kategori">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bounding-box-circles" viewBox="0 0 16 16">
                         <path d="M2 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2M0 2a2 2 0 0 1 3.937-.5h8.126A2 2 0 1 1 14.5 3.937v8.126a2 2 0 1 1-2.437 2.437H3.937A2 2 0 1 1 1.5 12.063V3.937A2 2 0 0 1 0 2m2.5 1.937v8.126c.703.18 1.256.734 1.437 1.437h8.126a2 2 0 0 1 1.437-1.437V3.937A2 2 0 0 1 12.063 2.5H3.937A2 2 0 0 1 2.5 3.937M14 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2M2 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2m12 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2"/>
@@ -65,7 +65,7 @@
         </h6>
 
         <ul id="bagArtikelSubmenu" class="nav flex-column d-none">
-            <li class="nav-item">
+            <li class="nav-item" id="nav-item-artikel-saya">
                 <a class="nav-link d-flex align-items-center gap-2 {{ Request::is('dashboard/artikel*') ? 'active-dashboard' : '' }}" href="/dashboard/artikel">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-book" viewBox="0 0 16 16">
                         <path d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783"/>
@@ -75,7 +75,7 @@
             </li>
 
             @can('admin')
-            <li class="nav-item">
+            <li class="nav-item" id="nav-item-kategori-artikel">
                 <a class="nav-link d-flex align-items-center gap-2 {{ Request::is('dashboard/kategoriartikel', 'dashboard/kategoriartikel/*') ? 'active-dashboard' : '' }}" href="/dashboard/kategoriartikel">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bounding-box-circles" viewBox="0 0 16 16">
                         <path d="M2 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2M0 2a2 2 0 0 1 3.937-.5h8.126A2 2 0 1 1 14.5 3.937v8.126a2 2 0 1 1-2.437 2.437H3.937A2 2 0 1 1 1.5 12.063V3.937A2 2 0 0 1 0 2m2.5 1.937v8.126c.703.18 1.256.734 1.437 1.437h8.126a2 2 0 0 1 1.437-1.437V3.937A2 2 0 0 1 12.063 2.5H3.937A2 2 0 0 1 2.5 3.937M14 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2M2 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2m12 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2"/>
@@ -94,7 +94,7 @@
         </h6>
 
         <ul id="bagUserManajemenSubmenu" class="nav flex-column d-none">
-            <li class="nav-item">
+            <li class="nav-item" id="nav-item-daftar-user">
                 <a class="nav-link d-flex align-items-center gap-2 {{ Request::is('dashboard/data') ? 'active-dashboard' : '' }}" href="/dashboard/data">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
                         <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/>
@@ -102,7 +102,7 @@
                     Daftar User
                 </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" id="nav-item-daftar-artikel">
                 <a class="nav-link d-flex align-items-center gap-2 {{ Request::is('dashboard/allartikel*') ? 'active-dashboard' : '' }}" href="/dashboard/allartikel">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-journal-text" viewBox="0 0 16 16">
                         <path d="M5 10.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5m0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5"/>
@@ -123,7 +123,7 @@
         </h6>
 
         <ul id="bagStokBarangSubmenu" class="nav flex-column d-none">
-            <li class="nav-item">
+            <li class="nav-item" id="nav-item-data-stok-barang">
                 <a class="nav-link d-flex align-items-center gap-2 {{ Request::is('dashboard/databarang*') ? 'active-dashboard' : '' }}" href="/dashboard/databarang">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box2-fill" viewBox="0 0 16 16">
                         <path d="M3.75 0a1 1 0 0 0-.8.4L.1 4.2a.5.5 0 0 0-.1.3V15a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V4.5a.5.5 0 0 0-.1-.3L13.05.4a1 1 0 0 0-.8-.4zM15 4.667V5H1v-.333L1.5 4h6V1h1v3h6z"/>
@@ -131,7 +131,7 @@
                     Data Stok Barang
                 </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" id="nav-item-kelola-stok-barang">
                 <a class="nav-link d-flex align-items-center gap-2 {{ Request::is('dashboard/allartikel*') ? 'active-dashboard' : '' }}" style="cursor: pointer; user-select: none" id="dropkelolabarang">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dropbox" viewBox="0 0 16 16">
                         <path d="M8.01 4.555 4.005 7.11 8.01 9.665 4.005 12.22 0 9.651l4.005-2.555L0 4.555 4.005 2zm-4.026 8.487 4.006-2.555 4.005 2.555-4.005 2.555zm4.026-3.39 4.005-2.556L8.01 4.555 11.995 2 16 4.555 11.995 7.11 16 9.665l-4.005 2.555z"/>
@@ -141,7 +141,7 @@
                 <a href="" class="nav-link d-flex align-items-center gap-2 ms-3 d-none {{ Request::is('dashboard/datamasuk*') ? 'active-dashboard' : '' }}" id="barangmasuk"><i class="bi bi-bag-plus"></i> Barang Masuk</a>
                 <a href="/dashboard/barang-keluar" class="nav-link d-flex align-items-center gap-2 ms-3 d-none {{ Request::is('dashboard/barangkeluar*') ? 'active-dashboard' : '' }}" id="barangkeluar"><i class="bi bi-bag-dash"></i> Barang Keluar</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" id="nav-item-riwayat-stok-barang">
                 <a class="nav-link d-flex align-items-center gap-2 {{ Request::is('dashboard/allartikel*') ? 'active-dashboard' : '' }}" style="cursor: pointer; user-select: none" id="riwayatstok">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-data-fill" viewBox="0 0 16 16">
                         <path d="M6.5 0A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0zm3 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5z"/>
