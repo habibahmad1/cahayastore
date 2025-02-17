@@ -63,23 +63,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (toggleElement && submenuElement) {
             toggleElement.addEventListener('click', function() {
-                submenuElement.classList.toggle('d-none');
-            });
-        }
-    });
-
-    // Warna belakang teks pada BAG
-    sections.forEach(section => {
-        const toggleElement = document.getElementById(section.toggle);
-        if (toggleElement) {
-            toggleElement.addEventListener('click', function() {
+                // Hide all submenus except the clicked one
                 sections.forEach(sec => {
-                    const el = document.getElementById(sec.toggle);
-                    if (el) {
-                        el.classList.remove('active-section');
+                    const secSubmenuElement = document.getElementById(sec.submenu);
+                    if (secSubmenuElement && secSubmenuElement !== submenuElement) {
+                        secSubmenuElement.classList.add('d-none');
                     }
                 });
-                toggleElement.classList.add('active-section');
+
+                // Remove active class from all toggle elements except the clicked one
+                sections.forEach(sec => {
+                    const secToggleElement = document.getElementById(sec.toggle);
+                    if (secToggleElement && secToggleElement !== toggleElement) {
+                        secToggleElement.classList.remove('active-section');
+                    }
+                });
+
+                // Toggle the clicked submenu and add active class to the clicked toggle element
+                submenuElement.classList.toggle('d-none');
+                toggleElement.classList.toggle('active-section');
             });
         }
     });
