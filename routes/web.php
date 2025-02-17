@@ -211,3 +211,12 @@ Route::get('/barang-keluar/autocomplete', [BarangKeluarController::class, 'autoc
 
 // Route untuk mendapatkan variasi produk berdasarkan ID produk
 Route::get('/barang-keluar/{produkId}/variasi', [BarangKeluarController::class, 'getVariasi']);
+
+// Route Barang Masuk (CRUD)
+Route::resource('/dashboard/barang-masuk', BarangKeluarController::class)->middleware(['auth', 'admin']);
+
+// Route untuk Autocomplete nama produk
+Route::get('/barang-masuk/autocomplete', [BarangKeluarController::class, 'autocomplete'])->name('barang-keluar.autocomplete');
+
+// Route untuk mendapatkan variasi produk berdasarkan ID produk
+Route::get('/barang-masuk/{produkId}/variasi', [BarangKeluarController::class, 'getVariasi']);
