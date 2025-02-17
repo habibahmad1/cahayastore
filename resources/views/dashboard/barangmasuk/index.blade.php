@@ -250,43 +250,56 @@
 </script>
 
 <script>
-$(document).ready(function() {
+$(document).ready(function () {
     function loadVariasi(produkId, variasiSelect, selectedVariasiId = null) {
         $.ajax({
-            url: '/barang-masuk/' + produkId + '/variasi', // Pastikan URL benar
+            url: `/barang-masuk/${produkId}/variasi`, // Pastikan endpoint benar
             type: 'GET',
-            success: function(data) {
-                console.log("Data variasi:", data); // Debugging
-                variasiSelect.empty(); // Hapus pilihan sebelumnya
+            success: function (data) {
+                console.log("Variasi yang diterima:", data); // Debugging: Cek apakah variasi berhasil dimuat
+
+                variasiSelect.empty(); // Kosongkan select sebelum menambahkan opsi
 
                 if (data.variasi.length > 0) {
                     variasiSelect.append('<option value="">Pilih Variasi</option>');
-                    data.variasi.forEach(function(variasi) {
+                    data.variasi.forEach(function (variasi) {
                         let warna = variasi.warna ? variasi.warna.warna : '-';
                         let ukuran = variasi.ukuran ? variasi.ukuran.ukuran : '';
-                        let selected = (variasi.id == selectedVariasiId) ? 'selected' : '';
-                        variasiSelect.append(`<option value="${variasi.id}" ${selected}>${warna} - ${ukuran}</option>`);
+                        let option = `<option value="${variasi.id}" ${variasi.id == selectedVariasiId ? 'selected' : ''}>${warna} - ${ukuran}</option>`;
+
+                        variasiSelect.append(option);
                     });
                 } else {
                     variasiSelect.append('<option value="">Tidak ada variasi</option>');
                 }
+
+                // Pastikan nilai yang benar dipilih setelah opsi ditambahkan
+                if (selectedVariasiId) {
+                    variasiSelect.val(selectedVariasiId).change(); // Gunakan .change() untuk memastikan perubahan diterapkan
+                }
+
+                console.log("Variasi yang dipilih:", variasiSelect.val()); // Debugging: Cek apakah variasi benar-benar terpilih
             },
-            error: function(xhr, status, error) {
+            error: function (xhr, status, error) {
                 console.error("Error loading variasi:", error);
             }
         });
     }
 
+    // Saat modal edit ditampilkan
     $('[id^=editModal]').on('shown.bs.modal', function (e) {
         let modal = $(this);
         let produkId = modal.find('input[name="produk_id"]').val();
         let variasiSelect = modal.find('select[name="variasi_id"]');
-        let variasiId = modal.find('button[data-bs-target]').data('variasi-id');
+        let variasiId = $(e.relatedTarget).data('variasi-id');  // Ambil variasi sebelumnya
+
+        console.log(`Modal dibuka untuk produk ${produkId}, variasi sebelumnya ${variasiId}`); // Debugging
 
         loadVariasi(produkId, variasiSelect, variasiId);
     });
 
-    $('[id^=edit-produk_id]').change(function() {
+    // Jika produk diubah dalam modal, muat ulang variasi
+    $('[id^=edit-produk_id]').change(function () {
         let modal = $(this).closest('.modal');
         let produkId = $(this).val();
         let variasiSelect = modal.find('select[name="variasi_id"]');
@@ -294,6 +307,7 @@ $(document).ready(function() {
         loadVariasi(produkId, variasiSelect);
     });
 });
+
 
 </script>
 
