@@ -146,7 +146,7 @@
     </div>
 
     <div class="col-md-3 m-1">
-        <button onclick="exportToExcel()" class="btn btn-success m-2">Export to Excel</button>
+        <button onclick="exportToExcel()" class="btn btn-success m-2">Excel</button>
     </div>
 
     <div class="card-body">
