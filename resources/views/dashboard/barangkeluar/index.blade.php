@@ -172,7 +172,7 @@
             {{-- <div class="mb-3">
               <label for="edit-produk_id" class="form-label">Nama Barang</label>
               <select name="produk_id" class="form-control" id="edit-produk_id" required>
-                @foreach ($produks as $produk)
+                @foreach ($produks sebagai $produk)
                   <option value="{{ $produk->id }}">{{ $produk->nama_produk }}</option>
                 @endforeach
               </select>
@@ -423,7 +423,24 @@
         const title = document.createElement('h2');
         title.innerText = 'Laporan Barang Keluar';
         title.style.textAlign = 'center';
+        title.style.border = '1px solid #000'; // Menambahkan border
+        title.style.padding = '10px'; // Menambahkan padding
+        title.style.marginBottom = '0px'; // Mengurangi margin bawah
+        title.style.marginTop = '15px'; // Menambahkan margin atas
+        title.style.backgroundColor = '#343a40'; // Menambahkan warna latar belakang yang sama dengan tabel
+        title.style.color = '#fff'; // Menambahkan warna teks putih
+        title.style.width = table.offsetWidth + 'px'; // Menyamakan lebar judul dengan tabel
+        title.style.marginLeft = 'auto'; // Menambahkan margin kiri otomatis
+        title.style.marginRight = 'auto'; // Menambahkan margin kanan otomatis
         table.parentElement.insertBefore(title, table);
+
+        // Tambahkan border tebal pada tabel
+        table.style.border = '1px solid #000';
+        table.style.borderCollapse = 'collapse';
+        const cells = table.querySelectorAll('th, td');
+        cells.forEach(cell => {
+            cell.style.border = '1px solid #000';
+        });
 
         html2canvas(table.parentElement).then(canvas => {
             // Tampilkan kembali kolom "Aksi" setelah screenshot
@@ -431,6 +448,12 @@
 
             // Hapus judul sementara
             title.remove();
+
+            // Kembalikan border tabel ke semula
+            table.style.border = '';
+            cells.forEach(cell => {
+                cell.style.border = '';
+            });
 
             // Membuat link download
             const link = document.createElement('a');
@@ -443,7 +466,5 @@
         });
     }
 </script>
-
-
 
 @endsection
