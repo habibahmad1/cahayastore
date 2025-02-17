@@ -144,9 +144,14 @@
     <div class="card-header bg-secondary text-white">
       <strong>Riwayat Barang Keluar</strong>
     </div>
+
+    <div class="col-md-3 m-1">
+        <button onclick="exportToExcel()" class="btn btn-success m-2">Export to Excel</button>
+    </div>
+
     <div class="card-body">
       <div class="table-responsive">
-        <table class="table table-bordered">
+        <table class="table table-bordered" id="myTable">
           <thead class="table-dark">
             <tr>
               <th>No</th>
@@ -175,12 +180,12 @@
                   <form action="{{ route('barang-keluar.destroy', $bk->id) }}" method="POST" class="d-inline">
                     @csrf
                     @method('DELETE')
-                    <button class="btn btn-danger btn-sm" onclick="return confirm('Hapus data ini?')">
+                    <button class="btn btn-danger btn-sm m-2" onclick="return confirm('Hapus data ini?')">
                       <i class="bi bi-trash"></i> Hapus
                     </button>
                   </form>
 
-                  <button type="button" class="btn btn-warning btn-sm edit-btn mt-2" data-bs-toggle="modal" data-bs-target="#editModal"
+                  <button type="button" class="btn btn-warning btn-sm edit-btn m-2" data-bs-toggle="modal" data-bs-target="#editModal"
                 data-id="{{ $bk->id }}" data-tanggal="{{ $bk->tanggal }}" data-produk="{{ $bk->produk->id }}"
                 data-variasi="{{ $bk->variasi_id }}" data-qty="{{ $bk->qty }}" data-platform="{{ $bk->platform }}"
                 data-host="{{ $bk->host }}" data-jamlive="{{ $bk->jamlive }}">
@@ -405,6 +410,29 @@
   });
 });
 
+  </script>
+
+{{-- To Excel --}}
+<script>
+    function exportToExcel() {
+      const table = document.getElementById('myTable');
+      const rows = Array.from(table.querySelectorAll('tr'));
+      const data = rows.map(row => Array.from(row.querySelectorAll('th, td')).map(cell => cell.innerText));
+
+      const ws = XLSX.utils.aoa_to_sheet(data);
+      const wb = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+
+      // Mendapatkan tanggal hari ini dalam format YYYY-MM-DD
+        const today = new Date();
+        const formattedDate = today.toISOString().split('T')[0];  // Menghasilkan format: YYYY-MM-DD
+
+        // Membuat nama file dengan tanggal hari ini dan "laporan keluar"
+        const filename = `laporan-keluar-${formattedDate}.xlsx`;
+
+        // Menyimpan file dengan nama yang sesuai
+        XLSX.writeFile(wb, filename);
+    }
   </script>
 
 @endsection
