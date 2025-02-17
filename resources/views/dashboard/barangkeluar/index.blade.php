@@ -1,11 +1,12 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
-  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Barang Keluar</h1>
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Riwayat Stok Keluar</h1>
   </div>
 
-  {{-- Form Buat Laporan Barang Keluar --}}
+   {{-- Form Buat Laporan Barang Keluar --}}
      <!-- Menampilkan pesan sukses jika ada -->
      @if (session('success'))
      <div class="alert alert-success col-lg-12">
@@ -23,71 +24,8 @@
     </div>
     @endif
 
-  <div class="card mb-4">
-    <div class="card-header bg-primary text-white">
-      <strong>Buat Laporan Barang Keluar</strong>
-    </div>
-    <div class="card-body">
-      <form action="{{ route('barang-keluar.store') }}" method="POST">
-        @csrf
-        <div class="row">
-          <div class="col-md-3">
-            <label for="tanggal" class="form-label">Tanggal</label>
-            <input type="date" class="form-control" name="tanggal" required>
-          </div>
-          <div class="col-md-3">
-            <label for="produk_id" class="form-label">Nama Barang</label>
-            <input type="text" class="form-control" name="nama_produk" id="nama_produk" required>
-            <input type="hidden" name="produk_id" id="produk_id">  <!-- Input tersembunyi untuk produk_id -->
-          </div>
-
-          <div class="col-md-3">
-            <label for="variasi_id" class="form-label">Variasi (Opsional)</label>
-            <select name="variasi_id" class="form-select" id="variasi_id">
-              <option value="">-- Pilih Variasi --</option>
-              <!-- Variasi akan dimuat disini setelah produk dipilih -->
-            </select>
-          </div>
-
-          <div class="col-md-2">
-            <label for="qty" class="form-label">Jumlah</label>
-            <input type="number" class="form-control" name="qty" min="1" required>
-          </div>
-          <div class="col-md-2 mt-3">
-            <label for="platform" class="form-label">Platform</label>
-            <select class="form-select" name="platform" required>
-              <option value="">-- Pilih Platform --</option>
-              <option value="Shopee 1">Shopee 1</option>
-              <option value="Shopee 2">Shopee 2</option>
-              <option value="Shopee 3">Shopee 3</option>
-              <option value="Shopee 4">Shopee 4</option>
-              <option value="Tiktok 1">Tiktok 1</option>
-              <option value="Tiktok 2">Tiktok 2</option>
-              <option value="Tiktok 3">Tiktok 3</option>
-              <option value="Tiktok 4">Tiktok 4</option>
-              <option value="Tokopedia 1">Tokopedia 1</option>
-              <option value="Tokopedia 2">Tokopedia 2</option>
-              <option value="Tokopedia 3">Tokopedia 3</option>
-            </select>
-          </div>
-          <div class="col-md-2 mt-3">
-            <label for="host" class="form-label">Host</label>
-            <input type="text" class="form-control" name="host" required>
-          </div>
-          <div class="col-md-2 mt-3">
-            <label for="jamlive" class="form-label">Jam Live / Toko</label>
-            <input type="text" class="form-control" name="jamlive" required>
-          </div>
-          <div class="col-md-2 d-flex align-items-end mt-3">
-            <button type="submit" class="btn btn-success w-100"><i class="bi bi-save"></i> Simpan</button>
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
-
   {{-- Filter --}}
-  <form action="{{ route('barang-keluar.index') }}" method="GET" class="mb-3">
+  <form action="{{ route('barang-keluar.index') }}" method="GET" class="my-3">
     <div class="row">
         <!-- Filter Tanggal Mulai -->
         <div class="col-md-3">
@@ -126,13 +64,10 @@
             <input type="text" class="form-control" name="host" placeholder="Cari host..." value="{{ request('host') }}">
         </div>
 
-        <!-- Tombol Filter -->
-        <div class="col-md-3 d-flex align-items-end mt-3">
+        <!-- Tombol Filter dan Reset di sebelah kanan -->
+        <div class="col-md-3 text-start mt-3">
             <button type="submit" class="btn btn-primary">Filter</button>
-        </div>
-
-        <div class="col-md-3 d-flex align-items-end mt-3">
-            <a href="{{ route('barang-keluar.index') }}" class="btn btn-danger">Reset</a>
+            <a href="{{ route('barang-keluar.index') }}" class="btn btn-danger ms-2">Reset</a>
         </div>
 
     </div>
@@ -161,7 +96,7 @@
               <th>Variasi</th>
               <th>Jumlah</th>
               <th>Platform</th>
-              <th>Host</th>
+              <th>Host/Toko</th>
               <th>Jam Live/Toko</th>
               <th class="aksi">Aksi</th>
             </tr>
