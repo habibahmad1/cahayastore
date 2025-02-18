@@ -3,7 +3,7 @@
 @section('container')
 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Riwayat Stok Masuk</h1>
+    <h1 class="h2">Data Barang Masuk</h1>
 </div>
 
 {{-- Form Buat Laporan Barang Masuk --}}
@@ -60,7 +60,7 @@
 {{-- Tabel Riwayat Barang Masuk --}}
 <div class="card">
     <div class="card-header bg-secondary text-white">
-        <strong>Riwayat Barang Masuk</strong>
+        <strong>Data Barang Masuk</strong>
     </div>
 
     <div class="col-md-3 m-1">
