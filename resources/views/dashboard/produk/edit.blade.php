@@ -4,6 +4,17 @@
     <h1 class="h2">Edit Produk</h1>
 </div>
 
+@if (session()->has('success'))
+    <div class="alert alert-success" role="alert">
+        {{ session('success') }}
+      </div>
+    @endif
+
+<div class="col-md-3">
+    <a href="/dashboard/produk" class="btn btn-primary"><i class="bi bi-arrow-left"></i> Ke Produk</a>
+    <a href="/dashboard/databarang" class="btn btn-warning"><i class="bi bi-arrow-left"></i> Ke Data Stok Produk</a>
+</div>
+
 <div class="col-lg-8 mt-3 mb-5">
     <form method="POST" action="/dashboard/produk/{{ $produk->slug }}" enctype="multipart/form-data">
         @method('put')

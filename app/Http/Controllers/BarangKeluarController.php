@@ -14,11 +14,16 @@ class BarangKeluarController extends Controller
      */
     public function index(Request $request)
     {
-        $query = BarangKeluar::query();
+        $query = BarangKeluar::with('produk'); // Eager Loading Produk
 
         // Filter berdasarkan tanggal
         if ($request->filled('tanggal_mulai') && $request->filled('tanggal_selesai')) {
             $query->whereBetween('tanggal', [$request->tanggal_mulai, $request->tanggal_selesai]);
+        }
+
+        // Filter berdasarkan produk
+        if ($request->filled('produk_id')) {
+            $query->where('produk_id', $request->produk_id);
         }
 
         // Filter berdasarkan platform (hanya jika dipilih)
@@ -36,8 +41,6 @@ class BarangKeluarController extends Controller
 
         return view('dashboard.barangkeluar.index', compact('barangKeluar', 'produks'));
     }
-
-
 
     /**
      * Show the form for creating a new resource.
@@ -61,6 +64,7 @@ class BarangKeluarController extends Controller
             'platform' => 'required|string|max:50',
             'host' => 'required|string|max:255',
             'jamlive' => 'required|string|max:50',
+            'catatan' => 'nullable|string',
         ]);
 
         $produk = Produk::find($request->produk_id);
@@ -101,6 +105,7 @@ class BarangKeluarController extends Controller
             'platform' => $request->platform,
             'host' => $request->host,
             'jamlive' => $request->jamlive,
+            'catatan' => $request->catatan,
             'user_id' => auth()->id(),
         ]);
 
@@ -140,6 +145,7 @@ class BarangKeluarController extends Controller
             'platform' => 'required|string',
             'host' => 'required|string',
             'jamlive' => 'required|string',
+            'catatan' => 'nullable|string',
         ]);
 
         // Ambil data barang keluar yang akan diupdate
@@ -207,6 +213,8 @@ class BarangKeluarController extends Controller
             'platform' => $request->platform,
             'host' => $request->host,
             'jamlive' => $request->jamlive,
+            'catatan' => $request->catatan,
+
         ]);
 
         return redirect()->route('barang-keluar.index')->with('success', 'Data barang keluar berhasil diperbarui.');

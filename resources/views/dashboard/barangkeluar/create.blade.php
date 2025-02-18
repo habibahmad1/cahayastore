@@ -79,6 +79,10 @@
                     <label for="jamlive" class="form-label">Jam Live</label>
                     <input type="text" class="form-control" name="jamlive" placeholder="Masukan Jam" required>
                 </div>
+                <div class="col-md-2">
+                    <label for="catatan" class="form-label">Catatan</label>
+                    <input type="text" class="form-control" name="catatan" placeholder="Catatan jika ada" required>
+                </div>
             </div>
             <div class="row">
                 <div class="col-md-2 d-flex align-items-end">

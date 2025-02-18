@@ -6,23 +6,34 @@ use App\Models\DataBarang;
 use App\Models\Produk;
 use App\Http\Requests\StoreDataBarangRequest;
 use App\Http\Requests\UpdateDataBarangRequest;
+use Illuminate\Http\Request;
+
 
 class DataBarangController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        // Mengambil semua produk beserta variasinya (warna & ukuran)
-        $produk = Produk::with(['variasi.warna', 'variasi.ukuran'])->get();
+        // Membuat query produk
+        $query = Produk::with(['variasi.warna', 'variasi.ukuran']);
+
+        // Cek apakah ada parameter 'search'
+        if ($request->has('search') && $request->search != '') {
+            $search = $request->search;
+            // Menambahkan filter pencarian
+            $query->where('nama_produk', 'like', "%{$search}%")
+                ->orWhere('kode_produk', 'like', "%{$search}%")
+                ->orWhere('harga', 'like', "%{$search}%");
+        }
+
+        // Menjalankan query
+        $produk = $query->get();
 
         // Mengirim data ke view
         return view('dashboard.databarang.index', compact('produk'));
     }
-
-
-
 
     /**
      * Show the form for creating a new resource.

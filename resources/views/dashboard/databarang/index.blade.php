@@ -5,6 +5,19 @@
     <h1 class="h2">Data Stok Barang</h1>
   </div>
 
+  <div class="col-lg-8 pencarian">
+    <form action="/dashboard/databarang" method="GET">
+        <div class="input-group my-3">
+            <input type="text" class="form-control" placeholder="Cari Produk.." name="search" value="{{ request('search') }}" id="search-box">
+            <button class="btn btn-warning" type="submit">Cari</button>
+            @if(request('search'))
+                <a href="/dashboard/databarang" class="btn btn-danger">Clear</a>
+            @endif
+        </div>
+    </form>
+</div>
+
+
   <div class="mb-3">
     <a href="{{ route('produk.create') }}" class="btn btn-primary"><i class="bi bi-file-earmark-plus"></i> Tambah Data</a>
     <button onclick="exportToExcel()" class="btn btn-success"><i class="bi bi-file-earmark-spreadsheet"></i> Export to Excel</button>

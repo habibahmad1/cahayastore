@@ -14,7 +14,7 @@ class BarangMasukController extends Controller
      */
     public function index(Request $request)
     {
-        $query = BarangMasuk::query();
+        $query = BarangMasuk::with('produk'); // Eager Loading Produk
 
         // Filter berdasarkan tanggal
         if ($request->filled('tanggal_mulai') && $request->filled('tanggal_selesai')) {
@@ -29,12 +29,11 @@ class BarangMasukController extends Controller
         // Mengambil data barang masuk dengan produk yang sesuai
         $barangMasuk = $query->latest()->get();
 
-        // Mengambil semua produk untuk dropdown filter
-        $produks = Produk::all();
+        // Mengambil semua produk dengan relasi variasi, warna, dan ukuran
+        $produks = Produk::with(['variasi.warna', 'variasi.ukuran'])->get();
 
         return view('dashboard.barangmasuk.index', compact('barangMasuk', 'produks'));
     }
-
 
     /**
      * Show the form for creating a new resource.

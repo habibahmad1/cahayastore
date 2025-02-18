@@ -115,8 +115,6 @@
         </ul>
         @endcan
 
-        @can('admin')
-
         <h6 id="bagStokBarangToggle" class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-2 mb-1 text-body-secondary text-uppercase" style="padding: 10px; color: #ffffff !important; cursor: pointer;">
             <span>BAG Stok Barang</span>
             <i class="bi bi-caret-down-fill"></i>
@@ -153,7 +151,6 @@
                 <a href="/dashboard/barang-keluar/" class="nav-link d-flex align-items-center gap-2 ms-3 d-none" id="lihatriwayat"><i class="bi bi-file-earmark-minus"></i> Data Barang Keluar</a>
             </li>
         </ul>
-        @endcan
 
         <hr class="my-3">
 
