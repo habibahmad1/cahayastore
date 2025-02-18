@@ -202,10 +202,10 @@ Route::put('/dashboard/settings/updateuser', function (Request $request) {
 })->middleware('auth');
 
 // Route Data Barang
-Route::resource('/dashboard/databarang', DataBarangController::class)->middleware(['auth', 'admin']);
+Route::resource('/dashboard/databarang', DataBarangController::class)->middleware(['auth']);
 
 // Route Barang Keluar (CRUD)
-Route::resource('/dashboard/barang-keluar', BarangKeluarController::class)->middleware(['auth', 'admin']);
+Route::resource('/dashboard/barang-keluar', BarangKeluarController::class)->middleware(['auth']);
 
 // Route untuk Autocomplete nama produk
 Route::get('/barang-keluar/autocomplete', [BarangKeluarController::class, 'autocomplete'])->name('barang-keluar.autocomplete');
@@ -214,7 +214,7 @@ Route::get('/barang-keluar/autocomplete', [BarangKeluarController::class, 'autoc
 Route::get('/barang-keluar/{produkId}/variasi', [BarangKeluarController::class, 'getVariasi']);
 
 // Route Barang Masuk (CRUD)
-Route::resource('/dashboard/barang-masuk', BarangMasukController::class)->middleware(['auth', 'admin']);
+Route::resource('/dashboard/barang-masuk', BarangMasukController::class)->middleware(['auth']);
 
 // Route untuk Autocomplete nama produk
 Route::get('/barang-masuk/autocomplete', [BarangMasukController::class, 'autocomplete'])->name('barang-masuk.autocomplete');

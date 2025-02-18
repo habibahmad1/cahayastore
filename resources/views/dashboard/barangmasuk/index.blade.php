@@ -97,7 +97,7 @@
                                         data-bs-target="#editModal{{ $bm->id }}"
                                         data-produk-id="{{ $bm->produk->id }}"
                                         data-variasi-id="{{ $bm->variasi_id }}">
-                                    Edit
+                                        <i class="bi bi-pencil"></i> Edit
                                 </button>
 
 
@@ -105,7 +105,7 @@
                                 <form action="{{ route('barang-masuk.destroy', $bm->id) }}" method="POST" style="display:inline;">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this item?')">Delete</button>
+                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this item?')"><i class="bi bi-trash"></i> Delete</button>
                                 </form>
                             </td>
                         </tr>
@@ -147,10 +147,10 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exp" class="form-label">Expired</label>
-                                                <input type="date" class="form-control" id="exp" name="exp" value="{{ $bm->exp }}" required>
+                                                <input type="date" class="form-control" id="exp" name="exp" value="{{ $bm->exp }}">
                                             </div>
 
-                                            <button type="submit" class="btn btn-primary">Update</button>
+                                            <button type="submit" class="btn btn-primary">Update Data</button>
                                         </form>
                                     </div>
                                 </div>

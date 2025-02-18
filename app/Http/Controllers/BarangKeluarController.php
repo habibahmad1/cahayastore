@@ -14,11 +14,16 @@ class BarangKeluarController extends Controller
      */
     public function index(Request $request)
     {
-        $query = BarangKeluar::query();
+        $query = BarangKeluar::with('produk'); // Eager Loading Produk
 
         // Filter berdasarkan tanggal
         if ($request->filled('tanggal_mulai') && $request->filled('tanggal_selesai')) {
             $query->whereBetween('tanggal', [$request->tanggal_mulai, $request->tanggal_selesai]);
+        }
+
+        // Filter berdasarkan produk
+        if ($request->filled('produk_id')) {
+            $query->where('produk_id', $request->produk_id);
         }
 
         // Filter berdasarkan platform (hanya jika dipilih)
@@ -36,8 +41,6 @@ class BarangKeluarController extends Controller
 
         return view('dashboard.barangkeluar.index', compact('barangKeluar', 'produks'));
     }
-
-
 
     /**
      * Show the form for creating a new resource.

@@ -24,54 +24,66 @@
     </div>
     @endif
 
-  {{-- Filter --}}
-  <form action="{{ route('barang-keluar.index') }}" method="GET" class="my-3">
-    <div class="row">
-        <!-- Filter Tanggal Mulai -->
-        <div class="col-md-3">
-            <label for="tanggal_mulai" class="form-label">Tanggal Mulai</label>
-            <input type="date" class="form-control" name="tanggal_mulai" value="{{ request('tanggal_mulai') }}">
-        </div>
+    <form action="{{ route('barang-keluar.index') }}" method="GET" class="my-3">
+        <div class="row align-items-end">
+            <!-- Filter Tanggal Mulai -->
+            <div class="col-md-2">
+                <label for="tanggal_mulai" class="form-label">Tanggal Mulai</label>
+                <input type="date" class="form-control" name="tanggal_mulai" value="{{ request('tanggal_mulai') }}">
+            </div>
 
-        <!-- Filter Tanggal Selesai -->
-        <div class="col-md-3">
-            <label for="tanggal_selesai" class="form-label">Tanggal Selesai</label>
-            <input type="date" class="form-control" name="tanggal_selesai" value="{{ request('tanggal_selesai') }}">
-        </div>
+            <!-- Filter Tanggal Selesai -->
+            <div class="col-md-2">
+                <label for="tanggal_selesai" class="form-label">Tanggal Selesai</label>
+                <input type="date" class="form-control" name="tanggal_selesai" value="{{ request('tanggal_selesai') }}">
+            </div>
 
-        <!-- Filter Platform -->
-        <div class="col-md-3">
-            <label for="platform" class="form-label">Platform</label>
-            <select class="form-control" name="platform">
-                <option value="">-- Pilih Platform --</option>
-                <option value="Shopee 1" {{ request('platform') == 'Shopee 1' ? 'selected' : '' }}>Shopee 1</option>
-                <option value="Shopee 2" {{ request('platform') == 'Shopee 2' ? 'selected' : '' }}>Shopee 2</option>
-                <option value="Shopee 3" {{ request('platform') == 'Shopee 3' ? 'selected' : '' }}>Shopee 3</option>
-                <option value="Shopee 4" {{ request('platform') == 'Shopee 4' ? 'selected' : '' }}>Shopee 4</option>
-                <option value="Tiktok 1" {{ request('platform') == 'Tiktok 1' ? 'selected' : '' }}>Tiktok 1</option>
-                <option value="Tiktok 2" {{ request('platform') == 'Tiktok 2' ? 'selected' : '' }}>Tiktok 2</option>
-                <option value="Tiktok 3" {{ request('platform') == 'Tiktok 3' ? 'selected' : '' }}>Tiktok 3</option>
-                <option value="Tiktok 4" {{ request('platform') == 'Tiktok 4' ? 'selected' : '' }}>Tiktok 4</option>
-                <option value="Tokopedia 1" {{ request('platform') == 'Tokopedia 1' ? 'selected' : '' }}>Tokopedia 1</option>
-                <option value="Tokopedia 2" {{ request('platform') == 'Tokopedia 2' ? 'selected' : '' }}>Tokopedia 2</option>
-                <option value="Tokopedia 3" {{ request('platform') == 'Tokopedia 3' ? 'selected' : '' }}>Tokopedia 3</option>
-            </select>
-        </div>
+            <!-- Filter Produk -->
+            <div class="col-md-3">
+                <label for="produk_id" class="form-label">Produk</label>
+                <select name="produk_id" id="produk_id" class="form-control">
+                    <option value="">Semua Produk</option>
+                    @foreach ($produks as $produk)
+                        <option value="{{ $produk->id }}" {{ request()->produk_id == $produk->id ? 'selected' : '' }}>
+                            {{ $produk->nama_produk }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
 
-        <!-- Filter Host -->
-        <div class="col-md-3">
-            <label for="host" class="form-label">Host</label>
-            <input type="text" class="form-control" name="host" placeholder="Cari host..." value="{{ request('host') }}">
-        </div>
+            <!-- Filter Platform -->
+            <div class="col-md-2">
+                <label for="platform" class="form-label">Platform</label>
+                <select class="form-control" name="platform">
+                    <option value="">-- Pilih Platform --</option>
+                    <option value="Shopee 1" {{ request('platform') == 'Shopee 1' ? 'selected' : '' }}>Shopee 1</option>
+                    <option value="Shopee 2" {{ request('platform') == 'Shopee 2' ? 'selected' : '' }}>Shopee 2</option>
+                    <option value="Shopee 3" {{ request('platform') == 'Shopee 3' ? 'selected' : '' }}>Shopee 3</option>
+                    <option value="Shopee 4" {{ request('platform') == 'Shopee 4' ? 'selected' : '' }}>Shopee 4</option>
+                    <option value="Tiktok 1" {{ request('platform') == 'Tiktok 1' ? 'selected' : '' }}>Tiktok 1</option>
+                    <option value="Tiktok 2" {{ request('platform') == 'Tiktok 2' ? 'selected' : '' }}>Tiktok 2</option>
+                    <option value="Tiktok 3" {{ request('platform') == 'Tiktok 3' ? 'selected' : '' }}>Tiktok 3</option>
+                    <option value="Tiktok 4" {{ request('platform') == 'Tiktok 4' ? 'selected' : '' }}>Tiktok 4</option>
+                    <option value="Tokopedia 1" {{ request('platform') == 'Tokopedia 1' ? 'selected' : '' }}>Tokopedia 1</option>
+                    <option value="Tokopedia 2" {{ request('platform') == 'Tokopedia 2' ? 'selected' : '' }}>Tokopedia 2</option>
+                    <option value="Tokopedia 3" {{ request('platform') == 'Tokopedia 3' ? 'selected' : '' }}>Tokopedia 3</option>
+                </select>
+            </div>
 
-        <!-- Tombol Filter dan Reset di sebelah kanan -->
-        <div class="col-md-3 text-start mt-3">
-            <button type="submit" class="btn btn-primary">Filter</button>
-            <a href="{{ route('barang-keluar.index') }}" class="btn btn-danger ms-2">Reset</a>
-        </div>
+            <!-- Filter Host -->
+            <div class="col-md-2">
+                <label for="host" class="form-label">Host</label>
+                <input type="text" class="form-control" name="host" placeholder="Cari host..." value="{{ request('host') }}">
+            </div>
 
-    </div>
-</form>
+            <!-- Tombol Filter dan Reset -->
+            <div class="col-md-3 mt-3">
+                <button type="submit" class="btn btn-primary">Filter</button>
+                <a href="{{ route('barang-keluar.index') }}" class="btn btn-danger ms-2">Reset</a>
+            </div>
+        </div>
+    </form>
+
 
 
   {{-- Tabel Riwayat Barang Keluar --}}
