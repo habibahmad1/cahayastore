@@ -110,6 +110,7 @@
               <th>Platform</th>
               <th>Host/Toko</th>
               <th>Jam Live/Toko</th>
+              <th>Catatan</th>
               <th class="aksi">Aksi</th>
             </tr>
           </thead>
@@ -124,6 +125,7 @@
                 <td>{{ $bk->platform }}</td>
                 <td>{{ $bk->host }}</td>
                 <td>{{ $bk->jamlive }}</td>
+                <td>{{ $bk->catatan }}</td>
                 <td class="aksi">
                   <form action="{{ route('barang-keluar.destroy', $bk->id) }}" method="POST" class="d-inline">
                     @csrf
@@ -143,7 +145,7 @@
                   data-qty="{{ $bk->qty }}"
                   data-platform="{{ $bk->platform }}"
                   data-host="{{ $bk->host }}"
-                  data-jamlive="{{ $bk->jamlive }}">
+                  data-jamlive="{{ $bk->jamlive }}" data-catatan="{{ $bk->catatan }}">
                   <i class="bi bi-pencil"></i> Edit
                 </button>
 
@@ -228,13 +230,18 @@
 
 
             <div class="mb-3">
-              <label for="edit-host" class="form-label">Host</label>
+              <label for="edit-host" class="form-label">Host/Toko</label>
               <input type="text" class="form-control" name="host" id="edit-host" required>
             </div>
 
             <div class="mb-3">
-              <label for="edit-jamlive" class="form-label">Jam Live / Toko</label>
-              <input type="text" class="form-control" name="jamlive" id="edit-jamlive" required>
+                <label for="edit-jamlive" class="form-label">Jam Live / Toko</label>
+                <input type="text" class="form-control" name="jamlive" id="edit-jamlive" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="edit-catatan" class="form-label">Catatan</label>
+                <input type="text" class="form-control" name="catatan" id="edit-catatan"></input>
             </div>
 
             <button type="submit" class="btn btn-primary w-100">Simpan Perubahan</button>
@@ -331,6 +338,7 @@
     let platform = $(this).data("platform");
     let host = $(this).data("host");
     let jamlive = $(this).data("jamlive");
+    let catatan = $(this).data("catatan");
 
     $("#edit-id").val(id);
     $("#edit-tanggal").val(tanggal);
@@ -340,6 +348,7 @@
     $("#edit-platform").val(platform);
     $("#edit-host").val(host);
     $("#edit-jamlive").val(jamlive);
+    $("#edit-catatan").val(catatan);
 
     // Memuat variasi berdasarkan produk yang dipilih
     $.ajax({

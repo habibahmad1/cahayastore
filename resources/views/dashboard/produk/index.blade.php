@@ -77,7 +77,7 @@
 
     <td>{{ $p->kode_produk }}</td>
     <td>{!! \Illuminate\Support\Str::limit($p->deskripsi, 100) !!}</td>
-    <td>{{ $p->stok }}</td>
+    <td>{{ $p->total_stok }}</td>
     <td>{{ $p->diskon }}%</td>
     <td>{{ $p->berat }}</td>
     <td>{{ $p->dimensi }}</td>

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer('qty');
             $table->string('host');
             $table->string('jamlive');
+            $table->string('catatan')->nullable();
             $table->foreignId('user_id');
             $table->timestamps();
         });

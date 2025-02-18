@@ -64,6 +64,7 @@ class BarangKeluarController extends Controller
             'platform' => 'required|string|max:50',
             'host' => 'required|string|max:255',
             'jamlive' => 'required|string|max:50',
+            'catatan' => 'nullable|string',
         ]);
 
         $produk = Produk::find($request->produk_id);
@@ -104,6 +105,7 @@ class BarangKeluarController extends Controller
             'platform' => $request->platform,
             'host' => $request->host,
             'jamlive' => $request->jamlive,
+            'catatan' => $request->catatan,
             'user_id' => auth()->id(),
         ]);
 
@@ -143,6 +145,7 @@ class BarangKeluarController extends Controller
             'platform' => 'required|string',
             'host' => 'required|string',
             'jamlive' => 'required|string',
+            'catatan' => 'nullable|string',
         ]);
 
         // Ambil data barang keluar yang akan diupdate
@@ -210,6 +213,8 @@ class BarangKeluarController extends Controller
             'platform' => $request->platform,
             'host' => $request->host,
             'jamlive' => $request->jamlive,
+            'catatan' => $request->catatan,
+
         ]);
 
         return redirect()->route('barang-keluar.index')->with('success', 'Data barang keluar berhasil diperbarui.');

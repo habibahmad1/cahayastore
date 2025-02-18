@@ -265,7 +265,7 @@ class DashboardController extends Controller
             }
         }
 
-        return redirect('/dashboard/produk')->with('success', 'Produk dan variasi berhasil diedit!');
+        return back()->with('success', 'Produk dan variasi berhasil diedit!');
     }
 
 
