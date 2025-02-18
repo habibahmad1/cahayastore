@@ -193,7 +193,7 @@ foreach ($produk_variasi as $variasi) {
             <img id="img-form" src="{{ asset('storage/' . $post->gambar1) }}" alt="img-form">
             <p>Variasi</p>
         </div>
-        <p><b>Stok: {{ $post->stok }}</b></p>
+        <p><b>Stok: {{ $post->total_stok }}</b></p>
         <p class="coret-form-harga">Rp {{ number_format($post->harga / (1 - ($post->diskon / 100)), 0, ',', '.') }}</p>
         <div class="harga-asli">
             <h5>Subtotal</h5>
@@ -252,7 +252,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let selectedUkuran = null; // Inisialisasi selectedUkuran
 
     // Tampilkan stok awal produk
-    const stokAwal = {{ $post->stok }}; // Stok awal produk tanpa variasi
+    const stokAwal = {{ $post->total_stok }}; // Stok awal produk tanpa variasi
     updateStokDisplay(stokAwal);
 
     // Event klik untuk warna
