@@ -138,45 +138,46 @@
     }
 
     function exportToExcel() {
-      const table = document.getElementById('dataTable');
-      const rows = Array.from(table.querySelectorAll('tr'));
+  if (!confirm("Apakah Anda yakin ingin mengekspor data ke Excel?")) {
+    return; // Batalkan ekspor jika pengguna membatalkan konfirmasi
+  }
 
-      // Hapus kolom aksi sebelum ekspor
-      rows.forEach(row => {
-        const aksiCell = row.querySelector('.aksi-column');
-        if (aksiCell) aksiCell.remove();
-      });
+  const table = document.getElementById('dataTable');
+  const rows = Array.from(table.querySelectorAll('tr'));
 
-      const data = rows.map(row => Array.from(row.querySelectorAll('th, td')).map(cell => cell.innerText));
-      const ws = XLSX.utils.aoa_to_sheet(data);
-      const wb = XLSX.utils.book_new();
-      XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
-      XLSX.writeFile(wb, 'Data_stok_barang.xlsx');
+  // Hapus kolom aksi sebelum ekspor
+  rows.forEach(row => {
+    const aksiCell = row.querySelector('.aksi-column');
+    if (aksiCell) aksiCell.remove();
+  });
+
+  // Ambil data dari tabel
+  let data = rows.map(row => Array.from(row.querySelectorAll('th, td')).map(cell => cell.innerText));
+
+  // Tambahkan total stok di akhir file
+  let totalStok = 0;
+  for (let i = 1; i < data.length; i++) { // Mulai dari 1 untuk melewati header
+    let stok = parseInt(data[i][5].replace(/\D/g, '')) || 0; // Ambil kolom stok dan hilangkan karakter selain angka
+    totalStok += stok;
+  }
+
+  // Tambahkan baris total stok ke dalam data
+  data.push(["", "", "", "", "Total Stok Keseluruhan", totalStok]);
+
+  // Buat sheet dan workbook
+  const ws = XLSX.utils.aoa_to_sheet(data);
+  const wb = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+
+  // Format nama file dengan tanggal
+  const today = new Date().toISOString().split('T')[0]; // Format: YYYY-MM-DD
+  const fileName = `stok_barang_${today}.xlsx`;
+
+  // Simpan file
+  XLSX.writeFile(wb, fileName);
 
       // Reload halaman agar kolom aksi tetap ada
       location.reload();
-    }
-
-    function toggleVariasiView() {
-      const dropdowns = document.querySelectorAll('.dropdown');
-      const lists = document.querySelectorAll('.variasi-list');
-      const switchInput = document.getElementById('toggleVariasiSwitch');
-      const switchLabel = document.getElementById('toggleVariasiLabel');
-      const exportButton = document.getElementById('exportButton');
-      const printButton = document.getElementById('printButton');
-
-      dropdowns.forEach(dropdown => dropdown.classList.toggle('d-none'));
-      lists.forEach(list => list.classList.toggle('d-none'));
-
-      if (switchInput.checked) {
-        switchLabel.innerText = 'On';
-        exportButton.classList.remove('d-none');
-        printButton.classList.remove('d-none');
-      } else {
-        switchLabel.innerText = 'Off';
-        exportButton.classList.add('d-none');
-        printButton.classList.add('d-none');
-      }
     }
   </script>
 
