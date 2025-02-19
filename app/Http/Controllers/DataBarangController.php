@@ -6,6 +6,7 @@ use App\Models\DataBarang;
 use App\Models\Produk;
 use App\Http\Requests\StoreDataBarangRequest;
 use App\Http\Requests\UpdateDataBarangRequest;
+use App\Models\Kategori;
 use Illuminate\Http\Request;
 
 
@@ -16,24 +17,24 @@ class DataBarangController extends Controller
      */
     public function index(Request $request)
     {
-        // Membuat query produk
-        $query = Produk::with(['variasi.warna', 'variasi.ukuran']);
+        $query = Produk::query();
 
-        // Cek apakah ada parameter 'search'
-        if ($request->has('search') && $request->search != '') {
-            $search = $request->search;
-            // Menambahkan filter pencarian
-            $query->where('nama_produk', 'like', "%{$search}%")
-                ->orWhere('kode_produk', 'like', "%{$search}%")
-                ->orWhere('harga', 'like', "%{$search}%");
+        // Pencarian berdasarkan nama produk
+        if ($request->has('search')) {
+            $query->where('nama_produk', 'like', '%' . $request->search . '%');
         }
 
-        // Menjalankan query
-        $produk = $query->get();
+        // Filter berdasarkan kategori
+        if ($request->has('kategori') && $request->kategori != '') {
+            $query->where('kategori_id', $request->kategori);
+        }
 
-        // Mengirim data ke view
-        return view('dashboard.databarang.index', compact('produk'));
+        $produk = $query->with('variasi', 'kategori')->get();
+        $kategori = Kategori::all(); // Ambil semua kategori untuk dropdown
+
+        return view('dashboard.databarang.index', compact('produk', 'kategori'));
     }
+
 
     /**
      * Show the form for creating a new resource.
