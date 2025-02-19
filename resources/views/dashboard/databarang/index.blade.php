@@ -103,31 +103,31 @@
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.0/dist/xlsx.full.min.js"></script>
   <script>
     function printTable() {
-      // Sembunyikan kolom aksi sebelum print
-      document.querySelectorAll('.aksi-column').forEach(el => el.style.display = 'none');
+        // Sembunyikan kolom aksi sebelum print
+        document.querySelectorAll('.aksi-column').forEach(el => el.style.display = 'none');
 
-      window.print();
+        window.print();
 
-      // Kembalikan kolom aksi setelah print
-      document.querySelectorAll('.aksi-column').forEach(el => el.style.display = '');
+        // Kembalikan kolom aksi setelah print
+        document.querySelectorAll('.aksi-column').forEach(el => el.style.display = '');
     }
 
     function exportToExcel() {
-    if (!confirm("Apakah Anda yakin ingin mengekspor data ke Excel?")) {
-        return; // Batalkan ekspor jika pengguna membatalkan konfirmasi
-    }
+  if (!confirm("Apakah Anda yakin ingin mengekspor data ke Excel?")) {
+    return; // Batalkan ekspor jika pengguna membatalkan konfirmasi
+  }
 
-    const table = document.getElementById('dataTable');
-    const rows = Array.from(table.querySelectorAll('tr'));
+  const table = document.getElementById('dataTable');
+  const rows = Array.from(table.querySelectorAll('tr'));
 
-    // Hapus kolom aksi sebelum ekspor
-    rows.forEach(row => {
-        const aksiCell = row.querySelector('.aksi-column');
-        if (aksiCell) aksiCell.remove();
-    });
+  // Hapus kolom aksi sebelum ekspor
+  rows.forEach(row => {
+    const aksiCell = row.querySelector('.aksi-column');
+    if (aksiCell) aksiCell.remove();
+  });
 
-    // Ambil data dari tabel
-    let data = rows.map(row => Array.from(row.querySelectorAll('th, td')).map(cell => cell.innerText));
+  // Ambil data dari tabel
+  let data = rows.map(row => Array.from(row.querySelectorAll('th, td')).map(cell => cell.innerText));
 
     // Tambahkan total stok di akhir file
     let totalStok = 0;
@@ -136,24 +136,24 @@
         totalStok += stok;
     }
 
-    // Tambahkan baris total stok ke dalam data
-    data.push(["", "", "", "", "Total Stok Keseluruhan", totalStok]);
+  // Tambahkan baris total stok ke dalam data
+  data.push(["", "", "", "", "Total Stok Keseluruhan", totalStok]);
 
-    // Buat sheet dan workbook
-    const ws = XLSX.utils.aoa_to_sheet(data);
-    const wb = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+  // Buat sheet dan workbook
+  const ws = XLSX.utils.aoa_to_sheet(data);
+  const wb = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
 
-    // Format nama file dengan tanggal
-    const today = new Date().toISOString().split('T')[0]; // Format: YYYY-MM-DD
-    const fileName = `stok_barang_${today}.xlsx`;
+  // Format nama file dengan tanggal
+  const today = new Date().toISOString().split('T')[0]; // Format: YYYY-MM-DD
+  const fileName = `stok_barang_${today}.xlsx`;
 
-    // Simpan file
-    XLSX.writeFile(wb, fileName);
+  // Simpan file
+  XLSX.writeFile(wb, fileName);
 
-    // Reload halaman agar kolom aksi tetap ada
-    location.reload();
-    }
+  // Reload halaman agar kolom aksi tetap ada
+  location.reload();
+}
 
 
   </script>
