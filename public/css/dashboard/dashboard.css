@@ -16,7 +16,7 @@ body {
 }
 
 .active-section {
-    background-color: #297fb942; /* Change this to your desired color */
+    background-color: #2980B9; /* Change this to your desired color */
     color: #1d1d1d; /* Optional: Change text color */
     font-family: 'Roboto', sans-serif;
 }
@@ -87,7 +87,7 @@ body {
 .sidebar .nav-link:hover {
     background-color: #297fb97a; /* Warna latar belakang saat di-hover */
     color: #ffffff; /* Warna teks saat di-hover */
-    transform: scale(1.05); /* Sedikit memperbesar ukuran */
+    /* transform: scale(1.05); Sedikit memperbesar ukuran */
 }
 
 .sidebar .nav-link.active {
