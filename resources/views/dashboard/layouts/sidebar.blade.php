@@ -136,19 +136,19 @@
                       </svg>
                     Barang Masuk <i class="bi bi-caret-down-fill"></i>
                 </a>
-                <a href="/dashboard/barang-masuk/create" class="nav-link d-flex align-items-center gap-2 ms-3 d-none {{ Request::is('dashboard/datamasuk*') ? 'active-dashboard' : '' }}" id="barangmasuk"><i class="bi bi-bag-plus"></i> Tambah Barang Masuk</a>
-                <a href="/dashboard/barang-masuk/" class="nav-link d-flex align-items-center gap-2 ms-3 d-none {{ Request::is('dashboard/barangkeluar*') ? 'active-dashboard' : '' }}" id="barangkeluar"><i class="bi bi-bag-dash"></i> Data Barang Masuk</a>
+                <a href="/dashboard/barang-masuk/create" class="nav-link d-flex align-items-center gap-2 ms-3 {{ Request::is('dashboard/barang-masuk/create') ? 'active-dashboard' : '' }}" id="barangmasuk"><i class="bi bi-bag-plus"></i> Tambah Barang Masuk</a>
+                <a href="/dashboard/barang-masuk/" class="nav-link d-flex align-items-center gap-2 ms-3 {{ Request::is('dashboard/barang-masuk') ? 'active-dashboard' : '' }}" id="barangkeluar"><i class="bi bi-bag-dash"></i> Data Barang Masuk</a>
             </li>
             <li class="nav-item" id="nav-item-barang-keluar">
                 <a class="nav-link d-flex align-items-center gap-2 {{ Request::is('dashboard/allartikel*') ? 'active-dashboard' : '' }}" style="cursor: pointer; user-select: none" id="riwayatstok">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-data-fill" viewBox="0 0 16 16">
                         <path d="M6.5 0A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0zm3 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5z"/>
-                        <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1A2.5 2.5 0 0 1 9.5 5h-3A2.5 2.5 0 0 1 4 2.5zM10 8a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0zm-6 4a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0zm4-3a1 1 0 0 1 1 1v3a1 1 0 1 1-2 0v-3a1 1 0 0 1 1-1"/>
+                        <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1A2.5.5 0 0 1 9.5 5h-3A2.5.5 0 0 1 4 2.5zM10 8a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0zm-6 4a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0zm4-3a1 1 0 0 1 1 1v3a1 1 0 1 1-2 0v-3a1 1 0 0 1 1-1"/>
                       </svg>
                     Barang Keluar <i class="bi bi-caret-down-fill"></i>
                 </a>
-                <a href="/dashboard/barang-keluar/create" class="nav-link d-flex align-items-center gap-2 ms-3 d-none {{ Request::is('dashboard/barangkeluar*') ? 'active-dashboard' : '' }}" id="uploadriwayat"><i class="bi bi-file-earmark-plus"></i> Tambah Barang Keluar</a>
-                <a href="/dashboard/barang-keluar/" class="nav-link d-flex align-items-center gap-2 ms-3 d-none" id="lihatriwayat"><i class="bi bi-file-earmark-minus"></i> Data Barang Keluar</a>
+                <a href="/dashboard/barang-keluar/create" class="nav-link d-flex align-items-center gap-2 ms-3 {{ Request::is('dashboard/barang-keluar/create') ? 'active-dashboard' : '' }}" id="uploadriwayat"><i class="bi bi-file-earmark-plus"></i> Tambah Barang Keluar</a>
+                <a href="/dashboard/barang-keluar/" class="nav-link d-flex align-items-center gap-2 ms-3 {{ Request::is('dashboard/barang-keluar') ? 'active-dashboard' : '' }}" id="lihatriwayat"><i class="bi bi-file-earmark-minus"></i> Data Barang Keluar</a>
             </li>
         </ul>
 
