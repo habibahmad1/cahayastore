@@ -167,7 +167,8 @@
     // Tambahkan total stok di akhir file
     let totalStok = 0;
     for (let i = 1; i < data.length; i++) { // Mulai dari 1 untuk melewati header
-        let stok = parseInt(data[i][5].replace(/\D/g, '')) || 0; // Ambil kolom stok dan hilangkan karakter selain angka
+        let stok = data[i][5] ? parseInt(data[i][5].replace(/\D/g, '')) || 0 : 0;
+ // Ambil kolom stok dan hilangkan karakter selain angka
         totalStok += stok;
     }
 
