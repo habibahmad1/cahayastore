@@ -45,7 +45,7 @@
   @endif
 
   <div class="table-responsive small col-lg-12">
-    <table class="table table-hover table-sm table-striped" id="dataTable">
+    <table class="table table-hover table-sm" id="dataTable">
       <thead>
         <tr class="table-warning">
           <th scope="col">No.</th>
@@ -74,7 +74,7 @@
             <td>{{ $p->nama_produk }}</td>
             <td>Rp{{ number_format($p->harga, 0, ',', '.') }}</td>
             <td>{{ $p->total_stok }}</td>
-            <td class="variasi-column">
+            <td>
               @if ($p->variasi->count() > 0)
                 <div class="dropdown">
                   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton{{ $p->id }}" data-bs-toggle="dropdown" aria-expanded="false">
@@ -100,13 +100,13 @@
                   @php
                     $stokClass = ($variasi->stok > 5) ? 'bg-success' : 'bg-danger';
                   @endphp
-                  <p class="variasi-item">
-                    <span class="badge bg-primary">Variasi: {{ $variasi->warna->warna ?? '-' }}</span>
-                    <span class="badge bg-warning text-black">Ukuran: {{ $variasi->ukuran->ukuran ?? '-' }}</span>
-                    <span class="badge {{ $stokClass }}">Stok: {{ $variasi->stok ?? 0 }}</span>
-                  </p>
+                    <li style="list-style-type: number">
+                      <span class="badge bg-primary">Variasi: {{ $variasi->warna->warna ?? '-' }}</span>
+                      <span class="badge bg-warning text-black">Ukuran: {{ $variasi->ukuran->ukuran ?? '-' }}</span>
+                      <span class="badge {{ $stokClass }}">Stok: {{ $variasi->stok ?? 0 }}</span>
+                    </li>
                   @endforeach
-                </div>
+                </ul>
               @else
                 <p>-</p>
               @endif
