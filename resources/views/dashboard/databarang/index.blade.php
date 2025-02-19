@@ -176,8 +176,30 @@
   // Simpan file
   XLSX.writeFile(wb, fileName);
 
-      // Reload halaman agar kolom aksi tetap ada
-      location.reload();
+  // Reload halaman agar kolom aksi tetap ada
+  location.reload();
+}
+
+    function toggleVariasiView() {
+      const dropdowns = document.querySelectorAll('.dropdown');
+      const lists = document.querySelectorAll('.variasi-list');
+      const switchInput = document.getElementById('toggleVariasiSwitch');
+      const switchLabel = document.getElementById('toggleVariasiLabel');
+      const exportButton = document.getElementById('exportButton');
+      const printButton = document.getElementById('printButton');
+
+      dropdowns.forEach(dropdown => dropdown.classList.toggle('d-none'));
+      lists.forEach(list => list.classList.toggle('d-none'));
+
+      if (switchInput.checked) {
+        switchLabel.innerText = 'On';
+        exportButton.classList.remove('d-none');
+        printButton.classList.remove('d-none');
+      } else {
+        switchLabel.innerText = 'Off';
+        exportButton.classList.add('d-none');
+        printButton.classList.add('d-none');
+      }
     }
   </script>
 
