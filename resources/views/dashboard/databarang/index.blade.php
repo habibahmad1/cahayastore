@@ -17,10 +17,16 @@
     </form>
 </div>
 
-
-  <div class="mb-3">
-    <a href="{{ route('produk.create') }}" class="btn btn-primary"><i class="bi bi-file-earmark-plus"></i> Tambah Data</a>
-    <button onclick="exportToExcel()" class="btn btn-success"><i class="bi bi-file-earmark-spreadsheet"></i> Export to Excel</button>
+  <div class="mb-3 d-flex justify-content-between align-items-center">
+    <div>
+      <a href="{{ route('produk.create') }}" class="btn btn-primary"><i class="bi bi-file-earmark-plus"></i> Tambah Data</a>
+      <button onclick="exportToExcel()" class="btn btn-success d-none" id="exportButton"><i class="bi bi-file-earmark-spreadsheet"></i> Export to Excel</button>
+      <button onclick="printTable()" class="btn btn-secondary d-none" id="printButton"><i class="bi bi-printer"></i> Print</button>
+    </div>
+    <div class="form-check form-switch">
+      <input class="form-check-input" type="checkbox" id="toggleVariasiSwitch" onclick="toggleVariasiView()">
+      <label class="form-check-label" for="toggleVariasiSwitch" id="toggleVariasiLabel">Off</label>
+    </div>
   </div>
 
   @if (session()->has('success'))
@@ -30,7 +36,7 @@
   @endif
 
   <div class="table-responsive small col-lg-12">
-    <table class="table table-hover table-sm" id="dataTable">
+    <table class="table table-hover table-sm table-striped" id="dataTable">
       <thead>
         <tr class="table-warning">
           <th scope="col">No.</th>
@@ -59,20 +65,48 @@
             <td>{{ $p->nama_produk }}</td>
             <td>Rp{{ number_format($p->harga, 0, ',', '.') }}</td>
             <td>{{ $p->total_stok }}</td>
-            <td>
+            <td class="variasi-column">
               @if ($p->variasi->count() > 0)
-                <ul>
+                <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton{{ $p->id }}" data-bs-toggle="dropdown" aria-expanded="false">
+                    Lihat Variasi
+                  </button>
+                  <ul class="dropdown-menu p-3" aria-labelledby="dropdownMenuButton{{ $p->id }}">
+                    <table class="table table-bordered table-sm">
+                      <thead>
+                        <tr>
+                          <th>Variasi</th>
+                          <th>Ukuran</th>
+                          <th>Stok</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        @foreach ($p->variasi as $variasi)
+                        @php
+                          $stokClass = ($variasi->stok > 5) ? 'bg-success' : 'bg-danger';
+                        @endphp
+                        <tr>
+                          <td><span class="badge bg-primary">{{ $variasi->warna->warna ?? '-' }}</span></td>
+                          <td><span class="badge bg-warning text-black">{{ $variasi->ukuran->ukuran ?? '-' }}</span></td>
+                          <td><span class="badge {{ $stokClass }}">{{ $variasi->stok ?? 0 }}</span></td>
+                        </tr>
+                        @endforeach
+                      </tbody>
+                    </table>
+                  </ul>
+                </div>
+                <div class="variasi-list d-none">
                   @foreach ($p->variasi as $variasi)
                   @php
                     $stokClass = ($variasi->stok > 5) ? 'bg-success' : 'bg-danger';
                   @endphp
-                    <li style="list-style-type: number">
-                      <span class="badge bg-primary">Variasi: {{ $variasi->warna->warna ?? '-' }}</span>
-                      <span class="badge bg-warning text-black">Ukuran: {{ $variasi->ukuran->ukuran ?? '-' }}</span>
-                      <span class="badge {{ $stokClass }}">Stok: {{ $variasi->stok ?? 0 }}</span>
-                    </li>
+                  <p class="variasi-item">
+                    <span class="badge bg-primary">Variasi: {{ $variasi->warna->warna ?? '-' }}</span>
+                    <span class="badge bg-warning text-black">Ukuran: {{ $variasi->ukuran->ukuran ?? '-' }}</span>
+                    <span class="badge {{ $stokClass }}">Stok: {{ $variasi->stok ?? 0 }}</span>
+                  </p>
                   @endforeach
-                </ul>
+                </div>
               @else
                 <p>-</p>
               @endif
@@ -122,5 +156,33 @@
       // Reload halaman agar kolom aksi tetap ada
       location.reload();
     }
+
+    function toggleVariasiView() {
+      const dropdowns = document.querySelectorAll('.dropdown');
+      const lists = document.querySelectorAll('.variasi-list');
+      const switchInput = document.getElementById('toggleVariasiSwitch');
+      const switchLabel = document.getElementById('toggleVariasiLabel');
+      const exportButton = document.getElementById('exportButton');
+      const printButton = document.getElementById('printButton');
+
+      dropdowns.forEach(dropdown => dropdown.classList.toggle('d-none'));
+      lists.forEach(list => list.classList.toggle('d-none'));
+
+      if (switchInput.checked) {
+        switchLabel.innerText = 'On';
+        exportButton.classList.remove('d-none');
+        printButton.classList.remove('d-none');
+      } else {
+        switchLabel.innerText = 'Off';
+        exportButton.classList.add('d-none');
+        printButton.classList.add('d-none');
+      }
+    }
   </script>
+
+  <style>
+    .variasi-item {
+      margin-bottom: 5px;
+    }
+  </style>
 @endsection
