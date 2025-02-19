@@ -20,7 +20,7 @@
   <div class="mb-3 d-flex justify-content-between align-items-center">
     <div>
       <a href="{{ route('produk.create') }}" class="btn btn-primary"><i class="bi bi-file-earmark-plus"></i> Tambah Data</a>
-      <button onclick="exportToExcel()" class="btn btn-success d-none" id="exportButton"><i class="bi bi-file-earmark-spreadsheet"></i> Export to Excel</button>
+      <button onclick="exportToExcel()" class="btn btn-success d-none" id="exportButton"><i class="bi bi-file-earmark-spreadsheet"></i> Excel</button>
       <button onclick="printTable()" class="btn btn-secondary d-none" id="printButton"><i class="bi bi-printer"></i> Print</button>
     </div>
     <div class="form-check form-switch">
