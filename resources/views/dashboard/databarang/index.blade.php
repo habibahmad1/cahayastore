@@ -45,7 +45,7 @@
   @endif
 
   <div class="table-responsive small col-lg-12">
-    <table class="table table-hover table-sm" id="dataTable">
+    <table class="table table-striped table-hover table-sm" id="dataTable">
       <thead>
         <tr class="table-warning">
           <th scope="col">No.</th>
@@ -86,11 +86,11 @@
                       $stokClass = ($variasi->stok > 5) ? 'bg-success' : 'bg-danger';
                     @endphp
                     <li>
-                      <span class="dropdown-item variasi-dropdown-item">
+                      <a class="dropdown-item variasi-dropdown-item" href="#">
                         <span class="badge bg-primary">Variasi: {{ $variasi->warna->warna ?? '-' }}</span>
                         <span class="badge bg-warning text-black">Ukuran: {{ $variasi->ukuran->ukuran ?? '-' }}</span>
                         <span class="badge {{ $stokClass }}">Stok: {{ $variasi->stok ?? 0 }}</span>
-                      </span>
+                      </a>
                     </li>
                     @endforeach
                   </ul>
@@ -106,7 +106,7 @@
                       <span class="badge {{ $stokClass }}">Stok: {{ $variasi->stok ?? 0 }}</span>
                     </li>
                   @endforeach
-                </ul>
+                </div>
               @else
                 <p>-</p>
               @endif
