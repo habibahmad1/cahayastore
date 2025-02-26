@@ -49,6 +49,19 @@
         </div>
     </div>
 
+    <!-- Filter Kategori -->
+    <div class="col-md-3">
+        <label for="kategori" class="form-label">Kategori</label>
+        <select class="form-select" name="kategori">
+            <option value="">-- Pilih Kategori --</option>
+            @foreach ($kategori as $k)
+                <option value="{{ $k->id }}" {{ request('kategori') == $k->id ? 'selected' : '' }}>
+                    {{ $k->nama }}
+                </option>
+            @endforeach
+        </select>
+    </div>
+
     <div class="mt-3">
         <button type="submit" class="btn btn-primary">Filter</button>
         <a href="{{ route('barang-masuk.index') }}" class="btn btn-danger ms-2">Reset</a>

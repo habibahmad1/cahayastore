@@ -6,6 +6,8 @@ use App\Models\BarangMasuk;
 use App\Models\Produk_Variasi;
 use App\Models\Produk;
 use Illuminate\Http\Request;
+use App\Models\Kategori;
+
 
 class BarangMasukController extends Controller
 {
@@ -26,13 +28,22 @@ class BarangMasukController extends Controller
             $query->where('produk_id', $request->produk_id);
         }
 
+        // Filter berdasarkan kategori
+        if ($request->has('kategori') && $request->kategori != '') {
+            $query->whereHas('kategori', function ($q) use ($request) {
+                $q->where('id', $request->kategori);
+            });
+        }
+
         // Mengambil data barang masuk dengan produk yang sesuai
         $barangMasuk = $query->latest()->get();
 
         // Mengambil semua produk dengan relasi variasi, warna, dan ukuran
         $produks = Produk::with(['variasi.warna', 'variasi.ukuran'])->get();
+        $kategori = Kategori::all(); // Ambil semua kategori untuk dropdown
 
-        return view('dashboard.barangmasuk.index', compact('barangMasuk', 'produks'));
+
+        return view('dashboard.barangmasuk.index', compact('barangMasuk', 'produks', 'kategori'));
     }
 
     /**
@@ -84,6 +95,7 @@ class BarangMasukController extends Controller
             'tanggal' => $request->tanggal,
             'produk_id' => $request->produk_id,
             'variasi_id' => $request->variasi_id,
+            'kategori_id' => $produk->kategori_id,
             'qty' => $request->qty,
             'exp' => $request->exp, // Menyimpan data expired jika ada
             'user_id' => auth()->id(),

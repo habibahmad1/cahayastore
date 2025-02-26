@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="{{ asset('css/artikel.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/faq.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/keunggulan.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/katalogproduk.css') }}" />
     {{-- Font Awesome --}}
     <link
       rel="stylesheet"
