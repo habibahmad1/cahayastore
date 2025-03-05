@@ -349,12 +349,10 @@ class DashboardController extends Controller
 
             $validatedVariasi['stok'] = $variasi['stok'] ?? null;
 
-            // **Hapus variasi yang dihapus**
-            if ($request->has('deleted_variasi_ids')) {
-                $deletedIds = json_decode($request->deleted_variasi_ids, true);
-                if (is_array($deletedIds) && count($deletedIds) > 0) {
-                    Produk_Variasi::whereIn('id', $deletedIds)->delete();
-                }
+            // Hapus variasi yang dihapus
+            if ($request->deleted_variasi_ids) {
+                $deletedVariasiIds = explode(',', $request->deleted_variasi_ids);
+                Produk_Variasi::whereIn('id', $deletedVariasiIds)->delete();
             }
 
             if ($existingVariasi) {

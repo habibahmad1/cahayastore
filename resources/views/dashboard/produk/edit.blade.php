@@ -355,30 +355,31 @@
 });
 
 
-    // Event listener untuk menghapus variasi
-    document.addEventListener('click', function (e) {
-    if (e.target.classList.contains('hapus-variasi')) {
-        const id = e.target.getAttribute('data-id');
-        document.getElementById(id).remove();
-    }
-});
-
 document.addEventListener('click', function (e) {
     if (e.target.classList.contains('hapus-variasi')) {
         const id = e.target.getAttribute('data-id');
         const elem = document.getElementById(id);
 
-        // Jika variasi ini sudah ada di database, tambahkan ke daftar hapus
-        let deletedVariasiInput = document.getElementById('deleted_variasi_ids');
-        let variasiIdInput = elem.querySelector('input[name^="variasi["][name$="[id]"]');
+        // Tampilkan konfirmasi sebelum menghapus variasi
+        if (confirm('Apakah Anda yakin ingin menghapus variasi ini?')) {
+            // Jika pengguna mengonfirmasi, lanjutkan dengan penghapusan
+            let deletedVariasiInput = document.getElementById('deleted_variasi_ids');
+            let variasiIdInput = elem.querySelector('input[name^="variasi["][name$="[id]"]');
 
-        if (variasiIdInput) {
-            deletedVariasiInput.value += variasiIdInput.value + ',';
+            if (variasiIdInput) {
+                // Tambahkan ID variasi yang dihapus ke input deleted_variasi_ids
+                deletedVariasiInput.value += (deletedVariasiInput.value ? ',' : '') + variasiIdInput.value; // Pastikan koma tidak muncul di depan ID pertama
+            }
+
+            elem.remove(); // Hapus variasi dari DOM
+        } else {
+            // Jika pengguna membatalkan, tidak lakukan apa-apa
+            return false;
         }
-
-        elem.remove();
     }
 });
+
+
 
 
 
