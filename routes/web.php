@@ -223,3 +223,6 @@ Route::get('/barang-masuk/{produkId}/variasi', [BarangMasukController::class, 'g
 
 // Route Katalog Produk (CRUD)
 Route::resource('/katalog-produk', KatalogProdukController::class);
+
+// Salin Produk
+Route::post('/dashboard/produk/{slug}/salin', [DashboardController::class, 'salin'])->name('produk.salin');

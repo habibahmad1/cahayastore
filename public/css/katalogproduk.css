@@ -4,6 +4,7 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    font-family: "Poppins", serif;
 }
 
 .container-katalog .card-katalog {
@@ -92,4 +93,14 @@
     text-align: center;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card-variasi {
+    border: 1px solid black; /* Border hitam */
+    padding: 5px; /* Spasi dalam */
+    border-radius: 5px; /* Agar sedikit melengkung */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

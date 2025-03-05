@@ -25,9 +25,11 @@ class KatalogProdukController extends Controller
         }
 
         $produk = $query->get();
+        $kategori = Kategori::all(); // Ambil semua kategori untuk dropdown filter
 
-        return view('dashboard.katalogproduk.index', compact('produk'));
+        return view('dashboard.katalogproduk.index', compact('produk', 'kategori'));
     }
+
 
 
     /**
