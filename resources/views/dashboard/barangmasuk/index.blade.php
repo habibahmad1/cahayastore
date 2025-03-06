@@ -96,7 +96,13 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @php
+                        $totalQty = 0;
+                    @endphp
                     @forelse ($barangMasuk as $bm)
+                        @php
+                            $totalQty += $bm->qty;
+                        @endphp
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $bm->tanggal }}</td>
@@ -112,7 +118,6 @@
                                         data-variasi-id="{{ $bm->variasi_id }}">
                                         <i class="bi bi-pencil"></i> Edit
                                 </button>
-
 
                                 <!-- Delete Button -->
                                 <form action="{{ route('barang-masuk.destroy', $bm->id) }}" method="POST" style="display:inline;">
@@ -176,6 +181,13 @@
                         </tr>
                     @endforelse
                 </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="4" class="text-end"><strong>Total Barang Masuk:</strong></td>
+                        <td><strong>{{ $totalQty }}</strong></td>
+                        <td colspan="2"></td>
+                    </tr>
+                </tfoot>
             </table>
         </div>
     </div>

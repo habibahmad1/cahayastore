@@ -32,7 +32,7 @@ class BarangKeluarController extends Controller
             $query->where('platform', $request->platform);
         }
 
-        // Filter berdasarkan platform (hanya jika dipilih)
+        // Filter berdasarkan sumber (hanya jika dipilih)
         if ($request->filled('sumber')) {
             $query->where('sumber', $request->sumber);
         }
@@ -49,14 +49,22 @@ class BarangKeluarController extends Controller
             });
         }
 
+        // Menangani pilihan "Semua Data"
+        $limit = $request->input('limit', 50); // Default 50 jika tidak ada filter
+        if ($limit == 'all') {
+            $barangKeluar = $query->get(); // Ambil semua data (tanpa paginasi)
+            $isPaginated = false; // Tambahkan variabel flag
+        } else {
+            $barangKeluar = $query->paginate($limit); // Gunakan paginasi
+            $isPaginated = true;
+        }
 
-        $barangKeluar = $query->latest()->get();
         $produks = Produk::with(['variasi.warna', 'variasi.ukuran'])->get();
         $kategori = Kategori::all(); // Ambil semua kategori untuk dropdown
 
-
-        return view('dashboard.barangkeluar.index', compact('barangKeluar', 'produks', 'kategori'));
+        return view('dashboard.barangkeluar.index', compact('barangKeluar', 'produks', 'kategori', 'isPaginated'));
     }
+
 
     /**
      * Show the form for creating a new resource.
