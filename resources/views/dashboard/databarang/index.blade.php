@@ -51,9 +51,39 @@
           <th scope="col">No.</th>
           <th scope="col">Kode Barang</th>
           <th scope="col">Gambar</th>
-          <th scope="col">Nama Barang</th>
-          <th scope="col">Harga</th>
-          <th scope="col">Total Stok</th>
+          <th scope="col">Nama Barang
+            <div class="dropdown d-inline">
+              <button class="btn btn-link p-0 dropdown-toggle" type="button" id="sortNamaBarang" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-sort-alpha-down"></i>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="sortNamaBarang">
+                <li><a class="dropdown-item" href="#" onclick="sortTable(3, 'asc')">Sort A-Z</a></li>
+                <li><a class="dropdown-item" href="#" onclick="sortTable(3, 'desc')">Sort Z-A</a></li>
+              </ul>
+            </div>
+          </th>
+          <th scope="col">Harga
+            <div class="dropdown d-inline">
+              <button class="btn btn-link p-0 dropdown-toggle" type="button" id="sortHarga" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-sort-numeric-down"></i>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="sortHarga">
+                <li><a class="dropdown-item" href="#" onclick="sortTable(4, 'asc')">Termurah</a></li>
+                <li><a class="dropdown-item" href="#" onclick="sortTable(4, 'desc')">Termahal</a></li>
+              </ul>
+            </div>
+          </th>
+          <th scope="col">Total Stok
+            <div class="dropdown d-inline">
+              <button class="btn btn-link p-0 dropdown-toggle" type="button" id="sortTotalStok" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-sort-numeric-down"></i>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="sortTotalStok">
+                <li><a class="dropdown-item" href="#" onclick="sortTable(5, 'asc')">Sedikit</a></li>
+                <li><a class="dropdown-item" href="#" onclick="sortTable(5, 'desc')">Banyak</a></li>
+              </ul>
+            </div>
+          </th>
           <th scope="col">Variasi</th>
           <th scope="col" class="aksi-column">Aksi</th>
         </tr>
@@ -138,6 +168,10 @@
     }
 
     function exportToExcel() {
+        if (!confirm("Apakah Anda yakin untuk mengekspor data ke Excel?")) {
+    return;
+  }
+
       const table = document.getElementById('dataTable');
       const rows = Array.from(table.querySelectorAll('tr'));
 
@@ -220,6 +254,30 @@
         switchLabel.innerText = 'Off';
         exportButton.classList.add('d-none');
       }
+    }
+
+    function sortTable(columnIndex, order) {
+      const table = document.getElementById('dataTable');
+      const rows = Array.from(table.rows).slice(1); // Exclude header row
+      const sortedRows = rows.sort((a, b) => {
+        let aText = a.cells[columnIndex].innerText.toLowerCase();
+        let bText = b.cells[columnIndex].innerText.toLowerCase();
+
+        if (columnIndex === 4 || columnIndex === 5) { // If sorting by Harga or Total Stok
+          aText = parseFloat(aText.replace(/[^0-9.-]+/g,""));
+          bText = parseFloat(bText.replace(/[^0-9.-]+/g,""));
+        }
+
+        if (order === 'asc') {
+          return aText > bText ? 1 : -1;
+        } else {
+          return aText < bText ? 1 : -1;
+        }
+      });
+
+      const tbody = table.querySelector('tbody');
+      tbody.innerHTML = '';
+      sortedRows.forEach(row => tbody.appendChild(row));
     }
   </script>
 

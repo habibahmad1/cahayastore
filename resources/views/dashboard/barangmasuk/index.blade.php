@@ -233,9 +233,22 @@
         const aksiColumns = document.querySelectorAll('.aksi');
         aksiColumns.forEach(col => col.style.display = 'none');
 
-        html2canvas(table).then(canvas => {
+        // Tambahkan judul sementara
+        const title = document.createElement('h2');
+        title.innerText = 'Laporan Barang Masuk';
+        title.style.textAlign = 'center';
+        title.style.backgroundColor = '#343a40'; // Warna latar belakang
+        title.style.color = 'white'; // Warna teks
+        title.style.padding = '10px'; // Padding
+        title.style.marginBottom = '0px'; // Margin bawah
+        table.parentElement.insertBefore(title, table);
+
+        html2canvas(table.parentElement).then(canvas => {
             // Tampilkan kembali kolom "Aksi"
             aksiColumns.forEach(col => col.style.display = '');
+
+            // Hapus judul sementara
+            title.remove();
 
             // Link download
             const link = document.createElement('a');
