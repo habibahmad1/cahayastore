@@ -139,11 +139,17 @@
             </tr>
           </thead>
           <tbody>
+            @php
+              $totalQty = 0;
+            @endphp
             @forelse ($barangKeluar as $bk)
+              @php
+                $totalQty += $bk->qty;
+              @endphp
               <tr>
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $bk->tanggal }}</td>
-                <td>{{ $bk->produk->nama_produk }}</td> <!-- Ganti sesuai relasi dengan model -->
+                <td>{{ $bk->produk->nama_produk }}</td>
                 <td>{{ $bk->variasi ? $bk->variasi->warna->warna . ' - ' . $bk->variasi->ukuran->ukuran : '-' }}</td>
                 <td>{{ $bk->qty }}</td>
                 <td>{{ $bk->platform }}</td>
@@ -173,15 +179,18 @@
                   data-jamlive="{{ $bk->jamlive }}" data-catatan="{{ $bk->catatan }}" data-sumber="{{ $bk->sumber }}">
                   <i class="bi bi-pencil"></i> Edit
                 </button>
-
-
                 </td>
               </tr>
             @empty
               <tr>
-                <td colspan="9" class="text-center">Belum ada laporan barang keluar.</td>
+                <td colspan="11" class="text-center">Belum ada laporan barang keluar.</td>
               </tr>
             @endforelse
+            <tr>
+              <td colspan="4" class="text-end"><strong>Total Barang:</strong></td>
+              <td><strong>{{ $totalQty }}</strong></td>
+              <td colspan="6"></td>
+            </tr>
           </tbody>
         </table>
       </div>
