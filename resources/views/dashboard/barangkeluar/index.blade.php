@@ -93,6 +93,17 @@
                 </select>
             </div>
 
+            <div class="col-md-2">
+                <form method="GET" action="{{ route('barang-keluar.index') }}">
+                    <label for="limit" class="form-label">Tampilkan:</label>
+                    <select name="limit" onchange="this.form.submit()" class="form-control">
+                        <option value="50" {{ request('limit') == 50 ? 'selected' : '' }}>50</option>
+                        <option value="100" {{ request('limit') == 100 ? 'selected' : '' }}>100</option>
+                        <option value="all" {{ request('limit') == 'all' ? 'selected' : '' }}>Semua</option>
+                    </select>
+                </form>
+            </div>
+
             <!-- Filter Host -->
             <div class="col-md-2">
                 <label for="host" class="form-label">Host</label>
@@ -141,13 +152,15 @@
           <tbody>
             @php
               $totalQty = 0;
+              $offset = $isPaginated ? ($barangKeluar->currentPage() - 1) * $barangKeluar->perPage() : 0; // Menghitung offset jika dipaginasi
             @endphp
-            @forelse ($barangKeluar as $bk)
+
+            @foreach ($barangKeluar as $bk)
               @php
                 $totalQty += $bk->qty;
               @endphp
               <tr>
-                <td>{{ $loop->iteration }}</td>
+                <td>{{ $offset + $loop->iteration }}</td> <!-- Menampilkan urutan berdasarkan halaman -->
                 <td>{{ $bk->tanggal }}</td>
                 <td>{{ $bk->produk->nama_produk }}</td>
                 <td>{{ $bk->variasi ? $bk->variasi->warna->warna . ' - ' . $bk->variasi->ukuran->ukuran : '-' }}</td>
@@ -167,27 +180,24 @@
                   </form>
 
                   <button type="button" class="btn btn-warning btn-sm edit-btn m-2"
-                  data-bs-toggle="modal" data-bs-target="#editModal"
-                  data-id="{{ $bk->id }}"
-                  data-tanggal="{{ $bk->tanggal }}"
-                  data-produk="{{ $bk->produk->id }}"
-                  data-produk-nama="{{ $bk->produk->nama_produk }}"
-                  data-variasi="{{ $bk->variasi_id }}"
-                  data-qty="{{ $bk->qty }}"
-                  data-platform="{{ $bk->platform }}"
-                  data-host="{{ $bk->host }}"
-                  data-jamlive="{{ $bk->jamlive }}" data-catatan="{{ $bk->catatan }}" data-sumber="{{ $bk->sumber }}">
-                  <i class="bi bi-pencil"></i> Edit
-                </button>
+                    data-bs-toggle="modal" data-bs-target="#editModal"
+                    data-id="{{ $bk->id }}"
+                    data-tanggal="{{ $bk->tanggal }}"
+                    data-produk="{{ $bk->produk->id }}"
+                    data-produk-nama="{{ $bk->produk->nama_produk }}"
+                    data-variasi="{{ $bk->variasi_id }}"
+                    data-qty="{{ $bk->qty }}"
+                    data-platform="{{ $bk->platform }}"
+                    data-host="{{ $bk->host }}"
+                    data-jamlive="{{ $bk->jamlive }}" data-catatan="{{ $bk->catatan }}" data-sumber="{{ $bk->sumber }}">
+                    <i class="bi bi-pencil"></i> Edit
+                  </button>
                 </td>
               </tr>
-            @empty
-              <tr>
-                <td colspan="11" class="text-center">Belum ada laporan barang keluar.</td>
-              </tr>
-            @endforelse
+            @endforeach
+
             <tr>
-              <td colspan="4" class="text-end"><strong>Total Barang:</strong></td>
+              <td colspan="4" class="text-end"><strong>Total Barang Keluar:</strong></td>
               <td><strong>{{ $totalQty }}</strong></td>
               <td colspan="6"></td>
             </tr>
@@ -196,6 +206,14 @@
       </div>
     </div>
   </div>
+
+  <div class="d-flex justify-content-center pt-3">
+    @if ($barangKeluar instanceof \Illuminate\Pagination\LengthAwarePaginator)
+        {{ $barangKeluar->links() }}
+    @endif
+</div>
+
+
 
   {{-- Modal Edit --}}
   <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
