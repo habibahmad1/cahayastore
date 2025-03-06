@@ -163,38 +163,8 @@
               Settings
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link d-flex align-items-center gap-2" href="#">
-                <i class="bi bi-translate"></i>
-            <div id="google_translate_element"></div>
-            <script type="text/javascript">
-            function googleTranslateElementInit() {
-                new google.translate.TranslateElement({
-                pageLanguage: 'id',  // Bahasa halaman default
-                includedLanguages: 'en,id,zh-CN', // Bahasa yang ingin disediakan untuk diterjemahkan
-                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-                }, 'google_translate_element');
-            }
-            </script>
-
-            <script src="{{ asset('js/dashboard/dashboard.js') }}"></script>
-
-            <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link d-flex align-items-center gap-2" href="#">
-              <svg class="bi"><use xlink:href="#door-closed"/></svg>
-              <form action="/logout" method="POST">
-                  @csrf
-                  <button class="dropdown-item" type="submit"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</button>
-              </form>
-            </a>
-          </li>
         </ul>
       </div>
     </div>
   </div>
-
 

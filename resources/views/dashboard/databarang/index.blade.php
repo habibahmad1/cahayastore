@@ -68,8 +68,8 @@
                 <i class="bi bi-sort-numeric-down"></i>
               </button>
               <ul class="dropdown-menu" aria-labelledby="sortHarga">
-                <li><a class="dropdown-item" href="#" onclick="sortTable(4, 'asc')">Termurah</a></li>
-                <li><a class="dropdown-item" href="#" onclick="sortTable(4, 'desc')">Termahal</a></li>
+                <li><a class="dropdown-item" href="#" onclick="sortTable(4, 'asc')">Termahal</a></li>
+                <li><a class="dropdown-item" href="#" onclick="sortTable(4, 'desc')">Termurah</a></li>
               </ul>
             </div>
           </th>
