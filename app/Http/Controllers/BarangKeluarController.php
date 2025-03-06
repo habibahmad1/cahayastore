@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\BarangKeluar;
 use App\Models\Produk_Variasi;
 use App\Models\Produk;
+use App\Models\Kategori;
 use Illuminate\Http\Request;
 
 class BarangKeluarController extends Controller
@@ -31,15 +32,30 @@ class BarangKeluarController extends Controller
             $query->where('platform', $request->platform);
         }
 
+        // Filter berdasarkan platform (hanya jika dipilih)
+        if ($request->filled('sumber')) {
+            $query->where('sumber', $request->sumber);
+        }
+
         // Filter berdasarkan host (pencarian sebagian)
         if ($request->filled('host')) {
             $query->where('host', 'LIKE', '%' . $request->host . '%');
         }
 
+        // Filter berdasarkan kategori
+        if ($request->has('kategori') && $request->kategori != '') {
+            $query->whereHas('kategori', function ($q) use ($request) {
+                $q->where('id', $request->kategori);
+            });
+        }
+
+
         $barangKeluar = $query->latest()->get();
         $produks = Produk::with(['variasi.warna', 'variasi.ukuran'])->get();
+        $kategori = Kategori::all(); // Ambil semua kategori untuk dropdown
 
-        return view('dashboard.barangkeluar.index', compact('barangKeluar', 'produks'));
+
+        return view('dashboard.barangkeluar.index', compact('barangKeluar', 'produks', 'kategori'));
     }
 
     /**
@@ -65,6 +81,7 @@ class BarangKeluarController extends Controller
             'host' => 'required|string|max:255',
             'jamlive' => 'required|string|max:50',
             'catatan' => 'nullable|string',
+            'sumber' => 'required|string',
         ]);
 
         $produk = Produk::find($request->produk_id);
@@ -101,11 +118,13 @@ class BarangKeluarController extends Controller
             'tanggal' => $request->tanggal,
             'produk_id' => $request->produk_id,  // Menggunakan produk_id
             'variasi_id' => $request->variasi_id, // Variasi jika ada
+            'kategori_id' => $produk->kategori_id,
             'qty' => $request->qty,
             'platform' => $request->platform,
             'host' => $request->host,
             'jamlive' => $request->jamlive,
             'catatan' => $request->catatan,
+            'sumber' => $request->sumber,
             'user_id' => auth()->id(),
         ]);
 
@@ -146,6 +165,7 @@ class BarangKeluarController extends Controller
             'host' => 'required|string',
             'jamlive' => 'required|string',
             'catatan' => 'nullable|string',
+            'sumber' => 'required|string',
         ]);
 
         // Ambil data barang keluar yang akan diupdate
@@ -214,6 +234,7 @@ class BarangKeluarController extends Controller
             'host' => $request->host,
             'jamlive' => $request->jamlive,
             'catatan' => $request->catatan,
+            'sumber' => $request->sumber,
 
         ]);
 

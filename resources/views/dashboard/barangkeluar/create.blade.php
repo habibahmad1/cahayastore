@@ -71,13 +71,21 @@
                         <option value="Tokopedia 3">Tokopedia 3</option>
                     </select>
                 </div>
-                <div class="col-md-3">
-                    <label for="host" class="form-label">Host/Toko</label>
-                    <input type="text" class="form-control" name="host" placeholder="Masukan Host/Toko" required>
+                <div class="col-md-2">
+                    <label for="sumber" class="form-label">Type</label>
+                    <select class="form-select" name="sumber" required>
+                        <option value="">-- Pilih Type --</option>
+                        <option value="Live">Live</option>
+                        <option value="Toko">Toko</option>
+                    </select>
                 </div>
-                <div class="col-md-3">
-                    <label for="jamlive" class="form-label">Jam Live</label>
-                    <input type="text" class="form-control" name="jamlive" placeholder="Masukan Jam" required>
+                <div class="col-md-2">
+                    <label for="host" class="form-label">Nama Host</label>
+                    <input type="text" class="form-control" name="host" placeholder="Tulis (-) jika toko" required>
+                </div>
+                <div class="col-md-2">
+                    <label for="jamlive" class="form-label">Jam Live / Toko</label>
+                    <input type="text" class="form-control" name="jamlive" placeholder="Tulis (-) jika toko" required>
                 </div>
                 <div class="col-md-2">
                     <label for="catatan" class="form-label">Catatan</label>

@@ -51,6 +51,19 @@
                 </select>
             </div>
 
+            <!-- Filter Kategori -->
+            <div class="col-md-3">
+                <label for="kategori" class="form-label">Kategori</label>
+                <select class="form-select" name="kategori">
+                    <option value="">-- Pilih Kategori --</option>
+                    @foreach ($kategori as $k)
+                        <option value="{{ $k->id }}" {{ request('kategori') == $k->id ? 'selected' : '' }}>
+                            {{ $k->nama }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+
             <!-- Filter Platform -->
             <div class="col-md-2">
                 <label for="platform" class="form-label">Platform</label>
@@ -67,6 +80,16 @@
                     <option value="Tokopedia 1" {{ request('platform') == 'Tokopedia 1' ? 'selected' : '' }}>Tokopedia 1</option>
                     <option value="Tokopedia 2" {{ request('platform') == 'Tokopedia 2' ? 'selected' : '' }}>Tokopedia 2</option>
                     <option value="Tokopedia 3" {{ request('platform') == 'Tokopedia 3' ? 'selected' : '' }}>Tokopedia 3</option>
+                </select>
+            </div>
+
+            <!-- Filter Sumber -->
+            <div class="col-md-2">
+                <label for="sumber" class="form-label">Type</label>
+                <select class="form-control" name="sumber">
+                    <option value="">-- Pilih Type --</option>
+                    <option value="Live" {{ request('sumber') == 'Live' ? 'selected' : '' }}>Live</option>
+                    <option value="Toko" {{ request('sumber') == 'Toko' ? 'selected' : '' }}>Toko</option>
                 </select>
             </div>
 
@@ -111,6 +134,7 @@
               <th>Host/Toko</th>
               <th>Jam Live/Toko</th>
               <th>Catatan</th>
+              <th>Type</th>
               <th class="aksi">Aksi</th>
             </tr>
           </thead>
@@ -123,9 +147,10 @@
                 <td>{{ $bk->variasi ? $bk->variasi->warna->warna . ' - ' . $bk->variasi->ukuran->ukuran : '-' }}</td>
                 <td>{{ $bk->qty }}</td>
                 <td>{{ $bk->platform }}</td>
-                <td>{{ $bk->host }}</td>
+                <td>{{ ucwords(strtoupper($bk->host)) }}</td>
                 <td>{{ $bk->jamlive }}</td>
                 <td>{{ $bk->catatan }}</td>
+                <td>{{ $bk->sumber }}</td>
                 <td class="aksi">
                   <form action="{{ route('barang-keluar.destroy', $bk->id) }}" method="POST" class="d-inline">
                     @csrf
@@ -145,7 +170,7 @@
                   data-qty="{{ $bk->qty }}"
                   data-platform="{{ $bk->platform }}"
                   data-host="{{ $bk->host }}"
-                  data-jamlive="{{ $bk->jamlive }}" data-catatan="{{ $bk->catatan }}">
+                  data-jamlive="{{ $bk->jamlive }}" data-catatan="{{ $bk->catatan }}" data-sumber="{{ $bk->sumber }}">
                   <i class="bi bi-pencil"></i> Edit
                 </button>
 
@@ -244,6 +269,14 @@
                 <input type="text" class="form-control" name="catatan" id="edit-catatan"></input>
             </div>
 
+            <div class="mb-3">
+                <label for="edit-sumber" class="form-label">Type</label>
+                <select class="form-control" name="sumber" id="edit-sumber" required>
+                  <option value="Live">Live</option>
+                  <option value="Toko">Toko</option>
+                </select>
+              </div>
+
             <button type="submit" class="btn btn-primary w-100">Simpan Perubahan</button>
           </form>
         </div>
@@ -339,6 +372,7 @@
     let host = $(this).data("host");
     let jamlive = $(this).data("jamlive");
     let catatan = $(this).data("catatan");
+    let sumber = $(this).data("sumber");
 
     $("#edit-id").val(id);
     $("#edit-tanggal").val(tanggal);
@@ -349,6 +383,7 @@
     $("#edit-host").val(host);
     $("#edit-jamlive").val(jamlive);
     $("#edit-catatan").val(catatan);
+    $("#edit-sumber").val(sumber);
 
     // Memuat variasi berdasarkan produk yang dipilih
     $.ajax({

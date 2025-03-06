@@ -31,4 +31,9 @@ class BarangKeluar extends Model
     {
         return $this->belongsTo(Produk::class);
     }
+
+    public function kategori()
+    {
+        return $this->belongsTo(Kategori::class);
+    }
 }

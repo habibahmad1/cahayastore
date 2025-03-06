@@ -22,10 +22,9 @@ use App\Http\Controllers\BarangMasukController;
 use App\Http\Controllers\BarangKeluarController;
 use App\Http\Controllers\AdminKategoriController;
 use App\Http\Controllers\ForgotPasswordController;
+use App\Http\Controllers\KatalogProdukController;
 use App\Http\Controllers\KategoriArtikelController;
-
-
-
+use App\Models\KatalogProduk;
 
 Route::post('/send-message', [ContactController::class, 'sendMessage']);
 
@@ -221,3 +220,9 @@ Route::get('/barang-masuk/autocomplete', [BarangMasukController::class, 'autocom
 
 // Route untuk mendapatkan variasi produk berdasarkan ID produk
 Route::get('/barang-masuk/{produkId}/variasi', [BarangMasukController::class, 'getVariasi']);
+
+// Route Katalog Produk (CRUD)
+Route::resource('/katalog-produk', KatalogProdukController::class);
+
+// Salin Produk
+Route::post('/dashboard/produk/{slug}/salin', [DashboardController::class, 'salin'])->name('produk.salin');

@@ -320,59 +320,68 @@
 </script>
 
 <script>
-    let variasiIndex = 1; // Index awal untuk variasi
+    let variasiIndex = {{ count($produk->variasi) }};
 
     document.getElementById('tambah-variasi').addEventListener('click', function () {
-        const container = document.getElementById('variasi-container');
+    const container = document.getElementById('variasi-container');
 
-        const item = document.createElement('div');
-        item.classList.add('variasi-item', 'mb-3');
-        item.setAttribute('id', `variasi-item-${variasiIndex}`); // Set ID untuk identifikasi
-        item.innerHTML = `
-            <div class="mb-3">
-                <label for="warna_${variasiIndex}" class="form-label">Warna/Varian  <span class="penting">*</span></label>
-                <input type="text" class="form-control" name="variasi[${variasiIndex}][warna]" id="warna_${variasiIndex}">
-            </div>
-            <div class="mb-3">
-                <label for="ukuran_${variasiIndex}" class="form-label">Ukuran (kosongkan jika tidak ada)</label>
-                <input type="text" class="form-control" name="variasi[${variasiIndex}][ukuran]" id="ukuran_${variasiIndex}">
-            </div>
-            <div class="mb-3">
-                <label for="stok_${variasiIndex}" class="form-label">Stok  <span class="penting">*</span></label>
-                <input type="number" class="form-control" name="variasi[${variasiIndex}][stok]" id="stok_${variasiIndex}">
-            </div>
-            <div class="mb-3">
-                <label for="gambar_${variasiIndex}" class="form-label">Gambar <span class="penting">*</span></label>
-                <input class="form-control" type="file" name="variasi[${variasiIndex}][gambar]" id="gambar_${variasiIndex}" required>
-            </div>
-            <button type="button" class="btn btn-danger btn-sm mt-2 hapus-variasi" data-id="variasi-item-${variasiIndex}">Hapus Variasi</button>
-            <hr>
-        `;
+    const item = document.createElement('div');
+    item.classList.add('variasi-item', 'mb-3');
+    item.setAttribute('id', `variasi-item-${variasiIndex}`);
 
-        container.appendChild(item); // Tambahkan field variasi baru ke form
-        variasiIndex++; // Increment index
-    });
+    item.innerHTML = `
+        <div class="mb-3">
+            <label for="warna_${variasiIndex}" class="form-label">Warna/Varian <span class="penting">*</span></label>
+            <input type="text" class="form-control" name="variasi[${variasiIndex}][warna]" id="warna_${variasiIndex}">
+        </div>
+        <div class="mb-3">
+            <label for="ukuran_${variasiIndex}" class="form-label">Ukuran(Kosongkan jika tidak ada)</label>
+            <input type="text" class="form-control" name="variasi[${variasiIndex}][ukuran]" id="ukuran_${variasiIndex}">
+        </div>
+        <div class="mb-3">
+            <label for="stok_${variasiIndex}" class="form-label">Stok</label>
+            <input type="number" class="form-control" name="variasi[${variasiIndex}][stok]" id="stok_${variasiIndex}">
+        </div>
+        <div class="mb-3">
+            <label for="gambar_${variasiIndex}" class="form-label">Gambar <span class="penting">*</span></label>
+            <input class="form-control" type="file" name="variasi[${variasiIndex}][gambar]" id="gambar_${variasiIndex}">
+        </div>
+        <button type="button" class="btn btn-danger btn-sm mt-2 hapus-variasi" data-id="variasi-item-${variasiIndex}">Hapus Variasi</button>
+        <hr>
+    `;
 
-    // Event listener untuk menghapus variasi
-    document.addEventListener('click', function (e) {
-    if (e.target && e.target.classList.contains('hapus-variasi')) {
+    container.appendChild(item);
+    variasiIndex++; // Tambah index agar ID tetap unik
+});
+
+
+document.addEventListener('click', function (e) {
+    if (e.target.classList.contains('hapus-variasi')) {
+        const id = e.target.getAttribute('data-id');
+        const elem = document.getElementById(id);
+
+        // Tampilkan konfirmasi sebelum menghapus variasi
         if (confirm('Apakah Anda yakin ingin menghapus variasi ini?')) {
-            const itemId = e.target.getAttribute('data-id');
-            const item = document.getElementById(itemId);
-            const inputId = item.querySelector('input[name*="[id]"]'); // Cari ID variasi
+            // Jika pengguna mengonfirmasi, lanjutkan dengan penghapusan
+            let deletedVariasiInput = document.getElementById('deleted_variasi_ids');
+            let variasiIdInput = elem.querySelector('input[name^="variasi["][name$="[id]"]');
 
-            // Tambahkan ID ke input hidden jika variasi memiliki ID
-            if (inputId && inputId.value) {
-                const deletedInput = document.getElementById('deleted_variasi_ids');
-                const currentIds = deletedInput.value ? JSON.parse(deletedInput.value) : [];
-                currentIds.push(inputId.value); // Tambahkan ID variasi ke daftar
-                deletedInput.value = JSON.stringify(currentIds);
+            if (variasiIdInput) {
+                // Tambahkan ID variasi yang dihapus ke input deleted_variasi_ids
+                deletedVariasiInput.value += (deletedVariasiInput.value ? ',' : '') + variasiIdInput.value; // Pastikan koma tidak muncul di depan ID pertama
             }
 
-            item.remove(); // Hapus elemen variasi dari DOM
+            elem.remove(); // Hapus variasi dari DOM
+        } else {
+            // Jika pengguna membatalkan, tidak lakukan apa-apa
+            return false;
         }
     }
 });
+
+
+
+
 
 // Fungsi untuk preview gambar
 function previewImg(inputId, previewClass) {

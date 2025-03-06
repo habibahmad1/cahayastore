@@ -18,7 +18,8 @@ document.addEventListener("DOMContentLoaded", function () {
     setTheme(savedTheme);
 
     // Pastikan hanya menambahkan event listener jika tombol ada
-    if (themeLight) themeLight.addEventListener("click", () => setTheme("light"));
+    if (themeLight)
+        themeLight.addEventListener("click", () => setTheme("light"));
     if (themeDark) themeDark.addEventListener("click", () => setTheme("dark"));
     if (themeAuto) themeAuto.addEventListener("click", () => setTheme("auto"));
 });
@@ -48,59 +49,73 @@ if (riwayatstok && uploadriwayat && lihatriwayat) {
 }
 
 // Sidebar
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener("DOMContentLoaded", function () {
     const sections = [
-        { toggle: 'bagHomeToggle', submenu: 'bagHomeSubmenu' },
-        { toggle: 'bagProdukToggle', submenu: 'bagProdukSubmenu' },
-        { toggle: 'bagArtikelToggle', submenu: 'bagArtikelSubmenu' },
-        { toggle: 'bagUserManajemenToggle', submenu: 'bagUserManajemenSubmenu' },
-        { toggle: 'bagStokBarangToggle', submenu: 'bagStokBarangSubmenu' }
+        { toggle: "bagHomeToggle", submenu: "bagHomeSubmenu" },
+        { toggle: "bagProdukToggle", submenu: "bagProdukSubmenu" },
+        { toggle: "bagArtikelToggle", submenu: "bagArtikelSubmenu" },
+        {
+            toggle: "bagUserManajemenToggle",
+            submenu: "bagUserManajemenSubmenu",
+        },
+        { toggle: "bagStokBarangToggle", submenu: "bagStokBarangSubmenu" },
     ];
 
     // Load submenu state and active class from localStorage
-    sections.forEach(section => {
+    sections.forEach((section) => {
         const submenuElement = document.getElementById(section.submenu);
         const toggleElement = document.getElementById(section.toggle);
-        const isVisible = localStorage.getItem(section.submenu) === 'true';
-        const isActive = localStorage.getItem(section.toggle) === 'true';
+        const isVisible = localStorage.getItem(section.submenu) === "true";
+        const isActive = localStorage.getItem(section.toggle) === "true";
 
         if (submenuElement && isVisible) {
-            submenuElement.classList.remove('d-none');
+            submenuElement.classList.remove("d-none");
         }
 
         if (toggleElement && isActive) {
-            toggleElement.classList.add('active-section');
+            toggleElement.classList.add("active-section");
         }
     });
 
-    sections.forEach(section => {
+    sections.forEach((section) => {
         const toggleElement = document.getElementById(section.toggle);
         const submenuElement = document.getElementById(section.submenu);
 
         if (toggleElement && submenuElement) {
-            toggleElement.addEventListener('click', function() {
+            toggleElement.addEventListener("click", function () {
                 // Hide all submenus except the clicked one
-                sections.forEach(sec => {
-                    const secSubmenuElement = document.getElementById(sec.submenu);
-                    if (secSubmenuElement && secSubmenuElement !== submenuElement) {
-                        secSubmenuElement.classList.add('d-none');
-                        localStorage.setItem(sec.submenu, 'false');
+                sections.forEach((sec) => {
+                    const secSubmenuElement = document.getElementById(
+                        sec.submenu
+                    );
+                    if (
+                        secSubmenuElement &&
+                        secSubmenuElement !== submenuElement
+                    ) {
+                        secSubmenuElement.classList.add("d-none");
+                        localStorage.setItem(sec.submenu, "false");
                     }
                 });
 
                 // Remove active class from all toggle elements except the clicked one
-                sections.forEach(sec => {
-                    const secToggleElement = document.getElementById(sec.toggle);
-                    if (secToggleElement && secToggleElement !== toggleElement) {
-                        secToggleElement.classList.remove('active-section');
-                        localStorage.setItem(sec.toggle, 'false');
+                sections.forEach((sec) => {
+                    const secToggleElement = document.getElementById(
+                        sec.toggle
+                    );
+                    if (
+                        secToggleElement &&
+                        secToggleElement !== toggleElement
+                    ) {
+                        secToggleElement.classList.remove("active-section");
+                        localStorage.setItem(sec.toggle, "false");
                     }
                 });
 
                 // Toggle the clicked submenu and add active class to the clicked toggle element
-                const isCurrentlyVisible = !submenuElement.classList.contains('d-none');
-                submenuElement.classList.toggle('d-none');
-                toggleElement.classList.toggle('active-section');
+                const isCurrentlyVisible =
+                    !submenuElement.classList.contains("d-none");
+                submenuElement.classList.toggle("d-none");
+                toggleElement.classList.toggle("active-section");
                 localStorage.setItem(section.submenu, !isCurrentlyVisible);
                 localStorage.setItem(section.toggle, !isCurrentlyVisible);
             });

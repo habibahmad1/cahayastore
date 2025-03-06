@@ -5,6 +5,7 @@
                 <a href="/" class="{{ Request::is('/') ? 'active-dashboard' : '' }}">Beranda</a>
                 <a href="/features" class="{{ Request::is('features') ? 'active-dashboard' : '' }}">Keunggulan</a>
                 <a href="/produk" class="{{ Request::is('produk*') ? 'active-dashboard' : '' }}">Produk</a>
+                <a href="/katalog-produk" class="{{ Request::is('katalog-produk*') ? 'active-dashboard' : '' }}">Katalog</a>
                 <a href="/artikel" class="{{ Request::is('artikel*') ? 'active-dashboard' : '' }}">Artikel</a>
                 {{-- <a href="/categories" class="{{ Request::is('categories*') ? 'active-dashboard' : '' }}">Kategori</a> --}}
                 <a href="/faq" class="{{ Request::is('faq') ? 'active-dashboard' : '' }}">FAQ</a>
