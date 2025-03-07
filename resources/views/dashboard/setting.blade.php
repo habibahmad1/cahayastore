@@ -1,77 +1,118 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
-    <div class="settings-container">
-        <h2 class="settings-title my-3">Pengaturan</h2>
-        <hr>
+<div class="container mt-5 settings-container">
+    <h2 class="text-center fw-bold text-primary mb-4">Pengaturan</h2>
+    <hr>
 
-        <!-- Menampilkan pesan sukses jika ada -->
-        @if (session('success'))
-        <div class="alert alert-success col-lg-3">
-            {{ session('success') }}
-        </div>
-        @endif
+    @if (session('success'))
+    <div class="alert alert-success text-center col-lg-4 mx-auto fade show" role="alert">
+        {{ session('success') }}
+    </div>
+    @endif
 
-        <!-- Pengaturan Profil -->
-        <div class="settings-item" style="background-color: var(--bs-body-bg); color: var(--bs-body-color)">
-            <h5 class="settings-item-title mt-3">Profil Saya</h5>
-            <div class="box-form-profil col-lg-3">
-                <div class="mb-3">
-                    <label for="nama_pengguna" class="form-label">Nama Lengkap</label>
-                    <input
-                    type="text"
-                    class="form-control text-secondary"
-                    id="nama_pengguna"
-                    name="nama_pengguna"
-                    value="{{ auth()->user()->name }}"
-                    readonly>
+    <div class="row g-4 align-items-stretch">
+        <!-- Profil Pengguna -->
+        <div class="col-lg-6 d-flex align-items-stretch">
+            <div class="card border-0 rounded-lg w-100">
+                <div class="card-header bg-primary text-center text-white py-3">
+                    <h5 class="mb-0">Profil Saya</h5>
                 </div>
-                <div class="mb-3">
-                    <label for="nama_pengguna" class="form-label">Username</label>
-                    <input
-                    type="text"
-                    class="form-control text-secondary"
-                    id="nama_pengguna"
-                    name="nama_pengguna"
-                    value="{{ auth()->user()->username }}"
-                    readonly>
-                </div>
-                <div class="mb-3">
-                    <label for="nama_pengguna" class="form-label">Email</label>
-                    <input
-                    type="text"
-                    class="form-control text-secondary"
-                    id="nama_pengguna"
-                    name="nama_pengguna"
-                    value="{{ auth()->user()->email }}"
-                    readonly>
-                </div>
-                <div class="text-end"> <!-- Tambahkan div dengan class text-end -->
-                    <a href="/dashboard/settings/edituser" class="btn btn-primary my-3">Edit Profil</a>
+                <div class="card-body p-4">
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Nama Lengkap</label>
+                        <input type="text" class="form-control bg-light" value="{{ auth()->user()->name }}" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Username</label>
+                        <input type="text" class="form-control bg-light" value="{{ auth()->user()->username }}" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Email</label>
+                        <input type="text" class="form-control bg-light" value="{{ auth()->user()->email }}" readonly>
+                    </div>
+                    <div class="text-end">
+                        <a href="/dashboard/settings/edituser" class="btn btn-primary">Edit Profil</a>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- Pengaturan Tema -->
-        <div class="settings-item">
-            <div class="settings-item">
-                <h5 class="settings-item-title">Tema</h5>
-                <div class="settings-item-body">
-                    <button class="btn theme-btn" type="button" id="theme-light" data-theme="light">
-                        <i class="bi bi-sun-fill me-2 opacity-50" data-theme-icon="bi-sun-fill"></i>
-                        Light
-                    </button>
-                    <button class="btn theme-btn" type="button" id="theme-dark" data-theme="dark">
-                        <i class="bi bi-moon-fill me-2 opacity-50" data-theme-icon="bi-moon-fill"></i>
-                        Dark
-                    </button>
-                    <button class="btn theme-btn" type="button" id="theme-auto" data-theme="auto">
-                        <i class="bi bi-circle-half me-2 opacity-50" data-theme-icon="bi-circle-half"></i>
-                        Auto
-                    </button>
+        <!-- Kolom kanan untuk Tema, Bahasa, dan Logout -->
+        <div class="col-lg-6 d-flex flex-column gap-3">
+            <div class="d-flex flex-column h-100 justify-content-between gap-3">
+                <!-- Tema -->
+                <div class="card border-0 rounded-lg mb-2">
+                    <div class="card-header bg-black text-center text-white py-3">
+                        <h5 class="mb-0">Tema</h5>
+                    </div>
+                    <div class="card-body p-4 text-center">
+                        <button class="btn btn-outline-dark me-2" id="theme-light" data-theme="light">Light</button>
+                        <button class="btn btn-outline-secondary me-2" id="theme-dark" data-theme="dark">Dark</button>
+                        <button class="btn btn-outline-primary" id="theme-auto" data-theme="auto">Auto</button>
+                    </div>
+                </div>
+
+                <!-- Pengaturan Bahasa -->
+                <div class="card border-0 rounded-lg mb-2">
+                    <div class="card-header bg-black text-center text-white py-3">
+                        <h5 class="mb-0">Bahasa</h5>
+                    </div>
+                    <div class="card-body p-4 text-center">
+                        <div id="google_translate_element"></div>
+                    </div>
+                </div>
+
+                <script type="text/javascript">
+                    function googleTranslateElementInit() {
+                        new google.translate.TranslateElement({
+                            pageLanguage: 'id',
+                            includedLanguages: 'en,id,zh-CN',
+                            layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+                        }, 'google_translate_element');
+                    }
+                </script>
+                <script src="{{ asset('js/dashboard/dashboard.js') }}"></script>
+                <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+                <!-- Logout -->
+                <div class="card border-0 rounded-lg">
+                    <div class="card-header bg-black text-center text-white py-3">
+                        <h5 class="mb-0">Logout</h5>
+                    </div>
+                    <div class="card-body p-4 text-center">
+                        <form action="/logout" method="POST">
+                            @csrf
+                            <button type="submit" class="btn btn-danger">
+                                <i class="bi bi-box-arrow-right me-2"></i>Keluar
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
+@endsection
 
+@section('scripts')
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const themeBtns = document.querySelectorAll('.theme-btn');
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        setTheme(currentTheme);
+
+        themeBtns.forEach(btn => {
+            btn.addEventListener('click', function () {
+                const theme = this.getAttribute('data-theme');
+                setTheme(theme);
+                localStorage.setItem('theme', theme);
+            });
+        });
+
+        function setTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+        }
+    });
+</script>
 @endsection
