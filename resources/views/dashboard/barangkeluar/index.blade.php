@@ -126,10 +126,12 @@
       <strong>Data Barang Keluar</strong>
     </div>
 
+    @auth
     <div class="col-md-3 m-1">
         <button onclick="confirmExport()" class="btn btn-success m-2"><i class="bi bi-file-earmark-spreadsheet"></i> Excel</button>
         <button onclick="captureTable()" class="btn btn-primary m-2"><i class="bi bi-camera"></i> Screenshot</button>
     </div>
+    @endauth
 
     <div class="card-body">
       <div class="table-responsive">

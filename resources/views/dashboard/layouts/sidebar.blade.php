@@ -8,6 +8,7 @@
       </div>
       <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
 
+        @auth
         <h6 id="bagHomeToggle" class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-2 mb-1 text-body-secondary text-uppercase" style=" padding: 10px; color: #ffffff !important; cursor: pointer;">
             <span>BAG home</span>
             <i class="bi bi-caret-down-fill"></i>
@@ -117,6 +118,9 @@
         </ul>
         @endcan
 
+        @endauth
+
+
         <h6 id="bagStokBarangToggle" class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-2 mb-1 text-body-secondary text-uppercase" style="padding: 10px; color: #ffffff !important; cursor: pointer;">
             <span>BAG Stok Barang</span>
             <i class="bi bi-caret-down-fill"></i>
@@ -138,7 +142,9 @@
                       </svg>
                     Barang Masuk <i class="bi bi-caret-down-fill"></i>
                 </a>
+                @auth
                 <a href="/dashboard/barang-masuk/create" class="nav-link d-flex align-items-center gap-2 ms-3 {{ Request::is('dashboard/barang-masuk/create') ? 'active-dashboard' : '' }}" id="barangmasuk"><i class="bi bi-bag-plus"></i> Tambah Barang Masuk</a>
+                @endauth
                 <a href="/dashboard/barang-masuk/" class="nav-link d-flex align-items-center gap-2 ms-3 {{ Request::is('dashboard/barang-masuk') ? 'active-dashboard' : '' }}" id="barangkeluar"><i class="bi bi-bag-dash"></i> Data Barang Masuk</a>
             </li>
             <li class="nav-item" id="nav-item-barang-keluar">
@@ -149,13 +155,16 @@
                       </svg>
                     Barang Keluar <i class="bi bi-caret-down-fill"></i>
                 </a>
+                @auth
                 <a href="/dashboard/barang-keluar/create" class="nav-link d-flex align-items-center gap-2 ms-3 {{ Request::is('dashboard/barang-keluar/create') ? 'active-dashboard' : '' }}" id="uploadriwayat"><i class="bi bi-file-earmark-plus"></i> Tambah Barang Keluar</a>
+                @endauth
                 <a href="/dashboard/barang-keluar/" class="nav-link d-flex align-items-center gap-2 ms-3 {{ Request::is('dashboard/barang-keluar') ? 'active-dashboard' : '' }}" id="lihatriwayat"><i class="bi bi-file-earmark-minus"></i> Data Barang Keluar</a>
             </li>
         </ul>
 
         <hr class="my-3">
 
+        @auth
         <ul class="nav flex-column mb-auto">
           <li class="nav-item">
             <a class="nav-link d-flex align-items-center gap-2 {{ Request::is('dashboard/settings*') ? 'active-dashboard' : '' }}" href="/dashboard/settings">
@@ -164,6 +173,7 @@
             </a>
           </li>
         </ul>
+        @endauth
       </div>
     </div>
   </div>
