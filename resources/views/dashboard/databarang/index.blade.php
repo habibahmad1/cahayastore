@@ -85,7 +85,9 @@
             </div>
           </th>
           <th scope="col">Variasi</th>
+          @auth
           <th scope="col" class="aksi-column">Aksi</th>
+          @endauth
         </tr>
       </thead>
       <tbody>
