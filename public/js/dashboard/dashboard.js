@@ -58,6 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
             toggle: "bagUserManajemenToggle",
             submenu: "bagUserManajemenSubmenu",
         },
+        { toggle: "bagTambahBarangToggle", submenu: "bagTambahBarangSubmenu" },
         { toggle: "bagStokBarangToggle", submenu: "bagStokBarangSubmenu" },
     ];
 
