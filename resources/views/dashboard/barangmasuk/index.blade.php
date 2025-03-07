@@ -92,7 +92,9 @@
                         <th>Variasi</th>
                         <th>Jumlah</th>
                         <th>Expired</th>
+                        @auth
                         <th class="aksi">Aksi</th>
+                        @endauth
                     </tr>
                 </thead>
                 <tbody>
@@ -110,6 +112,8 @@
                             <td>{{ $bm->variasi ? $bm->variasi->warna->warna . ' - ' . $bm->variasi->ukuran->ukuran : '-' }}</td>
                             <td>{{ $bm->qty }}</td>
                             <td>{{ $bm->exp }}</td>
+                            @auth
+
                             <td class="aksi">
                                 <button class="btn btn-warning btn-sm"
                                         data-bs-toggle="modal"
@@ -126,6 +130,7 @@
                                     <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this item?')"><i class="bi bi-trash"></i> Delete</button>
                                 </form>
                             </td>
+                            @endauth
                         </tr>
 
                         {{-- Edit Modal --}}

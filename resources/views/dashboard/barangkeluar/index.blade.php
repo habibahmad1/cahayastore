@@ -146,7 +146,9 @@
               <th>Jam Live/Toko</th>
               <th>Catatan</th>
               <th>Type</th>
-              <th class="aksi">Aksi</th>
+              @auth
+                <th class="aksi">Aksi</th>
+              @endauth
             </tr>
           </thead>
           <tbody>
@@ -170,6 +172,8 @@
                 <td>{{ $bk->jamlive }}</td>
                 <td>{{ $bk->catatan }}</td>
                 <td>{{ $bk->sumber }}</td>
+                @auth
+
                 <td class="aksi">
                   <form action="{{ route('barang-keluar.destroy', $bk->id) }}" method="POST" class="d-inline">
                     @csrf
@@ -193,6 +197,8 @@
                     <i class="bi bi-pencil"></i> Edit
                   </button>
                 </td>
+                @endauth
+
               </tr>
             @endforeach
 
