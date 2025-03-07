@@ -1,7 +1,7 @@
 <div class="sidebar border border-right col-md-3 col-lg-2 p-0 bg-dark-gray">
     <div class="offcanvas-md offcanvas-end bg-dark-gray" tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
       <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="sidebarMenuLabel">PT.Cahaya Setia Indonesia</h5>
+        <h5 class="offcanvas-title text-white" id="sidebarMenuLabel">PT. CAHAYA SETIA INDONESIA</h5>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebarMenu" aria-label="Close"></button>
 
 
@@ -117,6 +117,26 @@
         </ul>
         @endcan
 
+        <h6 id="bagTambahBarangToggle" class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-2 mb-1 text-body-secondary text-uppercase" style=" padding: 10px; color: #ffffff !important; cursor: pointer;">
+            <span>BAG TAMBAH BARANG</span>
+            <i class="bi bi-caret-down-fill"></i>
+        </h6>
+
+        <ul id="bagTambahBarangSubmenu" class="nav flex-column d-none">
+            <li class="nav-item" id="nav-item-tambah-barang-masuk">
+                <a class="nav-link d-flex align-items-center gap-2 {{ Request::is('dashboard/barang-masuk/create') ? 'active-dashboard' : '' }}" href="/dashboard/barang-masuk/create">
+                    <i class="bi bi-bag-plus"></i>
+                    Tambah Barang Masuk
+                </a>
+            </li>
+            <li class="nav-item" id="nav-item-tambah-barang-keluar">
+                <a class="nav-link d-flex align-items-center gap-2 {{ Request::is('dashboard/barang-keluar/create') ? 'active-dashboard' : '' }}" href="/dashboard/barang-keluar/create">
+                    <i class="bi bi-file-earmark-plus"></i>
+                    Tambah Barang Keluar
+                </a>
+            </li>
+        </ul>
+
         <h6 id="bagStokBarangToggle" class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-2 mb-1 text-body-secondary text-uppercase" style="padding: 10px; color: #ffffff !important; cursor: pointer;">
             <span>BAG Stok Barang</span>
             <i class="bi bi-caret-down-fill"></i>
@@ -127,33 +147,28 @@
                 <a class="nav-link d-flex align-items-center gap-2 {{ Request::is('dashboard/databarang*') ? 'active-dashboard' : '' }}" href="/dashboard/databarang">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box2-fill" viewBox="0 0 16 16">
                         <path d="M3.75 0a1 1 0 0 0-.8.4L.1 4.2a.5.5 0 0 0-.1.3V15a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V4.5a.5.5 0 0 0-.1-.3L13.05.4a1 1 0 0 0-.8-.4zM15 4.667V5H1v-.333L1.5 4h6V1h1v3h6z"/>
-                      </svg>
+                    </svg>
                     Data Stok Barang
                 </a>
             </li>
             <li class="nav-item" id="nav-item-barang-masuk">
-                <a class="nav-link d-flex align-items-center gap-2 {{ Request::is('dashboard/allartikel*') ? 'active-dashboard' : '' }}" style="cursor: pointer; user-select: none" id="dropkelolabarang">
+                <a class="nav-link d-flex align-items-center gap-2 {{ Request::is('dashboard/barang-masuk') ? 'active-dashboard' : '' }}" href="/dashboard/barang-masuk">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dropbox" viewBox="0 0 16 16">
                         <path d="M8.01 4.555 4.005 7.11 8.01 9.665 4.005 12.22 0 9.651l4.005-2.555L0 4.555 4.005 2zm-4.026 8.487 4.006-2.555 4.005 2.555-4.005 2.555zm4.026-3.39 4.005-2.556L8.01 4.555 11.995 2 16 4.555 11.995 7.11 16 9.665l-4.005 2.555z"/>
-                      </svg>
-                    Barang Masuk <i class="bi bi-caret-down-fill"></i>
+                    </svg>
+                    Data Barang Masuk
                 </a>
-                <a href="/dashboard/barang-masuk/create" class="nav-link d-flex align-items-center gap-2 ms-3 {{ Request::is('dashboard/barang-masuk/create') ? 'active-dashboard' : '' }}" id="barangmasuk"><i class="bi bi-bag-plus"></i> Tambah Barang Masuk</a>
-                <a href="/dashboard/barang-masuk/" class="nav-link d-flex align-items-center gap-2 ms-3 {{ Request::is('dashboard/barang-masuk') ? 'active-dashboard' : '' }}" id="barangkeluar"><i class="bi bi-bag-dash"></i> Data Barang Masuk</a>
             </li>
             <li class="nav-item" id="nav-item-barang-keluar">
-                <a class="nav-link d-flex align-items-center gap-2 {{ Request::is('dashboard/allartikel*') ? 'active-dashboard' : '' }}" style="cursor: pointer; user-select: none" id="riwayatstok">
+                <a class="nav-link d-flex align-items-center gap-2 {{ Request::is('dashboard/barang-keluar') ? 'active-dashboard' : '' }}" href="/dashboard/barang-keluar">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-data-fill" viewBox="0 0 16 16">
                         <path d="M6.5 0A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0zm3 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5z"/>
                         <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1A2.5.5 0 0 1 9.5 5h-3A2.5.5 0 0 1 4 2.5zM10 8a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0zm-6 4a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0zm4-3a1 1 0 0 1 1 1v3a1 1 0 1 1-2 0v-3a1 1 0 0 1 1-1"/>
-                      </svg>
-                    Barang Keluar <i class="bi bi-caret-down-fill"></i>
+                    </svg>
+                    Data Barang Keluar
                 </a>
-                <a href="/dashboard/barang-keluar/create" class="nav-link d-flex align-items-center gap-2 ms-3 {{ Request::is('dashboard/barang-keluar/create') ? 'active-dashboard' : '' }}" id="uploadriwayat"><i class="bi bi-file-earmark-plus"></i> Tambah Barang Keluar</a>
-                <a href="/dashboard/barang-keluar/" class="nav-link d-flex align-items-center gap-2 ms-3 {{ Request::is('dashboard/barang-keluar') ? 'active-dashboard' : '' }}" id="lihatriwayat"><i class="bi bi-file-earmark-minus"></i> Data Barang Keluar</a>
             </li>
         </ul>
-
         <hr class="my-3">
 
         <ul class="nav flex-column mb-auto">
