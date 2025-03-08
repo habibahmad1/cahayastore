@@ -83,6 +83,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const submenuElement = document.getElementById(section.submenu);
 
         if (toggleElement && submenuElement) {
+            console.log(`Attaching event listener to ${section.toggle}`);
             toggleElement.addEventListener("click", function () {
                 // Hide all submenus except the clicked one
                 sections.forEach((sec) => {
@@ -120,6 +121,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 localStorage.setItem(section.submenu, !isCurrentlyVisible);
                 localStorage.setItem(section.toggle, !isCurrentlyVisible);
             });
+        } else {
+            console.log(`Element not found for ${section.toggle} or ${section.submenu}`);
         }
     });
 });

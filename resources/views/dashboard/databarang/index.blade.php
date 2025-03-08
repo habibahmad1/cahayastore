@@ -70,8 +70,8 @@
                 <i class="bi bi-sort-numeric-down"></i>
               </button>
               <ul class="dropdown-menu" aria-labelledby="sortHarga">
-                <li><a class="dropdown-item" href="#" onclick="sortTable(4, 'asc')">Termahal</a></li>
-                <li><a class="dropdown-item" href="#" onclick="sortTable(4, 'desc')">Termurah</a></li>
+                <li><a class="dropdown-item" href="#" onclick="sortTable(4, 'asc')">Termurah</a></li>
+                <li><a class="dropdown-item" href="#" onclick="sortTable(4, 'desc')">Termahal</a></li>
               </ul>
             </div>
           </th>
@@ -261,28 +261,29 @@
     }
 
     function sortTable(columnIndex, order) {
-      const table = document.getElementById('dataTable');
-      const rows = Array.from(table.rows).slice(1); // Exclude header row
-      const sortedRows = rows.sort((a, b) => {
-        let aText = a.cells[columnIndex].innerText.toLowerCase();
-        let bText = b.cells[columnIndex].innerText.toLowerCase();
+  const table = document.getElementById('dataTable');
+  const rows = Array.from(table.rows).slice(1); // Exclude header row
+  const sortedRows = rows.sort((a, b) => {
+    let aText = a.cells[columnIndex].innerText.toLowerCase();
+    let bText = b.cells[columnIndex].innerText.toLowerCase();
 
-        if (columnIndex === 4 || columnIndex === 5) { // If sorting by Harga or Total Stok
-          aText = parseFloat(aText.replace(/[^0-9.-]+/g,""));
-          bText = parseFloat(bText.replace(/[^0-9.-]+/g,""));
-        }
-
-        if (order === 'asc') {
-          return aText > bText ? 1 : -1;
-        } else {
-          return aText < bText ? 1 : -1;
-        }
-      });
-
-      const tbody = table.querySelector('tbody');
-      tbody.innerHTML = '';
-      sortedRows.forEach(row => tbody.appendChild(row));
+    if (columnIndex === 4 || columnIndex === 5) { // Jika sorting berdasarkan Harga atau Total Stok
+      aText = parseFloat(aText.replace(/[^\d]/g, "")); // Menghapus semua karakter kecuali angka
+      bText = parseFloat(bText.replace(/[^\d]/g, ""));
     }
+
+    if (order === 'asc') {
+      return aText - bText;
+    } else {
+      return bText - aText;
+    }
+  });
+
+  const tbody = table.querySelector('tbody');
+  tbody.innerHTML = '';
+  sortedRows.forEach(row => tbody.appendChild(row));
+}
+
   </script>
 
   <style>
