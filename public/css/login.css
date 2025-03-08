@@ -65,6 +65,36 @@
     background-color: #0056b3; /* Warna latar belakang tombol saat hover */
 }
 
+.form-check-container {
+    display: flex;
+    justify-content: space-between; /* Membuat elemen terpisah di kiri dan kanan */
+    align-items: center;
+    width: 100%;
+}
+
+.form-check {
+    display: flex;
+    align-items: center;
+}
+
+.form-check-input {
+    margin-right: 5px; /* Memberikan sedikit jarak antara checkbox dan label */
+}
+
+.forgetpw {
+    text-align: right;
+}
+
+.forgetpw a {
+    text-decoration: none;
+    color: #007bff;
+    font-size: 14px;
+}
+
+.forgetpw a:hover {
+    color: #0056b3;
+}
+
 @media screen and (max-width: 600px) {
     .container-login {
         padding-bottom: 1200px;

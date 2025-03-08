@@ -41,8 +41,16 @@
                     <input type="password" id="password" name="password" placeholder="Masukan Password" required>
                     <i class="fas fa-eye toggle-password" id="togglePassword" style="position: absolute; top:45px; right:20px;"></i>
                 </div>
-                <div class="forgetpw" style="text-align:right">
-                    <a href="/forgot-password" class="text-decoration-none">Lupa Password</a>
+                <div class="form-check-container">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="remember" id="remember">
+                        <label class="form-check-label" for="remember">
+                            Ingat Saya
+                        </label>
+                    </div>
+                    <div class="forgetpw">
+                        <a href="/forgot-password" class="text-decoration-none">Lupa Password</a>
+                    </div>
                 </div>
                 <div class="submit-form">
                     <button type="submit">Login</button>

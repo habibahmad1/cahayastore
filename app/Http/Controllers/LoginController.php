@@ -22,7 +22,10 @@ class LoginController extends Controller
             'password' => 'required'
         ]);
 
-        if (Auth::attempt($credentials)) {
+        // Cek apakah 'remember' dipilih
+        $remember = $request->has('remember');
+
+        if (Auth::attempt($credentials, $remember)) {
             $request->session()->regenerate();
 
             return redirect()->intended('/dashboard');
@@ -30,6 +33,7 @@ class LoginController extends Controller
 
         return redirect('/')->with('failed', 'Login Gagal!');
     }
+
 
     public function logout(Request $request)
     {
