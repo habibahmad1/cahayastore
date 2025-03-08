@@ -264,25 +264,28 @@
   const table = document.getElementById('dataTable');
   const rows = Array.from(table.rows).slice(1); // Exclude header row
   const sortedRows = rows.sort((a, b) => {
-    let aText = a.cells[columnIndex].innerText.toLowerCase();
-    let bText = b.cells[columnIndex].innerText.toLowerCase();
+    let aText = a.cells[columnIndex].innerText.trim().toLowerCase();
+    let bText = b.cells[columnIndex].innerText.trim().toLowerCase();
 
-    if (columnIndex === 4 || columnIndex === 5) { // Jika sorting berdasarkan Harga atau Total Stok
-      aText = parseFloat(aText.replace(/[^\d]/g, "")); // Menghapus semua karakter kecuali angka
-      bText = parseFloat(bText.replace(/[^\d]/g, ""));
+    // Jika kolom adalah Harga atau Total Stok, parsing sebagai angka
+    if (columnIndex === 4 || columnIndex === 5) {
+      aText = parseFloat(aText.replace(/[^\d]/g, "")) || 0;
+      bText = parseFloat(bText.replace(/[^\d]/g, "")) || 0;
     }
 
-    if (order === 'asc') {
-      return aText - bText;
-    } else {
-      return bText - aText;
-    }
+    if (aText < bText) return order === 'asc' ? -1 : 1;
+    if (aText > bText) return order === 'asc' ? 1 : -1;
+    return 0;
   });
 
   const tbody = table.querySelector('tbody');
   tbody.innerHTML = '';
-  sortedRows.forEach(row => tbody.appendChild(row));
+  sortedRows.forEach((row, index) => {
+    row.cells[0].innerText = index + 1; // Update nomor urut
+    tbody.appendChild(row);
+  });
 }
+
 
   </script>
 
