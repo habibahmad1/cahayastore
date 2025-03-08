@@ -281,8 +281,12 @@
 
   const tbody = table.querySelector('tbody');
   tbody.innerHTML = '';
-  sortedRows.forEach(row => tbody.appendChild(row));
+  sortedRows.forEach((row, index) => {
+    row.cells[0].innerText = index + 1; // Update nomor urut
+    tbody.appendChild(row);
+  });
 }
+
 
   </script>
 
