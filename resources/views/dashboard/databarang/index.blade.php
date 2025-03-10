@@ -28,12 +28,10 @@
 </div>
 
   <div class="mb-3 d-flex justify-content-between align-items-center">
-    @auth
     <div>
       <a href="{{ route('produk.create') }}" class="btn btn-primary"><i class="bi bi-file-earmark-plus"></i> Tambah Data</a>
       <button onclick="exportToExcel()" class="btn btn-success d-none" id="exportButton"><i class="bi bi-file-earmark-spreadsheet"></i> Export to Excel</button>
     </div>
-    @endauth
     <div class="form-check form-switch">
       <input class="form-check-input" type="checkbox" id="toggleVariasiSwitch" onclick="toggleVariasiView()">
       <label class="form-check-label" for="toggleVariasiSwitch" id="toggleVariasiLabel">Off</label>
@@ -87,9 +85,7 @@
             </div>
           </th>
           <th scope="col">Variasi</th>
-          @auth
           <th scope="col" class="aksi-column">Aksi</th>
-          @endauth
         </tr>
       </thead>
       <tbody>
