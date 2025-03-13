@@ -439,10 +439,52 @@ body {
 }
 
 .card {
-    border: none;
+    border: 1px solid #ddd; /* Tambahkan border */
     border-radius: 10px;
     transition: transform 0.3s, box-shadow 0.3s;
     font-family: "Roboto", sans-serif;
+    padding: 20px; /* Tambahkan padding */
+    background-color: #fff; /* Tambahkan warna latar belakang */
+    position: relative; /* Tambahkan posisi relatif untuk pseudo-elemen */
+    overflow: hidden; /* Pastikan pseudo-elemen tidak keluar dari card */
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, blue, orange, purple, green);
+    background-size: 400% 400%;
+    z-index: -1;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    border-radius: 10px;
+    opacity: 0;
+    animation: wave 3s infinite linear; /* Percepat animasi menjadi 3 detik */
+}
+
+@keyframes wave {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.card:hover::before {
+    opacity: 1;
+    transform: scale(1.05); /* Efek memperbesar sedikit */
+}
+
+.card:hover {
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); /* Tambahkan shadow lebih besar */
+    transform: translateY(-10px); /* Tambahkan efek mengangkat */
 }
 
 .card h3 {
@@ -453,6 +495,11 @@ body {
 .card h1 {
     font-size: 2.5em;
     margin-top: 10px;
+}
+
+/* Tambahkan efek hover pada elemen dalam card */
+.card:hover h3, .card:hover h1 {
+    color: #ffffff; /* Ubah warna teks saat di-hover */
 }
 
 .bg-dark-gray {
@@ -468,4 +515,61 @@ body {
 .expanded {
     max-height: 500px; /* Sesuaikan sesuai kebutuhan */
     transition: max-height 0.3s ease-in;
+}
+
+/* Ikon melayang */
+.floating-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 150px; /* Sesuaikan lebar sesuai kebutuhan */
+    height: 150px; /* Sesuaikan tinggi sesuai kebutuhan */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: none; /* Hapus bayangan */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    animation: float 3s ease-in-out infinite, fadeIn 3s forwards; /* Tambahkan animasi fadeIn */
+    background: none; /* Hapus warna latar belakang */
+    border-radius: 0; /* Hapus radius border */
+    opacity: 0; /* Mulai tersembunyi */
+    animation-delay: 2s; /* Tunda kemunculan selama 3 detik */
+}
+
+.floating-icon img {
+    width: 100%; /* Buat gambar mengambil seluruh lebar kontainer */
+    height: 100%; /* Buat gambar mengambil seluruh tinggi kontainer */
+    border-radius: 0; /* Hapus radius border */
+}
+
+.floating-icon .hover-icon {
+    display: none; /* Sembunyikan ikon hover awalnya */
+    position: absolute;
+    top: -120px; /* Posisikan ikon hover di atas ikon utama */
+}
+
+.floating-icon:hover .main-icon {
+    transform: rotate(360deg); /* Putar saat di-hover */
+}
+
+.floating-icon:hover .hover-icon {
+    display: block; /* Tampilkan ikon hover saat di-hover */
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }

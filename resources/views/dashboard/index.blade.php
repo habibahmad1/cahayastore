@@ -65,4 +65,11 @@
       </a>
     </div>
   </div>
+
+  <div class="floating-icon">
+    <a href="" class="text-decoration-none">
+      <img src="img/iconwl/iconminca.png" alt="Help Icon" class="main-icon">
+      <img src="img/iconwl/teksminca.png" alt="Hover Icon" class="hover-icon">
+    </a>
+</div>
 @endsection
