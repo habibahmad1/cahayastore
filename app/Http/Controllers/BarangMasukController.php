@@ -98,7 +98,7 @@ class BarangMasukController extends Controller
             'kategori_id' => $produk->kategori_id,
             'qty' => $request->qty,
             'exp' => $request->exp, // Menyimpan data expired jika ada
-            'user_id' => auth()->id(),
+            // 'user_id' => auth()->id(),
         ]);
 
         return redirect()->route('barang-masuk.index')->with('success', 'Laporan barang masuk berhasil disimpan.');

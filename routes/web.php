@@ -94,7 +94,7 @@ Route::get('/dashboard', function () {
     ]);
 })->middleware('auth');
 
-Route::resource('/dashboard/produk', DashboardController::class)->middleware('auth');
+Route::resource('/dashboard/produk', DashboardController::class);
 
 Route::resource('/dashboard/kategori', AdminKategoriController::class)->middleware(['auth', 'admin']);
 

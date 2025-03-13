@@ -133,7 +133,7 @@ class BarangKeluarController extends Controller
             'jamlive' => $request->jamlive,
             'catatan' => $request->catatan,
             'sumber' => $request->sumber,
-            'user_id' => auth()->id(),
+            // 'user_id' => auth()->id(),
         ]);
 
         return redirect()->route('barang-keluar.index')->with('success', 'Laporan barang keluar berhasil disimpan.');
