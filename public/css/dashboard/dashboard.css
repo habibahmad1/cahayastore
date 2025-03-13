@@ -15,13 +15,6 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
-/* Mengatur warna latar belakang dan teks untuk bagian aktif */
-.active-section {
-    background-color: #2980B9; /* Warna biru */
-    color: #1d1d1d; /* Warna teks */
-    font-family: 'Roboto', sans-serif;
-}
-
 /* Mengatur transisi warna latar belakang dan teks untuk item navigasi */
 .nav-item a {
     transition: background-color 0.3s, color 0.3s;
