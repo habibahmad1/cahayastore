@@ -6,7 +6,7 @@
       </div>
       <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
 
-        <h6 id="bagHomeToggle" class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-2 mb-1 text-body-secondary text-uppercase" style=" padding: 10px; color: #ffffff !important; cursor: pointer;" data-bs-toggle="collapse" data-bs-target="#bagHomeSubmenu">
+        <h6 id="bagHomeToggle" class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-2 mb-1 text-body-secondary text-uppercase" style=" padding: 10px; color: #ffffff !important; cursor: pointer;" data-bs-toggle="collapse" data-bs-target="#AbagHomeSubmenu">
             <span>BAG home</span>
             <i class="bi bi-caret-down-fill"></i>
         </h6>
@@ -32,7 +32,7 @@
           </li>
         </ul>
 
-        <h6 id="bagProdukToggle" class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-2 mb-1 text-body-secondary text-uppercase" style=" padding: 10px; color: #ffffff !important; cursor: pointer;" data-bs-toggle="collapse" data-bs-target="#bagProdukSubmenu">
+        <h6 id="bagProdukToggle" class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-2 mb-1 text-body-secondary text-uppercase" style=" padding: 10px; color: #ffffff !important; cursor: pointer;" data-bs-toggle="collapse" data-bs-target="#AbagProdukSubmenu">
             <span>BAG PRODUK</span>
             <i class="bi bi-caret-down-fill"></i>
         </h6>
@@ -59,7 +59,7 @@
             @endcan
         </ul>
 
-        <h6 id="bagArtikelToggle" class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-2 mb-1 text-body-secondary text-uppercase" style=" padding: 10px; color: #ffffff !important; cursor: pointer;" data-bs-toggle="collapse" data-bs-target="#bagArtikelSubmenu">
+        <h6 id="bagArtikelToggle" class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-2 mb-1 text-body-secondary text-uppercase" style=" padding: 10px; color: #ffffff !important; cursor: pointer;" data-bs-toggle="collapse" data-bs-target="#AbagArtikelSubmenu">
             <span>BAG Artikel</span>
             <i class="bi bi-caret-down-fill"></i>
         </h6>
@@ -88,7 +88,7 @@
 
         @can('admin')
 
-        <h6 id="bagUserManajemenToggle" class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-2 mb-1 text-body-secondary text-uppercase" style=" padding: 10px; color: #ffffff !important; cursor: pointer;" data-bs-toggle="collapse" data-bs-target="#bagUserManajemenSubmenu">
+        <h6 id="bagUserManajemenToggle" class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-2 mb-1 text-body-secondary text-uppercase" style=" padding: 10px; color: #ffffff !important; cursor: pointer;" data-bs-toggle="collapse" data-bs-target="#AbagUserManajemenSubmenu">
             <span>BAG User Manajemen</span>
             <i class="bi bi-caret-down-fill"></i>
         </h6>
@@ -115,7 +115,7 @@
         </ul>
         @endcan
 
-        <h6 id="bagTambahBarangToggle" class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-2 mb-1 text-body-secondary text-uppercase" style=" padding: 10px; color: #ffffff !important; cursor: pointer;" data-bs-toggle="collapse" data-bs-target="#bagTambahBarangSubmenu">
+        <h6 id="bagTambahBarangToggle" class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-2 mb-1 text-body-secondary text-uppercase" style=" padding: 10px; color: #ffffff !important; cursor: pointer;" data-bs-toggle="collapse" data-bs-target="#AbagTambahBarangSubmenu">
             <span>BAG TAMBAH BARANG</span>
             <i class="bi bi-caret-down-fill"></i>
         </h6>
@@ -135,7 +135,7 @@
             </li>
         </ul>
 
-        <h6 id="bagStokBarangToggle" class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-2 mb-1 text-body-secondary text-uppercase" style="padding: 10px; color: #ffffff !important; cursor: pointer;" data-bs-toggle="collapse" data-bs-target="#bagStokBarangSubmenu">
+        <h6 id="bagStokBarangToggle" class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-2 mb-1 text-body-secondary text-uppercase" style="padding: 10px; color: #ffffff !important; cursor: pointer;" data-bs-toggle="collapse" data-bs-target="#AbagStokBarangSubmenu">
             <span>BAG Stok Barang</span>
             <i class="bi bi-caret-down-fill"></i>
         </h6>
@@ -170,7 +170,7 @@
 
         <hr class="my-3">
        <!-- Settings Submenu -->
-<h6 id="bagSettingsToggle" class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-2 mb-1 text-body-secondary text-uppercase" style="padding: 10px; color: #ffffff !important; cursor: pointer;" data-bs-toggle="collapse" data-bs-target="#settingsSubmenu" aria-expanded="false" aria-controls="settingsSubmenu">
+<h6 id="bagSettingsToggle" class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-2 mb-1 text-body-secondary text-uppercase" style="padding: 10px; color: #ffffff !important; cursor: pointer;" data-bs-toggle="collapse" data-bs-target="#AsettingsSubmenu" aria-expanded="false" aria-controls="SsettingsSubmenu">
     <span>Settings</span>
     <i class="bi bi-caret-down-fill"></i>
 </h6>
@@ -192,18 +192,18 @@
     </li>
     <!-- Logout Submenu -->
     <li class="nav-item">
-        <button type="submit" form="logout-form" class="nav-link btn btn-link p-0 d-flex align-items-center gap-2">
+        <a class="nav-link d-flex align-items-center gap-2" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M10 15a1 1 0 0 1-1-1v-1H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4V2a1 1 0 0 1 2 0v1h1.5a1.5 1.5 0 0 1 1.5 1.5v8A1.5 1.5 0 0 1 13.5 14H12v1a1 1 0 0 1-1 1zm-1-2v1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h4v1H5v8h4zm1-1h1.5a.5.5 0 0 0 .5-.5v-8a.5.5 0 0 0-.5-.5H10v9z"/>
                 <path fill-rule="evenodd" d="M8.5 8a.5.5 0 0 1 .5.5v.5h3.5a.5.5 0 0 1 0 1H9v.5a.5.5 0 0 1-1 0v-2a.5.5 0 0 1 .5-.5z"/>
             </svg>
             Logout
-        </button>
+        </a>
         <form id="logout-form" method="POST" action="/logout" style="display: none;">
             @csrf
         </form>
     </li>
-</ul>
+    <hr class="my-3">
 
 <script type="text/javascript">
     function googleTranslateElementInit() {

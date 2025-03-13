@@ -50,7 +50,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (toggleElement && submenuElement) {
             console.log(`Attaching event listener to ${section.toggle}`);
-            toggleElement.addEventListener("click", function () {
+            toggleElement.addEventListener("click", function (event) {
+                event.preventDefault(); // Prevent default action
+
                 sections.forEach((sec) => {
                     const secSubmenuElement = document.getElementById(sec.submenu);
                     if (secSubmenuElement && secSubmenuElement !== submenuElement) {

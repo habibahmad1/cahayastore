@@ -9,7 +9,7 @@ body {
 
 /* Mengatur warna latar belakang elemen utama di dashboard */
 .dashboard-container {
-    background-color: #f5f5f5; /* Warna abu-abu terang */
+    background-color: #ffffff; /* Warna abu-abu terang */
     padding: 20px;
     border-radius: 10px;
     font-family: "Roboto", sans-serif;
@@ -81,7 +81,7 @@ body {
 }
 
 .sidebar-heading {
-    color: #cacaca; /* Warna teks putih */
+    color: #ffffff; /* Warna teks putih */
     cursor: pointer;
     font-size: 0.75rem;
 }
