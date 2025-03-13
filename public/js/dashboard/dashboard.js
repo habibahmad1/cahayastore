@@ -24,30 +24,6 @@ document.addEventListener("DOMContentLoaded", function () {
     if (themeAuto) themeAuto.addEventListener("click", () => setTheme("auto"));
 });
 
-// Dropdown Kelola Barang
-const dropkelolabarang = document.getElementById("dropkelolabarang");
-const barangmasuk = document.getElementById("barangmasuk");
-const barangkeluar = document.getElementById("barangkeluar");
-
-if (dropkelolabarang && barangmasuk && barangkeluar) {
-    dropkelolabarang.addEventListener("click", () => {
-        barangmasuk.classList.toggle("d-none");
-        barangkeluar.classList.toggle("d-none");
-    });
-}
-
-// Dropdown Riwayat Stok
-const riwayatstok = document.getElementById("riwayatstok");
-const uploadriwayat = document.getElementById("uploadriwayat");
-const lihatriwayat = document.getElementById("lihatriwayat");
-
-if (riwayatstok && uploadriwayat && lihatriwayat) {
-    riwayatstok.addEventListener("click", () => {
-        uploadriwayat.classList.toggle("d-none");
-        lihatriwayat.classList.toggle("d-none");
-    });
-}
-
 // Sidebar
 document.addEventListener("DOMContentLoaded", function () {
     const sections = [
@@ -122,7 +98,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 localStorage.setItem(section.toggle, !isCurrentlyVisible);
             });
         } else {
-            console.log(`Element not found for ${section.toggle} or ${section.submenu}`);
+            console.log(
+                `Element not found for ${section.toggle} or ${section.submenu}`
+            );
         }
     });
 });
