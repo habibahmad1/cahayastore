@@ -31,6 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
         { toggle: "bagUserManajemenToggle", submenu: "bagUserManajemenSubmenu" },
         { toggle: "bagTambahBarangToggle", submenu: "bagTambahBarangSubmenu" },
         { toggle: "bagStokBarangToggle", submenu: "bagStokBarangSubmenu" },
+        { toggle: "bagSettingsToggle", submenu: "SsettingsSubmenu" },
     ];
 
     sections.forEach((section) => {

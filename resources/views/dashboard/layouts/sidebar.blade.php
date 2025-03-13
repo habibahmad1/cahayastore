@@ -161,7 +161,7 @@
                 <a class="nav-link d-flex align-items-center gap-2 {{ Request::is('dashboard/barang-keluar') ? 'active-dashboard' : '' }}" href="/dashboard/barang-keluar">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-data-fill" viewBox="0 0 16 16">
                         <path d="M6.5 0A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0zm3 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5z"/>
-                        <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1A2.5.5 0 0 1 9.5 5h-3A2.5.5 0 0 1 4 2.5zM10 8a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0zm-6 4a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0zm4-3a1 1 0 0 1 1 1v3a1 1 0 1 1-2 0v-3a1 1 0 0 1 1-1"/>
+                        <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4.5a.5.5 0 0 0-.1-.3L13.05.4a1 1 0 0 0-.8-.4zM15 4.667V5H1v-.333L1.5 4h6V1h1v3h6z"/>
                     </svg>
                     Data Barang Keluar
                 </a>
@@ -169,15 +169,53 @@
         </ul>
 
         <hr class="my-3">
+       <!-- Settings Submenu -->
+<h6 id="bagSettingsToggle" class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-2 mb-1 text-body-secondary text-uppercase" style="padding: 10px; color: #ffffff !important; cursor: pointer;" data-bs-toggle="collapse" data-bs-target="#settingsSubmenu" aria-expanded="false" aria-controls="settingsSubmenu">
+    <span>Settings</span>
+    <i class="bi bi-caret-down-fill"></i>
+</h6>
 
-        <ul class="nav flex-column mb-auto">
-          <li class="nav-item">
-            <a class="nav-link d-flex align-items-center gap-2 {{ Request::is('dashboard/settings*') ? 'active-dashboard' : '' }}" href="/dashboard/settings">
-              <svg class="bi"><use xlink:href="#gear-wide-connected"/></svg>
-              Settings
-            </a>
-          </li>
-        </ul>
+<ul id="SsettingsSubmenu" class="nav flex-column collapse">
+    <li class="nav-item">
+        <a class="nav-link d-flex align-items-center gap-2 {{ Request::is('dashboard/settings*') ? 'active-dashboard' : '' }}" href="/dashboard/settings">
+            <svg class="bi"><use xlink:href="#gear-wide-connected"/></svg>
+            Profil
+        </a>
+    </li>
+    <!-- Bahasa Submenu -->
+    <li class="nav-item">
+        <a class="nav-link d-flex align-items-center gap-2" href="#">
+            <i class="bi bi-translate"></i>
+            <span>Bahasa</span>
+            <div id="google_translate_element"></div>
+        </a>
+    </li>
+    <!-- Logout Submenu -->
+    <li class="nav-item">
+        <button type="submit" form="logout-form" class="nav-link btn btn-link p-0 d-flex align-items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M10 15a1 1 0 0 1-1-1v-1H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4V2a1 1 0 0 1 2 0v1h1.5a1.5 1.5 0 0 1 1.5 1.5v8A1.5 1.5 0 0 1 13.5 14H12v1a1 1 0 0 1-1 1zm-1-2v1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h4v1H5v8h4zm1-1h1.5a.5.5 0 0 0 .5-.5v-8a.5.5 0 0 0-.5-.5H10v9z"/>
+                <path fill-rule="evenodd" d="M8.5 8a.5.5 0 0 1 .5.5v.5h3.5a.5.5 0 0 1 0 1H9v.5a.5.5 0 0 1-1 0v-2a.5.5 0 0 1 .5-.5z"/>
+            </svg>
+            Logout
+        </button>
+        <form id="logout-form" method="POST" action="/logout" style="display: none;">
+            @csrf
+        </form>
+    </li>
+</ul>
+
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+            pageLanguage: 'id',
+            includedLanguages: 'en,id,zh-CN',
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+        }, 'google_translate_element');
+    }
+</script>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
       </div>
     </div>
   </div>

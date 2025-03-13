@@ -47,9 +47,9 @@
                         <h5 class="mb-0">Tema</h5>
                     </div>
                     <div class="card-body p-4 text-center">
-                        <button class="btn btn-outline-dark me-2" id="theme-light" data-theme="light">Light</button>
-                        <button class="btn btn-outline-secondary me-2" id="theme-dark" data-theme="dark">Dark</button>
-                        <button class="btn btn-outline-primary" id="theme-auto" data-theme="auto">Auto</button>
+                        <button class="btn btn-outline-dark me-2 theme-btn" id="theme-light" data-theme="light">Light</button>
+                        <button class="btn btn-outline-secondary me-2 theme-btn" id="theme-dark" data-theme="dark">Dark</button>
+                        <button class="btn btn-outline-primary theme-btn" id="theme-auto" data-theme="auto">Auto</button>
                     </div>
                 </div>
 
@@ -71,9 +71,9 @@
                             layout: google.translate.TranslateElement.InlineLayout.SIMPLE
                         }, 'google_translate_element');
                     }
-                </script> --}}
+                </script>
                 <script src="{{ asset('js/dashboard/dashboard.js') }}"></script>
-                <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+                <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script> --}}
 
                 <!-- Logout -->
                 {{-- <div class="card border-0 rounded-lg">
@@ -89,6 +89,7 @@
                         </form>
                     </div>
                 </div> --}}
+
             </div>
         </div>
     </div>

@@ -16,7 +16,8 @@ body {
 }
 
 /* Mengatur transisi warna latar belakang dan teks untuk item navigasi */
-.nav-item a {
+.nav-item a,
+.sidebar .nav-link {
     transition: background-color 0.3s, color 0.3s;
 }
 
@@ -29,23 +30,12 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
-.nav-item .nav-link:hover {
-    background-color: #2980B9;
-    color: #ffffff !important;
-}
-
 .nav-item .nav-link svg {
     transition: transform 0.3s;
 }
 
 .nav-item .nav-link:hover svg {
     transform: scale(1.1);
-}
-
-.nav-item .nav-link.active:hover {
-    background-color: inherit;
-    color: inherit !important;
-    transform: none;
 }
 
 /* Mengatur tampilan kolom navigasi */
@@ -55,19 +45,13 @@ body {
     transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
 }
 
-.nav.flex-column.d-none {
-    max-height: 0;
-}
-
-.nav.flex-column.d-block {
-    max-height: 500px; /* Sesuaikan sesuai kebutuhan */
-}
-
+.nav.flex-column.d-none,
 .nav.flex-column.collapsed {
     max-height: 0;
     opacity: 0;
 }
 
+.nav.flex-column.d-block,
 .nav.flex-column.expanded {
     max-height: 500px; /* Sesuaikan sesuai kebutuhan */
     opacity: 1;
@@ -91,10 +75,6 @@ body {
     color: #ffffff; /* Warna teks saat di-hover */
 }
 
-.sidebar .nav-link.active {
-    color: #ffffff;
-}
-
 .sidebar-heading {
     color: #cacaca; /* Warna teks putih */
     cursor: pointer;
@@ -102,7 +82,7 @@ body {
 }
 
 .sidebar-heading:hover {
-    background-color: #297fb97a; /* Warna latar belakang saat di-hover */
+    background-color: #0093f57a; /* Warna latar belakang saat di-hover */
 }
 
 .bi {
@@ -117,9 +97,13 @@ body {
 }
 
 /* Detail Produk */
-.detail-product-card {
+.detail-product-card,
+.detail-card {
     display: flex;
     flex-wrap: wrap;
+}
+
+.detail-product-card {
     padding-bottom: 40px;
 }
 
@@ -132,11 +116,19 @@ body {
     padding: 60px 30px;
 }
 
+.gambar-produk img,
+.gambar-thumbnail img {
+    border-radius: 5px;
+    margin: 10px 5px;
+}
+
 .gambar-produk img {
     max-width: 400px;
     max-height: 400px;
-    border-radius: 5px;
-    margin: 10px 5px;
+}
+
+.gambar-thumbnail img {
+    max-width: 350px;
 }
 
 .gambar-produk-detail img {
@@ -251,9 +243,13 @@ body {
 }
 
 /* Setiap Artikel */
-.kanvasAll {
+.kanvasAll,
+.setiapArtikel {
     background-color: white;
     color: black;
+}
+
+.kanvasAll {
     border-radius: 20px;
     padding: 20px 30px;
     display: flex;
@@ -275,6 +271,7 @@ body {
     max-width: 800px;
     height: 400px;
 }
+
 /* Variasi detail produk */
 .card-variasi {
     display: flex;
@@ -373,9 +370,11 @@ body {
         position: sticky;
         top: 48px;
     }
+
     .navbar-search {
         display: block;
     }
+
     .detail-info {
         margin: 0 20px;
     }
