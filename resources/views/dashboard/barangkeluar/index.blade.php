@@ -514,15 +514,10 @@
         const title = document.createElement('h2');
         title.innerText = 'Laporan Barang Keluar';
         title.style.textAlign = 'center';
-        title.style.border = '1px solid #000'; // Menambahkan border
-        title.style.padding = '10px'; // Menambahkan padding
-        title.style.marginBottom = '0px'; // Mengurangi margin bawah
-        title.style.marginTop = '15px'; // Menambahkan margin atas
-        title.style.backgroundColor = '#343a40'; // Menambahkan warna latar belakang yang sama dengan tabel
-        title.style.color = '#fff'; // Menambahkan warna teks putih
-        title.style.width = table.offsetWidth + 'px'; // Menyamakan lebar judul dengan tabel
-        title.style.marginLeft = 'auto'; // Menambahkan margin kiri otomatis
-        title.style.marginRight = 'auto'; // Menambahkan margin kanan otomatis
+        title.style.backgroundColor = '#343a40'; // Warna latar belakang
+        title.style.color = 'white'; // Warna teks
+        title.style.padding = '10px'; // Padding
+        title.style.marginBottom = '0px'; // Margin bawah
         table.parentElement.insertBefore(title, table);
 
         // Tambahkan border tebal pada tabel

@@ -3,21 +3,19 @@
       <div class="offcanvas-header">
         <h5 class="offcanvas-title text-white" id="sidebarMenuLabel">PT. CAHAYA SETIA INDONESIA</h5>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebarMenu" aria-label="Close"></button>
-
-
       </div>
       <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
 
-        <h6 id="bagHomeToggle" class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-2 mb-1 text-body-secondary text-uppercase" style=" padding: 10px; color: #ffffff !important; cursor: pointer;">
+        <h6 id="bagHomeToggle" class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-2 mb-1 text-body-secondary text-uppercase" style=" padding: 10px; color: #ffffff !important; cursor: pointer;" data-bs-toggle="collapse" data-bs-target="#bagHomeSubmenu">
             <span>BAG home</span>
             <i class="bi bi-caret-down-fill"></i>
         </h6>
 
-        <ul id="bagHomeSubmenu" class="nav flex-column d-none">
+        <ul id="bagHomeSubmenu" class="nav flex-column collapse">
           <li class="nav-item" id="nav-item-dashboard">
             <a class="nav-link d-flex align-items-center gap-2 {{ Request::is('dashboard') ? 'active-dashboard' : '' }}" aria-current="page" href="/dashboard">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-layout-text-sidebar-reverse" viewBox="0 0 16 16">
-                    <path d="M12.5 3a.5.5 0 0 1 0 1h-5a.5.5.5 0 0 1 0-1zm0 3a.5.5 0 0 1 0 1h-5a.5.5.5 0 0 1 0-1zm.5 3.5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h5a.5.5.5 0 0 0 .5-.5m-.5 2.5a.5.5 0 0 1 0 1h-5a.5.5.5 0 0 1 0-1z"/>
+                    <path d="M12.5 3a.5.5 0 0 1 0 1h-5a.5.5.5 0 0 1 0-1zm0 3a.5.5 0 0 1 0 1h-5a.5.5.5 0 0 1 0-1zm.5 3.5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 .5-.5m-.5 2.5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1z"/>
                     <path d="M16 2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2zM4 1v14H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zm1 0h9a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5z"/>
                   </svg>
               Dashboard
@@ -34,12 +32,12 @@
           </li>
         </ul>
 
-        <h6 id="bagProdukToggle" class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-2 mb-1 text-body-secondary text-uppercase" style=" padding: 10px; color: #ffffff !important; cursor: pointer;">
+        <h6 id="bagProdukToggle" class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-2 mb-1 text-body-secondary text-uppercase" style=" padding: 10px; color: #ffffff !important; cursor: pointer;" data-bs-toggle="collapse" data-bs-target="#bagProdukSubmenu">
             <span>BAG PRODUK</span>
             <i class="bi bi-caret-down-fill"></i>
         </h6>
 
-        <ul id="bagProdukSubmenu" class="nav flex-column d-none">
+        <ul id="bagProdukSubmenu" class="nav flex-column collapse">
             <li class="nav-item" id="nav-item-produk">
                 <a class="nav-link d-flex align-items-center gap-2 {{ Request::is('dashboard/produk*') ? 'active-dashboard' : '' }}" href="/dashboard/produk">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-basket" viewBox="0 0 16 16">
@@ -61,12 +59,12 @@
             @endcan
         </ul>
 
-        <h6 id="bagArtikelToggle" class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-2 mb-1 text-body-secondary text-uppercase" style=" padding: 10px; color: #ffffff !important; cursor: pointer;">
+        <h6 id="bagArtikelToggle" class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-2 mb-1 text-body-secondary text-uppercase" style=" padding: 10px; color: #ffffff !important; cursor: pointer;" data-bs-toggle="collapse" data-bs-target="#bagArtikelSubmenu">
             <span>BAG Artikel</span>
             <i class="bi bi-caret-down-fill"></i>
         </h6>
 
-        <ul id="bagArtikelSubmenu" class="nav flex-column d-none">
+        <ul id="bagArtikelSubmenu" class="nav flex-column collapse">
             <li class="nav-item" id="nav-item-artikel-saya">
                 <a class="nav-link d-flex align-items-center gap-2 {{ Request::is('dashboard/artikel*') ? 'active-dashboard' : '' }}" href="/dashboard/artikel">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-book" viewBox="0 0 16 16">
@@ -90,12 +88,12 @@
 
         @can('admin')
 
-        <h6 id="bagUserManajemenToggle" class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-2 mb-1 text-body-secondary text-uppercase" style=" padding: 10px; color: #ffffff !important; cursor: pointer;">
+        <h6 id="bagUserManajemenToggle" class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-2 mb-1 text-body-secondary text-uppercase" style=" padding: 10px; color: #ffffff !important; cursor: pointer;" data-bs-toggle="collapse" data-bs-target="#bagUserManajemenSubmenu">
             <span>BAG User Manajemen</span>
             <i class="bi bi-caret-down-fill"></i>
         </h6>
 
-        <ul id="bagUserManajemenSubmenu" class="nav flex-column d-none">
+        <ul id="bagUserManajemenSubmenu" class="nav flex-column collapse">
             <li class="nav-item" id="nav-item-daftar-user">
                 <a class="nav-link d-flex align-items-center gap-2 {{ Request::is('dashboard/data') ? 'active-dashboard' : '' }}" href="/dashboard/data">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
@@ -117,12 +115,12 @@
         </ul>
         @endcan
 
-        <h6 id="bagTambahBarangToggle" class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-2 mb-1 text-body-secondary text-uppercase" style=" padding: 10px; color: #ffffff !important; cursor: pointer;">
+        <h6 id="bagTambahBarangToggle" class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-2 mb-1 text-body-secondary text-uppercase" style=" padding: 10px; color: #ffffff !important; cursor: pointer;" data-bs-toggle="collapse" data-bs-target="#bagTambahBarangSubmenu">
             <span>BAG TAMBAH BARANG</span>
             <i class="bi bi-caret-down-fill"></i>
         </h6>
 
-        <ul id="bagTambahBarangSubmenu" class="nav flex-column d-none">
+        <ul id="bagTambahBarangSubmenu" class="nav flex-column collapse">
             <li class="nav-item" id="nav-item-tambah-barang-masuk">
                 <a class="nav-link d-flex align-items-center gap-2 {{ Request::is('dashboard/barang-masuk/create') ? 'active-dashboard' : '' }}" href="/dashboard/barang-masuk/create">
                     <i class="bi bi-bag-plus"></i>
@@ -137,12 +135,12 @@
             </li>
         </ul>
 
-        <h6 id="bagStokBarangToggle" class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-2 mb-1 text-body-secondary text-uppercase" style="padding: 10px; color: #ffffff !important; cursor: pointer;">
+        <h6 id="bagStokBarangToggle" class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-2 mb-1 text-body-secondary text-uppercase" style="padding: 10px; color: #ffffff !important; cursor: pointer;" data-bs-toggle="collapse" data-bs-target="#bagStokBarangSubmenu">
             <span>BAG Stok Barang</span>
             <i class="bi bi-caret-down-fill"></i>
         </h6>
 
-        <ul id="bagStokBarangSubmenu" class="nav flex-column d-none">
+        <ul id="bagStokBarangSubmenu" class="nav flex-column collapse">
             <li class="nav-item" id="nav-item-data-stok-barang">
                 <a class="nav-link d-flex align-items-center gap-2 {{ Request::is('dashboard/databarang*') ? 'active-dashboard' : '' }}" href="/dashboard/databarang">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box2-fill" viewBox="0 0 16 16">
@@ -169,6 +167,7 @@
                 </a>
             </li>
         </ul>
+
         <hr class="my-3">
 
         <ul class="nav flex-column mb-auto">
@@ -182,4 +181,3 @@
       </div>
     </div>
   </div>
-

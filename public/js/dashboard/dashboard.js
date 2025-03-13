@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const themeDark = document.getElementById("theme-dark");
     const themeAuto = document.getElementById("theme-auto");
 
-    const themeButtons = [themeLight, themeDark, themeAuto].filter(Boolean); // Hanya tombol yang ada
+    const themeButtons = [themeLight, themeDark, themeAuto].filter(Boolean);
 
     function setTheme(theme) {
         document.documentElement.setAttribute("data-bs-theme", theme);
@@ -17,36 +17,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const savedTheme = localStorage.getItem("theme") || "auto";
     setTheme(savedTheme);
 
-    // Pastikan hanya menambahkan event listener jika tombol ada
-    if (themeLight)
-        themeLight.addEventListener("click", () => setTheme("light"));
+    if (themeLight) themeLight.addEventListener("click", () => setTheme("light"));
     if (themeDark) themeDark.addEventListener("click", () => setTheme("dark"));
     if (themeAuto) themeAuto.addEventListener("click", () => setTheme("auto"));
 });
-
-// Dropdown Kelola Barang
-const dropkelolabarang = document.getElementById("dropkelolabarang");
-const barangmasuk = document.getElementById("barangmasuk");
-const barangkeluar = document.getElementById("barangkeluar");
-
-if (dropkelolabarang && barangmasuk && barangkeluar) {
-    dropkelolabarang.addEventListener("click", () => {
-        barangmasuk.classList.toggle("d-none");
-        barangkeluar.classList.toggle("d-none");
-    });
-}
-
-// Dropdown Riwayat Stok
-const riwayatstok = document.getElementById("riwayatstok");
-const uploadriwayat = document.getElementById("uploadriwayat");
-const lihatriwayat = document.getElementById("lihatriwayat");
-
-if (riwayatstok && uploadriwayat && lihatriwayat) {
-    riwayatstok.addEventListener("click", () => {
-        uploadriwayat.classList.toggle("d-none");
-        lihatriwayat.classList.toggle("d-none");
-    });
-}
 
 // Sidebar
 document.addEventListener("DOMContentLoaded", function () {
@@ -54,27 +28,18 @@ document.addEventListener("DOMContentLoaded", function () {
         { toggle: "bagHomeToggle", submenu: "bagHomeSubmenu" },
         { toggle: "bagProdukToggle", submenu: "bagProdukSubmenu" },
         { toggle: "bagArtikelToggle", submenu: "bagArtikelSubmenu" },
-        {
-            toggle: "bagUserManajemenToggle",
-            submenu: "bagUserManajemenSubmenu",
-        },
+        { toggle: "bagUserManajemenToggle", submenu: "bagUserManajemenSubmenu" },
         { toggle: "bagTambahBarangToggle", submenu: "bagTambahBarangSubmenu" },
         { toggle: "bagStokBarangToggle", submenu: "bagStokBarangSubmenu" },
     ];
 
-    // Load submenu state and active class from localStorage
     sections.forEach((section) => {
         const submenuElement = document.getElementById(section.submenu);
-        const toggleElement = document.getElementById(section.toggle);
         const isVisible = localStorage.getItem(section.submenu) === "true";
-        const isActive = localStorage.getItem(section.toggle) === "true";
 
-        if (submenuElement && isVisible) {
-            submenuElement.classList.remove("d-none");
-        }
-
-        if (toggleElement && isActive) {
-            toggleElement.classList.add("active-section");
+        if (submenuElement) {
+            submenuElement.classList.add(isVisible ? "expanded" : "collapsed");
+            submenuElement.style.maxHeight = isVisible ? submenuElement.scrollHeight + "px" : "0";
         }
     });
 
@@ -85,41 +50,21 @@ document.addEventListener("DOMContentLoaded", function () {
         if (toggleElement && submenuElement) {
             console.log(`Attaching event listener to ${section.toggle}`);
             toggleElement.addEventListener("click", function () {
-                // Hide all submenus except the clicked one
                 sections.forEach((sec) => {
-                    const secSubmenuElement = document.getElementById(
-                        sec.submenu
-                    );
-                    if (
-                        secSubmenuElement &&
-                        secSubmenuElement !== submenuElement
-                    ) {
-                        secSubmenuElement.classList.add("d-none");
+                    const secSubmenuElement = document.getElementById(sec.submenu);
+                    if (secSubmenuElement && secSubmenuElement !== submenuElement) {
+                        secSubmenuElement.classList.remove("expanded");
+                        secSubmenuElement.classList.add("collapsed");
+                        secSubmenuElement.style.maxHeight = "0";
                         localStorage.setItem(sec.submenu, "false");
                     }
                 });
 
-                // Remove active class from all toggle elements except the clicked one
-                sections.forEach((sec) => {
-                    const secToggleElement = document.getElementById(
-                        sec.toggle
-                    );
-                    if (
-                        secToggleElement &&
-                        secToggleElement !== toggleElement
-                    ) {
-                        secToggleElement.classList.remove("active-section");
-                        localStorage.setItem(sec.toggle, "false");
-                    }
-                });
-
-                // Toggle the clicked submenu and add active class to the clicked toggle element
-                const isCurrentlyVisible =
-                    !submenuElement.classList.contains("d-none");
-                submenuElement.classList.toggle("d-none");
-                toggleElement.classList.toggle("active-section");
+                const isCurrentlyVisible = submenuElement.classList.contains("expanded");
+                submenuElement.classList.toggle("collapsed", isCurrentlyVisible);
+                submenuElement.classList.toggle("expanded", !isCurrentlyVisible);
+                submenuElement.style.maxHeight = isCurrentlyVisible ? "0" : submenuElement.scrollHeight + "px";
                 localStorage.setItem(section.submenu, !isCurrentlyVisible);
-                localStorage.setItem(section.toggle, !isCurrentlyVisible);
             });
         } else {
             console.log(`Element not found for ${section.toggle} or ${section.submenu}`);

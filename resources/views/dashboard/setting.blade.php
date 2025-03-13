@@ -54,7 +54,7 @@
                 </div>
 
                 <!-- Pengaturan Bahasa -->
-                <div class="card border-0 rounded-lg mb-2">
+                {{-- <div class="card border-0 rounded-lg mb-2">
                     <div class="card-header bg-black text-center text-white py-3">
                         <h5 class="mb-0">Bahasa</h5>
                     </div>
@@ -71,12 +71,12 @@
                             layout: google.translate.TranslateElement.InlineLayout.SIMPLE
                         }, 'google_translate_element');
                     }
-                </script>
+                </script> --}}
                 <script src="{{ asset('js/dashboard/dashboard.js') }}"></script>
                 <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
                 <!-- Logout -->
-                <div class="card border-0 rounded-lg">
+                {{-- <div class="card border-0 rounded-lg">
                     <div class="card-header bg-black text-center text-white py-3">
                         <h5 class="mb-0">Logout</h5>
                     </div>
@@ -88,7 +88,7 @@
                             </button>
                         </form>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
