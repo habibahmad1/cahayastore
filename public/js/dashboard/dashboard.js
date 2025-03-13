@@ -67,7 +67,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 localStorage.setItem(section.submenu, !isCurrentlyVisible);
             });
         } else {
-            console.log(`Element not found for ${section.toggle} or ${section.submenu}`);
+            console.log(
+                `Element not found for ${section.toggle} or ${section.submenu}`
+            );
         }
     });
 });

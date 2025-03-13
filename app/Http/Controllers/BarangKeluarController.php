@@ -49,6 +49,9 @@ class BarangKeluarController extends Controller
             });
         }
 
+        // Urutkan berdasarkan tanggal terbaru menggunakan latest()
+        $query->latest('tanggal');
+
         // Menangani pilihan "Semua Data"
         $limit = $request->input('limit', 50); // Default 50 jika tidak ada filter
         if ($limit == 'all') {
@@ -64,6 +67,7 @@ class BarangKeluarController extends Controller
 
         return view('dashboard.barangkeluar.index', compact('barangKeluar', 'produks', 'kategori', 'isPaginated'));
     }
+
 
 
     /**
