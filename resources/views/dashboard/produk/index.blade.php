@@ -56,10 +56,26 @@
             $gambarFields = ['gambar1', 'gambar2', 'gambar3', 'gambar4', 'gambar5'];
         @endphp
 
-        @foreach ($gambarFields as $field)
+        @foreach ($gambarFields as $index => $field)
             @if (!empty($p->$field))
-                <img src="{{ asset('storage/' . $p->$field) }}" alt=""
-                     style="max-height: 70px; max-width: 70px; overflow: hidden; border-radius: 5px; margin-right: 5px;" class="mb-2">
+                <img src="{{ asset('storage/' . $p->$field) }}" alt="Gambar Produk"
+                     style="max-height: 70px; max-width: 70px; cursor: pointer; border-radius: 5px; margin-right: 5px;"
+                     class="mb-2" data-bs-toggle="modal" data-bs-target="#modalGambar{{ $p->id . $index }}">
+
+                <!-- Modal -->
+                <div class="modal fade" id="modalGambar{{ $p->id . $index }}" tabindex="-1" aria-labelledby="modalLabel{{ $p->id . $index }}" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Gambar Produk</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body text-center">
+                                <img src="{{ asset('storage/' . $p->$field) }}" class="img-fluid" alt="Gambar Produk">
+                            </div>
+                        </div>
+                    </div>
+                </div>
             @endif
         @endforeach
     </td>

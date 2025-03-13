@@ -5,7 +5,7 @@
   </div>
 
   <div class="row">
-    <div class="col-md-3 mb-4">
+    <div class="col-md-3 mb-4 card-anim">
       <a href="/dashboard/produk" class="text-decoration-none">
         <div class="card text-center shadow-sm">
           <div class="card-body">
@@ -18,7 +18,7 @@
     </div>
 
     @can('admin')
-    <div class="col-md-3 mb-4">
+    <div class="col-md-3 mb-4 card-anim">
       <div class="card text-center shadow-sm">
         <div class="card-body">
           <h3>Kategori Produk</h3>
@@ -30,7 +30,7 @@
     @endcan
 
     @can('admin')
-    <div class="col-md-3 mb-4">
+    <div class="col-md-3 mb-4 card-anim">
       <div class="card text-center shadow-sm">
         <div class="card-body">
           <h3>Total User</h3>
@@ -42,7 +42,7 @@
     @endcan
 
     @can('admin')
-    <div class="col-md-3 mb-4">
+    <div class="col-md-3 mb-4 card-anim">
       <div class="card text-center shadow-sm">
         <div class="card-body">
           <h3>Total Artikel</h3>
@@ -53,7 +53,7 @@
     </div>
     @endcan
 
-    <div class="col-md-3 mb-4">
+    <div class="col-md-3 mb-4 card-anim">
       <a href="/dashboard/artikel" class="text-decoration-none">
         <div class="card text-center shadow-sm">
           <div class="card-body">

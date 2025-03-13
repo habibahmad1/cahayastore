@@ -95,12 +95,37 @@
             <td>{{ $p->kode_produk }}</td>
             <td>
                 @if ($p->gambar1)
-                  <img src="{{ asset('storage/' . $p->gambar1) }}" alt="Gambar Produk"
-                  style="max-height: 70px; max-width: 70px; overflow: hidden; border-radius: 5px;">
+                    <img src="{{ asset('storage/' . $p->gambar1) }}" alt="Gambar Produk"
+                        style="max-height: 70px; max-width: 70px; overflow: hidden; border-radius: 5px; cursor: pointer;"
+                        data-bs-toggle="modal" data-bs-target="#imageModal"
+                        onclick="showImageModal('{{ asset('storage/' . $p->gambar1) }}')">
                 @else
-                  <p>No Image</p>
+                    <p>No Image</p>
                 @endif
             </td>
+
+            <!-- Modal Bootstrap -->
+            <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="imageModalLabel">Gambar Produk</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body text-center">
+                            <img id="modalImage" src="" alt="Gambar Produk" class="img-fluid rounded">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                function showImageModal(imageUrl) {
+                    document.getElementById('modalImage').src = imageUrl;
+                }
+            </script>
+
+
             <td>{{ $p->nama_produk }}</td>
             <td>Rp{{ number_format($p->harga, 0, ',', '.') }}</td>
             <td>{{ $p->total_stok }}</td>
