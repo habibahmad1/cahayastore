@@ -8,7 +8,7 @@
   <div class="col-lg-8 pencarian">
     <form action="/dashboard/databarang" method="GET">
         <div class="input-group my-3">
-            <input type="text" class="form-control" placeholder="Cari Produk.." name="search" value="{{ request('search') }}" id="search-box">
+            <input type="text" class="form-control" placeholder="Cari Produk.." name="search" value="{{ request('search') }}">
 
             <select class="form-select" name="kategori">
                 <option value="">-- Pilih Kategori --</option>
@@ -19,12 +19,20 @@
                 @endforeach
             </select>
 
+            <select class="form-select" name="sort">
+                <option value="">-- Urutkan --</option>
+                <option value="terbaru" {{ request('sort') == 'terbaru' ? 'selected' : '' }}>Terbaru</option>
+                <option value="terlama" {{ request('sort') == 'terlama' ? 'selected' : '' }}>Terlama</option>
+                <option value="terlaris" {{ request('sort') == 'terlaris' ? 'selected' : '' }}>Terlaris</option>
+            </select>
+
             <button class="btn btn-warning" type="submit">Cari</button>
-            @if(request('search') || request('kategori'))
+            @if(request('search') || request('kategori') || request('sort'))
                 <a href="/dashboard/databarang" class="btn btn-danger">Clear</a>
             @endif
         </div>
     </form>
+
 </div>
 
   <div class="mb-3 d-flex justify-content-between align-items-center">
@@ -84,6 +92,7 @@
               </ul>
             </div>
           </th>
+          <th scope="col">Terjual</th>
           <th scope="col">Variasi</th>
           <th scope="col" class="aksi-column">Aksi</th>
         </tr>
@@ -129,6 +138,7 @@
             <td>{{ $p->nama_produk }}</td>
             <td>Rp{{ number_format($p->harga, 0, ',', '.') }}</td>
             <td>{{ $p->total_stok }}</td>
+            <td>{{ $p->total_terjual }} Terjual</td>
             <td>
               @if ($p->variasi->count() > 0)
                 <div class="dropdown">
