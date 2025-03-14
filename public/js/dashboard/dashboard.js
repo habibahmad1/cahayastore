@@ -76,3 +76,13 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+
+// Icon Minca
+document.addEventListener('DOMContentLoaded', function() {
+    const closeIcon = document.querySelector('.floating-icon .close-icon');
+    const floatingIcon = document.querySelector('.floating-icon');
+
+    closeIcon.addEventListener('click', function() {
+        floatingIcon.style.display = 'none';
+    });
+});

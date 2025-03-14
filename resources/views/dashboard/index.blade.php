@@ -7,7 +7,7 @@
   <div class="row">
     <div class="col-md-3 mb-4 card-anim">
       <a href="/dashboard/produk" class="text-decoration-none">
-        <div class="card text-center shadow-sm">
+        <div class="card-dashboard text-center shadow-sm" style="color: black">
           <div class="card-body">
             <h3>Total Produk</h3>
             <hr>
@@ -19,7 +19,7 @@
 
     @can('admin')
     <div class="col-md-3 mb-4 card-anim">
-      <div class="card text-center shadow-sm">
+      <div class="card-dashboard text-center shadow-sm">
         <div class="card-body">
           <h3>Kategori Produk</h3>
           <hr>
@@ -31,7 +31,7 @@
 
     @can('admin')
     <div class="col-md-3 mb-4 card-anim">
-      <div class="card text-center shadow-sm">
+      <div class="card-dashboard text-center shadow-sm">
         <div class="card-body">
           <h3>Total User</h3>
           <hr>
@@ -43,7 +43,7 @@
 
     @can('admin')
     <div class="col-md-3 mb-4 card-anim">
-      <div class="card text-center shadow-sm">
+      <div class="card-dashboard text-center shadow-sm">
         <div class="card-body">
           <h3>Total Artikel</h3>
           <hr>
@@ -55,7 +55,7 @@
 
     <div class="col-md-3 mb-4 card-anim">
       <a href="/dashboard/artikel" class="text-decoration-none">
-        <div class="card text-center shadow-sm">
+        <div class="card-dashboard text-center shadow-sm" style="color: black">
           <div class="card-body">
             <h3>Artikel Saya</h3>
             <hr>
@@ -67,9 +67,8 @@
   </div>
 
   <div class="floating-icon">
-    <a href="" class="text-decoration-none">
-      <img src="img/iconwl/iconminca.png" alt="Help Icon" class="main-icon">
-      <img src="img/iconwl/teksminca.png" alt="Hover Icon" class="hover-icon">
-    </a>
+    <button class="close-icon">&times;</button>
+    <img src="img/iconwl/iconminca.png" alt="Help Icon" class="main-icon">
+    <img src="img/iconwl/teksminca.png" alt="Hover Icon" class="hover-icon">
 </div>
 @endsection

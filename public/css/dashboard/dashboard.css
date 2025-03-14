@@ -30,19 +30,6 @@ body {
     font-family: "Roboto", sans-serif;
 }
 
-.nav-item .nav-link:hover {
-    background-color: #2980B9;
-    color: #ffffff !important;
-}
-
-.nav-item .nav-link svg {
-    transition: transform 0.3s;
-}
-
-.nav-item .nav-link:hover svg {
-    transform: scale(1.1);
-}
-
 /* Mengatur tampilan kolom navigasi */
 .nav.flex-column {
     display: block;
@@ -438,7 +425,7 @@ body {
     padding: 0.75rem 1rem;
 }
 
-.card {
+.card-dashboard {
     border: 1px solid #ddd; /* Tambahkan border */
     border-radius: 10px;
     transition: transform 0.3s, box-shadow 0.3s;
@@ -449,7 +436,7 @@ body {
     overflow: hidden; /* Pastikan pseudo-elemen tidak keluar dari card */
 }
 
-.card::before {
+.card-dashboard::before {
     content: '';
     position: absolute;
     top: 0;
@@ -477,28 +464,28 @@ body {
     }
 }
 
-.card:hover::before {
+.card-dashboard:hover::before {
     opacity: 1;
     transform: scale(1.05); /* Efek memperbesar sedikit */
 }
 
-.card:hover {
+.card-dashboard:hover {
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); /* Tambahkan shadow lebih besar */
     transform: translateY(-10px); /* Tambahkan efek mengangkat */
 }
 
-.card h3 {
+.card-dashboard h3 {
     font-size: 1.5em;
     margin-bottom: 10px;
 }
 
-.card h1 {
+.card-dashboard h1 {
     font-size: 2.5em;
     margin-top: 10px;
 }
 
 /* Tambahkan efek hover pada elemen dalam card */
-.card:hover h3, .card:hover h1 {
+.card-dashboard:hover h3, .card-dashboard:hover h1 {
     color: #ffffff; /* Ubah warna teks saat di-hover */
 }
 
@@ -520,10 +507,10 @@ body {
 /* Ikon melayang */
 .floating-icon {
     position: fixed;
-    bottom: 20px;
+    bottom: 50px; /* Ubah posisi lebih ke atas */
     right: 20px;
-    width: 150px; /* Sesuaikan lebar sesuai kebutuhan */
-    height: 150px; /* Sesuaikan tinggi sesuai kebutuhan */
+    width: 180px; /* Sesuaikan lebar sesuai kebutuhan */
+    height: 180px; /* Sesuaikan tinggi sesuai kebutuhan */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -533,12 +520,14 @@ body {
     background: none; /* Hapus warna latar belakang */
     border-radius: 0; /* Hapus radius border */
     opacity: 0; /* Mulai tersembunyi */
-    animation-delay: 2s; /* Tunda kemunculan selama 3 detik */
+    animation-delay: 1s; /* Tunda kemunculan selama 3 detik */
 }
 
 .floating-icon img {
-    width: 100%; /* Buat gambar mengambil seluruh lebar kontainer */
-    height: 100%; /* Buat gambar mengambil seluruh tinggi kontainer */
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
     border-radius: 0; /* Hapus radius border */
 }
 
@@ -554,6 +543,31 @@ body {
 
 .floating-icon:hover .hover-icon {
     display: block; /* Tampilkan ikon hover saat di-hover */
+}
+
+/* Tambahkan tanda silang kecil untuk menutup ikon */
+.floating-icon .close-icon {
+    position: absolute;
+    top: 5px; /* Posisikan di sudut kanan atas */
+    right: 5px;
+    background: #ff4d4d; /* Warna latar tombol */
+    color: #fff; /* Warna teks (X) */
+    border: none; /* Hapus border */
+    font-size: 12px; /* Ukuran tanda X */
+    cursor: pointer; /* Ubah kursor jadi pointer */
+    border-radius: 50%; /* Membuat tombol berbentuk lingkaran */
+    width: 20px; /* Lebar tombol */
+    height: 20px; /* Tinggi tombol */
+    display: flex; /* Gunakan flexbox untuk memastikan konten di tengah */
+    justify-content: center; /* Pusatkan secara horizontal */
+    align-items: center; /* Pusatkan secara vertikal */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Tambahkan bayangan */
+    z-index: 1001;
+    line-height: 0; /* Pastikan line-height tidak mengganggu posisi X */
+}
+
+.floating-icon .close-icon:hover {
+    background: #ff1a1a;
 }
 
 @keyframes float {
