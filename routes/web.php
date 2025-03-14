@@ -21,6 +21,7 @@ use App\Http\Controllers\DataBarangController;
 use App\Http\Controllers\BarangMasukController;
 use App\Http\Controllers\BarangKeluarController;
 use App\Http\Controllers\AdminKategoriController;
+use App\Http\Controllers\DashboardMainController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\KatalogProdukController;
 use App\Http\Controllers\KategoriArtikelController;
@@ -85,14 +86,7 @@ Route::get('/allkategori', function () {
     ]);
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard.index', [
-        "produk" => Produk::all(),
-        "kategori" => Kategori::all(),
-        "user" => User::all(),
-        "artikel" => Artikel::all()
-    ]);
-})->middleware('auth');
+Route::get('/dashboard', [DashboardMainController::class, 'index'])->middleware('auth')->name('dashboard.index');
 
 Route::resource('/dashboard/produk', DashboardController::class);
 
