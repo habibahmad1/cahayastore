@@ -25,6 +25,7 @@ use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\KatalogProdukController;
 use App\Http\Controllers\KategoriArtikelController;
 use App\Models\KatalogProduk;
+use App\Http\Controllers\ChatController;
 
 Route::post('/send-message', [ContactController::class, 'sendMessage']);
 
@@ -229,3 +230,7 @@ Route::post('/dashboard/produk/{slug}/salin', [DashboardController::class, 'sali
 
 // Filter Lama/Baru
 Route::get('/dashboard/databarang', [DataBarangController::class, 'index'])->name('produk.index');
+
+// chat
+Route::get('/chat/messages', [ChatController::class, 'fetchMessages']);
+Route::post('/chat/messages', [ChatController::class, 'sendMessage']);

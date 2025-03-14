@@ -53,67 +53,110 @@
                     </div>
                 </div>
 
-                <!-- Pengaturan Bahasa -->
-                {{-- <div class="card border-0 rounded-lg mb-2">
-                    <div class="card-header bg-black text-center text-white py-3">
-                        <h5 class="mb-0">Bahasa</h5>
-                    </div>
-                    <div class="card-body p-4 text-center">
-                        <div id="google_translate_element"></div>
-                    </div>
+        </div>
+    </div>
+</div>
+
+<!-- Floating Chat Icon -->
+<div class="chat-icon-container">
+    <button class="btn btn-primary chat-icon" id="chat-icon">
+        <i class="fas fa-comments"></i>
+    </button>
+</div>
+
+<!-- Chat Room Modal -->
+<div class="modal fade" id="chatModal" tabindex="-1" aria-labelledby="chatModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="chatModalLabel">Group Chat</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="chat-messages" style="height: 300px; overflow-y: scroll;">
+                    <!-- Chat messages will be loaded here -->
                 </div>
-
-                <script type="text/javascript">
-                    function googleTranslateElementInit() {
-                        new google.translate.TranslateElement({
-                            pageLanguage: 'id',
-                            includedLanguages: 'en,id,zh-CN',
-                            layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-                        }, 'google_translate_element');
-                    }
-                </script>
-                <script src="{{ asset('js/dashboard/dashboard.js') }}"></script>
-                <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script> --}}
-
-                <!-- Logout -->
-                {{-- <div class="card border-0 rounded-lg">
-                    <div class="card-header bg-black text-center text-white py-3">
-                        <h5 class="mb-0">Logout</h5>
+                <form id="chat-form">
+                    <div class="input-group mt-3">
+                        <input type="text" id="chat-input" class="form-control" placeholder="Type a message...">
+                        <button type="submit" class="btn btn-primary">Send</button>
                     </div>
-                    <div class="card-body p-4 text-center">
-                        <form action="/logout" method="POST">
-                            @csrf
-                            <button type="submit" class="btn btn-danger">
-                                <i class="bi bi-box-arrow-right me-2"></i>Keluar
-                            </button>
-                        </form>
-                    </div>
-                </div> --}}
-
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
 </div>
-@endsection
 
-@section('scripts')
+<style>
+.chat-icon-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+.chat-icon {
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+</style>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const themeBtns = document.querySelectorAll('.theme-btn');
-        const currentTheme = localStorage.getItem('theme') || 'light';
-        setTheme(currentTheme);
+$(document).ready(function() {
+    var chatModal = new bootstrap.Modal(document.getElementById('chatModal'));
 
-        themeBtns.forEach(btn => {
-            btn.addEventListener('click', function () {
-                const theme = this.getAttribute('data-theme');
-                setTheme(theme);
-                localStorage.setItem('theme', theme);
+    // Show modal if it was open before page reload
+    if (localStorage.getItem('chatModalOpen') === 'true') {
+        chatModal.show();
+    }
+
+    $('#chat-icon').on('click', function() {
+        chatModal.show();
+        localStorage.setItem('chatModalOpen', 'true');
+        fetchMessages();
+    });
+
+    $('#chatModal').on('hidden.bs.modal', function () {
+        localStorage.setItem('chatModalOpen', 'false');
+    });
+
+    $('#chatModal .modal-dialog').draggable({
+        handle: ".modal-header"
+    }).resizable({
+        minHeight: 300,
+        minWidth: 300
+    });
+
+    function fetchMessages() {
+        $.get('/chat/messages', function(data) {
+            $('#chat-messages').html('');
+            data.forEach(function(message) {
+                $('#chat-messages').append('<div><strong>' + message.user.name + ':</strong> ' + message.message + '</div>');
             });
         });
+    }
 
-        function setTheme(theme) {
-            document.documentElement.setAttribute('data-theme', theme);
-        }
+    $('#chat-form').on('submit', function(e) {
+        e.preventDefault();
+        var message = $('#chat-input').val();
+        $.post('/chat/messages', { message: message, _token: '{{ csrf_token() }}' }, function() {
+            $('#chat-input').val('');
+            fetchMessages();
+        });
     });
+
+    // Fetch messages every 5 seconds
+    setInterval(fetchMessages, 5000);
+});
 </script>
+
 @endsection
