@@ -226,3 +226,6 @@ Route::resource('/katalog-produk', KatalogProdukController::class);
 
 // Salin Produk
 Route::post('/dashboard/produk/{slug}/salin', [DashboardController::class, 'salin'])->name('produk.salin');
+
+// Filter Lama/Baru
+Route::get('/dashboard/databarang', [DataBarangController::class, 'index'])->name('produk.index');

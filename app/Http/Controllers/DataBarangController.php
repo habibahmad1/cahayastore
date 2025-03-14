@@ -17,23 +17,47 @@ class DataBarangController extends Controller
      */
     public function index(Request $request)
     {
-        $query = Produk::query();
+        $query = Produk::query()
+            ->leftJoin('barang_keluars', 'produks.id', '=', 'barang_keluars.produk_id')
+            ->selectRaw('
+            produks.id, produks.nama_produk, produks.kode_produk,
+            produks.slug, produks.kategori_id, produks.harga,
+            produks.gambar1, produks.created_at, produks.updated_at,
+            COALESCE(SUM(barang_keluars.qty), 0) as total_terjual
+        ')
+            ->groupBy('produks.id', 'produks.nama_produk', 'produks.kode_produk', 'produks.slug', 'produks.kategori_id', 'produks.harga', 'produks.gambar1', 'produks.created_at', 'produks.updated_at');
 
-        // Pencarian berdasarkan nama produk
+        // Jika ada filter pencarian
         if ($request->has('search')) {
-            $query->where('nama_produk', 'like', '%' . $request->search . '%');
+            $query->where('produks.nama_produk', 'like', '%' . $request->search . '%');
         }
 
-        // Filter berdasarkan kategori
+        // Jika ada filter kategori
         if ($request->has('kategori') && $request->kategori != '') {
-            $query->where('kategori_id', $request->kategori);
+            $query->where('produks.kategori_id', $request->kategori);
+        }
+
+        // Jika ingin mengurutkan berdasarkan produk terlaris
+        if ($request->has('sort') && $request->sort === 'terlaris') {
+            // Urutkan berdasarkan total_terjual (dari yang terbanyak)
+            $query->orderByDesc('total_terjual');
+        }
+
+        // Jika ingin mengurutkan berdasarkan yang terlama (created_at)
+        elseif ($request->has('sort') && $request->sort === 'terlama') {
+            // Urutkan berdasarkan tanggal dibuat yang paling lama
+            $query->orderBy('produks.created_at', 'asc');
+        } else {
+            // Default sorting berdasarkan yang terbaru (created_at)
+            $query->orderBy('produks.created_at', 'desc');
         }
 
         $produk = $query->with('variasi', 'kategori')->get();
-        $kategori = Kategori::all(); // Ambil semua kategori untuk dropdown
+        $kategori = Kategori::all();
 
         return view('dashboard.databarang.index', compact('produk', 'kategori'));
     }
+
 
 
     /**
