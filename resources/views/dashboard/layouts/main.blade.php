@@ -19,8 +19,11 @@
 
     <!-- Custom styles for this template -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
+
     <!-- Custom styles for this template -->
     <link href="{{ asset('css/dashboard/dashboard.css') }}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="{{ asset('css/dashboard/artikel.css') }}" rel="stylesheet">
 
     {{-- Screenshot --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -229,6 +232,7 @@
 
 {{-- <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.2/dist/chart.umd.js" integrity="sha384-eI7PSr3L1XLISH8JdDII5YN/njoSsxfbrkCTnJrzXt+ENP5MOVBxD+l6sEG4zoLp" crossorigin="anonymous"></script><script src="dashboard.js"></script> --}}
 <script src="{{ asset('js/dashboard/dashboard.js') }}"></script>
+<script src="{{ asset('js/dashboard/artikel.js') }}"></script>
 
 {{-- Print CDN --}}
 <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.0/dist/xlsx.full.min.js"></script>

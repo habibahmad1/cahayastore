@@ -40,17 +40,42 @@ class ArtikelController extends Controller
      */
     public function store(Request $request)
     {
+        // Validasi data yang diterima
         $validasiData = $request->validate([
             'judul' => 'required|max:255',
-            'slug' => 'required|unique:artikels',  // Menggunakan nama tabel yang benar
-            'image' => 'image|file|max:2048',
+            'slug' => 'required|unique:artikels',
+            'image' => 'image|file|max:4048',
+            'gambar2' => 'image|file|max:4048',
+            'gambar3' => 'image|file|max:4048',
+            'gambar4' => 'image|file|max:4048',
+            'gambar5' => 'image|file|max:4048',
+            'video' => 'mimes:mp4,avi,mkv|file|max:30048', // Validasi video
             'kategoripost_id' => 'required',
             'body' => 'required'
         ]);
 
-        // Proses upload gambar jika ada
+        // Proses upload gambar utama
         if ($request->file('image')) {
             $validasiData['image'] = $request->file('image')->store('artikel-image');
+        }
+
+        // Proses upload gambar tambahan jika ada
+        if ($request->file('gambar2')) {
+            $validasiData['gambar2'] = $request->file('gambar2')->store('artikel-image');
+        }
+        if ($request->file('gambar3')) {
+            $validasiData['gambar3'] = $request->file('gambar3')->store('artikel-image');
+        }
+        if ($request->file('gambar4')) {
+            $validasiData['gambar4'] = $request->file('gambar4')->store('artikel-image');
+        }
+        if ($request->file('gambar5')) {
+            $validasiData['gambar5'] = $request->file('gambar5')->store('artikel-image');
+        }
+
+        // Proses upload video jika ada
+        if ($request->file('video')) {
+            $validasiData['video'] = $request->file('video')->store('artikel-video');
         }
 
         // Menambahkan user_id dan excerpt
@@ -60,8 +85,10 @@ class ArtikelController extends Controller
         // Menyimpan artikel baru
         Artikel::create($validasiData);
 
+        // Redirect setelah berhasil
         return redirect('/dashboard/artikel')->with('success', 'Berhasil Menambahkan Artikel');
     }
+
 
     /**
      * Display the specified resource.
@@ -92,7 +119,12 @@ class ArtikelController extends Controller
         $rules = [
             'judul' => 'required|max:255',
             'kategoripost_id' => 'required',
-            'image' => 'image|file|max:2048',
+            'image' => 'image|file|max:4048',
+            'gambar2' => 'image|file|max:4048',
+            'gambar3' => 'image|file|max:4048',
+            'gambar4' => 'image|file|max:4048',
+            'gambar5' => 'image|file|max:4048',
+            'video' => 'video|file|max:30048',
             'body' => 'required'
         ];
 
@@ -103,7 +135,7 @@ class ArtikelController extends Controller
 
         $validasiData = $request->validate($rules);
 
-        // Cek jika ada file gambar baru
+        // Cek jika ada file gambar baru untuk gambar utama
         if ($request->file('image')) {
             // Hapus gambar lama jika ada
             if ($artikel->image) {
@@ -113,10 +145,52 @@ class ArtikelController extends Controller
             $validasiData['image'] = $request->file('image')->store('artikel-image');
         }
 
-        if ($artikel->user_id == auth()->user()->id) {
-            $validasiData['user_id'] = auth()->user()->id; // Set user_id hanya jika yang mengedit adalah pemilik artikel
+        // Cek jika ada file gambar kedua
+        if ($request->file('gambar2')) {
+            if ($artikel->gambar2) {
+                Storage::delete($artikel->gambar2);
+            }
+            $validasiData['gambar2'] = $request->file('gambar2')->store('artikel-image');
         }
 
+        // Cek jika ada file gambar ketiga
+        if ($request->file('gambar3')) {
+            if ($artikel->gambar3) {
+                Storage::delete($artikel->gambar3);
+            }
+            $validasiData['gambar3'] = $request->file('gambar3')->store('artikel-image');
+        }
+
+        // Cek jika ada file gambar keempat
+        if ($request->file('gambar4')) {
+            if ($artikel->gambar4) {
+                Storage::delete($artikel->gambar4);
+            }
+            $validasiData['gambar4'] = $request->file('gambar4')->store('artikel-image');
+        }
+
+        // Cek jika ada file gambar kelima
+        if ($request->file('gambar5')) {
+            if ($artikel->gambar5) {
+                Storage::delete($artikel->gambar5);
+            }
+            $validasiData['gambar5'] = $request->file('gambar5')->store('artikel-image');
+        }
+
+        // Cek jika ada file video baru
+        if ($request->file('video')) {
+            if ($artikel->video) {
+                Storage::delete($artikel->video);
+            }
+            $validasiData['video'] = $request->file('video')->store('artikel-video');
+        }
+
+        // Set user_id hanya jika yang mengedit adalah pemilik artikel
+        if ($artikel->user_id == auth()->user()->id) {
+            $validasiData['user_id'] = auth()->user()->id;
+        }
+
+        // Membatasi panjang excerpt
         $validasiData['excerpt'] = Str::limit(strip_tags($request->body), 120);
 
         // Update artikel dengan data yang telah divalidasi
@@ -124,6 +198,7 @@ class ArtikelController extends Controller
 
         return redirect('/dashboard/artikel')->with('success', 'Berhasil Edit Artikel');
     }
+
 
     /**
      * Remove the specified resource from storage.
