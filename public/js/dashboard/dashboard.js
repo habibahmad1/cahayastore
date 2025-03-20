@@ -77,12 +77,30 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-// Icon Minca
+// Icon Minca and Chat Window
 document.addEventListener('DOMContentLoaded', function() {
     const closeIcon = document.querySelector('.floating-icon .close-icon');
     const floatingIcon = document.querySelector('.floating-icon');
+    const chatWindow = document.getElementById('chatWindow');
+    const hoverIcon = document.querySelector('.hover-icon');
 
-    closeIcon.addEventListener('click', function() {
-        floatingIcon.style.display = 'none';
-    });
+    if (closeIcon) {
+        closeIcon.addEventListener('click', function() {
+            floatingIcon.style.display = 'none';
+            chatWindow.classList.remove('show');
+        });
+    }
+
+    if (hoverIcon) {
+        hoverIcon.addEventListener('click', function() {
+            chatWindow.classList.toggle('show');
+        });
+    }
+
+    const closeChatButton = document.querySelector('.close-chat');
+    if (closeChatButton) {
+        closeChatButton.addEventListener('click', function() {
+            chatWindow.classList.remove('show');
+        });
+    }
 });
