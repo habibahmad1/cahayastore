@@ -92,7 +92,17 @@
               </ul>
             </div>
           </th>
-          <th scope="col">Terjual</th>
+          <th scope="col">Terjual
+            <div class="dropdown d-inline">
+                <button class="btn btn-link p-0 dropdown-toggle" type="button" id="sortTerjual" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-sort-numeric-down"></i>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="sortTerjual">
+                    <li><a class="dropdown-item" href="#" onclick="sortTable(6, 'asc')">Sedikit</a></li>
+                    <li><a class="dropdown-item" href="#" onclick="sortTable(6, 'desc')">Banyak</a></li>
+                </ul>
+            </div>
+          </th>
           <th scope="col">Variasi</th>
           <th scope="col" class="aksi-column">Aksi</th>
         </tr>
@@ -298,8 +308,8 @@
     let aText = a.cells[columnIndex].innerText.trim().toLowerCase();
     let bText = b.cells[columnIndex].innerText.trim().toLowerCase();
 
-    // Jika kolom adalah Harga atau Total Stok, parsing sebagai angka
-    if (columnIndex === 4 || columnIndex === 5) {
+    // Jika kolom adalah Harga, Total Stok, atau Terjual, parsing sebagai angka
+    if (columnIndex === 4 || columnIndex === 5 || columnIndex === 6) {
       aText = parseFloat(aText.replace(/[^\d]/g, "")) || 0;
       bText = parseFloat(bText.replace(/[^\d]/g, "")) || 0;
     }

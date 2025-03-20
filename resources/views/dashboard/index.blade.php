@@ -75,11 +75,27 @@
     </div>
   </div>
 
+  <!-- Floating Icon -->
   <div class="floating-icon">
     <button class="close-icon">&times;</button>
     <img src="img/iconwl/iconminca.png" alt="Help Icon" class="main-icon">
     <img src="img/iconwl/teksminca.png" alt="Hover Icon" class="hover-icon">
-</div>
+  </div>
+
+  <!-- Chat Window -->
+  <div class="chat-window" id="chatWindow">
+    <div class="chat-header">
+      <h4>Group Chat</h4>
+      <button class="close-chat">&times;</button>
+    </div>
+    <div class="chat-body">
+      <!-- Chat content goes here -->
+    </div>
+    <div class="chat-footer">
+      <input type="text" id="chatMessage" placeholder="Type a message...">
+      <button id="sendMessageButton">Send</button>
+    </div>
+  </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
@@ -130,5 +146,64 @@
         }
     });
 </script>
+
+
+<style>
+  .floating-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    cursor: pointer;
+  }
+
+  .chat-window {
+    display: none;
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 300px;
+    background: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .chat-window.show {
+    display: block;
+  }
+
+  .chat-header, .chat-footer {
+    padding: 10px;
+    background: #f1f1f1;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .chat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .chat-body {
+    padding: 10px;
+    height: 200px;
+    overflow-y: auto;
+  }
+
+  .chat-footer input {
+    width: calc(100% - 60px);
+    padding: 5px;
+  }
+
+  .chat-footer button {
+    padding: 5px 10px;
+  }
+
+  .close-chat {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+  }
+</style>
 
 @endsection
