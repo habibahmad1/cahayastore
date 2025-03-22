@@ -124,7 +124,7 @@ class ArtikelController extends Controller
             'gambar3' => 'image|file|max:4048',
             'gambar4' => 'image|file|max:4048',
             'gambar5' => 'image|file|max:4048',
-            'video' => 'video|file|max:30048',
+            'video' => 'mimes:mp4,avi,mkv|file|max:30048',
             'body' => 'required'
         ];
 
