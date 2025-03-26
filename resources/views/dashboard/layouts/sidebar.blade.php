@@ -168,6 +168,21 @@
             </li>
         </ul>
 
+        <h6 id="bagSuratToggle" class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-2 mb-1 text-body-secondary text-uppercase" style=" padding: 10px; color: #ffffff !important; cursor: pointer;" data-bs-toggle="collapse" data-bs-target="#AbagTambahBarangSubmenu">
+            <span>BAG SURAT</span>
+            <i class="bi bi-caret-down-fill"></i>
+        </h6>
+        <ul id="bagSurat" class="nav flex-column collapse">
+            <li class="nav-item" id="nav-item-barang-keluar">
+                <a class="nav-link d-flex align-items-center gap-2 {{ Request::is('dashboard/barang-keluar') ? 'active-dashboard' : '' }}" href="/dashboard/barang-keluar">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+                        <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"/>
+                      </svg>
+                    Buat Surat Resi
+                </a>
+            </li>
+        </ul>
+
         <hr class="my-3">
        <!-- Settings Submenu -->
 <h6 id="bagSettingsToggle" class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-2 mb-1 text-body-secondary text-uppercase" style="padding: 10px; color: #ffffff !important; cursor: pointer;" data-bs-toggle="collapse" data-bs-target="#AsettingsSubmenu" aria-expanded="false" aria-controls="SsettingsSubmenu">

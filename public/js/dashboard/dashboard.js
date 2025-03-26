@@ -17,7 +17,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const savedTheme = localStorage.getItem("theme") || "auto";
     setTheme(savedTheme);
 
-    if (themeLight) themeLight.addEventListener("click", () => setTheme("light"));
+    if (themeLight)
+        themeLight.addEventListener("click", () => setTheme("light"));
     if (themeDark) themeDark.addEventListener("click", () => setTheme("dark"));
     if (themeAuto) themeAuto.addEventListener("click", () => setTheme("auto"));
 });
@@ -28,9 +29,13 @@ document.addEventListener("DOMContentLoaded", function () {
         { toggle: "bagHomeToggle", submenu: "bagHomeSubmenu" },
         { toggle: "bagProdukToggle", submenu: "bagProdukSubmenu" },
         { toggle: "bagArtikelToggle", submenu: "bagArtikelSubmenu" },
-        { toggle: "bagUserManajemenToggle", submenu: "bagUserManajemenSubmenu" },
+        {
+            toggle: "bagUserManajemenToggle",
+            submenu: "bagUserManajemenSubmenu",
+        },
         { toggle: "bagTambahBarangToggle", submenu: "bagTambahBarangSubmenu" },
         { toggle: "bagStokBarangToggle", submenu: "bagStokBarangSubmenu" },
+        { toggle: "bagSuratToggle", submenu: "bagSurat" },
         { toggle: "bagSettingsToggle", submenu: "SsettingsSubmenu" },
     ];
 
@@ -40,7 +45,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (submenuElement) {
             submenuElement.classList.add(isVisible ? "expanded" : "collapsed");
-            submenuElement.style.maxHeight = isVisible ? submenuElement.scrollHeight + "px" : "0";
+            submenuElement.style.maxHeight = isVisible
+                ? submenuElement.scrollHeight + "px"
+                : "0";
         }
     });
 
@@ -54,8 +61,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 event.preventDefault(); // Prevent default action
 
                 sections.forEach((sec) => {
-                    const secSubmenuElement = document.getElementById(sec.submenu);
-                    if (secSubmenuElement && secSubmenuElement !== submenuElement) {
+                    const secSubmenuElement = document.getElementById(
+                        sec.submenu
+                    );
+                    if (
+                        secSubmenuElement &&
+                        secSubmenuElement !== submenuElement
+                    ) {
                         secSubmenuElement.classList.remove("expanded");
                         secSubmenuElement.classList.add("collapsed");
                         secSubmenuElement.style.maxHeight = "0";
@@ -63,10 +75,19 @@ document.addEventListener("DOMContentLoaded", function () {
                     }
                 });
 
-                const isCurrentlyVisible = submenuElement.classList.contains("expanded");
-                submenuElement.classList.toggle("collapsed", isCurrentlyVisible);
-                submenuElement.classList.toggle("expanded", !isCurrentlyVisible);
-                submenuElement.style.maxHeight = isCurrentlyVisible ? "0" : submenuElement.scrollHeight + "px";
+                const isCurrentlyVisible =
+                    submenuElement.classList.contains("expanded");
+                submenuElement.classList.toggle(
+                    "collapsed",
+                    isCurrentlyVisible
+                );
+                submenuElement.classList.toggle(
+                    "expanded",
+                    !isCurrentlyVisible
+                );
+                submenuElement.style.maxHeight = isCurrentlyVisible
+                    ? "0"
+                    : submenuElement.scrollHeight + "px";
                 localStorage.setItem(section.submenu, !isCurrentlyVisible);
             });
         } else {
@@ -78,29 +99,29 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // Icon Minca and Chat Window
-document.addEventListener('DOMContentLoaded', function() {
-    const closeIcon = document.querySelector('.floating-icon .close-icon');
-    const floatingIcon = document.querySelector('.floating-icon');
-    const chatWindow = document.getElementById('chatWindow');
-    const hoverIcon = document.querySelector('.hover-icon');
+document.addEventListener("DOMContentLoaded", function () {
+    const closeIcon = document.querySelector(".floating-icon .close-icon");
+    const floatingIcon = document.querySelector(".floating-icon");
+    const chatWindow = document.getElementById("chatWindow");
+    const hoverIcon = document.querySelector(".hover-icon");
 
     if (closeIcon) {
-        closeIcon.addEventListener('click', function() {
-            floatingIcon.style.display = 'none';
-            chatWindow.classList.remove('show');
+        closeIcon.addEventListener("click", function () {
+            floatingIcon.style.display = "none";
+            chatWindow.classList.remove("show");
         });
     }
 
     if (hoverIcon) {
-        hoverIcon.addEventListener('click', function() {
-            chatWindow.classList.toggle('show');
+        hoverIcon.addEventListener("click", function () {
+            chatWindow.classList.toggle("show");
         });
     }
 
-    const closeChatButton = document.querySelector('.close-chat');
+    const closeChatButton = document.querySelector(".close-chat");
     if (closeChatButton) {
-        closeChatButton.addEventListener('click', function() {
-            chatWindow.classList.remove('show');
+        closeChatButton.addEventListener("click", function () {
+            chatWindow.classList.remove("show");
         });
     }
 });
