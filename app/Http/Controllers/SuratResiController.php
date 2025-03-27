@@ -40,11 +40,6 @@ class SuratResiController extends Controller
             'nama_pengirim' => 'required|string',
             'telepon_pengirim' => 'required|numeric',
             'alamat_pengirim' => 'required|string',
-            'nama_barang' => 'required|string',
-            'jumlah_barang' => 'required|integer|min:1',
-            'harga_barang' => 'required|integer|min:0',
-            'pembayaran' => 'nullable|string',
-            'status' => 'required|string',
             'tanggal_pengiriman' => 'required|date',
         ]);
 
@@ -80,10 +75,9 @@ class SuratResiController extends Controller
             'nama_penerima' => 'required|string',
             'telepon_penerima' => 'required|numeric',
             'alamat_penerima' => 'required|string',
-            'nama_barang' => 'required|string',
-            'jumlah_barang' => 'required|integer|min:1',
-            'harga_barang' => 'required|integer|min:0',
-            'status' => 'required|string',
+            'nama_pengirim' => 'required|string',
+            'telepon_pengirim' => 'required|numeric',
+            'alamat_pengirim' => 'required|string',
             'tanggal_pengiriman' => 'required|date',
         ]);
 
