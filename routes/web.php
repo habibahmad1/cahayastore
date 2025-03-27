@@ -25,6 +25,7 @@ use App\Http\Controllers\DashboardMainController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\KatalogProdukController;
 use App\Http\Controllers\KategoriArtikelController;
+use App\Http\Controllers\SuratResiController;
 use App\Models\KatalogProduk;
 
 Route::get('/', function () {
@@ -221,3 +222,6 @@ Route::post('/dashboard/produk/{slug}/salin', [DashboardController::class, 'sali
 
 // Filter Lama/Baru
 Route::get('/dashboard/databarang', [DataBarangController::class, 'index'])->name('produk.index');
+
+// Route Surat Resi
+Route::resource('/dashboard/surat-resi', SuratResiController::class);
