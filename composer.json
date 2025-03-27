@@ -10,7 +10,10 @@
         "itsgoingd/clockwork": "^5.3",
         "laravel/framework": "^11.9",
         "laravel/tinker": "^2.9",
-        "pusher/pusher-php-server": "^7.2"
+        "milon/barcode": "^11.0",
+        "picqer/php-barcode-generator": "^3.2",
+        "pusher/pusher-php-server": "^7.2",
+        "simplesoftwareio/simple-qrcode": "^4.2"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
