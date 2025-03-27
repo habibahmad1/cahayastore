@@ -109,3 +109,4 @@ class UserController extends Controller
         return redirect()->back()->with('success', 'User berhasil diubah menjadi user biasa.');
     }
 }
+
