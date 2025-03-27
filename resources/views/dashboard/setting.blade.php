@@ -18,16 +18,23 @@
                 <div class="card-header bg-primary text-center text-white py-3">
                     <h5 class="mb-0">Profil Saya</h5>
                 </div>
-                <div class="card-body p-4">
-                    <div class="mb-3">
+                <div class="card-body p-4 text-center">
+                    <!-- Gambar Profil -->
+                    <div class="mb-4">
+                        <img src="{{ auth()->user()->profile_picture ?? '/default-profile.png' }}"
+                             alt="Foto Profil"
+                             class="rounded-circle img-thumbnail"
+                             style="width: 150px; height: 150px; object-fit: cover;">
+                    </div>
+                    <div class="mb-3 text-start">
                         <label class="form-label fw-semibold">Nama Lengkap</label>
                         <input type="text" class="form-control bg-light" value="{{ auth()->user()->name }}" readonly>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-3 text-start">
                         <label class="form-label fw-semibold">Username</label>
                         <input type="text" class="form-control bg-light" value="{{ auth()->user()->username }}" readonly>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-3 text-start">
                         <label class="form-label fw-semibold">Email</label>
                         <input type="text" class="form-control bg-light" value="{{ auth()->user()->email }}" readonly>
                     </div>

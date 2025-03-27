@@ -186,6 +186,7 @@ Route::put('/dashboard/settings/updateuser', function (Request $request) {
         'name' => $request->name,
         'username' => $request->username,
         'email' => $request->email,
+        'profile_picture' => $request->profile_picture,
     ]);
 
     // Redirect kembali dengan pesan sukses

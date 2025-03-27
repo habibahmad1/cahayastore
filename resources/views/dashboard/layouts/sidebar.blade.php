@@ -11,6 +11,7 @@
             <i class="bi bi-caret-down-fill"></i>
         </h6>
 
+        @auth
         <ul id="bagHomeSubmenu" class="nav flex-column collapse">
           <li class="nav-item" id="nav-item-dashboard">
             <a class="nav-link d-flex align-items-center gap-2 {{ Request::is('dashboard') ? 'active-dashboard' : '' }}" aria-current="page" href="/dashboard">
@@ -31,6 +32,7 @@
             </a>
           </li>
         </ul>
+        @endauth
 
         <h6 id="bagProdukToggle" class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-2 mb-1 text-body-secondary text-uppercase" style=" padding: 10px; color: #ffffff !important; cursor: pointer;" data-bs-toggle="collapse" data-bs-target="#AbagProdukSubmenu">
             <span>BAG PRODUK</span>
@@ -59,6 +61,7 @@
             @endcan
         </ul>
 
+        @auth
         <h6 id="bagArtikelToggle" class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-2 mb-1 text-body-secondary text-uppercase" style=" padding: 10px; color: #ffffff !important; cursor: pointer;" data-bs-toggle="collapse" data-bs-target="#AbagArtikelSubmenu">
             <span>BAG Artikel</span>
             <i class="bi bi-caret-down-fill"></i>
@@ -114,6 +117,7 @@
             </li>
         </ul>
         @endcan
+        @endauth
 
         <h6 id="bagTambahBarangToggle" class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-2 mb-1 text-body-secondary text-uppercase" style=" padding: 10px; color: #ffffff !important; cursor: pointer;" data-bs-toggle="collapse" data-bs-target="#AbagTambahBarangSubmenu">
             <span>BAG TAMBAH BARANG</span>
@@ -185,10 +189,12 @@
 
         <hr class="my-3">
        <!-- Settings Submenu -->
-<h6 id="bagSettingsToggle" class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-2 mb-1 text-body-secondary text-uppercase" style="padding: 10px; color: #ffffff !important; cursor: pointer;" data-bs-toggle="collapse" data-bs-target="#AsettingsSubmenu" aria-expanded="false" aria-controls="SsettingsSubmenu">
-    <span>Settings</span>
-    <i class="bi bi-caret-down-fill"></i>
-</h6>
+       @auth
+       <h6 id="bagSettingsToggle" class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-2 mb-1 text-body-secondary text-uppercase" style="padding: 10px; color: #ffffff !important; cursor: pointer;" data-bs-toggle="collapse" data-bs-target="#AsettingsSubmenu" aria-expanded="false" aria-controls="SsettingsSubmenu">
+            <span>Settings</span>
+            <i class="bi bi-caret-down-fill"></i>
+        </h6>
+        @endauth
 
 <ul id="SsettingsSubmenu" class="nav flex-column collapse">
     <li class="nav-item">
@@ -206,6 +212,7 @@
         </a>
     </li>
     <!-- Logout Submenu -->
+    @auth
     <li class="nav-item">
         <a class="nav-link d-flex align-items-center gap-2" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
@@ -218,8 +225,9 @@
             @csrf
         </form>
     </li>
-    <hr class="my-3">
+    @endauth
 
+    <hr class="my-3">
 <script type="text/javascript">
     function googleTranslateElementInit() {
         new google.translate.TranslateElement({

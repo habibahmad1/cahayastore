@@ -76,27 +76,25 @@
         <strong>Data Barang Masuk</strong>
     </div>
 
-    @auth
+
     <div class="col-md-3 m-1">
         <button onclick="confirmExport()" class="btn btn-success m-2"><i class="bi bi-file-earmark-spreadsheet"></i> Excel</button>
         <button onclick="captureTable()" class="btn btn-primary m-2"><i class="bi bi-camera"></i> Screenshot</button>
     </div>
-    @endauth
+
 
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table table-bordered" id="myTable">
-                <thead class="table-dark">
+            <table class="table table-bordered table-striped table-hover table-sm" id="myTable">
+                <thead class="table-dark text-center">
                     <tr>
                         <th>No</th>
                         <th>Tanggal</th>
-                        <th>Nama Barang</th>
+                        <th style="width: 45%;">Nama Barang</th>
                         <th>Variasi</th>
                         <th>Jumlah</th>
                         <th>Expired</th>
-                        @auth
-                        <th class="aksi">Aksi</th>
-                        @endauth
+                        <th class="aksi" style="width: 12%;">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -114,8 +112,6 @@
                             <td>{{ $bm->variasi ? $bm->variasi->warna->warna . ' - ' . $bm->variasi->ukuran->ukuran : '-' }}</td>
                             <td>{{ $bm->qty }}</td>
                             <td>{{ $bm->exp }}</td>
-                            @auth
-
                             <td class="aksi">
                                 <button class="btn btn-warning btn-sm"
                                         data-bs-toggle="modal"
@@ -132,7 +128,6 @@
                                     <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this item?')"><i class="bi bi-trash"></i> Delete</button>
                                 </form>
                             </td>
-                            @endauth
                         </tr>
 
                         {{-- Edit Modal --}}
@@ -356,4 +351,45 @@ $(document).ready(function () {
 
 </script>
 
+<style>
+    /* Tambahkan padding pada elemen tabel */
+    #myTable th, #myTable td {
+      padding: 5px; /* Atur padding untuk memberi jarak */
+      text-align: center; /* Teks di tengah secara horizontal */
+      vertical-align: middle; /* Teks di tengah secara vertikal */
+    }
+
+    /* Khusus untuk kolom Nama Barang, teks rata kiri */
+    #myTable td:nth-child(3), #myTable th:nth-child(3) {
+    padding: 5px; /* Atur padding untuk memberi jarak */
+    text-align: left; /* Teks rata kiri */
+    vertical-align: middle; /* Teks di tengah secara vertikal */
+    padding-left: 10px; /* Tambahkan spasi kiri untuk semua baris */
+    padding-right: 10px; /* Tambahkan spasi kiri untuk semua baris */
+    }
+
+    /* Khusus untuk kolom Variasi, teks rata kiri */
+    #myTable td:nth-child(4), #myTable th:nth-child(4) {
+      padding: 2px;
+      text-align: left;
+      vertical-align: middle;
+      text-indent: 10px; /* Tambahkan spasi 1x di sisi kiri */
+    }
+
+    /* Tambahkan border pada tabel */
+    #myTable {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    #myTable th, #myTable td {
+        border: 1px solid #ddd;
+    }
+
+    /* Warna latar belakang untuk header tabel */
+    #myTable thead {
+        background-color: #343a40;
+        color: white;
+    }
+</style>
 @endsection

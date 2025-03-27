@@ -94,15 +94,18 @@
             </div>
 
             <div class="col-md-2">
-                <form method="GET" action="{{ route('barang-keluar.index') }}">
-                    <label for="limit" class="form-label">Tampilkan:</label>
-                    <select name="limit" onchange="this.form.submit()" class="form-control">
-                        <option value="50" {{ request('limit') == 50 ? 'selected' : '' }}>50</option>
-                        <option value="100" {{ request('limit') == 100 ? 'selected' : '' }}>100</option>
-                        <option value="all" {{ request('limit') == 'all' ? 'selected' : '' }}>Semua</option>
-                    </select>
-                </form>
-            </div>
+            <form method="GET" action="{{ route('barang-keluar.index') }}">
+                <label for="limit" class="form-label">Tampilkan:</label>
+                <select name="limit" onchange="this.form.submit()" class="form-control">
+                    <option value="50" {{ request('limit') == 50 ? 'selected' : '' }}>50</option>
+                    <option value="100" {{ request('limit') == 100 ? 'selected' : '' }}>100</option>
+                    <option value="all" {{ request('limit') == 'all' ? 'selected' : '' }}>Semua</option>
+                </select>
+            </form>
+        </div>
+
+
+
 
             <!-- Filter Host -->
             <div class="col-md-2">
@@ -120,9 +123,9 @@
 
 
 
-  {{-- Tabel Riwayat Barang Keluar --}}
+{{-- Tabel Riwayat Barang Keluar --}}
   <div class="card">
-  <div class="card-header bg-secondary text-white text-center">
+  <div class="card-header bg-secondary text-white text-Left">
     <strong>Data Barang Keluar</strong>
   </div>
 
@@ -139,15 +142,15 @@
         <thead class="table-dark text-center">
           <tr>
             <th>No</th>
-            <th>Tanggal</th>
-            <th style="width: 27%;">Nama Barang</th>
+            <th style="width: 7%;">Tanggal</th>
+            <th style="width: 28%;">Nama Barang</th>
             <th>Variasi</th>
             <th>Jumlah</th>
             <th>Platform</th>
-            <th>Host</th>
-            <th>Waktu</th>
-            <th>Catatan</th>
             <th>Type</th>
+            <th style="width: 9%;">Host</th>
+            <th style="width: 8%;">Waktu</th>
+            <th>Catatan</th>
             @auth
               <th class="aksi" style="width: 11%">Aksi</th>
             @endauth
@@ -170,21 +173,21 @@
               <td>{{ $bk->variasi ? $bk->variasi->warna->warna . ' - ' . $bk->variasi->ukuran->ukuran : '-' }}</td>
               <td class="text-center">{{ $bk->qty }}</td>
               <td>{{ $bk->platform }}</td>
+              <td>{{ $bk->sumber }}</td>
               <td>{{ ucwords(strtoupper($bk->host)) }}</td>
               <td>{{ $bk->jamlive }}</td>
               <td>{{ $bk->catatan }}</td>
-              <td>{{ $bk->sumber }}</td>
               @auth
               <td class="aksi text-center">
                 <form action="{{ route('barang-keluar.destroy', $bk->id) }}" method="POST" class="d-inline">
                   @csrf
                   @method('DELETE')
-                  <button class="btn btn-danger btn-sm" onclick="return confirm('Hapus data ini?')">
+                  <button class="btn btn-danger btn-sm mb-2" onclick="return confirm('Hapus data ini?')">
                     <i class="bi bi-trash"></i> Hapus
                   </button>
                 </form>
 
-                <button type="button" class="btn btn-warning btn-sm edit-btn"
+                <button type="button" class="btn btn-warning btn-sm edit-btn mb-2"
                   data-bs-toggle="modal" data-bs-target="#editModal"
                   data-id="{{ $bk->id }}"
                   data-tanggal="{{ $bk->tanggal }}"
@@ -218,7 +221,6 @@
       {{ $barangKeluar->links() }}
   @endif
 </div>
-
 
 
   {{-- Modal Edit --}}
@@ -286,6 +288,14 @@
                 </select>
               </div>
 
+            <div class="mb-3">
+                <label for="edit-sumber" class="form-label">Type</label>
+                <select class="form-control" name="sumber" id="edit-sumber" required>
+                  <option value="Live">Live</option>
+                  <option value="Toko">Toko</option>
+                </select>
+              </div>
+
 
             <div class="mb-3">
               <label for="edit-host" class="form-label">Host</label>
@@ -301,14 +311,6 @@
                 <label for="edit-catatan" class="form-label">Catatan</label>
                 <input type="text" class="form-control" name="catatan" id="edit-catatan"></input>
             </div>
-
-            <div class="mb-3">
-                <label for="edit-sumber" class="form-label">Type</label>
-                <select class="form-control" name="sumber" id="edit-sumber" required>
-                  <option value="Live">Live</option>
-                  <option value="Toko">Toko</option>
-                </select>
-              </div>
 
             <button type="submit" class="btn btn-primary w-100">Simpan Perubahan</button>
           </form>
@@ -496,81 +498,150 @@
   {{-- Screenshot --}}
   <script>
     function captureTable() {
-        // Konfirmasi sebelum mengambil screenshot
-        const confirmed = confirm("Apakah Anda yakin ingin mendownload screenshot laporan?");
-        if (!confirmed) {
-            return; // Batalkan jika pengguna menolak
-        }
-
-        const table = document.getElementById('myTable');
-
-        // Sembunyikan kolom "Aksi"
-        const aksiColumns = document.querySelectorAll('.aksi');
-        aksiColumns.forEach(col => col.style.display = 'none');
-
-        // Tambahkan judul sementara
-        const title = document.createElement('h2');
-        title.innerText = 'Laporan Barang Keluar';
-        title.style.textAlign = 'center';
-        title.style.backgroundColor = '#343a40'; // Warna latar belakang
-        title.style.color = 'white'; // Warna teks
-        title.style.padding = '10px'; // Padding
-        title.style.marginBottom = '0px'; // Margin bawah
-        table.parentElement.insertBefore(title, table);
-
-        // Tambahkan border tebal pada tabel
-        table.style.border = '1px solid #000';
-        table.style.borderCollapse = 'collapse';
-        const cells = table.querySelectorAll('th, td');
-        cells.forEach(cell => {
-            cell.style.border = '1px solid #000';
-        });
-
-        html2canvas(table.parentElement).then(canvas => {
-            // Tampilkan kembali kolom "Aksi" setelah screenshot
-            aksiColumns.forEach(col => col.style.display = '');
-
-            // Hapus judul sementara
-            title.remove();
-
-            // Kembalikan border tabel ke semula
-            table.style.border = '';
-            cells.forEach(cell => {
-                cell.style.border = '';
-            });
-
-            // Membuat link download
-            const link = document.createElement('a');
-            link.href = canvas.toDataURL('image/png');
-            link.download = 'screenshot-laporan.png';
-            link.click();
-
-            // Tampilkan pesan sukses
-            alert("Screenshot berhasil diunduh!");
-        });
+    // Konfirmasi sebelum mengambil screenshot
+    const confirmed = confirm("Apakah Anda yakin ingin mendownload screenshot laporan?");
+    if (!confirmed) {
+        return; // Batalkan jika pengguna menolak
     }
+
+    const table = document.getElementById('myTable');
+
+    // Sembunyikan kolom "Aksi"
+    const aksiColumns = document.querySelectorAll('.aksi');
+    aksiColumns.forEach(col => col.style.display = 'none');
+
+    // Hapus sementara kelas "table-striped"
+    // const originalClasses = table.className; // Simpan kelas asli
+    // table.classList.remove('table-striped');
+
+    // Tambahkan judul sementara
+    const title = document.createElement('h2');
+    title.innerText = 'Laporan Barang Keluar';
+    title.style.textAlign = 'center';
+    title.style.backgroundColor = '#343a40'; // Warna latar belakang
+    title.style.color = 'white'; // Warna teks
+    title.style.padding = '10px'; // Padding
+    title.style.marginBottom = '0px'; // Margin bawah
+    table.parentElement.insertBefore(title, table);
+
+    // Tambahkan border tebal pada tabel
+    // table.style.border = '1px solid #000';
+    // table.style.borderCollapse = 'collapse';
+    // const cells = table.querySelectorAll('th, td');
+    // cells.forEach(cell => {
+    //     cell.style.border = '1px solid #000';
+    // });
+
+    // Samakan tinggi semua baris tabel, kecuali header
+    const rows = table.querySelectorAll('tbody tr'); // Hanya baris di <tbody>
+    let maxHeight = 0;
+
+    // Cari tinggi maksimum dari semua baris di <tbody>
+    rows.forEach(row => {
+        const rowHeight = row.offsetHeight;
+        if (rowHeight > maxHeight) {
+            maxHeight = rowHeight;
+        }
+    });
+
+    // Terapkan tinggi maksimum hanya ke baris di <tbody>
+    rows.forEach(row => {
+        row.style.height = `${maxHeight}px`;
+    });
+
+    html2canvas(table.parentElement).then(canvas => {
+        // Tampilkan kembali kolom "Aksi" setelah screenshot
+        aksiColumns.forEach(col => col.style.display = '');
+
+        // Hapus judul sementara
+        title.remove();
+
+        // Kembalikan border tabel ke semula
+        // table.style.border = '';
+        // cells.forEach(cell => {
+        //     cell.style.border = '';
+        // });
+
+        // Kembalikan tinggi baris di <tbody> ke semula
+        rows.forEach(row => {
+            row.style.height = '';
+        });
+
+        // Kembalikan kelas "table-striped"
+        // table.className = originalClasses;
+
+        // Membuat link download
+        const link = document.createElement('a');
+        link.href = canvas.toDataURL('image/png');
+        link.download = 'screenshot-laporan.png';
+        link.click();
+
+        // Tampilkan pesan sukses
+        alert("Screenshot berhasil diunduh!");
+    });
+}
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const rows = document.querySelectorAll("#myTable tbody tr"); // Hanya baris di <tbody>
+    let maxHeight = 0;
+
+    // Cari tinggi maksimum dari semua baris di <tbody>
+    rows.forEach(row => {
+      const rowHeight = row.offsetHeight;
+      if (rowHeight > maxHeight) {
+        maxHeight = rowHeight;
+      }
+    });
+
+    // Terapkan tinggi maksimum hanya ke baris di <tbody>
+    rows.forEach(row => {
+      row.style.height = `${maxHeight}px`;
+    });
+  });
 </script>
 
 <style>
     /* Tambahkan padding pada elemen tabel */
     #myTable th, #myTable td {
-      padding: 5px; /* Atur padding untuk memberi jarak */
+      padding: 2px; /* Atur padding untuk memberi jarak */
       text-align: center; /* Teks di tengah secara horizontal */
       vertical-align: middle; /* Teks di tengah secara vertikal */
     }
 
     /* Khusus untuk kolom Nama Barang, teks rata kiri */
     #myTable td:nth-child(3), #myTable th:nth-child(3) {
-      padding: 5px; /* Atur padding untuk memberi jarak */
+      padding: 2px; /* Atur padding untuk memberi jarak */
       text-align: left; /* Teks rata kiri */
       vertical-align: middle; /* Teks di tengah secara vertikal */
+      padding-left: 10px; /* Tambahkan spasi kiri untuk semua baris */
+      padding-right: 10px; /* Tambahkan spasi kiri untuk semua baris */
     }
 
-     /* Khusus untuk kolom Variasi, teks rata kiri */
-     /* #myTable td:nth-child(4), #myTable th:nth-child(4) {
-      padding: 5px;
+    /* Khusus untuk kolom Variasi, teks rata kiri */
+    #myTable td:nth-child(4), #myTable th:nth-child(4) {
+      padding: 2px;
       text-align: left;
       vertical-align: middle;
-    } */
+      text-indent: 10px; /* Tambahkan spasi 1x di sisi kiri */
+    }
+
+    /* Tambahkan border pada tabel */
+    #myTable {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    #myTable th, #myTable td {
+        border: 1px solid #ddd;
+    }
+
+    /* Warna latar belakang untuk header tabel */
+    #myTable thead {
+        background-color: #343a40;
+        color: white;
+    }
 </style>
+
 @endsection
