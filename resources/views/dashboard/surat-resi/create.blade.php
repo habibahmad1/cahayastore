@@ -43,38 +43,7 @@
         </div>
     </div>
 
-    <hr class="col-md-6">
-
     <div class="row">
-        <div class="col-md-3">
-            <label for="nama_barang" class="col-form-label">Nama Barang</label>
-            <input type="text" name="nama_barang" class="form-control" required>
-        </div>
-        <div class="col-md-1">
-            <label for="jumlah_barang" class="col-form-label">Jumlah</label>
-            <input type="number" name="jumlah_barang" class="form-control" min="1" required>
-        </div>
-        <div class="col-md-2">
-            <label for="harga_barang" class="col-form-label">Harga Satuan Barang</label>
-            <input type="number" name="harga_barang" class="form-control" min="0" required>
-        </div>
-    </div>
-
-    <hr class="col-md-6">
-
-    <div class="row">
-        <div class="col-md-2">
-            <label for="pembayaran" class="col-form-label">Pembayaran</label>
-            <input type="text" name="pembayaran" class="form-control">
-        </div>
-        <div class="col-md-2">
-            <label for="status" class="col-form-label">Status</label>
-            <select name="status" class="form-control" required>
-                <option selected disabled>Pilih Status</option>
-                <option value="lunas">Lunas</option>
-                <option value="belum_lunas">Belum Lunas</option>
-            </select>
-        </div>
         <div class="col-md-2">
             <label for="tanggal_pengiriman" class="col-form-label">Tanggal Kirim</label>
             <input type="date" name="tanggal_pengiriman" class="form-control" required>

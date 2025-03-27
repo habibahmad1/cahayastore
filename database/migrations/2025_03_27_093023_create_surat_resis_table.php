@@ -13,20 +13,13 @@ return new class extends Migration
     {
         Schema::create('surat_resis', function (Blueprint $table) {
             $table->id();
-            $table->string('nomor_resi')->nullable();
             $table->string('nama_penerima');
             $table->string('alamat_penerima');
             $table->string('telepon_penerima');
             $table->string('nama_pengirim');
             $table->string('alamat_pengirim');
             $table->string('telepon_pengirim');
-            $table->string('nama_barang');
-            $table->string('berat_barang')->nullable();
-            $table->string('jumlah_barang');
-            $table->integer('harga_barang');
-            $table->string('pembayaran');
             $table->date('tanggal_pengiriman');
-            $table->string('status');
             $table->timestamps();
         });
     }
