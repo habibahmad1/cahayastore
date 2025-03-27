@@ -34,7 +34,9 @@ document.addEventListener("DOMContentLoaded", function () {
         },
         { toggle: "bagTambahBarangToggle", submenu: "bagTambahBarangSubmenu" },
         { toggle: "bagStokBarangToggle", submenu: "bagStokBarangSubmenu" },
+        { toggle: "bagSuratToggle", submenu: "bagSuratSubmenu" },
         { toggle: "bagSettingsToggle", submenu: "SsettingsSubmenu" },
+
     ];
 
     sections.forEach((section) => {

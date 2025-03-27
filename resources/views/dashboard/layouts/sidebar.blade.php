@@ -176,13 +176,21 @@
             <span>BAG SURAT</span>
             <i class="bi bi-caret-down-fill"></i>
         </h6>
-        <ul id="bagSurat" class="nav flex-column collapse">
+        <ul id="bagSuratSubmenu" class="nav flex-column collapse">
             <li class="nav-item" id="nav-item-barang-keluar">
                 <a class="nav-link d-flex align-items-center gap-2 {{ Request::is('dashboard/barang-keluar') ? 'active-dashboard' : '' }}" href="/dashboard/surat-resi">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
-                        <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"/>
-                      </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-receipt" viewBox="0 0 16 16">
+                        <path d="M0 1a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1h-2l-1-1-1 1-1-1-1 1-1-1-1 1-1-1-1 1H1a1 1 0 0 1-1-1V1zM2 2v12h12V2H2zm2 2h8v1H4V4zm0 2h8v1H4V6zm0 2h8v1H4V8zm0 2h8v1H4v-1z"/>
+                    </svg>
                     Buat Surat Resi
+                </a>
+            </li>
+            <li class="nav-item" id="nav-item-barang-keluar">
+                <a class="nav-link d-flex align-items-center gap-2 {{ Request::is('dashboard/barang-keluar') ? 'active-dashboard' : '' }}" href="/dashboard/surat-jalan">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-truck" viewBox="0 0 16 16">
+                        <path d="M4 9.5A1.5 1.5 0 0 1 5.5 8h5A1.5 1.5 0 0 1 12 9.5V10h1V6h-1V4H2v6h1v.5zM12 11v-1H4v1h8zM3 11v1h10v-1H3zm2.5 2A1.5 1.5 0 1 0 7 11.5 1.5 1.5 0 0 0 5.5 13zm6 0A1.5 1.5 0 1 0 13 11.5 1.5 1.5 0 0 0 11.5 13z"/>
+                    </svg>
+                    Buat Surat Jalan
                 </a>
             </li>
         </ul>
