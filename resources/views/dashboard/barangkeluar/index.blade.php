@@ -142,6 +142,7 @@
         <thead class="table-dark text-center">
           <tr>
             <th>No</th>
+            <th style="width: 7%;">Tanggal Input</th>
             <th style="width: 7%;">Tanggal</th>
             <th style="width: 28%;">Nama Barang</th>
             <th>Variasi</th>
@@ -168,6 +169,7 @@
             @endphp
             <tr>
               <td class="text-center">{{ $offset + $loop->iteration }}</td>
+              <td>{{ $bk->created_at }}</td>
               <td>{{ $bk->tanggal }}</td>
               <td>{{ $bk->produk->nama_produk }}</td>
               <td>{{ $bk->variasi ? $bk->variasi->warna->warna . ' - ' . $bk->variasi->ukuran->ukuran : '-' }}</td>

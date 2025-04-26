@@ -452,13 +452,18 @@ body {
 
 /* Efek holografik */
 .card-dashboard::before {
-    content: '';
+    content: "";
     position: absolute;
     top: -50%;
     left: -50%;
     width: 200%;
     height: 200%;
-    background: linear-gradient(0deg, transparent, transparent 30%, rgba(0, 123, 255, 0.2));
+    background: linear-gradient(
+        0deg,
+        transparent,
+        transparent 30%,
+        rgba(0, 123, 255, 0.2)
+    );
     transform: rotate(-45deg);
     transition: all 0.5s ease;
     opacity: 0;
@@ -475,17 +480,18 @@ body {
 }
 
 /* Warna teks */
-.card-dashboard h3, .card-dashboard h1 {
+.card-dashboard h3,
+.card-dashboard h1 {
     position: relative;
     z-index: 1;
     color: #5f5f5f; /* Warna biru lembut */
     transition: color 0.3s ease;
 }
 
-.card-dashboard:hover h3, .card-dashboard:hover h1 {
+.card-dashboard:hover h3,
+.card-dashboard:hover h1 {
     color: #7fc8f8; /* Warna abu-abu terang saat hover */
 }
-
 
 .bg-dark-gray {
     background-color: #2c3e50 !important; /* Warna abu-abu gelap */
@@ -569,7 +575,8 @@ body {
 }
 
 @keyframes float {
-    0%, 100% {
+    0%,
+    100% {
         transform: translateY(0);
     }
     50% {

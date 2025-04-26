@@ -40,6 +40,8 @@
                     <label for="produk_id" class="form-label">Nama Barang</label>
                     <input type="text" class="form-control" name="nama_produk" id="nama_produk" placeholder="Masukan Nama Barang" required>
                     <input type="hidden" name="produk_id" id="produk_id"> <!-- Input tersembunyi untuk produk_id -->
+                    <div id="product-image"></div>
+
                 </div>
                 <div class="col-md-3">
                     <label for="variasi_id" class="form-label">Variasi (Opsional)</label>
@@ -101,6 +103,22 @@
     </div>
 </div>
 
+<!-- Modal Preview Gambar -->
+<div class="modal fade" id="imagePreviewModal" tabindex="-1" aria-labelledby="imagePreviewModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="imagePreviewModalLabel">Preview Gambar</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <img src="" id="modalImage" class="img-fluid" alt="Preview Gambar">
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 @endsection
 
 @section('scripts')
@@ -128,7 +146,8 @@ $(document).ready(function() {
                         return {
                             label: item.nama_produk,  // Nama produk ditampilkan
                             value: item.nama_produk,  // Nilai yang akan diisi di input
-                            id: item.id  // ID produk yang akan digunakan saat memilih
+                            id: item.id,  // ID produk yang akan digunakan saat memilih
+                            gambar1: item.gambar1  // Gambar produk
                         };
                     }));
                 }
@@ -136,11 +155,20 @@ $(document).ready(function() {
         },
         minLength: 2,  // Minimal 2 karakter untuk mulai pencarian
         select: function(event, ui) {
-            var produkId = ui.item.id;
-            console.log('Produk ID yang dipilih: ' + produkId);
+        var produkId = ui.item.id;
+        $("#produk_id").val(produkId);
 
-            // Menyimpan produk_id yang dipilih ke dalam input tersembunyi
-            $("#produk_id").val(produkId);
+        var imageUrl = '/storage/' + ui.item.gambar1; // Pastikan ini sesuai path kamu
+        $('#product-image').html(
+            '<img src="' + imageUrl + '" alt="' + ui.item.value + '" class="img-fluid preview-image" style="max-width: 200px; margin-top: 10px; cursor: pointer;" />'
+        );
+        // Saat gambar diklik, tampilkan di modal
+        $(document).on('click', '.preview-image', function() {
+            var src = $(this).attr('src');
+            $('#modalImage').attr('src', src);
+            $('#imagePreviewModal').modal('show');
+        });
+
 
             // Kirim permintaan untuk mendapatkan variasi produk berdasarkan ID produk
             $.ajax({
@@ -172,5 +200,7 @@ $(document).ready(function() {
         }
     });
 });
+
+
 </script>
 @endsection
