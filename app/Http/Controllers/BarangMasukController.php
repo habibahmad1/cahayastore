@@ -213,6 +213,21 @@ class BarangMasukController extends Controller
     /**
      * Autocomplete untuk pencarian nama produk.
      */
+    // public function autocomplete(Request $request)
+    // {
+    //     $term = $request->get('term');
+
+    //     if (empty($term)) {
+    //         return response()->json([]);
+    //     }
+
+    //     // Mengambil produk berdasarkan nama produk yang sesuai dengan term pencarian
+    //     $produks = Produk::where('nama_produk', 'LIKE', '%' . $term . '%')
+    //         ->get(['id', 'nama_produk']);  // Pastikan ID dan nama produk ada
+
+    //     return response()->json($produks);
+    // }
+
     public function autocomplete(Request $request)
     {
         $term = $request->get('term');
@@ -223,7 +238,7 @@ class BarangMasukController extends Controller
 
         // Mengambil produk berdasarkan nama produk yang sesuai dengan term pencarian
         $produks = Produk::where('nama_produk', 'LIKE', '%' . $term . '%')
-            ->get(['id', 'nama_produk']);  // Pastikan ID dan nama produk ada
+            ->get(['id', 'nama_produk', 'gambar1']);  // Menyertakan kolom 'gambar1' untuk gambar
 
         return response()->json($produks);
     }

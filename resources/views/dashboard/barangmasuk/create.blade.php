@@ -1,7 +1,6 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
-
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">Tambah Barang Masuk</h1>
 </div>
@@ -39,6 +38,7 @@
                     <label for="produk_id" class="form-label">Nama Barang</label>
                     <input type="text" class="form-control" name="nama_produk" id="nama_produk" required>
                     <input type="hidden" name="produk_id" id="produk_id">
+                    <div id="product-image" class="mt-2"></div> {{-- Preview gambar di sini --}}
                 </div>
                 <div class="col-md-3">
                     <label for="variasi_id" class="form-label">Variasi (Opsional)</label>
@@ -62,11 +62,26 @@
     </div>
 </div>
 
+<!-- Modal Preview Gambar -->
+<div class="modal fade" id="imagePreviewModal" tabindex="-1" aria-labelledby="imagePreviewModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="imagePreviewModalLabel">Preview Gambar</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> {{-- Tombol close --}}
+      </div>
+      <div class="modal-body text-center">
+        <img src="" id="modalImage" class="img-fluid" alt="Preview Gambar">
+      </div>
+    </div>
+  </div>
+</div>
 @endsection
 
 @section('scripts')
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 <script>
@@ -78,7 +93,12 @@ $(document).ready(function() {
                 data: { term: request.term },
                 success: function(data) {
                     response($.map(data, function(item) {
-                        return { label: item.nama_produk, value: item.nama_produk, id: item.id };
+                        return {
+                            label: item.nama_produk,
+                            value: item.nama_produk,
+                            id: item.id,
+                            gambar1: item.gambar1 // Pastikan gambar1 diambil juga
+                        };
                     }));
                 }
             });
@@ -87,6 +107,20 @@ $(document).ready(function() {
         select: function(event, ui) {
             var produkId = ui.item.id;
             $("#produk_id").val(produkId);
+
+            // Tampilkan gambar preview
+            var imageUrl = '/storage/' + ui.item.gambar1; // Pastikan ini sesuai path kamu
+        $('#product-image').html(
+            '<img src="' + imageUrl + '" alt="' + ui.item.value + '" class="img-fluid preview-image" style="max-width: 200px; margin-top: 10px; cursor: pointer;" />'
+        );
+        // Saat gambar diklik, tampilkan di modal
+        $(document).on('click', '.preview-image', function() {
+            var src = $(this).attr('src');
+            $('#modalImage').attr('src', src);
+            $('#imagePreviewModal').modal('show');
+        });
+
+            // Update variasi setelah produk dipilih
             $.ajax({
                 url: '/barang-masuk/' + produkId + '/variasi',
                 type: 'GET',
@@ -108,6 +142,11 @@ $(document).ready(function() {
                 }
             });
         }
+    });
+
+    // Event klik gambar kecil untuk membuka modal dan tampilkan gambar besar
+    $(document).on('click', '#product-image img', function() {
+        $('#modalImage').attr('src', $(this).attr('src'));
     });
 });
 </script>

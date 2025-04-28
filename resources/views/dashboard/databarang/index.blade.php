@@ -38,8 +38,7 @@
   <div class="mb-3 d-flex justify-content-between align-items-center">
     <div>
       <a href="{{ route('produk.create') }}" class="btn btn-primary"><i class="bi bi-file-earmark-plus"></i> Tambah Data</a>
-      <button onclick="exportToExcel()" class="btn btn-success d-none my-2" id="exportButton"><i class="bi bi-file-earmark-spreadsheet"></i> Export to Excel</button>
-      <button onclick="captureTable()" class="btn btn-primary"><i class="bi bi-camera"></i> Screenshot</button>
+      <button onclick="exportToExcel()" class="btn btn-success d-none" id="exportButton"><i class="bi bi-file-earmark-spreadsheet"></i> Export to Excel</button>
     </div>
     <div class="form-check form-switch">
       <input class="form-check-input" type="checkbox" id="toggleVariasiSwitch" onclick="toggleVariasiView()">
