@@ -38,7 +38,8 @@
   <div class="mb-3 d-flex justify-content-between align-items-center">
     <div>
       <a href="{{ route('produk.create') }}" class="btn btn-primary"><i class="bi bi-file-earmark-plus"></i> Tambah Data</a>
-      <button onclick="exportToExcel()" class="btn btn-success d-none" id="exportButton"><i class="bi bi-file-earmark-spreadsheet"></i> Export to Excel</button>
+      <button onclick="exportToExcel()" class="btn btn-success d-none my-2" id="exportButton"><i class="bi bi-file-earmark-spreadsheet"></i> Export to Excel</button>
+      <button onclick="captureTable()" class="btn btn-primary"><i class="bi bi-camera"></i> Screenshot</button>
     </div>
     <div class="form-check form-switch">
       <input class="form-check-input" type="checkbox" id="toggleVariasiSwitch" onclick="toggleVariasiView()">
@@ -329,6 +330,43 @@
 
 
   </script>
+
+  {{-- Screenshot --}}
+  <script>
+    function captureTable() {
+  const confirmed = confirm("Apakah Anda yakin ingin mendownload screenshot?");
+  if (!confirmed) return;
+
+  const table = document.getElementById('dataTable');
+
+  // Sembunyikan kolom "Aksi"
+  const aksiColumns = document.querySelectorAll('.aksi-column');
+  aksiColumns.forEach(col => col.style.display = 'none');
+
+  // Tambahkan judul sementara
+  const title = document.createElement('h2');
+  title.innerText = 'Variasi Stok Barang';
+  title.style.textAlign = 'center';
+  title.style.backgroundColor = '#343a40';
+  title.style.color = 'white';
+  title.style.padding = '10px';
+  title.style.marginBottom = '0px';
+  table.parentElement.insertBefore(title, table);
+
+  // Gunakan html2canvas (atau cara kamu sendiri untuk screenshot)
+  html2canvas(table.parentElement).then(canvas => {
+    const link = document.createElement('a');
+    link.href = canvas.toDataURL('image/png');
+    link.download = 'screenshot_stok_barang.png';
+    link.click();
+
+    // Hapus elemen tambahan & tampilkan kolom kembali
+    title.remove();
+    aksiColumns.forEach(col => col.style.display = '');
+  });
+}
+
+</script>
 
   <style>
     .variasi-item {

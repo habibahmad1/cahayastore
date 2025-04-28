@@ -90,6 +90,7 @@
                     <option value="">-- Pilih Type --</option>
                     <option value="Live" {{ request('sumber') == 'Live' ? 'selected' : '' }}>Live</option>
                     <option value="Toko" {{ request('sumber') == 'Toko' ? 'selected' : '' }}>Toko</option>
+                    <option value="Luar Toko" {{ request('sumber') == 'Luar Toko' ? 'selected' : '' }}>Luar Toko</option>
                 </select>
             </div>
 
@@ -293,6 +294,7 @@
                 <select class="form-control" name="sumber" id="edit-sumber" required>
                   <option value="Live">Live</option>
                   <option value="Toko">Toko</option>
+                  <option value="Luar Toko">Luar Toko</option>
                 </select>
               </div>
 

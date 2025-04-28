@@ -77,6 +77,7 @@
                         <option value="">-- Pilih Type --</option>
                         <option value="Live">Live</option>
                         <option value="Toko">Toko</option>
+                        <option value="Luar Toko">Luar Toko</option>
                     </select>
                 </div>
                 <div class="col-md-2">
