@@ -35,17 +35,70 @@
 
 </div>
 
-  <div class="mb-3 d-flex justify-content-between align-items-center">
-    <div>
-      <a href="{{ route('produk.create') }}" class="btn btn-primary"><i class="bi bi-file-earmark-plus"></i> Tambah Data</a>
-      <button onclick="exportToExcel()" class="btn btn-success d-none" id="exportButton"><i class="bi bi-file-earmark-spreadsheet"></i> Export to Excel</button>
-      <button onclick="captureTable()" class="btn btn-primary"><i class="bi bi-camera"></i> Screenshot</button>
+<div class="mb-3">
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+      <!-- Kiri: Tombol aksi -->
+      <div class="d-flex flex-wrap gap-2">
+        <a href="{{ route('produk.create') }}" class="btn btn-primary">
+          <i class="bi bi-file-earmark-plus"></i> Tambah Data
+        </a>
+        <button onclick="exportToExcel()" class="btn btn-success d-none" id="exportButton">
+          <i class="bi bi-file-earmark-spreadsheet"></i> Export to Excel
+        </button>
+        <button onclick="captureTable()" class="btn btn-primary">
+          <i class="bi bi-camera"></i> Screenshot
+        </button>
+      </div>
+
+      <!-- Kanan: Toggle variasi -->
+      <div class="form-check form-switch d-flex align-items-center">
+        <input class="form-check-input me-2" type="checkbox" id="toggleVariasiSwitch" onclick="toggleVariasiView()">
+        <label class="form-check-label" for="toggleVariasiSwitch" id="toggleVariasiLabel">Off</label>
+      </div>
     </div>
-    <div class="form-check form-switch">
-      <input class="form-check-input" type="checkbox" id="toggleVariasiSwitch" onclick="toggleVariasiView()">
-      <label class="form-check-label" for="toggleVariasiSwitch" id="toggleVariasiLabel">Off</label>
+
+    <!-- Baris baru: Kolom toggle -->
+    <div class="mt-3">
+      <strong class="d-block mb-2">Tampilkan Kolom:</strong>
+      <div class="d-flex flex-wrap gap-3">
+        <div class="form-check form-check-inline">
+          <input class="form-check-input column-toggle" type="checkbox" data-column="2" id="colKode">
+          <label class="form-check-label" for="colKode">Kode Barang</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+          <input class="form-check-input column-toggle" type="checkbox" checked data-column="3" id="colGambar">
+          <label class="form-check-label" for="colGambar">Gambar</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+          <input class="form-check-input column-toggle" type="checkbox" checked data-column="4" id="colNama">
+          <label class="form-check-label" for="colNama">Nama Barang</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+          <input class="form-check-input column-toggle" type="checkbox" data-column="5" id="colHarga">
+          <label class="form-check-label" for="colHarga">Harga</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+          <input class="form-check-input column-toggle" type="checkbox" data-column="6" id="colStok">
+          <label class="form-check-label" for="colStok">Total Stok</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+          <input class="form-check-input column-toggle" type="checkbox" data-column="7" id="colTerjual">
+          <label class="form-check-label" for="colTerjual">Terjual</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+          <input class="form-check-input column-toggle" type="checkbox" checked data-column="8" id="colVariasi">
+          <label class="form-check-label" for="colVariasi">Variasi</label>
+        </div>
+      </div>
     </div>
   </div>
+
 
   @if (session()->has('success'))
     <div class="alert alert-success col-lg-7" role="alert">
@@ -58,9 +111,9 @@
       <thead>
         <tr class="table-warning">
           <th scope="col">No.</th>
-          <th scope="col">Kode Barang</th>
-          <th scope="col">Gambar</th>
-          <th scope="col">Nama Barang
+          <th scope="col" style="width: 10%">Kode Barang</th>
+          <th scope="col" style="width: 10%">Gambar</th>
+          <th scope="col" style="width: 10%">Nama Barang
             <div class="dropdown d-inline">
               <button class="btn btn-link p-0 dropdown-toggle" type="button" id="sortNamaBarang" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="bi bi-sort-alpha-down"></i>
@@ -124,21 +177,6 @@
                 @endif
             </td>
 
-            <!-- Modal Bootstrap -->
-            <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="imageModalLabel">Gambar Produk</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body text-center">
-                            <img id="modalImage" src="" alt="Gambar Produk" class="img-fluid rounded">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <script>
                 function showImageModal(imageUrl) {
                     document.getElementById('modalImage').src = imageUrl;
@@ -159,7 +197,7 @@
                   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton{{ $p->id }}">
                     @foreach ($p->variasi as $variasi)
                     @php
-                      $stokClass = ($variasi->stok > 5) ? 'bg-success' : 'bg-danger';
+                      $stokClass = ($variasi->stok >= 1) ? 'bg-success' : 'bg-danger';
                     @endphp
                     <li>
                       <a class="dropdown-item variasi-dropdown-item" href="#">
@@ -197,11 +235,105 @@
             </td>
         </tr>
         @endforeach
+
+        <!-- Modal Bootstrap -->
+        <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="imageModalLabel">Gambar Produk</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <img id="modalImage" src="" alt="Gambar Produk" class="img-fluid rounded">
+                    </div>
+                </div>
+            </div>
+        </div>
+
       </tbody>
     </table>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.0/dist/xlsx.full.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+    const checkboxes = document.querySelectorAll('.column-toggle');
+    const table = document.querySelector('table');
+
+    // Setel default status kolom yang ingin disembunyikan (kolom kode barang, harga, total stok)
+    const defaultStatus = {
+        2: false,  // Kode Barang
+        5: false,  // Harga
+        6: false,  // Total Stok
+        7: true,   // Terjual
+        3: true,   // Gambar
+        4: true,   // Nama Barang
+        8: true    // Variasi
+    };
+
+    // Cek status checkbox yang tersimpan di localStorage dan setel status checkbox
+    checkboxes.forEach(function(checkbox) {
+        const columnIndex = parseInt(checkbox.dataset.column);
+        const storedStatus = localStorage.getItem('column_' + columnIndex);
+
+        // Tentukan status berdasarkan localStorage atau defaultStatus
+        const isChecked = storedStatus === 'true' ? true : defaultStatus[columnIndex] !== undefined ? defaultStatus[columnIndex] : false;
+
+        // Set checkbox sesuai status yang disimpan atau default
+        checkbox.checked = isChecked;
+
+        // Atur kolom yang sesuai untuk ditampilkan atau disembunyikan
+        toggleColumn(columnIndex, isChecked);
+
+        // Tambahkan event listener untuk menyimpan status ketika diubah
+        checkbox.addEventListener('change', function() {
+        // Simpan status checkbox ke localStorage
+        localStorage.setItem('column_' + columnIndex, this.checked);
+
+        // Toggle visibilitas kolom sesuai status checkbox
+        toggleColumn(columnIndex, this.checked);
+        });
+    });
+
+    // Fungsi untuk toggle kolom
+    function toggleColumn(columnIndex, show) {
+        const ths = table.querySelectorAll('thead th');
+        const rows = table.querySelectorAll('tbody tr');
+
+        if (columnIndex === 1) { // Kolom "No" selalu terlihat
+        return;
+        }
+
+        if (ths[columnIndex - 1]) {
+        ths[columnIndex - 1].style.display = show ? '' : 'none';
+        }
+
+        rows.forEach(function(row) {
+        const cells = row.querySelectorAll('td');
+        if (cells[columnIndex - 1]) {
+            cells[columnIndex - 1].style.display = show ? '' : 'none';
+        }
+        });
+    }
+
+    // Fungsi untuk toggle variasi view (tetap di localStorage jika diubah)
+    function toggleVariasiView() {
+        const label = document.getElementById('toggleVariasiLabel');
+        const switchInput = document.getElementById('toggleVariasiSwitch');
+        label.textContent = switchInput.checked ? 'On' : 'Off';
+        localStorage.setItem('variasi_switch', switchInput.checked);
+    }
+
+    // Setel status switch variasi jika ada di localStorage
+    const switchVariasi = localStorage.getItem('variasi_switch') === 'true';
+    document.getElementById('toggleVariasiSwitch').checked = switchVariasi;
+    document.getElementById('toggleVariasiLabel').textContent = switchVariasi ? 'On' : 'Off';
+    });
+
+    </script>
+
+
   <script>
     function printTable() {
       // Sembunyikan kolom aksi sebelum print
