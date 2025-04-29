@@ -197,12 +197,12 @@
                   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton{{ $p->id }}">
                     @foreach ($p->variasi as $variasi)
                     @php
-                      $stokClass = ($variasi->stok == 0) ? 'bg-danger' : 'bg-success';
+                      $stokClass = ($variasi->stok >= 1) ? 'bg-success' : 'bg-danger';
                     @endphp
                     <li>
                       <a class="dropdown-item variasi-dropdown-item" href="#">
-                        <span class="badge bg-primary">Variasi: {{ $variasi->warna->warna ?? '-' }}</span>
-                        <span class="badge bg-warning text-black">Ukuran: {{ $variasi->ukuran->ukuran ?? '-' }}</span>
+                        <span class="badge bg-primary">Var: {{ $variasi->warna->warna ?? '-' }}</span>
+                        <span class="badge bg-warning text-black">Size: {{ $variasi->ukuran->ukuran ?? '-' }}</span>
                         <span class="badge {{ $stokClass }}">Stok: {{ $variasi->stok ?? 0 }}</span>
                       </a>
                     </li>
@@ -215,8 +215,8 @@
                     $stokClass = ($variasi->stok == 0) ? 'bg-danger' : 'bg-success';
                   @endphp
                     <li style="list-style-type: number">
-                      <span class="badge bg-primary">Variasi: {{ $variasi->warna->warna ?? '-' }}</span>
-                      <span class="badge bg-warning text-black">Ukuran: {{ $variasi->ukuran->ukuran ?? '-' }}</span>
+                      <span class="badge bg-primary">Var: {{ $variasi->warna->warna ?? '-' }}</span>
+                      <span class="badge bg-warning text-black">Size: {{ $variasi->ukuran->ukuran ?? '-' }}</span>
                       <span class="badge {{ $stokClass }}">Stok: {{ $variasi->stok ?? 0 }}</span>
                     </li>
                   @endforeach
@@ -266,7 +266,11 @@
         2: false,  // Kode Barang
         5: false,  // Harga
         6: false,  // Total Stok
+<<<<<<< HEAD
+        7: false,   // Terjual
+=======
         7: true,   // Terjual
+>>>>>>> af5fc7171796263cbcacb8787832e809f4b16fc4
         3: true,   // Gambar
         4: true,   // Nama Barang
         8: true    // Variasi

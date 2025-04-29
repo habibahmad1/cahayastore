@@ -52,10 +52,10 @@ class DataBarangController extends Controller
             $query->orderBy('produks.created_at', 'desc');
         }
 
-        $produk = $query->with('variasi', 'kategori')->get();
+        $produk = $query->with('variasi','kategori')->get();
         $kategori = Kategori::all();
 
-        return view('dashboard.databarang.index', compact('produk', 'kategori'));
+        return view('dashboard.databarang.index', compact('produk','kategori'));
     }
 
 
