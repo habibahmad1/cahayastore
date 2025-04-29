@@ -29,22 +29,27 @@ class BarangMasukController extends Controller
         }
 
         // Filter berdasarkan kategori
-        if ($request->has('kategori') && $request->kategori != '') {
-            $query->whereHas('kategori', function ($q) use ($request) {
+        if ($request->filled('kategori')) {
+            $query->whereHas('produk.kategori', function ($q) use ($request) {
                 $q->where('id', $request->kategori);
             });
         }
 
-        // Mengambil data barang masuk dengan produk yang sesuai
-        $barangMasuk = $query->latest()->get();
+        // Handle limit (jumlah data per halaman)
+        $limit = $request->input('limit', 50); // default 50
+        if ($limit === 'all') {
+            $barangMasuk = $query->latest()->get();
+        } else {
+            $barangMasuk = $query->latest()->paginate((int) $limit)->withQueryString();
+        }
 
-        // Mengambil semua produk dengan relasi variasi, warna, dan ukuran
+        // Data tambahan
         $produks = Produk::with(['variasi.warna', 'variasi.ukuran'])->get();
-        $kategori = Kategori::all(); // Ambil semua kategori untuk dropdown
-
+        $kategori = Kategori::all();
 
         return view('dashboard.barangmasuk.index', compact('barangMasuk', 'produks', 'kategori'));
     }
+
 
     /**
      * Show the form for creating a new resource.

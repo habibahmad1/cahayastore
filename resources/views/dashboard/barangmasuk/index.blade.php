@@ -49,25 +49,38 @@
         </div>
     </div>
 
-    <!-- Filter Kategori -->
-    <div class="col-md-3">
-        <label for="kategori" class="form-label">Kategori</label>
-        <select class="form-select" name="kategori">
-            <option value="">-- Pilih Kategori --</option>
-            @foreach ($kategori as $k)
-                <option value="{{ $k->id }}" {{ request('kategori') == $k->id ? 'selected' : '' }}>
-                    {{ $k->nama }}
-                </option>
-            @endforeach
-        </select>
-    </div>
+    <div class="row mt-3">
+        <!-- Filter Kategori -->
+        <div class="col-md-3">
+            <label for="kategori" class="form-label">Kategori</label>
+            <select class="form-select" name="kategori">
+                <option value="">-- Pilih Kategori --</option>
+                @foreach ($kategori as $k)
+                    <option value="{{ $k->id }}" {{ request('kategori') == $k->id ? 'selected' : '' }}>
+                        {{ $k->nama }}
+                    </option>
+                @endforeach
+            </select>
+        </div>
 
-    <div class="mt-3">
-        <button type="submit" class="btn btn-primary">Filter</button>
-        <a href="{{ route('barang-masuk.index') }}" class="btn btn-danger ms-2">Reset</a>
+        <!-- Filter Limit -->
+        <div class="col-md-2">
+            <label for="limit" class="form-label">Tampilkan:</label>
+            <select name="limit" onchange="this.form.submit()" class="form-control">
+                <option value="50" {{ request('limit') == 50 ? 'selected' : '' }}>50</option>
+                <option value="100" {{ request('limit') == 100 ? 'selected' : '' }}>100</option>
+                <option value="all" {{ request('limit') == 'all' ? 'selected' : '' }}>Semua</option>
+            </select>
+        </div>
 
+        <!-- Tombol Filter & Reset -->
+        <div class="col-md-4 d-flex align-items-end">
+            <button type="submit" class="btn btn-primary me-2">Filter</button>
+            <a href="{{ route('barang-masuk.index') }}" class="btn btn-danger">Reset</a>
+        </div>
     </div>
 </form>
+
 
 
 {{-- Tabel Riwayat Barang Masuk --}}
@@ -194,6 +207,12 @@
         </div>
     </div>
 </div>
+
+<div class="d-flex justify-content-center pt-3">
+    @if ($barangMasuk instanceof \Illuminate\Pagination\LengthAwarePaginator)
+        {{ $barangMasuk->links('vendor.pagination.default') }}
+    @endif
+  </div>
 
 @endsection
 

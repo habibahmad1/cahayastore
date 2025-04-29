@@ -219,7 +219,7 @@
 
 <div class="d-flex justify-content-center pt-3">
   @if ($barangKeluar instanceof \Illuminate\Pagination\LengthAwarePaginator)
-      {{ $barangKeluar->links() }}
+      {{ $barangKeluar->links('vendor.pagination.default') }}
   @endif
 </div>
 
