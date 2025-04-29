@@ -197,7 +197,7 @@
                   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton{{ $p->id }}">
                     @foreach ($p->variasi as $variasi)
                     @php
-                      $stokClass = ($variasi->stok >= 1) ? 'bg-success' : 'bg-danger';
+                      $stokClass = ($variasi->stok == 0) ? 'bg-danger' : 'bg-success';
                     @endphp
                     <li>
                       <a class="dropdown-item variasi-dropdown-item" href="#">
@@ -212,7 +212,7 @@
                 <div class="variasi-list d-none">
                   @foreach ($p->variasi as $variasi)
                   @php
-                    $stokClass = ($variasi->stok > 5) ? 'bg-success' : 'bg-danger';
+                    $stokClass = ($variasi->stok == 0) ? 'bg-danger' : 'bg-success';
                   @endphp
                     <li style="list-style-type: number">
                       <span class="badge bg-primary">Variasi: {{ $variasi->warna->warna ?? '-' }}</span>
