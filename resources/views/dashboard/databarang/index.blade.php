@@ -212,7 +212,7 @@
                 <div class="variasi-list d-none">
                   @foreach ($p->variasi as $variasi)
                   @php
-                    $stokClass = ($variasi->stok > 5) ? 'bg-success' : 'bg-danger';
+                    $stokClass = ($variasi->stok == 0) ? 'bg-danger' : 'bg-success';
                   @endphp
                     <li style="list-style-type: number">
                       <span class="badge bg-primary">Var: {{ $variasi->warna->warna ?? '-' }}</span>
@@ -266,7 +266,11 @@
         2: false,  // Kode Barang
         5: false,  // Harga
         6: false,  // Total Stok
+<<<<<<< HEAD
         7: false,   // Terjual
+=======
+        7: true,   // Terjual
+>>>>>>> af5fc7171796263cbcacb8787832e809f4b16fc4
         3: true,   // Gambar
         4: true,   // Nama Barang
         8: true    // Variasi
