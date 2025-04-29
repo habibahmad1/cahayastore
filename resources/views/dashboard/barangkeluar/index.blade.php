@@ -139,13 +139,16 @@
 
   <div class="card-body">
     <div class="table-responsive">
-      <table class="table table-bordered table-striped table-hover table-sm" id="myTable">
+      <table class="table table-bordered table-striped table-hover table-sm" id="myTable" data-sort-order="asc">
         <thead class="table-dark text-center">
           <tr>
             <th>No</th>
-            <th style="width: 7%;">Tanggal Input</th>
             <th style="width: 7%;">Tanggal</th>
-            <th style="width: 28%;">Nama Barang</th>
+            <th style="width: 28%;">Nama Barang
+                <span class="sort-icon" onclick="sortTable(2)">
+                  <i class="bi bi-arrow-down-up"></i>
+                </span>
+              </th>
             <th>Variasi</th>
             <th>Jumlah</th>
             <th>Platform</th>
@@ -170,7 +173,6 @@
             @endphp
             <tr>
               <td class="text-center">{{ $offset + $loop->iteration }}</td>
-              <td>{{ $bk->created_at }}</td>
               <td>{{ $bk->tanggal }}</td>
               <td>{{ $bk->produk->nama_produk }}</td>
               <td>{{ $bk->variasi ? $bk->variasi->warna->warna . ' - ' . $bk->variasi->ukuran->ukuran : '-' }}</td>
@@ -646,6 +648,51 @@
         background-color: #343a40;
         color: white;
     }
+
+    .sort-icon {
+    cursor: pointer;
+    margin-left: 5px;
+    color: #ffffff;
+    }
+
+    .sort-icon:hover {
+    color: #ffc107;
+    }
 </style>
+
+<script>
+  function sortTable(columnIndex) {
+    const table = document.getElementById("myTable");
+    const rows = Array.from(table.querySelectorAll("tbody tr"));
+    const isAscending = table.getAttribute("data-sort-order") === "asc";
+
+    // Pisahkan baris total dari baris lainnya
+    const totalRow = rows.pop(); // Ambil baris terakhir (baris total)
+
+    rows.sort((a, b) => {
+      const cellA = a.cells[columnIndex]?.innerText.trim().toLowerCase() || ""; // Hilangkan spasi tambahan
+      const cellB = b.cells[columnIndex]?.innerText.trim().toLowerCase() || ""; // Hilangkan spasi tambahan
+
+      if (cellA < cellB) return isAscending ? -1 : 1;
+      if (cellA > cellB) return isAscending ? 1 : -1;
+      return 0;
+    });
+
+    // Update tabel dengan urutan baru
+    const tbody = table.querySelector("tbody");
+    tbody.innerHTML = "";
+    rows.forEach((row, index) => {
+      // Perbarui nomor urut di kolom pertama
+      row.cells[0].innerText = index + 1;
+      tbody.appendChild(row);
+    });
+
+    // Tambahkan kembali baris total di bagian bawah
+    tbody.appendChild(totalRow);
+
+    // Toggle sort order
+    table.setAttribute("data-sort-order", isAscending ? "desc" : "asc");
+  }
+</script>
 
 @endsection
