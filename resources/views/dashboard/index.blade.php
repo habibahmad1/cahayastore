@@ -4,14 +4,45 @@
     <h1 class="h2">Welcome Back, {{ ucfirst(auth()->user()->name) }}</h1>
   </div>
 
-  <!-- Form Pilihan Periode -->
+<!-- Form Filter Berdasarkan Tanggal -->
+<div class="row">
+    <div class="col-12">
+        <form action="{{ route('dashboard.index') }}" method="GET" class="d-flex align-items-end flex-wrap gap-2 mb-4">
+            <div>
+                <label for="start_date" class="form-label mb-0">Tanggal Mulai</label>
+                <input type="date" name="start_date" id="start_date" class="form-control" value="{{ request('start_date') }}">
+            </div>
+
+            <div>
+                <label for="end_date" class="form-label mb-0">Tanggal Akhir</label>
+                <input type="date" name="end_date" id="end_date" class="form-control" value="{{ request('end_date') }}">
+            </div>
+
+            <div>
+                <button type="submit" class="btn btn-primary">Filter</button>
+            </div>
+
+            <div>
+                <a href="{{ route('dashboard.index') }}" class="btn btn-danger">Reset</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+{{-- <!-- Tombol Filter Periode Cepat -->
 <div class="mb-4">
     <a href="{{ route('dashboard.index', ['periode' => '1bulan']) }}" class="btn btn-primary">1 Bulan Terakhir</a>
     <a href="{{ route('dashboard.index', ['periode' => '3bulan']) }}" class="btn btn-primary">3 Bulan Terakhir</a>
-</div>
+</div> --}}
+
 
 <!-- Grafik -->
-<canvas id="myChart" width="400" height="100" class="mb-4"></canvas>
+<div class="table-responsive">
+    <div style="min-width: 600px;">
+      <canvas id="myChart" height="100" class="mb-4 w-100"></canvas>
+    </div>
+  </div>
 
   <div class="row">
     <div class="col-md-3 mb-4 card-anim">

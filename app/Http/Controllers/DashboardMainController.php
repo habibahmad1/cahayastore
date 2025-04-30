@@ -17,13 +17,18 @@ class DashboardMainController extends Controller
 {
     public function index(Request $request)
     {
-        $periode = $request->query('periode', '1bulan'); // Default 1 bulan terakhir
+        $startDate = $request->query('start_date');
+        $endDate = $request->query('end_date');
 
-        // Filter tanggal berdasarkan periode
-        $tanggalMulai = match ($periode) {
-            '3bulan' => now()->subMonths(3),
-            default => now()->subMonth()
-        };
+        // Cek apakah user pakai filter manual
+        if ($startDate && $endDate) {
+            $tanggalMulai = $startDate;
+            $tanggalAkhir = $endDate;
+        } else {
+            // Default: 1 bulan terakhir
+            $tanggalMulai = now()->subMonth()->toDateString();
+            $tanggalAkhir = now()->toDateString();
+        }
 
         $dataBarangKeluar = BarangKeluar::select(
             DB::raw('DATE(tanggal) as date'),
@@ -31,7 +36,7 @@ class DashboardMainController extends Controller
             DB::raw('SUM(qty * produks.harga) as total_harga')
         )
             ->join('produks', 'barang_keluars.produk_id', '=', 'produks.id')
-            ->where('tanggal', '>=', $tanggalMulai)
+            ->whereBetween('tanggal', [$tanggalMulai, $tanggalAkhir])
             ->groupBy(DB::raw('DATE(tanggal)'))
             ->orderBy('tanggal', 'asc')
             ->get();
