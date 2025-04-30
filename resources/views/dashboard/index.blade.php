@@ -10,12 +10,12 @@
         <form action="{{ route('dashboard.index') }}" method="GET" class="d-flex align-items-end flex-wrap gap-2 mb-4">
             <div>
                 <label for="start_date" class="form-label mb-0">Tanggal Mulai</label>
-                <input type="date" name="start_date" id="start_date" class="form-control" value="{{ request('start_date') }}">
+                <input type="date" name="start_date" id="start_date" class="form-control" value="{{ request('start_date', $startDate) }}">
             </div>
 
             <div>
                 <label for="end_date" class="form-label mb-0">Tanggal Akhir</label>
-                <input type="date" name="end_date" id="end_date" class="form-control" value="{{ request('end_date') }}">
+                <input type="date" name="end_date" id="end_date" class="form-control" value="{{ request('end_date', $endDate) }}">
             </div>
 
             <div>
@@ -36,11 +36,17 @@
     <a href="{{ route('dashboard.index', ['periode' => '3bulan']) }}" class="btn btn-primary">3 Bulan Terakhir</a>
 </div> --}}
 
+<h3>Total Terjual
+  <small class="d-block" style="font-size: 12px;">
+    ({{ $startDate }} s/d {{ $endDate }})
+  </small>
+</h3>
+<h1>{{ $totalTerjual }} pcs</h1>
 
 <!-- Grafik -->
 <div class="table-responsive">
     <div style="min-width: 600px;">
-      <canvas id="myChart" height="100" class="mb-4 w-100"></canvas>
+      <canvas id="myChart" height="400" class="mb-4 w-100"></canvas>
     </div>
   </div>
 
@@ -104,7 +110,11 @@
         </div>
       </a>
     </div>
+
   </div>
+
+
+
 
   <!-- Floating Icon -->
   <div class="floating-icon">
