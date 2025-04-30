@@ -35,20 +35,22 @@ class BarangMasukController extends Controller
             });
         }
 
-        // Handle limit (jumlah data per halaman)
-        $limit = $request->input('limit', 50); // default 50
+        // Tentukan limit data per halaman
+        $limit = $request->input('limit', 50);
+
         if ($limit === 'all') {
-            $barangMasuk = $query->latest()->get();
+            $barangMasuk = $query->latest()->get(); // tanpa pagination
         } else {
-            $barangMasuk = $query->latest()->paginate((int) $limit)->withQueryString();
+            $barangMasuk = $query->latest()->paginate((int) $limit);
+            $barangMasuk->appends($request->query()); // agar query tetap ada saat pindah halaman
         }
 
-        // Data tambahan
         $produks = Produk::with(['variasi.warna', 'variasi.ukuran'])->get();
         $kategori = Kategori::all();
 
         return view('dashboard.barangmasuk.index', compact('barangMasuk', 'produks', 'kategori'));
     }
+
 
 
     /**

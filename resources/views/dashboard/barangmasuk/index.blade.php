@@ -119,7 +119,7 @@
                             $totalQty += $bm->qty;
                         @endphp
                         <tr>
-                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $barangMasuk->firstItem() + $loop->index }}</td>
                             <td>{{ $bm->tanggal }}</td>
                             <td>{{ $bm->produk->nama_produk }}</td>
                             <td>{{ $bm->variasi ? $bm->variasi->warna->warna . ' - ' . $bm->variasi->ukuran->ukuran : '-' }}</td>
