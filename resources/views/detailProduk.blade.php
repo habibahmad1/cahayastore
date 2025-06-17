@@ -59,13 +59,44 @@
 
 
     <div class="produk-info-detail">
+
+@php
+    // Ambil semua harga variasi yang valid (> 0), dan unik
+    $hargaVariasi = $produk_variasi->pluck('harga')->filter(fn($h) => $h > 0)->unique()->sort();
+
+    // Apakah harga variasi berbeda dari harga produk?
+    $gunakanHargaVariasi = $hargaVariasi->count() > 1 || ($hargaVariasi->count() === 1 && $hargaVariasi->first() != $post->harga);
+
+    // Siapkan harga yang akan ditampilkan
+    $hargaTerkecil = $gunakanHargaVariasi ? $hargaVariasi->min() : $post->harga;
+    $hargaTerbesar = $gunakanHargaVariasi ? $hargaVariasi->max() : $post->harga;
+
+    // Hitung harga coret dari harga terkecil (sebelum diskon)
+    $hargaCoret = $hargaTerkecil / (1 - ($post->diskon / 100));
+@endphp
+
+
+
         <h3 class="judul-detail">{{ $post->nama_produk }}
         </h3>
-        <h2><b>Rp {{ number_format($post->harga, 0, ',', '.') }}</b></h2>
-        <div class="diskon-coret">
-            <div class="diskon">Diskon -{{ $post->diskon }}%</div>
-            <div class="harga-coret">Rp {{ number_format($post->harga / (1 - ($post->diskon / 100)), 0, ',', '.') }}</div>
-        </div>
+        <h2 id="harga-utama">
+    <b>
+        @if ($gunakanHargaVariasi && $hargaTerkecil !== $hargaTerbesar)
+            Rp {{ number_format($hargaTerkecil, 0, ',', '.') }} - Rp {{ number_format($hargaTerbesar, 0, ',', '.') }}
+        @else
+            Rp {{ number_format($hargaTerkecil, 0, ',', '.') }}
+        @endif
+    </b>
+</h2>
+
+<div class="diskon-coret">
+    <div class="diskon">Diskon -{{ $post->diskon }}%</div>
+    <div class="harga-coret" id="harga-coret">
+        Rp {{ number_format($hargaCoret, 0, ',', '.') }}
+    </div>
+</div>
+
+
         @if ($produk_variasi->isNotEmpty())
     <p class="title-variasi mt-3">Warna/Variasi:</p>
     <div class="detail-variasi">
@@ -197,7 +228,7 @@ foreach ($produk_variasi as $variasi) {
         <p class="coret-form-harga">Rp {{ number_format($post->harga / (1 - ($post->diskon / 100)), 0, ',', '.') }}</p>
         <div class="harga-asli">
             <h5>Subtotal</h5>
-            <h4><b>Rp {{ number_format($post->harga, 0, ',', '.') }}</b></h4>
+               <h4 id="subtotal"><b>Rp {{ number_format($hargaTerkecil, 0, ',', '.') }}</b></h4>
         </div>
         <div class="form-wa">
             <a
@@ -248,6 +279,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const stokNempelBeliElement = document.getElementById("stok-nempel-beli"); // Elemen stok di bagian bawah
     const produkVariasi = @json($produk_variasi); // Kirim data PHP ke JavaScript
 
+
     let selectedWarna = null;  // Inisialisasi selectedWarna
     let selectedUkuran = null; // Inisialisasi selectedUkuran
 
@@ -257,31 +289,36 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Event klik untuk warna
     warnaVariasi.forEach(warna => {
-        warna.addEventListener("click", function () {
-            // Tandai warna terpilih
-            warnaVariasi.forEach(w => w.classList.remove("selected"));
-            this.classList.add("selected");
+    warna.addEventListener("click", function () {
+        // Tandai warna terpilih
+        warnaVariasi.forEach(w => w.classList.remove("selected"));
+        this.classList.add("selected");
 
-            // Ambil gambar terkait variasi
-            const newImage = this.getAttribute("data-gambar");
+        // Ambil gambar terkait variasi
+        const newImage = this.getAttribute("data-gambar");
 
-            // Perbarui gambar utama
-            previewImage.setAttribute("src", newImage);
+        // Perbarui gambar utama
+        previewImage.setAttribute("src", newImage);
 
-            // Perbarui gambar di Detail Harga
-            imgForm.setAttribute("src", newImage);  // Mengubah gambar Detail Harga
+        // Perbarui gambar di Detail Harga
+        imgForm.setAttribute("src", newImage);  // Mengubah gambar Detail Harga
 
-            // Simpan warna yang dipilih
-            selectedWarna = this.getAttribute("data-warna");
+        // Simpan warna yang dipilih
+        selectedWarna = this.getAttribute("data-warna");
 
-            // Perbarui stok
-            updateStok();
-        });
+        // Perbarui ukuran yang tersedia setelah warna dipilih
+        updateUkuranAvailability();
+
+        // Perbarui stok
+        updateStok();
     });
+});
+
 
     // Event klik untuk ukuran
     ukuranVariasi.forEach(ukuran => {
         ukuran.addEventListener("click", function () {
+
             // Tandai ukuran terpilih
             ukuranVariasi.forEach(u => u.classList.remove("selected"));
             this.classList.add("selected");
@@ -300,6 +337,9 @@ document.addEventListener("DOMContentLoaded", function () {
             // Simpan ukuran yang dipilih
             selectedUkuran = this.getAttribute("data-ukuran");
 
+            updateWarnaAvailability();
+
+
             // Perbarui stok
             updateStok();
         });
@@ -307,46 +347,147 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Fungsi untuk memperbarui stok berdasarkan warna atau ukuran yang dipilih
     function updateStok() {
-        let selectedVariasi = null;
+    let selectedVariasi = null;
 
-        // Jika warna dipilih
-        if (selectedWarna && !selectedUkuran) {
-            selectedVariasi = produkVariasi.find(variasi =>
-                (variasi.warna?.warna === selectedWarna)
-            );
-        }
-        // Jika ukuran dipilih
-        if (!selectedWarna && selectedUkuran) {
-            selectedVariasi = produkVariasi.find(variasi =>
-                (variasi.ukuran?.ukuran === selectedUkuran)
-            );
-        }
-        // Jika warna dan ukuran keduanya dipilih
-        if (selectedWarna && selectedUkuran) {
-            selectedVariasi = produkVariasi.find(variasi =>
-                (variasi.warna?.warna === selectedWarna) &&
-                (variasi.ukuran?.ukuran === selectedUkuran)
-            );
-        }
-
-        // Perbarui stok di form beli
-        if (selectedVariasi) {
-            updateStokDisplay(selectedVariasi.stok);
-        } else {
-            // Jika tidak ada variasi yang sesuai, tampilkan stok awal
-            updateStokDisplay(stokAwal);
-        }
+    // Logika pencocokan variasi
+    if (selectedWarna && !selectedUkuran) {
+        selectedVariasi = produkVariasi.find(variasi =>
+            variasi.warna?.warna === selectedWarna
+        );
     }
+
+    if (!selectedWarna && selectedUkuran) {
+        selectedVariasi = produkVariasi.find(variasi =>
+            variasi.ukuran?.ukuran === selectedUkuran
+        );
+    }
+
+    if (selectedWarna && selectedUkuran) {
+        selectedVariasi = produkVariasi.find(variasi =>
+            variasi.warna?.warna === selectedWarna &&
+            variasi.ukuran?.ukuran === selectedUkuran
+        );
+    }
+
+    // 🔍 Periksa jika variasi ditemukan dan stok-nya ada
+    if (selectedVariasi && selectedVariasi.stok > 0) {
+    updateStokDisplay(selectedVariasi.stok);
+    updateSubtotal(selectedVariasi.harga);
+    updateHargaUtama(selectedVariasi.harga); // ← Tambahkan ini
+    } else if (selectedWarna || selectedUkuran) {
+        // ❗ Jika variasi dipilih tapi tidak ditemukan atau stok habis
+        showTidakTersedia();
+        document.getElementById("harga-utama").innerHTML = `<b>Tidak tersedia</b>`;
+        document.getElementById("harga-coret").innerHTML = '';
+    } else {
+        // Jika belum memilih variasi apapun, tampilkan stok awal dan harga awal
+        updateStokDisplay(stokAwal);
+        updateSubtotal(null);
+    }
+}
+
+function formatRupiah(angka) {
+    const parsed = parseInt(angka);
+    if (isNaN(parsed)) return formatRupiah(hargaProduk); // fallback ke harga produk
+    return parsed.toLocaleString('id-ID');
+}
+
+
+// Fungsi untuk menonaktifkan ukuran yang tidak tersedia
+function updateUkuranAvailability() {
+    ukuranVariasi.forEach(ukuran => {
+        const ukuranVal = ukuran.getAttribute("data-ukuran");
+        const isAvailable = produkVariasi.some(variasi =>
+            (!selectedWarna || variasi.warna?.warna === selectedWarna) &&
+            variasi.ukuran?.ukuran === ukuranVal &&
+            variasi.stok > 0
+        );
+        ukuran.disabled = !isAvailable;
+        ukuran.classList.toggle("disabled", !isAvailable); // Jika pakai CSS tambahan
+    });
+}
+
+// Fungsi untuk menonaktifkan warna yang tidak tersedia
+function updateWarnaAvailability() {
+    warnaVariasi.forEach(warna => {
+        const warnaVal = warna.getAttribute("data-warna");
+        const isAvailable = produkVariasi.some(variasi =>
+            (!selectedUkuran || variasi.ukuran?.ukuran === selectedUkuran) &&
+            variasi.warna?.warna === warnaVal &&
+            variasi.stok > 0
+        );
+        warna.disabled = !isAvailable;
+        warna.classList.toggle("disabled", !isAvailable); // Jika pakai CSS tambahan
+    });
+}
+
+
+
+function showTidakTersedia() {
+    const stokIconHTML = `<i class="fas fa-box"></i>`;
+    const stokText = `Stok: Tidak tersedia`;
+
+    stokElement.innerHTML = `${stokIconHTML} ${stokText}`;
+    stokNempelBeliElement.innerHTML = `${stokIconHTML} ${stokText}`;
+
+    const subtotalEl = document.getElementById("subtotal");
+    subtotalEl.innerHTML = `<b>Tidak tersedia</b>`;
+}
+
+
+const hargaProduk = {{ $post->harga }};
+
+function updateSubtotal(hargaVariasi) {
+    const subtotalElement = document.querySelector('.harga-asli h4 b');
+
+    let harga = parseInt(hargaVariasi);
+    if (isNaN(harga)) {
+        harga = hargaProduk;
+    }
+
+    subtotalElement.innerText = `Rp ${formatRupiah(harga)}`;
+}
+
+
+
 
     // Fungsi untuk memperbarui tampilan stok (dengan ikon stok)
     function updateStokDisplay(stok) {
-        const stokIconHTML = `<i class="fas fa-box"></i>`; // Ikon stok, sesuaikan dengan ikon yang Anda gunakan
+    const stokIconHTML = `<i class="fas fa-box"></i>`;
+    if (stok === null || stok <= 0) {
+        const stokText = `Stok: <span style="color: red;">Tidak tersedia</span>`;
+        stokElement.innerHTML = `${stokIconHTML} ${stokText}`;
+        stokNempelBeliElement.innerHTML = `${stokIconHTML} ${stokText}`;
+    } else {
         const stokText = `Stok: ${stok}`;
         stokElement.innerHTML = `${stokIconHTML} ${stokText}`;
         stokNempelBeliElement.innerHTML = `${stokIconHTML} ${stokText}`;
     }
+}
+
+function updateHargaUtama(hargaVariasi) {
+    const hargaUtama = document.getElementById("harga-utama");
+    const hargaCoret = document.getElementById("harga-coret");
+
+    // Ambil diskon dari Blade (dari PHP) via JS
+    const diskon = {{ $post->diskon }};
+
+
+    // Harga coret = harga sebelum diskon
+    const hargaDiskon = Math.round(hargaVariasi / (1 - (diskon / 100)));
+
+    hargaUtama.innerHTML = `<b>${formatRupiah(hargaVariasi)}</b>`;
+    hargaCoret.innerHTML = formatRupiah(hargaDiskon);
+}
+
+
 });
 
+
+function updateSubtotal(harga) {
+    const subtotalEl = document.getElementById("subtotal");
+    subtotalEl.innerHTML = `<b>Rp ${parseInt(harga).toLocaleString("id-ID")}</b>`;
+}
 
 
 </script>

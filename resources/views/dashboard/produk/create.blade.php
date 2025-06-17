@@ -206,6 +206,11 @@
           <input id="deskripsi" type="hidden" name="deskripsi" value="{{ old('deskripsi') }}">
           <trix-editor input="deskripsi"></trix-editor>
         </div>
+        <div class="form-check form-switch mb-3">
+            <input class="form-check-input" type="checkbox" id="toggle-harga-variasi">
+            <label class="form-check-label" for="toggle-harga-variasi">Aktifkan harga berbeda untuk tiap variasi</label>
+          </div>
+
         <div class="mb-3">
             <h3>Variasi Produk</h3>
             <div id="variasi-container">
@@ -252,12 +257,31 @@
                         <!-- Catatan: old() tidak mendukung file upload. -->
                     </div>
 
+                    <div class="mb-3 harga-variasi d-none">
+                        <label for="harga_0" class="form-label">Harga Variasi</label>
+                        <input type="number" class="form-control" name="variasi[0][harga]" id="harga_0" value="{{ old('variasi.0.harga') }}">
+                    </div>
+
 
                     <hr>
                 </div>
             </div>
             <button type="button" class="btn btn-secondary mt-2" id="tambah-variasi">Tambah Variasi</button>
         </div>
+
+        <script>
+            document.getElementById('toggle-harga-variasi').addEventListener('change', function () {
+                const show = this.checked;
+                document.querySelectorAll('.harga-variasi').forEach(function (el) {
+                    if (show) {
+                        el.classList.remove('d-none');
+                    } else {
+                        el.classList.add('d-none');
+                    }
+                });
+            });
+        </script>
+
 
         <button type="submit" class="btn btn-primary">Tambah Produk</button>
     </form>
@@ -305,12 +329,20 @@
                 <label for="gambar_${variasiIndex}" class="form-label">Gambar</label>
                 <input class="form-control" type="file" name="variasi[${variasiIndex}][gambar]" id="gambar_${variasiIndex}" required>
             </div>
+            <div class="mb-3 harga-variasi d-none">
+                <label for="harga_${variasiIndex}" class="form-label">Harga Variasi</label>
+                <input type="number" class="form-control" name="variasi[${variasiIndex}][harga]" id="harga_${variasiIndex}">
+            </div>
+
             <button type="button" class="btn btn-danger btn-sm mt-2 hapus-variasi" data-id="variasi-item-${variasiIndex}">Hapus Variasi</button>
             <hr>
         `;
 
         container.appendChild(item); // Tambahkan field variasi baru ke form
         variasiIndex++; // Increment index
+
+        document.getElementById('toggle-harga-variasi').dispatchEvent(new Event('change'));
+
     });
 
     // Event listener untuk menghapus variasi
@@ -330,32 +362,33 @@ function previewFile(inputId, previewClass) {
     const file = input.files[0];
 
     if (file) {
-        const fileType = file.type.split('/')[0]; // Mengecek apakah file adalah gambar atau video
+        const fileType = file.type.split('/')[0];
         const reader = new FileReader();
 
         reader.onload = function(e) {
             if (fileType === 'image') {
-                // Jika file adalah gambar
                 preview.src = e.target.result;
-                preview.classList.remove('d-none'); // Tampilkan elemen preview
-                preview.style.display = 'block'; // Pastikan gambar terlihat
+                preview.classList.remove('d-none');
+                preview.classList.add('d-block');
             } else if (fileType === 'video') {
-                // Jika file adalah video
                 preview.src = e.target.result;
-                preview.classList.remove('d-none'); // Tampilkan elemen preview
-                preview.style.display = 'block'; // Pastikan video terlihat
-            } else {
-                alert('File yang dipilih harus berupa gambar atau video!');
+                preview.classList.remove('d-none');
+                preview.classList.add('d-block');
             }
         };
 
         reader.readAsDataURL(file);
-    } else {
-        // Jika tidak ada file, sembunyikan elemen preview
-        preview.classList.add('d-none');
-        preview.src = '';
     }
 }
+
+
+document.getElementById('toggle-harga-variasi').addEventListener('change', function() {
+    const showHarga = this.checked;
+    const hargaFields = document.querySelectorAll('.harga-variasi');
+    hargaFields.forEach(function(field) {
+        field.classList.toggle('d-none', !showHarga);
+    });
+});
 
 
 

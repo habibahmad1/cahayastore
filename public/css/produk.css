@@ -293,6 +293,12 @@ html {
     gap: 8px;
 }
 
+.card-variasi.disabled {
+    opacity: 0.4;
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
 /* Video CSS Detail Produk */
 /* Responsivitas untuk video */
 .video-wrapper {

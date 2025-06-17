@@ -261,43 +261,60 @@
           <input id="deskripsi" type="hidden" name="deskripsi" value="{{ old('deskripsi',$produk->deskripsi) }}">
           <trix-editor input="deskripsi"></trix-editor>
         </div>
-        <div class="mb-3">
-            <h3>Variasi Produk</h3>
-            <div id="variasi-container">
-                @foreach ($produk->variasi as $key => $variasi)
-                    <div class="variasi-item mb-3" id="variasi-item-{{ $key }}">
-                        <input type="hidden" name="variasi[{{ $key }}][id]" value="{{ $variasi->id }}">
 
-                        <div class="mb-3">
-                            <label for="warna_{{ $key }}" class="form-label">Warna/Varian</label>
-                            <input type="text" class="form-control" name="variasi[{{ $key }}][warna]" id="warna_{{ $key }}"
-                                   value="{{ old("variasi.$key.warna", $variasi->warna->warna ?? '') }}">
-                        </div>
-                        <div class="mb-3">
-                            <label for="ukuran_{{ $key }}" class="form-label">Ukuran(Kosongkan jika tidak ada)</label>
-                            <input type="text" class="form-control" name="variasi[{{ $key }}][ukuran]" id="ukuran_{{ $key }}"
-                                   value="{{ old("variasi.$key.ukuran", $variasi->ukuran->ukuran ?? '') }}">
-                        </div>
-                        <div class="mb-3">
-                            <label for="stok_{{ $key }}" class="form-label">Stok</label>
-                            <input type="number" class="form-control" name="variasi[{{ $key }}][stok]" id="stok_{{ $key }}"
-                                   value="{{ old("variasi.$key.stok", $variasi->stok ?? '') }}">
-                        </div>
-                        <div class="mb-3">
-                            <label for="gambar_{{ $key }}" class="form-label">Gambar <span class="penting">*</span></label>
-                            @if ($variasi->gambar)
-                                <img src="{{ asset('storage/' . $variasi->gambar->gambar) }}" class="img-preview-{{ $key }} img-fluid mb-3 d-block" style="max-height: 200px">
-                            @else
-                                <img id="img-preview-{{ $key }}" class="img-preview-{{ $key }} img-fluid mb-3 d-none" style="max-height: 200px">
-                            @endif
-                            <input class="form-control" type="file" name="variasi[{{ $key }}][gambar]" id="gambar_{{ $key }}" onchange="previewImgVariasi(event, 'img-preview-{{ $key }}')">
-                        </div>
-                        <button type="button" class="btn btn-danger btn-sm mt-2 hapus-variasi" data-id="variasi-item-{{ $key }}">Hapus Variasi</button>
-                        <hr>
-                    </div>
-                @endforeach
+       <input type="checkbox" id="toggle-harga-variasi" name="pakai_harga_variasi"
+    @if ($adaHargaBerbeda) checked @endif>
+<label for="toggle-harga-variasi">Gunakan harga berbeda pada variasi</label>
+
+<div class="mb-3">
+    <h3>Variasi Produk</h3>
+    <div id="variasi-container">
+        @foreach ($produk->variasi as $key => $variasi)
+            <div class="variasi-item mb-3" id="variasi-item-{{ $key }}">
+                <input type="hidden" name="variasi[{{ $key }}][id]" value="{{ $variasi->id }}">
+
+                <div class="mb-3">
+                    <label for="warna_{{ $key }}" class="form-label">Warna/Varian</label>
+                    <input type="text" class="form-control" name="variasi[{{ $key }}][warna]" id="warna_{{ $key }}"
+                        value="{{ old("variasi.$key.warna", $variasi->warna->warna ?? '') }}">
+                </div>
+                <div class="mb-3">
+                    <label for="ukuran_{{ $key }}" class="form-label">Ukuran (Kosongkan jika tidak ada)</label>
+                    <input type="text" class="form-control" name="variasi[{{ $key }}][ukuran]" id="ukuran_{{ $key }}"
+                        value="{{ old("variasi.$key.ukuran", $variasi->ukuran->ukuran ?? '') }}">
+                </div>
+                <div class="mb-3">
+                    <label for="stok_{{ $key }}" class="form-label">Stok</label>
+                    <input type="number" class="form-control" name="variasi[{{ $key }}][stok]" id="stok_{{ $key }}"
+                        value="{{ old("variasi.$key.stok", $variasi->stok ?? '') }}">
+                </div>
+                <div class="mb-3">
+                    <label for="gambar_{{ $key }}" class="form-label">Gambar <span class="penting">*</span></label>
+                    @if ($variasi->gambar)
+                        <img src="{{ asset('storage/' . $variasi->gambar->gambar) }}" class="img-preview-{{ $key }} img-fluid mb-3 d-block" style="max-height: 200px">
+                    @else
+                        <img id="img-preview-{{ $key }}" class="img-preview-{{ $key }} img-fluid mb-3 d-none" style="max-height: 200px">
+                    @endif
+                    <input class="form-control" type="file" name="variasi[{{ $key }}][gambar]" id="gambar_{{ $key }}"
+                        onchange="previewImgVariasi(event, 'img-preview-{{ $key }}')">
+                </div>
+
+                {{-- HARGA VARIASI --}}
+                <div class="mb-3 harga-variasi-field" style="@if (!$adaHargaBerbeda) display: none; @endif">
+                    <label for="harga_{{ $key }}" class="form-label">Harga Variasi</label>
+                    <input type="number" class="form-control" name="variasi[{{ $key }}][harga]" id="harga_{{ $key }}"
+                        value="{{ old("variasi.$key.harga", $variasi->harga ?? '') }}">
+                </div>
+
+                <button type="button" class="btn btn-danger btn-sm mt-2 hapus-variasi" data-id="variasi-item-{{ $key }}">Hapus Variasi</button>
+                <hr>
             </div>
+        @endforeach
+    </div>
+</div>
+
             <input type="hidden" id="deleted_variasi_ids" name="deleted_variasi_ids">
+            <input type="checkbox" name="pakai_harga_variasi" id="toggle-harga-variasi" @if($adaHargaBerbeda) checked @endif> Ada harga berbeda pada variasi?<br>
             <button type="button" class="btn btn-secondary mt-2" id="tambah-variasi">Tambah Variasi</button>
         </div>
         <button type="submit" class="btn btn-primary mb-5">Edit Produk</button>
@@ -329,6 +346,8 @@
     item.classList.add('variasi-item', 'mb-3');
     item.setAttribute('id', `variasi-item-${variasiIndex}`);
 
+    const pakaiHargaVariasi = document.getElementById('toggle-harga-variasi').checked;
+
     item.innerHTML = `
         <div class="mb-3">
             <label for="warna_${variasiIndex}" class="form-label">Warna/Varian <span class="penting">*</span></label>
@@ -346,12 +365,26 @@
             <label for="gambar_${variasiIndex}" class="form-label">Gambar <span class="penting">*</span></label>
             <input class="form-control" type="file" name="variasi[${variasiIndex}][gambar]" id="gambar_${variasiIndex}">
         </div>
+        <div class="mb-3 harga-variasi-field" style="${pakaiHargaVariasi ? '' : 'display: none;'}">
+            <label for="harga_${variasiIndex}" class="form-label">Harga Variasi</label>
+            <input type="number" class="form-control" name="variasi[${variasiIndex}][harga]" id="harga_${variasiIndex}">
+        </div>
         <button type="button" class="btn btn-danger btn-sm mt-2 hapus-variasi" data-id="variasi-item-${variasiIndex}">Hapus Variasi</button>
         <hr>
     `;
 
+
     container.appendChild(item);
     variasiIndex++; // Tambah index agar ID tetap unik
+});
+
+// Supaya saat toggle harga diubah, semua field harga variasi update tampil/sembunyi
+document.getElementById('toggle-harga-variasi').addEventListener('change', function () {
+    const show = this.checked;
+    const hargaFields = document.querySelectorAll('.harga-variasi-field');
+    hargaFields.forEach(field => {
+        field.style.display = show ? 'block' : 'none';
+    });
 });
 
 
