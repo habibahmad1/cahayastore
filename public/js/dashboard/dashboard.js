@@ -22,7 +22,8 @@ document.addEventListener("DOMContentLoaded", function () {
     setTheme(savedTheme);
 
     // Menambahkan event listener untuk setiap tombol tema
-    if (themeLight) themeLight.addEventListener("click", () => setTheme("light"));
+    if (themeLight)
+        themeLight.addEventListener("click", () => setTheme("light"));
     if (themeDark) themeDark.addEventListener("click", () => setTheme("dark"));
     if (themeAuto) themeAuto.addEventListener("click", () => setTheme("auto"));
 });
@@ -33,10 +34,14 @@ document.addEventListener("DOMContentLoaded", function () {
         { toggle: "bagHomeToggle", submenu: "bagHomeSubmenu" },
         { toggle: "bagProdukToggle", submenu: "bagProdukSubmenu" },
         { toggle: "bagArtikelToggle", submenu: "bagArtikelSubmenu" },
-        { toggle: "bagUserManajemenToggle", submenu: "bagUserManajemenSubmenu" },
+        {
+            toggle: "bagUserManajemenToggle",
+            submenu: "bagUserManajemenSubmenu",
+        },
         { toggle: "bagTambahBarangToggle", submenu: "bagTambahBarangSubmenu" },
         { toggle: "bagStokBarangToggle", submenu: "bagStokBarangSubmenu" },
         { toggle: "bagSuratToggle", submenu: "bagSuratSubmenu" },
+        { toggle: "bagReturnToggle", submenu: "bagReturnSubmenu" },
         { toggle: "bagSettingsToggle", submenu: "SsettingsSubmenu" }, // Perbaikan typo pada "SsettingsSubmenu"
     ];
 
@@ -49,7 +54,8 @@ document.addEventListener("DOMContentLoaded", function () {
             if (isVisible) {
                 submenuElement.classList.add("expanded");
                 submenuElement.classList.remove("collapsed");
-                submenuElement.style.maxHeight = submenuElement.scrollHeight + "px";
+                submenuElement.style.maxHeight =
+                    submenuElement.scrollHeight + "px";
             } else {
                 submenuElement.classList.add("collapsed");
                 submenuElement.classList.remove("expanded");
@@ -69,8 +75,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 // Menutup semua submenu kecuali yang sedang diklik
                 sections.forEach((sec) => {
-                    const secSubmenuElement = document.getElementById(sec.submenu);
-                    if (secSubmenuElement && secSubmenuElement !== submenuElement) {
+                    const secSubmenuElement = document.getElementById(
+                        sec.submenu
+                    );
+                    if (
+                        secSubmenuElement &&
+                        secSubmenuElement !== submenuElement
+                    ) {
                         secSubmenuElement.classList.remove("expanded");
                         secSubmenuElement.classList.add("collapsed");
                         secSubmenuElement.style.maxHeight = "0";
@@ -79,14 +90,22 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
 
                 // Toggle visibilitas submenu yang diklik
-                const isCurrentlyVisible = submenuElement.classList.contains("expanded");
-                submenuElement.classList.toggle("collapsed", isCurrentlyVisible);
-                submenuElement.classList.toggle("expanded", !isCurrentlyVisible);
+                const isCurrentlyVisible =
+                    submenuElement.classList.contains("expanded");
+                submenuElement.classList.toggle(
+                    "collapsed",
+                    isCurrentlyVisible
+                );
+                submenuElement.classList.toggle(
+                    "expanded",
+                    !isCurrentlyVisible
+                );
 
                 if (isCurrentlyVisible) {
                     submenuElement.style.maxHeight = "0";
                 } else {
-                    submenuElement.style.maxHeight = submenuElement.scrollHeight + "px";
+                    submenuElement.style.maxHeight =
+                        submenuElement.scrollHeight + "px";
                 }
 
                 // Menyimpan status visibilitas ke localStorage

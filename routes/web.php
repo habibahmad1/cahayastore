@@ -5,6 +5,7 @@ use App\Models\Produk;
 use App\Models\Artikel;
 use App\Models\Kategori;
 use Illuminate\Http\Request;
+use App\Models\KatalogProduk;
 use App\Models\KategoriArtikel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -17,16 +18,16 @@ use App\Http\Controllers\SettingController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\SuratResiController;
 use App\Http\Controllers\DataBarangController;
 use App\Http\Controllers\BarangMasukController;
 use App\Http\Controllers\BarangKeluarController;
+use App\Http\Controllers\BarangReturnController;
 use App\Http\Controllers\AdminKategoriController;
 use App\Http\Controllers\DashboardMainController;
-use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\KatalogProdukController;
+use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\KategoriArtikelController;
-use App\Http\Controllers\SuratResiController;
-use App\Models\KatalogProduk;
 
 Route::get('/', function () {
     return view('home', [
@@ -225,3 +226,10 @@ Route::get('/dashboard/databarang', [DataBarangController::class, 'index'])->nam
 
 // Route Surat Resi
 Route::resource('/dashboard/surat-resi', SuratResiController::class);
+
+// Route Surat Resi
+Route::resource('/dashboard/barang-return', BarangReturnController::class);
+
+Route::get('/dashboard/barang-return/autocomplete', [BarangReturnController::class, 'autocomplete'])->name('barang-return.autocomplete');
+
+Route::get('/dashboard/barang-return/{id}/variasi', [BarangReturnController::class, 'getVariasi'])->name('barang-return.getVariasi');

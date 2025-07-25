@@ -195,6 +195,26 @@
             </li>
         </ul>
 
+        <h6 id="bagReturnToggle" class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-2 mb-1 text-body-secondary text-uppercase" style=" padding: 10px; color: #ffffff !important; cursor: pointer;" data-bs-toggle="collapse" data-bs-target="#AbagTambahBarangSubmenu">
+            <span>BAG RETURN</span>
+            <i class="bi bi-caret-down-fill"></i>
+        </h6>
+
+        <ul id="bagReturnSubmenu" class="nav flex-column collapse">
+            <li class="nav-item" id="nav-item-input-barang-return">
+                <a class="nav-link d-flex align-items-center gap-2 {{ Request::is('dashboard/barang-return/create') ? 'active-dashboard' : '' }}" href="/dashboard/barang-return/create">
+                    <i class="bi bi-box-seam-fill"></i>
+                    Input Barang Return
+                </a>
+            </li>
+            <li class="nav-item" id="nav-item-riwayat-return">
+                <a class="nav-link d-flex align-items-center gap-2 {{ Request::is('dashboard/barang-return/') ? 'active-dashboard' : '' }}" href="/dashboard/barang-return/">
+                    <i class="bi bi-stack"></i>
+                    Riwayat Return
+                </a>
+            </li>
+        </ul>
+
         <hr class="my-3">
        <!-- Settings Submenu -->
        @auth
