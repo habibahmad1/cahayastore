@@ -227,7 +227,7 @@ Route::get('/dashboard/databarang', [DataBarangController::class, 'index'])->nam
 // Route Surat Resi
 Route::resource('/dashboard/surat-resi', SuratResiController::class);
 
-// Route Surat Resi
+// Route Return
 Route::resource('/dashboard/barang-return', BarangReturnController::class);
 
 Route::get('/dashboard/barang-return/autocomplete', [BarangReturnController::class, 'autocomplete'])->name('barang-return.autocomplete');

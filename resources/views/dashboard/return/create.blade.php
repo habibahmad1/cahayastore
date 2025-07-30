@@ -31,6 +31,12 @@
         <form action="{{ route('barang-return.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row">
+
+                <div class="col-md-4">
+                    <label for="tanggal_retur" class="form-label">Tanggal Return</label>
+                    <input type="date" class="form-control" name="tanggal_retur" required>
+                </div>
+
            <div class="col-md-4">
                 <label for="nama_produk" class="form-label">Nama Barang</label>
                 <input type="text" class="form-control" name="nama_produk" id="nama_produk" required>
@@ -44,13 +50,6 @@
                     <option value="">-- Pilih Variasi --</option>
                 </select>
             </div>
-
-
-
-                <div class="col-md-4">
-                    <label for="tanggal_retur" class="form-label">Tanggal Return</label>
-                    <input type="date" class="form-control" name="tanggal_retur" required>
-                </div>
 
                 <div class="col-md-2 mt-3">
                     <label for="platform" class="form-label">Platform</label>
@@ -80,29 +79,13 @@
                     <select name="ekspedisi" class="form-select" required>
                         <option value="">-- Pilih Ekspedisi --</option>
                         <option value="J&T">J&T</option>
+                        <option value="J&T Cargo">J&T Cargo</option>
                         <option value="Goto Logistik">Goto Logistik</option>
+                        <option value="SPX">SPX</option>
                         <option value="JNE">JNE</option>
+                        <option value="JNE Cargo">JNE Cargo</option>
                         <option value="Ninja">Ninja</option>
-                        <option value="Anteraja">Anteraja</option>
                         <option value="Lalamove">Lalamove</option>
-                    </select>
-                </div>
-
-                <div class="col-md-2 mt-3">
-                    <label for="apakah_cargo" class="form-label">Apakah Cargo</label>
-                    <select name="apakah_cargo" class="form-select" required>
-                        <option value="">-- Pilih --</option>
-                        <option value="Ya">Ya</option>
-                        <option value="Tidak">Tidak</option>
-                    </select>
-                </div>
-
-                <div class="col-md-2 mt-3">
-                    <label for="status_return" class="form-label">Status Return</label>
-                    <select id="status_return" name="status_return" class="form-select" required>
-                        <option value="">-- Pilih Alasan --</option>
-                        <option value="Selesai">Selesai</option>
-                        <option value="Belum Selesai">Belum Selesai</option>
                     </select>
                 </div>
 
@@ -119,20 +102,10 @@
                         <option value="Gagal Kirim ke Pembeli">Gagal Kirim ke Pembeli</option>
                         <option value="Tidak Sesuai Pesanan">Tidak Sesuai Pesanan</option>
                         <option value="Melebihi Volume">Melebihi Volume</option>
+                        <option value="Sudah Tidak Perlu">Sudah Tidak Perlu</option>
                         <option value="Lainnya">Lainnya</option>
                     </select>
                     <input type="text" id="alasan_lainnya" name="alasan_lainnya" class="form-control mt-2" placeholder="Masukkan alasan lainnya" style="display:none;" />
-                </div>
-
-
-
-                 <div class="col-md-3 mt-3">
-                    <label for="status_barang" class="form-label">Status Barang</label>
-                    <select name="status_barang" class="form-select" required>
-                        <option value="">-- Pilih Status --</option>
-                        <option value="Barang Masih Ada">Barang Masih Ada</option>
-                        <option value="Barang Sudah Terpakai">Barang Sudah Terpakai</option>
-                    </select>
                 </div>
 
                 <div class="col-md-3 mt-3">
@@ -141,15 +114,25 @@
                 </div>
 
                 <div class="col-md-3 mt-3">
-                    <label for="video_bukti" class="form-label">Video Bukti (opsional)</label>
-                    <input type="file" class="form-control" name="video_bukti" accept="video/*">
-                </div>
-
-                <div class="col-md-3 mt-3">
                     <label for="floatingTextarea2">Catatan</label>
                     <div class="form-floating">
                     <textarea class="form-control" name="catatan" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
                     </div>
+                </div>
+
+                <div class="col-md-2 mt-3">
+                    <label for="tanggal_keluar" class="form-label">Tanggal Keluar <span class="text-secondary">(Kosongkan Jika belum keluar)</span></label>
+                    <input type="date" class="form-control" name="tanggal_keluar">
+                </div>
+
+                <div class="col-md-2 mt-3">
+                    <label for="jumlah_keluar" class="form-label">Jumlah Barang Keluar <span class="text-secondary">(Kosongkan Jika belum keluar)</span></label>
+                    <input type="number" class="form-control" name="jumlah_keluar" min="1" >
+                </div>
+
+                <div class="col-md-2 mt-3">
+                    <label for="nomor_resi_keluar" class="form-label">Resi Barang Keluar <span class="text-secondary">(Kosongkan Jika belum keluar)</span></label>
+                    <input type="text" class="form-control" name="nomor_resi_keluar" min="1">
                 </div>
 
                 <div class="col-md-12 mt-4 text-end">

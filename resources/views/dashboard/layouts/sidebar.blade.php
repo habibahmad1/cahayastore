@@ -208,7 +208,7 @@
                 </a>
             </li>
             <li class="nav-item" id="nav-item-riwayat-return">
-                <a class="nav-link d-flex align-items-center gap-2 {{ Request::is('dashboard/barang-return/') ? 'active-dashboard' : '' }}" href="/dashboard/barang-return/">
+                <a class="nav-link d-flex align-items-center gap-2 {{ Request::is('dashboard/barang-return') ? 'active-dashboard' : '' }}" href="/dashboard/barang-return">
                     <i class="bi bi-stack"></i>
                     Riwayat Return
                 </a>

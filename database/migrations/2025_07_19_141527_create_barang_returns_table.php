@@ -21,15 +21,18 @@ return new class extends Migration
             $table->string('platform');
             $table->string('nomor_resi')->nullable();
             $table->string('ekspedisi');
-            $table->enum('apakah_cargo', ['Ya', 'Tidak']);
-            $table->enum('status_return', ['Selesai', 'Belum Selesai']);
+            $table->enum('apakah_cargo', ['Ya', 'Tidak']); //Hapus
+            $table->enum('status_return', ['Selesai', 'Belum Selesai']); //Hapus
             $table->integer('jumlah');
             $table->string('alasan_retur');
             $table->string('alasan_lainnya')->nullable();
-            $table->enum('status_barang', ['Barang Masih Ada', 'Barang Sudah Terpakai']);
+            $table->enum('status_barang', ['Barang Masih Ada', 'Barang Sudah Terpakai']); //Hapus
             $table->string('foto_bukti')->nullable();
-            $table->string('video_bukti')->nullable();
+            $table->string('video_bukti')->nullable(); // Hapus
             $table->text('catatan')->nullable(); // dari textarea
+            $table->date('tanggal_keluar')->nullable(); // Tanggal keluar barang retur
+            $table->integer('jumlah_keluar'); // Tambah
+            $table->string('nomor_resi_keluar')->nullable(); //Tambah
         });
     }
 

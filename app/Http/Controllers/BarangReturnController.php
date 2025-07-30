@@ -7,13 +7,47 @@ use App\Models\Produk;
 use App\Models\Produk_Variasi;
 use App\Http\Requests\StoreBarangReturnRequest;
 use App\Http\Requests\UpdateBarangReturnRequest;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
+use App\Models\Kategori;
+
 
 class BarangReturnController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+
+    private function platformOptions(): array
+    {
+        return [
+            'Tiktok 1',
+            'Tiktok 2',
+            'Tiktok 3',
+            'Tiktok 4',
+            'Shopee 1',
+            'Shopee 2',
+            'Shopee 3',
+            'Shopee 4',
+            'Tokopedia 1',
+            'Tokopedia 2',
+            'No Platform',
+        ];
+    }
+
+    private function ekspedisiOptions(): array
+    {
+        return [
+            'J&T',
+            'J&T Cargo',
+            'Goto Logistik',
+            'SPX',
+            'JNE',
+            'JNE Cargo',
+            'Ninja',
+            'Lalamove',
+        ];
+    }
 
     public function index(Request $request)
     {
@@ -24,15 +58,59 @@ class BarangReturnController extends Controller
             $query->whereBetween('tanggal_retur', [$request->tanggal_mulai, $request->tanggal_selesai]);
         }
 
-        // Filter berdasarkan platform
+        // Filter berdasarkan produk
+        if ($request->filled('produk_id')) {
+            $query->where('produk_id', $request->produk_id);
+        }
+
+        // Filter berdasarkan kategori
+        if ($request->filled('kategori')) {
+            $query->whereHas('produk.kategori', function ($q) use ($request) {
+                $q->where('id', $request->kategori);
+            });
+        }
+
+        // Filter berdasarkan nomor resi
+        if ($request->filled('nomor_resi')) {
+            $query->where('nomor_resi', 'LIKE', '%' . $request->nomor_resi . '%');
+        }
+
+        // Filter berdasarkan Tanggal Resi Keluar (tanggal_keluar)
+        if ($request->filled('tanggal_keluar_mulai') && $request->filled('tanggal_keluar_selesai')) {
+            $query->whereBetween('tanggal_keluar', [
+                $request->tanggal_keluar_mulai,
+                $request->tanggal_keluar_selesai
+            ]);
+        } elseif ($request->filled('tanggal_keluar_mulai')) {
+            $query->whereDate('tanggal_keluar', '>=', $request->tanggal_keluar_mulai);
+        } elseif ($request->filled('tanggal_keluar_selesai')) {
+            $query->whereDate('tanggal_keluar', '<=', $request->tanggal_keluar_selesai);
+        }
+
+
+        // Filter berdasarkan resi keluar
+        if ($request->filled('nomor_resi_keluar')) {
+            $query->where('nomor_resi_keluar', 'LIKE', '%' . $request->nomor_resi_keluar . '%');
+        }
+
+
+        // Platform tetap berdasarkan data
         if ($request->filled('platform')) {
             $query->where('platform', $request->platform);
         }
 
-        // Filter berdasarkan status retur
-        if ($request->filled('status_retur')) {
-            $query->where('status_retur', $request->status_retur);
+        // Filter berdasarkan ekspedisi
+        if ($request->filled('ekspedisi')) {
+            $query->where('ekspedisi', $request->ekspedisi);
         }
+
+
+        // Ambil list platform dinamis dari database (distinct)
+        $platformList = BarangReturn::select('platform')
+            ->distinct()
+            ->orderBy('platform')
+            ->pluck('platform');
+
 
         // Tentukan limit data per halaman
         $limit = $request->input('limit', 50);
@@ -49,17 +127,24 @@ class BarangReturnController extends Controller
         $variasis = Produk_Variasi::with(['warna', 'ukuran'])->get();
 
         // Opsi platform
-        $platformList = ['Tiktok_1', 'Tiktok_2', 'Tiktok_3', 'Tiktok_4', 'Shopee', 'Tokopedia'];
+        $platformList = $this->platformOptions();
+        $ekspedisiList = $this->ekspedisiOptions();
+
 
         // Opsi status
         $statusList = ['diproses', 'ditolak', 'selesai'];
 
+        $kategori = Kategori::all();
+
+
         return view('dashboard.return.index', compact(
             'returPaket',
             'platformList',
+            'ekspedisiList',
             'statusList',
             'produks',
-            'variasis'
+            'variasis',
+            'kategori'
         ));
     }
 
@@ -87,50 +172,39 @@ class BarangReturnController extends Controller
             'platform' => 'required|string',
             'nomor_resi' => 'nullable|string',
             'ekspedisi' => 'required|string',
-            'apakah_cargo' => 'required|in:Ya,Tidak',
-            'status_return' => 'required|in:Selesai,Belum Selesai',
             'jumlah' => 'required|integer|min:1',
             'alasan_retur' => 'required|string',
             'alasan_lainnya' => 'nullable|string',
-            'status_barang' => 'required|in:Barang Masih Ada,Barang Sudah Terpakai',
             'foto_bukti' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'video_bukti' => 'nullable|mimetypes:video/mp4,video/quicktime|max:10000',
             'catatan' => 'nullable|string',
+            'tanggal_keluar' => 'nullable|date',
+            'jumlah_keluar' => 'nullable|integer|min:0',
+            'nomor_resi_keluar' => 'nullable|string',
         ]);
 
-        $fotoPath = null;
-        $videoPath = null;
-
-        if ($request->hasFile('foto_bukti')) {
-            $fotoPath = $request->file('foto_bukti')->store('retur/foto', 'public');
-        }
-
-        if ($request->hasFile('video_bukti')) {
-            $videoPath = $request->file('video_bukti')->store('retur/video', 'public');
-        }
+        $fotoPath = $request->file('foto_bukti')?->store('retur/foto', 'public');
+        $videoPath = $request->file('video_bukti')?->store('retur/video', 'public');
 
         BarangReturn::create([
             'tanggal_retur' => $request->tanggal_retur,
             'produk_id' => $request->produk_id,
             'variasi_id' => $request->variasi_id,
-            'nama_produk' => Produk::find($request->produk_id)->nama_produk, // Simpan nama produk
+            'nama_produk' => Produk::find($request->produk_id)->nama_produk,
             'platform' => $request->platform,
             'nomor_resi' => $request->nomor_resi,
             'ekspedisi' => $request->ekspedisi,
-            'apakah_cargo' => $request->apakah_cargo,
-            'status_return' => $request->status_return,
             'jumlah' => $request->jumlah,
             'alasan_retur' => $request->alasan_retur,
             'alasan_lainnya' => $request->alasan_lainnya,
-            'status_barang' => $request->status_barang,
             'foto_bukti' => $fotoPath,
-            'video_bukti' => $videoPath,
             'catatan' => $request->catatan,
+            'tanggal_keluar' => $request->tanggal_keluar,
+            'jumlah_keluar' => $request->jumlah_keluar ?? 0,
+            'nomor_resi_keluar' => $request->nomor_resi_keluar,
         ]);
 
         return redirect()->route('barang-return.index')->with('success', 'Data retur berhasil disimpan.');
     }
-
 
 
     /**
@@ -152,18 +226,75 @@ class BarangReturnController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateBarangReturnRequest $request, BarangReturn $barangReturn)
+    public function update(Request $request, BarangReturn $barangReturn)
     {
-        //
+        $request->validate([
+            'tanggal_retur' => 'required|date',
+            'produk_id' => 'required|exists:produks,id',
+            'variasi_id' => 'nullable|exists:produk_variasis,id',
+            'platform' => 'required|string',
+            'nomor_resi' => 'nullable|string',
+            'ekspedisi' => 'required|string',
+            'jumlah' => 'required|integer|min:1',
+            'alasan_retur' => 'required|string',
+            'alasan_lainnya' => 'nullable|string',
+            'foto_bukti' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'catatan' => 'nullable|string',
+            'tanggal_keluar' => 'nullable|date',
+            'jumlah_keluar' => 'nullable|integer|min:0',
+            'nomor_resi_keluar' => 'nullable|string',
+        ]);
+
+        if ($request->hasFile('foto_bukti')) {
+            if ($barangReturn->foto_bukti) {
+                Storage::disk('public')->delete($barangReturn->foto_bukti);
+            }
+            $barangReturn->foto_bukti = $request->file('foto_bukti')->store('retur/foto', 'public');
+        }
+
+        $barangReturn->update([
+            'tanggal_retur' => $request->tanggal_retur,
+            'produk_id' => $request->produk_id,
+            'variasi_id' => $request->variasi_id,
+            'nama_produk' => Produk::find($request->produk_id)->nama_produk,
+            'platform' => $request->platform,
+            'nomor_resi' => $request->nomor_resi,
+            'ekspedisi' => $request->ekspedisi,
+            'jumlah' => $request->jumlah,
+            'alasan_retur' => $request->alasan_retur,
+            'alasan_lainnya' => $request->alasan_lainnya,
+            'catatan' => $request->catatan,
+            'tanggal_keluar' => $request->tanggal_keluar,
+            'jumlah_keluar' => $request->jumlah_keluar ?? 0,
+            'nomor_resi_keluar' => $request->nomor_resi_keluar,
+        ]);
+
+        return redirect()->route('barang-return.index')->with('success', 'Data retur berhasil diperbarui.');
     }
+
+
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(BarangReturn $barangReturn)
     {
-        //
+        // Hapus foto jika ada
+        if ($barangReturn->foto_bukti) {
+            Storage::disk('public')->delete($barangReturn->foto_bukti);
+        }
+
+        // Hapus video jika ada
+        // if ($barangReturn->video_bukti) {
+        //     Storage::disk('public')->delete($barangReturn->video_bukti);
+        // }
+
+        // Hapus data retur dari database
+        $barangReturn->delete();
+
+        return redirect()->route('barang-return.index')->with('success', 'Data retur berhasil dihapus.');
     }
+
 
     public function autocomplete(Request $request)
     {
