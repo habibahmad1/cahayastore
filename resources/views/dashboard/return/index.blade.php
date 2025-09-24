@@ -193,11 +193,21 @@
         </td>
 
         <td>{{ $retur->catatan }}</td>
-        <td class="table-danger">
-            {{ $retur->tanggal_keluar ? \Carbon\Carbon::parse($retur->tanggal_keluar)->translatedFormat('d F Y') : '-' }}
+
+        @php $isZero = (int)($retur->jumlah_keluar ?? 0) > 0; @endphp
+
+        <td class="{{ $isZero ? 'table-danger' : '' }}">
+          {{ $retur->tanggal_keluar ? \Carbon\Carbon::parse($retur->tanggal_keluar)->translatedFormat('d F Y') : '-' }}
         </td>
-        <td class="table-danger">{{ $retur->nomor_resi_keluar }}</td>
-        <td class="table-danger">{{ $retur->jumlah_keluar }}</td>
+
+        <td class="{{ $isZero ? 'table-danger' : '' }}">
+          {{ $retur->nomor_resi_keluar ?: '-' }}
+        </td>
+
+        <td class="{{ $isZero ? 'table-danger' : '' }}">
+          {{ $retur->jumlah_keluar ?? 0 }}
+        </td>
+
         <td>
           <!-- Tombol Edit -->
           <button type="button" class="btn btn-primary btn-sm m-2" data-bs-toggle="modal" data-bs-target="#editModal-{{ $retur->id }}">
